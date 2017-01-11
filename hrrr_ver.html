@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<title>Brian Blaylock, UofU</title>
+<link rel="stylesheet" href="./css/brian_style.css" />
+<script src="./js/site/siteopen.js"></script>
+</head>
+
+
+<body>
+<a name="TOP"></a>
+<script src="./js/site/sitemenu.js"></script>	
+
+<br>
+
+<div id="content">
+<h1 align="center">HRRR Verification</h1>
+<hr><br>
+
+<ul style="padding: 10px; margin-left:30px;">
+    <li><a href="hrrr_ver.html#INTRO">HRRR Verification Introduction</a>
+    <li><a href="hrrr_ver.html#METHOD">Method</a>
+</ul>
+Products
+<ul style="padding: 10px; margin-left:30px;">
+    <li><a href="hrrr_ver.html#FIRES">HRRR Fires</a>
+    <li><a href="hrrr_ver.html#OTHER">Select Stations</a>
+</ul>
+Examples
+<ul style="padding: 10px; margin-left:30px;">
+    <li><a href="hrrr_ver.html#EX">examples</a>
+</ul>
+
+<hr>
+External Links
+<ul style="padding: 10px; margin-left:30px;">
+    <li><a href="http://activefiremaps.fs.fed.us/?sensor=modis&extent=conus">Active Fires</a>
+    <li><a href="http://inciweb.nwcg.gov/">Incident Information System</a>
+    <li><a href="http://firemap.sdsc.edu/">San Diego Fire Map</a>
+    <li><a href="http://vis.ecowest.org/interactive/wildfires.php">Ecowest Wildfires Map</a>
+</ul>
+<!--###########################################################-->
+<br>
+<div class="section">
+	<a name="INTRO"></a>
+	<h3>HRRR_Verification.py</h3>
+	<p><a href="https://github.com/blaylockbk/Ute_HRRR/blob/master/HRRR_verification.py"><img align=right src='./images/githubcode.png'></a>
+    This python script reads the HRRR grib2 file, finds the nearest grid point for a MesoWest station, and saves some variables to a text file for later processing.
+    <p><img align= right width=40% src='./images/HRRR_ver.png'>
+    Variables saves:
+    <ul>
+        <li>2-m Temperature
+        <li>2-m Dew Point
+        <li>10-m U wind
+        <li>10-m V wind
+    </ul>
+    
+	<br><br>
+
+	<br>
+	<a href="hrrr.html#TOP">Back to Top</a>
+</div>
+<!--###########################################################-->
+<br>
+<div class="section">
+	<a name="METHOD"></a>
+	<h3>HRRR Verification Method</h3>
+    <h2>MesoWest_vs_HRRR.py</h2>
+	<p><a href="https://github.com/blaylockbk/Ute_HRRR/blob/master/HRRR_vs_MesoWest.py"><img align=right src='./images/githubcode.png'></a>
+    This python script reads the HRRR verification text file created by HRRR_Verification.py, grabs the data from the MesoWest API for that station, and creates 
+    a time series of temperature, dew point, and wind speed.
+    <img width=80% src='./images/KSLC_temp.png'>
+    
+    </ul>
+    
+	<br><br>
+	<a href="hrrr.html#TOP">Back to Top</a>
+</div>
+
+<!--###########################################################-->
+<br>
+<div class="section">
+	<a name="FIRES"></a>
+	<h3>Product: HRRR Fires</h3>
+    <p> .csv files for each station within 25 miles of the fire. Contains each hour HRRR value for the nearest point
+    for forecast hours f00, f06, and f12 and the MesoWest observed value for the corresponding times (nearest observation within the top of the hour +/- 40 mins).
+    <p><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/">HRRR and MesoWest values for Select Stations</a>
+    
+	<br><br>
+	<a href="hrrr.html#TOP">Back to Top</a>
+</div>
+
+<!--###########################################################-->
+<br>
+<div class="section">
+	<a name="OTHER"></a>
+	<h3>Product: HRRR Select Stations</h3>
+    <p> .csv files for each selected station (currently KSLC, WBB, UKBKB, NAA, LGCUT, and EYSC). Contains each hour HRRR value for the nearest point
+    for forecast hours f00, f06, and f12 and the MesoWest observed value for the corresponding times (nearest observation within the top of the hour +/- 40 mins).
+    <p><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/Other/">HRRR and MesoWest values for Fires</a>
+    <p>You may request adding a station or two to my scripting by emailing me at brian.blaylock@utah.edu.
+	<br><br>
+	<a href="hrrr.html#TOP">Back to Top</a>
+</div>
+
+<!--###########################################################-->
+<br>
+<div class="section">
+	<a name="EX"></a>
+	<h3>Examples</h3>
+    <p> Looking at Temperature, Wind, and Dew Point for each model hour at a station near the 2016 Pioneer Fire
+    <img src="./images/HRRR_ver/HFNC1_temp_forecasts_stream_all.png" width="60%">
+    <img src="./images/HRRR_ver/HFNC1_dwpt_forecasts_stream_all.png" width="60%">
+    <img src="./images/HRRR_ver/HFNC1_speed_forecasts_stream_all.png" width="60%">
+    <img src="./images/HRRR_ver/HFNC1_barbs_forecasts_stream_all.png" width="60%">
+	<br><br>
+	<a href="hrrr.html#TOP">Back to Top</a>
+</div>
+
+
+<script src="./js/site/siteclose.js"></script>
+</div>
+</body>
+</html>>

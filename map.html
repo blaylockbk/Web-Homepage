@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>Wx Map</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="./css/brian_style.css" />
+	  
+	  
+      <script type="text/javascript" src="./js/site/siteopen.js"></script>
+      <script type="text/javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script type="text/javascript">
+
+         var map = null;         	
+		 
+ 
+//--------------------------------------------------------------------------------------
+// MESOWEST API 	 
+var r_time = 1800000; // Refresh time 30 min
+var api_token = '2562b729557f45f5958516081f06c9eb';
+var stid = 'ukbkb,wbb,kcho,epmu1,klgu,kpvu,klax,kmwh';
+//setTimeout(poll, 500); // every 2 seconds
+
+function CtoF(tempC){
+	
+	tempF = Math.round(tempC*9/5 + 32);
+	//returns a number (even though a string may be given)
+	return tempF
+	
+}	
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    //alert(position.coords.latitude+','+position.coords.longitude);
+	
+	GetMap(position.coords.latitude,position.coords.longitude);
+	document.getElementById("lat").value= String(position.coords.latitude);
+	document.getElementById("lon").value= String(position.coords.longitude);
+		
+	
+}
+
+
+function GetMap(latitude,longitude)
+         {
+var e = document.getElementById("wxvar");
+var wxvar = e.options[e.selectedIndex].value;
+//alert(wxvar);
+var radius = latitude+","+longitude+","+"50"
+var CenterLoc = new Microsoft.Maps.Location(latitude,longitude);
+//alert(CenterLoc)
+$.getJSON('http://api.mesowest.net/v2/stations/metadata?callback=?',
+		  {
+		  // specify the request parameters here
+		  //network:'1,2,65,153', //NWS, RAWS, CWOP, UUNET
+		  network:'1,65,153', //NWS, RAWS, CWOP, UUNET
+		  //state:'ut',
+		  radius:radius, //Grabs the latest obs in the last two hours. If there isn't one for a station then code breaks
+		  status:'active',
+		  token:api_token,
+		  },
+		  function (data)
+		  {
+  //do stuff here??
+  var num_stns = Object.keys(data.STATION).length; //this is the number of stations
+  var stationIDs = ''
+  for (i = 0; i < Object.keys(data.STATION).length; i++)
+    {stationIDs = String(data.STATION[i].STID)+','+stationIDs;
+	}
+	//alert(stationIDs);
+	
+
+
+//--------------------------------------------------------------------------------------		 
+         
+		 //Get MesoWest Data
+		//alert(api_path);
+		$.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
+		  {
+		  // specify the request parameters here
+		  stid:stationIDs,
+		  within:120, //Grabs the latest obs in the last two hours. If there isn't one for a station then code breaks
+		  token:api_token,
+		  },
+		  function (data)
+		  {
+			  //alert(Object.keys(data.STATION[0].OBSERVATIONS.air_temp_value_1)); //Use this to view what options are available
+			  //alert(data.STATION[4].NAME); //Used to find out which Station is in which index
+			  //alert(Object.keys(data.STATION).length)
+			 
+			
+		 
+
+
+            // Initialize the map
+           map = new Microsoft.Maps.Map(document.getElementById('myMap'), 
+            {credentials: '6Dx2AzMohME9heWQxsHb~Cx1fBxl9q1qEkkwFGZZing~Atuo2CuBaIBukvgRHRS1U08nxiaQw5Nwa3_BwjNMBw5G0c3FF-h927BSNhkR9DjI', 
+              });
+			//Add handler for the map click event.
+            Microsoft.Maps.Events.addHandler(map, 'click', displayLatLong);
+
+			for (i = 0; i < Object.keys(data.STATION).length; i++) {
+				//alert(i);
+				var station_name = data.STATION[i].NAME;
+				//alert(station_name);
+				var longitude = data.STATION[i].LONGITUDE;
+				//alert(longitude);
+				var latitude = data.STATION[i].LATITUDE;
+				//alert(latitude);
+				try{//to get the weather variable and plot it.
+					if (wxvar=='air_temp_value_1'){
+						var temp = String(CtoF(data.STATION[i].OBSERVATIONS.air_temp_value_1.value));
+						// Define the pushpin location
+						var stn_loc = new Microsoft.Maps.Location(latitude,longitude);
+						// Add a pin to the map with the temperature
+						var stn_pin = new Microsoft.Maps.Pushpin(stn_loc, {text:temp}); 			
+						map.entities.push(stn_pin);
+					
+					}
+					if (wxvar=='relative_humidity_value_1'){
+						var temp = data.STATION[i].OBSERVATIONS.relative_humidity_value_1.value;
+						// Define the pushpin location
+						var stn_loc = new Microsoft.Maps.Location(latitude,longitude);
+						// Add a pin to the map with the temperature
+						var stn_pin = new Microsoft.Maps.Pushpin(stn_loc, {text:temp}); 			
+						map.entities.push(stn_pin);
+					
+					}
+					if (wxvar=='wind_speed_value_1'){
+						var temp = data.STATION[i].OBSERVATIONS.wind_speed_value_1.value;
+						// Define the pushpin location
+						var stn_loc = new Microsoft.Maps.Location(latitude,longitude);
+						// Add a pin to the map with the temperature
+						var stn_pin = new Microsoft.Maps.Pushpin(stn_loc, {text:temp}); 			
+						map.entities.push(stn_pin);
+						
+				
+					}
+								
+					
+					// Define the pushpin location
+					var stn_loc = new Microsoft.Maps.Location(latitude,longitude);
+					// Add a pin to the map with the temperature
+					var stn_pin = new Microsoft.Maps.Pushpin(stn_loc, {text:temp}); 			
+					map.entities.push(stn_pin);
+					// Center the Map on the location clicked
+					
+				}
+			catch(err){}
+			// Add description box?????
+			//var pin1 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(34.05, -118.24), null); 
+            //map.entities.push(pin1); 
+            //map.entities.push(new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(34.05, -118.24), {title: 'Los Angeles', description: 'description here', pushpin: pin1}));
+            // Center the map on the location
+            
+			};
+			// Center the Map on the location clicked
+			map.setView({center: CenterLoc, zoom: 10});
+			
+			
+
+			
+		});
+});
+
+			
+         }
+function displayLatLong(e) {
+              if (e.targetType == "map") {
+                  var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                  var loc = e.target.tryPixelToLocation(point);
+                  GetMap(loc.latitude,loc.longitude);
+				  document.getElementById("lat").value= String(loc.latitude.toFixed(3));
+				  document.getElementById("lon").value= String(loc.longitude.toFixed(3));
+		
+              }
+          }
+
+      </script>
+   </head>
+   <body onload="getLocation();">
+   <script src="./js/site/sitemenu.js"></script>	
+		<br>
+		<div id='content' style="max-width:90%">
+		<select id='wxvar' style="padding:5px; width:175px;">
+			<option value='air_temp_value_1' selected="selected">Temperature (F)</option>
+			<option value='relative_humidity_value_1'>Relative Humidity</option>
+			<option value='wind_speed_value_1'>Wind Speed</option>
+		</select>
+		
+		<br>
+		<br>
+		
+		<br>
+		<div id='myMap' style="position:relative; width:95%; height:550px; margin:auto;"></div>       
+		</div>
+		
+      <b>Click the map to display the coordinate values at that point.</b><br>
+      Latitude, Longitude:       
+	  <input id='lat' type='text'>
+	  <input id='lon' type='text'>
+	  <input type="submit" value='update' onclick="GetMap(document.getElementById('lat').value,document.getElementById('lon').value);">
+   <script src="./js/site/siteclose.js"></script>
+   </body>
+</html>

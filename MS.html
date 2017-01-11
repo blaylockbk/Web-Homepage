@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<title>Brian Blaylock, UofU</title>
+<link rel="stylesheet" href="./css/brian_style.css" />
+<script src="./js/site/siteopen.js"></script>
+</head>
+
+
+<body>
+<a name="TOP"></a>
+<script src="./js/site/sitemenu.js"></script>	
+
+<br>
+
+<div id="content">
+<h1 align="center">
+MS: Impact of a Lake Breeze on Summer Ozone <br>Concentration in the Salt Lake Valley
+</h1>
+<hr>
+<a href="./images/thesis_anouncement.jpg"><img width='270px' align='left' style="padding-right:15px" src='./images/thesis_anouncement.jpg'></a>
+
+<ul style="padding: 10px; margin-left:30px;">
+<li><a href="MS.html#FULL">Full Document</a>
+<li><a href="MS.html#INTRO">Introduction</a>
+<li><a href="MS.html#OBS">Observations</a>
+<li><a href="MS.html#WRF">WRF Simulation</a>
+<li><a href="MS.html#CONC">Conclusion</a>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</ul>
+
+<hr>
+<br>
+
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<div class="section">
+	<a name="FULL"></a>
+	<p>Document:
+    
+    <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21742418&authkey=AOTIgienfYKM22M&em=2" width="85%" 
+    height="788" frameborder="0" scrolling="no"></iframe>
+    
+    <p>Defense:
+    <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21616728&authkey=ABLKPR7NgsfkOm0&em=2" width="85%" height="527" frameborder="0" scrolling="no"></iframe>
+    <p>Pre-Defense Video
+    <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21698021&authkey=AGinIFOjWowuPEM" width="320" height="180" frameborder="0" scrolling="no" allowfullscreen></iframe>
+	<a href="MS.html#TOP">Back to Top</a>
+</div>
+<br>
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<div class="section">
+	<a name="INTRO"></a>
+	<h3>Introduction</h3>
+	<p>   
+    <br><br>
+	<a href="MS.html#TOP">Back to Top</a>
+</div>
+<br>
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<div class="section">
+	<a name="OBS"></a>
+	<h3>Observations</h3>
+	<p>
+    <p>TDWR radial velocity and MesoWest surface wind observations for June 18-19, 2015. Red dot is
+    location of TDWR radar. Green is winds blowing away from radar. Orange is 
+    wind blowing toward radar. Blue outline is boundaries of Great Salt Lake and Utah Lake.
+    Grey shading shows terrain.
+    <p>(Lake breeze begins to move south at approx 30 seconds.)
+    <video width=50% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/TDWR/short/LB_short.mp4" type='video/mp4'>
+    </video>
+    <p>Longer movie <a href="http://home.chpc.utah.edu/~u0553130/MS/TDWR/LB_20150618-19.mp4">here</a>
+    <br><br>
+	<a href="MS.html#TOP">Back to Top</a>
+</div>
+<br>
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<div class="section">
+	<a name="WRF"></a>
+	<h3>WRF Simulation</h3>
+	<p>
+    <h4>Modifications</h4>
+    <p> Changed the lake boundary to match current lake levels. Left is the HRRR/WRF default land use categories
+    for northern Utah. Middle is a Terra Satellite image from the MODIS instrument on 18 June 2015. Right is
+    the modified land use with changes in the lake size. Points no longer lake were changed to barren land.
+    Far right is a key of the land use categories. 
+    <img width="100%" src='./images/lanuse_changes_and_Sat.png'>
+    <br><br>
+    
+    <h4>Passive Tracers</h4>
+    <p><img width = '250px' src = './images/crosssection.png' align=right>
+    Small image shows the location tracers were initialization and the cross section area.
+    Red is a 5x15 km area in the north end of the valley. Blue is a 5x15 km area at the south end of the valley. 
+    Tracers were emitted each time step in the three lowest model levels and allowed to be dispersed by the wind field.
+    The cross section is 50 km long and 3 km wide. The tracer units for the three km wide cross section are summed together
+    and the vertical wind speeds are averaged.
+    The Great Salt Lake and Utah Lake are outlined in blue. Terrain is shaded grey.
+    <p>Vertical cross section of potential temperature, vertical velocity, and passive tracers on 18 June 2015 at 
+    1800 UTC (top row) 1900 UTC (middle row) 2000 UTC (bottom row). Potential temperature is contoured with black lines every 0.5 K. 
+    Vertical velocity is contoured every 50 cm/s for motion greater than 50 cm/s in solid dark blue contours and less than -50 cm/s 
+    in dashed dark blue. Passive tracers emitted at the north and south end of valley are shaded red and blue respectively. 
+    The cross section is 3 km wide where the tracer elements are summed together while the vertical winds are averaged.
+    
+    <img width = '98%' src = './images/plumes_Wwind.png'>
+    
+    <br><br>
+	<a href="MS.html#TOP">Back to Top</a>
+</div>
+<br>
+<!--******************************************************************************************-->
+<!--******************************************************************************************-->
+
+<div class="section">
+	<a name="CONC"></a>
+	<h3>Conclusion</h3>
+	<p>
+    
+    <br><br>
+	<a href="MS.html#TOP">Back to Top</a>
+</div>
+<br>
+
+
+<p> Just practicing some plot making with plotly showing vector winds and temperature of a 
+cold front that passed WBB on 18 February 2015
+
+
+<iframe width=750 height=500
+  frameborder="0" seamless="seamless" scrolling="no"
+  src="https://plot.ly/~blaylockbk/1.embed">
+</iframe>
+
+<iframe width=750 height=500
+  frameborder="0" seamless="seamless" scrolling="no"
+  src="https://plot.ly/~blaylockbk/3.embed">
+</iframe>
+
+
+
+
+<br>
+<br>
+
+
+<script src="./js/site/siteclose.js"></script>
+</div>
+</body>
+</html>

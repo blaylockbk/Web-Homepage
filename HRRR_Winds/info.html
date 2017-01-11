@@ -1,0 +1,210 @@
+<html>
+
+<head>
+	<title>HRRR Wake Finder</title>
+	<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+</head>
+
+
+<body>
+<a name="TOP"></a>
+<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/sitemenu.js"></script>	
+<br>
+<h1 align="center" style="font-family:Garamond"><img style="max-width:600px; width:85%;" align=center src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/lew_ski.png"></h1>
+<h1 align="center" style="font-family:Garamond">About the HRRR Wake Finder</h1>
+
+<div id="content">
+<br>
+<form action="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/">
+	<input id="waketoolbutton" type="submit" value="Go to &#10;Wake Finder&#10;Tool">
+</form>
+<br>
+
+<ul style="padding: 30px">
+	<li><a href="HRRR_Wake_Finder/info.html#INTRO">What is the HRRR Wake Finder</a>
+	<li><a href="HRRR_Wake_Finder/info.html#NASA">NASA sidenote</a>
+	<li><a href="HRRR_Wake_Finder/info.html#HRRR">About the HRRR</a>
+	<li><a href="HRRR_Wake_Finder/info.html#PROCESS">Processing: How this tool works</a>
+	<li><a href="HRRR_Wake_Finder/info.html#HOWTO">How to use the tool</a>
+	<li><a href="HRRR_Wake_Finder/info.html#FUTURE">Future Additions</a>
+</ul>
+<hr>
+<br>
+
+
+<div class="section">
+<a name="INTRO"></a>
+<h3>What is the HRRR Wake Finder?</h3>
+
+	<p> The HRRR Wake Finder is a tool for boaters who are looking for the smooth, glass-like water--
+	perfect conditions for water skiing and wake boarding. 
+	<p>Lake chop is generally caused by:
+	<ol>
+		<li>Wind Speed
+		<li>Wind Duration
+		<li>Fetch - distance wind travels over water
+	</ol>
+	<p>Therefore, boaters who are looking for glass-like boating contitions are looking for areas
+	of the lake that are the lest windy.
+	<p>The HRRR Wake Finder makes forecasts from the High Resolution Rapid Refresh (HRRR) weather 
+	model available for boaters so they can know ahead of time which areas of the lake may 
+	be less windy, giving them the advantage over other boaters.
+	<p><a href="http://www.skysailtraining.co.uk/wave_height.htm" target=_blank>
+	<img class="style2" src="http://www.skysailtraining.co.uk/images/waves.gif" align=Right width="400px"></a>
+	As an example, this chart illustrates the relationshiop between wave height, wind speed, 
+	wind duration, and fetch length. The chart is more useful for boaters on the ocean where
+	large fetches, higher wind speeds, and wave height is greater, but you get the idea. 
+	<p>When the wind speed is high, when winds last a long time, and when the fetch is 
+	long, the water surface becomes more choppy as waves develop. These waves are caused by kinetic 
+	energy being transfered from the atmosphere to the water surface.
+	
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+<div class="section">
+<a name="NASA"></a>
+<h3>How NASA uses the wind speed/wave height relationshiop</h3>
+	<p><a href="http://winds.jpl.nasa.gov/missions/quikscat/index.cfm"><img class="style2" align=left src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/QuikScat.jpg/800px-QuikScat.jpg"></a>
+	I imagine the relationshiop between wave height and wind speed has been well known by sailors and
+	boaters	for some time now. In the modern science era, NASA has used this relationship to derive wind
+	surface wind speeds over the ocean from  space. In 1999 NASA launched the QuickSCAT satellite, which
+	used an active remote sensing technique for measuring wind speeds. It sent down burst of 
+	microwave energy to earth which signal bounced off the surface and returned to the satellite. 
+	This beam of energy is similar to a weather radar, but the frequency of this signal was designed to 
+	penetrate clouds and precipitation. Ocean waters with larger wave heights would scatter more of the 
+	signal and reduce the amount returned to the satellite. The amount of signal reflected back to 
+	space could then be transformed to a wind speed and wind direction over the oceans.
+	It was a polar orbiting satellite with a 1,800 km swath allowing it to observe nearly the entire earth
+	in a single day. This instrament was increadibly valuable for weather forecasting (especially
+	hurricane forecasting) and mariners. When the satatellie mechanics failed in 2009, NASA rapidly
+	built a replacement.<a href="https://en.wikipedia.org/wiki/QuikSCAT">(See the Wikipedia article)</a>
+	
+	<p>The <a href="http://winds.jpl.nasa.gov/missions/RapidScat/">RapidScat</a> 
+	instrament was installed on the International Space Station in 2014
+	Below is an image of wind speed derived from the RapidScat instrament on January 28, 2015 when a strong winter storm was impacting the north east.
+	<a href="http://www.jpl.nasa.gov/news/news.php?release=2015-140"><img class="style2" src="http://www.jpl.nasa.gov/images/rapidscat/20150415/cyclone_cape_cod-16.jpg"></a>
+	<p>
+	<p>Below is an image of wind speeds during Hurricane Patricia on October 23, 2015.
+	<a href="http://photojournal.jpl.nasa.gov/catalog/PIA20031"><img class="style2" src="http://photojournal.jpl.nasa.gov/jpegMod/PIA20031_modest.jpg"></a>
+	<p> Of course, Utah Lake is too small for wind speeds to be observed by satellite. So sateelites don't
+	directly help boaters. This section was just an interesting sidenote to satisfy my meteorological nerdyness.
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+
+<div class="section">
+<a name="HRRR"></a>
+<h3>What is the HRRR</h3>
+	<p><img class="style2" align=left src="http://ruc.noaa.gov/hrrr/hrrrcrefimage"> 
+	HRRR is a high resolution weather model that is updated every hour.
+	Its purpose is to aid in short term weather forecasting on a regional level by 
+	increasing model resolution (HRRR resolution is 3km whereas the NAM is at 12 km and the GFS at 13km) 
+	and using additional data assimulation techniques including assimulating radar retrevals.
+	That said, increased model resolution doesn't gaurantee better wind forecasts.
+	Utah Lake is only 5 or 6 model grid points across.
+	Please understand that it these models are flawed and actual weather conditions may be different.	
+	
+<br><br><br><br>
+<h3> Model Limitations</h3>	
+<p>With this product you will see contoured plots that look like this:
+<br><img src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/sample.png" width="30%">
+<p>The data has been contoured to enhance the readability.
+However, keep in mind the the HRRR is only at a 3 km resolution. The raw data is gridded and actually looks like this:
+<br>
+<img src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/HRRR_res.png" width="30%">
+<p> A HRRR forecast for Lake Powell may not be very usefull to boaters becuase the grid size of the 
+HRRR is still too large to resolve the canyon winds that exist.
+
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+<div class="section">
+<a name="PROCESS"></a>
+<h3>Processing: How the tool works</h3>
+	<p> This tool makes use of several programming languages and tools which include LINUX shell 
+	scripting, CRON	job schedulur, MesoWest's API, Python, HTML, JavaScript, and PHP.
+	<p>Every hour I do the following:
+	<ol>
+		<li> Get HRRR Forecast
+		<li> Process raw HRRR and produce visualization
+		<li> Compare to actual Observation (future addition)
+		<li> Publish images to website
+	</ol>
+	
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+<div class="section">
+<a name="HOWTO"></a>
+<h3>How to use the tool</h3>
+	<ol>
+		<li> Go to the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/">website</a> 
+		<li> Select the water body you are interested in.
+		<li> Mouse over or click each forecast hour. (May take a second or two for image to load)
+	</ol>
+
+<br><br>
+<h3>How to read the charts</h3>	
+	<p>If you are unfamilar with reading weather charts, here are some terms you should know.
+	<ul>
+		<li> <b>Model:</b> A simulation of weather conditions made by a computer for a certain area and time.
+		<li> <b>Valid Time:</b> The time the weather model forecasted conditions for.
+		<li> <b>Initilization Time:</b> The time the computer started its weather simulation.
+		<li> <b>Wind Barb:</b> A image of a flag that indicateds the wind speed and direction.
+	</ul>
+	<img width=95% src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_Wake_Finder/Figure_Explained.png">
+
+	<p> How to read a wind barb (note the scale and units are different)
+	<br>
+	<img src="http://weather.rap.ucar.edu/info/wind_barb.gif">
+
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+<div class="section">
+<a name="FUTURE"></a>
+<h3>Future Additions</h3>
+	<ul>
+	<li>expand the number of lakes: (may not be useful for small lakes) 
+		<ul style="padding-left:40px">
+			<li>Payette Lake (ID)
+			<li>Lake Powell
+			<li>Jordanelle Reseviour
+			<li>Great Salt Lake
+			<li>Moses Lake (WA)
+			<li>etc. (as requested. Can only do western states at this time.)
+		</ul>
+	<li>Verification: Comparison to actual observation at nearby stations.
+	<li>Clock showing time until next forecast available.
+	<li>Add simulated radar over image
+	<li>Create Universal Windows app for purchase.
+	<li>Better Color bar.
+	<li>Make entire USA available
+	<li>Move product and processing from UofU servers to my own (future) server.
+
+
+<br><br>
+<a href="HRRR_Wake_Finder/info.html#TOP">Back to Top</a>
+</div>
+<br>
+
+
+<p style="color:red;">Note: Use of this webpage/app does not guarantee weather conditions forecasted 
+by the HRRR model.
+
+</div> 
+
+<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteclose.js"></script>
+
+</body>
+</html>

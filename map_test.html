@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title></title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+
+         var map = null;         
+
+         function GetMap()
+         {
+            // Initialize the map
+            map = new Microsoft.Maps.Map(document.getElementById("myMap"),
+                         {credentials:"Bing Maps Key"}); 
+
+            //Add handler for the map click event.
+            Microsoft.Maps.Events.addHandler(map, 'click', displayLatLong);
+
+
+         }
+
+          function displayLatLong(e) {
+              if (e.targetType == "map") {
+                  var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                  var loc = e.target.tryPixelToLocation(point);
+                  document.getElementById("textBox").value= loc.latitude + ", " + loc.longitude;
+
+              }
+          }
+
+      </script>
+   </head>
+   <body onload="GetMap();">
+      <div id='myMap' style="position:relative; width:400px; height:400px;"></div><br>
+      <b>Click the map to display the coordinate values at that point.</b><br>
+      Latitude, Longitude:       
+      <input id='textBox' type="text" style="width:250px;"/>
+   </body>
+</html>

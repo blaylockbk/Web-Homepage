@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<title>Brian Blaylock, UofU</title>
+<link rel="stylesheet" href="./css/brian_style.css" />
+<script src="./js/site/siteopen.js"></script>
+</head>
+
+
+<body>
+<a name="TOP"></a>
+<script src="./js/site/sitemenu.js"></script>	
+
+<br>
+<h1 align="center">Maps on the Hill</h1>
+<h2 align="center">March 01, 2016</h2>
+<div id="content">
+
+<br>
+<br>	
+
+<div class="section">
+	<a name="MAPS"></a>
+	<h3>Lake Breeze: Observations</h3>
+	<br>
+    <h4>TDWR and MesoWest Wind Observations of a lake breeze in the afternoon of 18 June 2015</h4>
+    <video style="float:right;padding-left:10px" width=50% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/TDWR/short/LB_short.mp4" type='video/mp4'>
+    </video>
+    <p>A strong lake breeze was observed on 18 June 2015 in the Salt Lake Valley. This map shows 
+    winds observations in the afternoon from two methods: a Terminal Doppler Weather Radar (TDWR)
+    and surface weather stations part of the MesoWest network.
+    <ul>
+    <li>Terrain is shaded in greyscale. 
+    <li>Blue outline is boundary of Great Salt Lake and Utah Lake. 
+    <li>Red dot indicates location of the TDWR. 
+    <li>Color shading is radial velocity with respect to the TDWR. 
+        <ul style="padding-left:30px">
+            <li>Green = winds blowing away from radar 
+            <li>Orange = winds blowing towards radar
+        </ul>
+    <li>Radar beam blockage prevents observations of the eastern Salt Lake Valley.
+    <li> MesoWest surface stations are marked with wind barbs 
+        <ul style="padding-left:30px">
+        <li>Full barb = 5 m/s 
+        <li>Half barb = 1 m/s
+        </ul>
+    </ul>
+    <br>
+    <p> This map was created using Python Basemap with TDWR data from the NOAA thredds server and surface station data available through the MesoWest API.
+    <a href="https://github.com/blaylockbk/Ute_other/blob/master/TDWR_MesoWest.py">Code</a>
+    <br>
+    
+    
+    <br><br>
+    
+    <a href="mapsonthehill.html#TOP">Back to Top</a>
+	</div>
+    <br>
+    <div class="section">
+
+    <h3>Lake Breeze: WRF Simulation</h3>
+    <img align=right height="150px" class="style1" src="./images/crosssection.png">
+    <br>
+    <h4>WRF Simulation of Lake Breeze on 18 June 2015</h4>
+    <p>
+    The Weather Research and Forecast (WRF) Model was used to simulate the lake breeze on 18 June 2015.
+    Passive tracers were inserted at various locations to visualize the transport and dispersion of pollutants 
+    from different regions. 
+    <p>Cross sections through the valley, shown on the right, are used to visualize the vertical extent of the tracers.
+    <p> WRF Tracers: North Salt Lake Valley Tracers
+    <p><video width=48% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/tracercomposite/justBlue/NorthTracer.mp4" type='video/mp4'>
+    </video>
+    <video width=48% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/hires/urban_trees/justRed/NorthCross.mp4" type='video/mp4'>
+    </video>
+     
+     <p> WRF Tracers: North and South Salt Lake Valley Tracers
+    <p><video width=48% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/tracercomposite/urban_trees/NorthSouthTracers.mp4" type='video/mp4'>
+    </video>
+    <video width=48% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/hires/urban_trees//NorthSouthCross.mp4" type='video/mp4'>
+    </video>
+    
+    
+    <br><br>
+    <p> WRF Tracers: Great Salt Lake and Buoy Tracers
+    <p><video width=75% id='videoclip' autoplay controls loop title="LakeBreeze">
+        <source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/tracercomposite/lake_buoy/lake_tracers.mp4" type='video/mp4'>
+    </video>
+    <br>
+    <br>
+    <p> These maps were created using Python Basemap. Data was creating using the WRF Version 3.7.
+    <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/plane_hifreq.py">Code</a>
+    <br><br>
+    
+    <a href="mapsonthehill.html#TOP">Back to Top</a>
+	</div>
+    
+    <br>
+    <div class="section">
+    <h3>High Ozone Observed in the Lake Breeze</h3>
+    <img src="./images/chopper_flight.PNG" align=right width="30%" style="padding-left:30px;padding-right:30px">
+    <p>Lake breezes often occur around the Great Salt Lake during sunny, summer afternoons. What makes this particular
+    case interesting, however, is the high levels of ozone measured within the lake breeze air during the Great Salt Lake Summer Ozone Study    
+    <p>The KSL helicopter,
+    equipped with an ozone monitor during the summer, observed high levels of ozone when as it flew from the
+    south end of the valley to the north and through the lake breeze front. Ozone concentrations were about 20 ppb 
+    higher in the lake influenced air than the ambient air.
+    <p>An interactive map of the ozone data measured by the helicopter and other platforms can be found <a href="http://meso2.chpc.utah.edu/gslso3s/cgi-bin/map.cgi?yr=2015&mo=06&dy=18&hr=19&mm=00&tz=local&min=180&var=OZNE&opacchange=Off&past=1&region=GSL">here</a>
+    <br><br><br><br>
+    <a href="mapsonthehill.html#TOP">Back to Top</a>
+	</div>
+    
+    
+    <br>
+    <div class="section">
+    <p>For more information about these maps and research contact Brian Blaylock <a href="mailto:brian.blaylock@utah.edu"> brian.blaylock@utah.edu</a>
+    or explore the rest of this website.
+    <br><br>
+    <a href="mapsonthehill.html#TOP">Back to Top</a>
+	</div>
+    
+
+<br>
+<br>
+    
+    
+
+<script src="./js/site/siteclose.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+/uufs/chpc.utah.edu/common/home/u0553130
+19
+18
+20
+20 15 10 29
+2015102918 F00
+1:0
+hrrr_netCDF_test.py 2015102918F00hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F01
+1:0
+hrrr_netCDF_test.py 2015102918F01hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F02
+1:0
+hrrr_netCDF_test.py 2015102918F02hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F03
+1:0
+hrrr_netCDF_test.py 2015102918F03hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F04
+1:0
+hrrr_netCDF_test.py 2015102918F04hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F05
+1:0
+hrrr_netCDF_test.py 2015102918F05hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F06
+1:0
+hrrr_netCDF_test.py 2015102918F06hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F07
+1:0
+hrrr_netCDF_test.py 2015102918F07hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F08
+1:0
+hrrr_netCDF_test.py 2015102918F08hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F09
+1:0
+hrrr_netCDF_test.py 2015102918F09hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F10
+1:0
+hrrr_netCDF_test.py 2015102918F10hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F11
+1:0
+hrrr_netCDF_test.py 2015102918F11hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F12
+1:0
+hrrr_netCDF_test.py 2015102918F12hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F13
+1:0
+hrrr_netCDF_test.py 2015102918F13hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F14
+1:0
+hrrr_netCDF_test.py 2015102918F14hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+2015102918 F15
+1:0
+hrrr_netCDF_test.py 2015102918F15hrrr.nc
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
+
+
+Begin Plotting
