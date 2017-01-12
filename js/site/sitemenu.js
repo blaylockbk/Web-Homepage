@@ -86,9 +86,6 @@ document.write('\
 			<a href="./HRRR_Wake_Finder/">Wake Finder</a>\
 		</li>\
 	</ul>\
-        <ul class="HeadMenu">\
-                <li><a href="http://kbkb-wx.blogspot.com/p/wx-links.html" target="_blank" class="dropdown">WX Links</a></li>\
-        </ul>\
 	<ul class="HeadMenu">\
 		<li><a href="./wrf.html" class="dropdown">WRF</a></li>\
 		<li class="sublinks">\

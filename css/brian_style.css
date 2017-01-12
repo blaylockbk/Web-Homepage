@@ -26,6 +26,15 @@ body {
 	border-right: 1px solid black;
 	font-size: 18px;
 }
+#contentNoBorder {
+	padding: 0 5px 1.3em;
+	background-color: white;
+	max-width: 1070px;
+	margin: 0 auto;
+	position: relative;
+	min-height: 100%;
+
+}
 #footer {
 	/*position: absolute;*/
 	bottom:0;
@@ -35,6 +44,7 @@ body {
 	padding-top: 15px;
 	font-size: 12px;
 	}
+
 
 
 p{
@@ -103,7 +113,7 @@ input.FormTouch {
 	font-size: 25px;
 	border: 5px solid lightgrey;
 	border-radius: 32px;
-	background-color:darkred;
+	background-color:#990000;
 	margin:0 auto;
 }
 
@@ -215,10 +225,52 @@ Classes
 }
 
 #home {
-    font-size:18px; 
-    font-family:Georgia;
+    font-size:24px; 
+    font-family:'Segoe UI';
     padding:5px;
 }
+
+#home a:link{
+	color:#990000;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+#home a:visited{
+	color:#990000;
+	font-weight:500;
+}
+
+/* Home Page Top Image*/
+.img-container {
+  position:relative;
+}
+.homeImageLink {
+   position: absolute; 
+   bottom: 20%; 
+   left: -2%;
+   text-align: center; 
+   width: 100%; 
+}
+
+.homeImageLink span { 
+	color: white;
+	font-weight: 100;
+	font-size:5vmin;
+	font-style: italic;
+	text-transform: uppercase;
+	letter-spacing: 8px;
+	font-family: "Segoe UI";
+    padding: 0 30px;
+    line-height: 150%;
+	float:right;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+/*(Home Page Top Image)*/
+
+
 
 .section > h3{
 	font-size:25px;
