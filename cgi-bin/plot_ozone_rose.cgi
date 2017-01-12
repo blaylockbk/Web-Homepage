@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
 # June 26, 2015
 # Brian Blaylock

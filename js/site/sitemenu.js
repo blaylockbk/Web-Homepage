@@ -79,9 +79,8 @@ document.write('\
 			<a href="./hrrr_sounding_viewer.php">HRRR Soundings</a>\
             <a href="./ksl_ozone_viewer.php">KSL Ozone Plots</a>\
 			<a href="../Camera_Display/">Camera Display</a>\
-			<a href="../WX_display_NAA/">NAA School</a>\
+			<a href="http://meso1.chpc.utah.edu/NAA/">NAA School</a>\
 			<a href="./cgi-bin/ozone_rose.cgi">Wind/Ozone Rose</a>\
-			<a href="./cgi-bin/station_graphs.cgi">Station Graphs</a>\
 			<a href="./map.html">Station Map</a>\
 			<a href="./HRRR_Winds/">HRRR Winds</a>\
 			<a href="./HRRR_Wake_Finder/">Wake Finder</a>\

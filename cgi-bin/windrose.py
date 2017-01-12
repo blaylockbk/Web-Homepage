@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 # -*- coding: utf-8 -*-
 
 __version__ = '1.4'

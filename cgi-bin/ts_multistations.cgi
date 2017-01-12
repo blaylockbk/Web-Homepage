@@ -210,6 +210,10 @@ src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
       </ul>
 </div>
 
+<br<br><p align=center>Powered By:<br>
+<a href="http://mesowest.utah.edu/"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+   <br>
+
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>
