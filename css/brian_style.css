@@ -233,12 +233,12 @@ Classes
 #home a:link{
 	color:#990000;
 	text-decoration: none;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 #home a:visited{
 	color:#990000;
-	font-weight:500;
+	font-weight:600;
 }
 
 /* Home Page Top Image*/

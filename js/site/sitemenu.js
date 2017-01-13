@@ -58,7 +58,6 @@ document.write('\
 	<ul class="HeadMenu">\
 		<li><a href="home.html" class="dropdown">Research</a></li>\
 		<li class="sublinks">\
-            <a href="https://1drv.ms/w/s!AtJL0JL_rT9jrKFFBIEWpkepgmG_Ag" target="_blank">CHPC Allocation Proposal</a>\
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_ver.html">HRRR Verification</a>\
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html">MS</a>\
 			<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html">PhD</a>\

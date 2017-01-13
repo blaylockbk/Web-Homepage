@@ -61,7 +61,7 @@ ul.HeadMenu li a {
 ul.HeadMenu li a:hover {
 	text-align:center;
 	border-bottom:none;
-	color:#FFFF00;
+	color:gold;
 	font-weight: bold;
 	background-color:#CC0000;
 	display:block;
