@@ -49,9 +49,9 @@ document.write('\
 	<img title="click me" id="title_pic" src="'+pics[idx]+'" onclick="change_title_pic();" width="100%">\
 </div>\
 <div id="page">\
-	<a href="http://kbkb-wx.blogspot.com/" target="_blank">\
-	<img style="width:50px;height:50px;vertical-align:middle" src="images/WeatherBalloon.gif" align="left">\
-	</a>\
+		<a href="http://kbkb-wx.blogspot.com/" target="_blank">\
+		<img style="width:50px;height:50px;vertical-align:middle" src="images/WeatherBalloon.gif" align="left">\
+		</a>\
 	<ul class="HeadMenu">\
 		<li><a href="home.html" class="dropdown">Home</a></li>\
 	</ul>\

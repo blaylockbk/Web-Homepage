@@ -37,7 +37,7 @@ ul.HeadMenu li.sublinks {
 	margin-right:auto;
 	height:auto;
 	overflow:hidden;
-	background-color:#660000;
+	background-color:#990000;
 }
 
 ul.HeadMenu li {
@@ -46,41 +46,47 @@ ul.HeadMenu li {
 	font-size:18px;
 	line-height:50px;
 	color:#FFFFFF;
-	background-color:#660000;
+	background-color:#990000;
 	width:150px;
 	display:block;
 	text-align:center;
+	font-family: 'Segoe UI';
 }
 
 ul.HeadMenu li a {
 	text-decoration:none;
 	color:#FFFFFF;
 	display:block;
+	font-family: 'Segoe UI';
 }
 
 ul.HeadMenu li a:hover {
 	text-align:center;
 	border-bottom:none;
-	color:gold;
+	color:antiquewhite;
 	font-weight: bold;
-	background-color:#CC0000;
+	background-color:#660000;
 	display:block;
+	font-family: 'Segoe UI';
 }
 
 ul.HeadMenu li.sublinks a {
 	color:#FFFFFF;
-	background:#660000;
+	background:#990000;
 	display:block;
 	text-align:center;
 	margin-top:2px;
+	font-family: 'Segoe UI';
 }
 
 ul.HeadMenu li.sublinks a:hover {
 	text-align:center;
 	border-bottom:none;
 	font-weight: bold;
-	color:#FFFF00;
+	color:antiquewhite;
+	background-color:#660000;
 	display:block;
+	font-family: 'Segoe UI';
 }
 
 #table1 {
