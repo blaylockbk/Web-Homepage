@@ -1,7 +1,7 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
 # Brian Blaylock
-# September 1, 2017                                 It's cold outside
+# January 1, 2017                                 It's cold outside
 
 
 """
@@ -197,9 +197,21 @@ else:
 plt.xlabel('Date/Time (UTC)')
 plt.xlim([DATE_START,DATE_END])
 
-#ax1.xaxis.set_major_locator(HourLocator(byhour=[0,12]))
-dateFmt = DateFormatter('%b %d\n%H:%M')
-ax1.xaxis.set_major_formatter(dateFmt)
+if (DATE_END-DATE_START).days == 0:
+    ax1.xaxis.set_major_locator(HourLocator(byhour=[0,3,6,9,12,15,18,21]))
+    dateFmt = DateFormatter('%b %d\n%H:%M')
+    ax1.xaxis.set_major_formatter(dateFmt)
+elif (DATE_END-DATE_START).days < 3:
+    ax1.xaxis.set_major_locator(HourLocator(byhour=[0,6,12,18]))
+    dateFmt = DateFormatter('%b %d\n%H:%M')
+    ax1.xaxis.set_major_formatter(dateFmt)
+elif (DATE_END-DATE_START).days < 6:
+    ax1.xaxis.set_major_locator(HourLocator(byhour=[0,12]))
+    dateFmt = DateFormatter('%b %d\n%H:%M')
+    ax1.xaxis.set_major_formatter(dateFmt)
+else:
+    dateFmt = DateFormatter('%b %d\n%Y')
+    ax1.xaxis.set_major_formatter(dateFmt)
 
 plt.savefig(sys.stdout)	# Plot standard output.
 

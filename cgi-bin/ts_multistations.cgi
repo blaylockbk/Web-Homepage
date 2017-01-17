@@ -2,6 +2,18 @@
 
 #if this doesn't work try /usr/local/bin/python
 
+"""
+Brian Blaylock
+January 17, 2017
+
+To Do List:
+[X] Add Bootstrap Modals for page instructions. (Jan 17, 2017)
+[ ] Add aditional API query that finds the shared variables between the
+    requested stations and creates a variable dropdown for the available data.
+[ ] Add advanced options to modify the plot size, label fonts, dpi, etc. to 
+    easily customize plots for publications.
+"""
+
 import sys
 import cgi, cgitb
 import time
@@ -63,36 +75,72 @@ print '''
 print''' 
 
 <br>
-<h1 align="center">Multi-station Time Series</h1>
+
+      <h1 align="center"><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series
+      <!-- Large modal (the intrusctions help button)-->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="padding:25px">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 style="font-size:22px;">MesoWest Multi-Station Time Series Plots</h4><hr>
+            <h5 align="left" style="font-size:18px;">
+            <ol style="padding-left:10px;">
+            <li>Input up to 4 <a href="http://mesowest.utah.edu/">MesoWest</a> station IDs to plot each time series on 
+            the same graph. 
+                  <ul style="padding-left:10px">
+                  <li>Requires at least 2 stations. (You can cheat the system
+                  for a single station time series by requesting the same ID twice).
+                  <li> Fill station input in order (i.e. Don't leave Station 2 blank if 1 and 3 are filled).
+                  </ul>
+            <li>Input the UTC dates in the format <font color="red">YYYY-MM-DD HH:MM</font>. 
+                  <ul style="padding-left:10px">
+                  <li>If you leave the end date blank, it will use the current time (hard coded to be +7 hours of local time).
+                  </ul>
+            <li>Choose the units (only for temperature).
+            <li>Select the variable.
+            </ol>
+            <hr>
+            Note: If the requested station was not plotted, there was an error getting
+            it's data from the MesoWest API. The station ID may be incorrect 
+            or not availalbe for the request variable or time.
+          
+          <hr>
+
+            <p>Example quick plots: Last 31 hours
+                  <ul style='padding-left:30px'>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
+                  Salt Lake County 1-15 UDOT</a>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi'>
+                  Peter Sinks, UT</a>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
+                  University of Utah to Airport</a>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
+                  Salt Lake to Spanish Fork</a>
+                  </ul>
+            </h5>
+
+      </div>
+      </div>
+      </div>
+      </h1>
+
 <br>
 
 <div style="background-color:#f5f5f5; width:85%; max-width:1000px; margin-left:auto; margin-right:auto;">	
-	<div style="background-color:#d40000;">
-		<br><p style="color:white;"> <font size="4"><b>Instructions:</b></font>
-		  Input up to 4 MesoWest station IDs to plot each time series on 
-              the same graph. You must have at least 2 station IDs 
-              (if you really only want to plot one station, you can cheet the 
-              system by inputing the same ID in two boxes).
-              Fill in the boxes in the order you want to plot them. If you have a 
-              station in box (1) and (3), don't leave (2) blank.
-              Input the UTC dates in the format YYYY-MM-DD HH:MM. If 
-              you leave the end date blank, it will use the current time
-              (hard coded to be +7 hours of local time).
-              If the requested station was not plotted, there was error getting
-              it's data from the MesoWest API. The station ID may be incorrect 
-              it that variable isn't availalbe at that station for that time.
-		<br><br>  
-	</div>			
+		
 	
        
 <div>
 <div>
    <br>
 
-<div class="contentText">
-<form method="GET" action="cgi-bin/ts_multistations.cgi">
+<div class="contentText form-group">
+
+<form class="form-inline" method="GET" action="cgi-bin/ts_multistations.cgi">
 	  
-<table class="center">
+<table class="center table table-responsive">
       
 <!---STATION ----------------------->	  
       <tr>
@@ -100,10 +148,10 @@ print'''
 		      Station ID:</a>
             </td>
             <td>
-                  1:<input style="width:75px" type="text" name="stn1" value="'''+stn1+'''">
-                  2:<input style="width:75px" type="text" name="stn2" value="'''+stn2+'''">
-                  3:<input style="width:75px" type="text" name="stn3" value="'''+stn3+'''">
-                  4:<input style="width:75px" type="text" name="stn4" value="'''+stn4+'''">
+                  <input class="form-control" placeholder="Station 1" type="text" name="stn1" value="'''+stn1+'''">
+                  <input class="form-control" placeholder="Station 2" type="text" name="stn2" value="'''+stn2+'''">
+                  <input class="form-control" placeholder="Station 3" type="text" name="stn3" value="'''+stn3+'''">
+                  <input class="form-control" placeholder="Station 4" type="text" name="stn4" value="'''+stn4+'''">
             </td>
       </tr>
 <!---(station) ----------------------->	  
@@ -115,8 +163,8 @@ print'''
                  Time Option (UTC):</a>
             </td>
             <td>
-                  Start:<input type="text" style="width:200px" name="start" value="'''+start+'''">
-                  End:<input type="text" style="width:200px" name="end" value="'''+end+'''">
+                  Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
+                  End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
             </td>
 	</tr>
 <!---(time option) ----------------------->
@@ -126,11 +174,16 @@ print'''
             <td>Units:</td>
             <td>'''
 if units=='C':
-      print '''<input type='radio' name='units' value='C' checked> C
-               <input type='radio' name='units' value='F'> F'''
+      print '''<div class='radio'>
+               <label><input type='radio' name='units' value='C' checked> C</label>
+               <label><input type='radio' name='units' value='F'> F</label>
+               </div>
+               '''
 else:
-      print '''<input type='radio' name='units' value='C'> C
-               <input type='radio' name='units' value='F' checked> F'''
+      print '''<div class='radio'>
+               <label><input type='radio' name='units' value='C'> C</label>
+               <label><input type='radio' name='units' value='F' checked> F</label>
+               </div>'''
 print '''
             </td>
 	</tr>
@@ -140,7 +193,7 @@ print '''
 	<tr>
       <td>Variables:</td>
       <td>
-         <select name="variable" style="width:200px">'''
+         <select class="form-control" name="variable">'''
 # display is the variable name as it will display on the webpage
 # value is the value used in the MesoWest API call
 display = ['Air Temperature', 'Relative Humidity', 'Wind Speed', 'Wind Direction', 'Wind Barbs']
@@ -158,8 +211,8 @@ print''' </select>
 
 <!---SUBMIT BUTTON ----------------------->
       <tr>
-            <td colspan=5 align="center">
-                  <input type="submit" value="Make Plot" class="myButton">
+            <td colspan=5 align="center" style="padding:10px">
+                  <input type="submit" value="Make Plot" class="btn btn-primary">
             </td>
       </tr>
 <!---(submit button) ----------------------->   
@@ -196,32 +249,23 @@ src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
 +'''" width=95%>
 
 </a>
-<div style='padding:50px'>
-      <h3>Quick Plots: Last 31 hours</h3>
-      <ul style='padding-left:30px'>
-      <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
-      Salt Lake County 1-15 UDOT</a>
-      <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi'>
-      Peter Sinks, UT</a>
-      <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
-      University of Utah to Airport</a>
-      <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
-      Salt Lake to Spanish Fork</a>
-      </ul>
+
+<div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
+<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/ts_multistations.cgi" target="_blank">
+      <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page
+</a>
+<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_ts_multistations.cgi" target="_blank">
+      <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot
+</a>
 </div>
 
-<br<br><p align=center>Powered By:<br>
-<a href="http://mesowest.utah.edu/"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-   <br>
+
+
+<p align=center>Powered By:<br>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+
 
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>
 '''
-
-"""
-Someday, add in options to modify the plot size, label fonts, dpi, etc. to 
-easily customize plots for publications.
-
-"""
-
