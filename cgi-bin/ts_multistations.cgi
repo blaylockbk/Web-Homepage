@@ -189,25 +189,6 @@ print '''
 	</tr>
 <!---(units) ---------------------------->
 
-<!---Variables ----------------------->  
-	<tr>
-      <td>Variables:</td>
-      <td>
-         <select class="form-control" name="variable">'''
-# display is the variable name as it will display on the webpage
-# value is the value used in the MesoWest API call
-display = ['Air Temperature', 'Relative Humidity', 'Wind Speed', 'Wind Direction', 'Wind Barbs']
-value = ['air_temp','relative_humidity', 'wind_speed', 'wind_direction', 'wind_direction,wind_speed']
-
-for i in range(0,len(value)):
-   if variable == value[i]:
-      print'''<option selected="selected" value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-   else:
-      print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-print''' </select>
-      </td>
-      </tr>
-<!---(variables) ----------------------->
 
 <!---SUBMIT BUTTON ----------------------->
       <tr>
@@ -224,31 +205,135 @@ print''' </select>
 </div>
 
 
-<!--Multistation Graph-->
+<!--Multistation Graph, one for each variable-->
+'''
+# I tried printing this html in a loop, but it rendered all the images stacked
+# in the first tab, until another tab was selected. This method is repetative, 
+# but it works.
+print '''
+<!-- Individual Plot Tabs-->
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1">Air Temperature</a></li>
+    <li><a data-toggle="tab" href="#tab2">Relative Humidity</a></li>
+    <li><a data-toggle="tab" href="#tab3">Wind Speed</a></li>
+    <li><a data-toggle="tab" href="#tab4">Wind Direction</a></li>
+    <li><a data-toggle="tab" href="#tab5">Wind Barb</a></li>
+  </ul>
 
-<a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
-+'''&stn2='''+stn2 \
-+'''&stn3='''+stn3 \
-+'''&stn4='''+stn4 \
-+'''&start='''+start \
-+'''&end='''+end \
-+'''&units='''+units \
-+'''&variable='''+variable \
-+'''">
+  <div class="tab-content">
+    <div id="tab1" class="tab-pane fade in active">
+      <a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=air_temp">
 
-<img alt="Error: Temp/RH graph not available for some reason"
-class="style1"
-src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
-+'''&stn2='''+stn2 \
-+'''&stn3='''+stn3 \
-+'''&stn4='''+stn4 \
-+'''&start='''+start \
-+'''&end='''+end \
-+'''&units='''+units \
-+'''&variable='''+variable \
-+'''" width=95%>
+                              <img alt="Error: Temp/RH graph not available for some reason"
+                              class="style1"
+                              src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=air_temp" width=95%>
+                              </a>
+    </div>
+    <div id="tab2" class="tab-pane fade">
+      <a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=relative_humidity">
 
-</a>
+                              <img alt="Error: Temp/RH graph not available for some reason"
+                              class="style1"
+                              src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=relative_humidity" width=95%>
+                              </a>
+    </div>
+    <div id="tab3" class="tab-pane fade">
+      <a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_speed">
+
+                              <img alt="Error: Temp/RH graph not available for some reason"
+                              class="style1"
+                              src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_speed" width=95%>
+                              </a>
+    </div>
+    <div id="tab4" class="tab-pane fade">
+      <a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_direction">
+
+                              <img alt="Error: Temp/RH graph not available for some reason"
+                              class="style1"
+                              src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_direction" width=95%>
+                              </a>
+    </div>
+    <div id="tab5" class="tab-pane fade">
+      <a target="_blank" href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_direction,wind_speed">
+
+                              <img alt="Error: Temp/RH graph not available for some reason"
+                              class="style1"
+                              src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=wind_direction,wind_speed" width=95%>
+                              </a>
+    </div>
+  </div>
+
+
 
 <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
 <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/ts_multistations.cgi" target="_blank">
@@ -259,11 +344,10 @@ src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
 </a>
 </div>
 
-
-
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-
+<br>
+</div>
 
 <script src="js/site/siteclose.js"></script>
 </body>

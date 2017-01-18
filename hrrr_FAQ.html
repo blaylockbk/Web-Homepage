@@ -1,315 +1,268 @@
 <html>
 
-    <head>
-        <title>Brian Blaylock, UofU</title>
-        <link rel="stylesheet" href="./css/brian_style.css" />
-        <script src="./js/site/siteopen.js"></script>
-    </head>
+<head>
+    <title>HRRR Archive FAQ</title>
+    <link rel="stylesheet" href="./css/brian_style.css" />
+    <script src="./js/site/siteopen.js"></script>
+</head>
 
 
-    <body>
-        <a name="TOP"></a>
-        <script src="./js/site/sitemenu.js"></script>
+<body>
+    <a name="TOP"></a>
+    <script src="./js/site/sitemenu.js"></script>
 
-        <br>
+    <br>
 
-        <div id="content">
-            
+    <div id="content">
+        
+        
+        
+
+        <h1 align="center">HRRR Archive at the University of Utah</h1>
+        <h2 align="center"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Frequently Asked Questions</h2>
+        
+        
+        <p>
+        <div class="jumbotron" style='padding:5px 5px 5px 5px'>
             <img align=right \
-                 width='200px' \
-                 src='./images/mouse.jpg' \
-                 title="We give people a little, and they start asking for a lot."\
-                 style="padding-top:10px;padding-right:10px">
-            
-
-            <h1 align="center">University of Utah HRRR Archive:</h1>
-            <h1 align="center">Frequently Asked Questions</h1>
-            
-            
-            <p>
-            <b>Disclaimer: This is an unoffical HRRR archive. Becuase HRRR 
-                data files are large and produced hourly, it takes up a lot of
-                space, and we don't have the space or funds to keep those files 
-                easily available for very long. The archived files you see online is all
-                we have available. If you are looking for historical HRRR data
-                more than a few months back, we probably don't have it. If you
-                feel an official HRRR archive is important to science, please
+             width='200px' \
+             src='./images/mouse.jpg' \
+             title="We give people a little, and they start asking for a lot."\
+             style="padding-right:10px">
+            <p><b>Disclaimer:</b> This is an unoffical HRRR archive. Becuase HRRR 
+                data files are large and are produced hourly, it takes up a lot of
+                space. We don't have the space or funds to keep those files 
+                easily available for very long. Thus, the archived files you see online is all
+                we have available. 
+                <p>If you feel an official HRRR archive is important to science, please
                 send NCEI an email requesting an official HRRR archive at
-                ncei.nomads.info@noaa.gov.</b>
-            <br><br>
-            <hr><br>
-            <img align=right width="450px" style="padding-left:10px" src="http://ruc.noaa.gov/hrrr/hrrrcrefimage">
-            <ul style="padding: 10px; margin-left:30px;">
-                <li><a href="hrrr_FAQ.html#WHO">Who is archiving the HRRR?</a>
-                <li><a href="hrrr_FAQ.html#WHAT">What is the HRRR archive?</a>
-                <li><b><a href="hrrr_FAQ.html#WHERE">Where is the archive?</a></b>
-                <li><a href="hrrr_FAQ.html#HOW2">How do I download multiple days at once?</a>
-                <li><a href="hrrr_FAQ.html#HOW">How do I get the data if it's compressed?</a>
-                <li><a href="hrrr_FAQ.html#WHERE2">Where does the HRRR output come from?</a>
-                <li><a href="hrrr_FAQ.html#WHAT2">What version of HRRR is in this archive?</a>
-                <li><a href="hrrr_FAQ.html#WHAT3">What days is the HRRR data available?</a>
-                <li><a href="hrrr_FAQ.html#WHEN">When is your archive updated? When you do download the HRRR data?</a>
-                <li><a href="hrrr_FAQ.html#WHY">Why do you archive the HRRR?</a>
-                <li><a href="hrrr_FAQ.html#WHO2">Who uses this archive?</a>
-            </ul>
-            <p>If you are looking for most current HRRR output (last two days) you should download this directly from the
+                ncei.nomads.info@noaa.gov.
+            <div class="alert alert-warning">If you are looking for most 
+                current HRRR output (last two days) you should download directly from the
                 <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a> server.
-                <br><br>
-                <p>Not seeing what your looking for? Other questions should be directed to Brian Blaylock: <a href="MAILTO:brian.blaylock@utah.edu">brian.blaylock@utah.edu</a>
-                    <br><br>
-                    <p>If you find this archive useful, please share with me what scripts you write :) I'm always interested
-                        in how other people use this data and how they write code. It's a great way to learn.
-                        <hr>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHO"></a>
-                            <h3>Who is archiving the HRRR data?</h3>
-                            <p>The HRRR archive at the University of Utah is managed by the <a href="http://meso1.chpc.utah.edu/mesowest_overview/"
-                                    target="_blank">MesoWest group</a>. As a courtesy, please contact <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html">Brian Blaylock</a>                                
-                                    when you download data (we would like to know how often and how many people are grabbing data).
-                                <p>While you can find current HRRR output on the <a href="http://www.nomads.ncep.noaa.gov/">NOMADS server</a>,
-                                    there is no official HRRR output archive. To our knowledge, this is the only
-                                    HRRR archive.
-                                    <br><br>
-                                    <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHAT"></a>
-                            <h3>What is the HRRR archive?</h3>
-                            <p>The HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
-                                is a model developed by NOAA ESRL and is run operationally every hour at NCEP.
-                                <p>The HRRR creates a forecast with 3-km grid spacing for 18 hours over the continental United
-                                    States.
-                                    <p>Output files contained in the archive include:
-                                        <ul>
-                                            <li>Surface Fields in grib2 format ~75 MB (e.g. hrrr.t00z.wrfsfcf00.grib2). Forecast
-                                                hours are available after August 1, 2016
-                                                <li>Pressure Fields in grib2 format ~315 MB (e.g. hrrr.t00z.wrfprcf00.grib2).
-                                                    Forecast are not included in this archive.
-                                                    <li>Bufr Soundings for Salt Lake City, Provo, and Ogden Utah. (I believe
-                                                        Penn State archives HRRR bufr soundings. Check with them if you need
-                                                        other sites.)
-                                                        <li>Processed HRRR files (e.g.2016080300F01hrrr.grib2) used my Jim Steenburgh
-                                                            to display wind and precipitation variables on
-                                                            <a href="http://weather.utah.edu/index.php?t=hrrr&r=IM&d=RA">weather.utah.edu</a>
-                                                        <li>Experimental HRRR-Alaska : Begining Summer 2016??
-                                                        <li>Experimental HRRR (HRRRv3) surface analysis: After December 1, 2016    
-                                        </ul>
-                                        <p>Unfortunately we don't download the .idx files. I think you can create your own with
-                                            wgrib2.
-                                            <br><br>
-                                            <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHERE"></a>
-                            <h3>Where is the University of Utah HRRR archive?</h3>
-                            <p><mark><b>Our archive of HRRR data older than August 2016 is compressed and unavailable at the moment.
-                                We are in the process of exploring other archiving methods that would make it easier to access
-                                and keep things organized. Please understand, this is an expensive project and providing a 
-                                public archive of HRRR data isn't exactly our top priority. We sure wish NOAA would provide
-                                an archive through <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/rapid-refresh-rap">
-                                NOMADS</a> like they do for the RAP and other models.
-                            </mark></b>
-                            <p>The archive is located on the MesoWest servers in two places. The URL you're looking for depends
-                                on your period of interest.
-                                <ul>
-                                    <s><li>April 18, 2015 -- December 31, 2015 go here: <a href="https://api.mesowest.utah.edu/archive/__archive5__/">https://api.mesowest.utah.edu/archive/__archive5__/</a>.</s>
-                                        <li>January 1, 2016 -- present go here: <a href="https://api.mesowest.utah.edu/archive/">https://api.mesowest.utah.edu/archive/</a>.
-                                            <b>HRRR only available AFTER September 01, 2016</b>
-                                </ul>
-                                <br>
-                                <p>Navigate to the directory named by the date you are interested in (i.e. 20160923), then models,
-                                    then hrrr.
-                                    <p>For example: <a href="https://api.mesowest.utah.edu/archive/20160901/models/hrrr/">https://api.mesowest.utah.edu/archive/20160901/models/hrrr/</a>
-                                        <p>(Obviously there is a lot more stuff in our archive space than just HRRR output.)
-                                            <br><br>
-                                            <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="HOW2"></a>
-                            <h3>How can I download multiple days at once?</h3>
-                            <p>I have a python script that will help you download many days at once.
-                                <p>Get from GitHub:
-                                    <a href="https://github.com/blaylockbk/Ute_other/blob/master/download_HRRR_MesoWest.py" target="_blank"><img align=center src="./images/githubcode.png"></a>
-                                    <p>Again, if you write any useful scripts please share and I'll add them here for others
-                                        to use.
-                                        <br><br>
-                                        <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="HOW"></a>
-                            <s><h3>How do I get the HRRR data if what I'm looking for is compressed?</h3>
-                            <p>When we first started downloading the HRRR, we didn't realize it would be so popular. The archive
-                                wasn't built in a way to effectively distribute the data to you. Because we have so much
-                                stuff in our archive, we have to compressed most of the days. The most recent month or two
-                                should be uncompressed, but if you find what you're looking for is compressed, follow the
-                                following instructions to get what you need:
-
-                                <ol>
-                                    <li>
-                                        <p>Go to the archive and navigate to the YYYYMMDD you are interested in. For example,
-                                            <a href="https://api.mesowest.utah.edu/archive/20160101/">https://api.mesowest.utah.edu/archive/20160101/</a>.
-                                            <li>
-                                                <p>Download the <b>models.tar.gz</b> file. Yes, this is large (~20 GB). It contains
-                                                    all the model data we archive (I warned you that this was inefficient).
-
-                                                    <li>
-                                                        <p>Before untarring the file, make sure it contains the files you need.
-                                                            <textarea class="linux">
-less -p /hrrr/hrrr.t models.tar.gz
-	</textarea> will highlight the file names with the hrrr files
-                                                            in this large compressed file.
-                                                            <li>
-
-                                                                <p>You could untar the entire file, but that would take a looonng
-                                                                    time, and you don't need everything in that file anyways.
-                                                                    <p>You can extract just the HRRR data with this one-liner...(still
-                                                                        may take a bit of time)
-                                                                        <textarea class="linux">
-tar -xzvf models.tar.gz 20160101/models/hrrr/
-	</textarea>
-
-                                                                        <p> Or you can get more creative and use the following
-                                                                            to get just the pressure fields. (In this case
-                                                                            it helps to know the contents of the tarred file)
-                                                                            Starting in the directory you wish to copy the
-                                                                            files into, type...
-
-                                                                            <textarea class="linux" style='height:50px'>
-tar -zxvf models.tar.gz --wildcards --no-anchored 'hrrr.t*z.wrfprsf00.grib2'
-	</textarea>
-                                                                            <p>Which will only extract the pressure fields for
-                                                                                the HRRR analyses (Forecast hour 00).
-
-                                </ol>
-
-                                <p>If you are a savvy Linux user and have other tips please send them along to me! :)
-                                    <br><br></s>
-                                    <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHERE2"></a>
-                            <h3>Where does the HRRR output come from?</h3>
-                            <p>HRRR output is downloaded from the <a href="http://nomads.ncep.noaa.gov/">NOMADS server</a>.
-                            <p>Experimental HRRR and HRRR Alaska is downloaded from NOAA ESRL (requires credientials)
-                                <br><br>
-                                <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHAT2"></a>
-                            <h3>What version of HRRR is in this archive?</h3>
-                            <p>Prior to August 23, 2016 we downloaded the operational HRRR from this URL: http://nomads.ncep.noaa.gov/pub/data/nccf/nonoperational/com/hrrr/prod/.
-                                This was HRRRv1. Although the URL says "nonoperational", it was the operational HRRR. The
-                                files just hadn't been moved to the operational space. (In order to get the nonoperational
-                                versions we would have had to downloaded from a password protected URL in the ESRL web space.)
-                                <p>Some days and hours in our achive may not be available. Either because the forecast wasn't
-                                    run, or our servers were not able to download the file quick enough (sometimes the download
-                                    page is very slow).
-
-                                    <p><b>HRRRv2</b> was implemented at NCEP on August 23, 2016 for the 12z run. That day I
-                                        began downloading from the new URL <a href="http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/</a>.
-                                        <p>For more details check out the following announcement: <a href="http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm">http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm</a>
-                                            <br><br>
-                                            <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHAT3"></a>
-                            <h3>What days have HRRR data available?</h3>
-                            <p>We began downloading HRRR anaylsis for each hours on April 18, 2015 and have continued to download
-                                since then.
-                                <p>Data for 2015 are stored <a href="https://api.mesowest.utah.edu/archive/__archive5__/">here</a>,
-                                    and data for 2016 are stored <a href="https://api.mesowest.utah.edu/archive/">here</a>.
-                                    <p>Prior to July 27, 2016 only the analysis hours for the pressure and surface fields were
-                                        downloaded from the NOMADS server.
-                                        <p>On July 27, 2016 I began to download the surface fields for each forecast hour. Unfortunately,
-                                            the pressure fields are large files (~315 MB per hour) and we have decided not
-                                            to archive the forecasted pressure fields.
-
-                                            <p>Tables describing the HRRR data availability for each month can be found here:
-                                                <a href="http://home.chpc.utah.edu/~u0553130/available_HRRR_archive/">http://home.chpc.utah.edu/~u0553130/available_HRRR_archive/</a>
-                                                <p> (I haven't created these tables for compressed months yet)
-
-                                                    <p> In summary:
-                                                        <ul>
-                                                            <li>2016-07-27: started grabbing 15 hour sfc forecasts
-                                                                <li>2016-08-24: started grabbing 18 hour sfc forecasts
-                                                                    <li>Missing data on 2016-09-09 (lots)
-                                                                        <li>Missing data on 2016-09-25 (hour 06, f15)
-                                                                            <li>2016-12-01: started grabbing experimental HRRR surface analysis
-                                                                                <li>2016-Summer??: started grabbing HRRR Alaska
-                                                                            <ul>
-                                                                                <br><br>
-                                                                                <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHEN"></a>
-                            <h3>When is your archive updated? When you do download the HRRR data?</h3>
-                            <p>HRRR output is downloaded from the NOMADS server each morning for the previous day.
-                                <br><br>
-                                <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHY"></a>
-                            <h3>Why do you archive the HRRR?</h3>
-                            <p>The HRRR archive is used for various research purposes.
-                                <ol>
-                                    <li>
-                                        <p>Initialize Weather Research and Forecast (WRF) model with HRRR analyses as initial
-                                            and boundary conditions. (Requires HRRR pressure fields).
-                                            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html">More info here</a>.
-                                            <li>
-                                                <p>Compare HRRR analyses and forecasts to observed conditions. Specifically
-                                                    for areas near large wild fires.
-                                                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_ver.html">More info here.</a>
-                                </ol>
-                                <br><br>
-                                <p><a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-                        <div class="section">
-                            <a name="WHO2"></a>
-                            <h3>Who uses this archive?</h3>
-                            <p>The initial purpose of this HRRR archive was to serve atmospheric science research at the University
-                                of Utah, mostly used by graduate students. For example, I used it to 
-                                <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">initialize WRF simulations</a>.
-                                <p>Since the archive has been published on-line I have received inquiries and download requests
-                                    from National Weather Service employees, a researcher at the National Institute of Standards
-                                    and Technology, a United State Air Force Captain, a commercial wind power company, university
-                                    professors, graduate students, and post docs.
-                                    <p>If this archive is useful to you, contact the most important person you know at NCEP
-                                        and request they develop an official HRRR archive. Thank you.
-                                        <br><br>
-                                        <a href="hrrr_FAQ.html#TOP">Back to Top</a>
-                        </div>
-                        <br>
-
-
-
-
-
-
-                        <script src="./js/site/siteclose.js"></script>
+            </div>        
         </div>
-    </body>
+        
 
-</html>>
+  <!-- Tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1"><i class="fa fa-globe" aria-hidden="true"></i> About this HRRR archive</a></li>
+    <li><a data-toggle="tab" href="#tab2"><i class="fa fa-user" aria-hidden="true"></i> Who archives HRRR?</a></li>
+    <li><a data-toggle="tab" href="#tab3"><i class="fa fa-database" aria-hidden="true"></i> Where is the archive?</a></li>
+    <li><a data-toggle="tab" href="#tab4"><i class="fa fa-calendar" aria-hidden="true"></i> What days are available?</a></li>
+    <li><a data-toggle="tab" href="#tab5"><i class="fa fa-users" aria-hidden="true"></i> Who uses the HRRR archive?</a></li>
+    <li><a data-toggle="tab" href="#tab6"><i class="fa fa-desktop" aria-hidden="true"></i> Tips for CHPC users</a></li>
+  </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+            <img align=right width="450px" style="padding:5px 15px 5px 5px" src="http://ruc.noaa.gov/hrrr/hrrrcrefimage">
+            <h3><i class="fa fa-globe" aria-hidden="true"></i> About this HRRR archive</h3>
+            <h3>What is the HRRR archive?</h3>
+            <p>The HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
+            is a model developed by NOAA ESRL and is run operationally every hour at NCEP. It continues to be developed by ESRL.
+            <p>The HRRR creates hourly forecasts gridded at 3 km for 18 hours over the continental United
+            States making it the highest spatial and temporal resolution forecast system run by NCEP.
+            <p>Output files contained in the archive include:
+            <ul style="padding-left:60px;">
+                <li>Surface Fields in grib2 format ~75 MB (e.g. hrrr.t00z.wrfsfcf00.grib2). Forecast
+                hours are available after August 1, 2016
+                <li>Pressure Fields in grib2 format ~315 MB (e.g. hrrr.t00z.wrfprcf00.grib2).
+                Forecast are not included in this archive.
+                <li>Bufr Soundings for Salt Lake City, Provo, and Ogden Utah. (I believe
+                Penn State archives HRRR bufr soundings. Check with them if you need
+                other sites.)
+                <li>Processed HRRR files (e.g.2016080300F01hrrr.grib2) used my Jim Steenburgh
+                    to display wind and precipitation variables on
+                    <a href="http://weather.utah.edu/index.php?t=hrrr&r=IM&d=RA">weather.utah.edu</a>
+                <li>Experimental HRRR-Alaska : Begining Summer 2016??
+                <li>Experimental HRRR (HRRRv3) surface analysis: After December 1, 2016    
+            </ul>
+            <p>Unfortunately we don't download the .idx files. I think you can create your own with
+            wgrib2.
+            
+            <hr>
+            <h3>Where does the HRRR output come from?</h3>
+            <p>HRRR output is downloaded from the <a href="http://nomads.ncep.noaa.gov/">NOMADS server</a>.
+            <p>Experimental HRRR (HRRRx) and HRRR Alaska is downloaded from NOAA ESRL (requires credientials).
+            <hr>
+            <h3>What version of HRRR is in this archive?</h3>
+            <p>Prior to August 23, 2016 we downloaded the operational HRRR from this URL: http://nomads.ncep.noaa.gov/pub/data/nccf/nonoperational/com/hrrr/prod/.
+            This was HRRRv1. Although the URL says "nonoperational", it was the operational HRRR. The
+            files just hadn't been moved to the operational space.
+            <p>Some days and hours in our achive may not be available. Either because the forecast wasn't
+            run, or our servers were not able to download the file quick enough (sometimes the download
+            page is very slow).
+            <p><b>HRRRv2</b> was implemented at NCEP on August 23, 2016 for the 12z run. That day I
+            began downloading from the new URL <a href="http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/</a>.
+            <p>For more details check out the following announcement: <a href="http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm">http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm</a>
+            
+            <hr>
+            <h3>Why do you archive the HRRR?</h3>
+            <p>The HRRR archive is used for various research purposes.
+            <ol style="padding-left: 60;">
+            <li>
+            <p>Initialize Weather Research and Forecast (WRF) model with HRRR analyses as initial
+            and boundary conditions. (Requires HRRR pressure fields).
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html">More info here</a>.
+            <li>
+            <p>Model verification: compare HRRR analyses and forecasts to observed conditions.
+            </ol>
+
+            <hr>
+            <h3>When you do download the HRRR data?</h3>
+            <p>Operational HRRR output is downloaded from the NOMADS server each morning for the previous day.
+
+        </div>
+
+        <div id="tab2" class="tab-pane fade">
+			<h3><i class="fa fa-user" aria-hidden="true"></i> Who is archiving the HRRR data?</h3>
+            <p>The HRRR archive at the University of Utah is managed by the 
+                <a href="http://meso1.chpc.utah.edu/mesowest_overview/" target="_blank">MesoWest group</a>.
+                As a courtesy, please contact <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html">Brian Blaylock</a>                                
+                when you download data (we like to know how often and how many people are grabbing data).
+            <p>While you can find current HRRR output on the <a href="http://www.nomads.ncep.noaa.gov/">NOMADS server</a>,
+               there is no official archive. To our knowledge, this is the only HRRR archive.
+        </div>
+
+        <div id="tab3" class="tab-pane fade">
+            <h3><i class="fa fa-database" aria-hidden="true"></i> Where is the University of Utah HRRR archive?</h3>
+            <div class="alert alert-warning">Archived files older than a few months are compressed and currently unavailable.
+            We are in the process of exploring other archiving methods that would make it easier to access
+            and keep things organized. Please understand, this is an expensive project and providing a 
+            public archive of HRRR data isn't exactly our top priority. We sure wish NOAA would provide
+            an archive through <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/rapid-refresh-rap">
+            NOMADS</a> like they do for the RAP and other models.
+            </div>
+            <p>The archive is located on the MesoWest servers.
+            To explore the available HRRR files look here:
+            <a href="https://api.mesowest.utah.edu/archive/" target="_blank">https://api.mesowest.utah.edu/archive/</a>.
+            <p>Navigate to the directory named by the date you are interested in (e.g. 20170101):
+                <div class='well well-sm'>.../archive <i class="fa fa-caret-right" aria-hidden="true"></i>
+                 20170101 <i class="fa fa-caret-right" aria-hidden="true"></i>
+                  models <i class="fa fa-caret-right" aria-hidden="true"></i> hrrr or hrrrX or hrrr_alaska</div>
+            <p>For example: <a href="https://api.mesowest.utah.edu/archive/20170101/models/hrrr/">https://api.mesowest.utah.edu/archive/20170101/models/hrrr/</a>
+            <p>(Obviously there is a lot more stuff in our archive space than just HRRR output.)
+        </div>
+
+        <div id="tab4" class="tab-pane fade">
+            <h3><i class="fa fa-calendar" aria-hidden="true"></i> What days have HRRR data available?</h3>
+            <p>We began downloading HRRR anaylses for each hours on April 18, 2015 and have continued to download
+            since then.
+            <p>Prior to July 27, 2016 only the analysis hours for the pressure and surface fields were
+            downloaded from the NOMADS server.
+            <p>On July 27, 2016 I began downloading the surface fields for each forecast hour. (Unfortunately,
+            the pressure fields are large files, ~315 MB/hr, and we have decided not
+            to archive the forecasted pressure fields.)
+
+            <p>Tables describing the HRRR data availability for each month can be found here (I haven't created these tables for compressed months yet):
+            <a href="http://home.chpc.utah.edu/~u0553130/available_HRRR_archive/">http://home.chpc.utah.edu/~u0553130/available_HRRR_archive/</a>
+
+            <p> In summary:
+            <ul style="padding-left: 60px;">
+            <li>2015-04-18: Archive begins with analyses hours only
+            <li>2016-07-27: started grabbing 15 hour sfc forecasts
+            <li>2016-08-24: started grabbing 18 hour sfc forecasts
+            <li>2016-12-01: started grabbing experimental HRRR surface analysis
+            <li>2016-Summer??: started grabbing HRRR Alaska
+            </ul>
+        </div>
+
+        <div id="tab5" class="tab-pane fade">
+            <h3><i class="fa fa-users" aria-hidden="true"></i> Who uses the HRRR archive?</h3>
+            <p>Many people are interested in a HRRR archive, including yourself (obviously, or else
+            you wouldn't have Googled <i>'HRRR archive'</i>).
+            <p>The initial purpose of this HRRR archive was to serve atmospheric science research at the University
+            of Utah, particularly myself. For example, I used HRRR to 
+            <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">initialize WRF simulations</a>.
+            <p>The archive is search quite often on Google by people like you (I prefer Bing, but that's just me). Since this archive has been published online I have received inquiries and download requests
+            from National Weather Service employees, a researcher at the National Institute of Standards
+            and Technology, a United State Air Force Captain, commercial wind power companies, university
+            professors, graduate students, post docs, and many others.
+            <div class="alert alert-success">
+                If this archive is useful to you, please contact the most 
+                important person you know at NCEP and request they develop an
+                official HRRR archive. Thank you <i class="fa fa-smile-o" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div id="tab6" class="tab-pane fade">
+            <h3><i class="fa fa-desktop" aria-hidden="true"></i> Tips for CHPC Users</h3>
+            <p>So you work/study at the University of Utah, too? Cool! Go Utes!!
+            Here are a few helpful tips that will make your life easier. That is, 
+            if your life involved using HRRR data from our handy archive.
+            Please share with me cool stuff you learn! 
+            
+            <hr>
+            <h3>Where is the archive?</h3>
+            <p>The HRRR archive is located on horel-group. Modifiy the date directory for your needs.
+            <div class="well well-sm">/uufs/chpc.utah.edu/common/home/horel-group/archive/<b>YYYYMMDD</b>/models/</div>
+            <p>Really old data (older than six months) is located on horel-group5. 
+            <div class="well well-sm">/uufs/chpc.utah.edu/common/home/horel-group5/archive/<b>YYYYMMDD</b>/models/</div>
+            <p>Then navigate to the HRRR directory you are interested:
+                <ul style="padding-left: 60;">
+                <li>hrrr
+                <li>hrrrX
+                <li>hrrr_alaska
+                </ul>
+
+            <hr>
+            <h3>How can I download multiple days at once?</h3>
+            <p>I have a python script that will help you download many days at once.
+               It downloads via the web URL, so best for you to change it to 
+               copy the files from the file path.
+            <a href="https://github.com/blaylockbk/Ute_other/blob/master/download_HRRR_MesoWest.py" target="_blank">
+            <i class="fa fa-github fa-fw" aria-hidden="true"></i>Get from GitHub</a>
+            <p>Again, if you write any useful scripts please share and I'll add them here for others to use.
+
+            <hr>
+            <h3>How do I get the HRRR data if what I'm looking for is compressed?</h3>
+            <div class="alert alert-danger"> 
+                <p><b>Compressed files are only 
+                available for users on a CHPC computer.</b>
+                <p>We hope to make these available for everyone someday (but realistically, that is months down the road).
+            </div>
+            <p>When we first started downloading the HRRR, we didn't realize it would be so popular. The archive
+            wasn't built in a way to effectively distribute the data to you. Because we have so much
+            <i>stuff</i> in our archive we have to compressed directories older than a few months.
+
+            <p>If you find that what you're looking for is compressed, follow the
+            following instructions to get what you need:
+            <ol style="padding-left:60px">
+                
+                <li>
+                    <p>Copy the <b>models.tar.gz</b> file to your own space. 
+                    Yes, this is large (~20 GB). It contains
+                    all the model data we archive (I warned you that this was inefficient).
+
+                <li>
+                    <p>Before untarring the entire directoyr, you can make 
+                       sure it contains the files you need with something like this:
+                    <div class="well well-sm" style="font-family:'Courier';">less -p /hrrr/hrrr.t models.tar.gz</div>
+
+                <li>
+                    <p>You can untar the entire file, but that would take a looooonng
+                    time, and you don't need everything in that file anyways.
+                    <p>You can extract just the HRRR data with this one-liner...(still
+                    may take a bit of time)
+                    <div class="well well-sm" style="font-family:'Courier';">tar -xzvf models.tar.gz 20160101/models/hrrr/</div>
+
+                    <p> Or you can get more creative and use the following
+                    to get just the pressure fields. (In this case
+                    it helps to know the contents of the tarred file).
+                    Starting in the directory you wish to copy the
+                    files into, type...
+
+                    <div class="well well-sm" style="font-family:'Courier';">
+                    tar -zxvf models.tar.gz --wildcards --no-anchored 'hrrr.t*z.wrfprsf00.grib2'
+                    </div>
+            </ol>
+
+        </div>
+    </div> <!--tab-conent--> 
+</div><!--content-->  
+ <script src="./js/site/siteclose.js"></script>
+</div><!---->
+</body>
+
+</html>

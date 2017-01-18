@@ -51,35 +51,48 @@ function empty_picture(img_name){
 	<script src="./js/site/sitemenu.js"></script>
 	<br>
 
-	<h1 align="center">HRRR Sounding Viewer</h1><br>
+	<h1 align="center"><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR BUFR Soundings
+      
+      <!-- Large modal (the intrusctions help button)-->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="padding:25px">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 style="font-size:22px;">HRRR Analysis Soundings</h4><hr>
+            <h5>
+            <b>Instructions:</b>Select the month, day, year, and station identifier for which you wish
+			to display all the available HRRR soundings. Times are in UTC. Then click the "Get Soundings" button.
+			If no images show then try a different date or image type. Hover over hour buttons to see the sounding.
+			Images exist for green numbered buttons and not for red numbered buttons.
+			<br>Rawinsonde observations from the SLC airport are plotted with a thin blue line at 23z, 00z, 11z, and 12z.
+			</h5>
+            <hr>
+			
+
+      </div>
+      </div>
+      </div>
+      </h1>
 
 <div style="background-color:#f5f5f5; width:85%; margin-left:auto; margin-right:auto;">	
-	<div style="background-color:#d40000;">
-	<br><p style="color:white;">HRRR Analysis Soundings (no forecast soundings).<br><b>Instructions:</b> Select the month, day, year, and station identifier for which you wish
-	to display all the available HRRR soundings. Then click the "Get Soundings" button.
-	If no images show then try a different date or image type. Hover over hour button to see the sounding.
-	Images exist for green numbered buttons and not for red numbered buttons.
-	<br><i>Times are in UTC.</i>
-	<br><br>Rawinsonde observations from the SLC airport are plotted with a thin blue line at 23z, 00z, 11z, and 12z.</p>
-		<br>
-			<p style="color:lightgrey;"><b>Note:</b> In Fire Fox or IE you must type the date in the form yyyy-mm-dd (ex. 2015-05-06).
-			</p>
-			<br>
-		<form method="post" align="center">
-			<table align="center" style="color:white;" cellspacing="10">
+	
+		<form class="navbar-form" method="post" align="center">
+			<table class="center table table-responsive" align="center" cellspacing="10">
 			<tr><td>1) Choose Date</td><td>2) Choose Station</td><td> 3) Submit</td></tr>
 			<tr>
-			<td><input id="date_input" type="date" name="date"></td>
-			<td><input type=radio name="station_option" value="KSLC">Salt Lake City (KSLC)<br>
-			<input type=radio name="station_option" value="KOGD">Ogden (KOGD)<br>
-			<input type=radio name="station_option" value="KPVU">Provo (KPVU)<br></td>
-			<td><input type="submit" value="Get Soundings" class="myButton"></td>
+			<td><input class="form-control" id="date_input" type="date" name="date"></td>
+			<td>
+				<input type=radio name="station_option" value="KSLC">Salt Lake City (KSLC)<br>
+				<input type=radio name="station_option" value="KOGD">Ogden (KOGD)<br>
+				<input type=radio name="station_option" value="KPVU">Provo (KPVU)<br></td>
+			<td><input class="btn btn-success" type="submit" value="Get Soundings" class="myButton"></td>
 			</tr>
 			</table>
 		</form>
-		<br>
-	</div>
 	
+
 <!-- PHP for getting file names in the directory-->
 	<?php
 			$dir = "/uufs/chpc.utah.edu/common/home/horel-group/archive/";
@@ -119,6 +132,7 @@ function empty_picture(img_name){
 		<!--PHP for creating buttons and image-->
 			<?php
 			echo $date.' '.$station.'<br><br>';
+			echo '<div class="btn-group" role="group" aria-label="...">';
 			// loop through the array of files and display a link to the image
 
 							
@@ -134,7 +148,7 @@ function empty_picture(img_name){
 						$anan_hour = (int)$anan_hour;
 						echo 
 							'
-							<input style="color:darkgreen" type=button value='.$anan_hour.' onmouseover=change_picture("'.$new_image.'");>
+							<input style="color:darkgreen" class="btn btn-default" type=button value='.$anan_hour.' onmouseover=change_picture("'.$new_image.'");>
 							';
 					}
 					else{
@@ -143,7 +157,7 @@ function empty_picture(img_name){
 						$absent_hour = $index+$missed_hours;
 						echo
 						'
-						<input style="color:red" type=button value='.$absent_hour.' onmouseover=empty_picture("./images/empty.jpg")>
+						<input style="color:red" class="btn btn-default" type=button value='.$absent_hour.' onmouseover=empty_picture("./images/empty.jpg")>
 						';
 						$missed_hours++;
 						}while($hour_exists>$index+$missed_hours);
@@ -160,6 +174,7 @@ function empty_picture(img_name){
 			}
 			
 			?>
+		</div>
 		<br><br><img id="sounding_img" style="max-width:800px" src="./images/empty.jpg" alt="empty"><br><br>
 	<br><br><br><br>
 	</div>

@@ -1,50 +1,50 @@
 /* Array of image URLs to randomly set as the page top photo*/
 var pics = [
-"./images/Panorama/fremont_pan.png",
-"./images/Panorama/utahcounty_pan.png",
-"./images/Panorama/utahcounty2_pan.png",
-"./images/Panorama/sundance_pan.png",
-"./images/Panorama/snowcanyon_pan.png",
-/*"./images/Panorama/copter_pan.png",*/
-/*"./images/Panorama/spring_pan.png",*/
-"./images/Panorama/lights_pan.png",
-"./images/Panorama/maple_pan.png",
-"./images/Panorama/payette_pan.png",
-"./images/Panorama/timp_pan.png",
-"./images/Panorama/cu_pan.png",
-"./images/Panorama/granite_pan.png",
-"./images/Panorama/badger_pan.png",
-"./images/Panorama/library_pan.png",
-"./images/Panorama/buffalo_pan.png",
-"./images/Panorama/gsl_pan.png",
-"./images/Panorama/moab_pan.png",
-"./images/Panorama/uofu_snow_pan.png",
-"./images/Panorama/hobble_pan.png",
-"./images/Panorama/cross_pan.png",
-"./images/Panorama/soldier_pan.png",
-"./images/Panorama/riverbottoms_pan.png",
-/*"./images/Panorama/lmr_pan.png",*/
-"./images/Panorama/slc_pan.png",
-"./images/Panorama/bflat_pan.png",
-"./images/Panorama/utahlake_pan.png",
+    "./images/Panorama/fremont_pan.png",
+    "./images/Panorama/utahcounty_pan.png",
+    "./images/Panorama/utahcounty2_pan.png",
+    "./images/Panorama/sundance_pan.png",
+    "./images/Panorama/snowcanyon_pan.png",
+    /*"./images/Panorama/copter_pan.png",*/
+    /*"./images/Panorama/spring_pan.png",*/
+    "./images/Panorama/lights_pan.png",
+    "./images/Panorama/maple_pan.png",
+    "./images/Panorama/payette_pan.png",
+    "./images/Panorama/timp_pan.png",
+    "./images/Panorama/cu_pan.png",
+    "./images/Panorama/granite_pan.png",
+    "./images/Panorama/badger_pan.png",
+    "./images/Panorama/library_pan.png",
+    "./images/Panorama/buffalo_pan.png",
+    "./images/Panorama/gsl_pan.png",
+    "./images/Panorama/moab_pan.png",
+    "./images/Panorama/uofu_snow_pan.png",
+    "./images/Panorama/hobble_pan.png",
+    "./images/Panorama/cross_pan.png",
+    "./images/Panorama/soldier_pan.png",
+    "./images/Panorama/riverbottoms_pan.png",
+    /*"./images/Panorama/lmr_pan.png",*/
+    "./images/Panorama/slc_pan.png",
+    "./images/Panorama/bflat_pan.png",
+    "./images/Panorama/utahlake_pan.png",
 ];
 
 
-function getRandomInt (min, max) {
+function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var idx =  getRandomInt(0,pics.length-1)
+var idx = getRandomInt(0, pics.length - 1)
 
-function change_title_pic(){
-    var idx =  getRandomInt(0,pics.length-1)
-    document.getElementById("title_pic").src=pics[idx];
+function change_title_pic() {
+    var idx = getRandomInt(0, pics.length - 1)
+    document.getElementById("title_pic").src = pics[idx];
 }
 
 document.write('<script src="js/site/CurrentTemp.js"></script>')
 
 if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html') {
-	document.write('<div class=""><img title="click me" id="title_pic" src="'+pics[idx]+'" onclick="change_title_pic();" width="100%"></div>');	
+    document.write('<div class=""><img title="click me" id="title_pic" src="' + pics[idx] + '" onclick="change_title_pic();" width="100%"></div>');
 }
 
 
@@ -73,28 +73,28 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Research <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_ver.html ">HRRR Verification</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html ">MS</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html ">PhD</a></li>\
-                            <li><a href="http://meso2.chpc.utah.edu/gslso3s/ " target="research ">GSLSO3S 2015</a></li>\
-                            <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research ">SONGNEX 2015</a></li>\
-                            <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research ">UBOS 2013-15</a></li>\
-                            <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research ">SARP 2013</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research ">MATERHORN 2013</a></li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="research ">MesoWest</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  HRRR Archive</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> PhD</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> MS</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/gslso3s/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> GSLSO3S</a></li>\
+                            <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> SONGNEX</a></li>\
+                            <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> UBOS</a></li>\
+                            <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research "><i class="fa fa-plane fa-fw" aria-hidden="true"></i> SARP </a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> MATERHORN</a></li>\
+                            <li><a href="http://mesowest.utah.edu/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> MesoWest</a></li>\
+                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  HRRR Archive</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
+                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
+                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./satellite_image_viewer.php "><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  Satellite Images</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
-                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> KSL Ozone Plots</a></li>\
-                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/NAA "><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
                             <li><a href="./HRRR_Winds "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Winds</a></li>\
@@ -105,21 +105,31 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WRF<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="./wrf.html ">WRF</a></li>\
-                            <li><a href="./hrrr.html ">HRRR</a></li>\
-                            <li><a href="./tracer.html ">Tracers</a></li>\
+                            <li><a href="./wrf.html ">WRF Intro</a></li>\
+                            <li><a href="./hrrr.html ">Initalize with HRRR</a></li>\
+                            <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
-                            <li><a href="./results.html ">Results</a></li>\
-                            <li><a href="./wrf_post.html ">Post Processing</a></li>\
+                            <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
+                        </ul>\
+                    </li>\
+\
+                    <li class="dropdown">\
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Code<span class="caret"></span></a>\
+                        <ul class="dropdown-menu">\
+                            <li class="dropdown-header"><i class="fa fa-github fa-fw" aria-hidden="true"></i>PyBKB_v2</li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
+                            <li class="dropdown-header"><i class="fa fa-code fa-fw" aria-hidden="true"></i>Other</li>\
+                            <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Published<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="./publications.html ">Publications</a></li>\
-                            <li><a href="./presentations.html ">Presentations</a></li>\
-                            <li><a href="./mapsonthehill.html ">Maps on the Hill</a></li>\
+                            <li><a href="./publications.html "><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Publications</a></li>\
+                            <li><a href="./presentations.html "><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> Presentations</a></li>\
                         </ul>\
                     </li>\
 \
@@ -134,10 +144,10 @@ document.write('\
                     </li>\
 \
                     <li class="dropdown">\
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Education<span class="caret"></span></a>\
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Outreach<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
                             <li><a href="./wxMeritBadge.html ">WX Merit Badge</a></li>\
-                            <li><a href="./schoovisits.html ">School Visits</a></li>\
+                            <li><a href="./schoolvisits.html ">School Visits</a></li>\
                         </ul>\
                     </li>\
 \

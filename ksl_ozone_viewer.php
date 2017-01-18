@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>KSL Ozone</title>
+<title>KSL Flights</title>
 <link rel="stylesheet" href="./css/brian_style.css" />
 <script src="./js/site/siteopen.js"></script>
 <script>
@@ -129,9 +129,6 @@ function previous_day(){
 	http://www.webdeveloper.com/forum/showthread.php?243055-RESOLVED-Display-all-images-in-a-set-directory
 	-->
 
-
-	<h1 align="center">Daily KSL Ozone Observations</h1><br>
-
 <?php
 // define variables and set to empty values
 $name = date ( "Y-m-d", time() - 86400 );
@@ -155,43 +152,62 @@ function test_input($data) {
     
     
 	<!-- Instructions and Input -->
-	<div style="background-color:#f5f5f5; width:85%; margin-left:auto; margin-right:auto;">	
-		<div style="background-color:#d40000;">
-			<br>
-			<p style="color:white;"><img align=right style="width:100px;" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/ksl_logo.png">
+
+<br>
+
+      <h1 align="center"><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights
+      
+      <!-- Large modal (the intrusctions help button)-->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="padding:25px">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 style="font-size:22px;">KSL Chopper Plots</h4><hr>
+            <h5>
+			<img align=right style="width:100px;" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/ksl_logo.png">
             <b>Instructions:</b> Select the year, day, month, and image type for 
 			which you wish to display all the available images. Then click the "Get Images" button.
 			If no images appear then try a different date or image type.
-			</p><br>
-            <p style="color:lightgrey;"><b>Note:</b> File name date/time is saved -6 H from UTC so the PHP script can find the flights before local midnight.
-			<p style="color:lightgrey;"><b>Note:</b> In Fire Fox or IE you must type the date in the form yyyy-mm-dd (ex. 2015-05-06).
-			</p>
-			<br>
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+			</h5>
+            <hr>
+            <h5><b>Note:</b> File name date/time is saved -6 H from UTC so the PHP script can find the flights before local midnight.</h5>
+			<h5><b>Note:</b> In Fire Fox or IE you must type the date in the form yyyy-mm-dd (ex. 2015-05-06).</h5>
+			
+
+      </div>
+      </div>
+      </div>
+      </h1>
+
+	<div style="background-color:#f5f5f5; width:85%; margin-left:auto; margin-right:auto;">	
+		<div class="jumbotron;">
+			
+                <form class="navbar-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
                     <table>
                     <tr><td>
-                    <p style="color:lightgrey;"><b>Date:<br></b> <input type="date" id='dateinput' name="name" min="2015-06-01" value="<?php echo $name;?>" style='width:200px'>
+                    <p><b>Date:<br></b> <input class="form-control" type="date" id='dateinput' name="name" min="2015-06-01" value="<?php echo $name;?>" style='width:200px'>
                     </td>
                     <td>
-                    <input type="submit" name="submit" value="Get Images">
+                    <button class="btn btn-success" type="submit" name="submit">Get Images</button>
                     </td>
                     </tr>
                     <tr>
                     <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <input class="btn btn-default" type='button' value="-1 Day" onclick="previous_day();">
+                        <input class="btn btn-default" type='button' value="+1 Day" onclick="next_day();">
+                    </div>
                     </td>
                     <td>
-                        <input type='button' value="-1 Day" onclick="previous_day();">
-                        <input type='button' value="+1 Day" onclick="next_day();">
                     </td>
                     </tr>
                     </table>
                     <br>
                 </form>
-			<br>
 	</div>
-	<br>
-    
-	<br><br>
+
 
 
 

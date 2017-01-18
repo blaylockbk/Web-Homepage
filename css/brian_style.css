@@ -3,146 +3,147 @@ Brian Blaylock's extra styling
 *************************************************/
 
 * {
-	margin:0;
-	padding:0;
+    margin: 0;
+    padding: 0;
+    font-family:Segoe UI;
 }
 
-html {
+html {}
 
-}
-
-body { 
-}
+body {}
 
 #content {
-	padding: 0 5px 1.3em;
-	border-top: 1px solid #666; 
-	background-color: white;
-	max-width: 1070px;
-	margin: 0 auto;
-	position: relative;
-	min-height: 100%;
-	border-left: 1px solid #666;
-	border-right: 1px solid black;
-	font-size: 18px;
+    padding: 10 5px 1.3em;
+    background-color: white;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
+    max-width: 1070px;    
+    font-size: 18px;
 }
+
 #contentNoBorder {
-	padding: 10 5px 1.3em;
-	background-color: white;
-	max-width: 900px;
-	margin: 0 auto;
-	position: relative;
-	min-height: 100%;
-
+    padding: 10 5px 1.3em;
+    background-color: white;
+    max-width: 1250px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
 }
+
 #footer {
-	/*position: absolute;*/
-	bottom:0;
-	width:100%;
-	height: 1.5em;
-	border-top: 1px solid black;
-	padding-top: 15px;
-	font-size: 12px;
-	}
-
-
-
-p{
-	font-family: Arial;
-	padding-left: 15px;
-	padding-right: 15px;
-	
+    /*position: absolute;*/
+    bottom: 0;
+    width: 100%;
+    height: 1.5em;
+    border-top: 1px solid black;
+    padding-top: 15px;
+    font-size: 12px;
 }
 
+p {
+    font-family: Arial;
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
-input[type="submit"]#waketoolbutton {	
-	/*background:linear-gradient(lightgrey, white);*/
-	color:white;
-	width:200px;
-	height:100px;
-	padding: 2px 10px;
-	font-size: 25px;
-	border: 5px solid lightgrey;
-	border-radius: 32px;
-	background-color:darkred;
-	margin:0 auto;
-	display: block;
+input[type="submit"]#waketoolbutton {
+    /*background:linear-gradient(lightgrey, white);*/
+    color: white;
+    width: 200px;
+    height: 100px;
+    padding: 2px 10px;
+    font-size: 25px;
+    border: 5px solid lightgrey;
+    border-radius: 32px;
+    background-color: darkred;
+    margin: 0 auto;
+    display: block;
 }
 
 input[type="submit"]:hover#waketoolbutton {
-	background-color:green;
+    background-color: green;
 }
-input.FormTouch {	
-	/*background:linear-gradient(lightgrey, white);*/
-	color:white;
-	float:center;
-	width:25px;
-	height:25px;
-	padding: 2px 10px;
-	font-size: 25px;
-	border: 5px solid lightgrey;
-	border-radius: 32px;
-	background-color:#990000;
-	margin:0 auto;
+
+input.FormTouch {
+    /*background:linear-gradient(lightgrey, white);*/
+    color: white;
+    float: center;
+    width: 25px;
+    height: 25px;
+    padding: 2px 10px;
+    font-size: 25px;
+    border: 5px solid lightgrey;
+    border-radius: 32px;
+    background-color: #990000;
+    margin: 0 auto;
 }
 
 input:hover.FormTouch {
-	background-color:green;
+    background-color: green;
 }
 
-input[type="date"] {	
-	/*background:linear-gradient(lightgrey, white);*/
-	width: 130px;
-	padding: 2px 0px;
-	font-size: 15px;
-	border: 1px solid lightgrey;
-	border-radius: 2px;
-	padding-left:5%;
-}
-img.style1{
-	margin-left: auto;
-    margin-right: auto;
-	vertical-align:top;
-	display:block;
-	border:1px solid;
-	border-color: black black;
-	box-shadow: 10px 10px 5px #888888;
-}
-img.style2{ /* img with padding and no boarder*/
-	margin-left: auto;
-    margin-right: auto;
-	vertical-align:top;
-	display:block;
-	padding:10px;
-}
-table.center{
-	width:90%;
-	margin-left:auto; 
-    margin-right:auto;
+input[type="date"] {
+    /*background:linear-gradient(lightgrey, white);*/
+    width: 130px;
+    padding: 2px 0px;
+    font-size: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    padding-left: 5%;
 }
 
-textarea.Linux{
-	width:100%; 
-	height:30px; 
-	color: red; 
-	background-color: lightyellow;
-	font-family: "Courier";
-	font-size:17;
+img.style1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    vertical-align: top;
+    display: block;
+    border: 1px solid;
+    border-color: black black;
+    box-shadow: 5px 5px 5px #888888;
 }
-textarea.Python{
-	width:100%; 
-	height:300px; 
-	color: #006e18;     
-	background-color: #b5efff;
-	font-family: "Courier";
-	font-size:16;
+
+img.style2 {
+    /* img with padding and no boarder*/
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+    display: block;
+    padding: 10px;
 }
-textarea{
-	width:100%; 
-	height:300px; 
-	font-family: "Courier";
-	font-size:12;
+
+table.center {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+textarea.Linux {
+    width: 100%;
+    height: 30px;
+    color: red;
+    background-color: lightyellow;
+    font-family: "Courier";
+    font-size: 17;
+}
+
+textarea.Python {
+    width: 100%;
+    height: 300px;
+    color: #006e18;
+    background-color: #b5efff;
+    font-family: "Courier";
+    font-size: 16;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    font-family: "Courier";
+    font-size: 12;
+}
+
 
 /* CSS for creating an easy "tooltip"
 	To display a tool tip when you hover over text or an image
@@ -151,14 +152,15 @@ textarea{
 	If you want to make a special style for it, assign the class and use 
 	the following CSS...
 */
-.tooltip{
-	display:inline;
-	position: relative;
+
+.tooltip {
+    display: inline;
+    position: relative;
 }
 
-.tooltip:hover:after{
+.tooltip:hover:after {
     background: #333;
-    background: rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, .8);
     border-radius: 5px;
     bottom: 26px;
     color: #fff;
@@ -170,123 +172,143 @@ textarea{
     width: 220px;
 }
 
+
 /* 
 Classes
 */
 
-.publication p{
-	font-family: Segoe UI;
+.publication p {
+    font-family: Segoe UI;
 }
 
-.publication a{
-	color:#990000;
-	text-decoration: none;
-	font-weight: 600;
+.publication a {
+    color: #990000;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-.publicaiton h1{
-	font-family: Segoe UI;
+.publicaiton h1 {
+    font-family: Segoe UI;
 }
 
+.section {
+    background-color: #c9c9c9;
+    width: 95%;
+    text-align: left;
+    margin: auto;
+    padding:10px;
+}
 
-.section{
-	background-color: #c9c9c9;
-	width:95%;
-	text-align:left;
-	margin:auto;
+.section>p {
+    font-size: 21px;
+    padding: 5px;
 }
-.section > p{
-	font-size:21px;
-	padding: 5px;
+
+.section>ol {
+    font-size: 21px;
+    padding-left: 50px;
 }
-.section > ol{
-	font-size:21px;
-	padding-left: 50px;
+
+.section>ul {
+    font-size: 21px;
+    padding-left: 50px;
 }
-.section > ul{
-	font-size:21px;
-	padding-left: 50px;
+
+.section a{
+    color: #990000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.section a:hover{
+    color: #990000;
+    font-weight: 600;
 }
 
 #home {
-    font-size:24px; 
-    font-family:'Segoe UI';
-    padding:5px;
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    padding: 5px;
 }
 
-#home a:link{
-	color:#990000;
-	text-decoration: none;
-	font-weight: 600;
+#home a:link {
+    color: #990000;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-#home a:visited{
-	color:#990000;
-	font-weight:600;
+#home a:visited {
+    color: #990000;
+    font-weight: 600;
 }
+
 
 /* Home Page Top Image*/
+
 .img-container {
-  position:relative;
-}
-.homeImageLink {
-   position: absolute; 
-   bottom: 20%; 
-   left: -2%;
-   text-align: center; 
-   width: 100%; 
+    position: relative;
 }
 
-.homeImageLink span { 
-	color: white;
-	font-weight: 100;
-	font-size:5vmin;
-	font-style: italic;
-	text-transform: uppercase;
-	letter-spacing: 8px;
-	font-family: "Segoe UI";
+.homeImageLink {
+    position: absolute;
+    bottom: 20%;
+    left: -2%;
+    text-align: center;
+    width: 100%;
+}
+
+.homeImageLink span {
+    color: white;
+    font-weight: 100;
+    font-size: 5vmin;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-family: "Segoe UI";
     padding: 0 30px;
     line-height: 150%;
-	float:right;
+    float: right;
     background: rgba(0, 0, 0, 0.5);
-
 }
+
 
 /*(Home Page Top Image)*/
 
+.section>h3 {
+    font-size: 25px;
+}
 
+iframe {
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
-.section > h3{
-	font-size:25px;
+object {
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
-iframe{
-	padding: 15px;
-	margin-left:auto;
-	margin-right:auto;
-	display: block;
-}
-object{
-	padding: 15px;
-	margin-left:auto;
-	margin-right:auto;
-	display: block;
-}
+
 
 /*GROW*/
+
 .grow img {
-  width: 100%;
- 
-  -webkit-transition: all 1s ease;
-     -moz-transition: all 1s ease;
-       -o-transition: all 1s ease;
-      -ms-transition: all 1s ease;
-          transition: all 1s ease;
+    width: 100%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
 }
- 
+
 .grow img:hover {
-  width: 120%;
-  
-}.pic {
-  width:100%;
-  height:180px;
-  overflow: hidden;
+    width: 120%;
+}
+
+.pic {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
