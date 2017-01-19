@@ -8,6 +8,17 @@ Brian Blaylock's extra styling
     font-family:Segoe UI;
 }
 
+.gist {
+   margin: auto;
+   max-width: 90%;
+   overflow:auto;
+}
+
+.gist .blob-wrapper.data {
+   max-height:250px;
+   overflow:auto;
+}
+
 html {}
 
 body {}

@@ -1,6 +1,6 @@
 document.write("\
 <div align=center style='background-color:black; color:white; font-size:12pt;padding-top: 5px; padding-bottom: 5px;padding-left:5px'>\
-\
+<i class='fa fa-thermometer-three-quarters' aria-hidden='true'></i> \
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://tinyurl.com/p2e26vq'> <span id='ret-tempSF'>...</span></a> \
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://tinyurl.com/q338ty4'> <span id='ret-tempWBB'>...</span> </a>\
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://tinyurl.com/nbekhz3'> <span id='ret-tempKCHO'>...</span> </a>\

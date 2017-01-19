@@ -11,87 +11,84 @@
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
-<br>
-<h1 align="center">Tracer Plumes in WRF</h1>
+
 <div id="content">
+    <h1 align="center">Tracer Plumes in WRF</h1>
+  
+  <!-- Tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1">Introduction</a></li>
+    <li><a data-toggle="tab" href="#tab2">namelist.input</a></li>
+	<li><a data-toggle="tab" href="#tab3">Registry.EM</a></li>
+	<li><a data-toggle="tab" href="#tab4">module_initialize_real.F</a></li>
+	<li><a data-toggle="tab" href="#tab5">solve_em.F</a></li>
+	<li><a data-toggle="tab" href="#tab6">Increase Plume Output</a></li>
+	<li><a data-toggle="tab" href="#tab7">Example</a></li>
+  </ul>
 
-<ul style="padding: 10px; margin-left:30px;">
-<li><a href="tracer.html#INTRO">Introduction</a>
-<li><a href="tracer.html#NAMELIST">namelist.input</a>
-<li><a href="tracer.html#REAL">module_initialize_real.F</a>
-<li><a href="tracer.html#REGISTRY">Registry.EM</a>
-<li><a href="tracer.html#HIFREQ">Increase Plume Output Frequency</a>
-<li><a href="tracer.html#RESULTS">Preliminary Results</a>
-<li><a href="tracer.html#PLOTS">Plots</a>
-</ul>
-External Links
-<ul style="padding: 10px; margin-left:30px;">
-	<li><a href="http://www2.mmm.ucar.edu/wrf/users/tutorial/201407/Wednesday/4_gill_registry.pdf">How to Use the WRF Registry</a> (Tracers discussed at end of document)
-</ul>
-</ul>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+			<h3>Introduction to Tracers in WRF</h3>
+			<img ALIGN=right height="300px" class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/plume_ex2.gif">
+			<p>Passive tracers have no influence on the model. Instead, they 
+				are influenced by the model. Tracers are added to the model 
+				and WRF blow them around. It's like initiating a puff of smoke 
+				at a location at some time and letting the winds blow the smoke around. 
+			<p>WRF 3.7+ includes a basic framework for creating tracers,
+			but hopefully you'll find this commentary helpful.
+			<p>In order to successfully add a tracer to your WRF simulation 
+				you must make edits to the following:
+				<ol style="padding-left:60px">
+					<li>WRFV3/test/em_real/namelist.input
+					<li>WRFV3/Registry/Registry.EM
+					<li>WRFV3/dyn_em/module_initialize_real.F
+					<li>WRFV3/dyn_em/solve_em.F
+				</ol>
+			<p>Note: When you make changes to (2,3,4) you need to re-compile 
+			the WRF code. When you change (2,4) you need to re-run real.exe.
+			If you only make changes to (4) then you can re-run wrf.exe after 
+			you re-compile.
+			<p>It's my suggestion to get the plume initialization working first
+			by making edits to (1,2,3), then get the continuous plume to working
+			by making edits to (4).
+			<div class='alert alert-info'>Note: I'm currently dealing with WRF not writing the restart 
+			files because my tracer variables are larger than 
+			supported by NetCDF requirements. I don't think the tracers 
+			have anything to do with that. The NetCDF file is too large, 
+			so set the namelist.input option  io_form_restart = 102 which
+			will write a restart file for every processor. Just remember
+			to do the restart WRF with the same number of processors. 
+			</div>
+        </div>
 
-<hr>
-<br>
+        <div id="tab2" class="tab-pane fade">
+			<h3>namelist.input</h3>
+			<p><b style="color:green">namelist.input</b> contains all 
+			the WRF user options. 
+			<p>In the <b>&dynamics</b> section, add <b>tracer_opt</b>. 
+			This is the flag that turns the tracer option on.
+			<p>The below example shows tracer_opt set to "2" for domain one 
+			and two.
 
-<div class="section">
-	<a name="INTRO"></a>
-	<h3>Introduction to Tracers in WRF</h3>
-	<img ALIGN=right height="300px" class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/plume_ex2.gif">
-	<p>Passive tracers have no influence on the model. Instead, they are influenced
-    by the model. You add the tracer to the model and let WRF blow it around. 
-    It's like initiating a puff of smoke at a location at some time and letting the 
-    winds blow the smoke around. 
-	<p>WRF 3.7 includes a basic framework for creating these tracers,
-	but hopefully you'll find this commentary helpful.
-    <p>In order to successfully add a tracer to your WRF simulation make edits to the following:
-	<ol style="padding-left:50px">
-		<li>WRFV3/test/em_real/namelist.input
-		<li>WRFV3/Registry/Registry.EM
-		<li>WRFV3/dyn_em/module_initialize_real.F
-		<li>WRFV3/dyn_em/solve_em.F
-	</ol>
-	<p>Note: When you make changes to (2,3,4) you need to re-compile the WRF code. When you change (2,4) you need to re-run real.exe.
-	If you only make changes to (4) then you can re-run wrf.exe after you re-compile.
-	<p>It's my suggestion to get the plume initialization working first by making edits to (1,2,3), then get the continuous plume to working
-	by making edits to (4).
-    <p>Note: I'm currently dealing with WRF not writing the restart files because my tracer variables are larger than supported by NetCDF requirements.
-    I don't think the tracers have anything to do with that. The NetCDF file is too large, so set the namelist.input option  io_form_restart = 102
-    which will write a restart file for every processor. Just remember to do the restart WRF with the same number of processors. 
-	<br>
-	<br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>
-<div class="section">
-	<a name="NAMELIST"></a>
-	<h3>namelist.input</h3>
-	<p><b style="color:green">namelist.input</b> contains all the WRF user options. 
-	<p>In the <b>&dynamics</b> section, add <b>tracer_opt</b>. This is the flag that turns the tracer option on.
-	<p>The below example shows tracer_opt set to "2" for domain one and two.
-	
-	<textarea style="height:120" disabled>
-...
+			<div class="well well-sm">
+			<p>...
+			<p>&dynamics
+			<p>tracer_opt      = 2, 2
+			<p>/
+			<p>...
+			</div>
+        </div>
 
-&dynamics
-
-  tracer_opt      = 2, 2
-  /
-...
-	</textarea>
-	
-	<br><br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>
-
-<br>
-<div class="section">
-	<a name="REGISTRY"></a>
-	<h3>Registry.EM</h3>
-	<p><b style="color:green">Registry/Registry.EM</b> defines output variables in WRF.
-	<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/Registry.EM">Registry.EM</a> file.
-	<p>Below are the the changes I made to Registry.EM...(Note: don't remove the tr17_* lines. I can't get WRF to compile when I remove those. But adding to the list is fine.)
-	<textarea disabled>
+		<div id="tab3" class="tab-pane fade">
+			<h3>Registry.EM</h3>
+			<p><b style="color:green">Registry/Registry.EM</b> 
+			defines output variables in WRF.
+			<p>Here's a copy of my complete 
+			<a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/Registry.EM">Registry.EM</a> file.
+			<p>Below are the the changes I made to Registry.EM...
+				(Note: don't remove the tr17_* lines. I can't get WRF to 
+				compile when I remove those. But adding to the list is fine.)
+			<textarea disabled>
 #
 # Tracer Scalars: If you want full resolved and non-resolved dispersion, compile WRF-Chem
 #
@@ -110,24 +107,16 @@ state   real    S_SLV      ikjftb  tracer        1         -     irhusdf=(bdy_in
 
 package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,tr17_3,tr17_4,tr17_5,tr17_6,tr17_7,tr17_8,BKBplm,N_SLV,S_SLV
 
-
 	</textarea>
-	
-	<br><br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>
+        </div>
 
-<div class="section">
-	<a name="REAL"></a>
-	<h3>module_initialize_real.F</h3>
-	<p><b style="color:green">WRFV3/dyn_em/module_initialize_real.F</b> contains information on how to initialize WRF in the real.exe executable.
-    Making these changes will initialize our tracer plume in WRF
-	<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/module_initialize_real.F">module_initialize_real.F</a> file.
-	<p>The changes made to the original WRF code, starting on line 3372 are shown below...
-	<textarea disabled>
-
-	
+        <div id="tab4" class="tab-pane fade">
+			<h3>module_initialize_real.F</h3>
+			<p><b style="color:green">WRFV3/dyn_em/module_initialize_real.F</b> contains information on how to initialize WRF in the real.exe executable.
+			Making these changes will initialize our tracer plume in WRF
+			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/module_initialize_real.F">module_initialize_real.F</a> file.
+			<p>The changes made to the original WRF code, starting on line 3372 are shown below...
+			<textarea disabled>
 ! Creates an 8x8 size grid box plume in the center of the domain
       !! If the tracer_opt is set to 2 in the namelist...
 	  IF (config_flags%tracer_opt .eq. 2) THEN
@@ -197,24 +186,18 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 !          END DO
 !      END IF
 !---------------------------------------------------------------------------------------
-	</textarea>
-	
-	<br><br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>
-
-
-<div class="section">
-	<a name="REAL"></a>
-	<h3>solve_em.F</h3>
-	<p><b style="color:green">WRFV3/dyn_em/solve_em.F</b> contains information on how to create a continuous plume.
-    Making these changes will continue the plume each timestep in WRF.
-	<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/solve_em.F">solve_em.F</a> file.
-	<p>The changes made to the original WRF code, starting on line 265 are shown below...
-	<p>This is very similar to the modifications made in module_initialize_real.F, but notice the KEY change from <b>its</b> to <b><i>ips</i></b> in the IF statement...
-    I think this is becuase of a change in how WRF separates the code in real and wrf    
-	<textarea disabled>
+			</textarea>
+        </div>
+        
+		<div id="tab5" class="tab-pane fade">
+			<h3>solve_em.F</h3>
+			<p><b style="color:green">WRFV3/dyn_em/solve_em.F</b> contains information on how to create a continuous plume.
+			Making these changes will continue the plume each timestep in WRF.
+			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/solve_em.F">solve_em.F</a> file.
+			<p>The changes made to the original WRF code, starting on line 265 are shown below...
+			<p>This is very similar to the modifications made in module_initialize_real.F, but notice the KEY change from <b>its</b> to <b><i>ips</i></b> in the IF statement...
+			I think this is becuase of a change in how WRF separates the code in real and wrf    
+			<textarea disabled>
 !---------------- Brian Blaylock Tracers -------
 
    IF ( config_flags%tracer_opt == 2 ) THEN
@@ -263,128 +246,82 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
         END DO
       END IF
    END IF
-
-
-
-
-
 !------------------------------------------------
-
-
-	</textarea>
-    <p>This will continue the tracer plume every time step.
-    <p style="color:red">Note: I've realized that this method artificially removes tracers. Tracers transported back 
-    into the source location is automatically reset to 1. To fix this you'll have to add to the value already in the gird box,
-    so something like this: <i>tracer(225,1,198,P_S_SLV) = tracer(225,1,198,P_S_SLV) + 1.</i>
-	<p> It is possible to create a new "smoke puff" at specific intervals
-	rather than every time step (say, you want a new plume every hour). I haven't got the periodic plume working yet, but here's 
-	a clue in an email from Dave Gill...
-<textarea style="height:110px" disabled>
+			</textarea>
+			<p>This will continue the tracer plume every time step.
+			<p style="color:red">Note: I've realized that this method artificially removes tracers. Tracers transported back 
+			into the source location is automatically reset to 1. To fix this you'll have to add to the value already in the gird box,
+			so something like this: <i>tracer(225,1,198,P_S_SLV) = tracer(225,1,198,P_S_SLV) + 1.</i>
+			<p> It is possible to create a new "smoke puff" at specific intervals
+			rather than every time step (say, you want a new plume every hour). I haven't got the periodic plume working yet, but here's 
+			a clue in an email from Dave Gill...
+			<textarea style="height:110px" disabled>
 !You can get the time in a few ways.  For a fixed time step, if you know 
 !the time step (dt) and the number of tine steps (itimestep), then you are good to go.
 
  300    grid%itimestep = grid%itimestep + 1
  301    grid%dtbc = grid%dtbc + grid%dt
-</textarea>
-	<br><br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>
+			</textarea>
+        </div>
+        
+		<div id="tab6" class="tab-pane fade">
+			<h3>Increase Tracer Plume Output Frequency (or any other variable)</h3>
 
-<br>
-<div class="section">
-	<a name="HIFREQ"></a>
-	<h3>Increase Tracer Plume Output Frequency (or any other variable)</h3>
+			<p> The default in WRF is to output variables in the wrfout file at interval defined in the namelist options.
+			I output wrf variables every hour. But I want the tracer plume output at a higher frequency.
+			<p>In order to increase the frequency of WRF output for the plume, follow the directions 
+			<a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">here</a>.
+			<br>
+			<p><img align=right style="width:300px; padding-left:30px;" src = 'images/plume_loop.gif'>
+			The cyan image is an example of plume output at every hour. But we want the output every ten minutes.
 
-	<p> The default in WRF is to output variables in the wrfout file at interval defined in the namelist options.
-	I output wrf variables every hour. But I want the tracer plume output at a higher frequency.
-	<p>In order to increase the frequency of WRF output for the plume, follow the directions 
-	<a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">here</a>.
-	<br>
-	<p><img align=right style="width:300px; padding-left:30px;" src = 'images/plume_loop.gif'>
-	The cyan image is an example of plume output at every hour. But we want the output every ten minutes.
-
-	<p> In order to output the plumes data at a higher frequency you have to change 
-	the namelist options as outlined <a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">
-	here</a>. I have added two new output streams. One that outputs every 12 hours (stream 23)
-	and one that outputs every 10 minutes (stream 24). Note: Steams can range from 0-24.
-	<p> I have created a file called "myoutfields_d01.txt" which tells WRF to write the T2 and tr17_1 to stream 24 and HGT
-	and LANDMASK to stream 23. Note: Do not include any spaces!
-		<textarea style="width:100%; height:40px;" disabled>
-	+:h:24:T2,tr17_1
-	+:h:23:HGT,LANDMASK	
-		</textarea>
-	<p> In namelist.input I added these lines in the &time_control section:
-<textarea style="width:100%; height:110px;" disabled>
+			<p> In order to output the plumes data at a higher frequency you have to change 
+			the namelist options as outlined <a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">
+			here</a>. I have added two new output streams. One that outputs every 12 hours (stream 23)
+			and one that outputs every 10 minutes (stream 24). Note: Steams can range from 0-24.
+			<p> I have created a file called "myoutfields_d01.txt" which tells WRF to write the T2 and tr17_1 to stream 24 and HGT
+			and LANDMASK to stream 23. Note: Do not include any spaces!
+				<textarea style="width:100%; height:40px;" disabled>
+			+:h:24:T2,tr17_1
+			+:h:23:HGT,LANDMASK	
+				</textarea>
+			<p> In namelist.input I added these lines in the &time_control section:
+			<textarea style="width:100%; height:110px;" disabled>
  
  iofields_filename                   = "myoutfields_d01.txt", ! Name of file that tells WRF what to output
  io_form_auxhist24                   = 2,                     ! Output stream 24 in netCDF format
  auxhist24_interval                  = 10,                    ! Output stream 24 every 10 minutes
  io_form_auxhist23                   = 2,                     ! Output stream 23 in netCDF format
  auxhist23_interval                  = 720,                   ! Output stream 23 every 12 hours
-	</textarea>
-<p> Or, if you have two domains...
-	<textarea style="width:100%; height:110px;" disabled>
+			</textarea>
+			<p> Or, if you have two domains...
+			<textarea style="width:100%; height:110px;" disabled>
  
  iofields_filename                   = "myoutfields_d01.txt", "myoutfields_d02.txt" 
  io_form_auxhist24                   = 2,                     
  auxhist24_interval                  = 10,    10,                
  io_form_auxhist23                   = 2,                     
  auxhist23_interval                  = 720,  720,
-	</textarea>
-	<a name="PLUME_HIGHRES"></a>
-	<p> When you run WRF with these options it will create two new netCDF files called
-	<i>auxhist23_d01_2015-06-18_00:00:00</i> and <i>auxhist24_d01_2015-06-18_00:00:00</i>. You can 
-	view these in ncview.
-	
-		
-	<br><br>
-	<a href="tracer.html#TOP">Back to Top</a>
-</div>
-<br>    
+			</textarea>
+			<p> When you run WRF with these options it will create two new netCDF files called
+			<i>auxhist23_d01_2015-06-18_00:00:00</i> and <i>auxhist24_d01_2015-06-18_00:00:00</i>. You can 
+			view these in ncview.
+        </div>
 
-<br><br>
-<div class="section">
-<a name="RESULTS"></a>
-<h3>Preliminary Results</h3>
-<p>South and north plumes plotted on two different maps.
+		<div id="tab7" class="tab-pane fade">
+			<h3>Example</h3>
+			<video id="videoclip"  style="height:50vh;" autoplay controls loop title="Time Lapse">
+			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/planeview_tracercomposite/urban_trees/NorthSouthTracers.mp4" type="video/mp4"  />
+			</video>
 
-<p><img src="http://home.chpc.utah.edu/~u0553130/MS/June18_HRRR/figs/South_anima.gif" width=45% align=left>
-<img src="http://home.chpc.utah.edu/~u0553130/MS/June18_HRRR/figs/North_anima.gif" width=45% align=right>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<a href="tracer.html#TOP">Back to Top</a>
-<br><br>
-</div>
-<br><br>
-<div class="section">
-	<a name="PLOTS"></a>
-<h3>Trace Plume Plots</h3>
+			<video id="videoclip"  style="width:80%;" autoplay controls loop title="Time Lapse">
+			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/spinup/restart_plum_18Jun1700/plumes_crosssection.mp4" type="video/mp4"  />
+			</video>
+		</div>
 
-<p> Plane view centered over Salt Lake County. (<a href='https://github.com/blaylockbk/Ute_WRF/blob/master/plane_hifreq.py'>code</a>)
-<p><img src='http://home.chpc.utah.edu/~u0553130/MS/tracercomposite/tracers.gif'>
-<p> Cross section through Salt Lake County (<a href='https://github.com/blaylockbk/Ute_WRF/blob/master/cross_section_hires.py'>code</a>)
-<p><img width='300px' src='http://home.chpc.utah.edu/~u0553130/MS/crosssection/hires/Xsection.png'>
-<p><img width=100% src='http://home.chpc.utah.edu/~u0553130/MS/crosssection/hires/tracers.gif'>
-
-<br><br>
-<h4>Tracer Pixel Concentrations</h4>
-<p>Sum of tracer count in three adjacent cross sections in the middle of the Salt Lake Valley.
-<p>South Tracer at 2000 UTC 18 June 2015
-<img width=100% src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/spinup/bothplumes/restartB/2015Jun18-2000__South_VALUES.png">
-<p>North Tracer at 2000 UTC 18 June 2015
-<img width=100% src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/spinup/bothplumes/restartB/2015Jun18-2000__North_VALUES.png">
-
-<br><br>
-<a href="tracer.html#TOP">Back to Top</a>
-</div>
+    </div>
 </div>
 
-</div>
-<br>
 
 <script src="./js/site/siteclose.js"></script>
 </div>

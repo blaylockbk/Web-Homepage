@@ -11,387 +11,106 @@
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
-<br>
-<h1 align="center">Lake Surgery</h1>
 <div id="content">
+    <h1 align="center">Lake Surgery</h1>
+ 
+  <!-- Tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1">Introduction</a></li>
+    <li><a data-toggle="tab" href="#tab2">Change Lake Area</a></li>
+    <li><a data-toggle="tab" href="#tab3">METGRID Modification</a></li>
+    <li><a data-toggle="tab" href="#tab4">GEOGRID Modification</a></li>
+    <li><a data-toggle="tab" href="#tab5">Change Lake Temperature</a></li>
+    <li><a data-toggle="tab" href="#tab6">Edit WRF Land Use in Photoshop</a></li>
+  </ul>
 
-<ul style="padding: 10px; margin-left:30px;">
-<li><a href="lake_surgery.html#INTRO">Introduction</a>
-<li><a href="lake_surgery.html#SHRINK">shrink_GSL.py</a>
-<li><a href="lake_surgery.html#METGRID_MOD">METGRID Modification</a>
-<li><a href="lake_surgery.html#GEOGRID_MOD">GEOGRID Modification</a>
-<li><a href="lake_surgery.html#TEMP_MOD">Modify Lake Temperature</a>
-<li><a href="lake_surgery.html#PHOTO">Edit WRF fields in Photoshop!!!!</a>
-</ul>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+                <img ALIGN=right width="200px" class="style2" src="./images/uncle_red.jpeg">
+                <h3>Why Perform Surgery?</h3>
+                <p>We have to live with the fact that all models are wrong. 
+                Still, we can be a bit more 
+                optimistic and try to fix parts of the model. As Uncle Red 
+                would say, "If it ain't broke, you're not trying!"
+                Here I explain how I fix the size and initial surface 
+                temperature errors in the Great Salt Lake. Please note that 
+                what I do here is a bit more
+                sophisticated than just using duck tape.
+                <p>Lake surgery is necessary because the Great Salt Lake in 
+                the available MODIS survey is too big! (This is true 
+                for other geographical data sets available to WRF users)
+                <p>The HRRR model uses MODIS derived land surface characteristics 
+                in its pre-processing. We are using the same geographical data 
+                set, MODIS 30s with lake category, in our WRF simulations. 
+                The image on the right shows the land mask and elevation 
+                around the Great Salt Lake in the MODIS geographical data set 
+                versus what was observed by the MODIS true color image on 18 June 2015.
+                
+                <p><img ALIGN=right width="500px" class="style2" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/lake_hrrr_sat.png">
+                The large lake size in the model is thought to cause issues with the strength, structure, and timing of the 
+                lake breeze in Salt Lake City like the one on 18 June 2015. 
+                <p>Initial test simulations revealed that errors in the MODIS 
+                        land use categorization of the GSL boundary and the HRRR initialized 
+                lake surface temperature led to poor estimates of boundary 
+                layer depth over the lake and overly strong lake breezes. 
+                Lombardo et al. (2106) recently discussed the sensitivity of 
+                sea breezes to coastline and the sea surface temperature. 
+                We likewise expected improved lake breeze simulations when the 
+                modeled lake properties are more accurate. 
+                In subsequent simulations in which changes to the lake size and
+                 lake temperature were made the boundary layer thermal and wind 
+                fields were improved. Thus, the size of the lake needs to be 
+                trimmed! I perform this lake surgery in the <b>geo_em.d0X.nc</b> file.
+                <p>I was told that the experimental HRRR will soon use an updated 
+                land use data set with additional modifications to the Great Salt 
+                Lake for which they used this method.  
+                <div class="well well-sm">The Google Earth Engine 
+                time series for the Great Salt Lake is pretty cool. Check it 
+                out <a href="https://earthengine.google.com/timelapse/#v=41.12943,-112.1832,6.608,latLng&t=2.49">
+                here</a>.
+                </div>
+        </div>
 
-<hr>
-<br>
+        <div id="tab2" class="tab-pane fade">
+                <h3>shrink_GSL.py</h3>
+                <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/shrink_GSL.py">
+                <img align=right style="width:100px" src="./images/githubcode.png"></a>
+                The python script <b>shrink_GSL.py</b> trims the area around the 
+                Great Salt Lake using the lake boundary drawn by Python's Basemap.
+                We trim the area using Basemap's <b>maskoceans()</b> function. 
+                <p>Modifies the following 2D variables
+                <ul style="padding-left:60px;">
+                        <li> LANDMASK
+                        <li> LU_INDEX
+                        <li> LAKE_DEPTH
+                        <li> SCB_DOM
+                        <li> SCT_DOM
+                </ul>
+                <p>When it's finished, it will create a new <b>geo_em_d0x.nc</b> file. To utilize the edits, rename the file
+                in your WPS directory and re-run <b>metgrid</b>. 
+                <p><img ALIGN=center height="300px" class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/lake_BaA.png">
+                <br>
+                <p>Also need to modify the following 3D variables with another script not posted here yet:
+                <ul style="padding-left:100px">
+                        <li> LANDUSEF
+                        <li> SOILCBOT
+                        <li> SOILCTOP
+                </ul>
+                <p>Below shows changes made to the Land Use Index where the points that are no longer lake are changed to barren land.
+                The black lake outline is the python basemap Great Salt Lake boarder.
+                <p><img class='style1' width="98%" src="./images/LU_changes.png">
+                <p align=right>(Colormap available on GitHub)<a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/landuse_colormap.py"><img align=right width='70px' src="./images/githubcode.png"></a>
+        </div>
 
-	<div class="section">
-		<a name="INTRO"></a>
-		<img ALIGN=right width="200px" class="style2" src="./images/uncle_red.jpeg">
-        <h3>Why Perform Surgery?</h3>
-		<p>
-        We have to live with the fact that all models are wrong. Still, we can be a bit more 
-        optimistic and try to fix parts of the model. As Uncle Red would say, "If it ain't broke, you're not trying!"
-        Here I explain how I fix the size and initial surface temperature errors in the Great Salt Lake. Please note that what I do here is a bit more
-        sophisticated than just using duck tape.
-        <p>Lake surgery is necessary because the Great Salt Lake in the available MODIS survey is too big! (This is true for other geographical data sets available to WRF users)
-        <p>The HRRR model uses MODIS derived land surface characteristics in its pre-processing. We are using the 
-        same geographical data set, MODIS 30s with lake category, in our WRF simulations. The image on the right shows the land mask and elevation 
-        around the Great Salt Lake in the MODIS geographical data set versus what was observed by the MODIS true color image on 18 June 2015.
-		<p><img ALIGN=right width="500px" class="style2" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/lake_hrrr_sat.png">The large lake size in the model is thought to cause issues with the strength, structure, and timing of the 
-		lake breeze in Salt Lake City like the one on 18 June 2015. 
-        <p>Initial test simulations revealed that errors in the MODIS land use categorization of the GSL boundary and the HRRR initialized 
-        lake surface temperature led to poor estimates of boundary layer depth over the lake and overly strong lake breezes. 
-        Lombardo et al. (2106) recently discussed the sensitivity of sea breezes to coastline and the sea surface temperature. 
-        We likewise expected improved lake breeze simulations when the modeled lake properties are more accurate. 
-        In subsequent simulations in which changes to the lake size and lake temperature were made the boundary layer thermal and wind 
-        fields were improved. Thus, the size of the lake needs to be trimmed! I perform this lake surgery in the <b>geo_em.d0X.nc</b> file.
-        <p>I was told that the experimental HRRR will soon use an updated land use data set with additional modifications to the Great Salt Lake for which they used this method.
-		<br>
-		<br>
-		<a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-    
-<br><br>
-	<div class="section">
-		<a name="SHRINK"></a>
-		<h3>shrink_GSL.py</h3>
-		<p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/shrink_GSL.py">
-        <img align=right style="width:100px" src="./images/githubcode.png"></a>
-        The python script <b>shrink_GSL.py</b> trims the area around the Great Salt Lake using the lake boundary drawn by Python's Basemap.
-		We trim the area using Basemap's <b>maskoceans()</b> function. 
-        <p>Modifies the following 2D variables
-        <ul>
-            <li> LANDMASK
-            <li> LU_INDEX
-            <li> LAKE_DEPTH
-            <li> SCB_DOM
-            <li> SCT_DOM
-        </ul>
-        <br>
-		<textarea class="python">
-# Brian Blaylock
-# November 19, 2015
+        <div id="tab3" class="tab-pane fade">
+                <h3>METGRID.TBL Modification</h3>
 
-# Script for decreasing the size of the Great Salt Lake (GSL) to
-# a more realistic lake level. Uses the python basemap outline of the GSL, which 
-# is more current than MODIS, to shrink the lake.
-# The basemap function "maskocean" is used to mask out the lake area.
-
-# I make the modification in the geo_em.d0*.nc files for each domain after running GEOGRID
-
-#from netCDF4 import Dataset  # we dont have this library. Use scipy instead
-from scipy.io import netcdf
-import matplotlib.pyplot as plt
-from mpl_toolkits.basemap import Basemap, maskoceans
-import numpy as np
-import os
-import shutil
-
-from fucntions.custom_domains import get_domain # you don't have to have this
-                                                # It's just a dictionary of lats/lons for
-                                                # predefined lat/lon boundaries around the lake.
-
-def cut_data(bl_lat,tr_lat,bl_lon,tr_lon,lat,lon,buff=0):
-    '''    
-    Cut down data for domain for faster plotting.
-        
-    input: the bottom left corner and top right corner lat/lon coordinates
-        bl_lat = bottom left latitude
-        tr_lat = top right latitude
-        bl_lon = bottom left longitude
-        tr_lon = top right longitude
-        buff   = is a buffer in case the domain is skewed resulting in blank spots
-                 on the map plot.
-    return: the max and min of each the arrays x and y coordinates    
-    
-    '''
-    lat_limit = np.logical_and(lat>bl_lat,lat<tr_lat)
-    lon_limit = np.logical_and(lon>bl_lon,lon<tr_lon)
-    
-    total_limit = np.logical_and(lat_limit,lon_limit)
-    
-    xmin = np.min(np.where(total_limit==True)[0])-buff # +/- a buffer to cover map area 
-    xmax = np.max(np.where(total_limit==True)[0])+buff
-    ymin = np.min(np.where(total_limit==True)[1])-buff
-    ymax = np.max(np.where(total_limit==True)[1])+buff
-    
-    return xmin,xmax,ymin,ymax                                                
-                                                
-def fix_nonlake_val(original, lat, lon, new_value):
-    """
-    Function creates a new array of the original variable with lake modification.
-    
-    Input the original 2D array, specify the new value.
-    Everything that isn't a python basemap defined GSL will be replaced with 
-    the new value.
-        Example 1)
-        For original=lakemask
-        If it's not really lake, then replace with 1 (land).
-        Example 2)
-        For original=lake_depth
-        If it's not really lake, then replace with a depth (10).
-        
-    """
-    
-    # 1) We don't want to replace all the water points in the state, just 
-    #    arount the GSL. So, grab a subdomain...
-
-    # cut the data points to our GSL cut domain from my custom domain dictionary
-    GSL = get_domain('great_salt_lake_cut')
-    bl_lat = GSL['bot_left_lat']
-    bl_lon = GSL['bot_left_lon']
-    tr_lat = GSL['top_right_lat']
-    tr_lon = GSL['top_right_lon']
-    ymin,ymax,xmin,xmax = cut_data(bl_lat,tr_lat,bl_lon,tr_lon,lat,lon) 
-    #These are the index value max/mins for the section of interest
-
-    
-    
-    # 2) Use maskoceans to identify points that are not lake based on pythons 
-    #    basemap. (see main part of code for this variable)   
-
-    #   shrink_lake is a masked array.
-    #   shrink_lake.mask is a true/false array that tells us if the data point
-    #   are (True) or are not (False) lake.
-    
-    # 3) Make a copy of the original data. We will replace the non-lake points 
-    #    with a new value. We make an intermediate (i) lake where we change
-    #    all the masked points in the entire domain (we will use these changes
-    #    to create the final form in step 4)
-    i_lake = original.copy()
-    
-    #If point is not really ocean/lake (if it is land) then set with new value
-    # False == Land
-    remove_lake = np.logical_and(landmask==0,shrink_lake.mask==False)    
-    i_lake[remove_lake]=new_value
-    #i_lake[shrink_lake.mask==False] = new_value
-    
-    ## !IMPORTANT! We don't replace WRF land points with python lake points. 
-    ## In other words, if WRF says it's land, keep it land. 
-    ## Else, uncomment the line below and make adjustment to new_value...
-    #i_lake[shrink_lake.mask==True] = 0 # if point is ocean/lake, set landmask to ocean 
-    
-    # 4) Ok, now we have changed all the points in the entire domain based on
-    #    the shrink_lake mask. Now we only want to make changes to the
-    #    subdomain, the region right around the lake as we defined in step 1.
-    new_lake = original.copy()
-    new_lake[ymin:ymax,xmin:xmax] = i_lake[ymin:ymax,xmin:xmax]
-    
-    # 5) Make any other changes few changes in any extra spots
-    # Add water back in Willard Bay
-    sub = get_domain('willard_bay')
-    bl_lat = sub['bot_left_lat']
-    bl_lon = sub['bot_left_lon']
-    tr_lat = sub['top_right_lat']
-    tr_lon = sub['top_right_lon']
-    ymin,ymax,xmin,xmax = cut_data(bl_lat,tr_lat,bl_lon,tr_lon,lat,lon)     
-    new_lake[ymin:ymax,xmin:xmax] = original[ymin:ymax,xmin:xmax]
-    
-    # 5) Finally, return the new_lake 2D array.
-    return new_lake
-    
-
-def confirm_save(old,new,replace_this, lat, lon, NEW_FILE):
-    """
-    Function plots the change so you can visually compare the 
-    modification and asks if you wish to save the new value.
-    If it looks good, saves the new data.
-    """
-     
-    x,y = m(lon,lat)
-    
-    plt.suptitle("Check to make sure these changes look right for "+replace_this)
-    
-    plt.subplot(1,3,1)
-    m.drawstates(color='k', linewidth=.8)
-    m.drawcoastlines(color='k')
-    m.drawcountries(color='k', linewidth=1.25)
-    plt.pcolormesh(x,y,old)
-    plt.title('Before Surgery')
-    
-    plt.subplot(1,3,2)
-    plt.title('After Surgery')
-    
-    # Draw the area that we have modified
-    GSL = get_domain('great_salt_lake_cut')
-    toprightlat = GSL['top_right_lat']
-    topleftlat = GSL['top_right_lat']
-    toprightlon = GSL['top_right_lon']
-    topleftlon = GSL['bot_left_lon']
-    botrightlat = GSL['bot_left_lat']
-    botrightlon = GSL['top_right_lon']
-    botleftlat = GSL['bot_left_lat']
-    botleftlon = GSL['bot_left_lon']
-    
-    m.drawgreatcircle(toprightlon,toprightlat,topleftlon,topleftlat, color='#FFFF4C', linewidth='3')
-    m.drawgreatcircle(topleftlon,topleftlat,botleftlon,botleftlat, color='#FFFF4c', linewidth='3')
-    m.drawgreatcircle(botleftlon,botleftlat,botrightlon,botrightlat, color='#FFFF4c', linewidth='3')
-    m.drawgreatcircle(botrightlon,botrightlat,toprightlon,toprightlat, color='#FFFF4c', linewidth='3')
-    
-    ## Draw Box Elder County water area shapefile to locate Willard Bay
-    #m.readshapefile(HOME+'shape_files/tl_2015_BoxElder_areawater/tl_2015_49003_areawater','roads', linewidth=.25)
-    
-    m.drawstates(color='k', linewidth=.8)
-    m.drawcoastlines(color='k')
-    m.drawcountries(color='k', linewidth=1.25)
-    plt.pcolormesh(x,y,new)
-    
-    plt.subplot(1,3,3)
-    plt.title('Difference')
-    m.drawstates(color='k', linewidth=.8)
-    m.drawcoastlines(color='k')
-    m.drawcountries(color='k', linewidth=1.25)
-    plt.pcolormesh(x,y,old-new,cmap="bwr")   
-    
-    
-    plt.show()
-    
-    print "Going to replace ",replace_this," variable."
-    good_to_go = raw_input("Does this look good? (y/n): ")
-    if good_to_go=='y':
-        print "Ok, saving a new geo file for WRF: "+BASE+'lakesnip_'+FILE    
-    
-        #Open Copied File in append mode
-        nc_copy = netcdf.netcdf_file(NEW_FILE,'a')
-        nc_copy.variables[replace_this][0] = new
-        nc_copy.sync()
-        nc_copy.close()
-        
-        print "Edited the new NetCDF file. View and check with ncview"    
-
-
-#==============================================================================
-#==============================================================================
-
-#====================================================
-# Open the geo_em files for each domain
-#====================================================
-
-#domain = 'd01'
-domain = 'd02'
-BASE = '/uufs/chpc.utah.edu/common/home/horel-group4/model/bblaylock/WRF3.7_kingspeakTest/WPS/'
-FILE = 'geo_em.%s.nc' % domain
-HOME = '/uufs/chpc.utah.edu/common/home/u0553130/'
-nc = netcdf.netcdf_file(BASE+FILE,'r')
-
-# Make a copy of the original that we will write the new data to.
-NEW_FILE = BASE+'lakesnip_'+FILE # new file name
-shutil.copy2(BASE+FILE,NEW_FILE) # copy the original file
-
-#====================================================
-# Get variables from NetCDF file
-#====================================================
-# Open the XLAT, XLON variable
-lat = nc.variables['XLAT_M'][0]
-lat = lat.copy()
-lon = nc.variables['XLONG_M'][0]
-lon = lon.copy()
-
-# Open the variables that need to be changed to fix lake area
-landmask = nc.variables['LANDMASK'][0].copy()
-lakedepth = nc.variables['LAKE_DEPTH'][0].copy()
-LandUseCat = nc.variables['LU_INDEX'][0].copy()
-#additional variables needed to change (03/28/2016)
-SoilBot = nc.variables['SCB_DOM'][0].copy()
-SoilTop = nc.variables['SCT_DOM'][0].copy()
-
-
-
-#====================================================
-# Set up basemap
-#====================================================
-# Domain Boundaries
-bot_left_lat  = lat[0][0]-.5 
-bot_left_lon  = lon[0][0]-.5
-top_right_lat = lat[-1][-1]+.5
-top_right_lon = lon[-1][-1]+.5
-
-# Create Basemap
-MP = 'cyl'
-if MP == 'cyl':
-    ## Map in cylindrical projection (data points may apear skewed)
-    m = Basemap(resolution='i',area_thresh=1.,projection='cyl',\
-        llcrnrlon=bot_left_lon,llcrnrlat=bot_left_lat,\
-        urcrnrlon=top_right_lon,urcrnrlat=top_right_lat,)
-
-if MP == 'lcc':
-    ## Map in HRRR projected Coordinates
-    m = Basemap(resolution='i',area_thresh=1.,projection='lcc',\
-        lat_0=38.5,lon_0=-97.5,\
-        lat_1=38.5, lat_2=38.5,\
-        llcrnrlon=bot_left_lon,llcrnrlat=bot_left_lat,\
-        urcrnrlon=top_right_lon,urcrnrlat=top_right_lat,)
-
-        
-# This is step 2 of the function fix_nonlake_val
-# We do this outside the function so we only have to calculate it once.
-shrink_lake = maskoceans(lon,lat,landmask,
-                     inlands=True,   # we want to include lakes in our mask (not all the world's lakes are included in the python basemap)
-                     resolution='f', # get the highest resolution
-                     grid=1.25)      # and the best grid spacing in basemap
-
-#====================================================
-# Fix values that aren't really lake
-#====================================================
-new_landmask = fix_nonlake_val(landmask,lat,lon,1)      # If it's not lake, then make it land (1)
-new_lakedepth = fix_nonlake_val(lakedepth,lat,lon,10)   # If it's not lake, then set to the standard depth (10)
-new_LandUseCat = fix_nonlake_val(LandUseCat,lat,lon,16) # If it's not lake, then set as "barren or Sparely vegetated" (16)
-
-# additional mods (thanks Matthew Scutter) (03/28/2016)
-new_SoilBot = fix_nonlake_val(SoilBot,lat,lon,8) # If it's not lake, then set as "silty clay loam" (8)
-new_SoilTop = fix_nonlake_val(LandUseCat,lat,lon,11) # If it's not lake, then set as "Silty Clay" (11)
-
-#====================================================
-# Confirm and save changes
-#====================================================
-confirm_save(landmask,new_landmask,'LANDMASK',lat,lon,NEW_FILE)
-confirm_save(lakedepth,new_lakedepth,'LAKE_DEPTH',lat,lon,NEW_FILE)
-confirm_save(LandUseCat,new_LandUseCat,'LU_INDEX',lat,lon,NEW_FILE)
-
-# additional mods (thanks Matthew Scutter) (03/28/2016)
-confirm_save(SoilBot,new_SoilBot,'SCB_DOM',lat,lon,NEW_FILE)
-confirm_save(SoilTop,new_SoilTop,'SCT_DOM',lat,lon,NEW_FILE)    
-</textarea>
-        <br>
-        <p>When it's finished, it will create a new <b>geo_em_d0x.nc</b> file. To utilize the edits, rename the file
-		in your WPS directory and re-run <b>metgrid</b>. 
-		<p><img ALIGN=center height="300px" class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/lake_BaA.png">
-		<br>
-		<p>Also need to modify the following 3D variables with another script not posted here yet:
-        <ul style="padding-left:100px">
-            <li> LANDUSEF
-            <li> SOILCBOT
-            <li> SOILCTOP
-        </ul>
-        <p>Below shows changes made to the Land Use Index where the points that are no longer lake are changed to barren land.
-        The black lake outline is the python basemap Great Salt Lake boarder.
-        
-		<p><img class='style1' width="98%" src="./images/LU_changes.png">
-        <p>
-        <p align=right>(Colormap available on GitHub)<a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/landuse_colormap.py"><img align=right width='70px' src="./images/githubcode.png"></a>
-        <p>
-        <br>
-		<br>
-		<a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-    
-    
-<br><br>
-
-
-	<div class="section">
-		<a name="METGRID_MOD"></a>
-		<h3>METGRID.TBL Modification</h3>
-		
-		<p>I don't really understand how METGRID works, but it's important when changing the lake size in geo_em.d0* files.
-        The issue with the METGRID.TBL is that it reverts back to the old lake size
-		when it writes the LANDSEA variable. Here is a hack: I made the following modification which
-		masks the LANDSEA based on the LANDMASK variable, and sets the points that are not
-		land to land. 
-        <p>This is important because it defines variables like Albedo and Green Area Fraction based on a lake mask.
+                <p>I don't really understand how METGRID works, but it's important when changing the lake size in geo_em.d0* files.
+                The issue with the METGRID.TBL is that it reverts back to the old lake size
+                when it writes the LANDSEA variable. Here is a hack: I made the following modification which
+                masks the LANDSEA based on the LANDMASK variable, and sets the points that are not
+                land to land. 
+                <p>This is important because it defines variables like Albedo and Green Area Fraction based on a lake mask.
 		<textarea disabled style="height:150px">
 ========================================
 name=LANDSEA
@@ -404,489 +123,464 @@ name=LANDSEA
                                # instances below??? (Is LANDSEA used for anything later?)
 ========================================
 		</textarea>
-		<br>
-        <br>
-        <a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-<br>
+        </div>
 
-	<div class="section">
-		<a name="GEOGRID_MOD"></a>
-		<h3>GEOGRID.TBL Modification</h3>
-		
-		<p>There are many variables that are affected by the lake mask, so I turned all the masking  
-        off in the GEOGRID.TBL file. This way geogrid doesn't think there is a lake
-        and <b>we can manually add the mask to these variables later with a modified version of the 
-        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html#SHRINK">shrink_GSL.py</a> script</b>.
-        <p> Simply comment out masked=water line
-		<textarea disabled style="height:150px">
+        <div id="tab4" class="tab-pane fade">
+                <h3>GEOGRID.TBL Modification</h3>
+                <p>There are many variables that are affected by the lake mask, so I turned all the masking  
+                off in the GEOGRID.TBL file. This way geogrid doesn't think there is a lake
+                and <b>we can manually add the mask to these variables later with a modified version of the 
+                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html#SHRINK">shrink_GSL.py</a> script</b>.
+                <p> Simply comment out masked=water line
+                <textarea disabled style="height:150px">
 # See options.txt for a (somewhat up to date) list of the 
 # options that may be specified here.
 ===============================
 name = HGT_M
-        priority = 1
-        dest_type = continuous
-        smooth_option = smth-desmth_special; smooth_passes=1
-        fill_missing=0.
-        interp_option =     30s:average_gcell(4.0)+four_pt+average_4pt
-        interp_option =      2m:four_pt
-        interp_option =      5m:four_pt
-        interp_option =     10m:four_pt
-        interp_option = default:four_pt
-        rel_path=     30s:topo_30s/
-        rel_path=      2m:topo_2m/
-        rel_path=      5m:topo_5m/
-        rel_path=     10m:topo_10m/
-        rel_path= default:topo_2m/
+priority = 1
+dest_type = continuous
+smooth_option = smth-desmth_special; smooth_passes=1
+fill_missing=0.
+interp_option =     30s:average_gcell(4.0)+four_pt+average_4pt
+interp_option =      2m:four_pt
+interp_option =      5m:four_pt
+interp_option =     10m:four_pt
+interp_option = default:four_pt
+rel_path=     30s:topo_30s/
+rel_path=      2m:topo_2m/
+rel_path=      5m:topo_5m/
+rel_path=     10m:topo_10m/
+rel_path= default:topo_2m/
 ===============================
 name=LANDUSEF
-        priority=1
-        dest_type=categorical
-        z_dim_name=land_cat
-        landmask_water =   modis_15s:17            # Calculate a landmask from this field
-        landmask_water =   modis_30s:17            # Calculate a landmask from this field
-        landmask_water = modis_lakes:17,21         # Calculate a landmask from this field
-        landmask_water =  usgs_lakes:16,28         # Calculate a landmask from this field
-        landmask_water = nlcd2006_9s:17            # Calculate a landmask from this field
-        landmask_water =nlcd2006_30s:17            # Calculate a landmask from this field
-        landmask_water = nlcd2011_9s:17            # Calculate a landmask from this field
-        landmask_water =    nlcd2006:17            # Calculate a landmask from this field
-        landmask_water =     default:16            # Calculate a landmask from this field
-        dominant=LU_INDEX
-        interp_option = nlcd2006_9s:average_gcell(0.0)
-        interp_option =nlcd2006_30s:average_gcell(0.0)
-        interp_option = nlcd2011_9s:average_gcell(0.0)
-        interp_option =    nlcd2006:nearest_neighbor
-        interp_option =    ssib_10m:four_pt
-        interp_option =     ssib_5m:four_pt
-        interp_option =   modis_15s:nearest_neighbor
-        interp_option =   modis_30s:nearest_neighbor
-        interp_option =         30s:nearest_neighbor
-        interp_option =  usgs_lakes:nearest_neighbor
-        interp_option = modis_lakes:nearest_neighbor
-        interp_option =          2m:four_pt
-        interp_option =          5m:four_pt
-        interp_option =         10m:four_pt
-        interp_option =      default:four_pt
-        rel_path= nlcd2006_9s:nlcd2006_ll_9s/
-        rel_path=nlcd2006_30s:nlcd2006_ll_30s/
-        rel_path= nlcd2011_9s:nlcd2011_ll_9s/
-        rel_path=    nlcd2006:nlcd2006_ll_30s/
-        rel_path=    ssib_10m:ssib_landuse_10m/
-        rel_path=     ssib_5m:ssib_landuse_5m/
-        rel_path=   modis_15s:modis_landuse_20class_15s/
-        rel_path=   modis_30s:modis_landuse_20class_30s/
-        rel_path=         30s:landuse_30s/
-        rel_path=  usgs_lakes:landuse_30s_with_lakes/
-        rel_path= modis_lakes:modis_landuse_21class_30s/
-        rel_path=          2m:landuse_2m/
-        rel_path=          5m:landuse_5m/
-        rel_path=         10m:landuse_10m/
-        rel_path=     default:landuse_2m/
+priority=1
+dest_type=categorical
+z_dim_name=land_cat
+landmask_water =   modis_15s:17            # Calculate a landmask from this field
+landmask_water =   modis_30s:17            # Calculate a landmask from this field
+landmask_water = modis_lakes:17,21         # Calculate a landmask from this field
+landmask_water =  usgs_lakes:16,28         # Calculate a landmask from this field
+landmask_water = nlcd2006_9s:17            # Calculate a landmask from this field
+landmask_water =nlcd2006_30s:17            # Calculate a landmask from this field
+landmask_water = nlcd2011_9s:17            # Calculate a landmask from this field
+landmask_water =    nlcd2006:17            # Calculate a landmask from this field
+landmask_water =     default:16            # Calculate a landmask from this field
+dominant=LU_INDEX
+interp_option = nlcd2006_9s:average_gcell(0.0)
+interp_option =nlcd2006_30s:average_gcell(0.0)
+interp_option = nlcd2011_9s:average_gcell(0.0)
+interp_option =    nlcd2006:nearest_neighbor
+interp_option =    ssib_10m:four_pt
+interp_option =     ssib_5m:four_pt
+interp_option =   modis_15s:nearest_neighbor
+interp_option =   modis_30s:nearest_neighbor
+interp_option =         30s:nearest_neighbor
+interp_option =  usgs_lakes:nearest_neighbor
+interp_option = modis_lakes:nearest_neighbor
+interp_option =          2m:four_pt
+interp_option =          5m:four_pt
+interp_option =         10m:four_pt
+interp_option =      default:four_pt
+rel_path= nlcd2006_9s:nlcd2006_ll_9s/
+rel_path=nlcd2006_30s:nlcd2006_ll_30s/
+rel_path= nlcd2011_9s:nlcd2011_ll_9s/
+rel_path=    nlcd2006:nlcd2006_ll_30s/
+rel_path=    ssib_10m:ssib_landuse_10m/
+rel_path=     ssib_5m:ssib_landuse_5m/
+rel_path=   modis_15s:modis_landuse_20class_15s/
+rel_path=   modis_30s:modis_landuse_20class_30s/
+rel_path=         30s:landuse_30s/
+rel_path=  usgs_lakes:landuse_30s_with_lakes/
+rel_path= modis_lakes:modis_landuse_21class_30s/
+rel_path=          2m:landuse_2m/
+rel_path=          5m:landuse_5m/
+rel_path=         10m:landuse_10m/
+rel_path=     default:landuse_2m/
 ===============================
 name=SOILTEMP
-        priority=1
-        dest_type=continuous
-        interp_option=default:sixteen_pt+four_pt+average_4pt+average_16pt+search
-      #  masked=water
-        fill_missing=0.
-        rel_path=default:soiltemp_1deg/
+priority=1
+dest_type=continuous
+interp_option=default:sixteen_pt+four_pt+average_4pt+average_16pt+search
+#  masked=water
+fill_missing=0.
+rel_path=default:soiltemp_1deg/
 ===============================
 name=SOILCTOP
-        priority=1
-        dest_type=categorical
-        z_dim_name=soil_cat
-        dominant=SCT_DOM
-        interp_option =     30s:nearest_neighbor
-        interp_option =      2m:four_pt
-        interp_option =      5m:four_pt
-        interp_option =     10m:four_pt
-        interp_option = default:four_pt
-        rel_path=     30s:soiltype_top_30s/
-        rel_path=      2m:soiltype_top_2m/
-        rel_path=      5m:soiltype_top_5m/
-        rel_path=     10m:soiltype_top_10m/
-        rel_path= default:soiltype_top_2m/
+priority=1
+dest_type=categorical
+z_dim_name=soil_cat
+dominant=SCT_DOM
+interp_option =     30s:nearest_neighbor
+interp_option =      2m:four_pt
+interp_option =      5m:four_pt
+interp_option =     10m:four_pt
+interp_option = default:four_pt
+rel_path=     30s:soiltype_top_30s/
+rel_path=      2m:soiltype_top_2m/
+rel_path=      5m:soiltype_top_5m/
+rel_path=     10m:soiltype_top_10m/
+rel_path= default:soiltype_top_2m/
 ===============================
 name=SOILCBOT
-        priority=1
-        dest_type=categorical
-        z_dim_name=soil_cat
-        dominant=SCB_DOM
-        interp_option =     30s:nearest_neighbor
-        interp_option =      2m:four_pt
-        interp_option =      5m:four_pt
-        interp_option =     10m:four_pt
-        interp_option = default:four_pt
-        rel_path=     30s:soiltype_bot_30s/
-        rel_path=      2m:soiltype_bot_2m/
-        rel_path=      5m:soiltype_bot_5m/
-        rel_path=     10m:soiltype_bot_10m/
-        rel_path= default:soiltype_bot_2m/
+priority=1
+dest_type=categorical
+z_dim_name=soil_cat
+dominant=SCB_DOM
+interp_option =     30s:nearest_neighbor
+interp_option =      2m:four_pt
+interp_option =      5m:four_pt
+interp_option =     10m:four_pt
+interp_option = default:four_pt
+rel_path=     30s:soiltype_bot_30s/
+rel_path=      2m:soiltype_bot_2m/
+rel_path=      5m:soiltype_bot_5m/
+rel_path=     10m:soiltype_bot_10m/
+rel_path= default:soiltype_bot_2m/
 ===============================
 name=ALBEDO12M
-        priority=1
-        dest_type=continuous
-        z_dim_name=month
-     #   masked = water
-        fill_missing = 8.
-        interp_option=default:four_pt+average_4pt+average_16pt+search
-        rel_path=default:albedo_ncep/
+priority=1
+dest_type=continuous
+z_dim_name=month
+#   masked = water
+fill_missing = 8.
+interp_option=default:four_pt+average_4pt+average_16pt+search
+rel_path=default:albedo_ncep/
 ===============================
 name=GREENFRAC
-        priority=1
-        dest_type=continuous
-        interp_option=modis_fpar:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
-        interp_option=default:four_pt+average_4pt+average_16pt+search
-        z_dim_name=month
-      #  masked = water
-        fill_missing = 0.
-        rel_path=modis_fpar:greenfrac_fpar_modis/
-        rel_path=default:greenfrac/
+priority=1
+dest_type=continuous
+interp_option=modis_fpar:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
+interp_option=default:four_pt+average_4pt+average_16pt+search
+z_dim_name=month
+#  masked = water
+fill_missing = 0.
+rel_path=modis_fpar:greenfrac_fpar_modis/
+rel_path=default:greenfrac/
 ===============================
 name=LAI12M
-        priority=1
-        dest_type=continuous
-        interp_option=modis_lai:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
-        interp_option=default:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
-        z_dim_name=month
-      #  masked = water
-        fill_missing = 0.
-        rel_path=modis_lai:lai_modis_30s/
-        rel_path=default:lai_modis_10m/
-        flag_in_output=FLAG_LAI12M
+priority=1
+dest_type=continuous
+interp_option=modis_lai:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
+interp_option=default:average_gcell(4.0)+four_pt+average_4pt+average_16pt+search
+z_dim_name=month
+#  masked = water
+fill_missing = 0.
+rel_path=modis_lai:lai_modis_30s/
+rel_path=default:lai_modis_10m/
+flag_in_output=FLAG_LAI12M
 ===============================
 name=SNOALB
-        priority=1
-        dest_type=continuous
-        interp_option=default:four_pt+average_4pt+average_16pt+search
-      #  masked = water
-        fill_missing = 0.
-        rel_path=default:maxsnowalb/
+priority=1
+dest_type=continuous
+interp_option=default:four_pt+average_4pt+average_16pt+search
+#  masked = water
+fill_missing = 0.
+rel_path=default:maxsnowalb/
 ===============================
 name=SLOPECAT
-        priority=1
-        dominant_only=SLOPECAT
-        dest_type=categorical
-        z_dim_name=slope_cat
-      #  masked = water
-        fill_missing = 0.
-        interp_option=default:nearest_neighbor+average_16pt+search
-        rel_path=default:islope/
+priority=1
+dominant_only=SLOPECAT
+dest_type=categorical
+z_dim_name=slope_cat
+#  masked = water
+fill_missing = 0.
+interp_option=default:nearest_neighbor+average_16pt+search
+rel_path=default:islope/
 ===============================
 name = CON
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/con/
-        rel_path = 10m:orogwd_10m/con/
-        rel_path = 20m:orogwd_20m/con/
-        rel_path = 30m:orogwd_30m/con/
-        rel_path = 1deg:orogwd_1deg/con/
-        rel_path = 2deg:orogwd_2deg/con/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/con/
+rel_path = 10m:orogwd_10m/con/
+rel_path = 20m:orogwd_20m/con/
+rel_path = 30m:orogwd_30m/con/
+rel_path = 1deg:orogwd_1deg/con/
+rel_path = 2deg:orogwd_2deg/con/
 ===============================
 name = VAR
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/var/
-        rel_path = 10m:orogwd_10m/var/
-        rel_path = 20m:orogwd_20m/var/
-        rel_path = 30m:orogwd_30m/var/
-        rel_path = 1deg:orogwd_1deg/var/
-        rel_path = 2deg:orogwd_2deg/var/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/var/
+rel_path = 10m:orogwd_10m/var/
+rel_path = 20m:orogwd_20m/var/
+rel_path = 30m:orogwd_30m/var/
+rel_path = 1deg:orogwd_1deg/var/
+rel_path = 2deg:orogwd_2deg/var/
 ===============================
 name = OA1
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/oa1/
-        rel_path = 10m:orogwd_10m/oa1/
-        rel_path = 20m:orogwd_20m/oa1/
-        rel_path = 30m:orogwd_30m/oa1/
-        rel_path = 1deg:orogwd_1deg/oa1/
-        rel_path = 2deg:orogwd_2deg/oa1/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/oa1/
+rel_path = 10m:orogwd_10m/oa1/
+rel_path = 20m:orogwd_20m/oa1/
+rel_path = 30m:orogwd_30m/oa1/
+rel_path = 1deg:orogwd_1deg/oa1/
+rel_path = 2deg:orogwd_2deg/oa1/
 ===============================
 name = OA2
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/oa2/
-        rel_path = 10m:orogwd_10m/oa2/
-        rel_path = 20m:orogwd_20m/oa2/
-        rel_path = 30m:orogwd_30m/oa2/
-        rel_path = 1deg:orogwd_1deg/oa2/
-        rel_path = 2deg:orogwd_2deg/oa2/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/oa2/
+rel_path = 10m:orogwd_10m/oa2/
+rel_path = 20m:orogwd_20m/oa2/
+rel_path = 30m:orogwd_30m/oa2/
+rel_path = 1deg:orogwd_1deg/oa2/
+rel_path = 2deg:orogwd_2deg/oa2/
 ===============================
 name = OA3
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/oa3/
-        rel_path = 10m:orogwd_10m/oa3/
-        rel_path = 20m:orogwd_20m/oa3/
-        rel_path = 30m:orogwd_30m/oa3/
-        rel_path = 1deg:orogwd_1deg/oa3/
-        rel_path = 2deg:orogwd_2deg/oa3/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/oa3/
+rel_path = 10m:orogwd_10m/oa3/
+rel_path = 20m:orogwd_20m/oa3/
+rel_path = 30m:orogwd_30m/oa3/
+rel_path = 1deg:orogwd_1deg/oa3/
+rel_path = 2deg:orogwd_2deg/oa3/
 ===============================
 name = OA4
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/oa4/
-        rel_path = 10m:orogwd_10m/oa4/
-        rel_path = 20m:orogwd_20m/oa4/
-        rel_path = 30m:orogwd_30m/oa4/
-        rel_path = 1deg:orogwd_1deg/oa4/
-        rel_path = 2deg:orogwd_2deg/oa4/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/oa4/
+rel_path = 10m:orogwd_10m/oa4/
+rel_path = 20m:orogwd_20m/oa4/
+rel_path = 30m:orogwd_30m/oa4/
+rel_path = 1deg:orogwd_1deg/oa4/
+rel_path = 2deg:orogwd_2deg/oa4/
 ===============================
 name = OL1
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/ol1/
-        rel_path = 10m:orogwd_10m/ol1/
-        rel_path = 20m:orogwd_20m/ol1/
-        rel_path = 30m:orogwd_30m/ol1/
-        rel_path = 1deg:orogwd_1deg/ol1/
-        rel_path = 2deg:orogwd_2deg/ol1/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/ol1/
+rel_path = 10m:orogwd_10m/ol1/
+rel_path = 20m:orogwd_20m/ol1/
+rel_path = 30m:orogwd_30m/ol1/
+rel_path = 1deg:orogwd_1deg/ol1/
+rel_path = 2deg:orogwd_2deg/ol1/
 ===============================
 name = OL2
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/ol2/
-        rel_path = 10m:orogwd_10m/ol2/
-        rel_path = 20m:orogwd_20m/ol2/
-        rel_path = 30m:orogwd_30m/ol2/
-        rel_path = 1deg:orogwd_1deg/ol2/
-        rel_path = 2deg:orogwd_2deg/ol2/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/ol2/
+rel_path = 10m:orogwd_10m/ol2/
+rel_path = 20m:orogwd_20m/ol2/
+rel_path = 30m:orogwd_30m/ol2/
+rel_path = 1deg:orogwd_1deg/ol2/
+rel_path = 2deg:orogwd_2deg/ol2/
 ===============================
 name = OL3
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/ol3/
-        rel_path = 10m:orogwd_10m/ol3/
-        rel_path = 20m:orogwd_20m/ol3/
-        rel_path = 30m:orogwd_30m/ol3/
-        rel_path = 1deg:orogwd_1deg/ol3/
-        rel_path = 2deg:orogwd_2deg/ol3/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/ol3/
+rel_path = 10m:orogwd_10m/ol3/
+rel_path = 20m:orogwd_20m/ol3/
+rel_path = 30m:orogwd_30m/ol3/
+rel_path = 1deg:orogwd_1deg/ol3/
+rel_path = 2deg:orogwd_2deg/ol3/
 ===============================
 name = OL4
-        priority = 1
-        dest_type = continuous
-      #  masked=water
-        fill_missing=0.
-        interp_option = default:average_4pt
-        interp_option = 10m:average_4pt
-        interp_option = 20m:average_4pt
-        interp_option = 30m:average_4pt
-        interp_option = 1deg:average_4pt
-        interp_option = 2deg:average_4pt
-        rel_path = default:orogwd_10m/ol4/
-        rel_path = 10m:orogwd_10m/ol4/
-        rel_path = 20m:orogwd_20m/ol4/
-        rel_path = 30m:orogwd_30m/ol4/
-        rel_path = 1deg:orogwd_1deg/ol4/
-        rel_path = 2deg:orogwd_2deg/ol4/
+priority = 1
+dest_type = continuous
+#  masked=water
+fill_missing=0.
+interp_option = default:average_4pt
+interp_option = 10m:average_4pt
+interp_option = 20m:average_4pt
+interp_option = 30m:average_4pt
+interp_option = 1deg:average_4pt
+interp_option = 2deg:average_4pt
+rel_path = default:orogwd_10m/ol4/
+rel_path = 10m:orogwd_10m/ol4/
+rel_path = 20m:orogwd_20m/ol4/
+rel_path = 30m:orogwd_30m/ol4/
+rel_path = 1deg:orogwd_1deg/ol4/
+rel_path = 2deg:orogwd_2deg/ol4/
 ===============================
 name = VAR_SSO 
-        priority = 1
-        dest_type = continuous
-        fill_missing=0.
-        interp_option =   30s:average_gcell(4.0)+four_pt+average_4pt
-        interp_option =   2m:average_gcell(4.0)+four_pt+average_4pt
-        interp_option =   5m:average_gcell(4.0)+four_pt+average_4pt
-        interp_option =   10m:average_gcell(4.0)+four_pt+average_4pt
-        interp_option =   default:average_gcell(4.0)+four_pt+average_4pt
-        rel_path =        30s:varsso/
-        rel_path =        2m:varsso_2m/
-        rel_path =        5m:varsso_5m/
-        rel_path =        10m:varsso_10m/
-        rel_path =        default:varsso_10m/
+priority = 1
+dest_type = continuous
+fill_missing=0.
+interp_option =   30s:average_gcell(4.0)+four_pt+average_4pt
+interp_option =   2m:average_gcell(4.0)+four_pt+average_4pt
+interp_option =   5m:average_gcell(4.0)+four_pt+average_4pt
+interp_option =   10m:average_gcell(4.0)+four_pt+average_4pt
+interp_option =   default:average_gcell(4.0)+four_pt+average_4pt
+rel_path =        30s:varsso/
+rel_path =        2m:varsso_2m/
+rel_path =        5m:varsso_5m/
+rel_path =        10m:varsso_10m/
+rel_path =        default:varsso_10m/
 ===============================
 name = LAKE_DEPTH
-        priority=1
-        dest_type = continuous
-        fill_missing = 10.
-      #  masked=land
-        interp_option = default:average_gcell(1.0)+search(5)
-        rel_path = default:lake_depth/
-        flag_in_output=FLAG_LAKE_DEPTH
+priority=1
+dest_type = continuous
+fill_missing = 10.
+#  masked=land
+interp_option = default:average_gcell(1.0)+search(5)
+rel_path = default:lake_depth/
+flag_in_output=FLAG_LAKE_DEPTH
 ===============================
 name=URB_PARAM
-        priority=1
-        optional=yes
-        dest_type=continuous
-        fill_missing = 0.
-        z_dim_name=num_urb_params
-        interp_option=default:nearest_neighbor
-        rel_path=default:NUDAPT44_1km/
+priority=1
+optional=yes
+dest_type=continuous
+fill_missing = 0.
+z_dim_name=num_urb_params
+interp_option=default:nearest_neighbor
+rel_path=default:NUDAPT44_1km/
 ===============================
 name=IMPERV
-        priority=1
-        optional=yes
-        dest_type=continuous
-        interp_option = default:average_gcell(0.0)
-      #  masked=water
-        fill_missing=0.
-        rel_path = default:nlcd2011_imp_ll_9s/
+priority=1
+optional=yes
+dest_type=continuous
+interp_option = default:average_gcell(0.0)
+#  masked=water
+fill_missing=0.
+rel_path = default:nlcd2011_imp_ll_9s/
 ===============================
 name=CANFRA
-        priority=1
-        optional=yes
-        dest_type=continuous
-        interp_option = default:average_gcell(0.0)
-      #  masked=water
-        fill_missing=0.
-        rel_path = default:nlcd2011_can_ll_9s/
+priority=1
+optional=yes
+dest_type=continuous
+interp_option = default:average_gcell(0.0)
+#  masked=water
+fill_missing=0.
+rel_path = default:nlcd2011_can_ll_9s/
 ===============================
-		</textarea>
-		<br>
-        <br>
-        <a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-<br>
+</textarea>
+        </div>
 
+        <div id="tab5" class="tab-pane fade">
+                <h3>Modify Lake Temperature in Initialization of Real</h3>
 
-
-
-	<div class="section">
-		<a name="TEMP_MOD"></a>
-		<h3>Modify Lake Temperature in Initialization of Real</h3>
-		
-		<p>The lake surface temperature from the default MODIS land use input is about 6 degrees cooler than what was 
-        actually observed at the buoy. I added the following code to the <i>WRFV3/dyn_em/module_initialize_real.F</i>
-        to manually change the temperature of the Great Salt Lake.
-        <p>Added the code in the below textbox after the following comment and code near line 2529: 
-        <pre>!  At the initial time we care about values of soil moisture and temperature, other times are
+                <p>The lake surface temperature from the default MODIS land use input is about 6 degrees cooler than what was 
+                actually observed at the buoy. I added the following code to the <i>WRFV3/dyn_em/module_initialize_real.F</i>
+                to manually change the temperature of the Great Salt Lake.
+                <p>Added the code in the below textbox after the following comment and code near line 2529: 
+<pre>!  At the initial time we care about values of soil moisture and temperature, other times are
 !  ignored by the model, so we ignore them, too.
 
 IF ( domain_ClockIsStartTime(grid) ) THEN
-   account_for_zero_soil_moisture : SELECT CASE ( model_config_rec%sf_surface_physics(grid%id) )</pre>
-		<textarea disabled style="height:310px">
+account_for_zero_soil_moisture : SELECT CASE ( model_config_rec%sf_surface_physics(grid%id) )</pre>
+<textarea disabled style="height:310px">
 !----- BKB: Attempt to change Great Salt Lake Temperature ---------------------------
-        ! Modifications for the lake temperature, etc
-        ! Set GSL Temp
-        DO j = jts, MIN(jde-1,jte)
-            DO i = its, MIN(ide-1,ite)
-                IF ( ( grid%xlat(i,j) .gt. 40.5 ) .and.     &
-                     ( grid%xlat(i,j) .lt. 41.8 ) .and.     &
-                     ( grid%xlong(i,j) .gt. -113.25 ) .and. &
-                     ( grid%xlong(i,j) .lt. -112.0 ) .and.  &
-                     ( grid%ivgtyp(i,j) .eq. 17 ) ) THEN
-                  print*,'at ijk ',i,' ',j,' ',k
-                  print*,'sst changed from ',grid%tsk(i,j)
-                      grid%tsk(i,j) = 302.0
-                      grid%sst(i,j) = 302.0
-                  print*,'to ',grid%tsk(i,j)
-                END IF
-            END DO
-        END DO
+! Modifications for the lake temperature, etc
+! Set GSL Temp
+DO j = jts, MIN(jde-1,jte)
+DO i = its, MIN(ide-1,ite)
+IF ( ( grid%xlat(i,j) .gt. 40.5 ) .and.     &
+( grid%xlat(i,j) .lt. 41.8 ) .and.     &
+( grid%xlong(i,j) .gt. -113.25 ) .and. &
+( grid%xlong(i,j) .lt. -112.0 ) .and.  &
+( grid%ivgtyp(i,j) .eq. 17 ) ) THEN
+print*,'at ijk ',i,' ',j,' ',k
+print*,'sst changed from ',grid%tsk(i,j)
+grid%tsk(i,j) = 302.0
+grid%sst(i,j) = 302.0
+print*,'to ',grid%tsk(i,j)
+END IF
+END DO
+END DO
 !----- BKB: Attempt to change Great Salt Lake Temperature --------------------------
-		</textarea>
-		<p>Note: WRF doesn't vary the lake temperature at each time step. It assumes the lake surface temperature
-        will change slowly compared to the land surface temperature, so lake surface temperature stays constant
-        throughout the model run. Since I'm focused on a lake breeze in the afternoon I use an afternoon lake 
-        temperature to run the entire WRF simulation.
-		<p> Below is the change from the default lake size and temperature to my modified temperature to 302 K.
-        <br>
-        <img class="style1" width="88%" src="./images/lake_temp.png">
-        <br>
-        <a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-<br><br>
+                </textarea>
+                <p>Note: WRF doesn't vary the lake temperature at each time step. It assumes the lake surface temperature
+                will change slowly compared to the land surface temperature, so lake surface temperature stays constant
+                throughout the model run. Since I'm focused on a lake breeze in the afternoon I use an afternoon lake 
+                temperature to run the entire WRF simulation.
+                <p> Below is the change from the default lake size and temperature to my modified temperature to 302 K.
+                <br>
+                <img class="style1" width="88%" src="./images/lake_temp.png">
+        </div>
 
-<!-------- PhotoShop WRF -------------------------------------------------------------------------------------->
-	<div class="section">
-		<a name="PHOTO"></a>
-		<h3>Edit WRF fields in Photoshop</h3>
-		
-		<p><a href="https://github.com/blaylockbk/Ute_WRF/tree/master/edit_netcdf_in_photoshop"><img align=right src='./images/githubcode.png'></a>
-        I always thought it would be nice if I could load a netCDF file into photoshop and make changes
-        to fields with the paint brush and pencil tool.
-        <p>Well, now you can, with this three step process using Python (this only works with landuse or categorical data sets so far).
-        <p>This is a work in progress and will get more attention after I defend my thesis.
-        <ol>
-            <li>Convert a netCDF array into a bitmap image <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/netcdf_to_bitmap.py'>netcdf_to_bitmap.py</a>.
-            <li>Open image in PhotoShop and use the pencil tool to change colors (i.e. land use categories). Save image as bitmap.
-            <li>Open the modified land use image in Python <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/bitmap_to_netcdf.py'>bitmap_to_netcdf.py</a>.
-            and extract the colors as categories. Save array into the WRF netCDF file
-        </ol>
-        <p><img src='./images/photoshop_python.png' width='100%'>
-        <br>
-        <br>
-        <a href="lake_surgery.html#TOP">Back to Top</a>
-	</div>
-<br><br>
+        <div id="tab6" class="tab-pane fade">
+                <h3>Edit WRF fields in Photoshop</h3>
+                <p><a href="https://github.com/blaylockbk/Ute_WRF/tree/master/edit_netcdf_in_photoshop"><img align=right src='./images/githubcode.png'></a>
+                I always thought it would be nice if I could load a netCDF file into photoshop and make changes
+                to fields with the paint brush and pencil tool.
+                <p>Well, now you can, with this three step process using Python (this only works with landuse or categorical data sets so far).
+                <p>This is a work in progress and will get more attention after I defend my thesis.
+                <ol style="padding-left:60px;">
+                <li>Convert a netCDF array into a bitmap image <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/netcdf_to_bitmap.py'>netcdf_to_bitmap.py</a>.
+                <li>Open image in PhotoShop and use the pencil tool to change colors (i.e. land use categories). Save image as bitmap.
+                <li>Open the modified land use image in Python <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/bitmap_to_netcdf.py'>bitmap_to_netcdf.py</a>.
+                and extract the colors as categories. Save array into the WRF netCDF file
+                </ol>
+                <p><img src='./images/photoshop_python.png' width='100%'>
+        </div>
 
-
+    </div>
 </div>
-<br>
 
 
 <script src="./js/site/siteclose.js"></script>

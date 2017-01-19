@@ -11,465 +11,276 @@
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
-<br>
-
 <div id="content">
-<h1 align="center">WRF Resources</h1>
-<hr>
-Table of Contents:
-<ul style="padding: 10px; margin-left:30px;">
-<li><a href="wrf.html#TUTORIAL">WRF Tutorial: designed for UofU Students</a>
-<li><a href="wrf.html#TUTORIAL">How to run job on Kingspeak</a>
-<li><a href="hrrr.html#GEOGRID">WPS Geogrid Options</a>
-<li><a href="wrf.html#AUTOWPS">Automated WPS Script</a>
-<li><a href="hrrr.html">Initialize WRF with HRRR</a>
-<li><a href="wrf.html#REGISTRY">Edit Registry</a> 
-<li><a href="wrf.html#HIFREQ">Output a variable at higher frequency</a>
-<li><a href="wrf.html#TSLIST">tslist: Time Series and Vertical Profile at a point</a>
-<li><a href="wrf.html#UCM">Urban Canopy Model</a>
-<li><a href="wrf.html#SLURM">SLURM Script</a>
-<li><a href="wrf.html#CUSTOM">Setting up CHPC Modules</a>
-<li><a href="wrf.html#WRFVERT"">WRF Vertical Nesting: WRF 3.8</a>
-</ul>
-External Links
-<ul style="padding: 10px; margin-left:30px;">
-<li><a href="http://home.chpc.utah.edu/~u0198116/wrf/utahwrfusers.html"> UofU WRF User's Group</a>
-<li><a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/contents.html"> WRF User's Guide</a>
-<li><a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php"> Increase Frequency of WRF Output Variables</a>
-	<ul style="margin-left:30px;"><li><a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap5.htm#runtimeio">More on WRF Output</a></ul>
-	<ul style="margin-left:30px;"><li>Note: you can output variables at different time intervals. Just use a different stream integer in namelist and a new line in your "myoutfile.txt"</ul>
-<li><a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2014/cases/TimeSeriesOutput.php"> Generating Time Series Output</a>
-	<ul style="margin-left:30px;"><li><a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap5.htm#timeseries">More on time series </a></ul>
-</ul>
-<hr>
-<br>
+    <h1 align="center">
+    WRF Resources</h1>
+  
+  <!-- Tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1">WRF Tutorial</a></li>
+    <li><a data-toggle="tab" href="#tab2">How to run jobs on Kingspeak</a></li>
+	<li><a data-toggle="tab" href="#tab3">GeoGrid Options</a></li>
+	<li><a data-toggle="tab" href="#tab4">Edit Registry</a></li>
+	<li><a data-toggle="tab" href="#tab5">High Frequency Output</a></li>
+	<li><a data-toggle="tab" href="#tab6">tslist</a></li>
+	<li><a data-toggle="tab" href="#tab7">Urban Canopy Mode</a></li>
+	<li><a data-toggle="tab" href="#tab8">Misc.</a></li>
+	<li><a data-toggle="tab" href="#tab9">Set up CHPC Modules</a></li>
+  </ul>
 
-<!--******************************************************************************************-->
-<!--******************************************************************************************-->
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+			<h3>WRF Model Tutorial</h3>
+			<p>The Weather Research and Forecasting Model is used by 
+			researchers and operational meteorologists to create
+			custom made weather simulations to study specific situations or 
+			forecast in specific regions. The model is developed by UCAR and 
+			they have a very handy 
+			<a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/index.htm">tutorial</a>, 
+			but I found it nice to make my own with specific instructions for runing WRF on 
+			the group computers at the University of Utah. Hopefully this is helpful to others.
+			<iframe width="70%" height="427" src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21330&authkey=AGlCu6RQ5__75Q0&em=2"  frameborder="0" scrolling="no"></iframe>
+		</div>
 
-<div class="section">
-	<a name="TUTORIAL"></a>
-	<h3>WRF Model Tutorial</h3>
-	<p>The Weather Research and Forecasting Model is used by researchers and operational meteorologists to create
-	custom made weather simulations to study specific situations or forecast in specific regions. The model is developed by UCAR and they have a 
-	very handy <a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/index.htm">tutorial</a>, but I found it nice to make my own with specific instructions for runing WRF on 
-	the group computers at the University of Utah. Hopefully this is helpful to others.
-	<!--<p> Weather forecasting is difficult because of chaos, a theory explained by <a href="https://en.wikipedia.org/wiki/Edward_Norton_Lorenz" target="_blank">Edward Lorenz</a>.
-	"Chaos: When the present determines the future, but the approximate present does not approximately determine the future."
-	also explained by <a href="http://jurassicpark.wikia.com/wiki/Chaos_theory" target="_blank">Ian Malcolm in Jurassic Park</a>.
-    -->
+        <div id="tab2" class="tab-pane fade">
+			<h3><i class="fa fa-microchip" aria-hidden="true"></i> Submitting Jobs to Kingspeak</h3>
+			<p>This is how you submit multiprocessor WRF jobs to Kingspeak.
+			Includes information on using SLURM.
+			<iframe width="70%" height="427" src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%2120714&authkey=AKdQzO5-Rl-3-lY&em=2"  frameborder="0" scrolling="no"></iframe>
+        </div>
 
-	<iframe width="70%" height="427" src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21330&authkey=AGlCu6RQ5__75Q0&em=2"  frameborder="0" scrolling="no"></iframe>
-	<a href="wrf.html#TOP">Back to Top</a>
+        <div id="tab3" class="tab-pane fade">
+			<h3>GEOGRID Options</h3>
+			<p>In the namelist.wps file there is an option to change the 
+			<i>geog_data_res</i>. There are several different types to choose from.
+			Instructions for changing this are found 
+			<a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3.7/users_guide_chap3.htm#_Selecting_Between_USGS" target="_blank">here</a>, 
+			but the available options are a little unclear. 
+			One obvious piece of information missing from this documentation is that it doesn't
+			tell you how recent these data sets were created. 
+			Some of them appear to use decade-old land use surveys. 
+			So pay attention to what geo data you decide to use.
+			<p>The available data sets can be found on the geogrid download page 
+			<a href="http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html">here</a>.
+			My color scheme can be found on github <a style="color:#990000;" href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_cmap/landuse_colormap.py" target="_blank">
+			<i class="fa fa-github fa-fw" aria-hidden="true"></i>landuse_colormap.py
+			</a>.
+			<p> The Great Salt Lake level in all these optoins are outdated.
+			In our department we routinely perform some 
+			<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html">surgery</a> 
+			to shrink the lake. 
+			<p> I'm told that the experimental HRRR at ESRL is implementing 
+				an updated land use data set and has also adjusted the size of the Great Salt Lake. 
+			<hr>
+			<p>Here's what the land use looks like for northern Utah with the following options...
+			<br><br>
+			<p> MODIS 15 second arch data
+				<div class='well well-sm'>
+				geog_data_res     = 'modis_15s', 'modis_15s',              ! MODIS 15s data
+				</div>
+			<img width="70%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modis15s.png">
+			<br><br>
+			<p> MODIS 30 second arch data. Look how large the Great Salt Lake is! This represents the high lake levels in 2001. The lake is currently at record low levels.
+				<div class='well well-sm'>
+				geog_data_res     = 'modis_30s', 'modis_30s',              ! MODIS 30s data
+				</div>
+			<img width="70%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modis30s.png">
+			<br><br>
+			<p> MODIS Lake (30 second arch data) + with 30 second USGS filling in missing data
+			<b>This is what the current HRRR model uses!</b>
+				<div class='well well-sm'>
+				geog_data_res     = 'modis_lakes+30s', 'modis_lakes+30s',  ! MODIS Lakes (21 category 30s arch) + USGS 30s 
+				</div>
+			<img width="70%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modislake30s.png">
+			<br><br>
+			<p> USGS 30 second arch data
+				<div class='well well-sm'>
+				geog_data_res     = '30s', '30s',                          ! USGS 30s data
+				</div>
+			<img width="70%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.USGS30s.png">
+
+        </div>
+
+        <div id="tab4" class="tab-pane fade">
+			<h3>Update WRF Registry to output Inverse Density
+				and Time-averaged Mass Flux variables</h3>
+			<p>Not all variables that WRF calculates are outputted to the
+			wrfout file. In order to output the inverse density (alt) or
+			the time-averaged mass flux (muu, muv, mut) variables you'll need
+			to make some changes to the WRF registry. 
+			(Thanks Derek Mallia for this solution.)
+			<p> Tutorial slides about the registery can be found <a href="http://www2.mmm.ucar.edu/wrf/users/tutorial/201407/Wednesday/4_gill_registry.pdf">here</a>.
+			<p> To add the mass flux and inverse density variables, do the following:
+				<ol style="margin-left:60px;">
+					<li>Enter the <i>WRFV3/Registry/</i> directory.
+					<li>Changes will need to be made to the <i>Registry.EM_COMMON</i> file in order 
+					to get the WRF to output the mass-averaged variables discussed in Nehrkorn et al. 2010.
+					Open up <i>Registry.EM_COMMON</i> with your favorite text editor (mine is Visual Stuido Code) and find the following variables:
+						<ul style="margin-left:90px;">
+							<li>muu
+							<li>muv
+							<li>mut
+							<li>alt
+						</ul>
+					<li>Change the second "dash"
+					to <i>ihr</i> which tells the WRF to read and output these variables
+					
+						<p>Before:
+						<div class="well well-sm">
+						<p>state   real   muu  ij  dyn_em  1  -   -   "muu"
+						<p>state   real   muv  ij  dyn_em  1  -   -   "muv"
+						<p>state   real   mut  ij  dyn_em  1  -   -   "mut"
+						<p>state   real   alt  ikj dyn_em  1  -   -   "alt"
+						</div>
+						<p>After:
+						<div class="well well-sm">
+						<p>state   real   muu  ij  dyn_em  1  -  ihr  "muu"
+						<p>state   real   muv  ij  dyn_em  1  -  ihr  "muv"
+						<p>state   real   mut  ij  dyn_em  1  -  ihr  "mut"
+						<p>state   real   alt  ikj dyn_em  1  -  ihr  "alt"
+					</div>
+					<p>Mine looks like this:
+					<img src='images/registry_edit_mass_flux.JPG'>
+					
+					<li>Once this is done, leave the registry directory and 
+						cd into the following directory: <i>cd test/em_real</i>
+					<li>Edit the namelist.input file and under the <i>&dynamics </i> header add the following lines:
+						<div class="well well-sm">
+							<p>do_avgflx_em = 1, 1, 1, 1, 1, 1, 1, 1, 1,
+							<p>do_avgflx_cugd = 1, 1, 1, 1, 1, 1, 1, 1, 1,
+						</div>
+					<li>Recompile WRF.
+					<li>When you run WRF you will see the new variables added to your output file.
+				</ol>
+        </div>
+
+        <div id="tab5" class="tab-pane fade">
+			<h3>Output a Variable at Higher Frequency</h3>
+			<p> In order to output a variable at a higher frequency you have to change 
+			the namelist options as outlined 
+			<a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">
+			here</a>. I have added two new output streams. One that outputs 
+			every 12 hours (stream 23) and one that outputs every 10 minutes 
+			(stream 24). Note: Steams can range from 0-24, though, some are 
+			reserved for special tasks (look at the documentation for this).
+			<p> The file "myoutfields_d01.txt" tells WRF 
+				to write the T2 and tr17_1 to stream 24 and HGT
+				and LANDMASK to stream 23. Note: Do not include any spaces!
+			<div class="well well-sm">
+				<p>+:h:24:T2,tr17_1
+				<p>+:h:23:HGT,LANDMASK	
+			</div>
+			<p> In namelist.input I added these lines in the &time_control section:
+			<div class="well well-sm">
+				<p>iofields_filename                   = "myoutfields_d01.txt", ! Name of file that tells WRF what to output
+				<p>io_form_auxhist24                   = 2,                     ! Output stream 24 in netCDF format
+				<p>auxhist24_interval                  = 10,                    ! Output stream 24 every 10 minutes
+				<p>io_form_auxhist23                   = 2,                     ! Output stream 23 in netCDF format
+				<p>auxhist23_interval                  = 720,                   ! Output stream 23 every 12 hours
+			</div>
+			<p> Or, if you have two domains...
+			<div class="well well-sm">
+				<p>iofields_filename                   = "myoutfields_d01.txt", "myoutfields_d02.txt" 
+				<p>io_form_auxhist24                   = 2,                     
+				<p>auxhist24_interval                  = 10,    10,                
+				<p>io_form_auxhist23                   = 2,                     
+				<p>auxhist23_interval                  = 720,  720,
+			</div>
+			<p> When you run WRF with these options it will create two new netCDF files called
+			<i>auxhist23_d01_2015-06-18_00:00:00</i> and <i>auxhist24_d01_2015-06-18_00:00:00</i>. You can 
+			view these in ncview like other WRF output.
+        </div>
+
+        <div id="tab6" class="tab-pane fade">
+			<h3> Time Series and Vertical Profile at a point with tslist</h3>
+			<p> You can create time series output for every time step at 
+				specified points using the ts_list option. You'll have to put 
+				together a TS list. For example, save the following as 
+				<i>tslist</i> in your /test/em_real/ directory and change the 
+				namelist.input option max_ts_locs to the number of stations in your list.
+			<div class="alert alert-danger"><b>Danger:</b> If you run a restart run, your old tslists will be overwritten!</div>
+			<div class="well well-sm">
+			<p>#-----------------------------------------------#
+			<p># 24 characters for name | pfx  | LAT   | LON   |
+			<p>#-----------------------------------------------#
+			<p>Salt Lake Airport          KSLC  40.771  -111.965
+			<p>Spanish Fork              UKBKB  40.099  -111.628
+			<p>William Browning Bldg       WBB  40.766  -111.848
+			<p>Neil Armstrong Acadmey      NAA  40.711  -112.014
+			<p>I-15 Spaghetti             UT23  40.717  -111.904
+			<p>I-15/I-215                 UT12  40.637  -111.904
+			<p>Legacy Parkway            UTLGP  40.908  -111.915
+			<p>Kaysville-Utah Fruit      FG005  41.021  -111.930
+			<p>Fremont Is. Summitt       O3S08  41.171  -112.341
+			<p>Fremont Is. Kates PT      O3S07  41.134  -112.311
+			<p>Gunnison Is.                GNI  41.335  -112.855
+			<p>Hat Is.                   HATUT  41.071  -112.586
+			<p>Hawthorne                   QHW  40.734  -111.872
+			<p>GSL Buoy                  GSLBY  40.890  -112.346
+			<p>Badger Is. Tripod         UFD08  40.943  -112.562
+			<p>MiniSodar2                USDR2  40.749  -112.034
+			<p>MiniSodar1                USDR1  41.084  -112.113
+			<p>Odgen-Hinckley Airport     KOGD  41.194  -112.016
+			<p>Provo Airport              KPVU  40.217  -111.717
+			<p>Spanish Fork Airport        QSF  40.138  -111.660
+			<p>Farmington Bay - Goose    O3S02  40.957  -111.931
+			<p>Farnsworth Peak             FWP  40.659  -112.202
+			<p>Herriman                    QH3  40.496  -112.036
+			<p>Saltaire                    QSA  40.806  -112.050
+			<p>Bountiful - Viewmont        QBV  40.898  -111.886
+			<p>Brigham City                QBR  41.493  -112.018
+			<p>Hill AFB                  O3S04  41.105  -111.972
+			<p>Flight Park South           FPS  40.457  -111.905
+			</div>
+			<img class="style1" style="width:300px" src="http://home.chpc.utah.edu/~u0553130/MS/timeseries/TS_locations.png">
+
+			<a href="http://home.chpc.utah.edu/~u0553130/MS/timeseries_WRF-MesoWest_20150618/smoothed/photo_viewer_v1.php">
+			Click here to view station data from WRF run and actual observations.</a>
+			<br>
+			
+        </div>
+
+        <div id="tab7" class="tab-pane fade">
+			<h3> Urban Canopy Model</h3>
+			<p> Salt Lake City and other urban areas in Utah can be called an "Urban Forest." Unlike some large cities with 
+			lots of concrete, Salt Lake City has many trees and vegetated areas. Because of this, we turn on the Urban Canopy
+			Model. This is a good thing to do when running WRF at 1 km resolution because we need to simulate the urban 
+			influence on momentum and energy transfer better.
+			<p> Turn on the urban canopy model by changing the namelist option
+			sf_urban_physics = 1
+			<p> Also, adjust the amount of trees and vegetated areas in the city by modifying the URBPARM.TBL file found in the
+			run or test/em_real directory.
+			<p> I changed the "Fraction of urban landscape that does not have natural vegetation" to 0.5, 0.4, 0.3
+        </div>
+
+        <div id="tab8" class="tab-pane fade">
+			<h3>Miscellaneous</h3>
+			<ul style="padding-left: 60;">
+				<li><a href="./hrrr.html">Initialize WRF with HRRR boundary conditions</a>
+				<li><a href="http://home.chpc.utah.edu/~u0198116/wrf/utahwrfusers.html"> UofU WRF User's Group</a>
+				<li><a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/contents.html"> WRF User's Guide</a>
+			</ul>
+        </div>
+
+        <div id="tab9" class="tab-pane fade">
+			<h3>Setting Up CHPC Modules: .tcshrc, custom.csh, and .aliases</h3>
+			<div class="alert alert-info">If you are using CHPC computer resourses at the Univeristy of Utah, they have made a
+			switch to using modules (rather than excplicityly sourcing each program you want to use).
+			Modules makes it easy to load packages you need, especially if you need a different version.</div>
+			<p>To get started, follow the instructions on their website
+			<a href="https://www.chpc.utah.edu/documentation/software/modules.php">here</a>.
+			<p> For WRF users at the Universiyt of Utah, you can get my
+				most recent CHPC setting files on <a href="https://github.com/blaylockbk/CHPC-Settings" target="_blank">
+      			<i class="fa fa-github fa-fw" aria-hidden="true"></i> GitHub</a>.
+				
+			<p>Note: If you are having issues, confirm that your custom file is loading correctly by inserting a few echo statements.
+			There may be some hangup in your .aliases file that prevents the .custom file to load. If that is the case, review
+			your .aliases file for potential road blocks.
+        </div>		
+
+    </div>
 </div>
-<br>
-
-<!--******************************************************************************************-->
-<!--******************************************************************************************-->
-
-<div class="section">
-	<a name="KINGSPEAK"></a>
-	<h3>Submitting Jobs to Kingspeak</h3>
-	<p>This is how you submit multiprocessor WRF jobs to Kingspeak.
-
-	<iframe width="70%" height="427" src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%2120714&authkey=AKdQzO5-Rl-3-lY&em=2"  frameborder="0" scrolling="no"></iframe>
-	<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-
-<!--**Geogrid Options ************************************************************************-->
-<!--******************************************************************************************-->
-<br>
-<div class="section">
-<a name="GEOGRID"></a>
-<h3>GEOGRID Options</h3>
-	<p>In the namelist.wps file there is an option to change the <i>geog_data_res</i>. 
-    There are several different types to choose from.
-    Instructions for changing this are found 
-    <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3.7/users_guide_chap3.htm#_Selecting_Between_USGS" target="_blank">here</a>, 
-    but the available options are a little unclear. One obvious piece of information missing from this documentation is that it doesn't
-    tell you how recent these data sets were created. Some of them appear to use decade-old land use surveys. 
-    So pay attention to what geo data you decide to use.
-    <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/landuse_colormap.py">
-    <img align=right src='./images/githubcode.png'></a>
-    The available data sets can be found on the geogrid download page 
-    <a href="http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html">here</a>.
-    My color scheme can be found on github (click the black circle to the right).
-    <p>Here's what the land use looks like for northern Utah with the following options...
-    
-    <br><br>
-    <p> MODIS 15 second arch data
-    <textarea style="width:100%; height:30px;font-size:15px" disabled>
- geog_data_res     = 'modis_15s', 'modis_15s',              ! MODIS 15s data
-    </textarea>
-    <img width="80%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modis15s.png">
-    
-    <br><br>
-    <p> MODIS 30 second arch data. Look how large the Great Salt Lake is! This represents the high lake levels in 2001. The lake is currently at record low levels.
-    <textarea style="width:100%; height:30px;font-size:15px" disabled>
- geog_data_res     = 'modis_30s', 'modis_30s',              ! MODIS 30s data
-    </textarea>
-    <img width="80%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modis30s.png">
-    
-    <br><br>
-    <p> MODIS Lake (30 second arch data) + with 30 second USGS filling in missing data
-    <b>This is what the current HRRR model uses!</b>
-    <textarea style="width:100%; height:30px;font-size:15px" disabled>
- geog_data_res     = 'modis_lakes+30s', 'modis_lakes+30s',  ! MODIS Lakes (21 category 30s arch) + USGS 30s 
-    </textarea>
-    <img width="80%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.modislake30s.png">
-    
-    <br><br>
-    <p> USGS 30 second arch data
-    <textarea style="width:100%; height:30px;font-size:15px" disabled>
- geog_data_res     = '30s', '30s',                          ! USGS 30s data
-    </textarea>
-    <img width="80%" src="http://home.chpc.utah.edu/~u0553130/MS/geog/geo_em.d01.nc.USGS30s.png">
-    
-  <p> Yeah, the lake level in all these are wrong. In our department we routinely perform some <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html">surgery</a> to shrink the lake.  
-  <p> I'm told that the experimental HRRR run at ESRL is implementing an updated land use data set and has also adjusted the size of the Great Salt Lake. 
-      Should take a look into that.  
-    <br><br>
-	<a href="wrf.html#TOP">Back to Top</a>
-</div
-<!--******************************************************************************************-->
-<!--******************************************************************************************-->
-
-<br>
-<div class="section">
-	<a name="AUTOWPS"></a>
-	<h3>Automated WPS: ungrib and metgrid consecutive days</h3>
-	<a href="https://github.com/blaylockbk/Ute_WRF/blob/master/other/ungrib_metgrid_lots_of_days.csh"><img align=right src='./images/githubcode.png'></a>
-    <p> Click the black circle to the right for the code. This is a 
-    .csh script for ungribbing and metgridding many consecutive days (within the same month is best). 
-	<p> This script is helpful when
-        <ol style="margin-left:60px;">
-        <li> You have already completed geogrid.
-        <li> Your met data is in different directories for each day (such is the case in our HRRR archive).
-        <li> You need to run ungrib and metgrid for several consecutive days.
-        <li> You want to automate the WPS process.
-        </ol>
-	
-	<p>This script doesn't work very well if the days you need span different months, so there is some funny 
-	logic to grab May 1st. (Next time I need to run this I might just rewrite this in python and take advantage of the datetime module)
-	<p>Copy and paste this script in a file called <I>ungrib_metgrid_lots_of_days.csh</I>. 
-	<p>Remember to set permissions to execute (<I>chmod 755 ungrib_metgrid_lots_of_days.csh</I>).
-    <p>Edit the namelist options that are written each iteration (i.e. change your times, domain, etc.). 
-	<p>Run the script in the WPS directory <I>./ungrib_metgrid_lots_of_days.csh</I>.
-	</p>
-
-	<br><br>
-	<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-<!--******************************************************************************************-->
-<!--******************************************************************************************-->
-<br>
-<div class="section">
-<a name="REGISTRY"></a>
-<h3>Updates to WRF Registry to output inverse density and time-averaged mass flux variables</h3>
-<h4>This is needed if you want to run the STILT model with WRF output</h4>
-<p align=center>Added 08/26/2015
-<p>Not all variables that WRF calculates is outputted to the
-wrfout file. In order to output the inverse density (alt) or
-the time-averaged mass flux (muu, muv, mut) variables you'll need
-to make some changes to the WRF registry. (Thanks Derek Mallia for this solution.)
-<p> Tutorial slides about the registery can be found <a href="http://www2.mmm.ucar.edu/wrf/users/tutorial/201407/Wednesday/4_gill_registry.pdf">here</a>.
-<p> To add these mass flux variables along with inverse density, do the following:
-<ol style="margin-left:60px;">
-	<li>Enter the <i>WRFV3</i> directory and then enter the WRF <i>Registry</i> directory.
-	<li>Changes will need to be made to the <i>Registry.EM_COMMON</i> file in order 
-	to get the WRF to output the mass-averaged variables discussed in Nehrkorn et al. 2010.
-	Open up <i>Registry.EM_COMMON</i> with your favorite text editor and find the following variables:
-		<ul style="margin-left:90px;">
-			<li>muu
-			<li>muv
-			<li>mut
-			<li>alt
-		</ul>
-	<li>Change the second "dash"
-	to <i>ihr</i> which tells the WRF to read and output these variables
-	<textarea style="width:100%; height:250px;" disabled>
-
-  Before:
-
-	state   real   muu  ij  dyn_em  1  -   -   "muu"
-	state   real   muv  ij  dyn_em  1  -   -   "muv"
-	state   real   mut  ij  dyn_em  1  -   -   "mut"
-	state   real   alt  ikj dyn_em  1  -   -   "alt"
-
-  After:
-
-	state   real   muu  ij  dyn_em  1  -  ihr  "muu"
-	state   real   muv  ij  dyn_em  1  -  ihr  "muv"
-	state   real   mut  ij  dyn_em  1  -  ihr  "mut"
-	state   real   alt  ikj dyn_em  1  -  ihr  "alt"
-
-	</textarea>
-	Mine looks like this:
-	<img src='images/registry_edit_mass_flux.JPG'>
-	<li>Once this is done, leave the registry directory and cd into the following directory:
-     <i>cd test/em_real</i>
-	<li>Edit the namelist.input file and under the <i>&dynamics </i> header add the following lines:
-	<textarea style="width:100%; height:65px" disabled>
-	
-	do_avgflx_em = 1, 1, 1, 1, 1, 1, 1, 1, 1,
-	do_avgflx_cugd = 1, 1, 1, 1, 1, 1, 1, 1, 1,
-	
-	</textarea>
-	<li>Recompile WRF like normal
-	<li>Once you run WRF you will see that you have new variables added to your output file.
-
-</ol>
-
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-<!--******************************************************************************************-->
-<!--******************************************************************************************-->
-
-<br>
-<div class="section">
-<a name="HIFREQ"></a>
-<h3>Output a Variable at Higher Frequency</h3>
-<p align=center>Added 08/27/2015
-<p> In order to output a variable at a higher frequency you have to change 
-the namelist options as outlined <a href="http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Class_July2015/cases/Increase_freq_output_variables.php">
-here</a>. I have added two new output streams. One that outputs every 12 hours (stream 23)
-and one that outputs every 10 minutes (stream 24). Note: Steams can range from 0-24, though, some are reserved for special tasks 
-(look at the documentation for this).
-<p> I have created a file called "myoutfields_d01.txt" which tells WRF to write the T2 and tr17_1 to stream 24 and HGT
-and LANDMASK to stream 23. Note: Do not include any spaces!
-	<textarea style="width:100%; height:40px;" disabled>
-+:h:24:T2,tr17_1
-+:h:23:HGT,LANDMASK	
-	</textarea>
-<p> In namelist.input I added these lines in the &time_control section:
-<textarea style="width:100%; height:110px;" disabled>
  
- iofields_filename                   = "myoutfields_d01.txt", ! Name of file that tells WRF what to output
- io_form_auxhist24                   = 2,                     ! Output stream 24 in netCDF format
- auxhist24_interval                  = 10,                    ! Output stream 24 every 10 minutes
- io_form_auxhist23                   = 2,                     ! Output stream 23 in netCDF format
- auxhist23_interval                  = 720,                   ! Output stream 23 every 12 hours
-	</textarea>
-<p> Or, if you have two domains...
-	<textarea style="width:100%; height:110px;" disabled>
- 
- iofields_filename                   = "myoutfields_d01.txt", "myoutfields_d02.txt" 
- io_form_auxhist24                   = 2,                     
- auxhist24_interval                  = 10,    10,                
- io_form_auxhist23                   = 2,                     
- auxhist23_interval                  = 720,  720,
-	</textarea>
-<p> When you run WRF with these options it will create two new netCDF files called
-<i>auxhist23_d01_2015-06-18_00:00:00</i> and <i>auxhist24_d01_2015-06-18_00:00:00</i>. You can 
-view these in ncview.
-<br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-<!--******************************************************************************************-->
-<br>
-<div class='section'>
-<a name="TSLIST"></a>
-<h3> Time Series and Vertical Profile at a point</h3>
-<p> You can create time series output for every time step at specified points using the ts_list option.
-You'll have to put together a TS list. For example, save the following as <i>tslist</i> in your /test/em_real/
-directory and change the 
-namelist.input option max_ts_locs to the number of stations in your list.
-<textarea disabled>
-#-----------------------------------------------#
-# 24 characters for name | pfx  | LAT   | LON   |
-#-----------------------------------------------#
-Salt Lake Airport          KSLC  40.771  -111.965
-Spanish Fork              UKBKB  40.099  -111.628
-William Browning Bldg       WBB  40.766  -111.848
-Neil Armstrong Acadmey      NAA  40.711  -112.014
-I-15 Spaghetti             UT23  40.717  -111.904
-I-15/I-215                 UT12  40.637  -111.904
-Legacy Parkway            UTLGP  40.908  -111.915
-Kaysville-Utah Fruit      FG005  41.021  -111.930
-Fremont Is. Summitt       O3S08  41.171  -112.341
-Fremont Is. Kates PT      O3S07  41.134  -112.311
-Gunnison Is.                GNI  41.335  -112.855
-Hat Is.                   HATUT  41.071  -112.586
-Hawthorne                   QHW  40.734  -111.872
-GSL Buoy                  GSLBY  40.890  -112.346
-Badger Is. Tripod         UFD08  40.943  -112.562
-MiniSodar2                USDR2  40.749  -112.034
-MiniSodar1                USDR1  41.084  -112.113
-Odgen-Hinckley Airport     KOGD  41.194  -112.016
-Provo Airport              KPVU  40.217  -111.717
-Spanish Fork Airport        QSF  40.138  -111.660
-Farmington Bay - Goose    O3S02  40.957  -111.931
-Farnsworth Peak             FWP  40.659  -112.202
-Herriman                    QH3  40.496  -112.036
-Saltaire                    QSA  40.806  -112.050
-Bountiful - Viewmont        QBV  40.898  -111.886
-Brigham City                QBR  41.493  -112.018
-Hill AFB                  O3S04  41.105  -111.972
-Flight Park South           FPS  40.457  -111.905
-</textarea>
-<p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/tslist_plot_locations.py"><img align=right src='./images/githubcode.png'></a>
-<img class="style1" style="width:50%;" src="http://home.chpc.utah.edu/~u0553130/MS/timeseries/TS_locations.png">
-
-<a href="http://home.chpc.utah.edu/~u0553130/MS/timeseries_WRF-MesoWest_20150618/smoothed/photo_viewer_v1.php">
-View station data from WRF run and actual observations. 
-</a>
-<br>
-
-
-<p><b>IMPORTANT:</b> If you run a restart run, your old tslists will be overwritten!!! So, if you want to keep them, move them before you re-run.
-
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-<br>
-<div class='section'>
-<a name="UCM"></a>
-<h3> Urban Canopy Model</h3>
-<p> Salt Lake City and other urban areas in Utah can be called an "Urban Forest." Unlike some large cities with 
-lots of concrete, Salt Lake City has many trees and vegetated areas. Because of this, we turn on the Urban Canopy
-Model. This is a good thing to do when running WRF at 1 km resolution because we need to simulate the urban 
-influence on momentum and energy transfer better.
-<p> Turn on the urban canopy model by changing the namelist option
-sf_urban_physics = 1
-<p> Also, adjust the amount of trees and vegetated areas in the city by modifying the URBPARM.TBL file found in the
-run or test/em_real directory.
-<p> I changed the "Fraction of urban landscape that does not have natural vegetation" to 0.5, 0.4, 0.3
-
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-<!--******************************************************************************************-->
-<!--*****************************************-->
-<!--*****************************************-->
-<!--*****************************************-->
-<br>
-<div class="section">
-<a name="SLURM"></a>
-<h3>Example SLURM Script</h3>
-<p>For running jobs on Kingspeak, save this file (making obvious changes to your own) as <i>wrf.slurm</i>.
-<textarea disabled>
-#! /bin/bash
-#SBATCH --time=08:00:00                         #Walltime for the WRF simulation, max is 72 on Kingspeak general nodes, 336 on private nodes
-#SBATCH --nodes=10                              #Number of nodes I want to use, max is 15 for lin-group, each node has 16 cores
-#SBATCH --ntasks=160                            #Number of MPI tasks, multiply number of nodes with cores per node. 5*16=80
-#SBATCH --mail-user=brian.blaylock@utah.edu     #Email account
-#SBATCH --mail-type=FAIL,BEGIN,END              #When to email
-#SBATCH -o dvm_WRF.out                          #Error and output file names
-#SBATCH -e dvm_WRF.err
-
-cd /uufs/chpc.utah.edu/common/home/horel-group4/model/bblaylock/WRF3.7_kingspeakTest/WRFV3/test/em_real
-srun hostname | sort > nodefile.$SLURM_JOBID
-mpirun -np $SLURM_NTASKS -machinefile nodefile.$SLURM_JOBID ./wrf.exe
-</textarea>
-<p>When you wish to submit a job, type the Linux command:
-<textarea class="linux">
-sbatch wrf.slurm
-</textarea>
-<br>
-<p>It's often useful to test a short WRF case, in which case you can bypass the queue by using other nodes as 
-guest. Use this SLURM script. <i>wrf_guest.slurm</i>. NOTE: If the person who the dedicated node belongs to
-submits a job then your job will be terminated.
-<textarea disabled>
-#! /bin/bash
-#SBATCH --time=05:00:00 			#Walltime for the WRF simulation, max is 72 on Kingspeak general nodes, 336 on private nodes
-#SBATCH --nodes=5				#Number of nodes I want to use, max is 15 for lin-group, each node has 16 cores
-#SBATCH --ntasks=80				#Number of MPI tasks, multiply number of nodes with cores per node. 5*16=80
-#SBATCH --partition=kingspeak-guest
-#SBATCH --account=owner-guest
-#SBATCH --mail-user=brian.blaylock@utah.edu 	#Email account
-#SBATCH --mail-type=FAIL,BEGIN,END 		#When to email
-#SBATCH -o dvm_WRF.out 				#Error and output file names
-#SBATCH -e dvm_WRF.err
-
-cd /uufs/chpc.utah.edu/common/home/horel-group4/model/bblaylock/WRF3.7_kingspeakTest/WRFV3/test/em_real
-srun hostname | sort > nodefile.$SLURM_JOBID
-mpirun -np $SLURM_NTASKS -machinefile nodefile.$SLURM_JOBID ./wrf.exe 
-</textarea>
-<p>When you wish to submit a job, type the Linux command:
-<textarea class="linux">
-sbatch wrf_guest.slurm
-</textarea>
-
-<br><br>
-<h4>Freecycle on Ember</h4>
-<textarea disabled>
-#! /bin/bash
-#SBATCH --time=30:00:00                         #Walltime for the WRF simulation, max is 72 on Kingspeak general nodes, 336 on private nodes
-#SBATCH --nodes=14                              #Number of nodes I want to use, max is 15 for lin-group, each node has 16 core
-#SBATCH --ntasks=112                            #Number of MPI tasks, multiply number of nodes with cores per node. 5*8=40
-#SBATCH --partition=ember-freecycle
-#SBATCH --mail-user=brian.blaylock@utah.edu     #Email account
-#SBATCH --mail-type=FAIL,BEGIN,END              #When to email
-#SBATCH -o dvm_WRF.out                          #Error and output file names
-#SBATCH -e dvm_WRF.err
-
-cd /uufs/chpc.utah.edu/common/home/horel-group4/model/bblaylock/WRF3.7_lake299_ember/WRFV3/test/em_real
-srun hostname | sort > nodefile.$SLURM_JOBID
-mpirun -np $SLURM_NTASKS -machinefile nodefile.$SLURM_JOBID ./wrf.exe
-</textarea>
-<br>
-<p>When you wish to submit a job, type the Linux command:
-<textarea class="linux">
-sbatch wrf_ember.slurm
-</textarea>
-
-
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-<!--*****************************************-->
-
-
-<br>
-<div class="section">
-<a name="CUSTOM"></a>
-<h3>Setting Up CHPC Modules: .tcshrc, custom.csh, and .aliases</h3>
-<p>If you are using CHPC computer resourses at the Univeristy of Utah, they have made a
-switch to using modules (rather than excplicityly sourcing each program you want to use).
-Modules makes it easy to load packages you need, especially if you need a different version.
-<p>To get started, follow the instructions on their website
- <a href="https://www.chpc.utah.edu/documentation/software/modules.php">here</a>.
-<p> For WRF user set-up, it may be helpful to look at my custom.csh file. You can copy 
-these files into your home directory (change their name from the file name to the respective names below.)
-<br><a href="http://home.chpc.utah.edu/~u0553130/CHPC/custom.csh.txt">.custom.csh</a>
-<br><a href="http://home.chpc.utah.edu/~u0553130/CHPC/tcshrc.txt">.tcshrc</a> (no need to change anything in this file)
-<br><a href="http://home.chpc.utah.edu/~u0553130/CHPC/aliases.txt">.aliases</a>
-<p>Note: If you are having issues, confirm that your custom file is loading correctly by inserting a few echo statements.
-There may be some hangup in your .aliases file that prevents the .custom file to load. If that is the case, review
-your .aliases file for potential road blocks.
-
-
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-<br>
-<div class="section">
-<a name="WRFVERT"></a>
-<h3>WRF Vertical Nesting: WRF 3.8</h3>
-<p>I've recently learned that WRF V3.8 has vertical one-way nesting capabilities. I'd like to try it out in my
-next WRF simulations. It may be particularly useful for cold pool and lake breeze simulations.
-<br><br>
-<a href="wrf.html#TOP">Back to Top</a>
-</div>
-
-
-<br>
-<br>
-
-
 <script src="./js/site/siteclose.js"></script>
 </div>
 </body>

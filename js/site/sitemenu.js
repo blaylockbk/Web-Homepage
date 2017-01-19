@@ -88,38 +88,40 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
-                            <li><a href="http://meso1.chpc.utah.edu/NAA "><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="research "><img src="./images/meso-icon.png" height="20px"> MesoWest</a></li>\
-                            <li><a href="http://weather.utah.edu/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
-                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                            <li class="dropdown-header">External Links</li>\
+                            <li><a href="../Camera_Display " target="tools"><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
+                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/meso-icon.png" height="20px"> MesoWest</a></li>\
+                            <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
+                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                            <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WRF<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="./wrf.html ">WRF Intro</a></li>\
+                            <li><a href="./wrf.html ">WRF Resources</a></li>\
                             <li><a href="./hrrr.html ">Initalize with HRRR</a></li>\
                             <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
                             <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0198116/wrf/utahwrfusers.html"><i class="fa fa-users fa-fw" aria-hidden="true"></i> Utah WRF Users Group</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Code<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li class="dropdown-header"><i class="fa fa-github fa-fw" aria-hidden="true"></i>PyBKB_v2</li>\
+                            <li class="dropdown-header"><i class="fa fa-github fa-fw" aria-hidden="true"></i> PyBKB_v2</li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
-                            <li class="dropdown-header"><i class="fa fa-code fa-fw" aria-hidden="true"></i>Other</li>\
+                            <li class="dropdown-header"><i class="fa fa-code fa-fw" aria-hidden="true"></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                         </ul>\
                     </li>\
