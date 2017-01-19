@@ -76,29 +76,28 @@ document.write('\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  HRRR Archive</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> PhD</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> MS</a></li>\
-                            <li><a href="http://meso2.chpc.utah.edu/gslso3s/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> GSLSO3S</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/aq/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> Air Quality</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/aq/cgi-bin/gslso3s_home.cgi" target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> GSLSO<sub>3</sub>S</a></li>\
                             <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> SONGNEX</a></li>\
                             <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> UBOS</a></li>\
                             <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research "><i class="fa fa-plane fa-fw" aria-hidden="true"></i> SARP </a></li>\
                             <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> MATERHORN</a></li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> MesoWest</a></li>\
-                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
+                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
-                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
-                            <li><a href="./satellite_image_viewer.php "><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  Satellite Images</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/NAA "><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
-                            <li><a href="./HRRR_Winds "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Winds</a></li>\
-                            <li><a href="./HRRR_Wake_Finder "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> Wake Finder</a></li>\
+                            <li><a href="http://mesowest.utah.edu/ " target="research "><img src="./images/meso-icon.png" height="20px"> MesoWest</a></li>\
+                            <li><a href="http://weather.utah.edu/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
+                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="research "><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
                         </ul>\
                     </li>\
 \
@@ -148,6 +147,8 @@ document.write('\
                         <ul class="dropdown-menu">\
                             <li><a href="./wxMeritBadge.html ">WX Merit Badge</a></li>\
                             <li><a href="./schoolvisits.html ">School Visits</a></li>\
+                            <li><a href="http://wrnscoutevent.wixsite.com/wrnscoutevent">WRN Scout Event</a></li>\
+                            <li><a href="http://science.utah.edu/events/science-day.php ">Science Day</a></li>\
                         </ul>\
                     </li>\
 \

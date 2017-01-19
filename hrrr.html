@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>Brian Blaylock, HRRR</title>
+<title>WRF with HRRR</title>
 <link rel="stylesheet" href="./css/brian_style.css" />
 <script src="./js/site/siteopen.js"></script>
 </head>
@@ -31,370 +31,158 @@
     <div class="tab-content">
         <div id="tab1" class="tab-pane fade in active">
                 <h3>About the HRRR</h3>
-                <img ALIGN=right height="250px" src="http://ruc.noaa.gov/hrrr/hrrrcrefimage">
-                <p>The High Resolution Rapid Refresh model, or HRRR, is a WRF based model run nested in the RUC model
+                <center><img align='middle' height="250px" src="http://ruc.noaa.gov/hrrr/hrrrcrefimage"></center>
+                <p>The High Resolution Rapid Refresh model, or HRRR, is a WRF based forecast model nested in the RUC model
                 with a resolution of 3 km and outputs every hour. More info and current forecasts can
-                be found on the <a href="http://ruc.noaa.gov/hrrr/"> homepage</a> and <a href="http://nomads.ncep.noaa.gov/txt_descriptions/HRRR_doc.shtml">NWS documentation</a>. Used here is the nonoperational HRRR product.
-                <p>You can get the HRRR static fields, including HRRR's raw geo_em data, here: <a href="http://rapidrefresh.noaa.gov/HRRR/static/">http://rapidrefresh.noaa.gov/HRRR/static/</a>
-                <p>More info about RUC and HRRR <a href="http://ruc.noaa.gov/pdf/RAPv2-NWSwebinar-18feb2014-FINAL.pdf">here</a>.
-                and <a href="http://ruc.noaa.gov/pdf/HRRRv2-RAPv3-2015.png">here</a> and <a href="http://ruc.noaa.gov/pdf/HRRR_status_July_2015.pdf">here</a>
+                be found on the <a href="http://ruc.noaa.gov/hrrr/"> homepage </a>
+                and <a href="http://nomads.ncep.noaa.gov/txt_descriptions/HRRR_doc.shtml">NWS documentation</a>.
+                Used here is the operational HRRR product.
+                <p>You can get the HRRR static fields, including HRRR's 
+                raw geo_em data, 
+                <a href="http://rapidrefresh.noaa.gov/HRRR/static/">here</a>.
+                <p>More info about RUC and HRRR 
+                <a href="http://ruc.noaa.gov/pdf/RAPv2-NWSwebinar-18feb2014-FINAL.pdf">here</a>
+                and <a href="http://ruc.noaa.gov/pdf/HRRRv2-RAPv3-2015.png">here</a> 
+                and <a href="http://ruc.noaa.gov/pdf/HRRR_status_July_2015.pdf">here</a>
                 and <a href="http://ruc.noaa.gov/pdf/RAPHRRR_WCOSS_2016Q1_Final.pdf">here</a>.
 
-                <p>We use the HRRR analyses to initialize WRF simulations.
-                Advantages of using HRRR include its hourly 3 km resolution state of the 
-                atmosphere (as opposed to using NAM's 6-hourly, 12 km resolution), its advanced
-                data assimilation, and better resolution to simulate thermally driven flows.
-                <div align=center style="padding-top:10px;float:right;width:350;height:150px;background-color:yellow">
-                <b>You, too, can initialize WRF with HRRR analyses!</b>
-                <img src="./images/HRRR_ad.png" width="100%">
-                </div>
-                <p>We expect better initialization of WRF using the HRRR will improve simulations of thermally driven flows, 
+                <img align='right' style="padding-left:15px;" src="./images/HRRR_ad.png" width="350px">
+                <p>The sequence of tabs above describes how 
+                <i>"even you can initialize WRF simulations with HRRR boundary conditions"</i>
+                (said in your favorite infomercial voice).
+                
+                <p>Advantages of using HRRR include its hourly 3 km resolution state of the 
+                atmosphere (as opposed to using NAM's 6-hourly, 12 km resolution) and its advanced
+                data assimilation. We expect better initialization of WRF using the HRRR will improve simulations of thermally driven flows, 
                 including slope flows and lake breezes, in the Salt Lake Valley.            
 
-                External Links
+                <p>External Links
                 <ul style="padding: 10px; margin-left:30px;">
-                <li><a href="http://ruc.noaa.gov/hrrr/">HRRR Homepage (ESRL)</a>
-                <li><a href="http://rapidrefresh.noaa.gov/HRRR/static/"> HRRR Static Fields (i.e. Vtable, namelist.wps, METGRID.TBL, etc.)</a>
-                <li><a href="http://ruc.noaa.gov/hrrr/namelist.wps.txt"> HRRR namelist.wps   (WPS)</a>
-                <li><a href="http://ruc.noaa.gov/hrrr/wrf.nl.txt">       HRRR namelist.input (WRF)</a>
-                <li><a href="http://rapidrefresh.noaa.gov/HRRRsmoke/"> HRRR Smoke</a>
-                <li><a href="http://ruc.noaa.gov/pdf/RAPHRRR_WCOSS_2016Q1_Final.pdf">HRRR v2 Description PDF</a>
+                        <li><a href="http://ruc.noaa.gov/hrrr/">HRRR Homepage (ESRL)</a>
+                        <li><a href="http://rapidrefresh.noaa.gov/HRRR/static/"> HRRR Static Fields (i.e. Vtable, namelist.wps, METGRID.TBL, etc.)</a>
+                        <li><a href="http://ruc.noaa.gov/hrrr/namelist.wps.txt"> HRRR namelist.wps   (WPS)</a>
+                        <li><a href="http://ruc.noaa.gov/hrrr/wrf.nl.txt">       HRRR namelist.input (WRF)</a>
+                        <li><a href="http://rapidrefresh.noaa.gov/HRRRsmoke/"> HRRR Smoke</a>
+                        <li><a href="http://ruc.noaa.gov/pdf/RAPHRRR_WCOSS_2016Q1_Final.pdf">HRRR v2 Description PDF</a>
                 </ul>
         </div>
 
         <div id="tab2" class="tab-pane fade">
                 <h3>Download HRRR data for WRF Boundary Conditions</h3>
-                <p>In order to initialize the WRF model with the HRRR model you'll first need to get the 
-                HRRR data. You can get the current HRRR data here: <a href="http://nomads.ncep.noaa.gov/">
-                http://nomads.ncep.noaa.gov/</a>. Historical HRRR data isn't archived by NCEP. 
-                <p>At the University of Utah we started archiving HRRR data in April 2015.
-                Be advised that we are in the processes of reconstructing our
-                archive space and some things may change eventually.
+                <p>Step 1: Get HRRR analyses.
+                <p>You must get the full pressure field file. 
+                You can get the current HRRR data from <a href="http://nomads.ncep.noaa.gov/">
+                NOMADS</a>. 
+                <p>Unfortunatly, historical HRRR data isn't archived by NCEP.
+                At the University of Utah we started archiving HRRR data in April 2015.
+                Parts of this archive are avialable publically, but only for 
+                the few most current months. Please refer to the FAQ page for
+                more information and for a link to download from the HRRR archive.
 
-                <form action="./hrrr_FAQ.html">
-                <p>For more information about our HRRR archive: <input class="btn btn-primary" type="submit" value="HRRR Archive" />
-                </form>
+                <center><form action="./hrrr_FAQ.html">
+                        <input class="btn btn-primary" type="submit" value="HRRR Archive FAQ" />
+                </form></center>
                                 
                 <hr>
-                <p>Raw HRRR data is in GRIB2 format. There are several ways to look at the data you have downloaded.
-                <p>You can print out the variable contents of the grib2 file by typing:
+                <p>Raw HRRR data is in GRIB2 format. You will use WRF's WPS
+                to prepare the HRRR analyses for WRF with the ungrib function.
+                <p>There are several ways read and view GRIB2 files.
+                You can print out the variable contents of the grib2 file by typing:
                 <div class="well well-sm">wgrib2 -v <i>filename.grib2</i></div>
                 <p>You can plot the grib2 data using the pygrib module. 
                 Look at an example on github <a href="https://github.com/blaylockbk/Ute_other/blob/master/pygrib_HRRR_example.py">here</a>
                 and <a href="https://github.com/blaylockbk/Ute_other/blob/master/plot_HRRR_analysis_gph_wind.py">here</a>.
-                <p>You can convert the grib2 to netcdf and look at the data with ncview.
-                Convert grib2 files to netcdf using <a href="http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/">wgrib2</a>
-                <div class="well well-sm">wgrib2 filename.grib2 -netcdf filename.nc</div>
-                <p>Or, you can use the NCL (<a href="http://www.ncl.ucar.edu/index.shtml">NCAR Command Language</a>) <a href="http://www.ncl.ucar.edu/Document/Tools/ncl_convert2nc.shtml">
-                ncl_convert2nc</a> function to convert grib2 (or grib) files to netcdf...
-                <div class="well well-sm">ncl_convert2nc filename.grib2</div>
-
+                <p>You can also view the data with ncview if you convert the GRIB2 to NetCDF
+                using <a href="http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/">wgrib2</a>.
+                <div class="well well-sm">wgrib2 filename.grib2 -netcdf filename.nc<br>ncview filename.nc</div>
         </div>
 
         <div id="tab3" class="tab-pane fade">
-                <h3>HRRR Vtable</h3>
-                <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/Vtable.HRRR.bkb" target="_blank"><img src='./images/githubcode.png' align=right style='height:80px'></a>
-                Create and link a new Vtable for HRRR. Below is my verison of the HRRR Vtable required to ungrib hourly HRRR grib2 data.
-                Copy below or download <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/Vtable.HRRR.bkb">Vtable.HRRR.bkb here</a> and save to your Vtable directory in ungrib and link to your WPS directory.
+                <h3>Vtable.hrrr</h3>
+                <p>The Vtable in WPS tells ungrib how to index and extract 
+                data from the grib2 file. I created a Vtable for the HRRR data
+                you can copy and link in WPS. <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/Vtable.HRRR.bkb">Vtable.hrrr.bkb <i class="fa fa-github-square" aria-hidden="true"></i></a>.
+                
                 <p>I created this custom Vtable following the instructions in the <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap3.htm#_Creating_and_Editing">
                 WRF User Guide</a>. I used the WPS utility <i>util/g2print.exe [name-of-grib2-file] > out.txt</i> to print out the contents and 
-                create the custom Vtable based on the output. This version is different than the 
-                <a href="http://rapidrefresh.noaa.gov/HRRR/static/Vtable.HRRR.ESRL">ESRL verion</a> which might be useful for operational HRRR analyses.
-                At any rate, my Vtable works for the experimental HRRR analyses we archive at the University of Utah.
-                <p>Remember, you have to configure WPS with an option that supports grib2 data as explained in previous section.
-
-                <br><br>
-                <textarea style="width:100%; height:300px;" disabled>
- RIB1| Level| From |  To  | metgrid  |  metgrid | metgrid                                 |GRIB2|GRIB2|GRIB2|GRIB2|
-Param| Type |Level1|Level2| Name     |  Units   | Description                             |Discp|Catgy|Param|Level|
------+------+------+------+----------+----------+-----------------------------------------+-----------------------+
-   7 | 100  |   *  |      | HGT      | m        | Height                                  |  0  |  3  |  5  | 100 |
-  11 | 100  |   *  |      | TT       | K        | Temperature                             |  0  |  0  |  0  | 100 |
-  52 | 100  |   *  |      | RH       | %        | Relative Humidity                       |  0  |  1  |  1  | 100 |
-  51 | 100  |   *  |      | SPECHUMD | kg kg-1  | Specific Humidity                       |  0  |  1  |  0  | 100 |
-  33 | 100  |   *  |      | UU       | m s-1    | U                                       |  0  |  2  |  2  | 100 |
-  34 | 100  |   *  |      | VV       | m s-1    | V                                       |  0  |  2  |  3  | 100 |
-     | 100  |   *  |      | QC       | kg kg-1  | Cloud water mixing ratio                |  0  |  1  | 22  | 100 |
-     | 100  |   *  |      | QI       | kg kg-1  | Ice mixing ratio                        |  0  |  6  |  0  | 100 |
-     | 100  |   *  |      | QR       | kg kg-1  | Rain water mixing ratio                 |  0  |  1  | 24  | 100 |
-     | 100  |   *  |      | QS       | kg kg-1  | Snow water mixing ratio                 |  0  |  1  | 25  | 100 |
-     | 100  |   *  |      | QG       | kg kg-1  | Graupel mixing ratio                    |  0  |  1  | 32  | 100 |
-  11 | 105  |   2  |      | TT       | K        | Temperature       at 2 m                |  0  |  0  |  0  | 103 |
-  51 | 105  |   2  |      | SPECHUMD | kg kg-1  | Specific Humidity at 2 m                |  0  |  1  |  0  | 103 |
-  33 | 105  |  10  |      | UU       | m s-1    | U                 at 10 m               |  0  |  2  |  2  | 103 |
-  34 | 105  |  10  |      | VV       | m s-1    | V                 at 10 m               |  0  |  2  |  3  | 103 |
-   1 |   1  |   0  |      | PSFC     | Pa       | Surface Pressure                        |  0  |  3  |  0  |   1 |
- 129 | 102  |   0  |      | PMSL     | Pa       | Sea-level Pressure                      |  0  |  3  |  1  | 101 |
-   7 |   1  |   0  |      | SOILHGT  | m        | Terrain field of source analysis        |  0  |  3  |  5  |   1 |
-  65 |   1  |   0  |      | SNOW     | kg m-2   | Water equivalent snow depth             |  0  |  1  | 11  |   1 |
-  11 |   1  |   0  |      | SKINTEMP | K        | Temperature at ground sfc (from s file) |  0  |  0  |  0  |   1 |
-  91 |   1  |   0  |      | SEAICE   |          | Ice flag                                | 10  |  2  |  0  |   1 |
-  81 |   1  |   0  |      | LANDSEA  | proprtn  | Land/Sea flag (1=land, 0 or 2=sea)      |  2  |  0  |  0  |   1 |
- 144 |   1  |   0  |      | SOILM000 | fraction | Soil Moist   0 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  |   1  |      | SOILM001 | fraction | Soil Moist   1 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  |   4  |      | SOILM004 | fraction | Soil Moist   4 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  |  10  |      | SOILM010 | fraction | Soil Moist  10 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  |  30  |      | SOILM030 | fraction | Soil Moist  30 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  |  60  |      | SOILM060 | fraction | Soil Moist  60 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  | 100  |      | SOILM100 | fraction | Soil Moist 100 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  | 160  |      | SOILM160 | fraction | Soil Moist 160 cm below ground          |  2  |  0  | 192 | 106 |
- 144 | 111  | 300  |      | SOILM300 | fraction | Soil Moist 300 cm below ground          |  2  |  0  | 192 | 106 |
-  85 |   1  |   0  |      | SOILT000 | K        | Soil Temp    0 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  |   1  |      | SOILT001 | K        | Soil Temp    1 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  |   4  |      | SOILT004 | K        | Soil Temp    4 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  |  10  |      | SOILT010 | K        | Soil Temp   10 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  |  30  |      | SOILT030 | K        | Soil Temp   30 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  |  60  |      | SOILT060 | K        | Soil Temp   60 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  | 100  |      | SOILT100 | K        | Soil Temp  100 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  | 160  |      | SOILT160 | K        | Soil Temp  160 cm below ground          |  2  |  0  |  2  | 106 |
-  85 | 111  | 300  |      | SOILT300 | K        | Soil Temp  300 cm below ground          |  2  |  0  |  2  | 106 |
------+------+------+------+----------+----------+-----------------------------------------+-----------------------+
-#
-#  Vtable for High Resolution Rapid Refresh (HRRR) pressure-level data from the ncep server.
-#
-# Edited by Brian K. Blaylock, University of Utah, July 16, 2015
-#
-#  http://nomads.ncep.noaa.gov/pub/data/nccf/nonoperational/com/hrrr/prod/
-#
-
-	</textarea>
+                create the custom Vtable based on the output. This version is different than 
+                <a href="http://rapidrefresh.noaa.gov/HRRR/static/Vtable.HRRR.ESRL">ESRL's' verion</a>.
+                <p>At any rate, my Vtable worked, but if you find errors or additions
+                please forward those to me <i class="fa fa-smile-o" aria-hidden="true"></i>.
         </div>
 
         <div id="tab4" class="tab-pane fade">
-                <a name="UNGRIB"></a>
-                <h3>Need JASPER Library</h3>
-                <p>Raw HRRR files are in grib2 format. In order to process these files, WPS requires the 
-                JASPER library. See <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap3.htm"> 
-                chapter 3</a> of the WRF user guide for installing JASPER.
-                <p>If you are on the University of Utah's CHPC computers, just set these environments:
-                <textarea class="linux" style="height:80px"disabled>
-
-                setenv JASPERLIB /uufs/chpc.utah.edu/sys/installdir/jasper/1.900.1-atmos07102015/lib
-                setenv JASPERINC /uufs/chpc.utah.edu/sys/installdir/jasper/1.900.1-atmos07102015/include
-                </textarea>
-                <p>When you configure WPS it should say <span style="color:green">"Found Jasper environment variables for GRIB2 support..."</span>
-                Then configure WPS with a "grib2 friendly" option. In WRFv3.7
-                I use option <span style="color:red">7. Linux x86_64, PGI comiler (dmpar)</style>
+                <h3>UNGRIB Requires JASPER Library</h3>
+                <p>Raw HRRR files are in GRIB2 format. In order to ungrib these 
+                files WPS requires the JASPER library. When you configure 
+                WPS it should say 
+                <span style="color:green">"Found Jasper environment variables
+                for GRIB2 support..."</span>. Then configure WPS with a 
+                "grib2 friendly" option. In WRFv3.7 I use option 
+                <span style="color:red">7. Linux x86_64, PGI comiler (dmpar)</style>
                 
+                <p>If you are on the University of Utah's CHPC computers,
+                set these environments:
+                <div class="well well-sm">
+                setenv JASPERLIB /uufs/chpc.utah.edu/sys/installdir/jasper/1.900.1-atmos07102015/lib<br>
+                setenv JASPERINC /uufs/chpc.utah.edu/sys/installdir/jasper/1.900.1-atmos07102015/include
+                </div>
+                
+                <p>If you don't have JASPER, see
+                <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap3.htm"> 
+                Chapter 3 of the WRF User Guide</a> for instructions to install JASPER.
+                                                
                 <hr>
-                <h3>Ungrib: Replace the source code file rd_grib2.F with this...</h3>
-                <p>There is an update to the rd_grib2.F file (WPS/ungrib/src/rd_grib2.F) that will allow you to use 
+                <h3>Trying to UNGRIB with HRRR-Alaska?</h3>
+                <p>There is an update to the rd_grib2.F file (WPS/ungrib/src/rd_grib2.F) that will allow you to ungrib 
                 the experimental Alaska HRRR data. You should be able to use the regular HRRR without this, but it
                 doesn't hurt to give it a try. The reason this is necessary for Alaska HRRR grib files is that
-                Alaska HRRR data is on a polar stereograph projection, and processing for that type of projection is included here. 
+                Alaska HRRR data is on a polar stereograph projection, and processing for that type of projection is included in the updated script. 
                 <p><a href='http://home.chpc.utah.edu/~u0553130/HRRR_WRF/rd_grib2_for-ungribbing-HRRR-alaska.F.txt'>GET THIS FILE</a>
         </div>
 
         <div id="tab5" class="tab-pane fade">
                 <h3>METGRID.TBL</h3>
-                <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/METGRID.TBL.HRRR.bkb" target="_blank"><img src='./images/githubcode.png' align=right style='height:80px'></a>
-                Create and copy this new METGRID table. This is my version of the METGRID.TBL required for getting the meteorlogical data 
-                from the ungribbed files.
-                <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/METGRID.TBL.HRRR.bkb">METGRID.TBL.HRRR.bkb</a>
+                <p>The METGRID Table tells METGRID how to interpolate the 
+                meteorological fields from the UNGRIBed files on the WRF friendly grid.
+                <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/METGRID.TBL.HRRR.bkb">METGRID.TBL.hrrr.bkb <i class="fa fa-github-square" aria-hidden="true"></i></a>
+                <p>If you find errors or have any suggestions please share <i class="fa fa-smile-o" aria-hidden="true"></i>.
         </div>
 
         <div id="tab6" class="tab-pane fade">
                 <h3>namelist.wps</h3>
-                <p><img src = 'http://home.chpc.utah.edu/~u0553130/HRRR_WRF/model_domains.png' width="90%" class='style1'>
-                <p>The initial conditions driving my WRF model is the HRRR analysis on 18 June 2015 (with several days of spin-up, starting on 14 June 2015). 
-                Above shows the HRRR terrain height with water colored blue. 
-                Domain 1 (d01) has a grid spacing of 3km, same as the HRRR. Domain 2 (d02) has a grid spacing of 1km.
-                <p>In my namelist.wps I am nesting a 1-km domain in a 3-km domain.
-                Download: <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.wps.bkb.txt">namelist.wps.bkb</a>
-                <br><br>
-                <textarea style="width:100%; height:300px;" disabled>
-&share
- wrf_core = 'ARW',
- max_dom = 2,
- start_date = '2015-06-18_00:00:00', '2015-06-18_00:00:00',
- end_date   = '2015-06-18_23:00:00', '2015-06-18_23:00:00',
- interval_seconds = 3600,
- io_form_geogrid = 2,
-/
-
-&geogrid
- parent_id         =   1, 1,
- parent_grid_ratio =   1, 3,
- i_parent_start    =   1, 33,
- j_parent_start    =   1, 33,
- e_we              = 350, 850,
- e_sn              = 350, 850,
- geog_data_res     = 'modis_lakes+30s', 'modis_lakes+30s',
- dx = 3000,
- dy = 3000,
- map_proj = 'lambert',
- ref_lat   =  40.79,
- ref_lon   = -111.98,
- truelat1  =  33.0,
- truelat2  =  45.0,
- stand_lon = -111.98,
- geog_data_path = '/uufs/chpc.utah.edu/common/home/horel-group3/horel_data/WPS_GEOG/'
-/
-
-&ungrib
-out_format = 'WPS',
-prefix = 'FILE_KSLcase',
-/
-
-&metgrid
-fg_name = 'FILE_KSLcase'
-io_form_metgrid = 2,
-/
-
-	        </textarea>
+                <p><img src = 'http://home.chpc.utah.edu/~u0553130/HRRR_WRF/model_domains.png' style="width:90%; max-width:500px" class='style1'>
+                <p>Above shows the HRRR terrain height with water area colored blue. 
+                Domain 1 (d01) has a grid spacing of 3km, same as the HRRR. 
+                Domain 2 (d02) has a grid spacing of 1km.
+                <p>Download: <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.wps.bkb.txt">namelist.wps.bkb</a>
         </div>
 
         <div id="tab7" class="tab-pane fade">
                 <h3>namelist.input</h3>
-                <p>This is my verison of namelist.input used to run real.exe and wrf.exe
-                <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.input.bkb">namelist.input.bkb</a>
-                <br><br>
-                <textarea style="width:100%; height:300px;" disabled>
- &time_control
- run_days                            = 0,
- run_hours                           = 5,
- run_minutes                         = 59,
- run_seconds                         = 0,
- start_year                          = 2015, 2015,
- start_month                         = 06,   06,
- start_day                           = 18,   18,
- start_hour                          = 18,   18,
- start_minute                        = 00,   00, 
- start_second                        = 00,   00, 
- end_year                            = 2015, 2015,
- end_month                           = 06,   06,
- end_day                             = 18,   18, 
- end_hour                            = 23,   23, 
- end_minute                          = 59,   59, 
- end_second                          = 00,   00, 
- interval_seconds                    = 3600,
- input_from_file                     = .true.,.true.,
- history_interval                    = 60,  60,
- frames_per_outfile                  = 1, 1,
- restart                             = .false.,
- restart_interval                    = 360,
- io_form_history                     = 2,
- io_form_restart                     = 2,
- io_form_input                       = 2,
- io_form_boundary                    = 2,
- debug_level                         = 400,
- /
-
- &domains
- time_step                           = 6,
- time_step_fract_num                 = 0,
- time_step_fract_den                 = 1,
- max_dom                             = 2,
- e_we                                = 350, 451,
- e_sn                                = 350, 451, 
- e_vert                              = 30, 30, 
- p_top_requested                     = 5000,
- num_metgrid_levels                  = 41,
- num_metgrid_soil_levels             = 9,
- dx                                  = 3000, 1000, 
- dy                                  = 3000, 1000, 
- grid_id                             = 1,     2,   
- parent_id                           = 0,     1,   
- i_parent_start                      = 1,     100,  
- j_parent_start                      = 1,     100,   
- parent_grid_ratio                   = 1,     3,  
- parent_time_step_ratio              = 1,     3,   
- feedback                            = 0,
- smooth_option                       = 0,
- /
-              
- &physics
- mp_physics                          = 8,     8,
- ra_lw_physics                       = 4,     4,
- ra_sw_physics                       = 4,     4,
- radt                                = 2,     2,
- sf_sfclay_physics                   = 2,     2,
- sf_surface_physics                  = 2,     2,
- bl_pbl_physics                      = 2,     2,
- bldt                                = 0,     0,
- cu_physics                          = 0,     0,
- cudt                                = 0,     0,
- no_mp_heating                       = 0,
- isfflx                              = 1,
- ifsnow                              = 0,
- icloud                              = 1,
- surface_input_source                = 1,
- num_soil_layers                     = 4,
- sf_urban_physics                    = 0,     0,
- slope_rad                           = 1,     1,
- topo_shading                        = 1,     1,
- shadlen                             = 25000.,
- num_land_cat                        = 21,
- /
-
-&fdda
- /
-
- &dynamics   
- w_damping                           = 0,
- diff_opt                            = 1,
- km_opt                              = 4,
- diff_6th_opt                        = 0,      0,    
- diff_6th_factor                     = 0.12,   0.12,   
- base_temp                           = 290.
- damp_opt                            = 1,
- zdamp                               = 5000.,  5000., 
- dampcoef                            = 0.01,    0.01,   
- khdif                               = 0,      0,     
- kvdif                               = 0,      0,     
- non_hydrostatic                     = .true., .true., 
- moist_adv_opt                       = 1,      1,      
- scalar_adv_opt                      = 1,      1,      
- do_avgflx_em                        = 1, 1, 1, 1, 1, 1, 1, 1, 1,
- do_avgflx_cugd                      = 1, 1, 1, 1, 1, 1, 1, 1, 1,
- tracer_opt                          = 2, 2,
- /
-
- &bdy_control
- spec_bdy_width                      = 5,
- spec_zone                           = 1,
- relax_zone                          = 4,
- specified                           = .true., .false.,
- nested                              = .false., .true.,
- /
-
- &grib2
- /
-
- &namelist_quilt
- nio_tasks_per_group = 0,
- nio_groups = 1,
-/ 
-
-
-
-                </textarea>
+                <p>This is my namelist.input file used to run real.exe and wrf.exe
+                <p>Download: <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.input.bkb">namelist.input.bkb</a>
         </div>
 
         <div id="tab8" class="tab-pane fade">
-                <img align=right height="200" style="min-width:150px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/subdomain_salt-lake-valley.png" >
+                <img align=right height="200" style="min-width:150px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/subdomain_salt-lake-valley.png">
                 <h3>Comparing HRRR 3km with WRF 1km</h3>
-
-                <br>
-                <p> 
-                My second domain over northern Utah is at 1km resolution. Below are winds for the Salt Lake Valley subset 
-                from that domain. As a note, a 24 hour simulation took 23 hours to process on 160 processors. 
-                <br>
-                <p>Results of WRF modeling.
-
-                <p>
-                Shown is the 10 Meter wind winds for the HRRR analysis at 3km resolution, WRF model at 1km initialized by the
-                HRRR analysis.
-
-                <p>
-                <img ALIGN=center width="48%" style="min-width:300px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/MS/HRRR_wind_anal/10-m/18%20Jun%202015%20%202000%20UTC.png">
-                <img ALIGN=center width="48%" style="min-width:300px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/MS/planeview_wind/surface_babs_V_Q/contour_V10_barbs_20150618220000.png">
-
-
-                <p> Below are actual observations: Radial Velocity from the TDWR radar.
-                <img align=center width="48%" style="min-width:300px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/MS/TDWR/20150518_LakeBreeze/20150618_200500.png">
-
-
+                <p> My <a href="./MS.html">master's thesis</a> used thed described method
+                to initialize WRF with the HRRR to study a lake breeze event.
+                While that project didn't explore the benefits of using HRRR
+                as boundary conditions instead of the NAM or GFS, here is one 
+                example of differences between the HRRR and the 1 km WRF simulation.
+                <p>Below compares the winds for the Salt Lake Valley subset from
+                the HRRR analysis and the WRF model at 1 km initialized by the
+                HRRR analysis. Notice the difference in the outline of the Great Salt Lake (blue)
+                between HRRR and WRF. This was a custom modification described 
+                in my thesis. The observations from the TDWR is also shown.
+                The lake breeze in the HRRR never progressed, probably due to 
+                ineffective data assimilation. The WRF simulated lake breeze
+                was strong an early probably because of the lack of strong
+                southerly winds. This is described in my these. Good thing 
+                my method didn't fix everything or we'd all be out of a job.
+                <center><img align=center width="85%" style="max-width:600px; padding:3px;" src="./images/Example_Model_Winds.png"></center>
         </div>
 
 
@@ -405,4 +193,4 @@ io_form_metgrid = 2,
 
 <script src="./js/site/siteclose.js"></script>
 </body>
-</html>>
+</html>

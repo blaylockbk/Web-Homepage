@@ -51,10 +51,8 @@ except:
       end = (current+timedelta(hours=7)).strftime('%Y-%m-%d %H:%M')
 try:
       units = form['units'].value
-      variable = form['variable'].value
 except:
       units = 'C'
-      variable = 'air_temp'
 
 # The issue here is if all the form isn't filled, it defaluts to the peter sinks exception
 
