@@ -7,8 +7,9 @@ Brian Blaylock
 January 17, 2017
 
 To Do List:
+[ ] Put "advanced options" in a dropdown bootstrap accordian menu
 [ ] Add back in minimum ozone threshold.
-[ ] Add advanced options to modify the plot size, label fonts, dpi, etc. to 
+[ ] Add advanced plot options to modify the plot size, label fonts, dpi, etc. to 
     easily customize plots for publications.
 """
 
@@ -42,7 +43,7 @@ except:
 try:
       tz = form['tz'].value   # Time Zone
 except:
-      tz = 'UTC'
+      tz = '0'
 try:
       HI = form['HI'].value   # Hour interval
 except:
@@ -182,10 +183,9 @@ print''' </select>
 <!---(time option) ----------------------->
 
 
-
 <!---Time Zone ----------------------->  
 	<tr>
-      <td>Time Option: *coming soon*</td>
+      <td>Time Zone: </td>
       <td>
          <select class="form-control" name="tz">'''
 # display is the variable name as it will display on the webpage
@@ -203,7 +203,7 @@ print''' </select>
 <!---(time_zone) ----------------------->
 
 <!---Hour Interval ----------------------->  
-	<span style="padding-left:10px">Hour Interval: *coming soon*</span>
+	<span style="padding-left:10px">Hour Interval: </span>
       
          <select class="form-control" name="HI">'''
 # display is the variable name as it will display on the webpage
@@ -224,11 +224,11 @@ print''' </select>
 <!---THRESHOLD ----------------------->	  	  
 	  <tr>
          <td>
-		 Min Threshold: *coming soon*
+		 Threshold (Values >= input):
 		 </td>
 		 
 		 <td>
-         <input class="form-control" type="text" name="threshold" value="'''+threshold+'''">             
+         <input class="form-control" type="text" placeholder="Insert a number (int or float)" name="threshold" value="'''+threshold+'''">             
 <!---(threshold) ----------------------->
 
 <!---PLOT MAX ----------------------->	  	  

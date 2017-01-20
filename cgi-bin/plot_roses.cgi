@@ -57,6 +57,18 @@ DATE_END = datetime.strptime(end, '%Y-%m-%d %H:%M')
 variable = 'wind_direction,wind_speed,ozone_concentration,PM_25_concentration'
 a = get_mesowest_ts(stn, DATE_START, DATE_END, variables=variable, verbose=True)
 
+# Adjust Datetime to requested Time Zone if not UTC
+if tz != '0':
+	minus_this = int(tz) #strip off the negative
+	a['DATETIME'] = np.array([i-timedelta(hours=minus_this) for i in a['DATETIME']])
+
+if rose_type=='wind' or rose_type=='wind_clock':
+	unit = 'm/s'
+elif rose_type=='ozone' or rose_type=='ozone_clock':
+	unit = 'ppb'
+elif rose_type=='pm_25' or rose_type=='pm_clock':
+	unit = 'ug/m3'
+
 ## Sidebar Text
 all_text = '' \
 + 'Station      : '+ stn \
@@ -67,22 +79,48 @@ all_text = '' \
 + '\nHour Interval: ' + HI \
 + '\nThreshold    : ' + threshold \
 + '\nPlot Max     : ' + plot_max \
++ '\nUnits        : ' + unit \
 + '\nTotal Obs    : *coming soon*'
 
 """
 Filter the data
 """
-# Filter by threshold (wind speed, ozone concentration, etc.)
-if rose_type == 'wind' and int(threshold) != 0:
-	locs = np.argwhere(a['wind_speed'] >= int(threshold))
+# Filter by hour interval (HI)
+# get hours from each datetime
+all_hours = np.array([i.hour for i in a['DATETIME']])
+
+if HI != 'All Day':
+	start_hour = int(HI[0:2])
+	end_hour = int(HI[-2:])
+	# Now get indexes between start and end hour
+	HI_index = np.logical_and(all_hours<=end_hour,all_hours>=start_hour)
+	if start_hour > end_hour:
+		HI_index = np.logical_or(all_hours<=end_hour,all_hours>=start_hour)
+	# reasign the variables in a dictionary based on this indexes
 	for k in a.keys():
-		try:
-			a[k]=a[k][locs]
-		except:
-			# probably isn't an interable array. Might be lat/lon, elevation, etc.
-			pass
+		if np.size(a[k]) == np.size(HI_index):
+			a[k] = a[k][HI_index]
 
-
+# Filter by threshold (wind speed, ozone concentration, etc.)
+# Get indexes where ozone
+threshold_float = float(threshold)
+if threshold_float != 0:
+	if rose_type=='wind' or rose_type=='wind_clock':
+		threshold_index = a['wind_speed'] >= threshold_float
+		a['wind_speed'] = a['wind_speed'][threshold_index]
+		a['wind_direction'] = a['wind_direction'][threshold_index]
+		a['DATETIME'] = a['DATETIME'][threshold_index]
+	elif rose_type=='ozone' or rose_type=='ozone_clock':
+		threshold_index = a['ozone_concentration'] >= threshold_float
+		a['ozone_concentration'] = a['ozone_concentration'][threshold_index]
+		a['wind_direction'] = a['wind_direction'][threshold_index]
+		a['DATETIME'] = a['DATETIME'][threshold_index]
+	elif rose_type=='pm_25' or rose_type=='pm_clock':
+		threshold_index = a['PM_25_concentration'] >= threshold_float
+		a['PM_25_concentration'] = a['PM_25_concentration'][threshold_index]
+		a['wind_direction'] = a['wind_direction'][threshold_index]
+		a['DATETIME'] = a['DATETIME'][threshold_index]
+	
 ##-----------------------------------------------------------------------------
 #A quick way to create new windrose axes...
 def new_axes():
@@ -112,7 +150,7 @@ if rose_type =="wind":
 	ax.bar(wd, ws, nsector = 16, normed=True, \
 				   opening=.95, edgecolor='w')
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.6),prop={'size':15})
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -145,7 +183,7 @@ elif rose_type =="wind_clock":
 			   edgecolor='none', \
 			   )
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.6),prop={'size':15})
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -174,7 +212,7 @@ elif rose_type == "ozone":
 				opening=.95, edgecolor='w', \
 				colors = ('green','yellow','orange', 'red', 'purple'))
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.6),prop={'size':15})
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -209,7 +247,71 @@ elif rose_type =="ozone_clock":
 				colors = ('green','yellow','orange', 'red', 'purple')
 			   )
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.6),prop={'size':15})
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+
+	plt.grid(True)
+	plt.yticks(np.arange(0,105,5))
+	ax.set_yticklabels(['','','10%','', '20%','','30%','','40%','','50%'], fontsize = 15)
+	ax.set_xticklabels(['06:00','03:00','00:00','21:00', '18:00','15:00','12:00','09:00'], fontsize = 15)
+
+	if plot_max=='auto':
+		table = ax._info['table']
+		wd_freq = np.sum(table, axis=0)
+		ax.set_rmax(np.floor(max(wd_freq)/5)*5+5) #set rmax to upper number divisible by 5
+	else:
+		ax.set_rmax(plot_max)
+
+	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	
+	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
+
+elif rose_type == "pm_25":
+	ws = a['PM_25_concentration']
+	wd = a['wind_direction']
+
+	fig, (ax1) = plt.subplots(1,1)
+	ax = new_axes()
+	ax.bar(wd, ws, nsector = 16, \
+				bins=[0,12.1,35.,55.4,150.4], normed=True, \
+				opening=.95, edgecolor='w', \
+				colors = ('green','yellow','orange', 'red', 'purple'))
+
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+
+	plt.grid(True)
+	plt.yticks(np.arange(0,105,5))
+	ax.set_yticklabels(['','','10%','', '20%','','30%','','40%','','50%'], fontsize = 15)
+	
+	if plot_max=='auto':
+		table = ax._info['table']
+		wd_freq = np.sum(table, axis=0)
+		ax.set_rmax(np.floor(max(wd_freq)/5)*5+5) #set rmax to upper number divisible by 5
+	else:
+		ax.set_rmax(plot_max)
+
+	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	
+	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
+
+elif rose_type =="pm_clock":
+
+	# Make array of hours and convert it to a "degree" for
+    # The polar plot (multiply the hour by 15)
+	hour = [i.hour*15 for i in a['DATETIME']]
+
+	ws = a['PM_25_concentration']
+	wd = hour
+
+	fig, (ax1) = plt.subplots(1,1)
+	ax = new_axes()
+	ax.contourf(wd, ws, nsector = 24, \
+    			    normed=True, \
+			   edgecolor='none', \
+			   bins=[0,12.1,35.,55.4,150.4], \
+				colors = ('green','yellow','orange', 'red', 'purple')
+			   )
+
+	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
