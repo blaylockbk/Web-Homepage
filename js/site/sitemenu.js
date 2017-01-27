@@ -48,6 +48,8 @@ if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/
 }
 
 
+/* Someday, use the bootstrap mega-menus if that makes more sense to use*/
+
 document.write('\
 <nav class="navbar navbar-inverse" style="border-radius:0;margin:0;">\
         <div class="container-fluid">\
@@ -88,16 +90,18 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
+                            <li><a href="../Camera_Display " target="tools" target="_blank"><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
+                            <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
                             <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">External Links</li>\
-                            <li><a href="../Camera_Display " target="tools"><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/meso-icon.png" height="20px"> MesoWest</a></li>\
                             <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
                             <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                            <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                         </ul>\
                     </li>\
