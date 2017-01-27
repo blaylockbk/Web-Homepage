@@ -14,6 +14,7 @@ To Do List:
     requested stations and creates a variable dropdown for the available data.
 [ ] Add advanced options to modify the plot size, label fonts, dpi, etc. to 
     easily customize plots for publications.
+[ ] Add MesoWest QC checks
 """
 
 import sys
@@ -93,8 +94,9 @@ print'''
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 style="font-size:22px;">MesoWest Station Climatology</h4><hr>
             <h5 align="left" style="font-size:18px;">
-            Input a MesoWest Sation ID and see statistics for that station.<h/5>
-            
+            Input a MesoWest Sation ID and see statistics for that station.
+            This tool severly needs QC checks.<h/5>
+            <br><br>
             <div class="alert alert-info">As you noticed, this page can take a long time to load.
             Load time is a function of number of observations the station made.</div>            
             <div class='alert alert-warning'>
