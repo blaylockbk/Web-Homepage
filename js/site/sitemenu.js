@@ -27,6 +27,7 @@ var pics = [
     "./images/Panorama/slc_pan.png",
     "./images/Panorama/bflat_pan.png",
     "./images/Panorama/utahlake_pan.png",
+    "./images/Panorama/goes16_pan.png",
 ];
 
 
