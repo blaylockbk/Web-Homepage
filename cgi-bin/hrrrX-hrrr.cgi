@@ -79,8 +79,8 @@ print'''
             Input the date and hour (UTC) for the model run you wish to see the
             comparison between the HRRR and HRRR-X.
             <hr>Reasons the images couldn't be plotted
-            <ol>
-            <li>HRRR data isn't available. More likely that the HRRRx isn't available
+            <ol style="paddin-left:30px">
+            <li>HRRR data isn't available. More likely that the HRRRx isn't available. Try another hour or day.
             <li>Browser timed out
             </ol>
             <br><br>
@@ -356,7 +356,7 @@ var_list = ['Vertically-integrated liquid',
 'Land-sea mask',
 'Sea-ice cover']
 for i in var_list:
-      print '''<li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr_other.cgi?date=2016-12-01&hour=03&domain=GSL&other='''+i+'''" target="_blank">'''+i+'''</a>'''
+      print '''<li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr_other.cgi?date='''+date+'''&hour='''+hour+'''&domain='''+domain+'''&other='''+i+'''" target="_blank">'''+i+'''</a>'''
 print '''      
             </ul>
         </div>
