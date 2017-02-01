@@ -126,7 +126,7 @@ m.drawcoastlines()
 m.drawcountries()
 m.pcolormesh(lon, lat, temp, cmap='Spectral_r', vmax=temp.max(), vmin=temp.min())
 plt.colorbar(orientation='horizontal', shrink=.9, pad=.03)
-plt.title('hrrr')
+plt.title('hrrr '+str(grbs[1].analDate))
 
 # second pannel
 ax = fig.add_subplot(132)
@@ -136,7 +136,7 @@ m.drawcoastlines()
 m.drawcountries()
 m.pcolormesh(lon, lat, tempX, cmap='Spectral_r', vmax=temp.max(), vmin=temp.min())
 plt.colorbar(orientation='horizontal', shrink=.9, pad=.03)
-plt.title('hrrrX')
+plt.title('hrrrX '+str(grbsX[1].analDate))
 
 # third pannel
 ax = fig.add_subplot(133)

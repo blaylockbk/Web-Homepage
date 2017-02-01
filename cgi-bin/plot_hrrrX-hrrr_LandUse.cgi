@@ -94,10 +94,10 @@ lon = lon[subset[domain][0]:subset[domain][1],subset[domain][2]:subset[domain][3
 
 # Open HRRRx and get surface temperature
 grbsX = pygrib.open(DIR+'hrrrX/hrrrX.t'+hour+'z.wrfsfcf00.grib2')
-if len(np.unique(grbsX[87].values))==16:
-      tempX = grbsX[87].values[subset[domain][0]:subset[domain][1],subset[domain][2]:subset[domain][3]]
+if len(np.unique(grbsX[87].values))==19:
+      tempX = grbsX[87].values[subset[domain][0]:subset[domain][1],subset[domain][2]:subset[domain][3]] # new HRRRx
 else:
-      tempX = grbsX[86].values[subset[domain][0]:subset[domain][1],subset[domain][2]:subset[domain][3]]
+      tempX = grbsX[86].values[subset[domain][0]:subset[domain][1],subset[domain][2]:subset[domain][3]] # old HRRRx
 
 # Note: lat/lon and latX/lonX should be the same
 # Note: Don't trim data, it doubles time to plot

@@ -100,7 +100,7 @@ document.write('\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">External Links</li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/meso-icon.png" height="20px"> MesoWest</a></li>\
+                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="15px"> MesoWest</a></li>\
                             <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
                             <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
                             <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\

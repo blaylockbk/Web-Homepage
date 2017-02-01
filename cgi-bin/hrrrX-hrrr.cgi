@@ -189,6 +189,10 @@ print''' </select>
 
 <h3 align="center">'''
 
+
+# Check if the HRRR and HRRRx files exist. If not, then say so.
+
+
 print '''</h3>
 
   <!-- Tabs -->
