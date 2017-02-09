@@ -216,6 +216,7 @@ print '''
     <li><a data-toggle="tab" href="#tab3">Wind Speed</a></li>
     <li><a data-toggle="tab" href="#tab4">Wind Direction</a></li>
     <li><a data-toggle="tab" href="#tab5">Wind Barb</a></li>
+    <li><a data-toggle="tab" href="#tab6">Other</a></li>
   </ul>
 
   <div class="tab-content">
@@ -328,6 +329,27 @@ print '''
                               +'''&units='''+units \
                               +'''&variable=wind_direction,wind_speed" width=95%>
                               </a>
+    </div>
+    <div id="tab6" class="tab-pane fade">
+      <h3>Other Possible Variables, if available</h3>
+      <ul style="padding-left:60px">
+            <li><a href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=PM_25_concentration" target="_blank">PM 25 Concentration
+            <li><a href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=ozone_concentration" target="_blank">Ozone Concentration
+      </ul>
     </div>
   </div>
 

@@ -115,6 +115,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p><b style="color:green">WRFV3/dyn_em/module_initialize_real.F</b> contains information on how to initialize WRF in the real.exe executable.
 			Making these changes will initialize our tracer plume in WRF
 			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/module_initialize_real.F">module_initialize_real.F</a> file.
+			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/module_initialize_real.F.bkb.tracer"><i class="fa fa-github" aria-hidden="true"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 3372 are shown below...
 			<textarea disabled>
 ! Creates an 8x8 size grid box plume in the center of the domain
@@ -194,6 +195,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p><b style="color:green">WRFV3/dyn_em/solve_em.F</b> contains information on how to create a continuous plume.
 			Making these changes will continue the plume each timestep in WRF.
 			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/solve_em.F">solve_em.F</a> file.
+			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/solve_em.F.bkb.tracer"><i class="fa fa-github" aria-hidden="true"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 265 are shown below...
 			<p>This is very similar to the modifications made in module_initialize_real.F, but notice the KEY change from <b>its</b> to <b><i>ips</i></b> in the IF statement...
 			I think this is becuase of a change in how WRF separates the code in real and wrf    
@@ -252,8 +254,11 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p style="color:red">Note: I've realized that this method artificially removes tracers. Tracers transported back 
 			into the source location is automatically reset to 1. To fix this you'll have to add to the value already in the gird box,
 			so something like this: <i>tracer(225,1,198,P_S_SLV) = tracer(225,1,198,P_S_SLV) + 1.</i>
+			<hr>
+			<h3>Initlize Tracers after WRF begins</h3>
 			<p> It is possible to create a new "smoke puff" at specific intervals
-			rather than every time step (say, you want a new plume every hour). I haven't got the periodic plume working yet, but here's 
+			rather than every time step (say, you want a new plume every hour).
+			I haven't got the periodic plume working yet, but here's 
 			a clue in an email from Dave Gill...
 			<textarea style="height:110px" disabled>
 !You can get the time in a few ways.  For a fixed time step, if you know 
@@ -262,6 +267,18 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
  300    grid%itimestep = grid%itimestep + 1
  301    grid%dtbc = grid%dtbc + grid%dt
 			</textarea>
+			<p> Here is an approach to add a delayed tracer, but I haven't tested yet.
+				(Special thanks to Sudheer Bhimireddy for testing this approach)
+				<ol style="padding-left:60px">
+					<li>In module_initialize_real.F, set tracer value to zero (don't add a new tracer at the initial time)
+					<li>In solve_em.F, add a conditional statement to add tracers only after a certain timestep
+						<div class="alert alert-info">IF ( grid%itimestep .GE. tracer_time ) THEN<br>
+						                ! Release the tracers<br>
+									  END IF
+						</div>
+						Where tracer_time is the number of time steps after model initlization.
+						(tracer_time = desired_spin-up_time(in seconds)/time_step(in seconds))
+				</ol>
         </div>
         
 		<div id="tab6" class="tab-pane fade">

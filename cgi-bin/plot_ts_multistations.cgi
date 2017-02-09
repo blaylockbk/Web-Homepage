@@ -123,19 +123,19 @@ count = 0
 color = ['b','g','r','darkorange'] # order of the colors plotted
 for s in data.keys():
     try:
-        if units == 'F' and variable=='air_temp':
+        if units == 'F' and variable == 'air_temp':
             ax1.plot(data[s]['DATETIME'], data[s][variable]*9/5.+32,
-                    label=s.upper(),
-                    linewidth=2.5,
-                    color=color[count])
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
             plt.title('MesoWest Air Temperature')
             plt.ylabel('Temperature (F)')
 
         elif variable == 'air_temp':
             ax1.plot(data[s]['DATETIME'], data[s][variable],
-                    label=s.upper(),
-                    linewidth=2.5,
-                    color=color[count])
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
             plt.title('MesoWest Air Temperature')
             plt.ylabel('Temperature (C)')
         
@@ -149,9 +149,9 @@ for s in data.keys():
 
         elif variable == 'wind_direction':
             ax1.scatter(data[s]['DATETIME'], data[s][variable],
-                    label=s.upper(),
-                    color=color[count]
-                    )
+                        label=s.upper(),
+                        color=color[count]
+                       )
             plt.ylim([0,360])
             plt.yticks(range(0,361,45), ['N','NE','E','SE','S','SW','W','NW','N',])
             plt.title('MesoWest Wind Direction')
@@ -159,16 +159,16 @@ for s in data.keys():
 
         elif variable == 'wind_speed':
             ax1.plot(data[s]['DATETIME'], data[s][variable],
-                    label=s.upper(),
-                    linewidth=2.5,
-                    color=color[count])
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
             plt.title('MesoWest Wind Speed')
             plt.ylabel('Wind Speed (ms$\mathregular{^{-1}}$)')
 
         elif variable == 'wind_direction,wind_speed':
             # Make a wind barb.
             y = np.ones_like(data[s]['DATETIME'])*(4-count)
-            u, v = wind_spddir_to_uv(data[s]['wind_speed'],data[s]['wind_direction'])
+            u, v = wind_spddir_to_uv(data[s]['wind_speed'], data[s]['wind_direction'])
 
             # plt.barbs can not take a datetime, so find the date indexes:
             idx = mpl.dates.date2num(data[s]['DATETIME'])
@@ -183,6 +183,13 @@ for s in data.keys():
             plt.ylabel('Half=2.5, Full=5, Flag=25 (ms$\mathregular{^{-1}}$)')    
             plt.yticks([0,1,2,3], ['','','',''])
             plt.ylim([4-count-.5,4.75])
+        else:
+            ax1.plot(data[s]['DATETIME'], data[s][variable],
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
+            plt.title('MesoWest '+variable)
+            plt.ylabel(variable)
     except:
         #error plotting stations
         pass

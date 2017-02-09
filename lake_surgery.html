@@ -21,7 +21,7 @@
     <li><a data-toggle="tab" href="#tab3">METGRID Modification</a></li>
     <li><a data-toggle="tab" href="#tab4">GEOGRID Modification</a></li>
     <li><a data-toggle="tab" href="#tab5">Change Lake Temperature</a></li>
-    <li><a data-toggle="tab" href="#tab6">Edit WRF Land Use in Photoshop</a></li>
+    <li><a data-toggle="tab" href="#tab6">Edit geo_em.d0x.nc in Photoshop</a></li>
   </ul>
 
     <div class="tab-content">
@@ -568,8 +568,8 @@ END DO
                 <p><a href="https://github.com/blaylockbk/Ute_WRF/tree/master/edit_netcdf_in_photoshop"><img align=right src='./images/githubcode.png'></a>
                 I always thought it would be nice if I could load a netCDF file into photoshop and make changes
                 to fields with the paint brush and pencil tool.
-                <p>Well, now you can, with this three step process using Python (this only works with landuse or categorical data sets so far).
-                <p>This is a work in progress and will get more attention after I defend my thesis.
+                <p>Well, now you can!, with this three step process using Python (this only works with binary arrays or categorical data sets so far).
+                <p>This is a work in progress and will get more attention upon need for doing this kind of work again.
                 <ol style="padding-left:60px;">
                 <li>Convert a netCDF array into a bitmap image <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/netcdf_to_bitmap.py'>netcdf_to_bitmap.py</a>.
                 <li>Open image in PhotoShop and use the pencil tool to change colors (i.e. land use categories). Save image as bitmap.
@@ -577,6 +577,14 @@ END DO
                 and extract the colors as categories. Save array into the WRF netCDF file
                 </ol>
                 <p><img src='./images/photoshop_python.png' width='100%'>
+                <br><br>
+                <p> As an example, Jim Steenburgh wanted to make the Lake Ontario 
+                simple on the southern coast for a test WRF simulaiton. From the geo_em.d03.nc
+                file I created a bitmap image of the LANDMASK array, Jim modified 
+                the lake in Photoshop, I then used the new bitmap image to 
+                redefine a new lakemask and landuse index for the lake.
+                <img src='./images/lake_jim.png' width="100%">
+        
         </div>
 
     </div>
