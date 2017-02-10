@@ -44,7 +44,11 @@ function change_title_pic() {
 
 document.write('<script src="js/site/CurrentTemp.js"></script>')
 
-if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html') {
+/*Get the URL. We don't want to display the top picture on image viewers*/
+var url = window.location.pathname;
+var filename = url.substring(url.lastIndexOf('/')+1);
+
+if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php') {
     document.write('<div class=""><img title="click me" id="title_pic" src="' + pics[idx] + '" onclick="change_title_pic();" width="100%"></div>');
 }
 
