@@ -125,7 +125,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                 to your directory (if you're in the CHPC space)...</h3>
             </div>
             <div class="panel-body">
-                <p style="font-family:courier; font-size:12px">ln -s /uufs/chpc.utah.edu/common/home/u0553130//public_html/Brian_Blaylock/photo_viewer/photo_viewer.php
+                <p style="font-family:courier; font-size:12px">ln -s /uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/photo_viewer/photo_viewer.php
             </div>
             </div>
         <hr>
