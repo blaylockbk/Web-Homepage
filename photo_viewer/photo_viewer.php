@@ -46,7 +46,7 @@ function empty_picture(img_name){
         document.getElementById("sounding_img").style.width= '30%';
 }
 
-/* For the button group on resize */
+/* For the button group on resize 
 var wideScreen = 900; // for example beyond 640 is considered wide
 var toggleBtnGroup = function() {
     var windowWidth = $(window).width();
@@ -58,7 +58,7 @@ var toggleBtnGroup = function() {
 }
 toggleBtnGroup(); // trigger on load
 window.addEventListener('resize',toggleBtnGroup); // change on resize
-/* (for the button group on resize) */
+ (for the button group on resize) */
 
 </script>
 </head>
@@ -160,27 +160,29 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 			<!--Area for images to appear-->
             <div class="row" style="padding-left:15px;">
                 <div class="col-md-2">
-                <div  class="btn-group-vertical"  id="btn-group-toggle" align="center">
-                    <br>
-        <!--PHP for creating buttons and image-->
-        <?php
-        // loop through the array of files and display a link to the image
+                <br>
+                    <div  class="btn-group-vertical"  role="group" align="center">
+                        
+                        <!--PHP for creating buttons and image-->
+                        <?php
+                        // loop through the array of files and display a link to the image
 
-            
-        for($index=0; $index < $indexCount; $index++) {
-        $extension = substr($dirArray[$index], -3);
-        if ($extension == 'jpg' or $extension == 'gif' or $extension == 'png'){ // list only jpg, gif, and png images
+                            
+                        for($index=0; $index < $indexCount; $index++) {
+                        $extension = substr($dirArray[$index], -3);
+                        if ($extension == 'jpg' or $extension == 'gif' or $extension == 'png'){ // list only jpg, gif, and png images
 
-        //if sounding exists, then make green button
-        $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
-        $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
-        $anan_hour = (int)$anan_hour;
-        echo '<button type="button" class="btn btn-default" onmouseover=change_picture("'.$new_image.'")>'.$dirArray[$index].'</button>';					
-        }	
-        }
+                        //if sounding exists, then make green button
+                        $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
+                        $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
+                        $anan_hour = (int)$anan_hour;
+                        echo '<button type="button" class="btn btn-default" onmouseover=change_picture("'.$new_image.'")>'.$dirArray[$index].'</button>';					
+                        }	
+                        }
 
-        ?>
-            </div>
+                        ?>
+                    
+                    </div>
                 </div>
                 <div class="col-md-10">
                 <img class="style1" id="sounding_img" style="width:30%;" src="./images/empty.jpg" alt="empty">
@@ -193,8 +195,9 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
             <!--Area for images to appear-->
             <div class="row" style="padding-left:15px;">
                 <div class="col-md-2">
+                <br>
                 <div  class="btn-group-vertical" id="btn-group-toggle" align="center">
-                    <br>
+                    
         <!--PHP for creating buttons and image-->
         <?php
         // loop through the array of files and display a link to the image
