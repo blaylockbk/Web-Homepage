@@ -48,7 +48,7 @@ document.write('<script src="js/site/CurrentTemp.js"></script>')
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 
-if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php') {
+if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php' && filename != 'photo_viewer.php') {
     document.write('<div class=""><img title="click me" id="title_pic" src="' + pics[idx] + '" onclick="change_title_pic();" width="100%"></div>');
 }
 
@@ -133,6 +133,7 @@ document.write('\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
                             <li class="dropdown-header"><i class="fa fa-code fa-fw" aria-hidden="true"></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
+                            <li><a href="https://github.com/blaylockbk/Web-Homepage/tree/master/image_viewers">Image Viewer</a></li>\
                         </ul>\
                     </li>\
 \
