@@ -4,7 +4,7 @@
 
 var r_time = 300000; // Refresh time 5 min
 var api_token = '2562b729557f45f5958516081f06c9eb';
-var stid = 'ukbkb,wbb,kcho,epmu1,klgu,kpvu,klax,kmwh,CMP21';
+var stid = 'ukbkb,wbb,utorm,epmu1,klgu,kpvu,as694,kmwh,e4023';
 setTimeout(poll, 500); // every 2 seconds
 
 function CtoF(tempC){
@@ -24,11 +24,11 @@ function short_name(data,stnidx){
         else if (data.STATION[stnidx].NAME=='EW2355 Spanish Fork'){
             s = 'Spanish Fork' 
         }
-        else if (data.STATION[stnidx].NAME=='Charlottesville-Albemarle Airport'){
-            s = 'Charlottesville' 
+        else if (data.STATION[stnidx].NAME=='N4DWK Richmond'){
+            s = 'Richmond, VA' 
         }
         else if (data.STATION[stnidx].NAME=='Grant County Airport'){
-            s = 'Moses Lake' 
+            s = 'Moses Lake, WA' 
         }
         else if (data.STATION[stnidx].NAME=='U of U William Browning Building'){
             s = 'WBB' 
@@ -36,11 +36,11 @@ function short_name(data,stnidx){
         else if (data.STATION[stnidx].NAME=='Provo, Provo Municipal Airport'){
             s = 'Provo' 
         }
-        else if (data.STATION[stnidx].NAME=='St. George'){
+        else if (data.STATION[stnidx].NAME=='EW4023 St George'){
             s = 'St. George' 
         }
-        else if (data.STATION[stnidx].NAME=='Los Angeles, Los Angeles International Airport'){
-            s = 'LAX' 
+        else if (data.STATION[stnidx].NAME=='I-15 @ Orem'){
+            s = 'Orem' 
         }
         else if (data.STATION[stnidx].NAME=='Logan-Cache Airport'){
             s = 'Logan' 
@@ -117,13 +117,13 @@ $.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
 	  
 //set up variable it will return to the HTML 
   
-  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=ukbkb&unit=0&timetype=LOCAL'>"+airTemp_8 + "&deg</a>");
+  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=ukbkb&unit=0&timetype=LOCAL'>"+airTemp_6 + "&deg</a>");
   $('#ret-tempWBB').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=wbb&unit=0&timetype=LOCAL'>"+airTemp_0 + "&deg</a>");
   $('#ret-tempKCHO').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kpvu&unit=0&timetype=LOCAL'>"+airTemp_1 + "&deg</a>");
-  $('#ret-tempEPMU1').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=klgu&unit=0&timetype=LOCAL'>"+airTemp_7 + "&deg</a>");
-  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=cmp21&unit=0&timetype=LOCAL'>"+airTemp_2 + "&deg</a>");
+  $('#ret-tempEPMU1').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=klgu&unit=0&timetype=LOCAL'>"+airTemp_2 + "&deg</a>");
+  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=cmp21&unit=0&timetype=LOCAL'>"+airTemp_8 + "&deg</a>");
   $('#ret-tempKPVU').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=epmu1&unit=0&timetype=LOCAL'>"+airTemp_5 + "&deg</a>");
-  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kmwh&unit=0&timetype=LOCAL'>"+airTemp_6 + "&deg</a>");  
+  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kmwh&unit=0&timetype=LOCAL'>"+airTemp_7 + "&deg</a>");  
   $('#ret-tempKMWH').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=klax&unit=0&timetype=LOCAL'>"+airTemp_3 + "&deg</a>");
   $('#ret-tempSTG').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kcho&unit=0&timetype=LOCAL'>"+airTemp_4 + "&deg</a>");
                                                                                                                                     
