@@ -349,6 +349,14 @@ print '''
                               +'''&end='''+end \
                               +'''&units='''+units \
                               +'''&variable=ozone_concentration" target="_blank">Ozone Concentration
+            <li><a href="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
+                              +'''&stn2='''+stn2 \
+                              +'''&stn3='''+stn3 \
+                              +'''&stn4='''+stn4 \
+                              +'''&start='''+start \
+                              +'''&end='''+end \
+                              +'''&units='''+units \
+                              +'''&variable=pressure" target="_blank">Pressure
       </ul>
     </div>
   </div>

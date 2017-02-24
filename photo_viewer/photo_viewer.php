@@ -121,11 +121,11 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
         directory in a browser-friendly display.
             <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Symbolically link this script 
-                to your directory (if you're in the CHPC space)...</h3>
+                <h3 class="panel-title">On the CHPC system? Link this script 
+                to your directory</h3>
             </div>
             <div class="panel-body">
-                <p style="font-family:courier; font-size:12px">ln -s /uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/photo_viewer/photo_viewer.php
+                <p style="font-family:courier; font-size:12px">ln /uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/photo_viewer/photo_viewer.php
             </div>
             </div>
         <hr>
@@ -185,7 +185,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                     </div>
                 </div>
                 <div class="col-md-10">
-                <img class="style1" id="sounding_img" style="width:30%;" src="./images/empty.jpg" alt="empty">
+                <img class="style1" id="sounding_img" style="width:30%;" src="./images/empty.jpg" alt="empty" onclick="window.open(this.src)">
                 </div>
 
             </div> <!--row-->
@@ -219,7 +219,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                 </div>
                 </div>
                 <div class="col-md-10">
-                <img class="style1" id="sounding_img2" style="width:30%" src="./images/empty.jpg" alt="empty">
+                <img class="style1" id="sounding_img2" style="width:30%" src="./images/empty.jpg" alt="empty" onclick="window.open(this.src)">
                 </div>
 
             </div> <!--row-->
@@ -251,7 +251,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
             }
             echo "</select></td></tr></table>";
             ?>
-                    <img class="style1" style="width:500px" id="sounding_img3" src="./images/empty.jpg" alt="empty">
+                    <img class="style1" style="width:500px" id="sounding_img3" src="./images/empty.jpg" alt="empty" onclick="window.open(this.src)">
 
                 </div>
 
