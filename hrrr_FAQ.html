@@ -14,34 +14,35 @@
     <br>
 
     <div id="content">
+        <img align=right \
+             width='200px' \
+             src='./images/mouse.jpg' \
+             title="We give people a little, and they start asking for a lot."\
+             style="padding-right:10px">
         
-        
-        
+        <div class="alert alert-info">This page will soon be updated with info about the HRRR S3 archive
+            </div>
 
         <h1 align="center">HRRR Archive at the University of Utah</h1>
         <h2 align="center"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Frequently Asked Questions</h2>
         
         
-        <p>
-        <div class="jumbotron" style='padding:5px 5px 5px 5px'>
-            <img align=right \
-             width='200px' \
-             src='./images/mouse.jpg' \
-             title="We give people a little, and they start asking for a lot."\
-             style="padding-right:10px">
-            <p><b>Disclaimer:</b> This is an unoffical HRRR archive. Becuase HRRR 
-                data files are large and are produced hourly, it takes up a lot of
-                space. We don't have the space or funds to keep those files 
-                easily available for very long. Thus, the archived files you see online is all
-                we have available. 
-                <p>If you feel an official HRRR archive is important to science, please
-                send NCEI an email requesting an official HRRR archive at
-                ncei.nomads.info@noaa.gov.
+            
+            
             <div class="alert alert-warning">If you are looking for most 
                 current HRRR output (last two days) you should download directly from the
                 <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a> server.
-            </div>        
-        </div>
+            </div>
+
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_terms.html" target="_blank" class="btn btn-warning">
+            <i class="fa fa-handshake-o" aria-hidden="true"></i> Terms and Conditions</a>
+            
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>
+            
+            <br><br>
+            
+        
         
 
   <!-- Tabs -->
@@ -56,7 +57,7 @@
 
     <div class="tab-content">
         <div id="tab1" class="tab-pane fade in active">
-            <img align=right width="450px" style="padding:5px 15px 5px 5px" src="http://ruc.noaa.gov/hrrr/hrrrcrefimage">
+            <img align=right width="450px" style="padding:5px 15px 5px 5px" src="https://rapidrefresh.noaa.gov/hrrr/hrrrcrefimage">
             <h3><i class="fa fa-globe" aria-hidden="true"></i> About this HRRR archive</h3>
             <h3>What is the HRRR archive?</h3>
             <p>The HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
@@ -274,7 +275,8 @@
                     tar -zxvf models.tar.gz --wildcards --no-anchored 'hrrr.t*z.wrfprsf00.grib2'
                     </div>
             </ol>
-
+            <h3>More on downloading and moving HRRR data to the S3 Archvie</h3>
+            <a href="https://github.com/blaylockbk/HorelS3-Archive/">See this github repository</a>
         </div>
     </div> <!--tab-conent--> 
 </div><!--content-->  

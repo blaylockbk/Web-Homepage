@@ -4,6 +4,7 @@ var pics = [
     "./images/Panorama/utahcounty_pan.png",
     "./images/Panorama/utahcounty2_pan.png",
     "./images/Panorama/sundance_pan.png",
+    "./images/Panorama/sundance2_pan.png",
     "./images/Panorama/snowcanyon_pan.png",
     /*"./images/Panorama/copter_pan.png",*/
     /*"./images/Panorama/spring_pan.png",*/

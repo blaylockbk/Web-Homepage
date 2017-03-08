@@ -8,11 +8,9 @@ document.write('\
 <link rel="stylesheet" href="css/brian_style.css" />\
 <script src="https://use.fontawesome.com/606add7579.js"></script>\
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>\
-<script src="js/leaflet/dist/leaflet.js"></script>\
 <script src="js/jquery/jquery-1.10.0.js"></script>\
 <script src="js/jquery/jquery-ui-1.10.3.js"></script>\
 <script src="js/jquery/jmenu.js"></script>\
-<script src="js/leaflet/dist/Marker.Rotate.js"></script>\
 <script src="js/site/sorttable.js"></script>\
 <script src="js/site/mesowest_api.js"></script>\
 \
