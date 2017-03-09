@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <title>HRRR Download Script Tips</title>
+    
+    <script src="./js/site/siteopen.js"></script>
+</head>
+
+
+<body>
+    <a name="TOP"></a>
+    <script src="./js/site/sitemenu.js"></script>
+
+
+<h1 align="center"><i class="fa fa-code fa-fw" aria-hidden="true"></i> HRRR Downlod Scripting Tips</h1>
+    
+    <div id="content">      
+
+        
+        
+<div class="row">
+      <div class=" col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank" class="btn btn-warning btn-block">
+            <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i> Web Download Page</a>
+      </div>
+</div>
+     
+<br>        
+        
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab1">URL structure</a></li>
+    <li><a data-toggle="tab" href="#tab2">cURL and wget</a></li>
+    <li><a data-toggle="tab" href="#tab3">Python</a></li>
+    <li><a data-toggle="tab" href="#tab4">Other</a></li>
+  </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+            <br>
+            <p>HRRR grib2 files are large. sfc files are >100 MB and prs files are >380 MB each.
+            If you download a day's worth of prs analyses, thats over 9 GB!
+            <p> You may write your own script to automate the download process,
+            but PLEASE do not download an excessive number of files in a short
+            period of time on multiple nodes (you agreed to not do this when you read the
+            Best Practices).
+            <p> Files are downloaded from the URL<br> 
+            <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
+            <p> The model type and variable field directory tree options include the following:
+            <ul style="padding-left:40px">
+                <li><span style="color:red">[model type] <b>oper</b></span> for the operational HRRR
+                    <ul style="padding-left:40px">
+                            <li><span style="color:blue">[variable field] <b>sfc</b></span>
+                            <li><span style="color:blue">[variable field] <b>prs</b></span>
+                    </ul>
+                <li><span style="color:red">[model type] <b>exp</b></span> for the experimental HRRR
+                    <ul style="padding-left:40px">
+                            <li><span style="color:blue">[variable field] <b>sfc</b></span>
+                    </ul>
+                <li><span style="color:red">[model type] <b>alaska</b></span> for HRRR Alaska
+                    <ul style="padding-left:40px">
+                            <li><span style="color:blue">[variable field] <b>sfc</b><span>
+                            <li><span style="color:blue">[variable field] <b>prs</b></span>
+                    </ul>
+            </ul>
+            <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20170101).
+            <p> <span style="color:darkorange">[file name]</span> is in the format [hrrr/hrrrX/hrrrAK].t[00-23]z.wrf[sfc/prs]f[00-18 or 0-36].grib2
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Example</h3>
+                </div>
+                <div class="panel-body" style="font-family:monospace">
+                    https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+
+            <hr>
+            We provide archived HRRR data for the following:
+            <ul style="padding-left:40px">
+            <li>NCEP operational HRRR
+                <ul style="padding-left:40px">
+                    <li>Beginning April 18, 2015
+                    <li>sfc and prc analyses f[00]
+                    <li>sfc forecasts after July 27, 2016 f[00-15/18]
+                    <li>All variables
+                    <li>Directory name = oper
+                    <li>File name = hrrr
+                </ul>
+            <li>ESRL experimental HRRR
+                <ul style="padding-left:40px">
+                    <li>Beginning December 1, 2016
+                    <li>sfc analysis f[00]
+                    <li>All variables
+                    <li>Directory name = exp
+                    <li>File name = hrrrX
+                </ul>          
+            <li>ESRL experimental HRRR Alaska
+                <ul style="padding-left:40px">
+                    <li>Beginning September 1, 2016
+                    <li>Runs every 3 hours t[00, 03, 06, 09, 12, 15, 18, 21]z
+                    <li>sfc and prs analyses f[00]
+                    <li>sfc forecasts f[00-36]
+                    <li>All prs variables, select sfc variables
+                    <li>Directory name = alaska
+                    <li>File name = hrrrAK
+                </ul>
+
+            </ul>
+
+        </div>
+
+        <div id="tab2" class="tab-pane fade"> 
+            <br>            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">cURL download full file</h3>
+                </div>
+                <div class="panel-body" style="font-family:monospace">
+                    curl -O https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">cURL download full file and rename</h3>
+                </div>
+                <div class="panel-body" style="font-family:monospace">
+                    curl -o hrrr20170101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">wget download full file</h3>
+                </div>
+                <div class="panel-body" style="font-family:monospace">
+                    wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-pane fade">
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Download range of files with Python</h3>
+                </div>
+                <div class="panel-body">
+                    <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-pane fade">
+            <br>
+            <div class="panel panel-default">
+            <div class="panel-heading">How to create a .idx file for grib2 file with wgrib2</div>
+            <div class="panel-body" style="font-family:monospace">
+            wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime
+            </div>
+            </div>
+        </div>            
+
+            
+        
+    </div> <!--tab-conent--> 
+<br>
+<div class="well">
+<p>Please send me any example scripts you write and I'll add them here for others to use.
+</div>
+</div><!--content-->  
+
+
+ <script src="./js/site/siteclose.js"></script>
+</div><!---->
+</body>
+
+</html>

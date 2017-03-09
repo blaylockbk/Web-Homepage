@@ -63,6 +63,11 @@ print'''<!DOCTYPE html>
           background-color: #c0d5eb  ;
           cursor: not-allowed;
       }
+      .hourbtn {
+          background-color: #292929  ;
+          color: white;
+          cursor: not-allowed;
+      }
   </style>
   
 </head>'''
@@ -79,37 +84,60 @@ print'''
     <i class="fa fa-cloud-download" aria-hidden="true"></i> HRRR Download Page
     </h1>
 
-<div style="width:85%;margin:auto" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="row">
+      <div class=" col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank" class="btn btn-warning btn-block">
+            <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+      </div>
+      <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html" class="btn btn-primary btn-block">
+            <i class="fa fa-code" aria-hidden="true"></i> Scripting Tips</a>
+      </div>
+</div>
+
+<br>
+
+<div style="width:100%" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
-  <div class="panel panel-primary">
+  <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <i class="fa fa-info-circle" aria-hidden="true"></i> Instructions and proper use of the HRRR download interface
+          <big><b><i class="fa fa-info-circle" aria-hidden="true" ></i> Web Download Instructions</b></big>
         </a>
       </h4>
     </div>
+            
+
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        Please review the Terms and Conditions and register before downloading from the archive.
-        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_terms.html" target="_blank" class="btn btn-warning">
-        <i class="fa fa-handshake-o" aria-hidden="true"></i> Terms and Conditions</a>
-        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger">
-        <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
-        <br><br>
+        <p>Download grib2 files from this webpage. Select the model type, 
+        variable field, and date of interest. Then click <i>Submit</i>.
+        <p>After clicking the submit button, a grid of hours and forecasts is 
+        displayed. If the file is available, the button will be highlighted 
+        dark blue. Click the button to download the file. If the file is not 
+        available, the button will be disabled and highlighted light blue.
+        <p>Files are named similar to HRRR files named on the nomads site. For example,<br>
+        <b><span style="color:red">hrrr</span>.<span style="color:blue">t05z</span>.wrf<span style="color:green">sfc</span><span style="color:darkorange">f12</span>.grib2</b><br>
+        <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
+        </b>
+        <p>Note: You will have to keep track of the file date yourself. 
+        The file name only contains information about the run and forecast hour,
+        so be careful that you don't overwrite files if you are downloading from
+        multiple days.
+        <p>You may script the download process. Click the "Scripting Tips" button above.
 
-  <!-- Tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#tab1">Available Data</a></li>
-    <li><a data-toggle="tab" href="#tab2">Data Access: Click to Download</a></li>
-    <li><a data-toggle="tab" href="#tab3">Data Access: Script to Download</a></li>
-  </ul>
-
-    <div class="tab-content">
-        <div id="tab1" class="tab-pane fade in active">
-        We provide archived HRRR data for the following:
+        <p>We provide archived HRRR data for the following:
         <ul style="padding-left:40px">
-           <li>NOAA operational HRRR
+           <li>NCEP operational HRRR
               <ul style="padding-left:40px">
                   <li>Beginning April 18, 2015
                   <li>sfc and prc analyses
@@ -132,83 +160,7 @@ print'''
                   <li>All prs variables, select sfc variables
                   <li>Directory name = alaska, File name = hrrrAK
               </ul>
-
         </ul>
-        <p>For more details about the HRRR archive, check out the Frequently Asked Questions page<br>
-        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success">
-        <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
-        </div>
-
-        <div id="tab2" class="tab-pane fade">
-        <p>Download grib2 files from this webpage. Select the model type, 
-        variable field, and date of interest. Then click <i>Submit</i>.
-        <p>After clicking the submit button, a grid of hours and forecasts is 
-        displayed. If the file is available, the button will be highlighted 
-        dark blue. Click the button to download the file. If the file is not 
-        available, the button will be disabled and highlighted light blue.
-        <p>Files are named similar to HRRR files named on the nomads site. For example,<br>
-        <b><span style="color:red">hrrr</span>.<span style="color:blue">t05z</span>.wrf<span style="color:green">sfc</span><span style="color:darkorange">f12</span>.grib2</b><br>
-        <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
-        </b>
-        <p>Note: You will have to keep track of the file date yourself. 
-        The file name only contains information about the run and forecast hour,
-        so be careful that you don't overwrite files if you are downloading from
-        multiple days.
-        </div>
-
-        <div id="tab3" class="tab-pane fade">
-              <p> Download grib2 files with wget or curl commands. You can write your
-        own script to automate the download process, but PLEASE do not download
-        an excessive number of files in a short period of time on multiple nodes
-        (you agreed to not do this in the terms and conditions).
-        <p> Files are downloaded from the URL <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/[model type]/[variable field]/[YYYYMMDD]/[file name]</span>
-        <p> The model type and variable field directory tree options include the following:
-        <ul style="padding-left:40px">
-            <li><b>oper</b> for the operational HRRR
-                  <ul style="padding-left:40px">
-                        <li><b>sfc</b>
-                        <li><b>prs</b>
-                  </ul>
-            <li><b>exp</b> for the experimental HRRR
-                  <ul style="padding-left:40px">
-                        <li><b>sfc</b>
-                  </ul>
-            <li><b>alaska</b> for HRRR Alaska
-                  <ul style="padding-left:40px">
-                        <li><b>sfc</b>
-                        <li><b>prs</b>
-                  </ul>
-        </ul>
-        <p> [YYYYMMDD] represents the UTC date format.
-        <p> [file name] is in the format [hrrr/hrrrX/hrrrAK].t[00-23]z.wrf[sfc/prs]f[00-18 or 0-36].grib2
-        
-      <div class="panel panel-danger">
-            <div class="panel-heading">
-                  <h3 class="panel-title">cURL download file</h3>
-            </div>
-            <div class="panel-body" style="font-family:monospace">
-                  curl -O https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
-            </div>
-      </div>
-      <div class="panel panel-danger">
-            <div class="panel-heading">
-                  <h3 class="panel-title">cURL download and rename file</h3>
-            </div>
-            <div class="panel-body" style="font-family:monospace">
-                  curl -o hrrr20170101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
-            </div>
-      </div>
-      <div class="panel panel-danger">
-            <div class="panel-heading">
-                  <h3 class="panel-title">wget download file</h3>
-            </div>
-            <div class="panel-body" style="font-family:monospace">
-                  wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
-            </div>
-      </div>
-        </div>
-
-    </div>
 
 
       </div>
@@ -310,9 +262,9 @@ elif model == 'alaska':
 
 for h in model_hours:
     print '''<div class="form-group">'''
-    print '''<label class="control-label col-md-2" for="fxx">Hour %02d:</label>''' % (h)
-    print '''<div class="col-md-10">'''
+    print '''<div class="col-md-12">'''
     print '''<div class="mybtn-group">'''
+    print '''<button name="hour" type="button" class="mybtn hourbtn">Hour %02d</button>''' % (h)
     for f in f_hours:
         look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (file_model, h, field, f)
         if look_for_this_file in flist:
