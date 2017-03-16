@@ -149,9 +149,22 @@
                     wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">cURL download a single variable</h3>
+                </div>
+                <div class="panel-body">
+                If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
+                <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
+                <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp.grib2 --range 33120613-34368741 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+            
         </div>
 
         <div id="tab3" class="tab-pane fade">
+            <br>
+            <p> I use python/2.7.11. Describing my set-up would be long, so just use these as a template.
             <br>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -161,12 +174,41 @@
                     <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Download single variable with Python and cURL --range option</h3>
+                </div>
+                <div class="panel-body">
+                    This is a work in progress, but if you know the byte range you can request a single variable.
+                    Here is a working example with python.
+                    <script src="https://gist.github.com/blaylockbk/ab3cc3772963ffb74d7dbe051ca956f1.js"></script>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
+                </div>
+                <div class="panel-body">
+                    <p>This example does two things:
+                    <p> 1) Gets a variable from the HRRR file (2-meter temperature),
+                    plots the values on a graph (you can do a basemap yourself).
+                    <p> 2) Plucks out a single value at KSLC (Salt Lake City) for a time range
+                    and creates a timeseries plot. Creating the time series utilizes 
+                    multiprocessing to speed up the download process.
+                    <script src="https://gist.github.com/blaylockbk/47357c471ceb95d7331a9a747d327b59.js"></script>
+                    <img src="https://cloud.githubusercontent.com/assets/6249613/23960742/6aa2f812-096e-11e7-9a78-2591c794f58c.png" width=45% align=center>
+                    <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
+                </div>
+            </div>
         </div>
 
         <div id="tab4" class="tab-pane fade">
             <br>
+            Byte ranges for each variable are found in an .idx file located here:
+            <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
+            <br><br>
             <div class="panel panel-default">
-            <div class="panel-heading">How to create a .idx file for grib2 file with wgrib2</div>
+            <div class="panel-heading">How the .idx files were created</div>
             <div class="panel-body" style="font-family:monospace">
             wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime
             </div>

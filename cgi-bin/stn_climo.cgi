@@ -109,6 +109,7 @@ print'''
       </div>
       </div>
       </h1>
+      <p>This page can be very slow
 
 <br>
 
