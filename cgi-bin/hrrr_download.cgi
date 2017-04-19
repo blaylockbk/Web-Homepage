@@ -21,17 +21,21 @@ yesterday = date.today() - timedelta(days=1)
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
-      model = form['model'].value
+    model = form['model'].value
 except:
-      model = 'oper'
+    model = 'oper'
 try:
-      field = form['field'].value
+    field = form['field'].value
 except:
-      field = 'sfc'
+    field = 'sfc'
 try:
-      Date = form['date'].value
+    Date = form['date'].value
 except:
-      Date = yesterday.strftime('%Y-%m-%d')
+    Date = yesterday.strftime('%Y-%m-%d')
+try:
+    link2 = form['link2'].value
+except:
+    link2 = 'grib2'
 
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
@@ -104,9 +108,7 @@ print'''
 </div>
 
 <br>
-
 <div style="width:100%" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
@@ -119,8 +121,14 @@ print'''
 
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <p>Download grib2 files from this webpage. Select the model type, 
-        variable field, and date of interest. Then click <i>Submit</i>.
+        <p>I suggest you bookmark this page after you register. It is not
+        linked from the "HRRR FAQ" page. 
+        <p> This page tested in
+        <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
+        <p>Download grib2 files or view metadata for each file from this webpage.
+        Select the model type, variable field, and date of interest. Indicate
+        if you want to download a grib2 file or view the metadata.
+        Then click <b><i>Submit</i></b>.
         <p>After clicking the submit button, a grid of hours and forecasts is 
         displayed. If the file is available, the button will be highlighted 
         dark blue. Click the button to download the file. If the file is not 
@@ -225,6 +233,37 @@ print''' </select>
     </div>
 <!--- (date)----------------------------->
     
+<!--- Link Type ----------------------------->
+<div class="form-group">
+    <label class="control-label col-md-2" for="link2">Get GRIB2 or Metadata:</label>
+    <div class="col-md-4">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+'''
+if link2 == 'grib2':
+    print '''
+        <label class="btn btn-default active">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='grib2' checked> GRIB2
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='metadata'> Metadata
+        </label>
+    '''
+elif link2 == 'metadata':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='grib2'> GRIB2
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='metadata' checked> Metadata
+        </label>
+    '''
+print '''
+        </div>
+    </div>
+</div>
+<!--- (link type)----------------------------->
+
+
     <div class="form-group">        
       <div class="col-md-offset-2 col-md-4">
         <button style="width:100%" type="submit" class="btn btn-success">Submit</button>
@@ -236,7 +275,7 @@ print''' </select>
 </div>
 
 <div class="container">
-<h3>Tap to download '''+Date+''':</h3>
+<h3>Tap to download '''+link2+''' from '''+Date+''':</h3>
 '''
 
 # Create list of files available
@@ -271,7 +310,10 @@ for h in model_hours:
             baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
             pathURL = '/%s/%s/%04d%02d%02d/' % (model, field, DATE.year, DATE.month, DATE.day)
             fileURL = look_for_this_file
-            download_this = baseURL+pathURL+fileURL
+            if link2 == 'grib2':
+                download_this = baseURL+pathURL+fileURL
+            if link2 == 'metadata':
+                download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
             print '''<a href="'''+download_this+'''"><button name="fxx" type="button" class="mybtn unselected">f%02d</button></a>''' % (f)
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">f%02d</button>''' % (f)

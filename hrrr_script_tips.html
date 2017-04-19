@@ -57,8 +57,10 @@
             but PLEASE do not download an excessive number of files in a short
             period of time on multiple nodes (you agreed to not do this when you read the
             Best Practices).
-            <p> Files are downloaded from the URL<br> 
+            <p> Grib2 files are downloaded from the URL<br> 
             <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
+            <p> Metadata for each file can be viewed from the URL<br> 
+            <span style="font-family:monospace">https://api.mesowest.utah.edu/archive/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name].idx</span>
             <p> The model type and variable field directory tree options include the following:
             <ul style="padding-left:40px">
                 <li><span style="color:red">[model type] <b>oper</b></span> for the operational HRRR
@@ -84,7 +86,8 @@
                     <h3 class="panel-title">Example</h3>
                 </div>
                 <div class="panel-body" style="font-family:monospace">
-                    https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2
+                    <p>https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2
+                    <p>https://api.mesowest.utah.edu/archive/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2.idx
                 </div>
             </div>
 
@@ -149,14 +152,30 @@
                     wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
                 </div>
             </div>
+            <p>If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
+                <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">cURL download a single variable</h3>
                 </div>
                 <div class="panel-body">
-                If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
-                <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
+                
                 <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp.grib2 --range 33120613-34368741 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">cURL download several variables</h3>
+                </div>
+                <div class="panel-body">
+                <p>Unfortunatly, the <span style="font-family:monospace">curl --range</span> function wont work if you
+                    request more than one range. I don't know why this doesn't
+                    work, but it must be a limitation of the S3 archive.
+                    Fortunately, similar variables are usually grouped together,
+                    like U and V wind compenents, so you can request a range 
+                    that spans the variables you want. This example gets 
+                    TMP, POT, SPFH, DPT, RH, UGRD, VGRD, WIND at 2 meters.
+                <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp2mDPT10mwind.grib2 --range 33120613-42997512 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
                 </div>
             </div>
             
@@ -198,6 +217,33 @@
                     <script src="https://gist.github.com/blaylockbk/47357c471ceb95d7331a9a747d327b59.js"></script>
                     <img src="https://cloud.githubusercontent.com/assets/6249613/23960742/6aa2f812-096e-11e7-9a78-2591c794f58c.png" width=45% align=center>
                     <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Fast download with multithreads and queue</h3>
+                </div>
+                <div class="panel-body">
+                    Use the queue and multithreading modules to stream the
+                    download process to multiple threads. This is quite efficient.
+                    <script src="https://gist.github.com/blaylockbk/082cf8215c3912413fd1bb33217bbb89.js"></script>
+                    <p>I tested the time it takes to download using 
+                    a sequential download (one at a time), multiprocessing,
+                    and multithreading. Multithreading is the correct way to 
+                    do this. The download time saturates after about 8 threads.
+                    <center><img src="./images/fast_download.png" width="450px"></center>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Useful HRRR S3 Download functions</h3>
+                </div>
+                <div class="panel-body">
+                    If you are patient enough to read all that, and scroll down
+                    to here, you're in luck. These are the functions I use to 
+                    download the HRRR data.
+                    <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
+                    <i class="fa fa-github" aria-hidden="true"></i> Code for HRRRs3 Functions</a></big>
                 </div>
             </div>
         </div>
