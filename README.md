@@ -3,7 +3,7 @@
 Code that builds my research homepage. Enjoy!  
 http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 
-![]('./images/home_screenshot.png')
+![](images/home_screenshot.png)
 
 #### Menu options:
 - Home: redirect to home page.
