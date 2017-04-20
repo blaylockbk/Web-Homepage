@@ -100,9 +100,11 @@ print'''
             <li>Select the variable.
             </ol>
             <hr>
-            Note: If the requested station was not plotted, there was an error getting
+            <p>Note: If the requested station was not plotted, there was an error getting
             it's data from the MesoWest API. The station ID may be incorrect 
             or not availalbe for the request variable or time.
+            <p>Hack! If you want more than four stations, add more station IDs in
+            the last station input field, each separated by a comma (e.g. kslc,naa,wbb,mtmet).
           
           <hr>
 

@@ -104,7 +104,11 @@ if stn2 != '':
 if stn3 != '':
     stations.append(stn3)
 if stn4 != '':
-    stations.append(stn4)    
+    # allow a hack in the last field to allow more than one station input
+    # if station names are separated by a comma.
+    stns = stn4.split(',')
+    for s in stns:
+        stations.append(s)
 
 data = OrderedDict()
 
@@ -113,14 +117,15 @@ for s in stations:
     a = get_mesowest_ts(s, DATE_START, DATE_END, variables=variable, verbose=False)
     if a != 'ERROR':
         data[s] = a
-    
+
 
 """
 Plot
 """
 fig, ax1 = plt.subplots(1, 1, figsize=[16,9])
 count = 0
-color = ['b','g','r','darkorange'] # order of the colors plotted
+# order of the colors plotted (more than 4 available, if you now the stn4 input hack)
+color = ['b', 'g', 'r', 'darkorange', 'k', 'palevioletred', 'paleturquoise', 'palegreen', 'orchid', 'steelblue', 'crimson', 'darkcyan', 'sandybrown', 'darkgrey']
 for s in data.keys():
     try:
         if units == 'F' and variable == 'air_temp':
@@ -138,12 +143,13 @@ for s in data.keys():
                      color=color[count])
             plt.title('MesoWest Air Temperature')
             plt.ylabel('Temperature (C)')
-        
+
         elif variable == 'relative_humidity':
             ax1.plot(data[s]['DATETIME'], data[s][variable],
-                    label=s.upper(),
-                    linewidth=2.5,
-                    color=color[count])
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
+            ax1.set_ylim([0, 100])
             plt.title('MesoWest Relative Humidity')
             plt.ylabel('Relative Humidity (%)')
 
