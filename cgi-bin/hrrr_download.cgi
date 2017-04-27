@@ -123,12 +123,15 @@ print'''
       <div class="panel-body">
         <p>I suggest you bookmark this page after you register. It is not
         linked from the "HRRR FAQ" page. 
-        <p> This page tested in
+        <p> This page is tested in
         <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
+        (Why only these two? Because my advisor uses Chrome, and I use Edge.)
         <p>Download grib2 files or view metadata for each file from this webpage.
         Select the model type, variable field, and date of interest. Indicate
-        if you want to download a grib2 file or view the metadata.
-        Then click <b><i>Submit</i></b>.
+        if you want to download a grib2 file, view the metadata, or look at a
+        sample image (simulated reflectivity, takes several seconds to generate).
+        Then click <b><i>Submit</i></b>. <b>Remember to click 'submit' after
+        you make a change</b>.
         <p>After clicking the submit button, a grid of hours and forecasts is 
         displayed. If the file is available, the button will be highlighted 
         dark blue. Click the button to download the file. If the file is not 
@@ -235,7 +238,7 @@ print''' </select>
     
 <!--- Link Type ----------------------------->
 <div class="form-group">
-    <label class="control-label col-md-2" for="link2">Get GRIB2 or Metadata:</label>
+    <label class="control-label col-md-2" for="link2">Get this:</label>
     <div class="col-md-4">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
 '''
@@ -247,6 +250,9 @@ if link2 == 'grib2':
         <label class="btn btn-default">
             <input type="radio" name="link2" id="link2" autocomplete="off" value='metadata'> Metadata
         </label>
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='sample'> Sample
+        </label>
     '''
 elif link2 == 'metadata':
     print '''
@@ -255,6 +261,21 @@ elif link2 == 'metadata':
         </label>
         <label class="btn btn-default active">
             <input type="radio" name="link2" id="link2" autocomplete="off" value='metadata' checked> Metadata
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='sample'> Sample
+        </label>
+    '''
+elif link2 == 'sample':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='grib2'> GRIB2
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='metadata'> Metadata
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="link2" id="link2" autocomplete="off" value='sample' checked> Sample
         </label>
     '''
 print '''
@@ -275,7 +296,7 @@ print '''
 </div>
 
 <div class="container">
-<h3>Tap to download '''+link2+''' from '''+Date+''':</h3>
+<h3>Tap to download <b>'''+link2+'''</b> from '''+Date+''':</h3>
 '''
 
 # Create list of files available
@@ -312,9 +333,11 @@ for h in model_hours:
             fileURL = look_for_this_file
             if link2 == 'grib2':
                 download_this = baseURL+pathURL+fileURL
-            if link2 == 'metadata':
+            elif link2 == 'metadata':
                 download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
-            print '''<a href="'''+download_this+'''"><button name="fxx" type="button" class="mybtn unselected">f%02d</button></a>''' % (f)
+            elif link2 == 'sample':
+                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample.cgi?model=%s&date=%s&hour=%s&fxx=%s' % (file_model, Date, h, f)
+            print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">f%02d</button></a>''' % (f)
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">f%02d</button>''' % (f)
     print "<hr style='margin-top:.3em;margin-bottom:.3em'></div></div></div>"

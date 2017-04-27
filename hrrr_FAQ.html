@@ -202,6 +202,10 @@
             <p>While you can find current HRRR output on the <a href="http://www.nomads.ncep.noaa.gov/">NOMADS server</a>,
             there is no official HRRR 
             archive that is publicly and easily available, to our knowledge.
+            This "gap" in the NOAA data archives will hopefully be filled in
+            the future, seeing that their vision is that all NOAA environmental
+            data shall be <i>Discoverable, Accessible, Useable, and Preserved</i>.
+            We hope to be part of the solution to this goal.
             This HRRR archive has been created to support various research
             endeavours in the
             Department of Atmospheric Sciences at the Univerisity of Utah.
@@ -219,40 +223,65 @@
 
         <div id="tab3" class="tab-pane fade">
             <img src="./images/HRRR_pando.jpg" align="right" width="250px" style="padding:5px">
-            <h3><i class="fa fa-database" aria-hidden="true"></i> Where is the University of Utah HRRR archive?</h3>
-            <p>The physical archive is located at the University of Utah
+            <h3><i class="fa fa-database" aria-hidden="true"></i> Where is the HRRR archive?</h3>
+            <p>The archive is physically located at the University of Utah
             Downtown Data Center in Salt Lake City, Utah. It is hosted on 
             Utah's Center for High Performance Computing PANDO archive storage 
-            system. This archive system is similar to Amazon's S3 storage, but
-            this is less expensive. We are currently using almost 20 TB of 
+            system. This object storage system is similar to Amazon's S3 storage, but
+            this is less expensive. We are currently using over 20 TB of 
             our 30 TB allocation. At the current storage rate (~65 GB/day)
             I expect the S3 archive will be full around mid-August
             2017. We will buy more storage if a proposal is funded, otherwise 
             we'll have to remove the HRRR forcast grids if we want to continue 
-            saving HRRR data.
+            saving HRRR analyses.
             <p>But you probably aren't interested in it's physical location.
-            You want to know where you go to download from it. Our HRRR archive
-            is made available for research purposes.
+            You want to know how to download from the archive. We have made
+            the HRRR archive available for research purposes outside the University.
             We only ask that you fill out the registration form to help us 
             keep track of total usage and it's popularity.
-            After registering you will be redirected to the download page. 
-            There you will also find instructions for writing your own download
-            scripts.
+            After registering you will be redirected to the download page shown below. 
+            <br>
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-lg">
             <i class="fa fa-user-plus" aria-hidden="true"></i> Register to download HRRR</a>
             <br>
-            <br>
+            
             
             <img src="./images/hrrr_dwnld_page.PNG" class="style1" width="400px">
             
-            <p>You may also be interested in the grib2 .idx files (metadata), which contain the 
-                byte range for each of the variables in the grib2 file.
-                You can access those <a href="https://api.mesowest.utah.edu/archive/HRRR/">here</a>
-                and also on the download page by selecting the "metadata" button.
-            <p>Again, the actual download URL structure and tips to write your own
-                scripts to download from the archive will be revealed upon completion of
-                our short registration form (After registering, I suggest bookmarking the 
-                web download interface page).
+            <p>Scripting the download process is also possible with wget or curl.
+                Click the "Scripting Tips" button on the download page.
+                These tips will show you how to target specific variables you are 
+                interested in, so you don't have to download the entire file.
+            <hr>
+            <h3><img class="style1" style="margin-left:10px" src="./images/FallPando.jpg" align="right" width="550px">
+            <i class="fa fa-server" aria-hidden="true"></i> Ok, so what is this PANDO archive?</h3>
+            
+            <p><b>Pando</b> is a colony of quanking aspen trees in southern Utah,
+                thought to be the oldest and largest living organism in the world,
+                linked together by the same root system.
+                According to <a href="https://en.wikipedia.org/wiki/Pando_%28tree%29">Wikipedia</a>,
+                Pando is Latin for "I spread". 
+                The name is fitting for the CHPC object storage system
+                becuase of its resiliance and scalability, like
+                the tree system.
+            <p>The underlying software running the PANDO archive is 
+                <a href="http://ceph.com/">Ceph</a>, a project supportedby RedHat.
+                While Ceph can be configered in a few ways, in this archive it
+                manages the data objects with the Amazon S3 API. It is a separate
+                "island" from the rest of CHPC file system so that output from 
+                other programs cannot write directly to it. Instead, files are
+                copied to PANDO through utilities like rclone or s3cmd.
+            <p>PANDO is built in three parts. All of these can be scaled to 
+                meet needs of the growing archive.
+                <ul style="padding-left:50px">
+                    <li>9 OSD Servers (16-8TB drives, each) - These contain the data objects
+                    <li>3 Monitors - Monitors keep a map of the data objects. When a request for data is made, these monitors are contacted for the object map.
+                    <li>1 Rados Gateway node - You, as the client, make requests through this gateway for data downloads. 
+                </ul>
+                <center><img src="./images/PANDO_Diagram.png" width="550px"><br>Courtesy: Sam Liston</center>
+
+            
+
         </div>            
 
         <div id="tab4" class="tab-pane fade">
