@@ -19,7 +19,7 @@ from matplotlib.colors import LinearSegmentedColormap
 ## Reset the defaults (see more here: http://matplotlib.org/users/customizing.html)
 mpl.rcParams['figure.figsize'] = [12,8]
 mpl.rcParams['savefig.bbox'] = 'tight'
-mpl.rcParams['savefig.dpi'] = 50     # For publication purposes
+mpl.rcParams['savefig.dpi'] = 80     # For publication purposes
 
 
 import numpy as np

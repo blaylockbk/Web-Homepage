@@ -88,6 +88,12 @@ print'''
     <i class="fa fa-cloud-download" aria-hidden="true"></i> HRRR Download Page
     </h1>
 
+<div class="alert alert-warning">
+    <small>Please become a registered user before downloading data.
+        This justifies making the archive public so you can use it.
+    </small>
+</div> 
+
 <div class="row">
       <div class=" col-md-3">
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">

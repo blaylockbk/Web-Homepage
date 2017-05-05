@@ -177,7 +177,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                         $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
                         $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
                         $anan_hour = (int)$anan_hour;
-                        echo '<button type="button" class="btn btn-default" onmouseover=change_picture("'.$new_image.'")>'.substr($dirArray[$index],0,3).'</button>';					
+                        echo '<a type="button" class="btn btn-default" onmouseover=change_picture("'.$new_image.'")>'.substr($dirArray[$index],0,3).'</a>';					
                         }	
                         }
 
