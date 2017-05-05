@@ -100,7 +100,7 @@ print'''
             <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
       </div>
       <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank" class="btn btn-warning btn-block">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
             <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
       </div>
       <div class="col-md-3">
@@ -127,60 +127,34 @@ print'''
 
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <p>I suggest you bookmark this page after you register. It is not
-        linked from the "HRRR FAQ" page. 
         <p> This page is tested in
         <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
         (Why only these two? Because my advisor uses Chrome, and I use Edge.)
-        <p>Download grib2 files or view metadata for each file from this webpage.
-        Select the model type, variable field, and date of interest. Indicate
-        if you want to download a grib2 file, view the metadata, or look at a
-        sample image (simulated reflectivity, takes several seconds to generate).
-        Then click <b><i>Submit</i></b>. <b>Remember to click 'submit' after
+        <p>You may do three things here: 
+        <ol style="padding-left:60px">
+            <li>Download grib2 files
+            <li>View metadata files
+            <li>View a sample image of simulated reflectivity for each file (takes some time to generate).
+        </ol>
+        <p>Select the model type, variable field, and date of interest. Toggle the
+        buttons for what you want to do.
+        <p>Then click <b><i>Submit</i></b>. <b>You must click 'submit' after
         you make a change</b>.
         <p>After clicking the submit button, a grid of hours and forecasts is 
         displayed. If the file is available, the button will be highlighted 
-        dark blue. Click the button to download the file. If the file is not 
-        available, the button will be disabled and highlighted light blue.
-        <p>Files are named similar to HRRR files named on the nomads site. For example,<br>
+        dark blue. Click the button to retrive what you requested.
+        <p>Files are named similar to HRRR files named on the NOMADS site. For example,<br>
         <b><span style="color:red">hrrr</span>.<span style="color:blue">t05z</span>.wrf<span style="color:green">sfc</span><span style="color:darkorange">f12</span>.grib2</b><br>
         <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
         </b>
         <p>Note: You will have to keep track of the file date yourself. 
         The file name only contains information about the run and forecast hour,
         so be careful that you don't overwrite files if you are downloading from
-        multiple days.
-        <p>You may script the download process. Click the "Scripting Tips" button above.
-
-        <p>We provide archived HRRR data for the following:
-        <ul style="padding-left:40px">
-           <li>NCEP operational HRRR
-              <ul style="padding-left:40px">
-                  <li>Beginning April 18, 2015
-                  <li>sfc and prc analyses
-                  <li>sfc forecasts after July 27, 2016
-                  <li>All variables
-                  <li>Directory name = oper, File name = hrrr
-              </ul>
-           <li>ESRL experimental HRRR
-              <ul style="padding-left:40px">
-                  <li>Beginning December 1, 2016
-                  <li>sfc analysis
-                  <li>All variables
-                  <li>Directory name = exp, File name = hrrrX
-              </ul>          
-           <li>ESRL experimental HRRR Alaska
-              <ul style="padding-left:40px">
-                  <li>Beginning September 1, 2016
-                  <li>sfc and prs analyses
-                  <li>sfc forecasts
-                  <li>All prs variables, select sfc variables
-                  <li>Directory name = alaska, File name = hrrrAK
-              </ul>
-        </ul>
-
-
-      </div>
+        multiple days into the same directory.
+        <p>You may script the download process. Click the "Scripting Tips"
+        button above for some help.
+        <p>Read the HRRR FAQ for a description of what file and dates are available.
+        </div>
     </div>
   </div>
 
@@ -220,8 +194,8 @@ print''' </select>
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)']
-value = ['sfc', 'prs']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (coming soon)']
+value = ['sfc', 'prs', 'subh']
 
 for i in range(0,len(value)):
    if field == value[i]:
