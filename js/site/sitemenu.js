@@ -49,7 +49,7 @@ document.write('<script src="js/site/CurrentTemp.js"></script>')
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 
-if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php' && filename != 'photo_viewer.php' && filename != 'photo_viewer2.php') {
+if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php' && filename != 'photo_viewer.php' && filename != 'photo_viewer2.php' && filename != 'photo_viewer_fire.php') {
     document.write('<div class=""><img title="click me" id="title_pic" src="' + pics[idx] + '" onclick="change_title_pic();" width="100%"></div>');
 }
 
@@ -102,14 +102,17 @@ document.write('\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
                             <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Maps</a></li>\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
+                            <li><a href="./hrrr_fires.html "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
                                                         <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">External Links</li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="15px"> MesoWest</a></li>\
+                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
                             <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
                             <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                            <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
                             <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
+                            <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                         </ul>\
                     </li>\

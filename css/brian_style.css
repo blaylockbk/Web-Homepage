@@ -124,6 +124,32 @@ img.style2 {
     padding: 10px;
 }
 
+img.styleT {
+    /*Style for transparent graphs*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    vertical-align: top;
+    display: block;
+    border: 1px solid;
+    border-color: black black;
+    box-shadow: 5px 5px 5px #888888;
+    background: linear-gradient(white, white, #dbedff, #add6ff);
+}
+
+img.styleT2 {
+    /*Style for transparent graphs*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    vertical-align: top;
+    display: block;
+    border: 1px solid;
+    border-color: black black;
+    box-shadow: 5px 5px 5px #888888;
+    background: linear-gradient(white, white, #fffadb, #fff098);
+}
+
 table.center {
     width: 90%;
     margin-left: auto;

@@ -101,7 +101,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 </small>
 
 <!-- Large modal (the intrusctions help button)-->
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" class='btn btn-warning'>Choose another location</a>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-warning'>Choose another fire</a>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -110,13 +110,6 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
     <button type="button" class="close" data-dismiss="modal">&times;</button>
     <h4 style="font-size:22px;"><i class="fa fa-picture-o" aria-hidden="true"></i> Image Viewer Instructions</h4><hr>
     <h5 align="left" style="font-size:18px;">
-    <p>This page shows point forecasts from the HRRR model. 
-    These plots are generated 1.5-2 hours after the analysis hour
-    (the earlierst time all the HRRR forecast hours are available).
-    If the location is a MesoWest station, then the MesoWest API
-    is called and plots the MesoWest temperature, dewpoint, and wind speed
-    as a dashed black line.
-    <hr>
     <p>There are three options for looking at the images:
         <ol style="padding-left:60px">
             <li> Hover - Picture changes when mouse hovers over image name.
@@ -193,7 +186,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                     </div>
 
 
-                <img class="styleT" id="sounding_img" style="width:30%;" src="./images/empty.jpg" alt="empty" onclick="window.open(this.src)">
+                <img class="styleT2" id="sounding_img" style="width:30%;" src="./images/empty.jpg" alt="empty" onclick="window.open(this.src)">
 
 
             </div> <!--row-->
@@ -268,7 +261,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
     </div>
 <!--(Tabs)-->
 <br>
-<p>Processing scripts on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_golf"> <i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+<p>Processing scripts on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_fires"> <i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
 </div> <!--(container))-->
 
 
