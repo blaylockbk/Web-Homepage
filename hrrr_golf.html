@@ -13,33 +13,95 @@
 
 <h1 align="center"><i class="fa fa-map-marker" aria-hidden="true"></i> HRRR Point Forecasts</h1>
 <center>
-<div id="container" style="max-width:450px">
+<div id="container">
+
+<div class="panel panel-primary" style="max-width:450px">
+  <div class="panel-heading">
+    <h3 class="panel-title">MesoWest Stations</h3>
+  </div>
+</div>
+
+<script>
+  var NAME = ['Antelope Island',
+              'Bonneville Salt Flats',
+              'Flight Park South',
+              'Fremont Island',
+              'Gunnison Island',
+              'Hill Air Force Base',
+              'Neil Armstrong Academy',
+              'North Logan',
+              'Provo-BYU',
+              'Salt Lake International Airport',
+              'Spanish Fork Bench',
+              'William Browning Building']
+  var ID = ['UFD09',
+            'BFLAT',
+            'FPS',
+            'FREUT',
+            'GNI',
+            'C8635',
+            'NAA',
+            'UCC23',
+            'EYSC',
+            'KSLC',
+            'UKBKB',
+            'WBB']
+
+  for (i = 0; i < ID.length; i++){
+    document.write('\
+<div class="btn-group" role="group" aria-label="..." style="padding-bottom:3px">\
+<a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/'+ID[i]+'/photo_viewer2.php" type="button" class="btn btn-default" style="width:300px">'+NAME[i]+' ('+ID[i]+')'+'</a>  <div class="btn-group" role="group">\
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\
+  <i class="fa fa-clock-o" aria-hidden="true"></i>\
+  <span class="caret"></span>\
+</button>\
+<ul class="dropdown-menu">\
+  <li>Last 2 Days:</li>\
+  <li><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_anlys/'+ID[i]+'/photo_viewer2.php">f00</a></li>\
+  <li><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f06/'+ID[i]+'/photo_viewer2.php">f06</a></li>\
+  <li><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f12/'+ID[i]+'/photo_viewer2.php">f12</a></li>\
+  <li><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f18/'+ID[i]+'/photo_viewer2.php">f18</a></li>\
+</ul>\
+</div>\
+</div>\
+<br>\
+    \
+    ')
+  }
+</script>
+<br>
+
+
   
-  <h3>MesoWest Stations</h3>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UFD09/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Antelope Island (UFD09)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/BFLAT/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Bonneville Salt Flats (BFLAT)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/FPS/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Flight Park South (FPS)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/FREUT/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Fremont Island (FREUT)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/GNI/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Gunnison Island (GNI)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/C8635/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Hill Air Force Base (C8635)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/NAA/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Neil Armstrong Academy (NAA)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UCC23/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">North Logan (UCC23)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/EYSC/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Provo-BYU (EYSC)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/KSLC/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Salt Lake International Airport (KSLC)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UKBKB/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Spanish Fork Bench (UKBKB)</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/WBB/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">William Browning Building (WBB)</a>
-    
+<div class="panel panel-primary" style="max-width:450px">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recreation</h3>
+  </div>
+</div>
+<div style="max-width:350px">    
+    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/Oaks/photo_viewer2.php" class="btn btn-default btn-block">
+    <img src="./images/oaks.png" height="40px"> Golf Course</a>
+    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UTPKL/photo_viewer2.php" class="btn btn-default btn-block">
+    <img src="./images/lagoon.png" height="40px"></a>
+    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UtahLake/photo_viewer2.php" class="btn btn-default btn-block">Utah Lake</a>
+    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/Orderville/photo_viewer2.php" class="btn btn-default btn-block">Orderville, UT</a>
+
+</div>
   
-  <h3>Recreation</h3>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/Oaks/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">
-  <img src="./images/oaks.png" height="50px"> Golf Course</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UTPKL/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">
-  <img src="./images/lagoon.png" height="50px"></a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/UtahLake/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Utah Lake</a>
-  <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/Orderville/photo_viewer2.php" class="btn btn-primary btn-lg btn-block">Orderville, UT</a>
-  
+<br>
+<br><br>
+<p align=center>Powered By:<br>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="#" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/PANDO_logo.png" style="width:150px"></a>
+
+<p>  Forecast code on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_golf">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+<p>  Analysis code on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_anlys">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+
+
+
 </div>
 </center>
+
 <script src="./js/site/siteclose.js"></script>
 </body>
 </html>
