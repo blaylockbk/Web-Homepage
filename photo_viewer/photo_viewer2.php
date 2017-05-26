@@ -25,7 +25,8 @@ function change_picture(img_name){
         /*On Hover*/
 		document.getElementById("sounding_img").src = img_name;
 		document.getElementById("sounding_img").style.width= '100%';
-		document.getElementById("sounding_img").style.maxHeight= '80vh';
+        document.getElementById("sounding_img").style.maxWidth= '1300px';
+		/*document.getElementById("sounding_img").style.maxHeight= '600px';*/
 	}
 function change_picture2(img_name){
         /*On Click*/
