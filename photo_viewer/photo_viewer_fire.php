@@ -25,7 +25,8 @@ function change_picture(img_name){
         /*On Hover*/
 		document.getElementById("sounding_img").src = img_name;
 		document.getElementById("sounding_img").style.width= '100%';
-		document.getElementById("sounding_img").style.maxHeight= '80vh';
+        document.getElementById("sounding_img").style.maxWidth= '1300px';
+		/*document.getElementById("sounding_img").style.maxHeight= '80vh';*/
 	}
 function change_picture2(img_name){
         /*On Click*/
@@ -102,6 +103,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 
 <!-- Large modal (the intrusctions help button)-->
 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-warning'>Choose another fire</a>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires_alert.html" class='btn btn-warning'>Periods of Interest</a>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
