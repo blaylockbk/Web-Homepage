@@ -15,7 +15,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 ## Reset the defaults (see more here: http://matplotlib.org/users/customizing.html)
-mpl.rcParams['figure.figsize'] = [13,13]
+mpl.rcParams['figure.figsize'] = [10,10]
 mpl.rcParams['savefig.bbox'] = 'tight'
 mpl.rcParams['savefig.dpi'] = 80     # For web purposes
 
@@ -195,7 +195,7 @@ DATE = DATE - timedelta(hours=fxx)
 
 # If run DATE is today's date, then need to grab HRRR from NOMADS instead of Pando
 today = datetime.now()
-if DATE > datetime(today.year, today.month, today.day):
+if DATE >= datetime(today.year, today.month, today.day):
     from BB_downloads.HRRR_oper import *
 else:
     from BB_downloads.HRRR_S3 import *
@@ -206,6 +206,7 @@ if background == 'arcgis':
     m.arcgisimage(service='World_Shaded_Relief', xpixels=700, verbose=False)
 m.drawstates()
 m.drawcountries()
+plt.scatter(lon, lat, marker='+', c='r', s=100)
 plt.title('Center:%s Model:%s\n       Run: %s F%02d\nVaild: %s' % (location, model.upper(), DATE, fxx, DATE+timedelta(hours=fxx)))
 
 got_latlon = False
@@ -352,7 +353,32 @@ if 'Fill2mTemp' in plotcode or 'ContFreeze' in plotcode:
     if 'ContFreeze' in plotcode:
         plt.contour(gridlon, gridlat, H_temp['value'], colors='b', levels=[0])
 
+if 'Fill2mRH' in plotcode:
+    # Get Data
+    try:
+        H_RH = get_hrrr_variable(DATE, 'RH:2 m', model=model, fxx=fxx, outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/', verbose=False, value_only=got_latlon)
+        if got_latlon is False:
+            gridlat = H_RH['lat']
+            gridlon = H_RH['lon']
+            cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
+            # Cut grid
+            gridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            gridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            got_latlon = True
 
+        # Cut variables
+        H_RH['value'] = H_RH['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        H_RH['value'] = H_RH['value']
+
+        # Add fill to plot
+        plt.pcolormesh(gridlon, gridlat, H_RH['value'], cmap="BrBG", vmin=np.min(H_RH['value']), vmax=np.max(H_RH['value']), alpha=.3, zorder=1)
+        cbT = plt.colorbar(orientation='horizontal', shrink=.5, pad=.01)
+        cbT.set_label('2m Relative Humidity (%)')
+
+    except:
+        print "!! Some errors getting the RH value."
+        print "!! If you requested an old date, from HRRR version 1, there isn't a RH variable,"
+        print "!! and this code doesn't get the dwpt and convert it to RH yet."
 
 if 'ContTerrain' in plotcode:
     pass
