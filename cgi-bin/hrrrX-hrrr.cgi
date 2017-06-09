@@ -66,7 +66,7 @@ print'''
 
 <br>
 
-      <h1 align="center"><i class="fa fa-map" aria-hidden="true"></i> HRRR Maps
+      <h1 align="center"><i class="fa fa-map" aria-hidden="true"></i> HRRR Map
       <!-- Large modal (the intrusctions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
@@ -102,6 +102,28 @@ print'''
       </div>
       </h1>
 
+
+      <center>
+      <div class="row" id="content">
+      <div class=" col-md-1">
+      </div>
+      <div class=" col-md-2">
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker" aria-hidden="true"></i> Point Forecast</a>      
+      </div>
+      <div class="col-md-2">
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+      </div>
+      <div class="col-md-2">
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="fa fa-map-o" aria-hidden="true"></i> Custom Maps</a>
+      </div>
+      <div class="col-md-2">
+      <a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
+      </div>
+      <div class="col-md-2">
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
+      </div>
+      </div>
+      </center>
 <br>
 
 <div style="background-color:#f5f5f5; width:85%; max-width:1000px; margin-left:auto; margin-right:auto;">	

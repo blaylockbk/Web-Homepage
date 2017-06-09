@@ -102,7 +102,8 @@ document.write('\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
-                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrr_custom.cgi "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Compare Maps</a></li>\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
                             <li><a href="./hrrr_fires.html "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\

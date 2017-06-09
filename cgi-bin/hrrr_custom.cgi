@@ -13,6 +13,7 @@ Note: For CGI, cannot print anything to screen when outputting a .png file
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
 from matplotlib.colors import LinearSegmentedColormap
 ## Reset the defaults (see more here: http://matplotlib.org/users/customizing.html)
 mpl.rcParams['figure.figsize'] = [10,10]
@@ -109,6 +110,56 @@ except:
     plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor iput a lat/lon (ex: 40.5,-111.5')
     plt.savefig(sys.stdout)	# Plot standard output.
 
+def LU_MODIS21():
+    C = np.array([[0, .4, 0],           # 1 Evergreen Needleleaf Forest
+                  [0, .4, .2],          # ! 2 Evergreen Broadleaf Forest
+                  [.2, .8, .2],         # 3 Deciduous Needleleaf Forest
+                  [.2, .8, .4],         # 4 Deciduous Broadleaf Forest
+                  [.2, .6, .2],         # 5 Mixed Forests
+                  [.3, .7, 0],          # 6 Closed Shrublands
+                  [.82, .41, .12],      # 7 Open Shurblands
+                  [.74, .71, .41],      # 8 Woody Savannas
+                  [1, .84, .0],         # 9 Savannas
+                  [0, 1, 0],            # 10 Grasslands
+                  [0, 1, 1],            # ! 11 Permanant Wetlands
+                  [1, 1, 0],            # 12 Croplands
+                  [1, 0, 0],            # 13 Urban and Built-up
+                  [.7, .9, .3],         # ! 14 Cropland/Natual Vegation Mosaic
+                  [1, 1, 1],            # ! 15 Snow and Ice
+                  [.914, .914, .7],     # 16 Barren or Sparsely Vegetated
+                  [.5, .7, 1],          # 17 Water (like oceans)
+                  [.86, .08, .23],      # 18 Wooded Tundra
+                  [.97, .5, .31],       # ! 19 Mixed Tundra
+                  [.91, .59, .48],      # ! 20 Barren Tundra
+                  [0, 0, .88]           # ! 21 Lake
+                 ])
+
+    cm = ListedColormap(C)
+
+    labels = ['Evergreen Needleleaf Forest',
+              'Evergreen Broadleaf Forest',
+              'Deciduous Needleleaf Forest',
+              'Deciduous Broadleaf Forest',
+              'Mixed Forests',
+              'Closed Shrublands',
+              'Open Shrublands',
+              'Woody Savannas',
+              'Savannas',
+              'Grasslands',
+              'Permanent Wetlands',
+              'Croplands',
+              'Urban and Built-Up',
+              'Cropland/Natural Vegetation Mosaic',
+              'Snow and Ice',
+              'Barren or Sparsely Vegetated',
+              'Water',
+              'Wooded Tundra',
+              'Mixed Tundra',
+              'Barren Tundra',
+              'Lake']
+
+    return cm, labels
+
 def reflect_ncdc():
     reflect_ncdc_cdict = {'red':((0.0000, 0.000, 0.000),
                                  (0.0714, 0.000, 0.000),
@@ -200,17 +251,69 @@ if DATE >= datetime(today.year, today.month, today.day):
 else:
     from BB_downloads.HRRR_S3 import *
 
+got_latlon = False
+bfr = cut
+
 # Start the map image
 plt.figure(1)
 if background == 'arcgis':
     m.arcgisimage(service='World_Shaded_Relief', xpixels=700, verbose=False)
+elif background == 'arcgisSat':
+    m.arcgisimage(service='ESRI_Imagery_World_2D', xpixels=700, verbose=False)
+elif background == 'terrain':
+    # Get data
+    H_ter = get_hrrr_variable(DATE, 'HGT:surface', model=model, fxx=fxx, outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/', verbose=False, value_only=got_latlon)
+    if got_latlon is False:
+        gridlat = H_ter['lat']
+        gridlon = H_ter['lon']
+        cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
+        # Cut grid
+        gridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        gridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        got_latlon = True
+    H_land = get_hrrr_variable(DATE, 'LAND:surface', model=model, fxx=fxx, outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/', verbose=False, value_only=got_latlon)        
+
+    # Cut variables
+    H_ter['value'] = H_ter['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+    H_land['value'] = H_land['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+
+    # Plot the terrain
+    plt.contourf(gridlon, gridlat, H_ter['value'],
+                 levels=range(0, 4000, 200),
+                 cmap='Greys_r',
+                 zorder=2)
+    # Plot Water area
+    plt.contour(gridlon, gridlat, H_land['value'],
+                levels=[0, 1],
+                colors='b',
+                zorder=10)
+
+elif background == 'landuse':
+    # Get data
+    H_LU = get_hrrr_variable(DATE, 'VGTYP:surface', model=model, fxx=fxx, outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/', verbose=False, value_only=got_latlon)
+    if got_latlon is False:
+        gridlat = H_LU['lat']
+        gridlon = H_LU['lon']
+        cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
+        # Cut grid
+        gridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        gridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        got_latlon = True
+
+    # Cut variables
+    H_LU['value'] = H_LU['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+
+    # Plot the terrain
+    cm, labels = LU_MODIS21()
+    plt.pcolormesh(gridlon, gridlat, H_LU['value'],
+                   cmap=cm, vmin=1, vmax=len(labels) + 1)
+
 m.drawstates()
 m.drawcountries()
-plt.scatter(lon, lat, marker='+', c='r', s=100)
+plt.scatter(lon, lat, marker='+', c='r', s=100, zorder=1000)
 plt.title('Center:%s Model:%s\n       Run: %s F%02d\nVaild: %s' % (location, model.upper(), DATE, fxx, DATE+timedelta(hours=fxx)))
 
-got_latlon = False
-bfr = cut
+
 
 if 'Barbs10mWind' in plotcode:
     # Get data

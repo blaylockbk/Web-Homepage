@@ -7,6 +7,36 @@
 <script src="./js/site/siteopen.js"></script>
 
 <script>
+    
+    
+    function GetUserLocation(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            alert('geolocation not working for some reason. Sorry :(');
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById('location').value = position.coords.latitude.toFixed(2) + ',' + position.coords.longitude.toFixed(2);
+    }
+
+    function InitialImage(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(changeInitialImage);
+        } else { 
+            alert('geolocation not working for some reason. Sorry :(');
+        }
+    }
+    function changeInitialImage(position) {
+        var now = new Date;
+        var stringDate = now.getFullYear()+'-'+(now.getMonth() + 1)+'-'+now.getDate()+'_'+now.getHours()+'00';
+        var lat = position.coords.latitude.toFixed(2);
+        var lon = position.coords.longitude.toFixed(2);
+        document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi?model=hrrr&valid='+stringDate+'&fxx=0&location='+lat+','+lon+'&plotcode=Barbs10mWind,FilldBZ&dsize=small&background=arcgis';
+    }    
+        
+    
     function SetBlank(){
         document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'
     }
@@ -36,18 +66,41 @@
 </head>
 
 
-<body>
+<body onload="InitialImage();">
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
 <h1 align="center"><i class="fa fa-map-o" aria-hidden="true"></i> HRRR Custom Surface Maps</h1>
 
 <center>
+<div class="row" id="content">
+    <div class=" col-md-1">
+    </div>
+    <div class=" col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker" aria-hidden="true"></i> Point Forecast</a>      
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="fa fa-map-o" aria-hidden="true"></i> Custom Maps</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
+    </div>
+</div>
+</center>
 
+
+
+<center>
 <div class="row" style="margin:50px"><div class="col-sm-1"></div><div class="col-sm-4" style="min-width:400px">
 
 <div id="container">
-<br>
+
 <form class="form-horizontal">
     
     <div class="form-group">
@@ -104,10 +157,14 @@
 
     <div class="form-group">
       <label class="control-label col-sm-3" data-toggle="tooltip" title="Either a MesoWest Station ID or latitude,longitude separated by a comma w/o spaces">Map Center Point:</label>
-      <div class="col-sm-9">
+      <div class="col-sm-6">
         <input type="text" required class="form-control" id="location" placeholder="ex: KSLC or 40.8,-111.9">
       </div>
+      <div class="col-sm-3">
+        <button  data-toggle="tooltip" title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
+      </div>
     </div>
+
 
     <div class="form-group">
       <label class="control-label col-sm-3" data-toggle="tooltip" title="Select one or more options by holding ctrl when you click or draging mouse">Add to the map:</label>
@@ -132,11 +189,11 @@
       <label class="control-label col-sm-3" data-toggle="tooltip" title="Approximate domain size with point at center">Domain Size:</label>
       <div class="col-sm-9">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
-            <label class="btn btn-default active">
-                <input type="radio" name="dsize" value='small' checked> <small><small><i class="fa fa-stop" aria-hidden="true"></i></small></small> 50 km<sup>2</sup>
-            </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='medium'> <i class="fa fa-stop" aria-hidden="true"></i> 200 km<sup>2</sup>
+                <input type="radio" name="dsize" value='small'> <small><small><i class="fa fa-stop" aria-hidden="true"></i></small></small> 50 km<sup>2</sup>
+            </label>
+            <label class="btn btn-default active">
+                <input type="radio" name="dsize" value='medium' checked> <i class="fa fa-stop" aria-hidden="true"></i> 200 km<sup>2</sup>
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="dsize" value='large'> <big><big><i class="fa fa-stop" aria-hidden="true"></i></big></big> 600 km<sup>2</sup>
@@ -159,27 +216,31 @@
     
             <div id="collapse1" class="panel-collapse collapse">
                 <div class="panel-body">
-                <div class="form-group">
+                <div class="form-group"  style="margin-left:1px;margin-right:1px">
                 <label class="control-label">Background Image:</label>
                             <div>
                                 <div class="btn-group btn-group-justified" data-toggle="buttons">
                                     <label class="btn btn-default active">
-                                        <input data-toggle="tooltip" title="ArcGIS Background" type="radio" name="background" value='arcgis' checked> <i class="fa fa-globe" aria-hidden="true"></i>
+                                        <input data-toggle="tooltip" title="ArcGIS Shaded Relief" type="radio" name="background" value='arcgis' checked> <i class="fa fa-globe" aria-hidden="true"></i>
                                     </label>
                                     <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title="Model Terrain" type="radio" name="background" value='terrain'> <i class="fa fa-wifi fa-rotate-180" aria-hidden="true"></i>
+                                        <input data-toggle="tooltip" title="ArcGIS Imagery" type="radio" name="background" value='arcgisSat'> <img src='./images/icon_satellite.svg' width='20px'>
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input data-toggle="tooltip" title="Model Terrain (200m Contours)" type="radio" name="background" value='terrain'> <i class="fa fa-wifi fa-rotate-180" aria-hidden="true"></i>
                                     </label>
                                     <label class="btn btn-default">
                                         <input data-toggle="tooltip" title="Model Landuse" type="radio" name="background" value='landuse'> <i class="fa fa-tree" aria-hidden="true"></i>
                                     </label>
                                     <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title='I hate background images' type="radio" name="background" value='none'> None
+                                        <input data-toggle="tooltip" title='When you click this you are really saying "I hate background images"' type="radio" name="background" value='none'> None
                                     </label>
                                 </div>
                             </div>
                             <hr>
-                            <p><input type="checkbox"> Utah Roads coming soon</input>
-                            <p><input type="checkbox"> Fire outlines coming soon</input>
+                            <p> Features coming soon, but can't now becuase CHPC doesn't have shapefile installed on this version of Python
+                            <p><input type="checkbox"> Utah Roads</input>
+                            <p><input type="checkbox"> Fire outlines</input>
                 </div>
                 </div>
             </div>
@@ -197,12 +258,12 @@
     </div>
   </form>
 </div>
-<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/hrrr_custom.html"><i class="fa fa-github" aria-hidden="true"></i> HTML code for page</a>
-<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_custom.cgi"><i class="fa fa-github" aria-hidden="true"></i> Python/CGI code for map</a>
+<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/hrrr_custom.html" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Page HTML code</a>
+<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_custom.cgi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Image Python/CGI code</a>
 </div>
 
 <div class="col-sm-6">
-<img class='style1' id='MapImage' style="width=100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample_fire.cgi?model=hrrr&validdate=2017-06-07_2300&name=BACA&fxx=05&lat=34.18&lon=-108.4'>
+<img class='style1' id='MapImage' style="width=100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi?model=hrrr&valid=2017-06-01_0000&fxx=0&location=KSLC&plotcode=Barbs10mWind,FilldBZ&dsize=medium&background=arcgis'>
 </div><div class="col-sm-1"></div>
 </div>
 
