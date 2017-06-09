@@ -171,7 +171,6 @@ plt.title('%s (%s)\n       Run: %s F%02d\nVaild: %s' % (name, model.upper(), DAT
 
 # Plot high wind speed shading
 plt.contourf(H_ref['lon'], H_ref['lat'], H_wind['value'], levels=[10, 15, 20, 25], colors=('yellow', 'orange', 'red'),
-             barb_increments={'half':2.5, 'full':5,'flag':25},
              alpha=.5,
              extend='max')
 cb = plt.colorbar(orientation='horizontal', shrink=.5, pad=.01)
@@ -186,6 +185,7 @@ cb2.set_label('Simulated Composite Reflectivity (dBZ)')
 
 # Plot surface wind barbs
 thin = 2
-plt.barbs(H_ref['lon'][::thin,::thin], H_ref['lat'][::thin,::thin], H_u['value'][::thin,::thin], H_v['value'][::thin,::thin], zorder=200, length=5)
+plt.barbs(H_ref['lon'][::thin,::thin], H_ref['lat'][::thin,::thin], H_u['value'][::thin,::thin], H_v['value'][::thin,::thin], zorder=200, length=5,barb_increments={'half':2.5, 'full':5,'flag':25})
+plt.ylabel(r'Barbs: half=2.5, full=5, flag=25 (ms$\mathregular{^{-1}}$)')
 
 plt.savefig(sys.stdout)	# Plot standard output.
