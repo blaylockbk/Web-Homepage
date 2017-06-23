@@ -7,6 +7,9 @@
 <script src="./js/site/siteopen.js"></script>
 </head>
 
+<!--===========================================================================
+This page is created dynamically in the scirpt /oper/HRRR_fires/manager.py
+============================================================================-->
 
 <body>
 <a name="TOP"></a>
@@ -14,21 +17,52 @@
 
 <h1 align="center"><i class="fa fa-free-code-camp" aria-hidden="true"></i> HRRR Fire Forecasts</h1>
 <center>
-<div id="container" style="max-width:500px">
-  
-<h3>Active Fires >1000 Acres <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires_alert.html" class='btn btn-primary'>Past Wind Events</a></h3>
-
-<table class="table sortable">
-<tr><th>Name</th> <th>State</th> <th>Size (acres)</th> <th>Start Date</th></tr>
-<tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BACA/photo_viewer_fire.php" class="btn btn-warning btn-block">BACA</a></td><td>New Mexico</td> <td>11,092</td><td>12-May-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BEAR/photo_viewer_fire.php" class="btn btn-warning btn-block">BEAR</a></td><td>Arizona</td> <td>2,050</td><td>01-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BOUNDARY/photo_viewer_fire.php" class="btn btn-warning btn-block">BOUNDARY</a></td><td>Arizona</td> <td>1,550</td><td>01-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/LIGHT_SAGE/photo_viewer_fire.php" class="btn btn-warning btn-block">LIGHT SAGE</a></td><td>Utah</td> <td>5,000</td><td>02-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/LIZARD/photo_viewer_fire.php" class="btn btn-warning btn-block">LIZARD</a></td><td>Arizona</td> <td>2,500</td><td>07-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/SLIM/photo_viewer_fire.php" class="btn btn-warning btn-block">SLIM</a></td><td>Arizona</td> <td>3,291</td><td>01-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/SNAKE_RIDGE/photo_viewer_fire.php" class="btn btn-warning btn-block">SNAKE RIDGE</a></td><td>Arizona</td> <td>15,333</td><td>19-May-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/TOLICHA_PEAK/photo_viewer_fire.php" class="btn btn-warning btn-block">TOLICHA PEAK</a></td><td>Nevada</td> <td>2,272</td><td>07-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/WEST_MIMS/photo_viewer_fire.php" class="btn btn-warning btn-block">WEST MIMS</a></td><td>Florida</td> <td>152,515</td><td>06-Apr-17</td></tr>
-</table>
-
-<center>
-<p><a href="https://fsapps.nwcg.gov/afm/">Active Fire Mapping Program</a>
-<p><a href="https://inciweb.nwcg.gov/">Incident Information System</a>
-<img src='http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/firemap.png' style="width=100%;max-width:600px">
+<div class="row" id="content">
+    <div class=" col-md-1">
+    </div>
+    <div class=" col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker" aria-hidden="true"></i> Point Forecast</a>      
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="fa fa-map-o" aria-hidden="true"></i> Custom Maps</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
+    </div>
+    <div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
+    </div>
+</div>
 </center>
 
+<center>
+<div id="container-fluid" style="max-width:1200px">
+  
+<h3>Active Fires >1000 Acres</h3>
+
+<div class="row">
+  <div class="col-md-6">
+<table class="table sortable">
+<tr><th>Name</th> <th>State</th> <th>Size (acres)</th> <th>Start Date</th></tr>
+<tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/303/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>303</b></a></td><td>Arizona</td> <td>1,150</td><td>22-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BONITA/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>BONITA</b></a></td><td>New Mexico</td> <td>7,398</td><td>03-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BOUNDARY/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>BOUNDARY</b></a></td><td>Arizona</td> <td>11,532</td><td>01-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/BRIANHEAD/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>BRIANHEAD</b></a></td><td>Utah</td> <td>17,294</td><td>17-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/CAJETE/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>CAJETE</b></a></td><td>New Mexico</td> <td>1,412</td><td>15-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/ENCINO/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>ENCINO</b></a></td><td>Arizona</td> <td>1,289</td><td>21-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/FRYE/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>FRYE</b></a></td><td>Arizona</td> <td>21,335</td><td>07-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/HIGHLINE/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>HIGHLINE</b></a></td><td>Arizona</td> <td>7,198</td><td>10-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/HIGHWAY/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>HIGHWAY</b></a></td><td>California</td> <td>1,522</td><td>18-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/HOLCOMB/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>HOLCOMB</b></a></td><td>California</td> <td>1,562</td><td>19-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/MAGGIE/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>MAGGIE</b></a></td><td>Not Reported</td> <td>1,400</td><td>Not Reported</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/RED_SPRINGS/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>RED SPRINGS</b></a></td><td>Nevada</td> <td>4,598</td><td>20-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/RHOADES_CANYON_0301_RN/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>RHOADES CANYON 0301 RN</b></a></td><td>Oregon</td> <td>14,000</td><td>20-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/ROMERO/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>ROMERO</b></a></td><td>Texas</td> <td>1,758</td><td>22-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/RUCKER/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>RUCKER</b></a></td><td>Arizona</td> <td>1,130</td><td>07-Jun-17</td></tr><tr><td><a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/TRINITY/photo_viewer_fire.php" class="btn btn-warning btn-block"><b>TRINITY</b></a></td><td>Nevada</td> <td>8,895</td><td>20-Jun-17</td></tr>
+</table>
+</div>
+  <div class="col-md-6">
+<center>
+<br><br>
+<img src='http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/firemap.png' style="width=100%;max-width:600px">
+<br><hr><br>
+<p><a class='btn btn-primary' style='width:250px' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi" >Past Wind Events</a>
+<p><a class='btn btn-default' style='width:250px' href="https://fsapps.nwcg.gov/afm/" target="_blank">Active Fire Mapping Program <i class="fa fa-external-link" aria-hidden="true"></i></a>
+<p><a class='btn btn-default' style='width:250px' href="https://inciweb.nwcg.gov/" target="_blank">Incident Information System <i class="fa fa-external-link" aria-hidden="true"></i></a>
+<p><a class='btn btn-default' style='width:250px' href="https://rmgsc.cr.usgs.gov/outgoing/GeoMAC/ActiveFirePerimeters.kml" target="_blank">Active Fire KMZ USGS <i class="fa fa-external-link" aria-hidden="true"></i></a>
+<p><a class='btn btn-default' style='width:250px' href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data" target="_blank">Active Fire KMZ EarthData <i class="fa fa-external-link" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
 </div>
 </center>
 <script src="./js/site/siteclose.js"></script>

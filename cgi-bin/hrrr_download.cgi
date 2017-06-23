@@ -194,7 +194,7 @@ print''' </select>
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (coming soon)']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (HRRR only)']
 value = ['sfc', 'prs', 'subh']
 
 for i in range(0,len(value)):

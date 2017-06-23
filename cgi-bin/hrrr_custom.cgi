@@ -92,7 +92,6 @@ except:
     plt.title('Something wrong with the background')
     plt.savefig(sys.stdout)	# Plot standard output.
 
-
 # configure the latitude/longitude based on the location requested
 try:
     if ',' in location:
@@ -109,6 +108,7 @@ except:
     plt.figure(1)
     plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor iput a lat/lon (ex: 40.5,-111.5')
     plt.savefig(sys.stdout)	# Plot standard output.
+
 
 def LU_MODIS21():
     C = np.array([[0, .4, 0],           # 1 Evergreen Needleleaf Forest
@@ -221,15 +221,15 @@ elif dsize == 'medium':
 elif dsize == 'large':
     plus_minus_latlon = 2.5
     barb_thin = 6
-    cut = 100
+    cut = 110
 elif dsize == 'xlarge':
     plus_minus_latlon = 5
     barb_thin = 12
-    cut = 200
+    cut = 210
 elif dsize == 'xxlarge':   # If domain runs into HRRR boundary, then it'll fail
     plus_minus_latlon = 10
     barb_thin = 20
-    cut = 400
+    cut = 430
 elif dsize == 'xxxlarge':
     plus_minus_latlon = 20
     barb_thin = 20
@@ -366,7 +366,7 @@ if ('Barbs80mWind' in plotcode) or ('Shade80mWind' in plotcode):
         plt.contourf(gridlon, gridlat, wind_uv_to_spd(H_u80['value'], H_v80['value']),
                      levels=[10, 15, 20, 25],
                      colors=('yellow', 'orange', 'red'),
-                     alpha=.8,
+                     alpha=.5,
                      extend='max',
                      zorder=10)
         cb = plt.colorbar(orientation='horizontal', shrink=.5, pad=.01)
@@ -390,7 +390,7 @@ if 'Shade10mWind' in plotcode:
     plt.contourf(gridlon, gridlat, H_wind['value'],
                  levels=[10, 15, 20, 25],
                  colors=('yellow', 'orange', 'red'),
-                 alpha=.5,
+                 alpha=.4,
                  extend='max',
                  zorder=10)
     cb = plt.colorbar(orientation='horizontal', shrink=.5, pad=.01)
@@ -399,7 +399,32 @@ if 'Shade10mWind' in plotcode:
 
 
 if 'HatchSfcGust' in plotcode:
-    pass
+    H_gust = get_hrrr_variable(DATE, 'GUST:surface', model=model, fxx=fxx, outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/', verbose=False, value_only=got_latlon)
+    if got_latlon is False:
+        gridlat = H_gust['lat']
+        gridlon = H_gust['lon']
+        cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
+        # Cut grid
+        gridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        gridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+        got_latlon = True
+
+    # Cut variables
+    H_gust['value'] = H_gust['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+
+    # Add to plot
+    plt.contourf(gridlon, gridlat, H_gust['value'],
+                 levels=[0, 10, 15, 20, 25],
+                 hatches=[None, '.', '\\\\', '*'],
+                 colors='none',
+                 extend='max',
+                 zorder=10)
+    cb = plt.colorbar(orientation='horizontal', shrink=.5, pad=.01)
+    cb.set_label(r'Surface Wind Gust (ms$\mathregular{^{-1}}$)')
+    plt.contour(gridlon, gridlat, H_gust['value'],
+                levels=[10, 15, 20, 25],
+                colors='k',
+                zorder=10)
 
 if 'FilldBZ' in plotcode or 'ContdBZ' in plotcode:
     # Get Data

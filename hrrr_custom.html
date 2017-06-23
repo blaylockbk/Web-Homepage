@@ -180,7 +180,6 @@
         <option value='Fill2mTemp'>Surface Temperature (Fill)</option>
         <option value='Fill2mRH'>Surface Relative Humidity (Fill)</option>
         <option value='ContFreeze'>Freezing Temperature Contour</option>
-        <option value='ContTerrain'>Terrain (Countour)</option>
         </select>
       </div>
     </div>
@@ -190,16 +189,19 @@
       <div class="col-sm-9">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='small'> <small><small><i class="fa fa-stop" aria-hidden="true"></i></small></small> 50 km<sup>2</sup>
+                <input type="radio" name="dsize" value='small'> <span style="font-size:9"><i class="fa fa-stop" aria-hidden="true"></i></span> 50 km<sup>2</sup>
             </label>
             <label class="btn btn-default active">
-                <input type="radio" name="dsize" value='medium' checked> <i class="fa fa-stop" aria-hidden="true"></i> 200 km<sup>2</sup>
+                <input type="radio" name="dsize" value='medium' checked> <span style="font-size:12"><i class="fa fa-stop" aria-hidden="true"></i></span> 150 km<sup>2</sup>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='large'> <big><big><i class="fa fa-stop" aria-hidden="true"></i></big></big> 600 km<sup>2</sup>
+                <input type="radio" name="dsize" value='large'> <span style="font-size:15"><i class="fa fa-stop" aria-hidden="true"></i></span> 400 km<sup>2</sup>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='xxlarge'> <big><big><big><big><i class="fa fa-stop" aria-hidden="true"></i></big></big></big></big> 800 km<sup>2</sup>
+                <input type="radio" name="dsize" value='xlarge'> <span style="font-size:18"><i class="fa fa-stop" aria-hidden="true"></i></span> 800 km<sup>2</sup>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='xxlarge'> <span style="font-size:21"><i class="fa fa-stop" aria-hidden="true"></i></span> 2,000 km<sup>2</sup>
             </label>
         </div>
       </div>
@@ -239,8 +241,9 @@
                             </div>
                             <hr>
                             <p> Features coming soon, but can't now becuase CHPC doesn't have shapefile installed on this version of Python
-                            <p><input type="checkbox"> Utah Roads</input>
-                            <p><input type="checkbox"> Fire outlines</input>
+                            <p><input type="checkbox" id="outlineRoads"> Utah Roads</input>
+                            <p><input type="checkbox" id="outlineFires"> Fire outlines</input>
+                            <p><input type="checkbox" id="ScatterMesoWest"> MesoWest Station Locations</input>
                 </div>
                 </div>
             </div>
@@ -254,6 +257,8 @@
     <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-9">
             <button  data-toggle="tooltip" title='After clicking me, count to 30 (plot takes awhile)' type="button" onclick="ChangeImage();" class="btn btn-lg btn-success" style="width:45%;min-width:100px">Submit</button>
+            <br><br>
+            <div class="well well-sm">Be patient when creating graphics. They take awhile to make. I need to add an "image loading" spinning icon, but I don't know how to do that yet.</div>
         </div>
     </div>
   </form>

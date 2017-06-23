@@ -100,7 +100,7 @@
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00-23]z.wrfprsf00.grib2</span>
                                 <li>File size: ~380 MB
                             </ul>
-                        <li><b>subh</b>: Sub-hourly files for analyses (coming soon! may include forecasts??)
+                        <li><b>subh</b>: Sub-hourly files for analyses (Begining May 11, 2017)
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00-23]z.wrfsubhf00.grib2</span>
                                 <li>File size: ~120 MB
@@ -181,6 +181,13 @@
             <p>For more details on the HRRRv2 implementation, check out the 
             following announcement: <a href="http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm">http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm</a>
             <p><b>HRRRv3</b> is the current experimental version under development and testing at ESRL.
+            Expected to become the operational model in Feburary 2018 
+            (<a href="http://www.emc.ncep.noaa.gov/CCS_Science/5.RAPv4_HRRRv3.Q2-2017.pdf" target="_blank">source</a>).
+            Will extend the forecast period out to 36 hours. Incorporate improved Thompson
+            microphysics, imporved MYNN PBL scheme, a land surface model update
+            with 15 second MODIS data, and refined roughness lengths for 
+            certain land use types. Additional imporovments in assimilation methods
+            including new dataset like lightning and radar radial velocity. 
 
             <hr>
             <h3>When do we download the HRRR data?</h3>
@@ -207,15 +214,20 @@
             This is a growing issue in the atmospheric science community
             as we move to higher resolution models that generate terabytes of
             data annually.
-            Perhaps the solution is in cloud computing where the archive can be
+            Perhaps the solution is in cloud computing, where we can "bring the
+            data to the computing." An archive on the cloud can be
             kept in one place and researchers can use cloud resources to 
             process the data, perform analyses, and initialize WRF simulations
             without downloading the model output on their own computers. It would
             especially be nice if you could mine for the exact data you wanted
             from the model output (a specific variable at a point or subgrid
             for a range of date/times). Perhaps model data needs to be stored in
-            HDF5 format rather than grib2.
-            <p>Until that happens, I would like to make this archive easily
+            HDF5 format rather than grib2. The benefits and complications of
+            cloud computing were discussed at the
+            <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
+            2017 Modeling Research in the Cloud</a>  Workshop.
+            <p>Until those challenges are overcome, I would like to make this
+            HRRR archive easily
             available to everyone to demonstrate the interest and need for 
             having such an archive. This archive has already proven beneficial
             to many researchers with many applications.
@@ -227,7 +239,7 @@
             <p>In short, this project is turning into a classic
             case of one of my favorite children's books If You Give A Mouse A
             Cookie where starting one thing has grown and continues to grow
-            into something bigger.
+            into something bigger, doing things I hadn't thought I'd need before.
 
         </div>
 
@@ -239,10 +251,11 @@
             <div align="center">
                 <a href="https://www.atmos.utah.edu/"><img align="center" src="./images/UU_logo.png"></a>
                 <a href="https://mesowest.org/"><img align="center" src="./images/MesoWest/MesoWest_20th_black.png" style="padding-left:15px"></a>
-                <a href="https://www.chpc.utah.edu/"><img align="center" src="./images/chpc_logo2.png" style="padding-left:15px"></a>
+                <a href="https://www.chpc.utah.edu/"><img align="center" src="./images/chpc_logo3.jpg" style="height:110px;padding-left:15px"></a>
             </div>
             <hr>
             <h3>Why do we archive the HRRR?</h3>
+            <img align=right class='style1' width=400 src="./images/June2017_NCAR.PNG">
             <p>While you can find current HRRR output on the <a href="http://www.nomads.ncep.noaa.gov/">NOMADS server</a>,
             there is no official HRRR 
             archive that is publicly and easily available, to our knowledge.
@@ -344,12 +357,13 @@
 
             <p> In summary:
             <ul style="padding-left: 60px;">
-                <li>2015-04-18: The HRRR archive is born. Only analysis hours (f00) were stored.
-                <li>2016-07-27: started grabbing 15 hour sfc forecasts.
-                <li>2016-08-24: started grabbing 18 hour sfc forecasts (HRRRv2 became operational).
+                <li>2015-04-18: The HRRR archive is born. Only HRRR analysis hours (f00) were stored for sfc and prs files.
+                <li>2016-07-27: started grabbing HRRR 15 hour sfc forecasts.
+                <li>2016-08-24: started grabbing HRRR 18 hour sfc forecasts (HRRRv2 became operational).
                 <li>2016-09-01: started grabbing select variables of experimental HRRR Alaska.
-                <li>2016-12-01: started grabbing experimental HRRR surface analysis.
+                <li>2016-12-01: started grabbing experimental HRRR (HRRRx) surface analysis, when they are available.
                 <li>2017-03-01: HRRR archive moved from local file system to PANDO storage.
+                <li>2017-05-10: started grabbing HRRR subhourly analysis and forecasts.
             </ul>
         <p>The interactive HRRR download page will give you a sense of what data
             files are available each day.
@@ -412,17 +426,28 @@
             <hr>
 
             <h3>Model Verification</h3>
-            <p>I produce time series graphs of observed values for select
+            <p><b>2-day Time Series</b>: Time series graphs of observed values for select
                 MesoWest stations and HRRR values for f00, f06, f12, and f18
                 for the last two days.
                 Check out the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html">
                 HRRR Point Forecasts</a> page, and select the clock next to a
                 station to view verification of the HRRR model for the last two
                 days.
-            <p>Also check out <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html">
-                HRRR Fire Forecast</a> page for current operational 
-                HRRR point forecasts for fires larger than 1000 acres.
-
+                <center><div><img src='http://home.chpc.utah.edu/~u0553130/oper/HRRR_anlys/KSLC/h20.png' width="450px">
+                </div></center>
+            <br>
+            <p><b>"Hovmoller" Diagram:</b> Imagine a Hovmoller diagram with
+                forecast hour on the y-axis and valid time on the x-axis.
+                These are created for a variable over each HRRR
+                forecast hour and compare with the observed value.
+                to observed values. 
+                On the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html">
+                HRRR Point Forecasts</a> page, select the clock next to a
+                station and click "Hovmoller".
+                <a href="https://github.com/blaylockbk/pyPlots_v2/blob/master/HRRR/HRRR_hovomoller.py"><i class="fa fa-github" aria-hidden="true"></i> GitHub Code</a>
+                <center><div><img src='http://home.chpc.utah.edu/~u0553130/oper/HRRR_hovmoller/KSLC/KSLC_air_temp.png' width="450px">
+                <img src='http://home.chpc.utah.edu/~u0553130/oper/HRRR_hovmoller/KSLC/KSLC_wind_speed.png' width="450px">
+                </div></center>
             
             <hr>
             
@@ -613,7 +638,10 @@
             
         </div>
     </div> <!--tab-conent--> 
-    <div class='well'>More information in the <a href="https://www.chpc.utah.edu/news/CHPC%20Newsletter%20-%20Spring%202017.pdf" target="_blank">Spring 2017 Newsletter <i class="fa fa-newspaper-o" aria-hidden="true"></i></a></div>
+    <div class='well'>
+        More information in the <a href="https://www.chpc.utah.edu/news/CHPC%20Newsletter%20-%20Spring%202017.pdf" target="_blank">CHPC Spring 2017 Newsletter <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+        or on this <a href="https://onedrive.live.com/?cid=633fadff92d04bd2&id=633FADFF92D04BD2%21818128&authkey=%21AGX18XORT1AvH5k">poster <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>.
+    </div>
 </div><!--content-->  
  <script src="./js/site/siteclose.js"></script>
 </div><!---->

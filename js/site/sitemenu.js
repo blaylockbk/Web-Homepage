@@ -159,7 +159,10 @@ document.write('\
                             <li><a href="http://kbkb-wx.blogspot.com "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> KBKB WX</a></li>\
                             <li><a href="http://kbkb-wx-python.blogspot.com "><i class="fa fa-code fa-fw" aria-hidden="true"></i> KBKB Python</a></li>\
                             <li><a href="http://wasatchweatherweenies.blogspot.com "><i class="fa fa-snowflake-o fa-fw" aria-hidden="true"></i> Wasatch W. W.</a></li>\
-                            <li><a href="http://cliffmass.blogspot.com "><i class="fa fa-tint fa-fw" aria-hidden="true"></i> Cliff Mass</a></li>\
+                            <li><a href="http://cliffmass.blogspot.com"><i class="fa fa-tint fa-fw" aria-hidden="true"></i> Cliff Mass</a></li>\
+                            <li class="dropdown-header">Podcasts</li>\
+                            <li><a href="https://talkpython.fm"><i class="fa fa-microphone fa-fw" aria-hidden="true"></i> Talk Python to Me</a></li>\
+                            <li><a href="http://www.stuffyoushouldknow.com"><i class="fa fa-microphone fa-fw" aria-hidden="true"></i> Stuff You Should Know</a></li>\
                         </ul>\
                     </li>\
 \
