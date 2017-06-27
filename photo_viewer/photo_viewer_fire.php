@@ -102,9 +102,10 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 </small>
 
 <!-- Large modal (the intrusctions help button)-->
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-warning'>Choose another fire</a>
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires_alert.html" class='btn btn-warning'>Periods of Interest</a>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+<br>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-danger'><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi" class='btn btn-primary'>Past Wind Events</a>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 <div class="modal-dialog modal-lg" role="document">
