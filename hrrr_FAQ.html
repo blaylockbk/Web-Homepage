@@ -21,9 +21,8 @@
              
             
         <div class="alert alert-warning">
-            <small>If you are looking for the most current HRRR output
-            (last two days) you should download directly from the
-            <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a> server.
+            <small>If you are looking for today's HRRR output you should download directly from
+            <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
             </small>
         </div>
             
@@ -52,7 +51,7 @@
 
   <!-- Tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#tab1"><i class="fa fa-globe" aria-hidden="true"></i> About this HRRR archive</a></li>
+    <li class="active"><a data-toggle="tab" href="#tab1"><i class="fa fa-globe" aria-hidden="true"></i> About the HRRR archive</a></li>
     <li><a data-toggle="tab" href="#tab2"><i class="fa fa-user" aria-hidden="true"></i> Who archives HRRR?</a></li>
     <li><a data-toggle="tab" href="#tab3"><i class="fa fa-database" aria-hidden="true"></i> Where is the archive?</a></li>
     <li><a data-toggle="tab" href="#tab4"><i class="fa fa-calendar" aria-hidden="true"></i> What days are available?</a></li>
@@ -65,25 +64,30 @@
         <div id="tab1" class="tab-pane fade in active">
             <!--<img align=right width="450px" style="padding:5px 15px 5px 5px" src="https://rapidrefresh.noaa.gov/hrrr/hrrrcrefimage">-->
             <iframe align=right width="460" height="355" src="https://www.youtube.com/embed/73vZOPvtQDc?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-            <h3><i class="fa fa-globe" aria-hidden="true"></i> About this HRRR archive</h3>
-            <h3>What is the HRRR archive?</h3>
-            <p>The HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
-            is a model developed by NOAA ESRL and is run operationally every hour at NCEP. It continues to be developed by ESRL.
-            <p>The HRRR generates hourly forecasts gridded at 3 km for 18 hours over the continental United
-            States making it the highest spatial and temporal resolution forecast system run by NCEP.
+            <h3><i class="fa fa-globe" aria-hidden="true"></i> About the HRRR archive</h3>
+            <h3>What is this HRRR archive?</h3>
+            <p>This HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
+               is a model developed by <a href="https://rapidrefresh.noaa.gov/hrrr/" target='_blank'>NOAA ESRL</a>
+               and is run operationally every hour at NCEP's Enivronmental Modeling Center.
+               It continues to be developed by ESRL.
+            <p>The operational HRRR generates hourly forecasts gridded at 3 km 
+               for 18 hours over the contiguous United States making it the
+               highest spatial and temporal resolution forecast system run by NCEP.
             <p>HRRR analyses and forecasts are exceptionally valuable to the 
-            research community. However, an official HRRR archvie does not exist.
-            We began archiving HRRR data in April 2015 to support
-            research efforts at the University of Utah. 
-            Instead of downloading all available files, we only download files
-            most useful to accomplish our research efforts. We have make the
-            archive publicly accessible for research purposes.
+               research community. However, an official HRRR archvie does not exist.
+               We began archiving HRRR data in April 2015 to support
+               research efforts at the University of Utah. 
+               Instead of downloading all available files, we only download files
+               most useful to accomplish our research efforts. We realize
+               this data is valuable to many others and have made the
+               archive publicly accessible for research purposes.
+               As of 11 August 2017, the archive contains 39 terabytes of data.
             <div class='alert alert-sm alert-info'>
-                <p><i class="fa fa-book" aria-hidden="true"></i> More details have been published in <i><a style="color:orangered" herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">Computers and Geosciences</a></i>.
+                <p><i class="fa fa-book" aria-hidden="true"></i> Additional details have been published and can be found in <i><a style="color:orangered" href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">Computers and Geosciences</a></i>.
             </div>
-
+            <hr>
             <h3>What files are contained in the HRRR archive?</h3>
-            <p>Output files, in grib2 format, contained in the archive include:
+            <p>Output files, in GRIB2 format, contained in the archive include:
             
             <div class="panel-group" id="accordion" style="max-width:700px; margin:auto">
             <div class="panel panel-default">
@@ -164,15 +168,29 @@
             </div>
             </div>
         </div>
-            
-
-            <p>Note: Some days and hours in our archive may not be available. Either
+         <p>Note: Some days and hours in our archive may not be available. Either
             the forecast wasn't run that hour (typical for the experimental models),
             or our download scripts failed to download everything.
 
+            <hr>
+            <h3>What are GRIB2 files?</h3>
+            <p><a href="https://en.wikipedia.org/wiki/GRIB">GRIB2</a>, 
+               or Gridded Binary Version 2, is a standard file format used 
+               by meteorologists for model data sets. There are several useful 
+               tools for working with the data.
+               <ul style="padding-left:50px">
+                   <li><a href="http://www.cpc.noaa.gov/products/wesley/wgrib2/">wgrib2</a>:
+                       a command line utility used to read GRIB2 files.
+                   <li><a href="https://pypi.python.org/pypi/pygrib">pygrib</a>:
+                       a Python module used to read GRIB2 files.
+                   <li><a href="https://www.ncdc.noaa.gov/wct/">NOAA Toolkit</a>:
+                       graphical software that can read and visualize GRIB2 files.
+                       <span style='color:red'>I highly recomend this tool if you haven't used GRIB2 files before</span>.
+               </ul>
+
                   
             <hr>
-            <h3>Where does the HRRR output come from?</h3>
+            <h3>Where do the HRRR output files come from?</h3>
             <p>The operational HRRR (hrrr) is downloaded via HTTP from the <a href="http://nomads.ncep.noaa.gov/">NOMADS server</a>.
             <p>Experimental HRRR (hrrrX) and HRRR Alaska (hrrrAK) are downloaded via FTP from NOAA ESRL (credentials required).
             <hr>
@@ -181,28 +199,29 @@
             We downloaded the operational HRRR from here: http://nomads.ncep.noaa.gov/pub/data/nccf/nonoperational/com/hrrr/prod/.
             Although the URL says "nonoperational", it was the operational HRRR. The
             files just hadn't been moved to the operational space.
-            <p><b>HRRRv2</b> was implemented at NCEP on August 23, 2016 for the 12z run. That day I
+            <p><b>HRRRv2</b> was implemented at NCEP on August 23, 2016 begining
+            with the 12z run. That day I
             began downloading from the new URL: <a href="http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/</a>.
             <p>For more details on the HRRRv2 implementation, check out the 
             following announcement: <a href="http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm">http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm</a>
-            <p><b>HRRRv3</b> is the current experimental version under development and testing at ESRL.
-            Expected to become the operational model in Feburary 2018 
+            <p><b>HRRRv3</b> is the current experimental version under development
+               and testing at ESRL.
+            It is expected to become the operational model in Feburary 2018 
             (<a href="http://www.emc.ncep.noaa.gov/CCS_Science/5.RAPv4_HRRRv3.Q2-2017.pdf" target="_blank">source</a>).
-            Will extend the forecast period out to 36 hours. Incorporate improved Thompson
+            Version 3 will extend the forecast period for the 00, 06, 12, and 18 run
+            out to 36 hours. Version 3 has improved Thompson
             microphysics, imporved MYNN PBL scheme, a land surface model update
             with 15 second MODIS data, and refined roughness lengths for 
-            certain land use types. Additional imporovments in assimilation methods
+            certain land use types with additional imporovments in assimilation methods
             including new dataset like lightning and radar radial velocity. 
 
             <hr>
             <h3>When do we download the HRRR data?</h3>
-            <p>HRRR output for each day is downloaded from the NOMADS and ESRL
-            servers each evening (Mountain Time) after 0000 UTC.
-            It takes a few hours to download everything. So if you are looking for today's
-            HRRR data, you'll have to wait until after midnight.
-            We first download HRRR-Alaska, then HRRR-X, then the operational HRRR (that one takes the
-            longest because we get the most from it.)
-            <p>This HRRR archive is not meant to be used for real-time or operational products.
+            <p><b>HRRR</b> is downloaded from NOMADS once a day at 6:35 PM Mountain Time.
+            <p><b>HRRR-Alaska</b> is downloaded from ESRL twice a day at 12:35 PM and 6:35 PM Mountain Time.
+            <p><b>HRRR-X</b> is downloaded from ESRL twice a day at 12:05 PM and 6:05 PM Mountain Time. 
+            <p>Since we retreive HRRR data only once or twice a day (a process that
+               may take several hours), this HRRR archive is not meant to be used for real-time or operational products.
 
             <hr>
             <img align=right \
@@ -219,14 +238,14 @@
             This is a growing issue in the atmospheric science community
             as we move to higher resolution models that generate terabytes of
             data annually.
-            Perhaps the solution is in cloud computing, where we can "bring the
+            <p>Perhaps the solution is in cloud computing, where we can "bring the
             data to the computing." An archive on the cloud can be
             kept in one place and researchers can use cloud resources to 
             process the data, perform analyses, and initialize WRF simulations
             without downloading the model output on their own computers. It would
-            especially be nice if you could mine for the exact data you wanted
-            from the model output (a specific variable at a point or subgrid
-            for a range of date/times). Perhaps model data needs to be stored in
+            especially be beneficial if it were possible to effeciently mine the large
+            dataset for a specific variable at a point or subgrid
+            for a range of dates or times. Perhaps this model data needs to be stored in
             HDF5 format rather than grib2. The benefits and complications of
             cloud computing were discussed at the
             <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
@@ -235,24 +254,25 @@
             HRRR archive easily
             available to everyone to demonstrate the interest and need for 
             having such an archive. This archive has already proven beneficial
-            to many researchers with many applications.
+            to many researchers and has served many applications.
             <p>In the future, it is possible to have server-side data processing
             that generate time series or wind roses for point locations 
             in the HRRR model. My current methods for doing this are extreamly 
             ineffiecient becuase they still require dowloading a temporary file
-            for a single variable of the entire CONUS grid.
+            for a single variable of the entire grid (which contains about 1.9 
+            grid points over the contiguous United States).
             <p>In short, this project is turning into a classic
-            case of one of my favorite children's books If You Give A Mouse A
-            Cookie where starting one thing has grown and continues to grow
+            case of one of my favorite children's books <i>If You Give A Mouse A
+            Cookie</i> where starting one thing has grown and continues to grow
             into something bigger, doing things I hadn't thought I'd need before.
-
         </div>
 
         <div id="tab2" class="tab-pane fade">
 			<h3><i class="fa fa-user" aria-hidden="true"></i> Who archives the HRRR data?</h3>
-            <p>The HRRR archive at the University of Utah is managed by the 
-            <a href="http://meso1.chpc.utah.edu/mesowest_overview/" target="_blank">MesoWest group</a>
-            on resourses at Utah's <a href="https://www.chpc.utah.edu/" target="_blank">Center for High Performance Computing</a>.
+            <p>The HRRR archive at the University of Utah is managed by Brian Blaylock and the
+               <a href="http://meso1.chpc.utah.edu/mesowest_overview/" target="_blank">MesoWest group</a>
+               on resourses at Utah's <a href="https://www.chpc.utah.edu/" target="_blank">Center for High Performance Computing</a>.
+               Please contact <a href="mailto:brian.blaylock@utah.edu">Brian</a> with questions regarding the archive.
             <div align="center">
                 <a href="https://www.atmos.utah.edu/"><img align="center" src="./images/UU_logo.png"></a>
                 <a href="https://mesowest.org/"><img align="center" src="./images/MesoWest/MesoWest_20th_black.png" style="padding-left:15px"></a>
@@ -260,15 +280,15 @@
             </div>
             <hr>
             <h3>Why do we archive the HRRR?</h3>
-            <img align=right class='style1' width=400 src="./images/June2017_NCAR.PNG">
-            <p>While you can find current HRRR output on the <a href="http://www.nomads.ncep.noaa.gov/">NOMADS server</a>,
+            <img align=right class='style1' width=400 style="margin-left:20px" src="./images/June2017_NCAR.PNG">
+            <p>While you can find current HRRR output at<a href="http://www.nomads.ncep.noaa.gov/">NOMADS</a>,
             there is no official HRRR 
             archive that is publicly and easily available, to our knowledge.
             This "gap" in the NOAA data archives will hopefully be filled in
             the future, seeing that their vision is that all NOAA environmental
             data shall be <i>Discoverable, Accessible, Useable, and Preserved</i>.
-            We hope to be part of the solution to this goal.
-            This HRRR archive has been created to support various research
+            We hope to be part of the solution to that goal.
+            <p>This HRRR archive has been created to support various research
             endeavours in the
             Department of Atmospheric Sciences at the Univerisity of Utah.
             Things we do include:
@@ -287,40 +307,37 @@
         </div>
 
         <div id="tab3" class="tab-pane fade">
-            <img src="./images/HRRR_pando.jpg" align="right" width="250px" style="padding:5px">
+            <img src="./images/HRRR_pando.jpg" align="right" width="250px" class="style1" style="margin-left:20px">
             <h3><i class="fa fa-database" aria-hidden="true"></i> Where is the HRRR archive?</h3>
             <p>The archive is physically located at the University of Utah
             Downtown Data Center in Salt Lake City, Utah. It is hosted on 
-            Utah's Center for High Performance Computing PANDO archive storage 
-            system. This object storage system is similar to Amazon's S3 storage, but
-            this is less expensive. We are currently using over 20 TB of 
-            our 30 TB allocation. At the current storage rate (~65 GB/day)
-            I expect the S3 archive will be full around mid-August
+            Utah's Center for High Performance Computing Pando archive storage 
+            system. 
+            <p>This object storage system is similar to Amazon's S3 storage,
+            but this is less expensive. We are currently using over 40 TB of 
+            our 60 TB allocation. At the current storage rate (~150 GB/day)
+            I expect the S3 archive will be full around mid-December
             2017. We will buy more storage if a proposal is funded, otherwise 
-            we'll have to remove the HRRR forcast grids if we want to continue 
-            saving HRRR analyses.
+            we'll have to remove the HRRR forcast or subhourlys grid if we
+            want to continue saving HRRR analyses.
             <p>But you probably aren't interested in it's physical location.
-            You want to know how to download from the archive. We have made
-            the HRRR archive available for research purposes outside the University.
-            We only ask that you fill out the registration form to help us 
-            keep track of total usage and it's popularity. This helps us justify
-            making the archive available for you.
-            After registering you will be redirected to the download page shown below. 
-            <br>
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-lg">
-            <i class="fa fa-user-plus" aria-hidden="true"></i> Register to download HRRR</a>
-            <br>
-            
-            
-            <img src="./images/hrrr_dwnld_page.PNG" class="style1" width="400px">
-            
-            <p>Scripting the download process is also possible with wget or curl.
-                Click the "Scripting Tips" button on the download page.
-                These tips will show you how to target specific variables you are 
-                interested in, so you don't have to download the entire file.
+            You want to know how to download from the archive. Lucky for you, 
+            the data is publically available to those outside the University of Utah.
+            We only ask that you fill out the registration form before downloading.
+            The registration form helps us keep track of the number of people
+            who find this data useful, which helps us justify making the archive
+            available to you.
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Archive Registration</a>
+            <p>After registering, you will be redirected to the interactive
+            download page. Click the "Scripting Tips" button for instructions 
+            to download from Pando with wget or cURL. These tips also show how
+            you can target specific variables you are interested without downloading
+            the entire file.
+                    
             <hr>
-            <h3><img class="style1" style="margin-left:10px" src="./images/FallPando.jpg" align="right" width="550px">
-            <i class="fa fa-server" aria-hidden="true"></i> Ok, so what is this PANDO archive?</h3>
+            <h3><img class="style1" style="margin-left:20px" src="./images/FallPando.jpg" align="right" width="550px">
+            <i class="fa fa-server" aria-hidden="true"></i> Ok, so what is the Pando archive?</h3>
             
             <p><b>Pando</b> is a colony of quanking aspen trees in southern Utah,
                 thought to be the oldest and largest living organism in the world,
@@ -330,64 +347,71 @@
                 The name is fitting for the CHPC object storage system
                 becuase of its resiliance and scalability, like
                 the tree system.
-            <p>The underlying software running PANDO is 
-                <a href="http://ceph.com/">Ceph</a>, a project supportedby RedHat.
-                While Ceph can be configered in a few ways, in this archive it
-                manages the data objects with the Amazon S3 API. It is a separate
-                "island" from the rest of CHPC file system so that output from 
-                other programs cannot write directly to it. Instead, files are
-                copied to PANDO through utilities like rclone or s3cmd.
-            <p>PANDO is built in three parts. All of these can be scaled to 
-                meet needs of the growing archive.
-                <ul style="padding-left:50px">
-                    <li>9 OSD Servers (16 8TB drives, each) - These contain the data objects.
-                    <li>3 Monitors - Monitors keep a map of the data objects. When a request for data is made, these monitors are contacted for the object map and return the object's ID.
-                    <li>1 Rados Gateway node - You, as the client, make requests through this gateway for data downloads. 
-                </ul>
-                <center><small><img src="./images/PANDO_Diagram.png" width="550px"><br>Adapted from Sam Liston</small></center>
-
-            
-
+            <p>The underlying software running Pando is 
+               <a href="http://ceph.com/">Ceph</a>, a project supported by RedHat.
+               While Ceph can be configered in a few ways, in this archive Ceph
+               manages the data objects with the Amazon S3 API. It is a separate
+               "island" from the rest of CHPC file system so that output from 
+               other programs cannot write directly to it. Instead, files are
+               copied to Pando through utilities like rclone or s3cmd.
+            <p>Pando is built in three parts. All of these can be scaled to 
+               meet needs of the growing archive.
+               <ul style="padding-left:50px">
+                   <li>9 OSD Servers (16 8TB drives, each) - These contain the data objects.
+                   <li>3 Monitors - Monitors keep a map of the data objects. When a request for data is made, these monitors are contacted for the object map and return the object's ID.
+                   <li>1 Rados Gateway node - You, as the client, make requests through this gateway for data downloads. 
+               </ul>
+               <center><small><img src="./images/PANDO_Diagram.png" width="550px"><br>Adapted from Sam Liston</small></center>
+               <br>
         </div>            
 
         <div id="tab4" class="tab-pane fade">
             <h3><i class="fa fa-calendar" aria-hidden="true"></i> What days are available to download?</h3>
-            <p>We began downloading HRRR analyses for each hours on April 18, 2015 and have continued to download
-            since then (with some hiccups here and there).
-            <p>Prior to July 27, 2016, only the analyses for the pressure and surface fields were
-            downloaded from the NOMADS server (forecast hour 0).
-            <p>Beginning July 27, 2016, we store all the forecast for the surface
-            fileds (unfortunately, the pressure field files are too large,
-            ~315 MB/hr, and we have decided not to archive the forecasted pressure fields.)
-
+            <p>The HRRR archvie began on 18 April 2015 and have continued to
+               downlaod since, with few hiccups here and there.
+            <p>In the begining, we downloaded operational HRRR analyses
+               (i.e. forecast hour 0) for the surface and pressure files.
+            <p>Beginning 27 July 2016, we store all the operational forecast
+               for the surface fields. Unfortunately, we decided the pressure
+               field files (~315 MB) are too large for us to save the forecast hours.
+            <p>Experimental verison of the model were later added to the archive.
             <p> In summary:
             <ul style="padding-left: 60px;">
-                <li>2015-04-18: The HRRR archive is born. Only HRRR analysis hours (f00) were stored for sfc and prs files.
-                <li>2016-07-27: started grabbing HRRR 15 hour sfc forecasts.
-                <li>2016-08-24: started grabbing HRRR 18 hour sfc forecasts (HRRRv2 became operational).
-                <li>2016-12-01: started grabbing select variables of experimental HRRR Alaska.
-                <li>2016-12-01: started grabbing experimental HRRR (HRRRx) surface analysis, when they are available.
-                <li>2017-03-01: HRRR archive moved from local file system to PANDO storage.
-                <li>2017-05-10: started grabbing HRRR subhourly analysis and forecasts.
+                <li>2015-04-18: The HRRR archive is born! Only HRRR analysis hours (f00) were stored for sfc and prs files.
+                <li>2016-07-27: Began storing HRRR 15 hour sfc forecasts.
+                <li>2016-08-24: Began storing HRRR 18 hour sfc forecasts (HRRRv2 became operational).
+                <li>2016-12-01: Began storing experimental HRRR-Alaska. prs analyses and select sfc variables for analyses and forecasts.
+                <li>2016-12-01: Began storing available experimental HRRR surface analyses.
+                <li>2017-03-01: Moved HRRR archive from local file system to Pando storage.
+                <li>2017-05-10: Began storing HRRR subhourly analyses and forecasts.
+                <li>2017-06-08: Began storing all available HRRR-Alaska sfc variables.
             </ul>
-        <p>The interactive HRRR download page will give you a sense of what data
-            files are available each day.
+        <p>Tip: Browse the interactive web download page for a visual sense of
+           what data files are available each day.
         </div>
 
         <div id="tab5" class="tab-pane fade">
             <h3><i class="fa fa-users" aria-hidden="true"></i> Who uses the HRRR archive?</h3>
             <img align=right class='style1' style="margin-left:15px;margin-bottom:15px" src='./images/hrrr_users.png' width='450px'>
             <p>Many people are interested in the HRRR archive, including yourself
-            (obviously, or else you wouldn't have Googled <i>'HRRR archive'</i>).
+            (obviously, or else you wouldn't have Googled <i>HRRR archive</i>).
             <p>The initial purpose of this HRRR archive was to serve atmospheric science research at the University
             of Utah, particularly my own research for my Master and PhD degrees.
              For example, I used HRRR analyses to 
             <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">initialize WRF simulations</a>.
-            <p>The archive is searched quite often on Google by people like you (about one or two clicks every day).
-            Since this archive has been published online I have received inquiries and download requests
-            from National Weather Service employees, a researcher at the National Institute of Standards
-            and Technology, a United State Air Force Captain, commercial wind power companies, university
-            professors, graduate students, post docs, a bunch of students working on a capstone project, and many others.
+            <p>The archive is searched for quite often by people like you.
+            Since this archive has been published online I have received
+            inquiries and download requests from
+            National Weather Service employees,
+            researchers at the National Institute of Standards and Technology,
+            a United State Air Force Captain,
+            employees at NVIDIA, Lockheed Martin,
+            commercial wind power companies,
+            university professors,
+            graduate students,
+            post docs,
+            a bunch of students working on a capstone project,
+            and many others.
             <div class="alert alert-success">
                 If this archive is useful to you, please contact the most 
                 important person you know at NCEP and request they develop an
@@ -415,15 +439,12 @@
                 <div class="col-md-2">
                 <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
                 </div>
-                <div class="col-md-2">
-                <a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
-                </div>
                 </div>
                 </center>
             <hr>
 
             <h3>Initialize WRF</h3>
-            <p>I use the HRRR to initialize WRF's boundary and initial conditions.
+            <p>I use the HRRR analyses to initialize WRF's boundary and initial conditions.
                Check out my instructions for initializing WRF with the HRRR here:
                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html">
                http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html</a>
@@ -445,7 +466,6 @@
                 forecast hour on the y-axis and valid time on the x-axis.
                 These are created for a variable over each HRRR
                 forecast hour and compare with the observed value.
-                to observed values. 
                 On the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html">
                 HRRR Point Forecasts</a> page, select the clock next to a
                 station and click "Hovmoller".
@@ -467,12 +487,12 @@
                20 minutes using 30 processors, (much better than 5 hours on a single
                processor). Brute-force calculations of percentiles takes quite a bit more time and memory.
                1, 5, 10, 90, 95, and 99th percentiles where done for each hour of every day
-               in the two years, and those took about one hour per variable.
+               in the two years, and those took about one hour (download time from Pando and calculation) per variable.
             <p>The HRRR analyses mean winds are comparable with the results of
                <a href="http://www.sciencedirect.com/science/article/pii/S0960148116309363" target="_blank">
                James et al. 2017</a>.
             <p><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_S3_climo_MaxMinMean_hourly_multipro.py">
-                See code here <i class="fa fa-github-square" aria-hidden="true"></i></a>.
+                See code here <i class="fa fa-github-square" aria-hidden="true"></i></a>
                
                <!-- Carousel -->
                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:550px; margin:auto">
@@ -486,7 +506,7 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="http://home.chpc.utah.edu/~u0553130/PhD/HRRR/max/Gust_TEST/hrrr_Gust_TEST_max_h14.png" alt="Max Wind Gust">
+                        <img src="http://home.chpc.utah.edu/~u0553130/PhD/HRRR/climo/hrrr_Gust_max.png" alt="Max Wind Gust">
                     </div>
                     <div class="item">
                         <img src="http://home.chpc.utah.edu/~u0553130/PhD/HRRR/percentile/wind_10m_TEST/hrrr_wind_10m_TEST_99th_h14.png" alt="Wind 99th Percentile">
@@ -567,16 +587,11 @@
                <hr>
                <p>Great Salt Lake surface temperature (before HRRR assimilation was fixed)
                <iframe width="560" height="315" src="https://www.youtube.com/embed/PC72-dsTrS4?rel=0" frameborder="0" allowfullscreen></iframe>
-               <hr>
-               <p>HRRR versus HRRRx analysis maps:
-               Very inefficient and slot pages that create maps showing the difference between HRRR and HRRRx
-               <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi"> here</a>.
-               <p><img width='600px' src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr_skin.cgi?date=2017-04-19&hour=03&domain=GSL'>
         </div>
 
         <div id="tab7" class="tab-pane fade">
             <h3><i class="fa fa-desktop" aria-hidden="true"></i> Tips for CHPC Users</h3>
-            <p>So you work/study at the University of Utah, too? Cool! Go Utes!!
+            <p>Do you work/study at the University of Utah, too? Cool! Go Utes!!
             Here are a few helpful tips that will make your life easier. That is, 
             if your life involves using HRRR data from our handy archive.
             Please share with me cool stuff you learn! 
@@ -593,12 +608,16 @@
                 <li>hrrrX
                 <li>hrrr_alaska
                 </ul>
+            <p>However, be aware that as disk space on horel-group grows, files
+               are compressed and removed. In the future, HRRR model output 
+               wont be availalbe in the home directory.
+               
 
             <hr>
             <h3>Want a behind-the-scenes tour of the HRRR archive?</h3>
             <p>The process we use to downloading HRRR and move HRRR to the
-            PANDO archive system is documented on GitHub.
-            <a class='btn btn-primary' href="https://github.com/blaylockbk/HorelS3-Archive/">See this github repository <i class="fa fa-github fa-fw" aria-hidden="true"></i></a>
+            Pando archive system is documented on GitHub.
+            <a class='btn btn-primary' href="https://github.com/blaylockbk/HorelS3-Archive/">Horel-S3 <i class="fa fa-github fa-fw" aria-hidden="true"></i></a>
 
             <hr>
             <h3>How do I get the HRRR data if what I'm looking for is compressed?</h3>
@@ -611,8 +630,8 @@
             token of knowledge.)
             </div>
 
-            <p>If you find that what you're looking for is compressed, follow the
-            following instructions to get what you need:
+            <p>If you find that what you're looking for is compressed, the
+            following instructions will help get what you need:
             <ol style="padding-left:60px">
                 
                 <li>
@@ -621,14 +640,14 @@
                     all the model data we archive (I warned you that this was
                     inefficient).
                 <li>
-                    <p>Before untarring the entire directory, you can make 
-                       sure it contains the files you need with something like this:
+                    <p>Before untarring the entire directory, you can check if
+                       it contains the files you need with something like this:
                     <div class="well well-sm" style="font-family:'Courier';">less -p /hrrr/hrrr.t models.tar.gz</div>
                 <li>
                     <p>You can untar the entire file, but that would take a looooonng
                     time, and you don't need everything in that file anyways.
                     <p>You can extract just the HRRR data with this one-liner...(still
-                    may take a bit of time)
+                    takes a bit of time)
                     <div class="well well-sm" style="font-family:'Courier';">tar -xzvf models.tar.gz 20160101/models/hrrr/</div>
 
                     <p> Or you can get more creative and use the following
@@ -644,10 +663,10 @@
         </div>
     </div> <!--tab-conent--> 
     <div class='well'>
-        <p><i class="fa fa-book" aria-hidden="true"></i> For more information and citations details, read this article:
+        <p><i class="fa fa-book" aria-hidden="true"></i> For more information and citation details, read this article:
         <p><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
               Data Mining of High Resolution Rapid Refresh Model Output. 
-              Computers and Geosciences. Accepted. doi: 
+              Computers and Geosciences. Accepted.
             <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
     </div>
 </div><!--content-->  

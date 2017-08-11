@@ -1,12 +1,8 @@
 <html>
-
 <head>
-    <title>HRRR Download Script Tips</title>
-    
+    <title>HRRR Download Script Tips</title> 
     <script src="./js/site/siteopen.js"></script>
 </head>
-
-
 <body>
     <a name="TOP"></a>
     <script src="./js/site/sitemenu.js"></script>
@@ -14,274 +10,270 @@
 
 <h1 align="center"><i class="fa fa-code fa-fw" aria-hidden="true"></i> HRRR Downlod Scripting Tips</h1>
     
-    <div id="content">      
-
-<div class="alert alert-warning">
-    <small>Please become a registered user before downloading data.
-        This justifies making the archive public so you can use it.
-    </small>
-</div>        
+<div id="content">          
         
-<div class="row" id="content">
-      <div class=" col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
-      </div>
-      <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-            <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
-      </div>
-      <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-            <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
-      </div>
-      <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
-            <i class="fa fa-cloud-download" aria-hidden="true"></i> Web Download Page</a>
-      </div>
-</div>
-     
-<br>        
-        
+    <div class="alert alert-warning">
+        <small><p>Reminder: Please register as a user before downloading data and 
+            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
+            <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a>
+        </small>
+    </div> 
 
-  <!-- Tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#tab1">URL structure</a></li>
-    <li><a data-toggle="tab" href="#tab2">cURL and wget</a></li>
-    <li><a data-toggle="tab" href="#tab3">Python</a></li>
-    <li><a data-toggle="tab" href="#tab4">Other</a></li>
-  </ul>
-
-    <div class="tab-content" id="content">
-        <div id="tab1" class="tab-pane fade in active">
-            <br>
-            <p>HRRR grib2 files are large. sfc files are >100 MB and prs files are >380 MB each.
-            If you download a day's worth of prs analyses, thats over 9 GB!
-            <p> You may write your own script to automate the download process,
-            but PLEASE do not download an excessive number of files in a short
-            period of time on multiple nodes (you agreed to not do this when you read the
-            Best Practices).
-            <p> Grib2 files are downloaded from the URL<br> 
-            <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
-            <p> Metadata for each file can be viewed from the URL<br> 
-            <span style="font-family:monospace">https://api.mesowest.utah.edu/archive/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name].idx</span>
-            <p> The model type and variable field directory tree options include the following:
-            <ul style="padding-left:40px">
-                <li><span style="color:red">[model type] <b>oper</b></span> for the operational HRRR
-                    <ul style="padding-left:40px">
-                            <li><span style="color:blue">[variable field] <b>sfc</b></span>
-                            <li><span style="color:blue">[variable field] <b>prs</b></span>
-                            <li><span style="color:blue">[variable field] <b>subh</b></span>
-                            <li><span style="color:blue">[variable field] <b>nat</b></span> <small>(for some smaller regions and short periods of time. This is for my own research, so you probably aren't interested in these.)</small>
-                    </ul>
-                <li><span style="color:red">[model type] <b>exp</b></span> for the experimental HRRR
-                    <ul style="padding-left:40px">
-                            <li><span style="color:blue">[variable field] <b>sfc</b></span>
-                    </ul>
-                <li><span style="color:red">[model type] <b>alaska</b></span> for HRRR Alaska
-                    <ul style="padding-left:40px">
-                            <li><span style="color:blue">[variable field] <b>sfc</b><span>
-                            <li><span style="color:blue">[variable field] <b>prs</b></span>
-                    </ul>
-            </ul>
-            <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20170101).
-            <p> <span style="color:darkorange">[file name]</span> is in the format [hrrr/hrrrX/hrrrAK].t[00-23]z.wrf[sfc/prs/subh]f[00-18 or 0-36].grib2
-            <p> Each model has two different names, one for the name of the
-                directory in PANDO and a name for the model type in the file.
-
-            <table style="max-width:500px" class="table table-hover">
-                <tr><th>Model Type</th>      <th>Directory Name</th><th>File Name</th></tr>
-                <tr><td>Operational HRRR</td><td>oper</td>          <td>hrrr</td></tr>
-                <tr><td>Experimental HRRR</td><td>exp</td>          <td>hrrrX</td></tr>
-                <tr><td>HRRR Alaska</td>     <td>alaska</td>        <td>hrrrAK</td></tr>
-            </table>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Example</h3>
-                </div>
-                <div class="panel-body" style="font-family:monospace">
-                    <p>https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2
-                    <p>https://api.mesowest.utah.edu/archive/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2.idx
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">BUFR soundings: A special case</h3>
-                </div>
-                <div class="panel-body">
-                    <p>You can download BUFR soundings for KSLC, KPVU, and KOGD
-                        from the operational HRRR. For example:
-                    <div class="well">https://pando-rgw01.chpc.utah.edu/HRRR/oper/buf/YYYYMMDD/kslc_YYYYMMDDHH.buf</div>        
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Native file subregions: A special case</h3>
-                </div>
-                <div class="panel-body">
-                    <p>Some HRRR native grids are archived for a smaller subregions. I first did this for the Brian Head wildfire.
-                       The time periods are for short stints and available hours may vary, so you probably arn't interested in these.
-                       They are mostly for my own research. Still, the files can be downloaded, for example:
-                    <div class="well" style="font-family:monospace">
-                    <p>https://pando-rgw01.chpc.utah.edu/HRRR/oper/nat/20170628/hrrr.t00z.wrfnatf00.grib2.BRIANHEAD
-                    <p>https://api.mesowest.utah.edu/archive/HRRR/oper/nat/20170628/hrrr.t00z.wrfnatf00.grib2.BRIANHEAD.idx
-                </div>        
-                </div>
-            </div>
-           
-
-            <hr>
-
+    <div class="row" id="content">
+        <div class=" col-md-3">
+                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
         </div>
+        <div class="col-md-3">
+                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+                <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
+        </div>
+        <div class="col-md-3">
+                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+        </div>
+        <div class="col-md-3">
+                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+                <i class="fa fa-cloud-download" aria-hidden="true"></i> Web Download Page</a>
+        </div>
+    </div>
 
-        <div id="tab2" class="tab-pane fade"> 
-            <br>            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">cURL download full file</h3>
+    <p>Feel free to share download scripts you write with <a href="mailto:brian.blaylock@utah.edu">me</a>! I'd like to make a bank of 
+        examples for all users and various languages.
+
+    <br>        
+        <!-- Tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">URL structure</a></li>
+            <li><a data-toggle="tab" href="#tab2">cURL and wget</a></li>
+            <li><a data-toggle="tab" href="#tab3">Python</a></li>
+            <li><a data-toggle="tab" href="#tab4">Other</a></li>
+        </ul>
+
+        <div class="tab-content" id="content">
+            <div id="tab1" class="tab-pane fade in active">
+                <br>
+                <p>HRRR grib2 files are large. sfc files are >100 MB and prs files are >380 MB each.
+                If you download a day's worth of prs analyses, thats over 9 GB!
+                <p> You may write your own script to automate the download process,
+                but PLEASE do not download an excessive number of files in a short
+                period of time on multiple nodes (you agreed to not do this when you read the
+                Best Practices).
+                <p> Grib2 files are downloaded from the URL<br> 
+                <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
+                <p> Metadata for each file can be viewed from the URL<br> 
+                <span style="font-family:monospace">https://api.mesowest.utah.edu/archive/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name].idx</span>
+                <p> The model type and variable field directory tree options include the following:
+                <ul style="padding-left:40px">
+                    <li><span style="color:red">[model type] <b>oper</b></span> for the operational HRRR
+                        <ul style="padding-left:40px">
+                                <li><span style="color:blue">[variable field] <b>sfc</b></span>
+                                <li><span style="color:blue">[variable field] <b>prs</b></span>
+                                <li><span style="color:blue">[variable field] <b>subh</b></span>
+                                <li><span style="color:blue">[variable field] <b>nat</b></span> <small>(for some smaller regions and short periods of time. This is for my own research, so you probably aren't interested in these.)</small>
+                        </ul>
+                    <li><span style="color:red">[model type] <b>exp</b></span> for the experimental HRRR
+                        <ul style="padding-left:40px">
+                                <li><span style="color:blue">[variable field] <b>sfc</b></span>
+                        </ul>
+                    <li><span style="color:red">[model type] <b>alaska</b></span> for HRRR Alaska
+                        <ul style="padding-left:40px">
+                                <li><span style="color:blue">[variable field] <b>sfc</b><span>
+                                <li><span style="color:blue">[variable field] <b>prs</b></span>
+                        </ul>
+                </ul>
+                <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20170101).
+                <p> <span style="color:darkorange">[file name]</span> is in the format [hrrr/hrrrX/hrrrAK].t[00-23]z.wrf[sfc/prs/subh]f[00-18 or 0-36].grib2
+                <p> Each model has two different names, one for the name of the
+                    directory in PANDO and a name for the model type in the file.
+
+                <table style="max-width:500px" class="table table-hover">
+                    <tr><th>Model Type</th>      <th>Directory Name</th><th>File Name</th></tr>
+                    <tr><td>Operational HRRR</td><td>oper</td>          <td>hrrr</td></tr>
+                    <tr><td>Experimental HRRR</td><td>exp</td>          <td>hrrrX</td></tr>
+                    <tr><td>HRRR Alaska</td>     <td>alaska</td>        <td>hrrrAK</td></tr>
+                </table>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Example</h3>
+                    </div>
+                    <div class="panel-body" style="font-family:monospace">
+                        <p>https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2
+                        <p>https://api.mesowest.utah.edu/archive/HRRR/oper/sfc/20161225/hrrr.t00z.wrfsfcf00.grib2.idx
+                    </div>
                 </div>
-                <div class="panel-body" style="font-family:monospace">
-                    curl -O https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">BUFR soundings: A special case</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>You can download BUFR soundings for KSLC, KPVU, and KOGD
+                            from the operational HRRR. For example:
+                        <div class="well">https://pando-rgw01.chpc.utah.edu/HRRR/oper/buf/YYYYMMDD/kslc_YYYYMMDDHH.buf</div>        
+                    </div>
                 </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Native file subregions: A special case</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Some HRRR native grids are archived for a smaller subregions. I first did this for the Brian Head wildfire.
+                        The time periods are for short stints and available hours may vary, so you probably arn't interested in these.
+                        They are mostly for my own research. Still, the files can be downloaded, for example:
+                        <div class="well" style="font-family:monospace">
+                        <p>https://pando-rgw01.chpc.utah.edu/HRRR/oper/nat/20170628/hrrr.t00z.wrfnatf00.grib2.BRIANHEAD
+                        <p>https://api.mesowest.utah.edu/archive/HRRR/oper/nat/20170628/hrrr.t00z.wrfnatf00.grib2.BRIANHEAD.idx
+                    </div>        
+                    </div>
+                </div>
+            
+
+                <hr>
+
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">cURL download full file and rename</h3>
+
+            <div id="tab2" class="tab-pane fade"> 
+                <br>            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">cURL download full file</h3>
+                    </div>
+                    <div class="panel-body" style="font-family:monospace">
+                        curl -O https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                    </div>
                 </div>
-                <div class="panel-body" style="font-family:monospace">
-                    curl -o hrrr20170101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">cURL download full file and rename</h3>
+                    </div>
+                    <div class="panel-body" style="font-family:monospace">
+                        curl -o hrrr20170101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                    </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">wget download full file</h3>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">wget download full file</h3>
+                    </div>
+                    <div class="panel-body" style="font-family:monospace">
+                        wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                    </div>
                 </div>
-                <div class="panel-body" style="font-family:monospace">
-                    wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
+                <p>If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
+                    <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">cURL download a single variable</h3>
+                    </div>
+                    <div class="panel-body">
+                    
+                    <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp.grib2 --range 33120613-34368741 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
+                    </div>
                 </div>
-            </div>
-            <p>If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
-                <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">cURL download a single variable</h3>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">cURL download several variables</h3>
+                    </div>
+                    <div class="panel-body">
+                    <p>Unfortunatly, the <span style="font-family:monospace">curl --range</span> function wont work if you
+                        request more than one range. I don't know why this doesn't
+                        work, but it must be a limitation of the Pando archive.
+                        Fortunately, similar variables are usually grouped together,
+                        like U and V wind compenents, so you can request a range 
+                        that spans the variables you want. This example gets 
+                        TMP, POT, SPFH, DPT, RH, UGRD, VGRD, WIND at 2 meters.
+                    <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp2mDPT10mwind.grib2 --range 33120613-42997512 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
+                    </div>
                 </div>
-                <div class="panel-body">
                 
-                <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp.grib2 --range 33120613-34368741 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
+            </div>
+
+            <div id="tab3" class="tab-pane fade">
+                <br>
+                <p> I use python/2.7.11. Describing my set-up would be long, so just use these as a template.
+                <br>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Download range of files with Python</h3>
+                    </div>
+                    <div class="panel-body">
+                        <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Download single variable with Python and cURL --range option</h3>
+                    </div>
+                    <div class="panel-body">
+                        This is a work in progress, but if you know the byte range you can request a single variable.
+                        Here is a working example with python.
+                        <script src="https://gist.github.com/blaylockbk/ab3cc3772963ffb74d7dbe051ca956f1.js"></script>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>This example does two things:
+                        <p> 1) Gets a variable from the HRRR file (2-meter temperature),
+                        plots the values on a graph (you can do a basemap yourself).
+                        <p> 2) Plucks out a single value at KSLC (Salt Lake City) for a time range
+                        and creates a timeseries plot. Creating the time series utilizes 
+                        multiprocessing to speed up the download process.
+                        <script src="https://gist.github.com/blaylockbk/47357c471ceb95d7331a9a747d327b59.js"></script>
+                        <img src="https://cloud.githubusercontent.com/assets/6249613/23960742/6aa2f812-096e-11e7-9a78-2591c794f58c.png" width=45% align=center>
+                        <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Fast download with multithreads and queue</h3>
+                    </div>
+                    <div class="panel-body">
+                        Use the queue and multithreading modules to stream the
+                        download process to multiple threads. This is quite efficient.
+                        <script src="https://gist.github.com/blaylockbk/082cf8215c3912413fd1bb33217bbb89.js"></script>
+                        <p>I tested the time it takes to download using 
+                        a sequential download (one at a time), multiprocessing,
+                        and multithreading. Multithreading is the correct way to 
+                        do this. The download time saturates after about 8 threads.
+                        <center><img src="./images/fast_download.png" width="450px"></center>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Useful HRRR S3 Download functions</h3>
+                    </div>
+                    <div class="panel-body">
+                        If you are patient enough to read all that, and have scrolled
+                        down here, you're in luck! This is a link the python functions
+                        I use to download the HRRR data.
+                        <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
+                        <i class="fa fa-github" aria-hidden="true"></i> Code for HRRR_S3 Functions</a></big>
+                    </div>
                 </div>
             </div>
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">cURL download several variables</h3>
+
+            <div id="tab4" class="tab-pane fade">
+                <br>
+                Byte ranges for each variable are found in an .idx file located here:
+                <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
+                <br><br>
+                <div class="panel panel-default">
+                <div class="panel-heading">How the .idx files were created</div>
+                <div class="panel-body" style="font-family:monospace">
+                wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime
                 </div>
-                <div class="panel-body">
-                <p>Unfortunatly, the <span style="font-family:monospace">curl --range</span> function wont work if you
-                    request more than one range. I don't know why this doesn't
-                    work, but it must be a limitation of the S3 archive.
-                    Fortunately, similar variables are usually grouped together,
-                    like U and V wind compenents, so you can request a range 
-                    that spans the variables you want. This example gets 
-                    TMP, POT, SPFH, DPT, RH, UGRD, VGRD, WIND at 2 meters.
-                <p style="font-family:monospace">curl -o 20161101_00zf00_2mTemp2mDPT10mwind.grib2 --range 33120613-42997512 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20161101/hrrr.t00z.wrfsfcf00.grib2
                 </div>
-            </div>
+            </div>            
+
+                
             
-        </div>
-
-        <div id="tab3" class="tab-pane fade">
-            <br>
-            <p> I use python/2.7.11. Describing my set-up would be long, so just use these as a template.
-            <br>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Download range of files with Python</h3>
-                </div>
-                <div class="panel-body">
-                    <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Download single variable with Python and cURL --range option</h3>
-                </div>
-                <div class="panel-body">
-                    This is a work in progress, but if you know the byte range you can request a single variable.
-                    Here is a working example with python.
-                    <script src="https://gist.github.com/blaylockbk/ab3cc3772963ffb74d7dbe051ca956f1.js"></script>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
-                </div>
-                <div class="panel-body">
-                    <p>This example does two things:
-                    <p> 1) Gets a variable from the HRRR file (2-meter temperature),
-                    plots the values on a graph (you can do a basemap yourself).
-                    <p> 2) Plucks out a single value at KSLC (Salt Lake City) for a time range
-                    and creates a timeseries plot. Creating the time series utilizes 
-                    multiprocessing to speed up the download process.
-                    <script src="https://gist.github.com/blaylockbk/47357c471ceb95d7331a9a747d327b59.js"></script>
-                    <img src="https://cloud.githubusercontent.com/assets/6249613/23960742/6aa2f812-096e-11e7-9a78-2591c794f58c.png" width=45% align=center>
-                    <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Fast download with multithreads and queue</h3>
-                </div>
-                <div class="panel-body">
-                    Use the queue and multithreading modules to stream the
-                    download process to multiple threads. This is quite efficient.
-                    <script src="https://gist.github.com/blaylockbk/082cf8215c3912413fd1bb33217bbb89.js"></script>
-                    <p>I tested the time it takes to download using 
-                    a sequential download (one at a time), multiprocessing,
-                    and multithreading. Multithreading is the correct way to 
-                    do this. The download time saturates after about 8 threads.
-                    <center><img src="./images/fast_download.png" width="450px"></center>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Useful HRRR S3 Download functions</h3>
-                </div>
-                <div class="panel-body">
-                    If you are patient enough to read all that, and scroll down
-                    to here, you're in luck. These are the functions I use to 
-                    download the HRRR data.
-                    <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
-                    <i class="fa fa-github" aria-hidden="true"></i> Code for HRRRs3 Functions</a></big>
-                </div>
-            </div>
-        </div>
-
-        <div id="tab4" class="tab-pane fade">
-            <br>
-            Byte ranges for each variable are found in an .idx file located here:
-            <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
-            <br><br>
-            <div class="panel panel-default">
-            <div class="panel-heading">How the .idx files were created</div>
-            <div class="panel-body" style="font-family:monospace">
-            wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime
-            </div>
-            </div>
-        </div>            
-
-            
-        
-    </div> <!--tab-conent--> 
-<br>
-<div class="well">
-<p>Please send me any example scripts you write and I'll add them here for others to use.
-</div>
+        </div> <!--tab-conent--> 
 </div><!--content-->  
 
 
- <script src="./js/site/siteclose.js"></script>
-</div><!---->
+<script src="./js/site/siteclose.js"></script>
 </body>
-
 </html>
