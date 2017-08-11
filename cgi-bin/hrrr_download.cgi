@@ -89,10 +89,12 @@ print'''
     </h1>
 
 <div class="alert alert-warning">
-    <small>Please become a registered user before downloading data.
-        This justifies making the archive public so you can use it.
+    <small><p>Reminder: Please register as a user before downloading data and 
+           reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
+           <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a>
     </small>
 </div> 
+
 
 <div class="row">
       <div class=" col-md-3">
@@ -194,8 +196,8 @@ print''' </select>
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (HRRR only)']
-value = ['sfc', 'prs', 'subh']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (HRRR only)', 'HRRR Native Grid - BrianHead Fire 2017, June 25-July 18']
+value = ['sfc', 'prs', 'subh', 'BRIANHEAD']
 
 for i in range(0,len(value)):
    if field == value[i]:
@@ -282,8 +284,12 @@ print '''
 # Create list of files available
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
-ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
-      % (model, field, DATE.year, DATE.month, DATE.day)
+if field not in ['prs', 'sfc', 'subh']:
+    ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
+        % (model, 'nat', DATE.year, DATE.month, DATE.day)
+else:
+    ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
+        % (model, field, DATE.year, DATE.month, DATE.day)
 rclone_out = subprocess.check_output(rclone + ls, shell=True)
 flist = rclone_out.split('\n')
 
@@ -306,11 +312,19 @@ for h in model_hours:
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn">Hour %02d</button>''' % (h)
     for f in f_hours:
-        look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (file_model, h, field, f)
-        if look_for_this_file in flist:
+        if field not in ['prs', 'sfc', 'subh']:
+            # Then the request is a for a HRRR native grid file.
+            # These are subregional native files, with the field defining the name of the subregion
+            look_for_this_file = '%s.t%02dz.wrfnatf%02d.grib2.%s' % (file_model, h, f, field)
+            baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
+            pathURL = '/%s/%s/%04d%02d%02d/' % (model, 'nat', DATE.year, DATE.month, DATE.day)
+            fileURL = look_for_this_file
+        else:
+            look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (file_model, h, field, f)
             baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
             pathURL = '/%s/%s/%04d%02d%02d/' % (model, field, DATE.year, DATE.month, DATE.day)
             fileURL = look_for_this_file
+        if look_for_this_file in flist:
             if link2 == 'grib2':
                 download_this = baseURL+pathURL+fileURL
             elif link2 == 'metadata':

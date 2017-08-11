@@ -3,7 +3,7 @@ document.write('\
 <div id="footer">\
 <p style="text-align:center; font-family:Segoe UI">\
 This page is maintained by Brian Blaylock &copy 2017, \
-Department of Atmospheric Science, University of Utah. \
+ <a href="http://www.atmos.utah.edu/" style="color:#990000; text-decoration:none">Department of Atmospheric Science, University of Utah</a>. \
  <a href="https://twitter.com/blaylockbk" style="color:#990000; text-decoration:none"><big><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></big> </a>\
  <a href="https://github.com/blaylockbk" style="color:#990000; text-decoration:none"><big><i class="fa fa-github fa-fw" aria-hidden="true"></i></big> </a>\
  <a style="color:#990000; text-decoration:none; font-weight:700" href="mailto:brian.blaylock@utah.edu">\

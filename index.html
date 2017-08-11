@@ -78,6 +78,11 @@
             Instead of downloading all available files, we only download files
             most useful to accomplish our research efforts. We have make the
             archive publicly accessible for research purposes.
+            <div class='alert alert-sm alert-info'>
+                <p><i class="fa fa-book" aria-hidden="true"></i> More details have been published in <i><a style="color:orangered" herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">Computers and Geosciences</a></i>.
+            </div>
+
+            <h3>What files are contained in the HRRR archive?</h3>
             <p>Output files, in grib2 format, contained in the archive include:
             
             <div class="panel-group" id="accordion" style="max-width:700px; margin:auto">
@@ -142,13 +147,13 @@
             <div id="collapse3" class="panel-collapse collapse">
                 <div class="panel-body">
                     <ul style="padding-left:40px">
-                        <li><b>sfc</b>: Surface fields for analyses and forecast hours (beginning September 1, 2016)
+                        <li><b>sfc</b>: Surface fields for analyses and forecast hours (beginning December 1, 2016)
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00,03,06,09,12,15,18,21]z.wrfsfcf[00-36].grib2</span>
-                                <li>File size: ~6 MB
-                                <li>Only selected variables retained.
+                                <li>File size: ~6 MB or ~100 MB if full file was downloaded
+                                <li>Only selected variables retained in early part of archive. Full files downloaded summer 2017.
                             </ul>
-                        <li><b>prs</b>: Pressure fields for analyses (beginning September 1, 2016)
+                        <li><b>prs</b>: Pressure fields for analyses (beginning December 1, 2016)
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00,03,06,09,12,15,18,21]z.wrfprsf00.grib2</span>
                                 <li>File size: ~205 MB
@@ -339,7 +344,7 @@
                     <li>3 Monitors - Monitors keep a map of the data objects. When a request for data is made, these monitors are contacted for the object map and return the object's ID.
                     <li>1 Rados Gateway node - You, as the client, make requests through this gateway for data downloads. 
                 </ul>
-                <center><small><img src="./images/PANDO_Diagram.png" width="550px"><br>Courtesy: Sam Liston</small></center>
+                <center><small><img src="./images/PANDO_Diagram.png" width="550px"><br>Adapted from Sam Liston</small></center>
 
             
 
@@ -360,7 +365,7 @@
                 <li>2015-04-18: The HRRR archive is born. Only HRRR analysis hours (f00) were stored for sfc and prs files.
                 <li>2016-07-27: started grabbing HRRR 15 hour sfc forecasts.
                 <li>2016-08-24: started grabbing HRRR 18 hour sfc forecasts (HRRRv2 became operational).
-                <li>2016-09-01: started grabbing select variables of experimental HRRR Alaska.
+                <li>2016-12-01: started grabbing select variables of experimental HRRR Alaska.
                 <li>2016-12-01: started grabbing experimental HRRR (HRRRx) surface analysis, when they are available.
                 <li>2017-03-01: HRRR archive moved from local file system to PANDO storage.
                 <li>2017-05-10: started grabbing HRRR subhourly analysis and forecasts.
@@ -639,8 +644,11 @@
         </div>
     </div> <!--tab-conent--> 
     <div class='well'>
-        More information in the <a href="https://www.chpc.utah.edu/news/CHPC%20Newsletter%20-%20Spring%202017.pdf" target="_blank">CHPC Spring 2017 Newsletter <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
-        or on this <a href="https://onedrive.live.com/?cid=633fadff92d04bd2&id=633FADFF92D04BD2%21818128&authkey=%21AGX18XORT1AvH5k">poster <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>.
+        <p><i class="fa fa-book" aria-hidden="true"></i> For more information and citations details, read this article:
+        <p><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
+              Data Mining of High Resolution Rapid Refresh Model Output. 
+              Computers and Geosciences. Accepted. doi: 
+            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
     </div>
 </div><!--content-->  
  <script src="./js/site/siteclose.js"></script>

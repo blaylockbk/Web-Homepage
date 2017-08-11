@@ -102,7 +102,7 @@ document.write('\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
-                            <li><a href="./cgi-bin/hrrr_custom.cgi "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
+                            <li><a href="./hrrr_custom.html "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
                             <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Compare Maps</a></li>\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
                             <li><a href="./hrrr_fires.html "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
@@ -117,7 +117,7 @@ document.write('\
                             <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
                             <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
-                        </ul>\
+                            </ul>\
                     </li>\
 \
                     <li class="dropdown">\
@@ -172,7 +172,22 @@ document.write('\
                             <li><a href="./wxMeritBadge.html ">WX Merit Badge</a></li>\
                             <li><a href="./schoolvisits.html ">School Visits</a></li>\
                             <li><a href="http://wrnscoutevent.wixsite.com/wrnscoutevent">WRN Scout Event</a></li>\
-                            <li><a href="http://science.utah.edu/events/science-day.php ">Science Day</a></li>\
+                            <li><a href="http://science.utah.edu/events/science-day.php ">UofU Science Day</a></li>\
+                        </ul>\
+                    </li>\
+\
+                    <li class="dropdown">\
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">UUNET<span class="caret"></span></a>\
+                        <ul class="dropdown-menu">\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153">Current Map</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153">24hr Precip Map</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/uunet_charts.cgi">Battery Voltage</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi">Nearby Weather</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html">Sodar Viewer</a></li>\
+                            <li><a href="http://mesowest.utah.edu/cgi-bin/droman/uunet_stn_monitor.cgi">UUNET Quick Look Table</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/aq/">TRAX/KSL/Mobile Air Quality</a></li>\
+                            <li><a href="https://asn.synopticdata.com/">Above Surface Network</a></li>\
+                            <li><a href="http://meso1.chpc.utah.edu/mesowest_overview/#">MesoWest Group Overview</a></li>\
                         </ul>\
                     </li>\
 \
