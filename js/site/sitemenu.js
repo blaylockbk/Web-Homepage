@@ -6,8 +6,6 @@ var pics = [
     "./images/Panorama/sundance_pan.png",
     "./images/Panorama/sundance2_pan.png",
     "./images/Panorama/snowcanyon_pan.png",
-    /*"./images/Panorama/copter_pan.png",*/
-    /*"./images/Panorama/spring_pan.png",*/
     "./images/Panorama/lights_pan.png",
     "./images/Panorama/maple_pan.png",
     "./images/Panorama/payette_pan.png",
@@ -24,12 +22,13 @@ var pics = [
     "./images/Panorama/cross_pan.png",
     "./images/Panorama/soldier_pan.png",
     "./images/Panorama/riverbottoms_pan.png",
-    /*"./images/Panorama/lmr_pan.png",*/
     "./images/Panorama/slc_pan.png",
     "./images/Panorama/bflat_pan.png",
     "./images/Panorama/utahlake_pan.png",
     "./images/Panorama/goes16_pan.png",
     "./images/Panorama/SF_pan.png",
+    "./images/Panorama/brianhead_pan.png",
+    "./images/Panorama/eclipse_pan.png",
 ];
 
 
@@ -98,7 +97,9 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="../Camera_Display " target="tools" target="_blank"><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
+                            <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  HRRR Archive Download</a></li>\
+                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 Amazon Download</a></li>\
+                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
@@ -109,15 +110,7 @@ document.write('\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
                                                         <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
-                            <li class="dropdown-header">External Links</li>\
-                            <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
-                            <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
-                            <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
-                            <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
-                            <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
-                            <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
-                            <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
-                            </ul>\
+                        </ul>\
                     </li>\
 \
                     <li class="dropdown">\
@@ -128,7 +121,7 @@ document.write('\
                             <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
                             <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0198116/wrf/utahwrfusers.html"><i class="fa fa-users fa-fw" aria-hidden="true"></i> Utah WRF Users Group</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Ute_WRF/"><i class="fa fa-users fa-fw" aria-hidden="true"></i> Utah WRF Users Group</a></li>\
                         </ul>\
                     </li>\
 \
@@ -189,6 +182,20 @@ document.write('\
                             <li><a href="https://asn.synopticdata.com/">Above Surface Network</a></li>\
                             <li><a href="http://meso1.chpc.utah.edu/mesowest_overview/#">MesoWest Group Overview</a></li>\
                         </ul>\
+                    </li>\
+\
+                    <li class="dropdown">\
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">External Links<span class="caret"></span></a>\
+                    <ul class="dropdown-menu">\
+                        <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
+                        <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
+                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> GOES-16 Viewer</a></li>\
+                        <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                        <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
+                        <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
+                        <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
+                        <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
+                    </ul>\
                     </li>\
 \
                     <!--\

@@ -91,7 +91,9 @@ print'''
 <div class="alert alert-warning">
     <small><p>Reminder: Please register as a user before downloading data and 
            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
-           <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a>
+           <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a> and this
+           <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
+           <b>data</b> <i class="fa fa-database" aria-hidden="true"></i></a>.
     </small>
 </div> 
 
@@ -150,7 +152,8 @@ print'''
         <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
         </b>
         <p>Note: You will have to keep track of the file date yourself. 
-        The file name only contains information about the run and forecast hour,
+        While the file contains the date information, the <i>file name</i>
+        only contains information about the run and forecast hour,
         so be careful that you don't overwrite files if you are downloading from
         multiple days into the same directory.
         <p>You may script the download process. Click the "Scripting Tips"
@@ -358,7 +361,16 @@ print '''
 <br><br>
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-
+    <div id='content' class='well well-sm'>
+        <h3>Citation Details</h3>
+        <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
+        <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
+        <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
+        <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
+              Data Mining of High Resolution Rapid Refresh Model Output. 
+              Computers and Geosciences. Accepted.
+            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
+    </div>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

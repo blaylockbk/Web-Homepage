@@ -112,7 +112,7 @@ img.style1 {
     display: block;
     border: 1px solid;
     border-color: black black;
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 5px 5px 25px #888888;
 }
 
 img.style2 {

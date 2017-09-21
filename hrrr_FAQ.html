@@ -73,6 +73,10 @@
             <p>The operational HRRR generates hourly forecasts gridded at 3 km 
                for 18 hours over the contiguous United States making it the
                highest spatial and temporal resolution forecast system run by NCEP.
+               Details on the variables (page still being worked on) produceed
+               by HRRR are available here:
+               <a class="btn btn-info" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table.html">
+               HRRR Variables</a>
             <p>HRRR analyses and forecasts are exceptionally valuable to the 
                research community. However, an official HRRR archvie does not exist.
                We began archiving HRRR data in April 2015 to support
@@ -83,7 +87,10 @@
                archive publicly accessible for research purposes.
                As of 11 August 2017, the archive contains 39 terabytes of data.
             <div class='alert alert-sm alert-info'>
-                <p><i class="fa fa-book" aria-hidden="true"></i> Additional details have been published and can be found in <i><a style="color:orangered" href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">Computers and Geosciences</a></i>.
+                <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Additional details have been published and can be found in <i><a style="color:orangered" href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">Computers and Geosciences</a></i>.
+            </div>
+            <div class='alert alert-sm alert-info'>
+                <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> The HRRR archive has an offical doi: <a style="color:orangered" href="https://doi.org/10.7278/S5JQ0Z5B">10.7278/S5JQ0Z5B</a></i>.
             </div>
             <hr>
             <h3>What files are contained in the HRRR archive?</h3>
@@ -246,7 +253,10 @@
             especially be beneficial if it were possible to effeciently mine the large
             dataset for a specific variable at a point or subgrid
             for a range of dates or times. Perhaps this model data needs to be stored in
-            HDF5 format rather than grib2. The benefits and complications of
+            HDF5 format rather than grib2. It would be nice if there was fewer
+            redundate data fields between the files. For instance, some fields 
+            are availabe in the prs and sfc and nat files.
+            The benefits and complications of
             cloud computing were discussed at the
             <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
             2017 Modeling Research in the Cloud</a>  Workshop.
@@ -272,11 +282,13 @@
             <p>The HRRR archive at the University of Utah is managed by Brian Blaylock and the
                <a href="http://meso1.chpc.utah.edu/mesowest_overview/" target="_blank">MesoWest group</a>
                on resourses at Utah's <a href="https://www.chpc.utah.edu/" target="_blank">Center for High Performance Computing</a>.
+               It can also be found in the University of Utah Hive.
                Please contact <a href="mailto:brian.blaylock@utah.edu">Brian</a> with questions regarding the archive.
             <div align="center">
                 <a href="https://www.atmos.utah.edu/"><img align="center" src="./images/UU_logo.png"></a>
                 <a href="https://mesowest.org/"><img align="center" src="./images/MesoWest/MesoWest_20th_black.png" style="padding-left:15px"></a>
                 <a href="https://www.chpc.utah.edu/"><img align="center" src="./images/chpc_logo3.jpg" style="height:110px;padding-left:15px"></a>
+                <a href="https://hive.utah.edu/"><img align="center" src="./images/hive.png" style="height:100px;padding-left:15px"></a>
             </div>
             <hr>
             <h3>Why do we archive the HRRR?</h3>
@@ -388,6 +400,8 @@
             </ul>
         <p>Tip: Browse the interactive web download page for a visual sense of
            what data files are available each day.
+        <p>Note: The HRRRx with Eclipse algorithm for all the forecast hours
+                 are available in Pando between August 18-22. Enjoy!
         </div>
 
         <div id="tab5" class="tab-pane fade">
@@ -399,19 +413,27 @@
             of Utah, particularly my own research for my Master and PhD degrees.
              For example, I used HRRR analyses to 
             <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">initialize WRF simulations</a>.
+            
             <p>The archive is searched for quite often by people like you.
-            Since this archive has been published online I have received
-            inquiries and download requests from
-            National Weather Service employees,
-            researchers at the National Institute of Standards and Technology,
-            a United State Air Force Captain,
-            employees at NVIDIA, Lockheed Martin,
-            commercial wind power companies,
-            university professors,
-            graduate students,
-            post docs,
-            a bunch of students working on a capstone project,
-            and many others.
+               Since this archive has been published online I have received
+               inquiries and download requests from
+               National Weather Service employees,
+               NASA scientists,
+               researchers at the National Institute of Standards and Technology,
+               a United State Air Force Captain,
+               employees at NVIDIA, Lockheed Martin,
+               commercial wind power companies,
+               university professors,
+               graduate students,
+               airline forecasters,
+               post docs,
+               a bunch of students working on a capstone project,
+               and many others.
+            <p>For many researchers, having a HRRR archive allows them to 
+               use past weather data at high temporal and spatial resolution
+               without the need to run their own WRF simulations. This is a
+               huge time saver.
+            <p>How is the HRRR archive useful to you? Send me an email and let me know.
             <div class="alert alert-success">
                 If this archive is useful to you, please contact the most 
                 important person you know at NCEP and request they develop an
@@ -662,15 +684,18 @@
             
         </div>
     </div> <!--tab-conent--> 
-    <div class='well'>
-        <p><i class="fa fa-book" aria-hidden="true"></i> For more information and citation details, read this article:
-        <p><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
-              Data Mining of High Resolution Rapid Refresh Model Output. 
-              Computers and Geosciences. Accepted.
-            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
-    </div>
 </div><!--content-->  
- <script src="./js/site/siteclose.js"></script>
+<div class='well well-sm' style="padding-left:10px;padding-right:10px;margin-bottom:-20">
+    <h3>Citation Details</h3>
+    <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
+    <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
+    <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
+    <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
+          Data Mining of High Resolution Rapid Refresh Model Output. 
+          Computers and Geosciences. Accepted.
+        <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
+</div>
+<script src="./js/site/siteclose.js"></script>
 </div><!---->
 </body>
 
