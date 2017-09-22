@@ -88,6 +88,12 @@ print'''
     <i class="fa fa-cloud-download" aria-hidden="true"></i> HRRR Download Page
     </h1>
 
+<div class="alert alert-danger">
+    <small>The HRRR Subhourly fields will be unavailable after October 1, 2017.
+    We will begin downloading these fields again when the fire season begins in May 2018.
+    </small>
+</div>
+
 <div class="alert alert-warning">
     <small><p>Reminder: Please register as a user before downloading data and 
            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
