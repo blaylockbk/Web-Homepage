@@ -99,6 +99,7 @@ document.write('\
                         <ul class="dropdown-menu">\
                             <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  HRRR Archive Download</a></li>\
                             <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 Amazon Download</a></li>\
+                            <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Pando</a></li>\
                             <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
