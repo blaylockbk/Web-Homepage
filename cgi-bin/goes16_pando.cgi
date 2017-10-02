@@ -109,22 +109,27 @@ print'''
             <p> This page is tested in
             <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
             (Why only these two? Because my advisor uses Chrome, and I use Edge.)
+            <p> The Pando GOES-16 archive contains the 2 meter resolution, mutli-band formatted
+                cloud and moisture product files, for the CONUS domain 
+                downloaded from the Amazon noaa-goes16 bucket.
+                We started downloading the files begining August 3rd 
+                and storing them in our own archive because files older than
+                60 days are placed in the Glacier storage on Amazon (i.e. it's 
+                difficult to grab files when they are in the Glacier storage class).
             <ol style="padding-left:15px">
-            <li>Select the desired domain, product, date, and hour for which you want to download.
+            <li>Select the desired domain and date for which you want to download.
             <li>Click the submit button.
             <ul style="padding-left:20px">
-                <li>Data is available for 16 different channels or bands. A blue box appears for every file that is available.
-                The number on the box represents the minute the scan started. Full disk scans are available every 15 minutes,
-                CONUS scans are available every 5 minutes, and mesoscale scans are available every minute.
+                <li>A blue box appears for every file that is available.
+                The number on the box represents the minute the scan started.
             </ul>
             <li> Click the desired file and the download will begin.
             </ol>
             <p>Files are downloaded in NetCDF format.
-            <p>An example file name:<br> <span style="font-family:monospace">OR_ABI-L1b-RadM1-M3C01_G16_s20172511100550_e20172511101007_c20172511101048.nc</span>
+            <p>An example file name:<br> <span style="font-family:monospace">OR_ABI-L2-MCMIPC-M3_G16_s20172330202189_e20172330204562_c20172330205056.nc</span>
             <ul style="padding-left:35px;">
                 <li>OR - data is operational and in real-time
-                <li>ABI-L1b-RadM1 - is the product, with the mesoscale 1 domain. C is for CONUS, F is for full disk, and M2 is for Mesoscale 2.
-                <li>M3C01 - Mode is 3 and Channel is 01
+                <li>ABI-L2-MCMIPC-M3 - is the product. C is for CONUS. M3 is for mode 3.
                 <li>G16 - GOES-16
                 <li>s20172511100550 - scan start time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
                 <li>e20172511101007 - scan end time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second

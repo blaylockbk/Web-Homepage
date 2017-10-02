@@ -43,6 +43,7 @@ except:
     Date = yesterday.strftime('%Y-%m-%d')
 
 print "Content-Type: text/html\n"
+
 print'''<!DOCTYPE html>
 <html>
 <head>
@@ -289,6 +290,9 @@ print''' </select>
 <div class="container">
 '''
 
+
+
+
 # Names of the 16 bands
 band_num = range(1,17)
 band = ['0.47 &microm: Visible "Blue Band"',\
@@ -402,3 +406,4 @@ print '''
 </body>
 </html>
 '''
+
