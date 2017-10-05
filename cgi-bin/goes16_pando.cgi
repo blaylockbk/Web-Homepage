@@ -107,7 +107,7 @@ print'''
 
 print '''   
 <div class="container">
-  <form class="form-horizontal" method="GET" action="cgi-bin/goes16_pando.cgi">
+  <form class="form-horizontal" method="GET" action="./cgi-bin/goes16_pando.cgi">
 
 <!--- Date ------------------------------>
     <div class="form-group">
@@ -184,17 +184,20 @@ dwnldlist = np.array([f for f in flist if '.nc' in f])
 
 # Only get Utah .png files
 if domain == 'UTAH':
-    flist = np.array([f for f in flist if 'UTAH.png' in f])
+    figlist = np.array([f for f in flist if 'UTAH.png' in f])
 else:
-    flist = np.array([f for f in flist if '.png' in f and 'UTAH.png' not in f])
+    figlist = np.array([f for f in flist if '.png' in f and 'UTAH.png' not in f])
 
-scan_start = np.array([datetime.strptime(f.split('_')[3][:], 's%Y%j%H%M%S%f') for f in flist])
+scan_start = np.array([datetime.strptime(f.split('_')[3][:], 's%Y%j%H%M%S%f') for f in figlist])
 
 scan_start_hours = np.array([a.hour for a in scan_start])
+scan_start_mins = np.array([a.minute for a in scan_start])
 
 # Text on the download button
 button_display = scan_start
 
+# Expected buttons:
+expected_buttons = np.arange(2, 58, 5)
 
 print '''
 <div class='container' style='width:95%'>
@@ -202,19 +205,27 @@ print '''
   <div class="col-md-4">
     <p>Number represents the scan's start minute for the hour.
     '''
+
+# Loop over each hour of day
 for i in range(24):
     print '''<div class="form-group">'''
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn""><b>Hour %02d</b></button>''' % (i)
     # A list of images for the button displays
-    buttons = scan_start[scan_start_hours==i]
+    buttons = scan_start_mins[scan_start_hours==i]
     # A list of the file names for each button
-    bfiles = flist[scan_start_hours==i]
+    bfiles = figlist[scan_start_hours==i]
     dfiles = dwnldlist[scan_start_hours==i]
-    for j in range(len(bfiles)):
-        image_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), bfiles[j])
-        download_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), dfiles[j])
-        print '''<a href="%s"><button name="fxx" type="button" class="mybtn unselected" onmouseover=change_picture('%s')>%02d</button></a>''' % (download_link, image_link, buttons[j].minute)
+    offset = 0
+    for j in range(len(expected_buttons)):
+        if expected_buttons[j] in buttons:
+            image_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), bfiles[j-offset])
+            download_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), dfiles[j-offset])
+            print '''<a href="%s"><button name="fxx" type="button" class="mybtn unselected" onmouseover=change_picture('%s')>%02d</button></a>''' % (download_link, image_link, buttons[j-offset])
+        else:
+            print '''<button name="fxx" type="button" class="mybtn disabled">%02d</button>''' % (expected_buttons[j])
+            offset += 1
+
     print '''
     </div></div>'''
 print '''
@@ -267,7 +278,7 @@ print '''
              this archive is August 3, 2017.
           
           <h5><b>Using this page</b></h5>
-          <p>Select a Date and an Image Sample, and click Submit.
+          <p>Select a <i>Date</i> and an <i>Image Sample</i>, and click <i>Submit</i>.
           <p>Hover your mouse over the buttons to see a sample true-color image
              with nighttime IR band. I like to hover from top to bottom to get 
              a general idea of the day, and I hover from left to right when I want
@@ -300,6 +311,7 @@ print '''
                download directly.
             <p><a href="http://www.goes-r.gov/resources/docs.html" target="_blank">Additional GOES-16 Documents</a>
             <p><a href="http://rammb-slider.cira.colostate.edu/" target="_blank">CIRA GOES-16 Viewer</a>
+            <p><a href="http://www.sciencedirect.com/science/article/pii/S0098300417305083?via%3Dihub" target="_blank">Details on Pando Archive</a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

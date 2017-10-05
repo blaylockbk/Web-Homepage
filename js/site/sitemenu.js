@@ -84,6 +84,7 @@ document.write('\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  HRRR Archive</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> PhD</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> MS</a></li>\
+                            <li class="dropdown-header">External Links</li>\
                             <li><a href="http://www.firescience.gov/" target="research "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> JFSP</a></li>\
                             <li><a href="http://meso2.chpc.utah.edu/aq/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> Air Quality</a></li>\
                             <li><a href="http://meso2.chpc.utah.edu/aq/cgi-bin/gslso3s_home.cgi" target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> GSLSO<sub>3</sub>S</a></li>\

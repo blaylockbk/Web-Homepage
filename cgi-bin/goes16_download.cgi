@@ -4,9 +4,12 @@
 
 """
 Brian Blaylock
-March 6, 2017
+October 1, 2017
 
-# Details of GOES-16 data
+Interactive web interface for viewing GOES-16 files available on the Amazon
+noaa-goes16 public bucket. Click button to download files.
+
+Details of GOES-16 data
 http://www.goes-r.gov/products/images/productFileSize8ColorPng8-1600px.png
 
 """
@@ -22,7 +25,7 @@ cgitb.enable()
 
 form = cgi.FieldStorage()
 
-yesterday = date.today() - timedelta(days=1)
+today = date.today()
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
@@ -40,7 +43,7 @@ except:
 try:
     Date = form['date'].value
 except:
-    Date = yesterday.strftime('%Y-%m-%d')
+    Date = today.strftime('%Y-%m-%d')
 
 print "Content-Type: text/html\n"
 
@@ -48,7 +51,7 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
-<title>GOES-16 Download Page</title>
+<title>GOES-16 on Amazon Download Page</title>
 <style>
       .mybtn {
           border: 2px solid #23415c;
@@ -91,7 +94,7 @@ print '''
 print'''
 <div id="content" class="container">
     <h1 align="center">
-    <i class="fa fa-cloud-download" aria-hidden="true"></i> GOES-16 Download Page
+    <i class="fa fa-cloud-download" aria-hidden="true"></i> GOES-16 on Amazon Download Page
     </h1>
 
 <br>
@@ -201,6 +204,9 @@ print'''
   </div> 
 </div>
 
+<p>If you like this page, try our
+   <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES-16 on Pando</a>
+   page which includes sample images.
   <hr> 
 <div class="container">
   <form class="form-horizontal" method="GET" action="cgi-bin/goes16_download.cgi">
