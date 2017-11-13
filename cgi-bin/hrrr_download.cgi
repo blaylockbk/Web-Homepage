@@ -144,7 +144,7 @@ print'''
         <ol style="padding-left:60px">
             <li>Download grib2 files
             <li>View metadata files
-            <li>View a sample image of simulated reflectivity for each file (takes some time to generate).
+            <li>View a sample image of simulated reflectivity for the file. Also check out the page: <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html">Custom HRRR Map</a>.
         </ol>
         <p>Select the model type, variable field, and date of interest. Toggle the
         buttons for what you want to do.
@@ -326,12 +326,12 @@ for h in model_hours:
             # These are subregional native files, with the field defining the name of the subregion
             look_for_this_file = '%s.t%02dz.wrfnatf%02d.grib2.%s' % (file_model, h, f, field)
             baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
-            pathURL = '/%s/%s/%04d%02d%02d/' % (model, 'nat', DATE.year, DATE.month, DATE.day)
+            pathURL = '/%s/%s/%s/' % (model, 'nat', DATE.strftime('%Y%m%d'))
             fileURL = look_for_this_file
         else:
             look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (file_model, h, field, f)
             baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
-            pathURL = '/%s/%s/%04d%02d%02d/' % (model, field, DATE.year, DATE.month, DATE.day)
+            pathURL = '/%s/%s/%s/' % (model, field, DATE.strftime('%Y%m%d'))
             fileURL = look_for_this_file
         if look_for_this_file in flist:
             if link2 == 'grib2':
@@ -339,7 +339,10 @@ for h in model_hours:
             elif link2 == 'metadata':
                 download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
             elif link2 == 'sample':
-                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample.cgi?model=%s&date=%s&hour=%s&fxx=%s' % (file_model, Date, h, f)
+                #download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample.cgi?model=%s&date=%s&hour=%s&fxx=%s' % (file_model, Date, h, f)
+                RUN = datetime(DATE.year, DATE.month, DATE.day, h)
+                VALID = RUN+timedelta(hours=f)
+                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=%s&valid=%s&fxx=%s&location=40.74,-111.83&plotcode=dBZ_Fill&dsize=conus&background=none' % (file_model, VALID.strftime('%Y-%m-%d_%H00'), f)
             print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">f%02d</button></a>''' % (f)
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">f%02d</button>''' % (f)
@@ -364,19 +367,23 @@ print '''
 </script>
 
 
-<br><br>
+<br>
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-    <div id='content' class='well well-sm'>
+    
+<div style='background-color:rgb(218, 218, 218)'>
+    <div class='container'>
         <h3>Citation Details</h3>
         <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
         <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
         <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
         <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
-              Data Mining of High Resolution Rapid Refresh Model Output. 
-              Computers and Geosciences. Accepted.
+            Data Mining of High Resolution Rapid Refresh Model Output. 
+            Computers and Geosciences. Accepted.
             <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
     </div>
+</div>
+
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

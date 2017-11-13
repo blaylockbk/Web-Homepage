@@ -207,6 +207,13 @@ print'''
 <p>If you like this page, try our
    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES-16 on Pando</a>
    page which includes sample images.
+    
+    <div class='alert alert-warning'>
+    GOES-16 will not be available between November 30 and December 20, 2017
+    when it will be moved to it's operational location at 75.2 degrees west.
+    <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
+    </div>
+    
   <hr> 
 <div class="container">
   <form class="form-horizontal" method="GET" action="cgi-bin/goes16_download.cgi">

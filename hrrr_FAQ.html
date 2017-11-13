@@ -277,6 +277,9 @@
             ineffiecient becuase they still require dowloading a temporary file
             for a single variable of the entire grid (which contains about 1.9 
             grid points over the contiguous United States).
+            <p>The idea here is to create a HRRR archive in one place so
+            researchers don't have to redundantly store local archives, with the
+            purpose to provide the data you need, when you need it.
             <p>In short, this project is turning into a classic
             case of one of my favorite children's books <i>If You Give A Mouse A
             Cookie</i> where starting one thing has grown and continues to grow
@@ -317,12 +320,16 @@
                 <li>Retrospective analysis of high-impact weather events.
                 <li>Basic statistics of variables (max, min, mean, percentiles).
             </ol>
-            This archive allows us to perform analysis of the HRRR model
-            performance, independent of the ESRL folks, for our own research purposes and goals.
+            <p> This archive allows us to perform analysis of the HRRR model
+                performance, independent of the ESRL folks, for our own research purposes and goals.
             <br>
             <p> You are welcome to use the archive for your own research, but
                 as a courtesy, please register and read the Best Practices 
                 before downloading from the archive (click buttons at top).
+            <p> I know of one other HRRR archive (2013-2016), but these files
+                only contain wind variables, and are all zipped up by each day
+                (not too easy to retreive data from):
+                <a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/catalog.html">Here</a>
 
         </div>
 
@@ -406,7 +413,8 @@
                 <li>2017-05-10: Began storing HRRR subhourly analyses and forecasts.
                 <li>2017-06-08: Began storing all available HRRR-Alaska sfc variables.
             </ul>
-        <p>Tip: Browse the interactive web download page for a visual sense of
+        <p>Tip: Browse the interactive <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">
+           web download page</a> for a visual sense of
            what data files are available each day.
         <p>Note: The HRRRx with Eclipse algorithm for all the forecast hours
                  are available in Pando between August 18-22. Enjoy!
@@ -710,16 +718,20 @@
         </div>
     </div> <!--tab-conent--> 
 </div><!--content-->  
+
 <div class='well well-sm' style="padding-left:10px;padding-right:10px;margin-bottom:-20">
-    <h3>Citation Details</h3>
-    <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
-    <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
-    <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
-    <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
-          Data Mining of High Resolution Rapid Refresh Model Output. 
-          Computers and Geosciences. Accepted.
-        <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
+    <div class='container'>
+        <h3>Citation Details</h3>
+        <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
+        <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
+        <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
+        <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
+            Data Mining of High Resolution Rapid Refresh Model Output. 
+            Computers and Geosciences. Accepted.
+            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
+    </div>
 </div>
+
 <script src="./js/site/siteclose.js"></script>
 </div><!---->
 </body>

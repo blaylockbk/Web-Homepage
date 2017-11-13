@@ -107,7 +107,7 @@ for a in alerts:
         line += "<td>%.1f</td>" % a[4]
         line += "<td>%.1f</td>" % a[5]
         line += "<td>%.1f</td>" % a[6]
-        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=Barbs10mWind,Shade10mWind,ContdBZ&dsize=medium&background=arcgis' target='_blank'><i class='fa fa-picture-o' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
+        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=10mWind_Barb,10mWind_Shade,dBZ_Contour&dsize=medium&background=arcgis' target='_blank'><i class='fa fa-picture-o' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
         line += "<td><a class='btn btn-default' role='button' href='https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/%s' target='_blank'><i class='fa fa-download' aria-hidden='true'></i> GRIB2</a></td></tr>" % a[7]
 print line
 print '''

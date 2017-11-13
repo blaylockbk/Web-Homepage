@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="./css/brian_style.css" />
 <script src="./js/site/siteopen.js"></script>
 
+
 <script>
-    
-    
+
     function GetUserLocation(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -30,47 +30,72 @@
     }
     function changeInitialImage(position) {
         var now = new Date;
-        var stringDate = now.getFullYear()+'-'+(now.getMonth() + 1)+'-'+now.getDate()+'_'+now.getHours()+'00';
+        var stringDate = now.getFullYear()+'-'+(now.getMonth() + 1)+'-'+now.getDate()+'_0000';
         var lat = position.coords.latitude.toFixed(2);
         var lon = position.coords.longitude.toFixed(2);
-        document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi?model=hrrr&valid='+stringDate+'&fxx=0&location='+lat+','+lon+'&plotcode=Barbs10mWind,FilldBZ&dsize=small&background=arcgis';
-    }    
-        
+        document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid='+stringDate+'&fxx=0&location='+lat+','+lon+'&plotcode=Barbs10mWind,FilldBZ&dsize=small&background=arcgis';
+    }        
     
     function SetBlank(){
-        document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'
+        document.getElementById('MapImage').src = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/loag.gif'
     }
+    
+    function pad(number, length) {
+        var str = '' + number;
+        while (str.length < length) {
+            str = '0' + str;
+        }
+        return str;
+    }
+
     function ChangeImage(){
-        
         /*Create HTML string for changing picture*/
-        var URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi'
+        var $loadingmsg = document.getElementById('app-loading')
+        $loadingmsg.classList.remove('hidden')
+
+        var URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi'
         + '?model=' + document.querySelector('input[name="model"]:checked').value
-        + '&valid=' + document.getElementById('valid').value
+        + '&valid=' + document.getElementById('validdate').value + document.getElementById('validhour').value
         + '&fxx=' + document.getElementById('fxx').value
         + '&location=' + document.getElementById('location').value
         + '&plotcode=' + $('#plotcode').val()
         + '&dsize=' + document.querySelector('input[name="dsize"]:checked').value
         + '&background=' + document.querySelector('input[name="background"]:checked').value;
 
+        var dwnldURL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi'
+        + '?model=oper'
+        + '&field=sfc'
+        + '&date=' + document.getElementById('validdate').value
+        + '&link2=grib2';
         /*
         alert(URL);
         alert(document.querySelector('input[name="background"]:checked').value);
         */
 
         /*Set image as the new picture*/
-        document.getElementById('MapImage').src = URL
+        document.getElementById('dwnldGRIB2').href = dwnldURL;
+        document.getElementById('MapLink').href = URL;
+        var hrrrimg = document.getElementById('MapImage')
+        hrrrimg.src = URL;
 
+        /* We need to find when the image is returned (Thank you Adam Abernathy for this snippiet)*/
+        var $appLoading = document.getElementById('app-loading');
+        $appLoading.classList.remove('hidden');          
+        hrrrimg.onload = function () { (this.height && this.width) ? ($appLoading.classList.add('hidden')) : (console.warn('Image load error')) }
     }
+
 </script>
 
 </head>
 
 
-<body onload="InitialImage();">
+<body>
+
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
 <h1 align="center"><i class="fa fa-map-o" aria-hidden="true"></i> HRRR Custom Surface Maps</h1>
+
 
 <center>
 <div class="row" id="content">
@@ -97,15 +122,15 @@
 
 
 <center>
-<div class="row" style="margin:50px"><div class="col-sm-1"></div><div class="col-sm-4" style="min-width:400px">
+<div class="row" style="margin:50px"><div class="col-sm-1"></div><div class="col-sm-3" style="min-width:400px">
 
 <div id="container">
 
 <form class="form-horizontal">
     
     <div class="form-group">
-      <label data-toggle="tooltip" title="Kind of need to know what is available for each model" class="control-label col-sm-3" for="email">Model:</label>
-      <div class="col-sm-9">
+      
+      <div class="col-sm-12">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default active">
                 <input type="radio" name="model" value='hrrr' checked> HRRR
@@ -121,154 +146,235 @@
 
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-3" data-toggle="tooltip" title="Format: YYYY-MM-DD_hhmm" >Valid Date/Time:</label>
-      <div class="col-sm-9">
-        <input type="text" required class="form-control" id="valid" placeholder="YYYY-MM-DD_hhmm">
-      </div>
+    <div class="input-group" data-toggle="tooltip" title="Valid Date">
+            <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+            <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2015-04-18">
     </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-3" data-toggle="tooltip" title="Forecast Hour">Forecast:</label>
-      <div class="col-sm-9">
-        <select class="form-control" id="fxx">
-        <option selected value='0'>f00</option>
-        <option value='1'>f01</option>
-        <option value='2'>f02</option>
-        <option value='3'>f03</option>
-        <option value='4'>f04</option>
-        <option value='5'>f05</option>
-        <option value='6'>f06</option>
-        <option value='7'>f07</option>
-        <option value='8'>f08</option>
-        <option value='9'>f09</option>
-        <option value='10'>f10</option>
-        <option value='11'>f11</option>
-        <option value='12'>f12</option>
-        <option value='13'>f13</option>
-        <option value='14'>f14</option>
-        <option value='15'>f15</option>
-        <option value='16'>f16</option>
-        <option value='17'>f17</option>
-        <option value='18'>f18</option>
-        </select>
-      </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="Valid Hour">
+            <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
+            <select class="form-control" id="validhour">
+                    <option value='_0000' selected >00:00 UTC</option>
+                    <option value='_0100'>01:00 UTC</option>
+                    <option value='_0200'>02:00 UTC</option>
+                    <option value='_0300'>03:00 UTC</option>
+                    <option value='_0400'>04:00 UTC</option>
+                    <option value='_0500'>05:00 UTC</option>
+                    <option value='_0600'>06:00 UTC</option>
+                    <option value='_0700'>07:00 UTC</option>
+                    <option value='_0800'>08:00 UTC</option>
+                    <option value='_0900'>09:00 UTC</option>
+                    <option value='_1000'>10:00 UTC</option>
+                    <option value='_1100'>11:00 UTC</option>
+                    <option value='_1200'>12:00 UTC</option>
+                    <option value='_1300'>13:00 UTC</option>
+                    <option value='_1400'>14:00 UTC</option>
+                    <option value='_1500'>15:00 UTC</option>
+                    <option value='_1600'>16:00 UTC</option>
+                    <option value='_1700'>17:00 UTC</option>
+                    <option value='_1800'>18:00 UTC</option>
+                    <option value='_1900'>19:00 UTC</option>
+                    <option value='_2000'>20:00 UTC</option>
+                    <option value='_2100'>21:00 UTC</option>
+                    <option value='_2200'>22:00 UTC</option>
+                    <option value='_2300'>23:00 UTC</option>
+            </select>
     </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-3" data-toggle="tooltip" title="Either a MesoWest Station ID or latitude,longitude separated by a comma w/o spaces">Map Center Point:</label>
-      <div class="col-sm-6">
-        <input type="text" required class="form-control" id="location" placeholder="ex: KSLC or 40.8,-111.9">
-      </div>
-      <div class="col-sm-3">
-        <button  data-toggle="tooltip" title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
-      </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="Forecast Hour">
+            <span class="input-group-addon"><i class="fa fa-forward fa-fw"></i></span>
+            <select class="form-control" id="fxx">
+                    <option selected value='0'>f00</option>
+                    <option value='1'>f01</option>
+                    <option value='2'>f02</option>
+                    <option value='3'>f03</option>
+                    <option value='4'>f04</option>
+                    <option value='5'>f05</option>
+                    <option value='6'>f06</option>
+                    <option value='7'>f07</option>
+                    <option value='8'>f08</option>
+                    <option value='9'>f09</option>
+                    <option value='10'>f10</option>
+                    <option value='11'>f11</option>
+                    <option value='12'>f12</option>
+                    <option value='13'>f13</option>
+                    <option value='14'>f14</option>
+                    <option value='15'>f15</option>
+                    <option value='16'>f16</option>
+                    <option value='17'>f17</option>
+                    <option value='18'>f18</option>
+            </select>
     </div>
-
-
-    <div class="form-group">
-      <label class="control-label col-sm-3" data-toggle="tooltip" title="Select one or more options by holding ctrl when you click or draging mouse">Add to the map:</label>
-      <div class="col-sm-9">
-        <select multiple class="form-control" id="plotcode">
-        <option selected value='Barbs10mWind'>10m Wind Barbs</option>
-        <option value='Barbs80mWind'>80m Wind Barbs</option>
-        <option value='Shade10mWind'>Highlight high 10m Winds (hourly max speed)</option>
-        <option value='Shade80mWind'>Highlight high 80m Winds</option>
-        <option value='HatchSfcGust'>Hatch Surface Wind Gust</option>
-        <option value='FilldBZ'>Simulated Compostie Radar (Fill)</option>
-        <option value='ContdBZ'>Simulated Compostie Radar (Contour)</option>
-        <option value='Fill2mTemp'>Surface Temperature (Fill)</option>
-        <option value='Fill2mRH'>Surface Relative Humidity (Fill)</option>
-        <option value='ContFreeze'>Freezing Temperature Contour</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-3" data-toggle="tooltip" title="Approximate domain size with point at center">Domain Size:</label>
-      <div class="col-sm-9">
-        <div class="btn-group btn-group-justified" data-toggle="buttons">
-            <label class="btn btn-default">
-                <input type="radio" name="dsize" value='small'> <span style="font-size:9"><i class="fa fa-stop" aria-hidden="true"></i></span> 50 km<sup>2</sup>
-            </label>
-            <label class="btn btn-default active">
-                <input type="radio" name="dsize" value='medium' checked> <span style="font-size:12"><i class="fa fa-stop" aria-hidden="true"></i></span> 150 km<sup>2</sup>
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" name="dsize" value='large'> <span style="font-size:15"><i class="fa fa-stop" aria-hidden="true"></i></span> 400 km<sup>2</sup>
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" name="dsize" value='xlarge'> <span style="font-size:18"><i class="fa fa-stop" aria-hidden="true"></i></span> 800 km<sup>2</sup>
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" name="dsize" value='xxlarge'> <span style="font-size:21"><i class="fa fa-stop" aria-hidden="true"></i></span> 2,000 km<sup>2</sup>
-            </label>
-        </div>
-      </div>
-    </div>
-
-    <!-- Accordian Advanced Options-->
-    <div class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-        <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Advanced Options</a>
-        </h4>
-        </div>
-    
-            <div id="collapse1" class="panel-collapse collapse">
-                <div class="panel-body">
-                <div class="form-group"  style="margin-left:1px;margin-right:1px">
-                <label class="control-label">Background Image:</label>
-                            <div>
-                                <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                    <label class="btn btn-default active">
-                                        <input data-toggle="tooltip" title="ArcGIS Shaded Relief" type="radio" name="background" value='arcgis' checked> <i class="fa fa-globe" aria-hidden="true"></i>
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title="ArcGIS Imagery" type="radio" name="background" value='arcgisSat'> <img src='./images/icon_satellite.svg' width='20px'>
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title="Model Terrain (200m Contours)" type="radio" name="background" value='terrain'> <i class="fa fa-wifi fa-rotate-180" aria-hidden="true"></i>
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title="Model Landuse" type="radio" name="background" value='landuse'> <i class="fa fa-tree" aria-hidden="true"></i>
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input data-toggle="tooltip" title='When you click this you are really saying "I hate background images"' type="radio" name="background" value='none'> None
-                                    </label>
-                                </div>
-                            </div>
-                            <hr>
-                            <p> Features coming soon, but can't now becuase CHPC doesn't have shapefile installed on this version of Python
-                            <p><input type="checkbox" id="outlineRoads"> Utah Roads</input>
-                            <p><input type="checkbox" id="outlineFires"> Fire outlines</input>
-                            <p><input type="checkbox" id="ScatterMesoWest"> MesoWest Station Locations</input>
-                </div>
-                </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="A MesoWest Station ID or comma separated lat,lon">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+            <div class="col-sm-8">
+                <input type="text" required class="form-control" id="location" placeholder="ex: KSLC or 40.8,-111.9">
             </div>
-
-
+            <div class="col-sm-4">
+                <button  data-toggle="tooltip" title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
+            </div>
     </div>
-    </div> 
-  
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="Hold ctrl to select multiple layers">
+            <span class="input-group-addon"><i class="fa fa-map-signs fa-fw"></i></span>
+            <select multiple class="form-control" id="plotcode" size=8>
+                <option selected value='10mWind_Fill'>10 m Wind: Fill</option>
+                <option value='10mWind_Shade'>10 m Wind: High Winds</option>
+                <option value='10mWind_Barb'>10 m Wind: Barbs</option>
+                <option value='80mWind_Fill'>80 m Wind: Fill</option>
+                <option value='80mWind_Shade'>80 m Wind: High Winds</option>
+                <option value='80mWind_Barb'>80 m Wind: Barbs</option>
+                <option value='Gust_Hatch'>Surface Gust: Hatch</option>
+                <option value='dBZ_Fill'>Radar Simulated: Fill</option>
+                <option value='dBZ_Contour'>Radar Simulated: Contour</option>
+                <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
+                <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
+                <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
+                <option value='700Temp_Fill'>700 mb Temperature: Fill</option>
+                <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
+                <option value='500HGT_Contour'>500 mb Height: Contour</option>
+                <option value='500Vort_Fill'>500 mb Vorticity: Fill</option>
+                <option value='500Wind_Fill'>500 mb Wind: Fill</option>
+                <option value='500Wind_Barb'>500 mb Wind: Barb</option>
+                <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
+                <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
+                <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
+                <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
+                <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
+                <option value='SnowCover_Fill'>Snow Cover: Fill</option>
+            </select>
+    </div>
+   
+    <label class="control-label">Domain Size</label>
+    <div class="form-group">
+
+      <div class="col-sm-12">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default" >
+                <input type="radio" name="dsize" value='small' > <span style="font-size:9"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="50 km"></i></span>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='medium'> <span style="font-size:12"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="125km"></i></span>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='large'> <span style="font-size:15"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="500 km"></i></span>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='xlarge'> <span style="font-size:18"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="1,000 km"></i></span>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='xxlarge'> <span style="font-size:21"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="2,000 km"></i></span>
+            </label>    
+            <label class="btn btn-default">
+                    <input type="radio" name="dsize" value='xxxlarge'> <span style="font-size:24"><i class="fa fa-stop" aria-hidden="true" data-toggle="tooltip" title="3,000 km"></i></span>
+            </label>    
+            <label class="btn btn-default active">
+                    <input type="radio" name="dsize" value='conus' checked> <i class="fa fa-globe" aria-hidden="true" data-toggle="tooltip" title="CONUS"></i>
+            </label>
+        </div>
+      </div>
+    </div>
+
+    <label class="control-label">Background</label>
+    <div class="form-group">
+
+      <div class="col-sm-12">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" name="background" value='arcgis' checked>
+                <i class="fa fa-globe" aria-hidden="true" data-toggle="tooltip" title="ArcGIS Shaded Relief (not for CONUS)"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="background" value='arcgisRoad'>
+                <i class="fa fa-road" aria-hidden="true" data-toggle="tooltip" title="ArcGIS Roads (not for CONUS)"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="background" value='arcgisSat'>
+                <img src='./images/icon_satellite.svg' width='20px' data-toggle="tooltip" title="ArcGIS Imagery (not for CONUS)">
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="background" value='terrain'>
+                <i class="fa fa-wifi fa-rotate-180" aria-hidden="true" data-toggle="tooltip" title="Model Terrain (200m Contours)"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="background" value='landuse'>
+                <i class="fa fa-tree" aria-hidden="true" data-toggle="tooltip" title="Model Landuse"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="background" value='none'>
+                <i class="fa fa-square-o" aria-hidden="true"  data-toggle="tooltip" title='I despise background images'></i>
+            </label>
+        </div>
+      </div>
+    </div>
 
 
     <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-9">
-            <button  data-toggle="tooltip" title='After clicking me, count to 30 (plot takes awhile)' type="button" onclick="ChangeImage();" class="btn btn-lg btn-success" style="width:45%;min-width:100px">Submit</button>
-            <br><br>
-            <div class="well well-sm">Be patient when creating graphics. They take awhile to make. I need to add an "image loading" spinning icon, but I don't know how to do that yet.</div>
+            <button type="button" onclick="ChangeImage();" class="btn btn-lg btn-success" style="width:45%;min-width:100px">Submit</button>
         </div>
     </div>
   </form>
-</div>
-<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/hrrr_custom.html" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Page HTML code</a>
-<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_custom.cgi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Image Python/CGI code</a>
+
 </div>
 
-<div class="col-sm-6">
-<img class='style1' id='MapImage' style="width=100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_custom.cgi?model=hrrr&valid=2017-06-01_0000&fxx=0&location=KSLC&plotcode=Barbs10mWind,FilldBZ&dsize=medium&background=arcgis'>
+
+
+</div>
+
+<div class="col-sm-7">
+    
+    <div class="row hidden" id="app-loading">
+            <div class="col-sm-12">
+                <div id="page-is-loading">
+                    <div id="loading-progress" class="progress">
+                        <div id="progress-bar" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuemin="0"
+                            aria-valuemax="100" style="width:100%">
+                            <p style="font-size:20px">Generating New Image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <a id='MapLink' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
+        <img class='style1' id='MapImage' style="width=100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
+    </a>
+    <br>
+    <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
+
+    <p><a href="#" id='dwnldGRIB2' class="btn btn-default" role="button"><i class="fa fa-download" aria-hidden="true"></i> GRIB2</a>
+
+    <!-- Accordian Advanced Options-->
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Future Features</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                <div class="form-group"  style="margin-left:1px;margin-right:1px">
+                    <p> Features coming soon, but can't now becuase CHPC doesn't have shapefile installed on this version of Python
+                    <p><input type="checkbox" id="outlineFires"> Fire outlines</input>
+                    <p><input type="checkbox" id="ScatterMesoWest"> MesoWest Station Locations</input>
+                    <p><input type="checkbox" id="ScatterMesoWest"> GOES-16 Background Image</input>
+                    <p><input type="checkbox" id="ScatterMesoWest"> User sets alpha image</input>
+                    <p><input type="checkbox" id="ScatterMesoWest"> HRRR and HRRRx comparison</input> 
+                    <p><input type="checkbox" id="ScatterMesoWest"> Ability to loop through valid time and forecast time</input>                        
+                </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/hrrr_custom.html" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Page HTML code</a>
+    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrr_custom.cgi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Image Python/CGI code</a>
+    
+
 </div><div class="col-sm-1"></div>
 </div>
 
@@ -279,6 +385,22 @@
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+</script>
+
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        }
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("validdate").setAttribute("max", today);
+    document.getElementById("validdate").setAttribute("value", today);
 </script>
 
 <script src="./js/site/siteclose.js"></script>

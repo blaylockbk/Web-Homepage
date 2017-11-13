@@ -29,6 +29,7 @@ var pics = [
     "./images/Panorama/SF_pan.png",
     "./images/Panorama/brianhead_pan.png",
     "./images/Panorama/eclipse_pan.png",
+    "./images/Panorama/glacier_pan.png",
 ];
 
 
@@ -98,21 +99,25 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  HRRR Archive Download</a></li>\
-                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Amazon</a></li>\
-                            <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Pando</a></li>\
-                            <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" aria-hidden="true"></i>  HRRR Error Maps</a></li>\
                             <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
+                            <li class="dropdown-header">Archived Data</li>\
+                            <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  HRRR Archive Download</a></li>\
+                            <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Pando</a></li>\
+                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Amazon</a></li>\
+                            <li class="dropdown-header">HRRR Web Tools</li>\
+                            <li><a href="./hrrr_custom.html "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
+                            <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
+                            <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
+                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Compare Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" aria-hidden="true"></i>  HRRR Error Maps</a></li>\
+                            <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-map-pin fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
+                            <li class="dropdown-header">MesoWest Web Tools</li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
-                            <li><a href="./hrrr_custom.html "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
-                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Compare Maps</a></li>\
-                            <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
-                            <li><a href="./hrrr_fires.html "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
-                            <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
-                                                        <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
+                            <li class="dropdown-header">Other</li>\
+                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
                         </ul>\
                     </li>\
 \
@@ -199,6 +204,15 @@ document.write('\
                         <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
                         <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
                         <li><a href="http://dev2.mesowest.net/cgalli/percentiles/radial.html" target="tools"><i class="fa fa-user fa-fw" aria-hidden="true"></i>  MesoWest Station Percentiles</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153" target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  Past 24-hr Precipitation Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?net=153" target="tools"><i class="fa fa-angle-double-right fa-fw" aria-hidden="true"></i>  Past 24-hr Peak Wind Map</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i>  Current Weather Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" aria-hidden="true"></i>  Sodar</a></li>\
+                        <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" aria-hidden="true"></i>  Air Quality</a></li>\
+                        <li><a href="http://dev2.mesowest.net/demos/station-history/?stid=WBB/" target="tools"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>  Station History</a></li>\
+                        <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>  Station Elevation</a></li>\
+                        <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  SPC HREF Viewer</a></li>\
+                        <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  NCAR Ensemble Viewer</a></li>\
                     </ul>\
                     </li>\
 \

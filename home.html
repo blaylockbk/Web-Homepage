@@ -4,13 +4,36 @@
 <title>Brian Blaylock, UofU</title>
 <link rel="stylesheet" href="./css/brian_style.css" />
 <script src="./js/site/siteopen.js"></script>
+
+<script>
+/* Array of image URLs to randomly set as the page top photo*/
+var brian_pics = [
+    "./images/home1.png",
+    "./images/home2.png",
+];
+
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function change_home_pic() {
+    var idx = getRandomInt(0, brian_pics.length - 1);
+    document.getElementById("home_pic").src = brian_pics[idx];
+}
+</script>
+
 </head>
 
 <body style='background:white'>
 <script src="./js/site/sitemenu.js"></script>	
 
   <div class="img-container">
-	<img width=100% src="./images/DSC_0225_small_web.png" class="img-responsive" style="box-shadow: 0px 10px 35px grey"/>
+  <script>
+    var idx = getRandomInt(0, brian_pics.length - 1)
+    document.write('<img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src="' + brian_pics[idx] + '" onclick="change_home_pic();" width="100%">');
+  </script>
+	
     <h2 class="homeImageLink">
 	  <span>B<small style="color:white">rian</small> K. B<small style="color:white">laylock</small></span>
     </h2>
@@ -120,16 +143,19 @@ in November 2012.
 </div>
 </div>
 
-<hr>
-    <div class="section">
-
-    <h4 style="font-family:Segoe UI;padding:15 0 0 15"><i>Curriculum Vitae</i></h4>
-    <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21492260&authkey=AMePfD-qJkOP_A8&em=2" width="95%" height="350" frameborder="0" scrolling="no"></iframe>
-    
+<br>
+    <div style='background-color:rgb(218, 218, 218)'>
+      <div class='container'>  
+      <h4 style="font-family:Segoe UI;padding:15 0 0 15"><i>Curriculum Vitae</i></h4>
+      <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21492260&authkey=AMePfD-qJkOP_A8&em=2" width="95%" height="550" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+    <div class="container">
     <br>
     <p id='home'> Highest Bowling Score: <a href='https://1drv.ms/x/s!AtJL0JL_rT9jlac8rEasb1ePp-Uh8w' target='_blank'>228</a>
     <p id='home'> Favorite text editor: <a href='https://code.visualstudio.com/' target='_blank'>Visual Studio Code</a>
-	<!--
+    </div>
+      <!--
     <p><a href="http://stackoverflow.com/users/2383070/blaylockbk">
     <img src="http://stackoverflow.com/users/flair/2383070.png?theme=dark" width="208" height="58" alt="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
     </a>-->

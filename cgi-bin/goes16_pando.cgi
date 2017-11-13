@@ -101,6 +101,13 @@ print'''
         <i class="fa fa-globe" aria-hidden="true"></i> GOES-16 on Pando
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
     </h1>
+
+    <div class='alert alert-warning'>
+    GOES-16 will not be available between November 30 and December 20, 2017
+    when it will be moved to it's operational location at 75.2 degrees west.
+    <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
+    </div>
+
     <hr>
 </div>
 '''

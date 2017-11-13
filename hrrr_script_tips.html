@@ -191,25 +191,85 @@
             <div id="tab3" class="tab-pane fade">
                 <br>
                 <p> I use python/2.7.11. Describing my set-up would be long, so just use these as a template.
+                
                 <br>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Download range of files with Python</h3>
+                        <h3 class="panel-title">Download full grib2 files</h3>
                     </div>
                     <div class="panel-body">
+                        Download the full grib2 file from the Pando archive.
+                        'sfc' files are about 150 MB each, and 'prs' files are
+                        about 320 MB each.
                         <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
                     </div>
                 </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Download single variable with Python and cURL --range option</h3>
+                        <h3 class="panel-title">Download single HRRR variable from file</h3>
                     </div>
                     <div class="panel-body">
-                        This is a work in progress, but if you know the byte range you can request a single variable.
-                        Here is a working example with python.
-                        <script src="https://gist.github.com/blaylockbk/ab3cc3772963ffb74d7dbe051ca956f1.js"></script>
+                        It is more efficient if you only download the variables
+                        you are interested in. While a full sfc file is about
+                        150 MB, a single variable field is about 1 MB.
+                        You can perform partial downloads of the grib2 files to 
+                        extract the variables you want with cURL.
+                        <br><br>
+                        Main function: <b>download_HRRR_variable_from_pando()</b>
+                        <script src="https://gist.github.com/blaylockbk/39d2c5244b988706d9c51dd9fd514650.js"></script>
+                                       
+                        Partial downloads with cURL require a known byte range.
+                        The grbi2.idx <a href="https://api.mesowest.utah.edu/archive/HRRR/oper/sfc/20170310/hrrr.t00z.wrfsfcf00.grib2.idx">
+                        (example)</a> files are metadata text files that 
+                        contain the begining byte of each
+                        field in the file. <b>Each grib2 file has a unique
+                        metadata file.</b> To find the byte range for a
+                        variable, the above function searches for the line that
+                        contains the specified variable abbreviation and level.
+                        <center><img src='./images/HRRR_idx_description.png' width=75%  title="grib2.idx file example"></center>
+
+                        Example: Download single variable for single day
+                        <script src="https://gist.github.com/blaylockbk/57af6bae72b3f41199f2ad3583bd37a4.js"></script>
+
+                        Example: Download single variable for date range 
+                        <script src="https://gist.github.com/blaylockbk/d1978e7865490d362c9c96e1e3d4348e.js"></script>
+
+                        Example: Download multiple variables for date range, each variable in it's own file.
+                        <script src="https://gist.github.com/blaylockbk/8ff6174ec9b00c741f29f5fe76ba6a6b.js"></script>
+                      
+                        Example: Multithreading for fast downloads.
+                        <script src="https://gist.github.com/blaylockbk/4632bfec251a85dc10dd76826af4c662.js"></script>
+                        I tested the time it takes to download using 
+                        a sequential download (one at a time), multiprocessing,
+                        and multithreading. Multithreading is the correct way to 
+                        do this. The download time saturates after about 8 threads.
+                        <center><img src="./images/fast_download.png" width="450px"></center>
+
+                        <br>
+                        <p>Example: Downloading adjacent variables.
+                        <p>You may be interested in retrieving more than one variable
+                        at a time, and keep it all in one grib2 file.
+                        This can be done by requesting a byte range that spans
+                        more than one variable. This method works if the variables
+                        you are interested in downloading are adjacent to each
+                        other in the grib2 file. For example, if you want the 
+                        10 meter U and V wind components, you are in luck
+                        because they are adjacent variables. In the main function,
+                        set the more_vars argument to the number of additional 
+                        files to download, setting variable = to the first 
+                        field you want to download.
+                        <p>For example: If you want all the variables at 500 mb, 
+                        set <b>variable='HGT:500 mb'</b> and set <b>more_vars=4</b>,
+                        which will download
+                        'HGT:500 mb', 'TMP:500 mb', 'DPT:500 mb', 'UGRD:500 mb', and 'VGRD:500 mb'
+                        in the same grib2 file.
+                        <script src="https://gist.github.com/blaylockbk/9ef5f3da833ce6fbf5be9334c3cf6b3d.js"></script>
+
                     </div>
                 </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
@@ -226,29 +286,19 @@
                         <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Fast download with multithreads and queue</h3>
-                    </div>
-                    <div class="panel-body">
-                        Use the queue and multithreading modules to stream the
-                        download process to multiple threads. This is quite efficient.
-                        <script src="https://gist.github.com/blaylockbk/082cf8215c3912413fd1bb33217bbb89.js"></script>
-                        <p>I tested the time it takes to download using 
-                        a sequential download (one at a time), multiprocessing,
-                        and multithreading. Multithreading is the correct way to 
-                        do this. The download time saturates after about 8 threads.
-                        <center><img src="./images/fast_download.png" width="450px"></center>
-                    </div>
-                </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Useful HRRR S3 Download functions</h3>
                     </div>
                     <div class="panel-body">
                         If you are patient enough to read all that, and have scrolled
-                        down here, you're in luck! This is a link the python functions
-                        I use to download the HRRR data.
+                        down here, you're in luck! This is a link to the python functions
+                        I use to download the HRRR data. My method is to <noscript>
+                        store any grib2 files on my local drive. I download the 
+                        grib2 file when I need it, and remove it after I've extrated
+                        the info I need.
+                        </noscript>
                         <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
                         <i class="fa fa-github" aria-hidden="true"></i> Code for HRRR_S3 Functions</a></big>
                     </div>
