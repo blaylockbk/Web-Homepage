@@ -389,7 +389,9 @@ $(document).ready(function(){
 
 <script>
     var today = new Date();
+    var tomorrow
     var dd = today.getDate();
+    var dd1 = today.getDate()+1;
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
     if(dd<10){
@@ -399,7 +401,8 @@ $(document).ready(function(){
             mm='0'+mm
         }
     today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("validdate").setAttribute("max", today);
+    tomorrow = yyyy+'-'+mm+'-'+dd1;
+    document.getElementById("validdate").setAttribute("max", tomorrow);
     document.getElementById("validdate").setAttribute("value", today);
 </script>
 
