@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,7 +20,6 @@
     function showPosition(position) {
         document.getElementById('location').value = position.coords.latitude.toFixed(2) + ',' + position.coords.longitude.toFixed(2);
     }
-
 
     function ChangeImage(){
         /*Create HTML string for changing picture*/
@@ -57,6 +56,22 @@
         $appLoading.classList.remove('hidden');          
         hrrrimg.onload = function () { (this.height && this.width) ? ($appLoading.classList.add('hidden')) : (console.warn('Image load error')) }
     }
+
+    function change_picture(fxx){
+        /*On Hover*/
+        var URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi'
+        + '?model=' + document.querySelector('input[name="model"]:checked').value
+        + '&valid=' + document.getElementById('validdate').value + document.getElementById('validhour').value
+        + '&fxx=' + fxx
+        + '&location=' + document.getElementById('location').value
+        + '&plotcode=' + $('#plotcode').val()
+        + '&dsize=' + document.querySelector('input[name="dsize"]:checked').value
+        + '&background=' + document.querySelector('input[name="background"]:checked').value;
+
+		document.getElementById('f'+fxx).src = URL;
+        document.getElementById('MapImage').src = URL;
+        document.getElementById('MapLink').href = URL;
+	}
 
 </script>
 
@@ -124,6 +139,26 @@
             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
             <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2015-04-18">
     </div>
+
+    <script>
+            var today = new Date();
+            var tomorrow
+            var dd = today.getDate();
+            var dd1 = today.getDate()+1;
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                }
+            today = yyyy+'-'+mm+'-'+dd;
+            tomorrow = yyyy+'-'+mm+'-'+dd1;
+            document.getElementById("validdate").setAttribute("max", tomorrow);
+            document.getElementById("validdate").setAttribute("value", today);
+    </script>
+
     <br>
     <div class="input-group" data-toggle="tooltip" title="Valid Hour">
             <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
@@ -209,7 +244,6 @@
                 <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
                 <option value='500HGT_Contour'>500 mb Height: Contour</option>
                 <option value='500Vort_Fill'>500 mb Vorticity: Fill</option>
-                <option value='500Conv_Fill'>500 mb Convergence: Fill</option>
                 <option value='500Wind_Fill'>500 mb Wind: Fill</option>
                 <option value='500Wind_Barb'>500 mb Wind: Barb</option>
                 <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
@@ -314,13 +348,56 @@
             </div>
     </div>
 
-    <a id='MapLink' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
-        <img class='style1' id='MapImage' style="width:100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
-    </a>
-    <br>
-    <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
+    <div class="btn-group btn-group-justified">
+        <button type="button" class="btn btn-default" onmouseover=change_picture('00')>f00</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('03')>f03</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('06')>f06</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('09')>f09</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('12')>f12</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('15')>f15</button>
+        <button type="button" class="btn btn-default" onmouseover=change_picture('18')>f18</button>
+    </div> 
 
+    <img class='style1' id='MapImage' style="width:100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
+    
+    <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
+    
+    <hr>
+
+    <label class="control-label">Pre-Loaded Images</label>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+        <script>
+            var fxx = ['00', '03', '06', '12', '15', '18']
+            for (i = 0; i < fxx.length; i++) {
+                var imgURL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi'
+                        + '?model=' + document.querySelector('input[name="model"]:checked').value
+                        + '&valid=' + document.getElementById('validdate').value + document.getElementById('validhour').value
+                        + '&fxx=' + fxx[i]
+                        + '&location=' + document.getElementById('location').value
+                        + '&plotcode=' + $('#plotcode').val()
+                        + '&dsize=' + document.querySelector('input[name="dsize"]:checked').value
+                        + '&background=' + document.querySelector('input[name="background"]:checked').value;
+                document.write('<a href="'+imgURL+'" id="MapLink"><img class="style1" id="f'+fxx[i]+'" style="float:left;width:14%" src="'+imgURL+'"></a>');
+            }
+        </script>
+        </div>
+    </div>
+    <!--
+    <img class='style1' id='f00' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=0&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f03' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=3&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f06' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=6&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f09' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=9&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f12' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=12&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f15' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=15&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    <img class='style1' id='f18' align=LEFT style="width:14%" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2017-11-15_0000&fxx=18&location=&plotcode=dBZ_Fill&dsize=conus&background=arcgis">
+    -->
+    
+    <br>
+    <div width="100%">
     <p><a href="#" id='dwnldGRIB2' class="btn btn-default" role="button"><i class="fa fa-download" aria-hidden="true"></i> GRIB2</a>
+    </div>
 
     <!-- Accordian Advanced Options-->
     <div class="panel-group">
@@ -360,25 +437,6 @@
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-</script>
-
-<script>
-    var today = new Date();
-    var tomorrow
-    var dd = today.getDate();
-    var dd1 = today.getDate()+1;
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd<10){
-            dd='0'+dd
-        } 
-        if(mm<10){
-            mm='0'+mm
-        }
-    today = yyyy+'-'+mm+'-'+dd;
-    tomorrow = yyyy+'-'+mm+'-'+dd1;
-    document.getElementById("validdate").setAttribute("max", tomorrow);
-    document.getElementById("validdate").setAttribute("value", today);
 </script>
 
 <script src="./js/site/siteclose.js"></script>

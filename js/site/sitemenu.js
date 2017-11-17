@@ -160,6 +160,7 @@ document.write('\
                             <li><a href="http://kbkb-wx.blogspot.com "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> KBKB WX</a></li>\
                             <li><a href="http://kbkb-wx-python.blogspot.com "><i class="fa fa-code fa-fw" aria-hidden="true"></i> KBKB Python</a></li>\
                             <li><a href="http://wasatchweatherweenies.blogspot.com "><i class="fa fa-snowflake-o fa-fw" aria-hidden="true"></i> Wasatch W. W.</a></li>\
+                            <li><a href="https://blog.synopticlabs.org/ "><i class="fa fa-flask fa-fw" aria-hidden="true"></i> Synoptic Labs</a></li>\
                             <li><a href="http://cliffmass.blogspot.com"><i class="fa fa-tint fa-fw" aria-hidden="true"></i> Cliff Mass</a></li>\
                             <li class="dropdown-header">Podcasts</li>\
                             <li><a href="https://talkpython.fm"><i class="fa fa-microphone fa-fw" aria-hidden="true"></i> Talk Python to Me</a></li>\
@@ -213,6 +214,7 @@ document.write('\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>  Station Elevation</a></li>\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  NCAR Ensemble Viewer</a></li>\
+                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  NEXRAD Radar Archive</a></li>\
                     </ul>\
                     </li>\
 \

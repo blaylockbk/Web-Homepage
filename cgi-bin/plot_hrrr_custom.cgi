@@ -534,7 +534,7 @@ if '500HGT_Contour' in plotcode:
     plt.clabel(CS, inline=1, fmt='%2.f')
 
 
-if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in plotcode:
+if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in plotcode or '500Conv_Fill' in plotcode:
     H_u = get_hrrr_variable(DATE, 'UGRD:500 mb',
                             model=model, fxx=fxx,
                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
@@ -552,21 +552,35 @@ if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
         cb.set_label(r'500 mb Wind Speed (m s$\mathregular{^{-1}}$)')
 
-    if '500Vort_Fill' in plotcode:
+    if '500Conv_Fill' in plotcode or '500Vort_Fill' in plotcode:
         dudx, dudy = np.gradient(H_u['value'], 3, 3)
         dvdx, dvdy = np.gradient(H_v['value'], 3, 3)
-        vorticity = dvdx-dudy
-        # Mask values
-        vort = vorticity
-        vort = np.ma.array(vort)
-        vort[np.logical_and(vort < .05, vort > -.05) ] = np.ma.masked
+        if '500Vort_Fill' in plotcode:    
+            vorticity = dvdx - dudy
+            # Mask values
+            vort = vorticity
+            vort = np.ma.array(vort)
+            vort[np.logical_and(vort < .05, vort > -.05) ] = np.ma.masked
 
-        m.pcolormesh(gridlon, gridlat, vort,
-                    latlon=True, cmap='bwr',
-                    vmax=np.max(vort),
-                    vmin=-np.max(vort))
-        cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cb.set_label(r'500 mb Vorticity (s$\mathregular{^{-1}}$)')
+            m.pcolormesh(gridlon, gridlat, vort,
+                        latlon=True, cmap='bwr',
+                        vmax=np.max(vort),
+                        vmin=-np.max(vort))
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'500 mb Vorticity (s$\mathregular{^{-1}}$)')
+        if '500Conv_Fill' in plotcode:
+            convergence = dudx + dvdy
+            # Mask values
+            conv = convergence
+            conv = np.ma.array(conv)
+            conv[np.logical_and(conv < .05, conv > -.05) ] = np.ma.masked
+
+            m.pcolormesh(gridlon, gridlat, conv,
+                        latlon=True, cmap='bwr',
+                        vmax=np.max(conv),
+                        vmin=-np.max(conv))
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'500 mb Convergence (s$\mathregular{^{-1}}$)')
 
     if '500Wind_Barb' in plotcode:        
         # For small domain plots, trimming the edges significantly reduces barb plotting time
