@@ -64,6 +64,7 @@ print'''<!DOCTYPE html>
 </head>
 <body style="padding-left:50px">
 <h1> Download from Pando</h1>
+<form>
 <b>Bucket URL:</b> ''' + baseURL + '''<input type=text size=50 name=BUCKET value=%s>''' % bucket
 print '<hr>'
 
@@ -81,6 +82,7 @@ for f in flist:
 
 print '''
 </table>
+</form>
 </body>
 </html>
 '''
