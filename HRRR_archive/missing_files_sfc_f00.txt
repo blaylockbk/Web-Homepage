@@ -25,6 +25,7 @@ FILE DOES NOT EXIST: oper/sfc/20150502/ hrrr.t23z.wrfsfcf00.grib2.idx
 FILE DOES NOT EXIST: oper/sfc/20150503/ hrrr.t17z.wrfsfcf00.grib2.idx
 FILE DOES NOT EXIST: oper/sfc/20150508/ hrrr.t02z.wrfsfcf00.grib2.idx
 FILE DOES NOT EXIST: oper/sfc/20150512/ hrrr.t07z.wrfsfcf00.grib2.idx
+                     oper/sfc/20150617/ hrrr.t00z.wrfsfcf00.grib2.idx INCOMPLETE FILE
 FILE DOES NOT EXIST: oper/sfc/20150804/ hrrr.t22z.wrfsfcf00.grib2.idx
 FILE DOES NOT EXIST: oper/sfc/20150818/ hrrr.t17z.wrfsfcf00.grib2.idx
 FILE DOES NOT EXIST: oper/sfc/20150818/ hrrr.t18z.wrfsfcf00.grib2.idx

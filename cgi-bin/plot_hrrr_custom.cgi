@@ -655,9 +655,25 @@ if 'SkinTemp_Fill' in plotcode:
 
 
 if 'AccumPrecip_Fill' in plotcode or '1hrPrecip_Fill' in plotcode:
-    import matplotlib.colors
-    cmap = matplotlib.colors.LinearSegmentedColormap.from_list("Precip", ["#00db16", "blue", "#d10000", 'black'])
+    #import matplotlib.colors
+    #cmap = matplotlib.colors.LinearSegmentedColormap.from_list("Precip", ["#00db16", "blue", "#d10000", 'black'])
+    cdict3 = {'red':  ((0.0, 0.0, 0.0),
+                   (0.25, 1.0, 1.0),
+                   (0.5, 0.0, 0.0),
+                   (1.0, 1.0, 1.0)),
+            'green': ((0.0, 0.7, 0.7),
+                    (0.25, 1.0, 1.0),
+                    (0.5, 0.0, 0.0),
+                    (1.0, 0.0, 0.0)),
 
+            'blue':  ((0.0, 0.18, 0.18),
+                    (0.25, 1.0, 1.0),
+                    (0.5, 1.0, 1.0),
+                    (1.0, 0.0, 0.0))
+            }
+    plt.register_cmap(name='BlueRed3', data=cdict3)
+    cmap = 'BlueRed3'
+    
     if 'AccumPrecip_Fill' in plotcode:
         # Get Data
         H = get_hrrr_variable(DATE, 'APCP:surface:0',
@@ -670,9 +686,9 @@ if 'AccumPrecip_Fill' in plotcode or '1hrPrecip_Fill' in plotcode:
         prec[prec == 0] = np.ma.masked
 
         m.pcolormesh(gridlon, gridlat, prec,
-                        cmap=cmap,
+                        cmap='BlueRed3',
                         alpha=alpha,
-                        vmin=0,
+                        vmin=.25,
                         zorder=3, latlon=True)
         cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
         cbS.set_label('Accumulated Precipitation since F00 (mm)')
@@ -689,11 +705,11 @@ if 'AccumPrecip_Fill' in plotcode or '1hrPrecip_Fill' in plotcode:
         prec[prec == 0] = np.ma.masked
 
         m.pcolormesh(gridlon, gridlat, prec,
-                        cmap=cmap,
+                        cmap='BlueRed3',
                         alpha=alpha,
-                        vmin=0,
+                        vmin=.25, vmax=20,
                         zorder=3, latlon=True)
-        cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
+        cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad, extend="max",)
         cbS.set_label('1 hour Accumulated Precipitation (mm)')
 
 if 'SnowCover_Fill' in plotcode:
