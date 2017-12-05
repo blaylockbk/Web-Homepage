@@ -60,15 +60,21 @@ print'''<!DOCTYPE html>
 <form>
 <h4>Bucket URL: ''' + baseURL + '''<input type=text size=50 name=BUCKET value=%s></h4>''' % bucket
 print '<hr>'
+
 ## Create an HTML link for each file
+print '''
+<table cellspacing=5>
+<tr><th>File Object Name</th><th>Size</th><tr>
+'''
 for f in flist:
     # Build the URL for each file
     SIZE = float(f.split(' ')[-2])
     FILE = f.split(' ')[-1]
     URL = baseURL + bucket + FILE
-    print '''<p><a href="%s">%s</a> Size:%.2f GB''' % (URL, FILE, SIZE/10**9)
+    print '''<tr><td><a href="%s">%s</a></td><td align="right" style="padding-left:30px"><b>%.2f GB</b></td></tr>''' % (URL, FILE, SIZE/10**9)
 
-print '''</div>
+print '''
+</table>
 </body>
 </html>
 '''
