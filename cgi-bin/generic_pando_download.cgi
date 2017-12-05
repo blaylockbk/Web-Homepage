@@ -18,8 +18,13 @@ form = cgi.FieldStorage()
 try:
     bucket = form['BUCKET'].value
 except:
-    # Demo, default buckete
+    # Demo, default bucket
     bucket = 'HRRR/oper/prs/20170101/'
+
+
+## You need to have a / at the end of the bucket name
+if bucket[-1] != '/':
+    bucket = bucket+'/'
 
 
 ## Create list of files in the bucket with rclone
@@ -27,8 +32,8 @@ except:
 # 1) The location of the rclone command
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
 
-# 2) The rclone comand to list files in this bucket, splitting the 11th column to get file names
-#    horelS3 is the bucket named I configured rclone to access the Horel Pando allocation.
+# 2) The rclone comand to list files in this bucket
+#    'horelS3' is the bucket named I configured rclone to access the Pando.
 
 ls = ' ls horelS3:%s' % bucket
 
@@ -44,20 +49,21 @@ flist.remove('')
 # 6) Order the files
 flist.sort() 
 
-## Pando Bucket URL
+
+## Pando URL
 baseURL = 'https://pando-rgw01.chpc.utah.edu/'
+
 
 ## Print the HTML content
 print "Content-Type: text/html\n"
+
 print'''<!DOCTYPE html>
 <html>
 <head>
 <title>Download from Pando</title>
 </head>
 <body style="padding-left:50px">
-
 <h1> Download from Pando</h1>
-<form>
 <b>Bucket URL:</b> ''' + baseURL + '''<input type=text size=50 name=BUCKET value=%s>''' % bucket
 print '<hr>'
 
@@ -68,10 +74,10 @@ print '''
 '''
 for f in flist:
     # Build the URL for each file
-    SIZE = float(f.split(' ')[-2])
-    FILE = f.split(' ')[-1]
-    URL = baseURL + bucket + FILE
-    print '''<tr><td><a href="%s">%s</a></td><td align="right" style="padding-left:30px"><b>%.2f GB</b></td></tr>''' % (URL, FILE, SIZE/10**9)
+    SIZE = float(f.split(' ')[-2])      # File Size is second to last item, in bytes
+    FILE = f.split(' ')[-1]             # File Name is last item
+    URL = baseURL + bucket + FILE       # Build download URL
+    print '''<tr><td><a href="%s">%s</a></td><td align="right" style="padding-left:30px"><b>%.1f GB</b></td></tr>''' % (URL, FILE, SIZE/10**9)
 
 print '''
 </table>
