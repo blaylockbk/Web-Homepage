@@ -58,7 +58,7 @@ print'''<!DOCTYPE html>
 
 <h1> Download from Pando</h1>
 <form>
-<h4>Bucket URL: ''' + baseURL + '''<input type=text size=50 name=BUCKET value=%s></h4>''' % bucket
+<b>Bucket URL:</b> ''' + baseURL + '''<input type=text size=50 name=BUCKET value=%s>''' % bucket
 print '<hr>'
 
 ## Create an HTML link for each file
