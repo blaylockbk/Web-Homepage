@@ -107,8 +107,8 @@ print '''
          <select class="form-control" id="variable" name="variable">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['2 m Temperature', '2 m Dew Point', '10 m Wind Speed', '80 m Wind Speed', 'Reflectivity']
-value = ['TMP2m', 'DPT2m', 'WIND10m', 'WIND80m', 'REFC']
+display = ['2 m Temperature', '2 m Dew Point', '10 m Wind Speed', '80 m Wind Speed', 'Reflectivity', 'Height 500 hPa']
+value = ['TMP2m', 'DPT2m', 'WIND10m', 'WIND80m', 'REFC', 'HGT500mb']
 
 for i in range(0,len(value)):
    if variable == value[i]:
@@ -190,6 +190,10 @@ print '''
 
   <div class="col-md-7">
   <center><img id='sounding_img' src='./images/empty.jpg' width=90%></center>
+  <hr>
+  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-github" aria-hidden="true"></i> Page</a>
+  <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py"><i class="fa fa-github" aria-hidden="true"></i> Plot</a>
+  </div>
   </div>
 
 </div> <!--End "row"-->
@@ -232,6 +236,7 @@ print '''
           <p>Error = fxx-analysis
           <p>The mean is calculated using the same hour for the period of dates
              labeled in the figure title.
+            <hr>Re-run Images with Script: <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py">~/pyBKB_v2/BB_HRRR/HRRR_average_error_over_period.py</a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
