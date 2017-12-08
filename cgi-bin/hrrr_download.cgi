@@ -85,7 +85,7 @@ print '''
 print'''
 <div id="content" class="container">
     <h1 align="center">
-    <i class="fa fa-cloud-download" aria-hidden="true"></i> HRRR Download Page
+    <i class="fa fa-cloud-download-alt" ></i> HRRR Download Page
     </h1>
 
 <div class="alert alert-danger">
@@ -97,9 +97,9 @@ print'''
 <div class="alert alert-warning">
     <small><p>Reminder: Please register as a user before downloading data and 
            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
-           <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a> and this
+           <b>paper</b> <i class="fa fa-book" ></i></a> and this
            <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
-           <b>data</b> <i class="fa fa-database" aria-hidden="true"></i></a>.
+           <b>data</b> <i class="fa fa-database" ></i></a>.
     </small>
 </div> 
 
@@ -107,19 +107,19 @@ print'''
 <div class="row">
       <div class=" col-md-3">
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
+            <i class="fa fa-user-plus" ></i> Have you Registered?</a>        
       </div>
       <div class="col-md-3">
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-            <i class="fa fa-handshake-o" aria-hidden="true"></i> Best Practices</a>
+            <i class="far fa-handshake" ></i> Best Practices</a>
       </div>
       <div class="col-md-3">
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-            <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+            <i class="fa fa-info-circle" ></i> HRRR FAQ</a>
       </div>
       <div class="col-md-3">
             <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html" class="btn btn-primary btn-block">
-            <i class="fa fa-code" aria-hidden="true"></i> Scripting Tips</a>
+            <i class="fa fa-code" ></i> Scripting Tips</a>
       </div>
 </div>
 
@@ -129,7 +129,7 @@ print'''
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <big><b><i class="fa fa-info-circle" aria-hidden="true" ></i> Web Download Instructions</b></big>
+          <big><b><i class="fa fa-info-circle"  ></i> Web Download Instructions</b></big>
         </a>
       </h4>
     </div>
@@ -138,7 +138,7 @@ print'''
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <p> This page is tested in
-        <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
+        <i class="fab fa-edge" ></i> and <i class="fab fa-chrome" ></i> 
         (Why only these two? Because my advisor uses Chrome, and I use Edge.)
         <p>You may do three things here: 
         <ol style="padding-left:60px">
@@ -374,9 +374,9 @@ print '''
 <div style='background-color:rgb(218, 218, 218)'>
     <div class='container'>
         <h3>Citation Details</h3>
-        <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
+        <p><i class="fa fa-fw fa-database" ></i> HRRR archive data:
         <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
-        <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
+        <p><i class="fa fa-fw fa-book" ></i> Journal article describing how the archive is built:
         <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
             Data Mining of High Resolution Rapid Refresh Model Output. 
             Computers and Geosciences. Accepted.

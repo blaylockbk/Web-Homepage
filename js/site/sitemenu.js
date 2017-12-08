@@ -82,42 +82,42 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Research <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>  HRRR Archive</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> PhD</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i> MS</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" ></i>  HRRR Archive</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" ></i> PhD</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" ></i> MS</a></li>\
                             <li class="dropdown-header">External Links</li>\
-                            <li><a href="http://www.firescience.gov/" target="research "><i class="fa fa-free-code-camp fa-fw" aria-hidden="true"></i> JFSP</a></li>\
-                            <li><a href="http://meso2.chpc.utah.edu/aq/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> Air Quality</a></li>\
-                            <li><a href="http://meso2.chpc.utah.edu/aq/cgi-bin/gslso3s_home.cgi" target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> GSLSO<sub>3</sub>S</a></li>\
-                            <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> SONGNEX</a></li>\
-                            <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> UBOS</a></li>\
-                            <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research "><i class="fa fa-plane fa-fw" aria-hidden="true"></i> SARP </a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> MATERHORN</a></li>\
+                            <li><a href="http://www.firescience.gov/" target="research "><i class="fab fa-gripfire fa-fw"></i> JFSP</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/aq/ " target="research "><i class="fa fa-cloud fa-fw" ></i> Air Quality</a></li>\
+                            <li><a href="http://meso2.chpc.utah.edu/aq/cgi-bin/gslso3s_home.cgi" target="research "><i class="fa fa-cloud fa-fw" ></i> GSLSO<sub>3</sub>S</a></li>\
+                            <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research "><i class="fa fa-cloud fa-fw" ></i> SONGNEX</a></li>\
+                            <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research "><i class="fa fa-cloud fa-fw" ></i> UBOS</a></li>\
+                            <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research "><i class="fa fa-plane fa-fw" ></i> SARP </a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" ></i> MATERHORN</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="../Camera_Display "><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>  Camera Display</a></li>\
+                            <li><a href="../Camera_Display "><i class="fa fa-video fa-fw" ></i>  Camera Display</a></li>\
                             <li class="dropdown-header">Archived Data</li>\
-                            <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  HRRR Archive Download</a></li>\
-                            <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Pando</a></li>\
-                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" aria-hidden="true"></i>  GOES-16 on Amazon</a></li>\
+                            <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" ></i>  HRRR Archive Download</a></li>\
+                            <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Pando</a></li>\
+                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Amazon</a></li>\
                             <li class="dropdown-header">HRRR Web Tools</li>\
-                            <li><a href="./hrrr_custom.html "><i class="fa fa-map-o fa-fw" aria-hidden="true"></i> HRRR Custom Maps</a></li>\
-                            <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> HRRR Point Forecast</a></li>\
-                            <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" aria-hidden="true"></i> HRRR Fires Forecast</a></li>\
-                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" aria-hidden="true"></i> HRRR Compare Maps</a></li>\
-                            <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" aria-hidden="true"></i>  HRRR Error Maps</a></li>\
-                            <li><a href="./hrrr_sounding_viewer.php "><i class="fa fa-map-pin fa-fw" aria-hidden="true"></i> HRRR Soundings</a></li>\
+                            <li><a href="./hrrr_custom.html "><i class="far fa-map fa-fw"></i> HRRR Custom Maps</a></li>\
+                            <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker-alt fa-fw" ></i> HRRR Point Forecast</a></li>\
+                            <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" ></i> HRRR Fires Forecast</a></li>\
+                            <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" ></i> HRRR Compare Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Error Maps</a></li>\
+                            <li><a href="./hrrr_sounding_viewer.php "><i class="fab fa-fly"></i> HRRR Soundings</a></li>\
                             <li class="dropdown-header">MesoWest Web Tools</li>\
-                            <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> Multi-station Time Series</a></li>\
-                            <li><a href="./cgi-bin/roses.cgi "><i class="fa fa-pie-chart fa-fw" aria-hidden="true"></i> Rose Plots</a></li>\
-                            <li><a href="./cgi-bin/stn_climo.cgi "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> Station Climatology</a></li>\
-                            <li><a href="./map.html "><i class="fa fa-map fa-fw" aria-hidden="true"></i>  Station Bing Map</a></li>\
+                            <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fas fa-chart-line fa-fw" ></i> Multi-station Time Series</a></li>\
+                            <li><a href="./cgi-bin/roses.cgi "><i class="fas fa-chart-pie fa-fw" ></i> Rose Plots</a></li>\
+                            <li><a href="./cgi-bin/stn_climo.cgi "><i class="fas fa-sun fa-fw"></i> Station Climatology</a></li>\
+                            <li><a href="./map.html "><i class="fa fa-map fa-fw" ></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">Other</li>\
-                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" aria-hidden="true"></i> KSL Flights</a></li>\
+                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" ></i> KSL Flights</a></li>\
                         </ul>\
                     </li>\
 \
@@ -129,18 +129,18 @@ document.write('\
                             <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
                             <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Ute_WRF/"><i class="fa fa-users fa-fw" aria-hidden="true"></i> Utah WRF Users Group</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Ute_WRF/"><i class="fa fa-users fa-fw" ></i> Utah WRF Users Group</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Code<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li class="dropdown-header"><i class="fa fa-github fa-fw" aria-hidden="true"></i> PyBKB_v2</li>\
+                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v2</li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
-                            <li class="dropdown-header"><i class="fa fa-code fa-fw" aria-hidden="true"></i> Other</li>\
+                            <li class="dropdown-header"><i class="fa fa-code fa-fw" ></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                             <li><a href="https://github.com/blaylockbk/Web-Homepage/tree/master/image_viewers">Image Viewer</a></li>\
                         </ul>\
@@ -149,22 +149,22 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Published<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="./publications.html "><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Publications</a></li>\
-                            <li><a href="./presentations.html "><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> Presentations</a></li>\
+                            <li><a href="./publications.html "><i class="fas fa-file-alt fa-fw" ></i> Publications</a></li>\
+                            <li><a href="./presentations.html "><i class="fab fa-slideshare fa-fw" ></i> Presentations</a></li>\
                         </ul>\
                     </li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blogs<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://kbkb-wx.blogspot.com "><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i> KBKB WX</a></li>\
-                            <li><a href="http://kbkb-wx-python.blogspot.com "><i class="fa fa-code fa-fw" aria-hidden="true"></i> KBKB Python</a></li>\
-                            <li><a href="http://wasatchweatherweenies.blogspot.com "><i class="fa fa-snowflake-o fa-fw" aria-hidden="true"></i> Wasatch W. W.</a></li>\
-                            <li><a href="https://blog.synopticlabs.org/ "><i class="fa fa-flask fa-fw" aria-hidden="true"></i> Synoptic Labs</a></li>\
-                            <li><a href="http://cliffmass.blogspot.com"><i class="fa fa-tint fa-fw" aria-hidden="true"></i> Cliff Mass</a></li>\
+                            <li><a href="http://kbkb-wx.blogspot.com "><i class="fas fa-sun fa-fw" ></i> KBKB WX</a></li>\
+                            <li><a href="http://kbkb-wx-python.blogspot.com "><i class="fa fa-code fa-fw" ></i> KBKB Python</a></li>\
+                            <li><a href="http://wasatchweatherweenies.blogspot.com "><i class="far fa-snowflake fa-fw" ></i> Wasatch W. W.</a></li>\
+                            <li><a href="https://blog.synopticlabs.org/ "><i class="fa fa-flask fa-fw" ></i> Synoptic Labs</a></li>\
+                            <li><a href="http://cliffmass.blogspot.com"><i class="fa fa-tint fa-fw" ></i> Cliff Mass</a></li>\
                             <li class="dropdown-header">Podcasts</li>\
-                            <li><a href="https://talkpython.fm"><i class="fa fa-microphone fa-fw" aria-hidden="true"></i> Talk Python to Me</a></li>\
-                            <li><a href="http://www.stuffyoushouldknow.com"><i class="fa fa-microphone fa-fw" aria-hidden="true"></i> Stuff You Should Know</a></li>\
+                            <li><a href="https://talkpython.fm"><i class="fa fa-microphone fa-fw" ></i> Talk Python to Me</a></li>\
+                            <li><a href="http://www.stuffyoushouldknow.com"><i class="fa fa-microphone fa-fw" ></i> Stuff You Should Know</a></li>\
                         </ul>\
                     </li>\
 \
@@ -197,24 +197,25 @@ document.write('\
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">External Links<span class="caret"></span></a>\
                     <ul class="dropdown-menu">\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
-                        <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> weather.utah.edu</a></li>\
-                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" aria-hidden="true"></i> GOES-16 Viewer</a></li>\
-                        <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" aria-hidden="true"></i> NASA World View</a></li>\
+                        <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
+                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer</a></li>\
+                        <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
                         <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
-                        <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  CoCoRaHS</a></li>\
-                        <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>  Comet MetEd</a></li>\
-                        <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fa fa-television fa-fw" aria-hidden="true"></i>  NAA School</a></li>\
-                        <li><a href="http://dev2.mesowest.net/cgalli/percentiles/radial.html" target="tools"><i class="fa fa-user fa-fw" aria-hidden="true"></i>  MesoWest Station Percentiles</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153" target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  Past 24-hr Precipitation Map</a></li>\
-                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?net=153" target="tools"><i class="fa fa-angle-double-right fa-fw" aria-hidden="true"></i>  Past 24-hr Peak Wind Map</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i>  Current Weather Map</a></li>\
-                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" aria-hidden="true"></i>  Sodar</a></li>\
-                        <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" aria-hidden="true"></i>  Air Quality</a></li>\
-                        <li><a href="http://dev2.mesowest.net/demos/station-history/?stid=WBB/" target="tools"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>  Station History</a></li>\
-                        <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>  Station Elevation</a></li>\
-                        <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  SPC HREF Viewer</a></li>\
-                        <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i>  NCAR Ensemble Viewer</a></li>\
-                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" aria-hidden="true"></i>  NEXRAD Radar Archive</a></li>\
+                        <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
+                        <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\
+                        <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fas fa-tv fa-fw" ></i>  NAA School</a></li>\
+                        <li><a href="http://dev2.mesowest.net/cgalli/percentiles/radial.html" target="tools"><i class="fa fa-user fa-fw" ></i>  MesoWest Station Percentiles</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?net=153" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" ></i>  Sodar</a></li>\
+                        <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  Air Quality</a></li>\
+                        <li><a href="http://dev2.mesowest.net/demos/station-history/?stid=WBB/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station History</a></li>\
+                        <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\
+                        <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
+                        <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
+                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
+                        <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
                     </ul>\
                     </li>\
 \

@@ -94,7 +94,7 @@ print '''
 print'''
 <div id="content" class="container">
     <h1 align="center">
-    <i class="fa fa-cloud-download" aria-hidden="true"></i> GOES-16 on Amazon Download Page
+    <i class="fa fa-cloud-download-alt"></i> GOES-16 on Amazon Download Page
     </h1>
 
 <br>
@@ -105,14 +105,14 @@ print'''
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-          <big><b><i class="fa fa-info-circle" aria-hidden="true" ></i> Download Instructions</b></big>
+          <big><b><i class="fa fa-info-circle" ></i> Download Instructions</b></big>
           </a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse">
         <div class="panel-body">
             <p> This page is tested in
-            <i class="fa fa-edge" aria-hidden="true"></i> and <i class="fa fa-chrome" aria-hidden="true"></i> 
+            <i class="fab fa-edge"></i> and <i class="fab fa-chrome"></i> 
             (Why only these two? Because my advisor uses Chrome, and I use Edge.)
             <ol style="padding-left:15px">
             <li>Select the desired domain, product, date, and hour for which you want to download.
@@ -143,14 +143,14 @@ print'''
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-          <big><b><i class="fa fa-info-circle" aria-hidden="true" ></i> Data Details</b></big>
+          <big><b><i class="fa fa-info-circle" ></i> Data Details</b></big>
           </a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
         <p>Data from the Advanced Baseline Imager (ABI) is downloaded from  <a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success">
-            <i class="fa fa-amazon" aria-hidden="true"></i> Amazon S3</a>
+            <i class="fab fa-aws"></i> Amazon S3</a>
         <p>The base download URL is https://noaa-goes16.s3.amazonaws.com
         <p>The file path is: <span style='font-family:monospace'>/product/year/day_of_year/hour/file_name</span>
         <p> Usefull Links:                
@@ -413,7 +413,7 @@ print '''
 
 <br><br>
 <p align=center>Powered By:<br>
-<center><a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success"><i class="fa fa-amazon" aria-hidden="true"></i> Amazon S3</a></center>    
+<center><a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success"><i class="fab fa-aws"></i> Amazon S3</a></center>    
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <script src="js/site/siteclose.js"></script>
 </body>

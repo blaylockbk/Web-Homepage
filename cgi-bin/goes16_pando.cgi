@@ -98,8 +98,8 @@ print '''
 print'''
 <div class="container">
     <h1 align="center">
-        <i class="fa fa-globe" aria-hidden="true"></i> GOES-16 on Pando
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
+        <i class="fa fa-globe"></i> GOES-16 on Pando
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i> Info</button>
     </h1>
 
     <div class='alert alert-warning'>
@@ -170,7 +170,7 @@ DATE = datetime.strptime(Date, "%Y-%m-%d")
 PATH = '/ABI-L2-MCMIPC/%s/' % (DATE.strftime('%Y%m%d'))
 
 print '<div class="container">'
-print '<h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Hover to view image sample. Click to download CONUS .nc file. <b>'+DATE.strftime('%Y %B %d')+'</b></h4>'
+print '<h4><i class="far fa-hand-point-right"></i> Hover to view image sample. Click to download CONUS .nc file. <b>'+DATE.strftime('%Y %B %d')+'</b></h4>'
 print '</div>'
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
 

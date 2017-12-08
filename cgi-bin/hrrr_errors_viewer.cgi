@@ -144,8 +144,8 @@ print '</div>'
 flist = os.listdir(PATH)
 
 # Remove empty elements. There is always one at the end.
-
 flist = np.array(flist)
+flist = np.sort(flist)
 
 hours = np.array([int(f.split('_')[2][1:]) for f in flist])
 fxxs = np.array([int(f.split('_')[3][1:3]) for f in flist])

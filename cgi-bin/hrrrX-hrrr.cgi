@@ -66,7 +66,7 @@ print'''
 
 <br>
 
-      <h1 align="center"><i class="fa fa-map" aria-hidden="true"></i> HRRR Map
+      <h1 align="center"><i class="fa fa-map"></i> HRRR Map
       <!-- Large modal (the intrusctions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
@@ -108,19 +108,19 @@ print'''
       <div class=" col-md-1">
       </div>
       <div class=" col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker" aria-hidden="true"></i> Point Forecast</a>      
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker"></i> Point Forecast</a>      
       </div>
       <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
       </div>
       <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="fa fa-map-o" aria-hidden="true"></i> Custom Maps</a>
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
       </div>
       <div class="col-md-2">
-      <a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
+      <a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
       </div>
       <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
+      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
       </div>
       </div>
       </center>
@@ -236,12 +236,6 @@ print '''</h3>
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
                               +'''" width="95%">
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_skin.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>
         </div>
         
 
@@ -251,13 +245,7 @@ print '''</h3>
                         src="cgi-bin/plot_hrrrX-hrrr_2mTemp.cgi?date='''+date \
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
-                              +'''" width="95%">
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_2mTemp.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>        
+                              +'''" width="95%"> 
         </div>
 
         <div id="tab3" class="tab-pane fade">
@@ -266,13 +254,7 @@ print '''</h3>
                         src="cgi-bin/plot_hrrrX-hrrr_2mDwpt.cgi?date='''+date \
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
-                              +'''" width="95%"> 
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_2mDwpt.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>             
+                              +'''" width="95%">      
         </div>
 
         <div id="tab4" class="tab-pane fade">
@@ -282,12 +264,7 @@ print '''</h3>
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
                               +'''" width="95%">
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_WSPD.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>            
+                        
         </div>
 
         <div id="tab5" class="tab-pane fade">
@@ -296,13 +273,7 @@ print '''</h3>
                         src="cgi-bin/plot_hrrrX-hrrr_Terrain.cgi?date='''+date \
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
-                              +'''" width="95%">
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_Terrain.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>              
+                              +'''" width="95%">             
         </div>
 
         <div id="tab6" class="tab-pane fade">
@@ -311,13 +282,7 @@ print '''</h3>
                         src="cgi-bin/plot_hrrrX-hrrr_LandUse.cgi?date='''+date \
                               +'''&hour='''+hour \
                               +'''&domain='''+domain \
-                              +'''" width="95%">
-            <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_LandUse.cgi" target="_blank">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot</a>
-            </div>        
+                              +'''" width="95%">       
         </div>
 
         <div id="tab7" class="tab-pane fade">
@@ -388,11 +353,17 @@ print '''
         </div>
 
     </div>
+
+
+
+
+<div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
+                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
+                        <i class="fab fa-github fa-fw"></i>Page</a>
+                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_WSPD.cgi" target="_blank">
+                        <i class="fab fa-github fa-fw"></i>Plot</a>
 </div>
-
-
-
-
+</div>
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <br>

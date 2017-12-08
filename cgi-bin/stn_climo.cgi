@@ -84,7 +84,7 @@ print'''
 
 <br>
 
-      <h1 align="center"><i class="fa fa-sun-o" aria-hidden="true"></i> Station Climatology
+      <h1 align="center"><i class="fa fa-sun"></i> Station Climatology
       <!-- Large modal (the intrusctions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
@@ -201,10 +201,10 @@ print '''</table>
 
 <div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
 <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/stn_climo.cgi" target="_blank">
-      <i class="fa fa-github fa-fw" aria-hidden="true"></i>Page
+      <i class="fab fa-github fa-fw"></i>Page
 </a>
 <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_stn_climo.cgi" target="_blank">
-      <i class="fa fa-github fa-fw" aria-hidden="true"></i>Plot
+      <i class="fab fa-github fa-fw"></i>Plot
 </a>
 </div>
 
