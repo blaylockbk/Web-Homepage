@@ -89,7 +89,7 @@ print '''
 print'''
 <div class="container">
     <h1 align="center">
-        <i class="fa fa-globe" aria-hidden="true"></i> HRRR Errors
+        <i class="fa fa-globe" aria-hidden="true"></i> HRRR Events
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
     </h1>
     <hr>
@@ -100,9 +100,9 @@ print '''
 <div class="container">
   <form class="form-horizontal" method="GET" action="./cgi-bin/hrrr_events_viewer.cgi">
 
-<!--- Variable Type -----------------------> 
+<!--- Event ---------------------------> 
     <div class="form-group">
-      <label class="control-label col-md-2" for="variable">Variable Type:</label>
+      <label class="control-label col-md-2" for="variable">Event:</label>
       <div class="col-md-4">      
          <select class="form-control" id="variable" name="variable">'''
 # display is the variable name as it will display on the webpage
@@ -149,7 +149,7 @@ flist = np.sort(flist)
 
 hours = np.array([int(f.split('_')[1][1:]) for f in flist])
 fxxs = np.array([int(f.split('_')[2][1:3]) for f in flist])
-
+valid = np.unique(np.array([f[0:14] for f in flist]))
 
 # Text on the download button
 button_display = np.array(['f%02d' % f for f in fxxs])
@@ -161,14 +161,14 @@ print '''
 <div class='container' style='width:95%'>
 <div class="row">
   <div class="col-md-5">
-    <p>Number represents the forecast lead time.
+    <p>Black Date/Time is the valid time. Blue number is the forecast lead time.
     '''
 
 # Loop over each hour of day
 for i in range(13):
     print '''<div class="form-group">'''
     print '''<div class="mybtn-group">'''
-    print '''<button name="hour" type="button" class="mybtn hourbtn""><b>Valid Hour %02d</b></button>''' % (i)
+    print '''<button name="hour" type="button" class="mybtn hourbtn""><b>%s</b></button>''' % (valid[i])
     # A list of images for the button displays
     buttons = button_display[hours==i]
     # A list of the file names for each button
@@ -232,13 +232,8 @@ print '''
           <h4 class="modal-title">Information</h4>
         </div>
         <div class="modal-body">
-          <p>Mean error and root mean square error (RMSE) is calculated from the 
-             HRRR domain for all hours of the day and forcasts relative to the
-             model analysis hour. Error is calculated as follows:
-          <p>Error = fxx-analysis
-          <p>The mean is calculated using the same hour for the period of dates
-             labeled in the figure title.
-            <hr>Re-run Images with Script: <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py">~/pyBKB_v2/BB_HRRR/HRRR_average_error_over_period.py</a>
+          <p>Events of interest as forecasted by the HRRR model.
+          <p>Uses the HRRR_custom script to create map.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

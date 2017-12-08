@@ -89,8 +89,8 @@ print '''
 print'''
 <div class="container">
     <h1 align="center">
-        <i class="fa fa-globe" aria-hidden="true"></i> HRRR Errors
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
+        <i class="fa fa-globe"></i> HRRR Errors
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i> Info</button>
     </h1>
     <hr>
 </div>
@@ -137,7 +137,7 @@ print''' </select>
 PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/RMSE_mean/%s/' % variable
 
 print '<div class="container">'
-print '<h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Hover to view image sample. Click to go to image source. <b>'+PATH+'</b></h4>'
+print '<h4><i class="far fa-hand-point-right"></i> Hover to view image sample. Click to go to image source. <b>'+PATH+'</b></h4>'
 print '</div>'
 
 
@@ -161,7 +161,7 @@ print '''
 <div class='container' style='width:95%'>
 <div class="row">
   <div class="col-md-5">
-    <p>Number represents the forecast lead time.
+    <p>Black hour is hour of day. Blue number represents the forecast lead time.
     '''
 
 # Loop over each hour of day
@@ -191,8 +191,8 @@ print '''
   <div class="col-md-7">
   <center><img id='sounding_img' src='./images/empty.jpg' width=90%></center>
   <hr>
-  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-github" aria-hidden="true"></i> Page</a>
-  <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py"><i class="fa fa-github" aria-hidden="true"></i> Plot</a>
+  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_errors_viewer.cgi"><i class="fab fa-github"></i> Page</a>
+  <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py"><i class="fab fa-github"></i> Plot</a>
   </div>
   </div>
 

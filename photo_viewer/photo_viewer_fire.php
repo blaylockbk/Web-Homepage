@@ -67,7 +67,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 
 <body>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/sitemenu.js"></script>	
-<h2 align="center"><i class="fa fa-picture-o" aria-hidden="true"></i> Image Viewer
+<h2 align="center"><i class="far fa-image"></i> Image Viewer
 
 <!-- PHP for getting file names in the current working directory-->
 	<?php
@@ -104,14 +104,14 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 <!-- Large modal (the intrusctions help button)-->
 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 <br>
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-danger'><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi" class='btn btn-primary'>Past Wind Events</a>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-danger'><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
+<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi" class='btn btn-primary'><i class="far fa-clock"></i> Past Wind Events</a>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content" style="padding:25px">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 style="font-size:22px;"><i class="fa fa-picture-o" aria-hidden="true"></i> Image Viewer Instructions</h4><hr>
+    <h4 style="font-size:22px;"><i class="far fa-image"></i> Image Viewer Instructions</h4><hr>
     <h5 align="left" style="font-size:18px;">
     <p>There are three options for looking at the images:
         <ol style="padding-left:60px">
@@ -129,7 +129,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                 to your directory</h3>
             </div>
             <div class="panel-body">
-                <p style="font-family:courier; font-size:12px">ln /uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/photo_viewer/photo_viewer.php
+                <p style="font-family:courier; font-size:12px">ln /uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/photo_viewer/photo_viewer_fire.php
             </div>
             </div>
         <hr>
@@ -264,7 +264,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
     </div>
 <!--(Tabs)-->
 <br>
-<p>Processing scripts on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_fires"> <i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+<p>Processing scripts run hourly. View code on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_fires"> <i class="fab fa-github"></i> GitHub</a>
 </div> <!--(container))-->
 
 

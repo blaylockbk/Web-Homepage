@@ -35,26 +35,26 @@ print'''<!DOCTYPE html>
 <body>
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
-<h1 align="center"><i class="fa fa-free-code-camp" aria-hidden="true"></i> HRRR Fires Alert</h1>
+<h1 align="center"><i class="fa fa-fire-extinguisher"></i> HRRR Fires Alert <i class="fas fa-exclamation-triangle"></i></h1>
 
 <center>
     <div class="row" id="content">
         <div class=" col-md-1">
         </div>
         <div class=" col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker" aria-hidden="true"></i> Point Forecast</a>      
+    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker-alt"></i> Point Forecast</a>      
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Fires Forecast</a>
+    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="fa fa-map-o" aria-hidden="true"></i> Custom Maps</a>
+    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map" aria-hidden="true"></i> Compare Maps</a>
+    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database" aria-hidden="true"></i> HRRR Archive</a>
+    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
         </div>
     </div>
 </center>
@@ -107,14 +107,14 @@ for a in alerts:
         line += "<td>%.1f</td>" % a[4]
         line += "<td>%.1f</td>" % a[5]
         line += "<td>%.1f</td>" % a[6]
-        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=10mWind_Barb,10mWind_Shade,dBZ_Contour&dsize=medium&background=arcgis' target='_blank'><i class='fa fa-picture-o' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
+        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=10mWind_Barb,10mWind_Shade,dBZ_Contour&dsize=medium&background=arcgis' target='_blank'><i class='far fa-image' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
         line += "<td><a class='btn btn-default' role='button' href='https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/%s' target='_blank'><i class='fa fa-download' aria-hidden='true'></i> GRIB2</a></td></tr>" % a[7]
 print line
 print '''
     </table>
 
     <p>*Note: Grib2 files are available for download on Pando archive one day after HRRR run time.
-    <p>*Note: Map sample script can be found on <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_sample_fire.cgi"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+    <p>*Note: Map sample script can be found on <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_sample_fire.cgi"><i class="fa fa-github"></i> GitHub</a>
     </div>
 </center>
 
