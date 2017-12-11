@@ -89,8 +89,9 @@ print'''
     </h1>
 
 <div class="alert alert-danger">
-    <small>The HRRR Subhourly fields will be unavailable after October 1, 2017.
-    We will begin downloading these fields again when the fire season begins in May 2018.
+    <small>The HRRR Subhourly fields are no longer added to our archive and will
+    be removed by the end of the year. Please contact
+    brian.blaylock@utah.edu if you have an issue with this.
     </small>
 </div>
 

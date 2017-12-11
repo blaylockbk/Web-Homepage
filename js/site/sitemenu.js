@@ -110,6 +110,7 @@ document.write('\
                             <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" ></i> HRRR Fires Forecast</a></li>\
                             <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" ></i> HRRR Compare Maps</a></li>\
                             <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Error Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrr_events_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Events</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fab fa-fly"></i> HRRR Soundings</a></li>\
                             <li class="dropdown-header">MesoWest Web Tools</li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fas fa-chart-line fa-fw" ></i> Multi-station Time Series</a></li>\

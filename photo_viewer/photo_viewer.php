@@ -107,7 +107,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content" style="padding:25px">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 style="font-size:22px;"><i class="fa fa-picture-o"></i> Image Viewer Instructions</h4><hr>
+    <h4 style="font-size:22px;"><i class="far fa-image"></i> Image Viewer Instructions</h4><hr>
     <h5 align="left" style="font-size:18px;">
     <p>There are three options for looking at the images:
         <ol style="padding-left:60px">
