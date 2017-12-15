@@ -96,7 +96,17 @@ print'''
     <h1 align="center">
     <i class="fa fa-cloud-download-alt"></i> GOES-16 on Amazon Download Page
     </h1>
-
+    <center>
+    <div class='btn-group'>
+    <a class='btn btn-primary active' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fab fa-aws"></i> GOES on Amazon</a>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fas fa-list"></i></a>
+    </div>
+    <div class='btn-group'>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fa fa-database"></i> GOES on Pando</a>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
+    </div>
+    <a class='btn btn-warning' href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
+    </center>
 <br>
 
 <div class="container">
@@ -203,11 +213,7 @@ print'''
     </div>
   </div> 
 </div>
-
-<p>If you like this page, try our
-   <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES-16 on Pando</a>
-   page which includes sample images.
-    
+   
     <div class='alert alert-warning'>
     GOES-16 will not be available between November 30 and December 20, 2017
     when it will be moved to it's operational location at 75.2 degrees west.

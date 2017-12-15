@@ -103,7 +103,7 @@ document.write('\
                             <li class="dropdown-header">Archived Data</li>\
                             <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" ></i>  HRRR Archive Download</a></li>\
                             <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Pando</a></li>\
-                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Amazon</a></li>\
+                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fab fa-aws fa-fw" ></i>  GOES-16 on Amazon</a></li>\
                             <li class="dropdown-header">HRRR Web Tools</li>\
                             <li><a href="./hrrr_custom.html "><i class="far fa-map fa-fw"></i> HRRR Custom Maps</a></li>\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker-alt fa-fw" ></i> HRRR Point Forecast</a></li>\
@@ -203,6 +203,8 @@ document.write('\
                         <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
                         <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
                         <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
+                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
+                        <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
                         <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\
                         <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fas fa-tv fa-fw" ></i>  NAA School</a></li>\
                         <li><a href="http://dev2.mesowest.net/cgalli/percentiles/radial.html" target="tools"><i class="fa fa-user fa-fw" ></i>  MesoWest Station Percentiles</a></li>\
@@ -210,13 +212,13 @@ document.write('\
                         <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?net=153" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
                         <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
                         <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" ></i>  Sodar</a></li>\
-                        <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  Air Quality</a></li>\
+                        <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  UU Air Quality</a></li>\
+                        <li><a href="http://www.airquality.utah.gov/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  DAQ Air Quality</a></li>\
+                        <li><a href="https://www.ksl.com/?nid=1314" target="tools"><i class="fa fa-cloud fa-fw" ></i>  KSL Air Quality</a></li>\
                         <li><a href="http://dev2.mesowest.net/demos/station-history/?stid=WBB/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station History</a></li>\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
-                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
-                        <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
                     </ul>\
                     </li>\
 \

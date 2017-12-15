@@ -8,38 +8,36 @@
     <script src="./js/site/sitemenu.js"></script>
 
 
-<h1 align="center"><i class="fa fa-code fa-fw" aria-hidden="true"></i> HRRR Download Scripting Tips</h1>
+<h1 align="center"><i class="fa fa-code fa-fw"></i> HRRR Download Scripting Tips</h1>
     
 <div id="content">          
         
-    <div class="alert alert-warning">
-        <small><p>Reminder: Please register as a user before downloading data and 
-            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
-            <b>paper</b> <i class="fa fa-book" aria-hidden="true"></i></a>
-        </small>
-    </div> 
-
     <div class="row" id="content">
         <div class=" col-md-3">
                 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-                <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
+                <i class="fa fa-user-plus"></i> Have you Registered?</a>        
         </div>
         <div class="col-md-3">
                 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-                <i class="far fa-handshake" aria-hidden="true"></i> Best Practices</a>
+                <i class="far fa-handshake"></i> Best Practices</a>
         </div>
         <div class="col-md-3">
                 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-                <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+                <i class="fa fa-info-circle"></i> HRRR FAQ</a>
         </div>
         <div class="col-md-3">
                 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
-                <i class="fa fa-cloud-download-alt" aria-hidden="true"></i> Web Download Page</a>
+                <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
         </div>
     </div>
 
-    <p>Feel free to share download scripts you write with <a href="mailto:brian.blaylock@utah.edu">me</a>! I'd like to make a bank of 
-        examples for all users and various languages.
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <small><p>Reminder: Please register as a user before downloading data and 
+            reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
+            <b>paper</b> <i class="fa fa-book"></i></a>
+        </small>
+    </div> 
 
     <br>        
         <!-- Tabs -->
@@ -53,16 +51,23 @@
         <div class="tab-content" id="content">
             <div id="tab1" class="tab-pane fade in active">
                 <br>
-                <p>HRRR grib2 files are large. sfc files are >100 MB and prs files are >380 MB each.
-                If you download a day's worth of prs analyses, thats over 9 GB!
                 <p> You may write your own script to automate the download process,
-                but PLEASE do not download an excessive number of files in a short
-                period of time on multiple nodes (you agreed to not do this when you read the
-                Best Practices).
-                <p> Grib2 files are downloaded from the URL<br> 
-                <span style="font-family:monospace">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
-                <p> Metadata for each file can be viewed from the URL<br> 
-                <span style="font-family:monospace">https://api.mesowest.utah.edu/archive/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name].idx</span>
+                    but PLEASE do not download an excessive number of files in a short
+                    period of time on multiple nodes (you agreed to not do this when you read the
+                    Best Practices).
+                <p> HRRR GRIB2 files are large. sfc files are >100 MB and prs files are >380 MB each.
+                    If you download a day's worth of prs analyses, thats over 9 GB!
+                <p> Feel free to share download scripts you write with <a href="mailto:brian.blaylock@utah.edu">me</a>! I'd like to make a bank of 
+                    examples for all users in various languages.
+                <hr>
+                <p> <b>GRIB2 files</b> are downloaded from the URL<br> 
+                <span style="font-family:monospace; padding-left:20px;">https://pando-rgw01.chpc.utah.edu/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name]</span>
+                <div class="alert alert-info">
+                    <p> The alternative download page may help you understand the URL sturcture. <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR" data-toggle="tooltip" title="Alternative HRRR Download Page"><i class="fas fa-list"></i> Alternative HRRR Download Page</a>
+                </div>
+
+                <p> <b>Metadata</b> for each file can be viewed from the URL<br> 
+                <span style="font-family:monospace; padding-left:20px;">https://api.mesowest.utah.edu/archive/HRRR/<span style="color:red">[model type]</span>/<span style="color:blue">[variable field]</span>/<span style="color:green">[YYYYMMDD]</span>/<span style="color:darkorange">[file name].idx</span>
                 <p> The model type and variable field directory tree options include the following:
                 <ul style="padding-left:40px">
                     <li><span style="color:red">[model type] <b>oper</b></span> for the operational HRRR
@@ -84,9 +89,12 @@
                 </ul>
                 <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20170101).
                 <p> <span style="color:darkorange">[file name]</span> is in the format [hrrr/hrrrX/hrrrAK].t[00-23]z.wrf[sfc/prs/subh]f[00-18 or 0-36].grib2
+                
+                <br>
+                <br>
                 <p> Each model has two different names, one for the name of the
                     directory in PANDO and a name for the model type in the file.
-
+                
                 <table style="max-width:500px" class="table table-hover">
                     <tr><th>Model Type</th>      <th>Directory Name</th><th>File Name</th></tr>
                     <tr><td>Operational HRRR</td><td>oper</td>          <td>hrrr</td></tr>
@@ -105,7 +113,7 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">BUFR soundings: A special case</h3>
+                        <h3 class="panel-title">Special case: BUFR soundings</h3>
                     </div>
                     <div class="panel-body">
                         <p>You can download BUFR soundings for KSLC, KPVU, and KOGD
@@ -115,7 +123,7 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Native file subregions: A special case</h3>
+                        <h3 class="panel-title">Special case: Native file subregions</h3>
                     </div>
                     <div class="panel-body">
                         <p>Some HRRR native grids are archived for a smaller subregions. I first did this for the Brian Head wildfire.
@@ -137,7 +145,7 @@
                 <br>            
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">cURL download full file</h3>
+                        <h3 class="panel-title"><b>cURL</b> download full file</h3>
                     </div>
                     <div class="panel-body" style="font-family:monospace">
                         curl -O https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
@@ -145,7 +153,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">cURL download full file and rename</h3>
+                        <h3 class="panel-title"><b>cURL</b> download full file and rename</h3>
                     </div>
                     <div class="panel-body" style="font-family:monospace">
                         curl -o hrrr20170101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
@@ -153,17 +161,17 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">wget download full file</h3>
+                        <h3 class="panel-title"><b>wget</b> download full file</h3>
                     </div>
                     <div class="panel-body" style="font-family:monospace">
                         wget https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/20170101/hrrr.t00z.wrfsfcf00.grib2
                     </div>
                 </div>
-                <p>If you know the byte range (found from the .idx file) of the variable you want, you can retrieve that single variable.
+                <p>If you know the byte range of the variable you want (found from the .idx file), you can retrieve that single variable.
                     <a href="https://api.mesowest.utah.edu/archive/HRRR" class='btn btn-primary'>Get .idx files here</a>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">cURL download a single variable</h3>
+                        <h3 class="panel-title"><b>cURL</b> download a single variable</h3>
                     </div>
                     <div class="panel-body">
                     
@@ -172,7 +180,7 @@
                 </div>
                 <div class="panel panel-warning">
                     <div class="panel-heading">
-                        <h3 class="panel-title">cURL download several variables</h3>
+                        <h3 class="panel-title"><b>cURL</b> download several variables</h3>
                     </div>
                     <div class="panel-body">
                     <p>Unfortunatly, the <span style="font-family:monospace">curl --range</span> function wont work if you
@@ -305,7 +313,7 @@
                         the info I need.
                         </noscript>
                         <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
-                        <i class="fa fa-github" aria-hidden="true"></i> Code for HRRR_S3 Functions</a></big>
+                        <i class="fab fa-github"></i> Code for HRRR_S3 Functions</a></big>
                     </div>
                 </div>
             </div>
@@ -326,18 +334,20 @@
                 
             
         </div> <!--tab-conent--> 
-        <div class='well well-sm'>
-            <h3>Citation Details</h3>
-            <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
-            <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
-            <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
-            <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
-                  Data Mining of High Resolution Rapid Refresh Model Output. 
-                  Computers and Geosciences. Accepted.
-                <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
-        </div>
-</div><!--content-->  
 
+</div><!--container-->  
+<div class='well well-sm' style="padding-left:10px;padding-right:10px;margin-bottom:-20">
+    <div class='container'>
+        <h3>Citation Details</h3>
+        <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
+        <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
+        <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
+        <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
+            Data Mining of High Resolution Rapid Refresh Model Output. 
+            Computers and Geosciences. Accepted.
+            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
+    </div>
+</div>
 
 <script src="./js/site/siteclose.js"></script>
 </body>

@@ -4,13 +4,8 @@
 
 """
 Brian Blaylock
-Decebmer 5, 2017
+Decebmer 13, 2017
 
-Updates/To Do:
-    [X] Bootstrap style: Dec 13, 2017
-    [X] Differentiate between directories and files for navigation Dec 13, 2017
-    [X] Added a back button. Dec 13, 2017
-    [ ]
 """
 
 import subprocess
@@ -32,18 +27,10 @@ except:
 if bucket[-1] != '/':
     bucket = bucket+'/'
 
+
 ## Pando URL
 baseURL = 'https://pando-rgw01.chpc.utah.edu/'
-outer_bucket = bucket.split('/')[0]
-goes_active = ''
-hrrr_active = ''
-horel_active = ''
-if outer_bucket == 'GOES16':
-    goes_active = 'active'
-elif outer_bucket == 'HRRR':
-    hrrr_active = 'active'
-elif outer_bucket == 'horel-archive':
-    horel_active = 'active'
+
 
 ## Begin the HTML document
 print "Content-Type: text/html\n"
@@ -51,29 +38,17 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<title>Download from Pando</title>
+<title>Horel Pando Allocation</title>
 <script src="../js/site/siteopen.js"></script>
 </head>
 
 <body>
 <div class='container'>
-<h1>Download from Pando
-    <div class='btn-group'>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fas fa-table"></i></a>
-    </div>
-    <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES-16</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
-    </div>
-    <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR"><i class="fa fa-database"></i> HRRR</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"><i class="fas fa-table"></i></a>
-    </div>
-    <a class='btn btn-danger %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
-</h1>''' % (goes_active, hrrr_active, horel_active)
-
-print '''
+<h1>Horel Pando Allocation 
+    <a class='btn btn-danger' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR">HRRR</a>
+    <a class='btn btn-danger' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16">GOES16</a>
+    <a class='btn btn-danger' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
+</h1>
 <form>
 <p style="font-size:20px"><b>Bucket URL: </b>%s<input type=text size=50 name=BUCKET value=%s>''' % (baseURL, bucket)
 

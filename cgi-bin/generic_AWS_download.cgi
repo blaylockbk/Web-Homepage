@@ -4,13 +4,20 @@
 
 """
 Brian Blaylock
-Decebmer 5, 2017
+Decebmer 14, 2017
+
+GOES16 File Explorer for AWS
+
+Interactive web interface for viewing GOES-16 files available on the Amazon
+noaa-goes16 public bucket. Click button to download files.
+
+Details of GOES-16 data
+http://www.goes-r.gov/products/images/productFileSize8ColorPng8-1600px.png
 
 Updates/To Do:
     [X] Bootstrap style: Dec 13, 2017
     [X] Differentiate between directories and files for navigation Dec 13, 2017
     [X] Added a back button. Dec 13, 2017
-    [ ]
 """
 
 import subprocess
@@ -22,28 +29,34 @@ form = cgi.FieldStorage()
 
 ## Get Bucket name from the form, or set default
 try:
+    dataset = form['DATASET'].value
+except:
+    # Demo, default bucket
+    dataset = 'noaa-goes16'
+try:
     bucket = form['BUCKET'].value
 except:
     # Demo, default bucket
-    bucket = 'HRRR/oper/prs/20170101/'
+    bucket = ''
 
 
 ## You must have a / at the end of the bucket name
-if bucket[-1] != '/':
+if len(bucket) > 1 and bucket[-1] != '/':
     bucket = bucket+'/'
 
+
 ## Pando URL
-baseURL = 'https://pando-rgw01.chpc.utah.edu/'
-outer_bucket = bucket.split('/')[0]
+baseURL = 'https://%s.s3.amazonaws.com/' % (dataset)
+
+nexrad_active = ''
 goes_active = ''
-hrrr_active = ''
-horel_active = ''
-if outer_bucket == 'GOES16':
+aws_details = ''
+if dataset == 'noaa-nexrad-level2':
+    nexrad_active = 'active'
+    aws_details = 'https://aws.amazon.com/public-datasets/nexrad/'
+elif dataset == 'noaa-goes16':
     goes_active = 'active'
-elif outer_bucket == 'HRRR':
-    hrrr_active = 'active'
-elif outer_bucket == 'horel-archive':
-    horel_active = 'active'
+    aws_details = 'https://aws.amazon.com/public-datasets/goes/'
 
 ## Begin the HTML document
 print "Content-Type: text/html\n"
@@ -51,32 +64,38 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<title>Download from Pando</title>
+<title>Download from AWS</title>
 <script src="../js/site/siteopen.js"></script>
 </head>
 
 <body>
 <div class='container'>
-<h1>Download from Pando
+<h1>Download from Amazon <i class="fab fa-aws"></i>
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-nexrad-level2"><i class="fab fa-aws"></i> NEXRAD on Amazon</a>
     <div class='btn-group'>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
     <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fas fa-table"></i></a>
     </div>
     <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES-16</a>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES on Pando</a>
     <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
     </div>
-    <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR"><i class="fa fa-database"></i> HRRR</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"><i class="fas fa-table"></i></a>
-    </div>
-    <a class='btn btn-danger %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
-</h1>''' % (goes_active, hrrr_active, horel_active)
+</h1>
+''' % (nexrad_active, goes_active)
 
 print '''
 <form>
-<p style="font-size:20px"><b>Bucket URL: </b>%s<input type=text size=50 name=BUCKET value=%s>''' % (baseURL, bucket)
+<span style="visibility:hidden">
+<input type=text size=50 name=DATASET value=%s>
+</span>''' % (dataset)
 
+print '''
+<p style="font-size:20px"><b>Bucket URL: </b>%s<input type=text size=50 name=BUCKET value=%s>''' % (baseURL, bucket)
+print '''
+<button type="submit" class="btn btn-success">Submit</button>
+</form>'''
+
+print '''<p> <a href='%s' target="_blank">Dataset details on AWS</a>''' % aws_details
 print '<hr>'
 
 
@@ -88,8 +107,8 @@ rclone = '/uufs/chpc.utah.edu/common/home/horel-group/archive_s3/rclone-beta/rcl
 
 # 2) The rclone comand to list files in this bucket
 #    'horelS3' is the bucket named I configured rclone to access the Pando.
-ls = ' ls --max-depth 1 horelS3:%s' % bucket
-lsd = ' lsd horelS3:%s' % bucket
+ls = ' ls --max-depth 1 AWS:%s/%s' % (dataset, bucket)
+lsd = ' lsd AWS:%s/%s' % (dataset, bucket)
 
 # 3) Execute the rclone lsd command to list directories
 ## Check if there are directories in the requestd bucket
@@ -109,7 +128,7 @@ dlist.sort()
 dirs = bucket.split('/')
 if len(dirs) > 2:
     back_bucket = '/'.join(bucket.split('/')[:-2])
-    URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (back_bucket)
+    URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, back_bucket)
     print '''<a href="%s"><i class="fas fa-step-backward"></i> Back</a>''' % (URL)
     print "<br><br>"
 
@@ -123,7 +142,7 @@ if len(dlist) > 0:
     '''
     for d in dlist:
         DIR = d.split(' ')[-1]
-        URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (bucket+DIR)
+        URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, bucket+DIR)
         print '''<a class='btn btn-success' href="%s">%s</a>''' % (URL, DIR)
     print '''</div>'''
 else:
@@ -184,7 +203,6 @@ if len(flist) > 0:
 
     print '''
     </table>
-    </form>
     '''
 else:
     print "<p>None"
@@ -192,8 +210,18 @@ else:
 ## === End of webpage =========================================================
 print '''
 <br>
+<div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/generic_AWS_download.cgi"><i class="fab fa-github"></i> Page</a>
 <script src="./js/site/siteclose.js"></script>
 </div>
 </body>
 </html>
 '''
+
+
+# https://noaa-goes16.s3.amazonaws.com/ABI-L2-CMIPC/2017/349/00/OR_ABI-L2-CMIPC-M3C07_G16_s20173490042221_e20173490045006_c20173490045043.nc
+# https://noaa-goes16.s3.amazonaws.com/noaa-goes16/ABI-L2-CMIPC/2017/349/00/OR_ABI-L2-CMIPC-M3C07_G16_s20173490042221_e20173490045006_c20173490045043.nc
+
+# https://noaa-nexrad-level2.s3.amazonaws.com/04/04/KABX/KABX20080404_123244.gz
+
+# https://noaa-goes16.s3.amazonaws.com/ABI-L2-CMIPC/2017/349/00/OR_ABI-L2-CMIPC-M3C03_G16_s20173490037221_e20173490039594_c20173490040061.nc
+# https://noaa-goes16.s3.amazonaws.com/2017/349/00/OR_ABI-L2-CMIPC-M3C03_G16_s20173490037221_e20173490039594_c20173490040061.nc

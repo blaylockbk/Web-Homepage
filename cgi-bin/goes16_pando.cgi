@@ -45,9 +45,9 @@ print'''<!DOCTYPE html>
 <title>GOES-16 on Pando</title>
 <style>
       .mybtn {
-          border: 2px solid #23415c;
+          border: 1px solid #23415c;
           color: white;
-          padding: 5px 10px;
+          padding: 5px 8px;
           margin: -3px;
           margin-bottom:-10px;
           margin-top:-10px;
@@ -85,7 +85,7 @@ function change_picture(img_name){
         /*onhover or onclick*/
 		document.getElementById("sounding_img").src = img_name;
 		document.getElementById("sounding_img").style.width= '100%';
-		document.getElementById("sounding_img").style.maxHeight= '80vh';
+        document.getElementById("sounding_img").style.maxWidth= '1000px';
 	}
 </script>
 '''
@@ -101,10 +101,21 @@ print'''
         <i class="fa fa-globe"></i> GOES-16 on Pando
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i> Info</button>
     </h1>
+    <center>
+    <div class='btn-group'>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fab fa-aws"></i> GOES on Amazon</a>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fas fa-list"></i></a>
+    </div>
+    <div class='btn-group'>
+    <a class='btn btn-primary active' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fa fa-database"></i> GOES on Pando</a>
+    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
+    </div>
+    <a class='btn btn-warning' href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
+    </center>
+    <br>
 
     <div class='alert alert-warning'>
-    GOES-16 will not be available between November 30 and December 20, 2017
-    when it will be moved to it's operational location at 75.2 degrees west.
+    GOES-16 was moved to it's east position and turned back on December 14, 2017.
     <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
     </div>
 
@@ -143,10 +154,10 @@ if domain == 'CONUS':
 elif domain == 'UTAH':
     print '''
         <label class="btn btn-default">
-            <input type="radio" name="domain" id="domain" autocomplete="off" value='.png'> CONUS
+            <input type="radio" name="domain" id="domain" autocomplete="off" value='CONUS'> CONUS
         </label>
         <label class="btn btn-default active">
-            <input type="radio" name="domain" id="domain" autocomplete="off" value='.UTAH.png' checked> Utah
+            <input type="radio" name="domain" id="domain" autocomplete="off" value='UTAH' checked> Utah
         </label>
     '''
 print '''
@@ -207,7 +218,7 @@ button_display = scan_start
 expected_buttons = np.arange(2, 58, 5)
 
 print '''
-<div class='container' style='width:95%'>
+<div class='container' style='width:90%'>
 <div class="row">
   <div class="col-md-4">
     <p>Number represents the scan's start minute for the hour.
@@ -239,7 +250,11 @@ print '''
   </div>
 
   <div class="col-md-8">
-  <center><img id='sounding_img' src='./images/empty.jpg' width=90%></center>
+  <center><img id='sounding_img' src='./images/empty.jpg' width=60%></center>
+  <hr>
+  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/goes16_pando.cgi"><i class="fab fa-github"></i> Page</a>
+  <a href="https://github.com/blaylockbk/HorelS3-Archive/blob/master/GOES_downloads/download_GOES16.py"><i class="fab fa-github"></i> Plot</a>
+  </div>
   </div>
 
 </div> <!--End "row"-->
