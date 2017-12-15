@@ -192,6 +192,7 @@ else:
 ## === End of webpage =========================================================
 print '''
 <br>
+<div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/generic_pando_download.cgi"><i class="fab fa-github"></i> Page</a>
 <script src="./js/site/siteclose.js"></script>
 </div>
 </body>
