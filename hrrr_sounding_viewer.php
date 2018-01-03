@@ -51,7 +51,7 @@ function empty_picture(img_name){
 	<script src="./js/site/sitemenu.js"></script>
 	<br>
 
-	<h1 align="center"><i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> HRRR BUFR Soundings
+	<h1 align="center"><i class="fab fa-fly"></i> HRRR BUFR Soundings
       
       <!-- Large modal (the intrusctions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
