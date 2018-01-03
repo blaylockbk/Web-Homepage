@@ -199,7 +199,8 @@ document.write('\
                     <ul class="dropdown-menu">\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
                         <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
-                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer</a></li>\
+                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA)</a></li>\
+                        <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
                         <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
                         <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
                         <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
