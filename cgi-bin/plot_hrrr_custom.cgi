@@ -294,7 +294,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
                     colors=('yellow', 'orange', 'red'),
                     alpha=alpha,
                     extend='max',
-                    zorder=10,
+                    zorder=1,
                     latlon=True)
         cb = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
         cb.set_label(r'10 m Wind Speed (ms$\mathregular{^{-1}}$)')
@@ -610,8 +610,10 @@ if 'MSLP_Contour' in plotcode or 'MSLP_Fill' in plotcode:
         CS = m.contour(gridlon, gridlat, H['value']/100., 
                        latlon=True,
                        levels=range(952, 1200, 4),
-                       colors='k')
-        plt.clabel(CS, inline=1, fmt='%2.f')
+                       colors='k',
+                       zorder=400)
+        CS.clabel(inline=1, fmt='%2.f',
+                  zorder=400)
 
     if 'MSLP_Fill' in plotcode:
         m.pcolormesh(gridlon, gridlat, H['value']/100., 

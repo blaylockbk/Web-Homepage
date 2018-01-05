@@ -252,8 +252,10 @@ print '''
   <div class="col-md-8">
   <center><img id='sounding_img' src='./images/empty.jpg' width=60%></center>
   <hr>
-  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/goes16_pando.cgi"><i class="fab fa-github"></i> Page</a>
-  <a href="https://github.com/blaylockbk/HorelS3-Archive/blob/master/GOES_downloads/download_GOES16.py"><i class="fab fa-github"></i> Plot</a>
+  <div align=right>
+    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/goes16_pando.cgi"><i class="fab fa-github"></i> Page</a>
+    <a href="https://github.com/blaylockbk/HorelS3-Archive/blob/master/GOES_downloads/download_GOES16.py"><i class="fab fa-github"></i> Plot1</a>
+    <a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_GOES16"><i class="fab fa-github"></i> Plot2</a>
   </div>
   </div>
 
@@ -305,6 +307,12 @@ print '''
              with nighttime IR band. I like to hover from top to bottom to get 
              a general idea of the day, and I hover from left to right when I want
              to look at a particular fine-scale feature.
+             <div class='well sm-well'>
+                <b>Image Info:</b> I apply a gamma correction and adjust the
+                contrast to improve the look of the image. This is different
+                than what CIRA does to make their images look good. They use
+                a static, high resolution background image.
+             </div>
           <p>Click the button to download the NetCDF file from the Pando archive. 
           
           <h5><b>File Name Details</b></h5>

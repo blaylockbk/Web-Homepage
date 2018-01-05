@@ -107,8 +107,8 @@ print '''
          <select class="form-control" id="variable" name="variable">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Thomas Fire 2017-12-08']
-value = ['THOMAS_FIRE_2017-12-08']
+display = ['Thomas Fire 2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
+value = ['THOMAS_FIRE_2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
 
 for i in range(0,len(value)):
    if variable == value[i]:
@@ -165,7 +165,7 @@ print '''
     '''
 
 # Loop over each hour of day
-for i in range(13):
+for i in range(hours[-1]+1):
     print '''<div class="form-group">'''
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn""><b>%s</b></button>''' % (valid[i])
