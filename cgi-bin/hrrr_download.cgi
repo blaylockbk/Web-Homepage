@@ -91,8 +91,7 @@ print'''
 
 <div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <small>The HRRR Subhourly fields will be removed from the archive by the
-    end of the year. Contact brian.blaylock@utah.edu if this causes you issues.
+    <small>The archive system is experiencing issues and is not available at this time. We hope to have the problem resolved soon.
     </small>
 </div>
 
@@ -208,8 +207,8 @@ print''' </select>
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Sub-hourly (HRRR only)', 'HRRR Native Grid - BrianHead Fire 2017, June 25-July 18']
-value = ['sfc', 'prs', 'subh', 'BRIANHEAD']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'HRRR Native Grid - BrianHead Fire 2017, June 25-July 18']
+value = ['sfc', 'prs', 'BRIANHEAD']
 
 for i in range(0,len(value)):
    if field == value[i]:
@@ -296,7 +295,7 @@ print '''
 # Create list of files available
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
-if field not in ['prs', 'sfc', 'subh']:
+if field not in ['prs', 'sfc']:
     ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
         % (model, 'nat', DATE.year, DATE.month, DATE.day)
 else:
@@ -324,7 +323,7 @@ for h in model_hours:
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn">Hour %02d</button>''' % (h)
     for f in f_hours:
-        if field not in ['prs', 'sfc', 'subh']:
+        if field not in ['prs', 'sfc']:
             # Then the request is a for a HRRR native grid file.
             # These are subregional native files, with the field defining the name of the subregion
             look_for_this_file = '%s.t%02dz.wrfnatf%02d.grib2.%s' % (file_model, h, f, field)

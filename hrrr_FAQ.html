@@ -20,18 +20,17 @@
         <h2 align="center"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Frequently Asked Questions</h2>
         
              
-            
+        
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <small>The archive system is experiencing issues and is not available at this time. We hope to have the problem resolved soon.
+            </small>
+        </div>
+        
         <div class="alert alert-warning">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <small>If you are looking for today's HRRR output you should download directly from
             <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
-            </small>
-        </div>
-
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <small>The HRRR Subhourly fields will be removed from the archive by the end of the year.
-            Please contact brian.blaylock@utah.edu if this causes you issues.
             </small>
         </div>
             
@@ -125,11 +124,6 @@
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00-23]z.wrfprsf00.grib2</span>
                                 <li>File size: ~380 MB
                             </ul>
-                        <li><b>subh</b>: Sub-hourly files for analyses (Begining May 11, 2017)
-                            <ul style="padding-left:40px">
-                                <li>File format: <span style="font-family:monospace">hrrr.t[00-23]z.wrfsubhf00.grib2</span>
-                                <li>File size: ~120 MB
-                            </ul>
                         <li><b>bufr</b>: Vertical profiles available for KSLC, KODG, and KPVU
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">[KSLC,KODG,KPVU]_[YYYYMMDDHH].buf</span>
@@ -222,7 +216,7 @@
             following announcement: <a href="http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm">http://www.nws.noaa.gov/om/notification/tin16-26rap_hrrrraaa.htm</a>
             <p><b>HRRRv3</b> is the current experimental version under development
                and testing at ESRL.
-            It is expected to become the operational model in Feburary 2018 
+            It is expected to become the operational model in May 2018 
             (<a href="http://www.emc.ncep.noaa.gov/CCS_Science/5.RAPv4_HRRRv3.Q2-2017.pdf" target="_blank">source</a>).
             Version 3 will extend the forecast period for the 00, 06, 12, and 18 run
             out to 36 hours. Version 3 has improved Thompson
@@ -230,6 +224,9 @@
             with 15 second MODIS data, and refined roughness lengths for 
             certain land use types with additional imporovments in assimilation methods
             including new dataset like lightning and radar radial velocity. 
+            <p><b>HRRRv4</b> will be the next developmental version at ESRL.
+             And is expected to become the operational model in 2020. 
+             This version will make more use of ensemble modeling methods. 
 
             <hr>
             <h3>When do we download the HRRR data?</h3>
@@ -283,8 +280,9 @@
             <p> If I were in charge of the HRRR, I would like to see a more 
             rapid data assimilation cycle and run the model every 15 minutes
             out to a 48 hour forecast. This would ultimatly create 7 times as
-            much data while prividing a 96 member time-lagged ensemble forecast
-            system.
+            much data while prividing a 96 members for time-lagged ensembles.
+            My dream of a future weather prediction system that models will be 
+            'continuously updating'.
             <p>The main concept of this archvie is to create a HRRR archive in one place so
             researchers don't have to redundantly store local archives, with the
             purpose to provide the data you need, when you need it.
@@ -351,10 +349,7 @@
             <p>This object storage system is similar to Amazon's S3 storage,
             but this is less expensive. We are currently using over 40 TB of 
             our 60 TB allocation. At the current storage rate (~150 GB/day)
-            I expect the S3 archive will be full around mid-December
-            2017. We will buy more storage if a proposal is funded, otherwise 
-            we'll have to remove the HRRR forcast or subhourlys grid if we
-            want to continue saving HRRR analyses.
+            I expect the S3 archive will be full around mid-spring.
             <p>But you probably aren't interested in it's physical location.
             You want to know how to download from the archive. Lucky for you, 
             the data is publically available to those outside the University of Utah.
@@ -418,7 +413,6 @@
                 <li>2016-12-01: Began storing experimental HRRR-Alaska. prs analyses and select sfc variables for analyses and forecasts.
                 <li>2016-12-01: Began storing available experimental HRRR surface analyses.
                 <li>2017-03-01: Moved HRRR archive from local file system to Pando storage.
-                <li>2017-05-10: Began storing HRRR subhourly analyses and forecasts.
                 <li>2017-06-08: Began storing all available HRRR-Alaska sfc variables.
             </ul>
         <p>Tip: Browse the interactive <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">
