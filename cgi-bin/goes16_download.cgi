@@ -29,6 +29,10 @@ today = date.today()
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
+    source = form['source'].value
+except:
+    source = 'aws'    # 'aws' for Amazon or 'occ' for Open Commons Consortium 
+try:
     domain = form['domain'].value
 except:
     domain = 'C'    # C for CONUS, F for Full Disk, M for Mesoscale
@@ -44,6 +48,11 @@ try:
     Date = form['date'].value
 except:
     Date = today.strftime('%Y-%m-%d')
+
+if source == 'aws':
+    sourceURL = 'https://noaa-goes16.s3.amazonaws.com'
+elif source == 'occ':
+    sourceURL = 'https://osdc.rcc.uchicago.edu/noaa-goes16'
 
 print "Content-Type: text/html\n"
 
@@ -219,10 +228,48 @@ print'''
     when it will be moved to it's operational location at 75.2 degrees west.
     <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
     </div>
+
+    <div class='alert alert-warning'>
+    The source option below refers to where the data is downloaded from. AWS is Amazon's cloud
+    and has GOES files available from the last 60 days. OCC is the Open Commons
+    Consortium and has GOES files from the last 7-8 months. If you get an XML
+    error when downloading from the Amazon source, try switching to OCC.
+    Check the URL in bold below to confirm the source.
+    </div>
     
   <hr> 
 <div class="container">
   <form class="form-horizontal" method="GET" action="cgi-bin/goes16_download.cgi">
+
+<!--- Source Type ----------------------------->
+<div class="form-group">
+    <label class="control-label col-md-2" for="source">Source:</label>
+    <div class="col-md-4">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+'''
+if source == 'aws':
+    print '''
+        <label class="btn btn-default active">
+            <input type="radio" name="source" id="source" autocomplete="off" value='aws' checked> AWS
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="source" id="source" autocomplete="off" value='occ'> OCC
+        </label>
+    '''
+elif source == 'occ':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="source" id="source" autocomplete="off" value='aws'> AWS
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="source" id="source" autocomplete="off" value='occ' checked> OCC
+        </label>
+    '''
+print '''
+        </div>
+    </div>
+</div>
+<!--- (link type)----------------------------->
 
 <!---domain Type -----------------------> 
     <div class="form-group">
@@ -335,7 +382,7 @@ band = ['0.47 &microm: Visible "Blue Band"',\
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
 
-print '<h4>Tap to download from noaa-goes16 S3 bucket: <b>'+PATH+'</b></h4>'
+print '<h4>Tap to download from noaa-goes16 S3 bucket: <b>'+sourceURL+PATH+'</b></h4>'
 print "<p>Number represents the scan's start minute for the requested hour"
 
 
@@ -371,7 +418,7 @@ if product == 'ABI-L2-MCMIP':
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn"">Multi-band Format:</button>'''
     for i in range(len(flist)):
-        download_this = 'https://noaa-goes16.s3.amazonaws.com%s%s' % (PATH, flist[i])
+        download_this = '%s%s%s' % (sourceURL, PATH, flist[i])
         print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">%s</button></a>''' % (button_display[i])
     print "<hr style='margin-top:.3em;margin-bottom:.3em'></div></div></div>"  
 else:
@@ -393,7 +440,7 @@ else:
         # A list of the file names for each button
         bfiles = flist[channels==band_num[i]]
         for i in range(len(blist)):
-            download_this = 'https://noaa-goes16.s3.amazonaws.com%s%s' % (PATH, bfiles[i])
+            download_this = '%s%s%s' % (sourceURL, PATH, bfiles[i])
             print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">%s</button></a>''' % (blist[i])
         print "<hr style='margin-top:.3em;margin-bottom:.3em'></div></div></div>"
 
@@ -419,7 +466,8 @@ print '''
 
 <br><br>
 <p align=center>Powered By:<br>
-<center><a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success"><i class="fab fa-aws"></i> Amazon S3</a></center>    
+<center><a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success"><i class="fab fa-aws"></i> Amazon S3</a>
+        <a href="http://edc.occ-data.org/goes16/" class="btn btn-success"> Open Commons Consortium</a></center>    
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <script src="js/site/siteclose.js"></script>
 </body>

@@ -115,6 +115,17 @@ img.style1 {
     box-shadow: 5px 5px 25px #888888;
 }
 
+img.style11 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    vertical-align: top;
+    display: block;
+    border: 0px solid;
+    border-color: black black;
+    box-shadow: 5px 5px 25px #888888;
+}
+
 img.style2 {
     /* img with padding and no boarder*/
     margin-left: auto;

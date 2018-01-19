@@ -111,9 +111,19 @@ print'''
     <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
     </div>
     <a class='btn btn-warning' href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
+    <a class='btn btn-warning' href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php"><i class="fas fa-external-link-alt"></i> STAR Viewer</a>
     </center>
     <br>
 
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <img src='./images/sick.png' align=left style="padding-right:0px; width:75px">
+        <div style="padding-left:80px"><big>
+            <p>The Pando archive system is experiencing hardware issues and is not available at this time.
+            <br>We hope to have the problem resolved soon.
+        </big></div>
+    </div>
+    
     <div class='alert alert-warning'>
     GOES-16 was moved to it's east position and turned back on December 14, 2017.
     <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>

@@ -733,6 +733,44 @@ if 'SnowCover_Fill' in plotcode:
     cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
     cbS.set_label('Snow Cover (%)')
 
+if 'CAPE_Fill' in plotcode:
+    # Get Data
+    H = get_hrrr_variable(DATE, 'CAPE:surface',
+                          model=model, fxx=fxx,
+                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                          verbose=False, value_only=True)
+
+    # Mask values
+    cape = H['value']
+    cape = np.ma.array(cape)
+    cape[cape == 0] = np.ma.masked
+
+    m.pcolormesh(gridlon, gridlat, cape,
+                    cmap="Oranges",
+                    alpha=alpha,
+                    zorder=3, latlon=True)
+    cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
+    cbS.set_label(r'Surface CAPE (J kg$\mathregular{^{-1}}$)')
+
+if 'CIN_Fill' in plotcode:
+    # Get Data
+    H = get_hrrr_variable(DATE, 'CIN:surface',
+                          model=model, fxx=fxx,
+                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                          verbose=False, value_only=True)
+
+    # Mask values
+    cin = H['value']
+    cin = np.ma.array(cin)
+    cin[cin == 0] = np.ma.masked
+
+    m.pcolormesh(gridlon, gridlat, cin,
+                    cmap="BuPu",
+                    alpha=alpha,
+                    zorder=3, latlon=True)
+    cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
+    cbS.set_label(r'Surface CIN (J kg$\mathregular{^{-1}}$)')
+
 # =============================================================================
 # Hack! Plot an extra HRRR variable not listed on the webpage hrrr_custom.html
 # This extra argument will let you attempt to plot a different variable for
