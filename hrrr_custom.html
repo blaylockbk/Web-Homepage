@@ -221,6 +221,8 @@
                 <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
                 <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
                 <option value='SnowCover_Fill'>Snow Cover: Fill</option>
+                <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
+                <option value='RedFlag_Contour'>Red Flag Criteria: Contour</option>
             </select>
     </div>
    
@@ -321,6 +323,7 @@
     </a>
     <br>
     <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
+    <p><a data-toggle="modal" data-target="#myModal">Landuse Legend</a>
 
     <p><a href="#" id='dwnldGRIB2' class="btn btn-default" role="button"><i class="fa fa-download"></i> GRIB2</a>
 
@@ -357,6 +360,24 @@
 
 </center>
 <br>
+
+<!-- Landuse Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <center><img src="./images/landuse_legend.png"></center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end landuse Modal -->
 
 <script>
 $(document).ready(function(){

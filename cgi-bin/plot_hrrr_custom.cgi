@@ -34,7 +34,7 @@ mpl.rcParams['figure.subplot.hspace'] = 0.01
 # Colorbar
 pad = 0.01
 shrink = 0.7
-# Map Resolution
+# Map Resolution, 'l' - low, 'i' - intermediate, 'h' - high
 map_res = 'l'
 
 
@@ -119,9 +119,7 @@ if dsize != 'conus':
 try:
     plotcode = (form['plotcode'].value).split(',')
 except:
-    plt.figure(1)
-    plt.title('Something wrong with the plotting codes')
-    plt.savefig(sys.stdout)	# Plot standard output.
+    plotcode = ['none', 'here']
 
 try:
     background = form['background'].value
@@ -770,6 +768,41 @@ if 'CIN_Fill' in plotcode:
                     zorder=3, latlon=True)
     cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
     cbS.set_label(r'Surface CIN (J kg$\mathregular{^{-1}}$)')
+
+if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode:
+    # generalized criteria for red flag warning
+    # Winds greater than 6.7 m/s and RH < 25%
+
+    # Get Data
+    H_wind = get_hrrr_variable(DATE, 'WIND:10 m',
+                          model=model, fxx=fxx,
+                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                          verbose=False, value_only=True)
+    H_rh = get_hrrr_variable(DATE, 'RH:2 m',
+                          model=model, fxx=fxx,
+                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                          verbose=False, value_only=True)
+    
+    RedFlag = np.logical_and(H_wind['value'] > 6.7, H_rh['value'] < 25)
+    if 'RedFlag_Contour' in plotcode:
+        try:
+            CS = m.contour(gridlon, gridlat, RedFlag, 
+                            latlon=True,
+                            colors='maroon',
+                            zorder=400)
+        except:
+            # maybe there isn't any contours in this domain
+            pass
+
+    if 'RedFlag_Fill' in plotcode:
+        RedFlag = np.ma.array(RedFlag)
+        RedFlag[RedFlag == 0] = np.ma.masked 
+        m.pcolormesh(gridlon, gridlat, RedFlag,
+                    cmap="YlOrRd_r",
+                    alpha=alpha,
+                    zorder=3, latlon=True)
+    
+    plt.xlabel(r'Red Flag Criteria: Winds > 6.7 m s$\mathregular{^{-1}}$ and RH < 25%')
 
 # =============================================================================
 # Hack! Plot an extra HRRR variable not listed on the webpage hrrr_custom.html
