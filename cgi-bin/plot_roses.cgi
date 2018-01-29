@@ -47,6 +47,7 @@ start = form['start'].value
 end = form['end'].value
 tz = form['tz'].value
 HI = form['HI'].value
+units = form['units'].value
 threshold = form['threshold'].value
 plot_max = form['plot_max'].value
 
@@ -54,7 +55,12 @@ DATE_START = datetime.strptime(start, '%Y-%m-%d %H:%M')
 DATE_END = datetime.strptime(end, '%Y-%m-%d %H:%M')
 
 # Make MesoWest query
-variable = 'wind_direction,wind_speed,ozone_concentration,PM_25_concentration'
+if 'wind' in rose_type:
+    variable = 'wind_direction,wind_speed'
+elif 'ozone' in rose_type:
+    variable = 'wind_direction,ozone_concentration'
+elif 'pm' in rose_type:
+    variable = 'wind_direction,PM_25_concentration'
 a = get_mesowest_ts(stn, DATE_START, DATE_END, variables=variable, verbose=True)
 
 # Adjust Datetime to requested Time Zone if not UTC
@@ -63,7 +69,10 @@ if tz != '0':
 	a['DATETIME'] = np.array([i-timedelta(hours=minus_this) for i in a['DATETIME']])
 
 if rose_type=='wind' or rose_type=='wind_clock':
-	unit = 'm/s'
+	if units == 'metric':
+		unit = 'm/s'
+	elif units == 'english':
+		unit = 'MPH'
 elif rose_type=='ozone' or rose_type=='ozone_clock':
 	unit = 'ppb'
 elif rose_type=='pm_25' or rose_type=='pm_clock':
@@ -80,7 +89,7 @@ all_text = '' \
 + '\nThreshold    : ' + threshold \
 + '\nPlot Max     : ' + plot_max \
 + '\nUnits        : ' + unit \
-+ '\nTotal Obs    : *coming soon*'
++ '\nTotal Obs    : '
 
 """
 Filter the data
@@ -134,7 +143,8 @@ def new_axes():
 def set_legend(ax):
 	l = ax.legend()
 	plt.setp(l.get_texts())
-	plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),prop={'size':15})
+	leg = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 ##-----------------------------------------------------------------------------
 
 """
@@ -145,12 +155,21 @@ if rose_type =="wind":
 	ws = a['wind_speed']
 	wd = a['wind_direction']
 
+	if units == 'english':
+		# Convert m/s to mph
+		ws = ws*2.2369
+		bins = [0,4,8,12,16,20]
+	else:
+		bins = [0,2,4,6,8,10]
+
 	fig, (ax1) = plt.subplots(1,1)
 	ax = new_axes()
 	ax.bar(wd, ws, nsector = 16, normed=True, \
+				   bins = bins,
 				   opening=.95, edgecolor='w')
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -163,7 +182,7 @@ if rose_type =="wind":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
 
@@ -183,7 +202,8 @@ elif rose_type =="wind_clock":
 			   edgecolor='none', \
 			   )
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -197,7 +217,7 @@ elif rose_type =="wind_clock":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
 
@@ -212,7 +232,8 @@ elif rose_type == "ozone":
 				opening=.95, edgecolor='w', \
 				colors = ('green','yellow','orange', 'red', 'purple'))
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -225,7 +246,7 @@ elif rose_type == "ozone":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
 
@@ -247,7 +268,8 @@ elif rose_type =="ozone_clock":
 				colors = ('green','yellow','orange', 'red', 'purple')
 			   )
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -261,7 +283,7 @@ elif rose_type =="ozone_clock":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
 
@@ -276,7 +298,8 @@ elif rose_type == "pm_25":
 				opening=.95, edgecolor='w', \
 				colors = ('green','yellow','orange', 'red', 'purple'))
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -289,7 +312,7 @@ elif rose_type == "pm_25":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
 
@@ -311,7 +334,8 @@ elif rose_type =="pm_clock":
 				colors = ('green','yellow','orange', 'red', 'purple')
 			   )
 
-	plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
 
 	plt.grid(True)
 	plt.yticks(np.arange(0,105,5))
@@ -325,6 +349,6 @@ elif rose_type =="pm_clock":
 	else:
 		ax.set_rmax(plot_max)
 
-	plt.figtext(1,.8,all_text,fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
 	
 	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.

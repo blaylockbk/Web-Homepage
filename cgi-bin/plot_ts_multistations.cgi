@@ -86,7 +86,7 @@ try:
       units = form['units'].value
       variable = form['variable'].value
 except:
-      units = 'C'
+      units = 'metric'
       variable = 'air_temp'
 
 #print stn1, stn2, stn3, stn4, start, end, units
@@ -128,7 +128,7 @@ count = 0
 color = ['b', 'g', 'r', 'darkorange', 'k', 'palevioletred', 'paleturquoise', 'palegreen', 'orchid', 'steelblue', 'crimson', 'darkcyan', 'sandybrown', 'darkgrey']
 for s in data.keys():
     try:
-        if units == 'F' and variable == 'air_temp':
+        if units == 'english' and variable == 'air_temp':
             ax1.plot(data[s]['DATETIME'], data[s][variable]*9/5.+32,
                      label=s.upper(),
                      linewidth=2.5,
@@ -163,6 +163,14 @@ for s in data.keys():
             plt.title('MesoWest Wind Direction')
             plt.ylabel('Wind Direction')
 
+        elif units == 'english' and variable == 'wind_speed':
+            ax1.plot(data[s]['DATETIME'], data[s][variable]*2.2369,
+                     label=s.upper(),
+                     linewidth=2.5,
+                     color=color[count])
+            plt.title('MesoWest Wind Speed')
+            plt.ylabel('Wind Speed (MPH)') 
+        
         elif variable == 'wind_speed':
             ax1.plot(data[s]['DATETIME'], data[s][variable],
                      label=s.upper(),

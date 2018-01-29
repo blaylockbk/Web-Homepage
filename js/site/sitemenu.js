@@ -50,12 +50,22 @@ document.write('<script src="js/site/CurrentTemp.js"></script>')
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 
-if (window.location.href != 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html' && filename != 'photo_viewer_v3.php' && filename != 'photo_viewer_v2.php' && filename != 'photo_viewer_v1.php' && filename != 'photo_viewer.php' && filename != 'photo_viewer2.php' && filename != 'photo_viewer_fire.php') {
+var no_banner_image = ['home.html',
+                       'photo_viewer.php',
+                       'photo_viewer2.php',
+                       'photo_viewer_v1.php',
+                       'photo_viewer_v2.php',
+                       'photo_viewer_v3.php',
+                       'photo_viewer_fire.php',
+                       'hrrr_custom.html',
+                       'ts_multistations.cgi',
+                       'roses.cgi'
+                      ];
+
+if (no_banner_image.indexOf(filename)<0) {
     document.write('<div class=""><img title="click me" id="title_pic" src="' + pics[idx] + '" onclick="change_title_pic();" width="100%"></div>');
 }
 
-
-/* Someday, use the bootstrap mega-menus if that makes more sense to use*/
 
 document.write('\
 <nav class="navbar navbar-inverse" style="border-radius:0;margin:0;">\

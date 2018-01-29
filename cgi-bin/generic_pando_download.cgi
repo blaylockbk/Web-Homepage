@@ -73,6 +73,10 @@ print'''<!DOCTYPE html>
     <a class='btn btn-danger %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
 </h1>''' % (goes_active, hrrr_active, horel_active)
 
+print '''<script src='./js/pando_status.js'></script>'''
+
+"""
+
 print '''
 <form>
 <p style="font-size:20px"><b>Bucket URL: </b>%s<input type=text size=50 name=BUCKET value=%s>''' % (baseURL, bucket)
@@ -190,6 +194,9 @@ else:
     print "<p>None"
 
 ## === End of webpage =========================================================
+
+"""
+
 print '''
 <br>
 <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/generic_pando_download.cgi"><i class="fab fa-github"></i> Page</a>

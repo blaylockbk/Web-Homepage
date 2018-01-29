@@ -2,38 +2,37 @@
 <html>
 <!--Note: Make full screen background and banner images no larger than 1440 px wide and 72 dpi-->
 <head>
-<title>Brian Blaylock, UofU</title>
-<link rel="stylesheet" href="./css/brian_style.css" />
-<script src="./js/site/siteopen.js"></script>
+  <script src="./js/site/siteopen.js"></script>
+  <title>Brian Blaylock, UofU</title>
 
-<script>
-/* Array of image URLs to randomly set as the page top photo*/
-var brian_pics = [
-    "./images/home1.png",
-    "./images/home2.png",
-];
+  <script>
+  /* Array of image URLs to randomly set as the page top photo*/
+  var brian_pics = [
+      "./images/home1.png",
+      "./images/home2.png",
+  ];
 
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-function change_home_pic() {
-    var idx = getRandomInt(0, brian_pics.length - 1);
-    document.getElementById("home_pic").src = brian_pics[idx];
-}
-</script>
+  function change_home_pic() {
+      var idx = getRandomInt(0, brian_pics.length - 1);
+      document.getElementById("home_pic").src = brian_pics[idx];
+  }
+  </script>
 
 </head>
 
-<body style='background:white'>
+<body>
 <script src="./js/site/sitemenu.js"></script>	
 
   <div class="img-container">
-  <script>
-    var idx = getRandomInt(0, brian_pics.length - 1)
-    document.write('<img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src="' + brian_pics[idx] + '" onclick="change_home_pic();" width="100%">');
-  </script>
+    <script>
+      var idx = getRandomInt(0, brian_pics.length - 1)
+      document.write('<img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src="' + brian_pics[idx] + '" onclick="change_home_pic();" width="100%">');
+    </script>
 	
     <h2 class="homeImageLink">
 	  <span>B<small style="color:white">rian</small> K. B<small style="color:white">laylock</small></span>
@@ -55,12 +54,12 @@ and
 in November 2012.
 
 
-
 <div id="home" class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse1"><i class="fa fa-caret-down" aria-hidden="true"></i> Current Research</a>
+          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+          <i class="fa fa-caret-down" aria-hidden="true"></i> Current Research</a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse">
@@ -82,7 +81,8 @@ in November 2012.
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse2"><i class="fa fa-caret-down" aria-hidden="true"></i> Skills/Experience</a>
+          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+          <i class="fa fa-caret-down" aria-hidden="true"></i> Skills/Experience</a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
@@ -97,7 +97,8 @@ in November 2012.
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse3"><i class="fa fa-caret-down" aria-hidden="true"></i> Career Goals/Objective</a>
+          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+          <i class="fa fa-caret-down" aria-hidden="true"></i> Career Goals/Objective</a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
@@ -150,17 +151,17 @@ in November 2012.
 </div>
 
 <br>
-    <div style='background-color:rgb(218, 218, 218)'>
+    <div style='background-color:rgb(231, 231, 231);box-shadow: 0px 1px 25px grey'>
       <div class='container'>  
       <h4 style="font-family:Segoe UI;padding:15 0 0 15"><i>Curriculum Vitae</i></h4>
       <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21492260&authkey=AMePfD-qJkOP_A8&em=2" width="95%" height="550" frameborder="0" scrolling="no"></iframe>
       </div>
     </div>
-    <div class="container">
-    <br>
-    <p id='home'> Highest Bowling Score: <a href='https://1drv.ms/x/s!AtJL0JL_rT9jlac8rEasb1ePp-Uh8w' target='_blank'>228</a>
-    <p id='home'> Favorite text editor: <a href='https://code.visualstudio.com/' target='_blank'>Visual Studio Code</a>
-    </div>
+<br>
+<div class="container">
+  <p id='home'> Highest Bowling Score: <a href='https://1drv.ms/x/s!AtJL0JL_rT9jlac8rEasb1ePp-Uh8w' target='_blank'>228</a>
+  <p id='home'> Favorite text editor: <a href='https://code.visualstudio.com/' target='_blank'>Visual Studio Code</a>
+</div>
       <!--
     <p><a href="http://stackoverflow.com/users/2383070/blaylockbk">
     <img src="http://stackoverflow.com/users/flair/2383070.png?theme=dark" width="208" height="58" alt="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers">

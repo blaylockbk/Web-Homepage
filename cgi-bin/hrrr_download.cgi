@@ -89,14 +89,7 @@ print'''
     <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR" title="Alternative HRRR Download Page"><i class="fas fa-list"></i></a>
     </h1>
 
-<div class="alert alert-danger">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <img src='./images/sick.png' align=left style="padding-right:0px; width:75px">
-    <div style="padding-left:80px"><big>
-        <p>The Pando archive system is experiencing hardware issues and is not available at this time.
-        <br>We hope to have the problem resolved soon.
-    </big></div>
-</div>
+<script src='./js/pando_status.js'></script>
 
 <div class="alert alert-warning">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -295,6 +288,8 @@ print '''
 <h3>Tap to download <b>'''+link2+'''</b> from '''+Date+''':</h3>
 '''
 
+"""
+
 # Create list of files available
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
@@ -370,8 +365,15 @@ print '''
         });
         });
 </script>
+'''
 
 
+
+"""
+
+
+
+print '''
 <br>
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>

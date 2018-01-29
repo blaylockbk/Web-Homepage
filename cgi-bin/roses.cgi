@@ -49,6 +49,10 @@ try:
 except:
       HI = 'All Day'
 try:
+      units = form['units'].value   # Units, english or metric
+except:
+      units = 'metric'
+try:
       threshold = form['threshold'].value
 except:
       threshold = '00'
@@ -68,17 +72,13 @@ print'''<!DOCTYPE html>
 </head>'''
 
 print '''
-<body link="#FFFFFF">
-
+<body>
 <script src="js/site/sitemenu.js"></script>
-</div>'''
+'''
 
 print''' 
-
-<br>
-
-      <h1 align="center"><i class="fa fa-chart-pie fa-fw"></i> Rose Plots
-      <!-- Large modal (the intrusctions help button)-->
+<h1 align="center"><i class="fa fa-chart-pie fa-fw"></i> Rose Plots
+      <!-- Large modal (the intsructions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -123,37 +123,20 @@ print'''
       </div>
       </h1>
 
-<br>
-
-<div style="background-color:#f5f5f5; width:85%; max-width:1000px; margin-left:auto; margin-right:auto;">	
-		
-	
-       
-<div>
-<div>
-   <br>
-
+<div class='container'>
+<hr>
 <div class="contentText form-group">
+<form class="form-horizontal" method="GET" action="cgi-bin/roses.cgi">
 
-<form class="form-inline" method="GET" action="cgi-bin/roses.cgi">
-	  
-<table class="center table table-responsive">
-      
-<!---STATION ----------------------->	  
-      <tr>
-            <td><a title="Station ID used by mesowest.utah.edu">
-		      Station ID:</a>
-            </td>
-            <td>
-                  <input class="form-control" placeholder="Station ID" type="text" name="stn" value="'''+stn+'''">
-            
-      
-<!---(station) ----------------------->	  
-<!---Rose Type ----------------------->  
-	
-      <span style="padding-left:10px;">Rose Type:</span>
-      
-         <select class="form-control" name="rose_type">'''
+<!-- Station ID and Rose Type ------------------------------------------------>
+<div class="form-group">
+      <label class="control-label col-sm-2" for="station">Station ID:</label>
+      <div class="col-sm-3">
+            <input type="text" class="form-control" id="stn" placeholder="Station ID" name="stn" value="'''+stn+'''">
+      </div>
+      <label class="control-label col-sm-2" for="email">Rose Type:</label>
+      <div class="col-sm-3">
+            <select class="form-control" name="rose_type">'''
 # display is the variable name as it will display on the webpage
 # value is the value used in the MesoWest API call
 display = ['Wind Speed', 'Wind Clock', 'Ozone', 'Ozone Clock', 'PM 2.5', 'PM Clock']
@@ -165,29 +148,39 @@ for i in range(0,len(value)):
    else:
       print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
 print''' </select>
-      </td>
-      </tr>
-<!---(rose_type) ----------------------->
-
-	  
-<!---TIME OPTION ----------------------->  
-	<tr>
-            <td><a title="YYYY-MM-DD HH:MM">
-                 Time Option (UTC):</a>
-            </td>
-            <td>
-                  Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
-                  End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
-            </td>
-	</tr>
-<!---(time option) ----------------------->
+      </div>
+</div>
+<!-- (Station ID and Rose Type) ---------------------------------------------->
 
 
-<!---Time Zone ----------------------->  
-	<tr>
-      <td>Time Zone: </td>
-      <td>
-         <select class="form-control" name="tz">'''
+<!-- Date Range and Plot Max ------------------------------------------------->
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Date Range:</label>
+      <div class="col-sm-3">          
+            Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
+            End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
+      </div>
+      <label class="control-label col-sm-2" for="pwd">Plot Max:</label>
+      <div class="col-sm-3">
+      <select class="form-control" name="plot_max">'''
+
+limits = ['auto', '05','10','15','20','25','30','35','40','45','55','55']
+for i in limits:
+   if plot_max == i:
+      print'''<option selected="selected">'''+i+'''</option>'''
+   else:
+      print'''<option>'''+i+'''</option>'''
+print''' </select>
+      </div>
+</div>
+<!-- (Date Range and Plot Max) ----------------------------------------------->
+
+
+<!-- Time Zone and Hour Interval ---------------------------------------------->
+<div class="form-group">
+      <label class="control-label col-sm-2" for="station">Time Zone:</label>
+      <div class="col-sm-3">
+            <select class="form-control" name="tz">'''
 # display is the variable name as it will display on the webpage
 # value is the value used in the MesoWest API call
 display = ['UTC', '-7 h', '-6 h', '-5 h', '-4 h']
@@ -199,13 +192,11 @@ for i in range(0,len(value)):
    else:
       print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
 print''' </select>
-      
-<!---(time_zone) ----------------------->
+      </div>
 
-<!---Hour Interval ----------------------->  
-	<span style="padding-left:10px">Hour Interval: </span>
-      
-         <select class="form-control" name="HI">'''
+      <label class="control-label col-sm-2" for="email">Hour Interval:</label>
+      <div class="col-sm-3">
+            <select class="form-control" name="HI">'''
 # display is the variable name as it will display on the webpage
 # value is the value used in the MesoWest API call
 display = ['All Day','00-03','03-06','06-09','09-12','12-15','15-18','18-21','21-24']
@@ -217,52 +208,57 @@ for i in range(0,len(value)):
    else:
       print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
 print''' </select>
-      </td>
-      </tr>
-<!---(Hour Interval) ----------------------->
+      </div>
+</div>
+<!-- (Time Zone and Hour Interval) ------------------------------------------->
 
-<!---THRESHOLD ----------------------->	  	  
-	  <tr>
-         <td>
-		 Threshold (Values >= input):
-		 </td>
-		 
-		 <td>
-         <input class="form-control" type="text" placeholder="Insert a number (int or float)" name="threshold" value="'''+threshold+'''">             
-<!---(threshold) ----------------------->
 
-<!---PLOT MAX ----------------------->	  	  
-	<span style="padding-left:10px"> Plot Range:</span>
-	
-		 
-         <select class="form-control" name="plot_max">'''
-limits = ['auto', '05','10','15','20','25','30','35','40','45','55','55']
-for i in limits:
-   if plot_max == i:
-      print'''<option selected="selected">'''+i+'''</option>'''
-   else:
-      print'''<option>'''+i+'''</option>'''
-print''' </select>
-         </td>
-      </td>
-      </tr>
-<!---(plot range) ----------------------->
+<!-- Units and Threshold ------------------------------------------------------>
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Units:</label>
+      <div class="col-sm-3 btn-group" data-toggle="buttons">
+'''
+if units == 'metric':
+    print '''
+        <label class="btn btn-default active">
+            <input type="radio" name="units" id="units" autocomplete="off" value='metric' checked> Metric
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="units" id="units" autocomplete="off" value='english'> English
+        </label>
+    '''
+elif units == 'english':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="units" id="units" autocomplete="off" value='metric'> Metric
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="units" id="units" autocomplete="off" value='english' checked> English
+        </label>'''
+print '''
+      </div>
 
-<!---SUBMIT BUTTON ----------------------->
-      <tr>
-            <td colspan=5 align="center" style="padding:10px">
-                  <input type="submit" value="Make Plot" class="btn btn-primary">
-            </td>
-      </tr>
-<!---(submit button) ----------------------->   
+      <label class="control-label col-sm-2" for="pwd">Minimum Threshold:</label>
+      <div class="col-sm-3 btn-group" data-toggle="buttons">
+            <input class="form-control" type="number" placeholder="Only show data greater than this number" name="threshold" value="'''+threshold+'''" disabled>             
+      </div>
+</div>
+<!-- (Units and threshold) --------------------------------------------------->
 
-</table>
+
+<!-- Submit Button ----------------------------------------------------------->
+<div class="form-group">        
+      <div class="col-sm-offset-5 col-sm-10">
+            <button type="submit" class="btn btn-success">Make Plot</button>
+      </div>
+</div>
+<!-- (Submit Button) ----------------------------------------------------------->
+
 </form>
 </div>
-</div>
-</div>
+<hr>
 
-
+	
 <!--Rose Plots-->
 
 <a target="_blank" href="cgi-bin/plot_roses.cgi?''' \
@@ -272,12 +268,14 @@ print''' </select>
 +'''&end='''+end \
 +'''&tz='''+tz \
 +'''&HI='''+HI \
++'''&units='''+units \
 +'''&threshold='''+threshold \
 +'''&plot_max='''+plot_max \
 +'''">
 
 <img alt="Error: couldn't plot the rose"
-class="style1"
+class="style11"
+style='max-width:800px;width:90%'
 src="cgi-bin/plot_roses.cgi?''' \
 +'''&stn='''+stn \
 +'''&rose_type='''+rose_type \
@@ -285,27 +283,30 @@ src="cgi-bin/plot_roses.cgi?''' \
 +'''&end='''+end \
 +'''&tz='''+tz \
 +'''&HI='''+HI \
++'''&units='''+units \
 +'''&threshold='''+threshold \
 +'''&plot_max='''+plot_max \
-+'''" width=95%>
-
++'''">
 </a>
 
-<div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/roses.cgi" target="_blank">
-      <i class="fab fa-github fa-fw"></i>Page
-</a>
-<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_roses.cgi" target="_blank">
-      <i class="fab fa-github fa-fw"></i>Plot
-</a>
-</div>
 
+<br>
+      <div align='right' style="width:90%;max-width:900px">
+            <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/roses.cgi" target="_blank">
+                  <i class="fab fa-github fa-fw"></i>Page
+            </a>
+            <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_roses.cgi" target="_blank">
+                  <i class="fab fa-github fa-fw"></i>Plot
+            </a>
+      </div>
 
 
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="https://mesowest.org/" target="_blank">
+      <img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px">
+</a>
 
-
+</div>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

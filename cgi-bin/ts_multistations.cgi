@@ -50,9 +50,9 @@ try:
 except:
       end = (current+timedelta(hours=7)).strftime('%Y-%m-%d %H:%M')
 try:
-      units = form['units'].value
+      units = form['units'].value # metric or english
 except:
-      units = 'C'
+      units = 'metric'
 
 # The issue here is if all the form isn't filled, it defaluts to the peter sinks exception
 
@@ -65,16 +65,12 @@ print'''<!DOCTYPE html>
 </head>'''
 
 print '''
-<body link="#FFFFFF">
-
+<body>
 <script src="js/site/sitemenu.js"></script>
-</div>'''
+'''
 
 print''' 
-
-<br>
-
-      <h1 align="center"><i class="fa fa-chart-line fa-fw"></i> Multi-station Time Series
+<h1 align="center"><i class="fa fa-chart-line fa-fw"></i> Multi-station Time Series
       <!-- Large modal (the intrusctions help button)-->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
@@ -126,84 +122,80 @@ print'''
       </div>
       </h1>
 
-<br>
-
-<div style="background-color:#f5f5f5; width:85%; max-width:1000px; margin-left:auto; margin-right:auto;">	
-		
-	
-       
-<div>
-<div>
-   <br>
-
+<div class='container'>
+<hr>
 <div class="contentText form-group">
-
-<form class="form-inline" method="GET" action="cgi-bin/ts_multistations.cgi">
-	  
-<table class="center table table-responsive">
+<form class="form-horizontal" method="GET" action="cgi-bin/ts_multistations.cgi">
       
 <!---STATION ----------------------->	  
-      <tr>
-            <td><a title="Station ID used by mesowest.utah.edu">
-		      Station ID:</a>
-            </td>
-            <td>
-                  <input class="form-control" placeholder="Station 1" type="text" name="stn1" value="'''+stn1+'''">
-                  <input class="form-control" placeholder="Station 2" type="text" name="stn2" value="'''+stn2+'''">
-                  <input class="form-control" placeholder="Station 3" type="text" name="stn3" value="'''+stn3+'''">
-                  <input class="form-control" placeholder="Station 4" type="text" name="stn4" value="'''+stn4+'''">
-            </td>
-      </tr>
+<div class="form-group">
+      <label class="control-label col-sm-2" for="station"><a style='color:black' title="Station ID used by mesowest.utah.edu">Station IDs</a>:</label>
+      <div class="col-sm-2">
+            <input type="text" class="form-control" id="stn" placeholder="Station 1" name="stn1" value="'''+stn1+'''">
+      </div>
+      <div class="col-sm-2">
+            <input type="text" class="form-control" id="stn" placeholder="Station 2" name="stn2" value="'''+stn2+'''">
+      </div>
+      <div class="col-sm-2">
+            <input type="text" class="form-control" id="stn" placeholder="Station 3" name="stn3" value="'''+stn3+'''">
+      </div>
+      <div class="col-sm-2">
+            <input type="text" class="form-control" id="stn" placeholder="Station 4,5,6,etc." name="stn4" value="'''+stn4+'''">
+      </div>
+ </div>               
 <!---(station) ----------------------->	  
 	    
 	  
 <!---TIME OPTION ----------------------->  
-	<tr>
-            <td><a title="YYYY-MM-DD HH:MM">
-                 Time Option (UTC):</a>
-            </td>
-            <td>
-                  Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
-                  End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
-            </td>
-	</tr>
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Date Range:</label>
+      <div class="col-sm-2">          
+            Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
+      </div>
+      <div class="col-sm-2">
+            End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
+      </div>
+</div>
 <!---(time option) ----------------------->
 
 <!---Units ----------------------------->	  
-      <tr>
-            <td>Units:</td>
-            <td>'''
-if units=='C':
-      print '''<div class='radio'>
-               <label><input type='radio' name='units' value='C' checked> C</label>
-               <label><input type='radio' name='units' value='F'> F</label>
-               </div>
-               '''
-else:
-      print '''<div class='radio'>
-               <label><input type='radio' name='units' value='C'> C</label>
-               <label><input type='radio' name='units' value='F' checked> F</label>
-               </div>'''
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Units:</label>
+      <div class="col-sm-3 btn-group" data-toggle="buttons">
+'''
+if units == 'metric':
+    print '''
+        <label class="btn btn-default active">
+            <input type="radio" name="units" id="units" autocomplete="off" value='metric' checked> Metric
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="units" id="units" autocomplete="off" value='english'> English
+        </label>
+    '''
+elif units == 'english':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="units" id="units" autocomplete="off" value='metric'> Metric
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="units" id="units" autocomplete="off" value='english' checked> English
+        </label>'''
 print '''
-            </td>
-	</tr>
+      </div>
+</div>
 <!---(units) ---------------------------->
 
 
-<!---SUBMIT BUTTON ----------------------->
-      <tr>
-            <td colspan=5 align="center" style="padding:10px">
-                  <input type="submit" value="Make Plot" class="btn btn-primary">
-            </td>
-      </tr>
-<!---(submit button) ----------------------->   
-
-</table>
+<!-- Submit Button ----------------------------------------------------------->
+<div class="form-group">        
+      <div class="col-sm-offset-5 col-sm-10">
+            <button type="submit" class="btn btn-success">Make Plots</button>
+      </div>
+</div>
+<!-- (Submit Button) -----------------------------------------------------------> 
 </form>
 </div>
-</div>
-</div>
-
+<hr>
 
 <!--Multistation Graph, one for each variable-->
 '''
@@ -212,14 +204,15 @@ print '''
 # but it works.
 print '''
 <!-- Individual Plot Tabs-->
-<ul class="nav nav-tabs">
+
+<ul class="nav nav-tabs" style="padding-left:150px">
     <li class="active"><a data-toggle="tab" href="#tab1">Air Temperature</a></li>
     <li><a data-toggle="tab" href="#tab2">Relative Humidity</a></li>
     <li><a data-toggle="tab" href="#tab3">Wind Speed</a></li>
     <li><a data-toggle="tab" href="#tab4">Wind Direction</a></li>
     <li><a data-toggle="tab" href="#tab5">Wind Barb</a></li>
     <li><a data-toggle="tab" href="#tab6">Other</a></li>
-  </ul>
+</ul>
 
   <div class="tab-content">
     <div id="tab1" class="tab-pane fade in active">
@@ -233,7 +226,8 @@ print '''
                               +'''&variable=air_temp">
 
                               <img alt="Error: Temp/RH graph not available for some reason"
-                              class="style1"
+                              class="style11"
+                              style='max-width:800px;width:90%'
                               src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
                               +'''&stn2='''+stn2 \
                               +'''&stn3='''+stn3 \
@@ -241,7 +235,7 @@ print '''
                               +'''&start='''+start \
                               +'''&end='''+end \
                               +'''&units='''+units \
-                              +'''&variable=air_temp" width=95%>
+                              +'''&variable=air_temp">
                               </a>
     </div>
     <div id="tab2" class="tab-pane fade">
@@ -255,7 +249,8 @@ print '''
                               +'''&variable=relative_humidity">
 
                               <img alt="Error: Temp/RH graph not available for some reason"
-                              class="style1"
+                              class="style11"
+                              style='max-width:800px;width:90%'
                               src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
                               +'''&stn2='''+stn2 \
                               +'''&stn3='''+stn3 \
@@ -263,7 +258,7 @@ print '''
                               +'''&start='''+start \
                               +'''&end='''+end \
                               +'''&units='''+units \
-                              +'''&variable=relative_humidity" width=95%>
+                              +'''&variable=relative_humidity">
                               </a>
     </div>
     <div id="tab3" class="tab-pane fade">
@@ -277,7 +272,8 @@ print '''
                               +'''&variable=wind_speed">
 
                               <img alt="Error: Temp/RH graph not available for some reason"
-                              class="style1"
+                              class="style11"
+                              style='max-width:800px;width:90%'
                               src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
                               +'''&stn2='''+stn2 \
                               +'''&stn3='''+stn3 \
@@ -285,7 +281,7 @@ print '''
                               +'''&start='''+start \
                               +'''&end='''+end \
                               +'''&units='''+units \
-                              +'''&variable=wind_speed" width=95%>
+                              +'''&variable=wind_speed">
                               </a>
     </div>
     <div id="tab4" class="tab-pane fade">
@@ -299,7 +295,8 @@ print '''
                               +'''&variable=wind_direction">
 
                               <img alt="Error: Temp/RH graph not available for some reason"
-                              class="style1"
+                              class="style11"
+                              style='max-width:800px;width:90%'
                               src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
                               +'''&stn2='''+stn2 \
                               +'''&stn3='''+stn3 \
@@ -307,7 +304,7 @@ print '''
                               +'''&start='''+start \
                               +'''&end='''+end \
                               +'''&units='''+units \
-                              +'''&variable=wind_direction" width=95%>
+                              +'''&variable=wind_direction">
                               </a>
     </div>
     <div id="tab5" class="tab-pane fade">
@@ -321,7 +318,8 @@ print '''
                               +'''&variable=wind_direction,wind_speed">
 
                               <img alt="Error: Temp/RH graph not available for some reason"
-                              class="style1"
+                              class="style11"
+                              style='max-width:800px;width:90%'
                               src="cgi-bin/plot_ts_multistations.cgi?stn1='''+stn1 \
                               +'''&stn2='''+stn2 \
                               +'''&stn3='''+stn3 \
@@ -329,7 +327,7 @@ print '''
                               +'''&start='''+start \
                               +'''&end='''+end \
                               +'''&units='''+units \
-                              +'''&variable=wind_direction,wind_speed" width=95%>
+                              +'''&variable=wind_direction,wind_speed">
                               </a>
     </div>
     <div id="tab6" class="tab-pane fade">
@@ -364,21 +362,24 @@ print '''
   </div>
 
 
+<br>
+      <div align='right'  style="width:90%;max-width:900px">
+            <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/ts_multistations.cgi" target="_blank">
+                  <i class="fab fa-github fa-fw"></i>Page
+            </a>
+            <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_ts_multistations.cgi" target="_blank">
+                  <i class="fab fa-github fa-fw"></i>Plot
+            </a>
+      </div>
 
-<div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/ts_multistations.cgi" target="_blank">
-      <i class="fab fa-github fa-fw"></i>Page
-</a>
-<a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_ts_multistations.cgi" target="_blank">
-      <i class="fab fa-github fa-fw"></i>Plot
-</a>
-</div>
 
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-<br>
-</div>
+<a href="https://mesowest.org/" target="_blank">
+      <img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px">
+</a>
 
+
+</div>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

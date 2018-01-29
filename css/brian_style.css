@@ -3,8 +3,6 @@ Brian Blaylock's extra styling
 *************************************************/
 
 * {
-    margin: 0;
-    padding: 0;
     font-family:Segoe UI;
 }
 
@@ -53,56 +51,11 @@ body {}
 }
 
 p {
-    font-family: Arial;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-input[type="submit"]#waketoolbutton {
-    /*background:linear-gradient(lightgrey, white);*/
-    color: white;
-    width: 200px;
-    height: 100px;
-    padding: 2px 10px;
-    font-size: 25px;
-    border: 5px solid lightgrey;
-    border-radius: 32px;
-    background-color: darkred;
-    margin: 0 auto;
-    display: block;
-}
-
-input[type="submit"]:hover#waketoolbutton {
-    background-color: green;
-}
-
-input.FormTouch {
-    /*background:linear-gradient(lightgrey, white);*/
-    color: white;
-    float: center;
-    width: 25px;
-    height: 25px;
-    padding: 2px 10px;
-    font-size: 25px;
-    border: 5px solid lightgrey;
-    border-radius: 32px;
-    background-color: #990000;
-    margin: 0 auto;
-}
-
-input:hover.FormTouch {
-    background-color: green;
-}
-
-input[type="date"] {
-    /*background:linear-gradient(lightgrey, white);*/
-    width: 130px;
-    padding: 2px 0px;
-    font-size: 15px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding-left: 5%;
-}
 
 img.style1 {
     margin-left: auto;
@@ -220,59 +173,6 @@ textarea {
     width: 220px;
 }
 
-
-/* 
-Classes
-*/
-
-.publication p {
-    font-family: Segoe UI;
-}
-
-.publication a {
-    color: #990000;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.publicaiton h1 {
-    font-family: Segoe UI;
-}
-
-.section {
-    background-color: #c9c9c9;
-    width: 95%;
-    text-align: left;
-    margin: auto;
-    padding:10px;
-}
-
-.section>p {
-    font-size: 21px;
-    padding: 5px;
-}
-
-.section>ol {
-    font-size: 21px;
-    padding-left: 50px;
-}
-
-.section>ul {
-    font-size: 21px;
-    padding-left: 50px;
-}
-
-.section a{
-    color: #990000;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.section a:hover{
-    color: #990000;
-    font-weight: 600;
-}
-
 #home {
     font-size: 24px;
     font-family: 'Segoe UI';
@@ -292,11 +192,9 @@ Classes
 
 
 /* Home Page Top Image*/
-
 .img-container {
     position: relative;
 }
-
 .homeImageLink {
     position: absolute;
     bottom: 20%;
@@ -304,7 +202,6 @@ Classes
     text-align: center;
     width: 100%;
 }
-
 .homeImageLink span {
     color: white;
     font-weight: 100;
@@ -318,45 +215,5 @@ Classes
     float: right;
     background: rgba(0, 0, 0, 0.5);
 }
+/* (^Home Page Top Image^)*/
 
-
-/*(Home Page Top Image)*/
-
-.section>h3 {
-    font-size: 25px;
-}
-
-iframe {
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-object {
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-
-/*GROW*/
-
-.grow img {
-    width: 100%;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
-.grow img:hover {
-    width: 120%;
-}
-
-.pic {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
