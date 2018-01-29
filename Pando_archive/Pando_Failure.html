@@ -16,9 +16,9 @@
 <h4 align="center"> 29 January 2018</h4>
 </div>
 <div class="container" id="content" style="max-width:800px"> 
-<p> The CHPC Pando archive system failed. All the archived HRRR
+<p> The CHPC Pando archive system failed. All our archived HRRR
    (operational, experimental, Alaska) and GOES-16 files were lost.
-<p> The failure has hindered my research activity, and we realize many of
+<p> The failure has hindered my research, and we realize many of
    you relied on the data for your own work. We apologize for the
    inconvenience this may cause you and your organization. We remind you that
    the archive was an experimental system, and we never guaranteed these files
@@ -41,14 +41,22 @@
     <li> HRRR data (this is the biggest bummer) is only available for the last
         two days on
         <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
+        The last seven-days archive can be found on
+        <a href="awsopendata.s3-website-us-west-2.amazonaws.com/noaa-hrrr/">Amazon S3</a>, though the formating is different.
+        <a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/conus/wrftwo/catalog.html">ESRL</a>
+        also has an archive of f01 for 80-m winds and downward solar radiation
+        that goes from 2013-2017.
+        <a href="https://www.ready.noaa.gov/data/archives/hrrr/README.TXT">NOAA ARL</a>
+        has an archive of f01 for select variables, but I don't know how to
+        read this format.
 </ul>
 <hr>
     <div class='panel panel-primary'>
         <div class='panel-heading'>
-            Email Notification of Failure
+            Email Notification: CHPC Object Storage (Pando) Failure
         </div> 
         <div class='panel-body'>
-    <p> CHPC object storage (Pando) failure
+    <blockquote cite"https://www.chpc.utah.edu/">
     <p> You are receiving this message as you are the PI of a group that owns
        space on the CHPC archive storage solution, Pando.
     <p> As many are aware, we started to have issue with accessing
@@ -67,8 +75,15 @@
        all data is lost. We will be starting this process on Monday January 29
        and will notify you when the storage is again available for use. We 
        estimate this will take about a week.
+    </blockquote>
         </div>
     </div>
+
+
+    <p style="text-align:center;"> The Unsinkable Sank
+        <a href="https://en.wikipedia.org/wiki/RMS_Titanic">
+            <img src="./images/Titanic.jpg" class="img-thumbnail" alt="The unsinkable sank" width=80%>
+        </a>
 
 </div>
 
