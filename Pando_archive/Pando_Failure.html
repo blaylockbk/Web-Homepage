@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Pando Failure</title>
+<link rel="stylesheet" href="../css/brian_style.css" />
+<script src="../js/site/siteopen.js"></script>
+</head>
+
+<body>
+<a name="TOP"></a>
+
+
+<div class='alert alert-danger'>
+<h1 align="center"><i class="fas fa-exclamation-triangle"></i> Pando Archive Failure <i class="fas fa-exclamation-triangle"></i></h1>
+<h4 align="center"> 29 January 2018</h4>
+</div>
+<div class="container" id="content" style="max-width:800px"> 
+<p> The CHPC Pando archive system failed. All the archived HRRR
+   (operational, experimental, Alaska) and GOES-16 files were lost.
+<p> The failure has hindered my research activity, and we realize many of
+   you relied on the data for your own work. We apologize for the
+   inconvenience this may cause you and your organization. We remind you that
+   the archive was an experimental system, and we never guaranteed these files
+   would be available at any time.
+<p> We plan on rebuilding the archive once the Pando system is repaired
+   beginning with files from 1 January 2018. These repairs and data transfers
+   may not be completed until mid-February.
+   <div class='alert alert-warning'>
+   If you have any raw HRRR
+   grib2 files prior to January 2018 and would like to share those files with
+   us, please 
+   <a class='alert-link' href="mailto:brian.blaylock@utah.edu">let us know</a>.
+   </div>
+
+<p> In the meantime, limited archives exist other places.
+<ul>
+    <li> GOES-16 data can be found on 
+            <a href="https://aws.amazon.com/public-datasets/goes/">Amazon S3</a> (last 60 days) and
+            <a href="http://edc.occ-data.org/goes16/">OCC</a> (last 7 months).
+    <li> HRRR data (this is the biggest bummer) is only available for the last
+        two days on
+        <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
+</ul>
+<hr>
+    <div class='panel panel-primary'>
+        <div class='panel-heading'>
+            Email Notification of Failure
+        </div> 
+        <div class='panel-body'>
+    <p> CHPC object storage (Pando) failure
+    <p> You are receiving this message as you are the PI of a group that owns
+       space on the CHPC archive storage solution, Pando.
+    <p> As many are aware, we started to have issue with accessing
+       the data on Pando about two weeks ago. There was an initial failure of a
+       large number of encryption partitions on the drives, after which the
+       system was never able to complete the rebuilding process. Analysis of
+       the problem indicated the need for more memory in each of the servers.
+       However, doubling the memory, which was done last week, did not help, as
+       the rebuild process was stuck in a feedback loop from which it could not
+       recover. At this point the state of the object store was already beyond 
+       repair. We will mention that there is no issue with the hardware, other 
+       for the need for more memory to support the number of objects/the amount
+       of data, which we have already addressed. 
+    <p> At this time, we have exhausted efforts to make the data accessible and
+       have determined it is time to start a fresh installation - meaning that
+       all data is lost. We will be starting this process on Monday January 29
+       and will notify you when the storage is again available for use. We 
+       estimate this will take about a week.
+        </div>
+    </div>
+
+</div>
+
+<script src="./js/site/siteclose.js"></script>
+</body>
+</html>
