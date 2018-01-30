@@ -149,10 +149,10 @@ print'''
 <!---TIME OPTION ----------------------->  
 <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Date Range:</label>
-      <div class="col-sm-2">          
+      <div class="col-sm-4">          
             Start: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="start" value="'''+start+'''">
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-4">
             End: <input class="form-control" placeholder="YYYY-MM-DD HH:MM" type="text" name="end" value="'''+end+'''">
       </div>
 </div>

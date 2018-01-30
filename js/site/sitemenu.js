@@ -59,7 +59,8 @@ var no_banner_image = ['home.html',
                        'photo_viewer_fire.php',
                        'hrrr_custom.html',
                        'ts_multistations.cgi',
-                       'roses.cgi'
+                       'roses.cgi',
+                       'Pando_Failure.html'
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {

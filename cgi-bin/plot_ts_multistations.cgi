@@ -5,7 +5,7 @@
 
 
 """
-This script plots multiplut stations on one plot
+This script plots multiple stations on one plot
 """
 
 import matplotlib as mpl
@@ -49,7 +49,6 @@ cgitb.enable()	# Spits out error to browser in coherent format.
 #print "Content-Type: text/html\n"
 print "Content-Type: image/png\n"
 
-#print 'hi'
 #print sys.modules.keys()
 #print 'matplitlib version', mpl.__version__,'<br><br>'
 
@@ -110,6 +109,7 @@ if stn4 != '':
     for s in stns:
         stations.append(s)
 
+# Preserve the requested order of the stations
 data = OrderedDict()
 
 # Get the data from MesoWest
@@ -117,15 +117,15 @@ for s in stations:
     a = get_mesowest_ts(s, DATE_START, DATE_END, variables=variable, verbose=False)
     if a != 'ERROR':
         data[s] = a
+    #debug MesoWest API
+    # print a['URL']
 
+## Create the figure
 
-"""
-Plot
-"""
 fig, ax1 = plt.subplots(1, 1, figsize=[16,9])
 count = 0
 # order of the colors plotted (more than 4 available, if you now the stn4 input hack)
-color = ['b', 'g', 'r', 'darkorange', 'k', 'palevioletred', 'paleturquoise', 'palegreen', 'orchid', 'steelblue', 'crimson', 'darkcyan', 'sandybrown', 'darkgrey']
+color = ['b', 'g', 'r', 'darkorange', 'k', 'palevioletred', 'paleturquoise', 'palegreen', 'orchid', 'steelblue', 'crimson', 'darkcyan', 'sandybrown', 'darkgrey']*2
 for s in data.keys():
     try:
         if units == 'english' and variable == 'air_temp':
@@ -211,10 +211,12 @@ for s in data.keys():
     count+=1
 
 plt.grid()
+
 if variable == 'wind_direction,wind_speed':
     plt.legend(ncol=4,loc='upper center')
 else:
     plt.legend()
+
 plt.xlabel('Date/Time (UTC)')
 plt.xlim([DATE_START,DATE_END])
 
@@ -235,4 +237,3 @@ else:
     ax1.xaxis.set_major_formatter(dateFmt)
 
 plt.savefig(sys.stdout)	# Plot standard output.
-
