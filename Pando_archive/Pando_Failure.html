@@ -41,17 +41,21 @@
     <li> GOES-16 data can be found on 
             <a href="https://aws.amazon.com/public-datasets/goes/">Amazon S3</a> (last 60 days) and
             <a href="http://edc.occ-data.org/goes16/">OCC</a> (last 7 months).
-    <li> HRRR data (this is the biggest bummer) is only available for the last
-        two days on
-        <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
-        The last seven-days archive can be found on
-        <a href="awsopendata.s3-website-us-west-2.amazonaws.com/noaa-hrrr/">Amazon S3</a>, though the formating is different.
+    <li> HRRR data is more limited. The raw GRIB2 files, like we had, are only
+        available for the last two days on
+        <a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.<br>
+        An archive of the last seven-days can be found on
+        <a href="awsopendata.s3-website-us-west-2.amazonaws.com/noaa-hrrr/">Amazon S3</a>,
+        though the formating is different.<br>
         <a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/conus/wrftwo/catalog.html">ESRL</a>
-        also has an archive of f01 for 80-m winds and downward solar radiation
-        that goes from 2013-2017.
+        also has an archive, but only of f01 for 80-m winds and downward solar radiation
+        for 2013-2017.<br>
         <a href="https://www.ready.noaa.gov/data/archives/hrrr/README.TXT">NOAA ARL</a>
-        has an archive of f01 for select variables, but I don't know how to
-        read this format.
+        has an archive in ARL format since June 2015. These are for hour f01
+        and only select variables. I don't know how to read this format, but it
+        looks like you can convert it to NetCDF with
+        <a href='http://www.meteothinker.com/index.html'>MeteoInfo</a>.
+        </li>
 </ul>
 <hr>
     <div class='panel panel-primary'>

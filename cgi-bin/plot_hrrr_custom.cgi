@@ -769,12 +769,14 @@ if 'CIN_Fill' in plotcode:
     cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
     cbS.set_label(r'Surface CIN (J kg$\mathregular{^{-1}}$)')
 
-if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode:
+if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode or 'RedFlagPot_Fill' in plotcode:
     # generalized criteria for red flag warning
-    # Winds greater than 6.7 m/s and RH < 25%
+    # Winds (gusts) greater than 6.7 m/s and RH < 25%
+    rf_RH = 25
+    rf_WIND = 6.7
 
     # Get Data
-    H_wind = get_hrrr_variable(DATE, 'WIND:10 m',
+    H_gust = get_hrrr_variable(DATE, 'GUST:surface',
                           model=model, fxx=fxx,
                           outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
                           verbose=False, value_only=True)
@@ -783,7 +785,7 @@ if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode:
                           outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
                           verbose=False, value_only=True)
     
-    RedFlag = np.logical_and(H_wind['value'] > 6.7, H_rh['value'] < 25)
+    RedFlag = np.logical_and(H_gust['value'] >rf_WIND, H_rh['value'] < rf_RH)
     if 'RedFlag_Contour' in plotcode:
         try:
             CS = m.contour(gridlon, gridlat, RedFlag, 
@@ -800,7 +802,54 @@ if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode:
         m.pcolormesh(gridlon, gridlat, RedFlag,
                     cmap="YlOrRd_r",
                     alpha=alpha,
-                    zorder=3, latlon=True)
+                    zorder=4, latlon=True)
+
+    if 'RedFlagPot_Fill' in plotcode:
+        cdict3 = {'red':  ((0.0,  1.0, 1.0),
+                           (0.5,  0.5, 0.5),
+                           (0.5,  1.0, 1.0),
+                           (1.0,  0.4, 0.4)),
+
+                'green': ((0.0,  1.0, 1.0),
+                          (0.5,  0.5, 0.5),
+                          (0.5,  0.4, 0.4),
+                          (1.0,  0.0, 0.0)),
+
+                'blue':  ((0.0,  1.0, 1.0),
+                          (0.5,  0.5, 0.5),
+                          (0.5,  0.0, 0.0),
+                          (1.0,  0.0, 0.0))
+                }
+
+        plt.register_cmap(name='FirePot', data=cdict3)
+        
+        # Definate Red Flag Area:
+        RED_FLAG = np.logical_and(H_rh['value'] < rf_RH,
+                                  H_gust['value'] > rf_WIND)
+        # Linear Equation
+        b = (rf_RH-rf_WIND)*(rf_RH/rf_WIND)
+        z = -(rf_RH/rf_WIND)*(H_rh['value']-H_gust['value'])+b
+        
+        m.pcolormesh(gridlon, gridlat, z,
+                     cmap="FirePot",
+                     alpha=alpha,
+                     vmax=200, vmin=-200,
+                     zorder=3,
+                     latlon=True)
+        cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+        cb.set_label(r'Red Flag Potential')
+
+        m.contour(gridlon, gridlat, z,
+                  colors='k',
+                  levels=[0],
+                  zorder=3,
+                  latlon=True)
+        m.contour(gridlon, gridlat, RED_FLAG,
+                  colors='darkred',
+                  levels=[0],
+                  zorder=3,
+                  latlon=True)
+        
     
     plt.xlabel(r'Red Flag Criteria: Winds > 6.7 m s$\mathregular{^{-1}}$ and RH < 25%')
 
