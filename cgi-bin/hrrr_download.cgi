@@ -23,7 +23,7 @@ max_date = date.today().strftime('%Y-%m-%d')
 try:
     model = form['model'].value
 except:
-    model = 'oper'
+    model = 'hrrr'
 try:
     field = form['field'].value
 except:
@@ -181,8 +181,8 @@ print'''
          <select class="form-control" id="model" name="model">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['HRRR (operational)', 'HRRRx (experimental)', 'Alaska (experimental)']
-value = ['oper', 'exp','alaska']
+display = ['HRRR (operational)', 'HRRR-X (experimental)', 'Alaska (Operational May 2018)']
+value = ['hrrr', 'hrrrX','hrrrak']
 
 for i in range(0,len(value)):
    if model == value[i]:
@@ -203,8 +203,8 @@ print''' </select>
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'HRRR Native Grid - BrianHead Fire 2017, June 25-July 18']
-value = ['sfc', 'prs', 'BRIANHEAD']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Native (nat)']
+value = ['sfc', 'prs', 'nat']
 
 for i in range(0,len(value)):
    if field == value[i]:
@@ -288,30 +288,31 @@ print '''
 <h3>Tap to download <b>'''+link2+'''</b> from '''+Date+''':</h3>
 '''
 
-"""
+
 
 # Create list of files available
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
-if field not in ['prs', 'sfc']:
-    ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
+if field not in ['prs', 'sfc', 'nat']:
+    ls = ' ls horelS3:%s/%s/%04d%02d%02d | cut -c 11-' \
         % (model, 'nat', DATE.year, DATE.month, DATE.day)
 else:
-    ls = ' ls horelS3:HRRR/%s/%s/%04d%02d%02d | cut -c 11-' \
+    ls = ' ls horelS3:%s/%s/%04d%02d%02d | cut -c 11-' \
         % (model, field, DATE.year, DATE.month, DATE.day)
 rclone_out = subprocess.check_output(rclone + ls, shell=True)
 flist = rclone_out.split('\n')
 
-if model == 'oper':
+
+if model == 'hrrr':
     file_model = 'hrrr'
     model_hours = range(0, 24)
     f_hours = range(0, 19)
-elif model == 'exp':
+elif model == 'hrrrX':
     file_model = 'hrrrX'
     model_hours = range(0, 24)
     f_hours = range(0, 19)
-elif model == 'alaska':
-    file_model = 'hrrrAK'
+elif model == 'hrrrak':
+    file_model = 'hrrrak'
     model_hours = range(0, 24, 3)
     f_hours = range(0, 37)
 
@@ -321,23 +322,23 @@ for h in model_hours:
     print '''<div class="mybtn-group">'''
     print '''<button name="hour" type="button" class="mybtn hourbtn">Hour %02d</button>''' % (h)
     for f in f_hours:
-        if field not in ['prs', 'sfc']:
+        if field not in ['prs', 'sfc', 'nat']:
             # Then the request is a for a HRRR native grid file.
-            # These are subregional native files, with the field defining the name of the subregion
             look_for_this_file = '%s.t%02dz.wrfnatf%02d.grib2.%s' % (file_model, h, f, field)
-            baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
-            pathURL = '/%s/%s/%s/' % (model, 'nat', DATE.strftime('%Y%m%d'))
+            baseURL = 'https://pando-rgw01.chpc.utah.edu/'
+            pathURL = '%s/%s/%s/' % (model, 'nat', DATE.strftime('%Y%m%d'))
             fileURL = look_for_this_file
         else:
             look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (file_model, h, field, f)
-            baseURL = 'https://pando-rgw01.chpc.utah.edu/HRRR'
-            pathURL = '/%s/%s/%s/' % (model, field, DATE.strftime('%Y%m%d'))
+            baseURL = 'https://pando-rgw01.chpc.utah.edu/'
+            pathURL = '%s/%s/%s/' % (model, field, DATE.strftime('%Y%m%d'))
             fileURL = look_for_this_file
         if look_for_this_file in flist:
             if link2 == 'grib2':
                 download_this = baseURL+pathURL+fileURL
             elif link2 == 'metadata':
-                download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
+                #download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
+                download_this = baseURL+pathURL+fileURL+'.idx'
             elif link2 == 'sample':
                 #download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample.cgi?model=%s&date=%s&hour=%s&fxx=%s' % (file_model, Date, h, f)
                 RUN = datetime(DATE.year, DATE.month, DATE.day, h)
@@ -366,10 +367,6 @@ print '''
         });
 </script>
 '''
-
-
-
-"""
 
 
 

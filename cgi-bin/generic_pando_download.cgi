@@ -75,7 +75,7 @@ print'''<!DOCTYPE html>
 
 print '''<script src='./js/pando_status.js'></script>'''
 
-"""
+
 
 print '''
 <form>
@@ -195,7 +195,6 @@ else:
 
 ## === End of webpage =========================================================
 
-"""
 
 print '''
 <br>

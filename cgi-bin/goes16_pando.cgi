@@ -180,7 +180,7 @@ print '''
 '''
 
 
-"""
+
 
 # Create list of image files available for the requested date
 DATE = datetime.strptime(Date, "%Y-%m-%d")
@@ -357,8 +357,6 @@ print '''
     </div>
 </div>
 '''
-
-"""
 
 print '''
 <p align=center>Powered By:<br>
