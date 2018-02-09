@@ -86,7 +86,7 @@ print'''
 <div id="content" class="container">
     <h1 align="center">
     <i class="fa fa-cloud-download-alt" ></i> HRRR Download Page
-    <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR" title="Alternative HRRR Download Page"><i class="fas fa-list"></i></a>
+    <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" title="Alternative HRRR Download Page"><i class="fas fa-list"></i></a>
     </h1>
 
 <script src='./js/pando_status.js'></script>

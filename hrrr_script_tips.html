@@ -59,58 +59,53 @@
                     Best Practices).
                 <p> HRRR GRIB2 files are large. sfc files are >100 MB and prs files are >380 MB each.
                     If you download a day's worth of prs analyses, thats over 9 GB!
-                <p> Feel free to share download scripts you write with <a href="mailto:brian.blaylock@utah.edu">me</a>! I'd like to make a bank of 
-                    examples for all users in various programing languages.
                 <hr>
-                <p> <b>GRIB2 files</b> are downloaded from the URL<br> 
+                <p> <b>GRIB2</b> files are downloaded from the URL<br> 
                     <div class="well well-sm">
                         <span style="font-family:monospace; padding-left:20px;">https://pando-rgw01.chpc.utah.edu/
                         <span style="color:red">[model type]</span>/
-                        <span style="color:blue">[variable field]</span>/
+                        <span style="color:blue">[fields]</span>/
                         <span style="color:green">[YYYYMMDD]</span>/
                         <span style="color:darkorange">[file name]</span>
                     </div>
 
-                <p> <b>Metadata</b> for each file can be viewed from the same URL except with .idx on the end.<br> 
+                <p> <b>Metadata</b> for each file can be viewed from the same URL except with <b>.idx</b> appended to the grib2 file name<br> 
                     <div class="well well-sm">
                         <span style="font-family:monospace; padding-left:20px;">https://pando-rgw01.chpc.utah.edu/
                         <span style="color:red">[model type]</span>/
-                        <span style="color:blue">[variable field]</span>/
+                        <span style="color:blue">[fields]</span>/
                         <span style="color:green">[YYYYMMDD]</span>/
                         <span style="color:darkorange">[file name]</span>.idx
                     </div>
-                <p> The model type and variable field directory tree options include the following:
+                <p> The model type and variable fields available include:
                 <ul style="padding-left:40px">
                     <li><span style="color:red">[model type] <b>hrrr</b></span> for the operational HRRR
                         <ul style="padding-left:40px">
-                                <li><span style="color:blue">[variable field] <b>sfc</b></span>
-                                <li><span style="color:blue">[variable field] <b>prs</b></span>
-                                <li><span style="color:blue">[variable field] <b>subh</b></span> (sparse availability, if any)
-                                <li><span style="color:blue">[variable field] <b>nat</b></span> (sparse availability, if any)
+                                <li><span style="color:blue">[fields] <b>sfc</b></span>
+                                <li><span style="color:blue">[fields] <b>prs</b></span>
+                                <li><span style="color:blue">[fields] <b>subh</b></span> (sparse availability, if any)
+                                <li><span style="color:blue">[fields] <b>nat</b></span> (sparse availability, if any)
                         </ul>
                     <li><span style="color:red">[model type] <b>hrrrX</b></span> for the experimental HRRR
                         <ul style="padding-left:40px">
-                                <li><span style="color:blue">[variable field] <b>sfc</b></span>
+                                <li><span style="color:blue">[fields] <b>sfc</b></span>
                         </ul>
                     <li><span style="color:red">[model type] <b>hrrrak</b></span> for HRRR Alaska
                         <ul style="padding-left:40px">
-                                <li><span style="color:blue">[variable field] <b>sfc</b><span>
-                                <li><span style="color:blue">[variable field] <b>prs</b></span>
+                                <li><span style="color:blue">[fields] <b>sfc</b><span>
+                                <li><span style="color:blue">[fields] <b>prs</b></span>
                         </ul>
                 </ul>
-                <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20170101).
-                <p> <span style="color:darkorange">[file name]</span> is in the format [hrrr/hrrrX/hrrrak].t[00-23]z.wrf[sfc/prs/subh/nat]f[00-18 or 0-36].grib2
+                <p> <span style="color:green">[YYYYMMDD]</span> represents the UTC date format (e.g. 20171228).
+                <p> <span style="color:darkorange">[file name]</span> is in the format <b><span style="color:red">[model type]</span>.t[00-23]z.wrf<span style="color:blue">[fields]</span>f[00-18].grib2</b><br>
+                    where the two digit number following <b>t</b> is the model run hour and the two digit number following <b>f</b> is the model forecast hour.
                 
-                    <div class="alert alert-info">
-                        <p> The alternative download page may help you understand the URL structure. <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=HRRR" data-toggle="tooltip" title="Alternative HRRR Download Page"><i class="fas fa-list"></i> Alternative HRRR Download Page</a>
-                    </div>
-                
-                
-                <table style="max-width:500px" class="table table-hover">
-                    <tr><th>Model Type</th><th>Directory Name</th><th>Model Cycle</th><th>Forecasts we collect</th></tr>
-                    <tr><td>Operational HRRR</td><td>hrrr</td><td>Hourly</td><td>f00-f18 for sfc, f00 for prs</td></tr>
-                    <tr><td>Experimental HRRR</td><td>hrrrX</td><td>Hourly</td><td>f00 for sfc</td></tr>
-                    <tr><td>HRRR Alaska</td><td>hrrrak</td><td>Every 3 hours</td><td>f00 for prs</td></tr>
+                <br><br>
+                <table style="max-width:800px" class="table table-hover" align='center'>
+                    <tr><th>Model Name</th><th>Model Type</th><th>Model Cycle</th><th>Archived Forecasts</th></tr>
+                    <tr><td>Operational HRRR</td><td>hrrr</td><td>Hourly<br>range(0,23)</td><td>sfc: f00-f18<br>prs: f00</td></tr>
+                    <tr><td>Experimental HRRR</td><td>hrrrX</td><td>Hourly<br>range(0,23)</td><td>sfc: f00</td></tr>
+                    <tr><td>HRRR Alaska</td><td>hrrrak</td><td>Every 3 hours<br>range(0,23,3)</td><td>sfc: f00</td></tr>
                 </table>
 
                 <div class="panel panel-default">
@@ -118,10 +113,16 @@
                         <h3 class="panel-title">Example</h3>
                     </div>
                     <div class="panel-body" style="font-family:monospace">
-                        <p>https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2
-                        <p>https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2.idx
+                        <p>https://pando-rgw01.chpc.utah.edu/<span style="color:red">hrrr</span>/<span style="color:blue">sfc</span>/<span style="color:green">20180101</span>/<span style="color:darkorange">hrrr.t00z.wrfsfcf00.grib2</span>
+                            <p>https://pando-rgw01.chpc.utah.edu/<span style="color:red">hrrr</span>/<span style="color:blue">sfc</span>/<span style="color:green">20180101</span>/<span style="color:darkorange">hrrr.t00z.wrfsfcf00.grib2.idx</span>
                     </div>
                 </div>
+                <div class="alert alert-info">
+                        <i class="fas fa-info-circle fa-fw"></i> The <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" data-toggle="tooltip" title="Alternative HRRR Download Page"> alternative download page</a>
+                        may help you better understand the URL structure    
+                </div>
+
+                <!--
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Special case: BUFR soundings</h3>
@@ -132,6 +133,7 @@
                         <div class="well">https://pando-rgw01.chpc.utah.edu/hrrr/buf/YYYYMMDD/kslc_YYYYMMDDHH.buf</div>        
                     </div>
                 </div>            
+                -->
 
 
             </div>

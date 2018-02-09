@@ -28,7 +28,7 @@ buckets.remove('')
 
 sizes = {}
 # Get size of each bucket (in GB)
-buckets = ['GOES16', 'HRRR/oper', 'HRRR/exp', 'HRRR/alaska', 'horel-archive', 'Brian']
+buckets = ['GOES16', 'hrrr', 'hrrrX', 'hrrrak']
 names = ['GOES16', 'hrrr', 'hrrrX', 'hrrrAK']
 for b in buckets:
     outSize = subprocess.check_output('rclone size horelS3:%s/' % b, shell=True)
@@ -41,13 +41,11 @@ for b in buckets:
     sizes[b]=GB
 
 # Create a new line for the Pando_Space.csv file
-new_line = '%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n' % (DATE.strftime('%Y-%m-%d'),
+new_line = '%s,%.2f,%.2f,%.2f,%.2f\n' % (DATE.strftime('%Y-%m-%d'),
                                                    sizes['GOES16'],
-                                                   sizes['HRRR/oper'],
-                                                   sizes['HRRR/exp'],
-                                                   sizes['HRRR/alaska'],
-                                                   sizes['horel-archive'],
-                                                   sizes['Brian'])
+                                                   sizes['hrrr'],
+                                                   sizes['hrrrX'],
+                                                   sizes['hrrrak'])
 
 # Append to file
 with open("Pando_Space.csv", "a") as myfile:
@@ -62,18 +60,20 @@ data = np.genfromtxt('Pando_Space.csv',
                         dtype=None)
 
 DATES = [datetime.strptime(d, '%Y-%m-%d') for d in data['DATE']]
-y = np.row_stack([data['Brian'], data['horelarchive'], data['GOES16'], data['hrrr'], data['hrrrX'], data['hrrrAK']])
+y = np.row_stack([data['GOES16'], data['hrrr'], data['hrrrX'], data['hrrrAK']])
 
 plt.stackplot(DATES,y)
 plt.ylim([0,allocation])
 plt.ylabel('Size in GB')
 plt.title('Pando Usage and Allocation')
+plt.grid()
+
 
 formatter = DateFormatter('%b-%d\n%Y')
 plt.gcf().axes[0].xaxis.set_major_formatter(formatter)
 plt.savefig('remaining_space_plot.png')
 
-total = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data['hrrrAK'][-1] + data['Brian'][-1] + data['horelarchive'][-1]
+total = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data['hrrrAK'][-1]
 
 # Create HTML Page
 with open('index.html', 'w') as f:
@@ -112,7 +112,7 @@ with open('index.html', 'w') as f:
             </div>
           </div>
 
-    <center><h2>'''+str(total/1000)+''' TB out of 60 TB</h2></center>
+    <center><h2>'''+str(round(total/1000,2))+''' TB out of 60 TB</h2></center>
     
     <p style="text-align:center;"><img align='middle' src="./Pando_archive/remaining_space_plot.png">
 </div>

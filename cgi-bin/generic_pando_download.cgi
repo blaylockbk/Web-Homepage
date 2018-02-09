@@ -25,7 +25,7 @@ try:
     bucket = form['BUCKET'].value
 except:
     # Demo, default bucket
-    bucket = 'HRRR/oper/prs/20170101/'
+    bucket = 'hrrr/prs/20180101/'
 
 
 ## You must have a / at the end of the bucket name
@@ -37,11 +37,17 @@ baseURL = 'https://pando-rgw01.chpc.utah.edu/'
 outer_bucket = bucket.split('/')[0]
 goes_active = ''
 hrrr_active = ''
+hrrrX_active = ''
+hrrrak_active = ''
 horel_active = ''
 if outer_bucket == 'GOES16':
     goes_active = 'active'
-elif outer_bucket == 'HRRR':
+elif outer_bucket == 'hrrr':
     hrrr_active = 'active'
+elif outer_bucket == 'hrrrX':
+    hrrrX_active = 'active'
+elif outer_bucket == 'hrrrak':
+    hrrrak_active = 'active'
 elif outer_bucket == 'horel-archive':
     horel_active = 'active'
 
@@ -75,7 +81,12 @@ print'''<!DOCTYPE html>
 
 print '''<script src='./js/pando_status.js'></script>'''
 
-
+if outer_bucket in ['hrrr', 'hrrrak', 'hrrrX']:
+    print """
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr">HRRR</a>
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrX">HRRR-X</a>
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrak">HRRR-AK</a>
+    """ % (hrrr_active, hrrrX_active, hrrrak_active)
 
 print '''
 <form>
