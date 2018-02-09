@@ -14,6 +14,24 @@ import subprocess
 from datetime import date, datetime
 import numpy as np
 
+import matplotlib as mpl
+mpl.rcParams['figure.figsize'] = [8, 5]
+mpl.rcParams['figure.titlesize'] = 15
+mpl.rcParams['figure.titleweight'] = 'bold'
+mpl.rcParams['xtick.labelsize'] = 10
+mpl.rcParams['ytick.labelsize'] = 10
+mpl.rcParams['axes.labelsize'] = 10
+mpl.rcParams['axes.titlesize'] = 12
+mpl.rcParams['lines.linewidth'] = 1.8
+mpl.rcParams['grid.linewidth'] = .1
+mpl.rcParams['figure.subplot.wspace'] = 0.05
+mpl.rcParams['figure.subplot.hspace'] = 0.01
+mpl.rcParams['legend.fontsize'] = 8
+mpl.rcParams['legend.framealpha'] = .75
+mpl.rcParams['legend.loc'] = 'best'
+mpl.rcParams['savefig.bbox'] = 'tight'
+
+mpl.rcParams['savefig.dpi'] = 100
 
 # Allocation (in GB)
 allocation = 60 * 1e3
@@ -62,10 +80,14 @@ data = np.genfromtxt('Pando_Space.csv',
 DATES = [datetime.strptime(d, '%Y-%m-%d') for d in data['DATE']]
 y = np.row_stack([data['GOES16'], data['hrrr'], data['hrrrX'], data['hrrrAK']])
 
-plt.stackplot(DATES,y)
+
+plt.stackplot(DATES,y, labels=names, colors=['firebrick', 'dodgerblue', 'limegreen', 'darkorange'],
+              linewidths=0)
 plt.ylim([0,allocation])
+plt.legend()
 plt.ylabel('Size in GB')
-plt.title('Pando Usage and Allocation')
+plt.title('Pando Usage and Allocation', loc='left')
+plt.title('Updated: %s' % datetime.now().strftime('%d %b %Y %H:%M'), loc='right')
 plt.grid()
 
 
