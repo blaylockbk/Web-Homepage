@@ -148,20 +148,20 @@ print'''
         buttons for what you want to do.
         <p>Then click <b><i>Submit</i></b>. <b>You must click 'submit' after
         you make a change</b>.
-        <p>After clicking the submit button, a grid of hours and forecasts is 
-        displayed. If the file is available, the button will be highlighted 
-        dark blue. Click the button to retrive what you requested.
+        <p>The grid of hours and forecasts displayed represent the HRRR model
+        fun hours and the subsequent forecasts. 
+        If the file is available, the button will be highlighted 
+        dark blue. Click the button to retrieve the file.
         <p>Files are named similar to HRRR files named on the NOMADS site. For example,<br>
         <b><span style="color:red">hrrr</span>.<span style="color:blue">t05z</span>.wrf<span style="color:green">sfc</span><span style="color:darkorange">f12</span>.grib2</b><br>
         <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
         </b>
-        <p>Note: You will have to keep track of the file date yourself. 
-        While the file contains the date information, the <i>file name</i>
-        only contains information about the run and forecast hour,
-        so be careful that you don't overwrite files if you are downloading from
-        multiple days into the same directory.
-        <p>You may script the download process. Click the "Scripting Tips"
-        button above for some help.
+        <hr>
+        <p>While each file contains additional date information, 
+           the <i>file name</i> only contains information about the
+           run and forecast hour. Beware of overwriting files if you
+           download from multiple days into the same directory.
+        <p>Click "Scripting Tips" above for some help scripting the download process.
         <p>Read the HRRR FAQ for a description of what file and dates are available.
         </div>
     </div>
@@ -181,7 +181,7 @@ print'''
          <select class="form-control" id="model" name="model">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['HRRR (operational)', 'HRRR-X (experimental)', 'Alaska (Operational May 2018)']
+display = ['HRRR (operational)', 'HRRR-X (experimental)', 'Alaska (Operational after May, ?? 2018)']
 value = ['hrrr', 'hrrrX','hrrrak']
 
 for i in range(0,len(value)):
@@ -220,7 +220,7 @@ print''' </select>
     <div class="form-group">
       <label class="control-label col-md-2" for="date">Date:</label>
       <div class="col-md-4">          
-        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2015-04-17" max="'''+max_date+'''">
+        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-12-28" max="'''+max_date+'''">
       </div>
     </div>
 <!--- (date)----------------------------->
