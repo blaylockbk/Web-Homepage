@@ -17,6 +17,25 @@
 <h1 align="center"><i class="fa fa-database"></i> Horel Group Pando Allocation</h1>
 
 <div class='container'>
+<div class="row" id="content">
+            <div class=" col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+                    <i class="fa fa-user-plus"></i> Have you Registered?</a>        
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+                    <i class="far fa-handshake"></i> Best Practices</a>
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+                    <i class="fa fa-info-circle"></i> HRRR FAQ</a>
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+                    <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
+            </div>
+        </div>
+  <br>
   <script src='./js/pando_status.js'></script>
     <center><font size=12> 3.2 TB out of 60 TB</font>
     <div class="progress" style="max-width:700px;height:35px">
@@ -33,7 +52,11 @@
               <font size=4></font>
             </div>
           </div>
-
+    
+    <img style='width:100%;max-width:750px'src="./Pando_archive/remaining_space_plot.png">
+    <br>
+    <hr>
+    <h4>Yesterday's Breakdown</h4>
     <table class="table table-bordered" style='text-align:center;max-width:700px'>
       <tr>
         <th style='text-align:center'>Space Used Yesterday</th>
@@ -41,13 +64,51 @@
         <th style='text-align:center'>Estimated Full Date</th>
       </tr>
       <tr>
-        <td>116.98 GB</td>
-        <td>512</td>
-        <td>09 July 2019</td>
+        <td>117.65 GB</td>
+        <td>509</td>
+        <td>06 July 2019</td>
       </tr>
-  </table>
+    </table>
+    <table class="table table-bordered" style='text-align:center;max-width:700px'>
+      <tr>
+        <th style='text-align:center'></th>
+        <th style='text-align:center' class="danger">GOES16</th>
+        <th style='text-align:center' class="info">HRRR</th>
+        <th style='text-align:center' class="success">HRRR-X</th>
+        <th style='text-align:center' class="warning">HRRR-Alaska</th>
+      </tr>
+      <tr>
+        <th>sfc</th>
+        <td>--</td>
+        <td>29.56</td>
+        <td>1.60</td>
+        <td>0.34</td>
+      </tr>
+      <tr>
+        <th>prs</th>
+        <td>--</td>
+        <td>4.83</td>
+        <td>0.00</td>
+        <td>0.00</td>
+      </tr>
+      <tr>
+        <th>nat</th>
+        <td>--</td>
+        <td>0.00</td>
+        <td>0.00</td>
+        <td>0.00</td>
+      </tr>
+      <tr>
+        <th>Total</th>
+        <th>20.0 GB</th>
+        <th>34.39 GB</th>
+        <th>1.60 GB</th>
+        <th>0.34 GB</th>
+      </tr>
+    </table>
+
   </center>
-    <p style="text-align:center;"><img style='width:100%;max-width:850px'src="./Pando_archive/remaining_space_plot.png">
+
 </div>
 <script src="./js/site/siteclose.js"></script>
 </body>

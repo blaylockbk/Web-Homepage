@@ -3,6 +3,13 @@
 
 """
 Get the current size of our Pando archive.
+
+Answers these thought provoking questions...
+How much space is there remaining on the S3 archive?
+How many days left until the S3 archive is filled?
+  Uses space used between yesterday and today as an estimate of daily usage
+
+Daily usage for each bucket is stored in the Pando_Space.csv file
 """
 
 import matplotlib as mpl
@@ -30,16 +37,17 @@ mpl.rcParams['legend.fontsize'] = 8
 mpl.rcParams['legend.framealpha'] = .75
 mpl.rcParams['legend.loc'] = 'best'
 mpl.rcParams['savefig.bbox'] = 'tight'
-
 mpl.rcParams['savefig.dpi'] = 100
 
+#------------------------------------------------------------------------------
 # Allocation (in GB)
 allocation = 60 * 1e3
 
 # Today's Date
 DATE = date.today()
+#------------------------------------------------------------------------------
 
-## --- Get size of each bucket (in GB) ---
+## --- Get size of each bucket (in GB) ----------------------------------------
 sizes = {}
 buckets = ['GOES16', 'hrrr', 'hrrrX', 'hrrrak']
 names = ['GOES16', 'hrrr', 'hrrrX', 'hrrrAK']
@@ -88,16 +96,29 @@ formatter = DateFormatter('%b-%d\n%Y')
 plt.gcf().axes[0].xaxis.set_major_formatter(formatter)
 plt.savefig('remaining_space_plot.png')
 
-## --- How much space was used yesterday? ---
+## --- How much space was used yesterday? -------------------------------------
 total_today   = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data['hrrrAK'][-1]
 total_yesterday = data['GOES16'][-2] + data['hrrr'][-2] + data['hrrrX'][-2] + data['hrrrAK'][-2]
 
-one_day_useage = total_today-total_yesterday
-days_till_full = int(allocation/one_day_useage)
+one_day_usage = total_today-total_yesterday
+days_till_full = int(allocation/one_day_usage)
 
 date_full = DATE+timedelta(days=days_till_full)
 
-## --- Create HTML Page ---
+## --- Yesterday's Breakdown --------------------------------------------------
+models = ['hrrr', 'hrrrak', 'hrrrX']
+fields = ['sfc', 'prs', 'nat']
+day_sizes = {}
+for m in models:
+  day_sizes[m] = {}
+  for f in fields:
+      outSize = subprocess.check_output('rclone size horelS3:%s/%s/%s/' % (m, f, DATE.strftime('%Y%m%d')), shell=True)
+      sSIZE = outSize.index('(')+1
+      eSIZE = outSize.index(' bytes)')
+      size = outSize[sSIZE:eSIZE]
+      day_sizes[m][f] = int(size) * 1e-9
+
+## --- Create HTML Page -------------------------------------------------------
 html = '''
 <!DOCTYPE html>
 <html>
@@ -117,6 +138,25 @@ html = '''
 <h1 align="center"><i class="fa fa-database"></i> Horel Group Pando Allocation</h1>
 
 <div class='container'>
+<div class="row" id="content">
+            <div class=" col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+                    <i class="fa fa-user-plus"></i> Have you Registered?</a>        
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+                    <i class="far fa-handshake"></i> Best Practices</a>
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+                    <i class="fa fa-info-circle"></i> HRRR FAQ</a>
+            </div>
+            <div class="col-md-3">
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+                    <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
+            </div>
+        </div>
+  <br>
   <script src='./js/pando_status.js'></script>
     <center><font size=12> %.1f TB out of 60 TB</font>
     <div class="progress" style="max-width:700px;height:35px">
@@ -133,7 +173,11 @@ html = '''
               <font size=4></font>
             </div>
           </div>
-
+    
+    <img style='width:100%%;max-width:750px'src="./Pando_archive/remaining_space_plot.png">
+    <br>
+    <hr>
+    <h4>Yesterday's Breakdown</h4>
     <table class="table table-bordered" style='text-align:center;max-width:700px'>
       <tr>
         <th style='text-align:center'>Space Used Yesterday</th>
@@ -145,20 +189,66 @@ html = '''
         <td>%s</td>
         <td>%s</td>
       </tr>
-  </table>
-  </center>
-    <p style="text-align:center;"><img style='width:100%%;max-width:850px'src="./Pando_archive/remaining_space_plot.png">
-</div>
-<script src="./js/site/siteclose.js"></script>
-</body>
-</html>''' % (total_today/1000,
+    </table>''' % (total_today/1000,
               data['GOES16'][-1]/allocation*100,
               data['hrrr'][-1]/allocation*100,
               data['hrrrX'][-1]/allocation*100,
               data['hrrrAK'][-1]/allocation*100,
-              one_day_useage,
+              one_day_usage,
               days_till_full,
               date_full.strftime('%d %B %Y'))
+html += '''
+    <table class="table table-bordered" style='text-align:center;max-width:700px'>
+      <tr>
+        <th style='text-align:center'></th>
+        <th style='text-align:center' class="danger">GOES16</th>
+        <th style='text-align:center' class="info">HRRR</th>
+        <th style='text-align:center' class="success">HRRR-X</th>
+        <th style='text-align:center' class="warning">HRRR-Alaska</th>
+      </tr>
+      <tr>
+        <th>sfc</th>
+        <td>--</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+      </tr>
+      <tr>
+        <th>prs</th>
+        <td>--</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+      </tr>
+      <tr>
+        <th>nat</th>
+        <td>--</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+        <td>%.2f</td>
+      </tr>
+      <tr>
+        <th>Total</th>
+        <th>%.1f GB</th>
+        <th>%.2f GB</th>
+        <th>%.2f GB</th>
+        <th>%.2f GB</th>
+      </tr>
+    </table>
+
+  </center>
+
+</div>
+<script src="./js/site/siteclose.js"></script>
+</body>
+</html>''' % (day_sizes['hrrr']['sfc'], day_sizes['hrrrX']['sfc'], day_sizes['hrrrak']['sfc'],
+              day_sizes['hrrr']['prs'], day_sizes['hrrrX']['prs'], day_sizes['hrrrak']['prs'],
+              day_sizes['hrrr']['nat'], day_sizes['hrrrX']['nat'], day_sizes['hrrrak']['nat'],
+              data['GOES16'][-1]-data['GOES16'][-2],
+              day_sizes['hrrr']['sfc']+day_sizes['hrrr']['prs']+day_sizes['hrrr']['nat'],
+              day_sizes['hrrrX']['sfc']+day_sizes['hrrrX']['prs']+day_sizes['hrrrX']['nat'],
+              day_sizes['hrrrak']['sfc']+day_sizes['hrrrak']['prs']+day_sizes['hrrrak']['nat']
+              )
 
 with open('index.html', 'w') as f:
     f.write(html)
