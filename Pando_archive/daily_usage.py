@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter
 import numpy
 import subprocess
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 import numpy as np
 
 import matplotlib as mpl
@@ -36,16 +36,11 @@ mpl.rcParams['savefig.dpi'] = 100
 # Allocation (in GB)
 allocation = 60 * 1e3
 
-# Todays Date
+# Today's Date
 DATE = date.today()
 
-# Get a list of buckets
-buckets = subprocess.check_output('rclone lsd horelS3: | cut -c 44-', shell=True)
-buckets = buckets.split('\n')
-buckets.remove('')
-
+## --- Get size of each bucket (in GB) ---
 sizes = {}
-# Get size of each bucket (in GB)
 buckets = ['GOES16', 'hrrr', 'hrrrX', 'hrrrak']
 names = ['GOES16', 'hrrr', 'hrrrX', 'hrrrAK']
 for b in buckets:
@@ -70,18 +65,17 @@ with open("Pando_Space.csv", "a") as myfile:
     myfile.write(new_line)
 
 
-# Create a plot
+## --- Create a plot ---
 data = np.genfromtxt('Pando_Space.csv',
-                        delimiter=',',
-                        skip_header=6,
-                        names=True,
-                        dtype=None)
+                      delimiter=',',
+                      skip_header=6,
+                      names=True,
+                      dtype=None)
 
-DATES = [datetime.strptime(d, '%Y-%m-%d') for d in data['DATE']]
+DATES = map(lambda x: datetime.strptime(x,'%Y-%m-%d'), data['DATE'])
 y = np.row_stack([data['GOES16'], data['hrrr'], data['hrrrX'], data['hrrrAK']])
 
-
-plt.stackplot(DATES,y, labels=names, colors=['firebrick', 'dodgerblue', 'limegreen', 'darkorange'],
+plt.stackplot(DATES,y, labels=names, colors=['#da4f4a', '#016ecd', '#5cb85c', '#faa632'],
               linewidths=0)
 plt.ylim([0,allocation])
 plt.legend()
@@ -90,16 +84,21 @@ plt.title('Pando Usage and Allocation', loc='left')
 plt.title('Updated: %s' % datetime.now().strftime('%d %b %Y %H:%M'), loc='right')
 plt.grid()
 
-
 formatter = DateFormatter('%b-%d\n%Y')
 plt.gcf().axes[0].xaxis.set_major_formatter(formatter)
 plt.savefig('remaining_space_plot.png')
 
-total = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data['hrrrAK'][-1]
+## --- How much space was used yesterday? ---
+total_today   = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data['hrrrAK'][-1]
+total_yesterday = data['GOES16'][-2] + data['hrrr'][-2] + data['hrrrX'][-2] + data['hrrrAK'][-2]
 
-# Create HTML Page
-with open('index.html', 'w') as f:
-    f.write('''
+one_day_useage = total_today-total_yesterday
+days_till_full = int(allocation/one_day_useage)
+
+date_full = DATE+timedelta(days=days_till_full)
+
+## --- Create HTML Page ---
+html = '''
 <!DOCTYPE html>
 <html>
 
@@ -119,26 +118,47 @@ with open('index.html', 'w') as f:
 
 <div class='container'>
     <center><font size=12>60 TB</font></center>
-    <div class="progress" style="width:100%;height:30px">
-            <div class="progress-bar progress-bar-default" role="progressbar" style="width:'''+str(int(data['GOES16'][-1]/allocation*100))+'''%">
-              <font size=4>GOES16</font>
+    <div class="progress" style="width:100%%;height:30px">
+            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:%.f%%">
+              <font size=4></font>
             </div>
-            <div class="progress-bar progress-bar-success" role="progressbar" style="width:'''+str(int(data['hrrr'][-1]/allocation*100))+'''%">
-              <font size=4>HRRRoper</font>
+            <div class="progress-bar progress-bar-primary" role="progressbar" style="width:%.f%%">
+              <font size=4></font>
             </div>
-            <div class="progress-bar progress-bar-warning" role="progressbar" style="width:'''+str(int(data['hrrrX'][-1]/allocation*100))+'''%">
-              <font size=4>HRRRexp</font>
+            <div class="progress-bar progress-bar-success" role="progressbar" style="width:%.f%%">
+              <font size=4></font>
             </div>
-            <div class="progress-bar progress-bar-info" role="progressbar" style="width:'''+str(int(data['hrrrAK'][-1]/allocation*100))+'''%">
-              <font size=4>HRRRalaska</font>
+            <div class="progress-bar progress-bar-warning" role="progressbar" style="width:%.f%%">
+              <font size=4></font>
             </div>
           </div>
 
-    <center><h2>'''+str(round(total/1000,2))+''' TB out of 60 TB</h2></center>
-    
-    <p style="text-align:center;"><img align='middle' src="./Pando_archive/remaining_space_plot.png">
+    <center><h2> %.2f TB out of 60 TB</h2></center>  
+    <table class="table table-bordered" style='text-align:center'>
+      <tr>
+        <th style='text-align:center'>Space Used Yesterday</th>
+        <th style='text-align:center'>Estimated Days Until Full</th>
+        <th style='text-align:center'>Estimated Full Date</th>
+      </tr>
+      <tr>
+        <td>%.2f GB</td>
+        <td>%s</td>
+        <td>%s</td>
+      </tr>
+  </table>
+    </table>
+    <p style="text-align:center;"><img style='width:100%%;max-width:850px'src="./Pando_archive/remaining_space_plot.png">
 </div>
-
 <script src="./js/site/siteclose.js"></script>
 </body>
-</html>''')
+</html>''' % (data['GOES16'][-1]/allocation*100,
+              data['hrrr'][-1]/allocation*100,
+              data['hrrrX'][-1]/allocation*100,
+              data['hrrrAK'][-1]/allocation*100,
+              total_today/1000,
+              one_day_useage,
+              days_till_full,
+              date_full.strftime('%d %B %Y'))
+
+with open('index.html', 'w') as f:
+    f.write(html)
