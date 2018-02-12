@@ -117,8 +117,9 @@ html = '''
 <h1 align="center"><i class="fa fa-database"></i> Horel Group Pando Allocation</h1>
 
 <div class='container'>
-    <center><font size=12>60 TB</font></center>
-    <div class="progress" style="width:100%%;height:30px">
+  <script src='./js/pando_status.js'></script>
+    <center><font size=12> %.1f TB out of 60 TB</font>
+    <div class="progress" style="max-width:700px;height:35px">
             <div class="progress-bar progress-bar-danger" role="progressbar" style="width:%.f%%">
               <font size=4></font>
             </div>
@@ -133,8 +134,7 @@ html = '''
             </div>
           </div>
 
-    <center><h2> %.2f TB out of 60 TB</h2></center>  
-    <table class="table table-bordered" style='text-align:center'>
+    <table class="table table-bordered" style='text-align:center;max-width:700px'>
       <tr>
         <th style='text-align:center'>Space Used Yesterday</th>
         <th style='text-align:center'>Estimated Days Until Full</th>
@@ -146,16 +146,16 @@ html = '''
         <td>%s</td>
       </tr>
   </table>
-    </table>
+  </center>
     <p style="text-align:center;"><img style='width:100%%;max-width:850px'src="./Pando_archive/remaining_space_plot.png">
 </div>
 <script src="./js/site/siteclose.js"></script>
 </body>
-</html>''' % (data['GOES16'][-1]/allocation*100,
+</html>''' % (total_today/1000,
+              data['GOES16'][-1]/allocation*100,
               data['hrrr'][-1]/allocation*100,
               data['hrrrX'][-1]/allocation*100,
               data['hrrrAK'][-1]/allocation*100,
-              total_today/1000,
               one_day_useage,
               days_till_full,
               date_full.strftime('%d %B %Y'))
