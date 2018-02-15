@@ -17,7 +17,7 @@ cgitb.enable()
 
 form = cgi.FieldStorage()
 
-yesterday = date.today() - timedelta(days=1)
+yesterday = date.today()
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:

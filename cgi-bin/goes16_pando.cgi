@@ -118,8 +118,8 @@ print'''
     <script src='./js/pando_status.js'></script>
     
     <div class='alert alert-warning'>
-    GOES-16 was moved to it's east position and turned back on December 14, 2017.
-    <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
+    GOES-16 was moved to its east position on December 14, 2017.
+    <a class='alert-link' href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>.
     </div>
 
     <hr>
@@ -134,7 +134,7 @@ print '''
     <div class="form-group">
         <label class="control-label col-md-2" for="date">Date:</label>
         <div class="col-md-4">          
-            <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-08-03" max="'''+max_date+'''">
+            <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-07-11" max="'''+max_date+'''">
         </div>
     </div>
 <!--- (date)----------------------------->
@@ -204,21 +204,19 @@ flist.remove('')
 flist.sort() 
 
 # List of .nc files to download
-dwnldlist = np.array([f for f in flist if '.nc' in f])
+dwnldlist = np.array(filter(lambda x: x[-3:]=='.nc', flist))
 
-# Only get Utah .png files
+# Only get .png files
 if domain == 'UTAH':
-    figlist = np.array([f for f in flist if 'UTAH.png' in f])
+    figlist = np.array(map(lambda x: x[:-3]+'.UTAH.png', dwnldlist))
 else:
-    figlist = np.array([f for f in flist if '.png' in f and 'UTAH.png' not in f])
+    figlist = np.array(map(lambda x: x[:-3]+'.png', dwnldlist))
 
-scan_start = np.array([datetime.strptime(f.split('_')[3][:], 's%Y%j%H%M%S%f') for f in figlist])
+# Convert start time to datetime object
+scan_start = np.array(map(lambda x: datetime.strptime(x.split('_')[3][:], 's%Y%j%H%M%S%f'), figlist))
 
-scan_start_hours = np.array([a.hour for a in scan_start])
-scan_start_mins = np.array([a.minute for a in scan_start])
-
-# Text on the download button
-button_display = scan_start
+scan_start_hours = np.array(map(lambda x: x.hour, scan_start))
+scan_start_mins = np.array(map(lambda x: x.minute, scan_start))
 
 # Expected buttons:
 expected_buttons = np.arange(2, 58, 5)
