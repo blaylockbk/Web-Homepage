@@ -2,6 +2,21 @@
 Brian Blaylock's extra styling
 *************************************************/
 
+.parallax {
+    /* The image used */
+    background-image: url("../images/home2.png");
+
+    /* Set a specific height */
+    min-height: 750px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-size: cover;
+}
+
 * {
     font-family:Segoe UI;
 }
