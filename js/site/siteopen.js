@@ -6,7 +6,6 @@ document.write('\
 <link href="images/wxicon.png" rel="shortcut icon" type="image/png">\
 <link href="images/wxicon.png" rel="icon"/>\
 \
-<link rel="stylesheet" href="css/sitesetup.css"/>\
 <link rel="stylesheet" href="css/brian_style.css" />\
 \
 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>\
