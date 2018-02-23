@@ -22,9 +22,9 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    variable = form['station'].value
+    stn = (form['station'].value).upper()
 except:
-    variable = 'wbb'
+    stn = 'WBB'
 try:
     variable = form['variable'].value
 except:
@@ -36,7 +36,7 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <script src="../js/site/siteopen.js"></script>
-<title>HRRR Events</title>
+<title>HRRR Percentiles</title>
 <style>
       .mybtn {
           border: 1px solid #23415c;
@@ -78,23 +78,30 @@ print '''
 <script>
 hour = '00';
 fxx = '00';
-
+AHXX = '00';
+AFXX = '00';
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
-        document.getElementById("disp_img").style.maxWidth= '700px';
+        document.getElementById("disp_img").style.maxWidth= '1300px';
+        document.getElementById('H'+AHXX).classList.remove('active');
+        document.getElementById('H'+HXX).classList.add('active');
+        AHXX = HXX;
 	}
 
 function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
 		document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
-        document.getElementById("disp_img").style.maxWidth= '700px';
+        document.getElementById("disp_img").style.maxWidth= '1300px';
+        document.getElementById('F'+AFXX).classList.remove('active');
+        document.getElementById('F'+FXX).classList.add('active');
+        AFXX = FXX;
 	}
 </script>
 '''
@@ -107,7 +114,7 @@ print '''
 print'''
 <div class="container">
     <h1 align="center">
-        <i class="fa fa-globe" aria-hidden="true"></i> HRRR Events
+        <i class="fas fa-chart-area" aria-hidden="true"></i> HRRR Percentiles
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
     </h1>
     <hr>
@@ -122,14 +129,14 @@ print '''
     <div class="form-group">
       <label class="control-label col-md-2" for="station">Station:</label>
       <div class="col-md-4">      
-         <select class="form-control" id="variable" name="station">'''
+         <select class="form-control" id="station" name="station">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['WBB']
-value = ['wbb']
+display = ['WBB - William Browning Building', 'HWKC1 - Hawkeye CA', 'DBSU1 - Brian Head Burn Scar']
+value = ['WBB', 'HWKC1', 'DBSU1']
 
 for i in range(0,len(value)):
-   if variable == value[i]:
+   if stn == value[i]:
       print'''<option selected="selected" value="'''+value[i]+'''">'''+display[i]+'''</option>'''
    else:
       print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
@@ -147,8 +154,8 @@ print''' </select>
          <select class="form-control" id="variable" name="variable">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['2 m Temperature', '2 m Dew Point','10 m Wind Speed', '80 m Wind Speed', 'Composite Reflectivity']
-value = ['TMP_2_m', 'DPT_2_m', 'UVGRD_10_m', 'UVGRD_80_m', 'REFC_entire']
+display = ['2 m Temperature', '2 m Dew Point','10 m Wind Speed', '80 m Wind Speed', 'Composite Reflectivity', 'Surface Gusts', '500 mb Geopotential Height']
+value = ['TMP_2_m', 'DPT_2_m', 'UVGRD_10_m', 'UVGRD_80_m', 'REFC_entire', 'GUST_surface', 'HGT_500']
 
 for i in range(0,len(value)):
    if variable == value[i]:
@@ -174,7 +181,7 @@ print''' </select>
 
 # Create list of images in directory
 
-PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/OSG/area_current_HRRR/%s/' % variable
+PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/OSG/area_current_HRRR/%s/%s/' % (stn, variable)
 
 print '<div class="container">'
 print '<h4><i class="far fa-hand-point-right" aria-hidden="true"></i> Hover to view image sample. Click to go to image source. <b>'+PATH+'</b></h4>'
@@ -199,26 +206,28 @@ button_display = np.array(['f%02d' % f for f in fxxs])
 expected_buttons = np.array(['f%02d' % f for f in range(0,19)])
  
 print '''
-<div class='container' style='width:95%'>
+<div class='container'>
 '''
 
 ## Hour Buttons
 print '''
 <h4>Valid Hours</h4>
+
 <div class="btn-group btn-group-justified">'''
 for h in range(24):
     print '''
-    <button onmouseover=change_pic_h('%02d') class="btn btn-primary">h%02d</a>''' % (h,h)
+<a onmouseover=change_pic_h('%02d') id='H%02d' class="btn btn-primary">h%02d</a>''' % (h,h,h)
 print '''
-</div><br>
+</div>
+<br>
 '''
 ## Forecast Buttons
 print '''
 <h4>Forecast Lead Time</h4>
 <div class="btn-group btn-group-justified">'''
-for f in range(18):
+for f in range(19):
     print '''
-    <button onmouseover=change_pic_f('%02d') class="btn btn-warning">f%02d</a>''' % (f,f)
+<a onmouseover=change_pic_f('%02d') id='F%02d' class="btn btn-warning">f%02d</a>''' % (f,f,f)
 print '''
 </div>
 '''
@@ -227,8 +236,10 @@ print '<br>'
 
 print '''
 
-  <center><img id='disp_img' src='./images/empty.jpg' style="width:90%">
-  <img id='disp_img' src='http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/map.png' style="width:300px"></center>
+  <center>
+    <img id='disp_img' src='./images/empty.jpg' style="width:75%">
+    
+  </center>
   <hr>
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_osg_point_viewer.cgi">

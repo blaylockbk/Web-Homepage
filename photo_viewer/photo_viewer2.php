@@ -101,7 +101,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 
 </small>
 
-<!-- Large modal (the intrusctions help button)-->
+<!-- Large modal (the instruction help button)-->
 <br>
 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" class='btn btn-warning'>Choose another location</a>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
@@ -151,7 +151,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 </div>
 </div>
 </div>
-</h1><!-- Large modal (the intrusctions help button)-->
+</h1><!-- Large modal (the instruction help button)-->
       
 </h2>	
 
