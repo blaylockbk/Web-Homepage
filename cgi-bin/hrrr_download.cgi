@@ -220,7 +220,7 @@ print''' </select>
     <div class="form-group">
       <label class="control-label col-md-2" for="date">Date:</label>
       <div class="col-md-4">          
-        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-12-28" max="'''+max_date+'''">
+        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2016-07-15" max="'''+max_date+'''">
       </div>
     </div>
 <!--- (date)----------------------------->

@@ -84,12 +84,15 @@
                research efforts at the University of Utah. The archive system 
                <a href"http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/Pando_Failure.html">failed</a>
                and we lost all the data. We rebuilt the archive and began
-               storing data starting with 28 December 2017.
+               storing data starting with 15 July 2016.
+                <div style='max-width:600px;margin-left:auto;margin-right:auto;'>
+                    <script src='./js/climate_acknowledgement.js'></script>
+                </div>
             <p>Instead of storing all available HRRR files, we only download the
                files most useful to accomplish our research efforts. We realize
                this data is valuable to many others and have made the
                archive publicly accessible for research purposes. We currently 
-               have 60 terabytes at our disposal. 
+               have 60 terabytes of storage space at our disposal. 
             <div class='alert alert-sm alert-info'>
                 <p><i class="fa fa-fw fa-book"></i> 
                    Additional details about the archive have been published in
@@ -229,13 +232,13 @@
             <h3>When do we download the HRRR data?</h3>
             <p><b>HRRR</b>, <b>HRRR-X</b>, and <b>HRRR-Alaska</b>
                is downloaded from NOMADS and ESRL four times a day at
-               00:20, 06:20, 12:20, and 18:20 UTC.
-            <p>We only download HRRR data four times a day to prevent anyone
-               from grabbing real-time forecasts from us because this HRRR
+               00:30, 03:30, 06:30, 09:30, 12:30, 15:30, 18:30, and 21:30 UTC.
+            <p>We only download HRRR data eight times a day to prevent anyone
+               from grabbing real-time forecasts because this HRRR
                archive is not meant to be used for real-time or operational
                products. 
-               <i>Again, if you are looking for HRRR data from the last
-               two days, download the files directly from
+               <p><i>If you are looking for real-time HRRR data or from the last
+               two days, please download the files directly from
                <a href="http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a></i>.
 
             <hr>
@@ -359,7 +362,7 @@
             system. 
             <p>This object storage system is similar to Amazon's S3 storage,
             but this is less expensive. We currently have a 60 TB allocation
-            with a storage rate of ~150 GB/day.
+            with a storage rate of ~50 GB/day.
             <a class="btn btn-danger" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/">
             Pando Archive Usage
             </a>
@@ -410,13 +413,13 @@
 
         <div id="tab4" class="tab-pane fade">
             <h3><i class="fa fa-calendar-alt"></i> What days are available to download?</h3>
-            <p>The HRRR archive begins on 28 December 2017.  Browse the interactive
+            <p>The HRRR archive begins on 15 July 2016.  Browse the interactive
                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">web download page</a>
                for a visual sense of what data files are available each day.
             <p>We store all the operational analyses and forecast for the surface
                fields. Unfortunately, we decided the pressure field files 
                (~315 MB) are too large for us to save the forecast hours. We
-               store analyses of the experimental HRRR model.
+               store analyses of the experimental HRRR and HRRR Alaska models.
             <p> Timeline:
             <ul style="padding-left: 60px;">
                 <strike>
@@ -428,8 +431,9 @@
                 <li>2017-03-01: Moved HRRR archive from local file system to Pando storage.
                 <li>2017-06-08: Began storing all available HRRR-Alaska sfc variables.
                 </strike>
-                <li>2017-12-27: <b>Pando Failed</b>: All prior data was lost.</li>
+                <li>2017-12-27: <b>Pando Failed</b> All prior data was lost.</li>
                 <li>2017-12-28: <b>Pando Rebuilt</b>
+                <li>2017-02-26: <b>Backfilled to 2016-07-15</b> HRRRv2 data from The Climate Corporation.</b>
             </ul>
 
         </div>

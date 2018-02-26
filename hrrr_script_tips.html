@@ -332,10 +332,30 @@
             <div id="tab5" class="tab-pane fade">
                 <br>
                 <div class="panel panel-default">
-                <div class="panel-heading">How the .idx files are created</div>
-                <div class="panel-body" style="font-family:monospace">
-                wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime > hrrr.t09z.wrfsfcf17.grib2.idx
+                    <div class="panel-heading">How the .idx files are created</div>
+                    <div class="panel-body" style="font-family:monospace">
+                        wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime > hrrr.t09z.wrfsfcf17.grib2.idx
+                    </div>
                 </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">How do I get the latitude/longitude grid?</div>
+                    <div class="panel-body">
+                        <p>Latitude and longitude for every HRRR grid point is
+                        defined as part of each grib message.
+                        The values for each grid are not stored for each grid box (that would
+                        take a lot of memory), but are calculated by the wgrib2 utility
+                        with the stored projection information.
+                        
+                        <p>If you are using pygrib, you can get the variable data,
+                        latitude, and longitude like this:
+                        <span style='font-family:monospace'>value, lat, lon = grbs[1].data()</span>
+
+                        <p>For convenience and some unique applications, I
+                        created an HDF5 file that contains just the HRRR latitude
+                        and longitude grids.
+                        <a class='btn btn-info' href="https://pando-rgw01.chpc.utah.edu/hrrr/HRRR_latlon.h5">HRRR_latlon.h5</a>
+                    </div>
                 </div>
             </div>            
 
