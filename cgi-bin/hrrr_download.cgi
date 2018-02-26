@@ -93,10 +93,10 @@ print'''
 
 <div class="alert alert-warning">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <small><p>Reminder: Please register as a user before downloading data and 
-           reference this <a href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
+    <small><p>Please <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a> as a user before downloading data and 
+           reference this <a class='alert-link' href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
            <b>paper</b> <i class="fa fa-book" ></i></a> and this
-           <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
+           <a class='alert-link' href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
            <b>data</b> <i class="fa fa-database" ></i></a>.
     </small>
 </div> 
@@ -376,19 +376,8 @@ print '''
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <br>
 
-
-<div class='well well-sm' style="padding-left:10px;padding-right:10px;margin-bottom:-20">
-    <div class='container'>
-        <h3>Citation Details</h3>
-        <p><i class="fa fa-fw fa-database" aria-hidden="true"></i> HRRR archive data:
-        <p style='padding-left:55px'> doi: <a href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">10.7278/S5JQ0Z5B</a>
-        <p><i class="fa fa-fw fa-book" aria-hidden="true"></i> Journal article describing how the archive is built:
-        <p style="padding-left:55px"><i>Blaylock B., J. Horel and S. Liston, 2017: Cloud Archiving and
-            Data Mining of High Resolution Rapid Refresh Model Output. 
-            Computers and Geosciences. Accepted.
-            <a herf="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">https://doi.org/10.1016/j.cageo.2017.08.005</a></i>
-    </div>
-</div>
+<script src='./js/climate_acknowledgement.js'></script>
+<script src='./js/pando_citation.js'></script>
 
 <script src="js/site/siteclose.js"></script>
 </body>
