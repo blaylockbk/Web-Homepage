@@ -4,8 +4,8 @@ document.write('\
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\
     <img src="./images/happy.png" align=left style="padding-right:0px; width:75px">\
     <div style="padding-left:80px"><big>\
-        <p>The Pando archive system has been rebuilt with data starting December 28, 2017.\
-        We are working with a private company to potentially recover HRRR runs from 2016-2017, so check back later.\
+        <p>The Pando archive system was rebuilt with data starting 28 December 2017.\
+        We are working with a private company to recover HRRR runs beginning 15 July 2016, so check back soon.\
         <br><a class="alert-link" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/Pando_Failure.html">\
             More Details on the Pando archive failure</a>\
         </big></div>\
