@@ -266,7 +266,7 @@ plt.title('Valid: %s' % (DATE+timedelta(hours=fxx)).strftime('%Y-%m-%d %H:%M UTC
 # =============================================================================
 
 
-if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode:
+if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode:
     # Get data
     H_u = get_hrrr_variable(DATE, 'UGRD:10 m',
                             model=model, fxx=fxx,
@@ -297,7 +297,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         cb = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
         cb.set_label(r'10 m Wind Speed (ms$\mathregular{^{-1}}$)')
     
-    if '10mWind_Barb' in plotcode:
+    if '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode:
         # For small domain plots, trimming the edges significantly reduces barb plotting time
         if barb_thin < 20:
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
@@ -309,16 +309,27 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
             Cgridlat = gridlat
             Cgridlon = gridlon
 
-        # Add to plot
         thin = barb_thin
-        m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
-                zorder=200, length=5.5,
-                barb_increments={'half':2.5, 'full':5,'flag':25},
-                latlon=True)
+        # Add to plot
+        if '10mWind_Barb' in plotcode:
+            m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                    H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                    zorder=200, length=5.5,
+                    barb_increments={'half':2.5, 'full':5,'flag':25},
+                    latlon=True)
+        if '10mWind_Quiver' in plotcode:
+            Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         zorder=350,
+                         latlon=True)
+    
+            qk = plt.quiverkey(Q, .92, 0.07, 10, r'10 m s$^{-1}$',
+                            labelpos='S',
+                            coordinates='axes',
+                            color='darkgreen')
+            qk.text.set_backgroundcolor('w')
 
-
-if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' in plotcode:
+if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # Get data
     H_u = get_hrrr_variable(DATE, 'UGRD:80 m',
                             model=model, fxx=fxx,
@@ -349,7 +360,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
         cb = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
         cb.set_label(r'10 m Wind Speed (ms$\mathregular{^{-1}}$)')
     
-    if '80mWind_Barb' in plotcode:
+    if '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # For small domain plots, trimming the edges significantly reduces barb plotting time
         if barb_thin < 20:
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
@@ -363,11 +374,24 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
 
         # Add to plot
         thin = barb_thin
-        m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
-                zorder=200, length=5.5, color='darkred',
-                barb_increments={'half':2.5, 'full':5,'flag':25},
-                latlon=True)
+        if '80mWind_Barb' in plotcode:
+            m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                    H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                    zorder=200, length=5.5, color='darkred',
+                    barb_increments={'half':2.5, 'full':5,'flag':25},
+                    latlon=True)
+        if '80mWind_Quiver' in plotcode:
+            Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         zorder=350,
+                         color='darkred',
+                         latlon=True)
+    
+            qk = plt.quiverkey(Q, .92, 0.07, 10, r'10 m s$^{-1}$',
+                            labelpos='S',
+                            coordinates='axes',
+                            color='darkgreen')
+            qk.text.set_backgroundcolor('w')
 
     
 
@@ -532,7 +556,7 @@ if '500HGT_Contour' in plotcode:
     plt.clabel(CS, inline=1, fmt='%2.f')
 
 
-if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in plotcode or '500Conv_Fill' in plotcode:
+if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in plotcode or '500Conv_Fill' in plotcode or '500Wind_Quiver' in plotcode:
     H_u = get_hrrr_variable(DATE, 'UGRD:500 mb',
                             model=model, fxx=fxx,
                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
@@ -580,7 +604,7 @@ if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in
             cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
             cb.set_label(r'500 mb Convergence (s$\mathregular{^{-1}}$)')
 
-    if '500Wind_Barb' in plotcode:        
+    if '500Wind_Barb' in plotcode or '500Wind_Quiver' in plotcode:        
         # For small domain plots, trimming the edges significantly reduces barb plotting time
         if barb_thin < 20:
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
@@ -592,11 +616,24 @@ if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in
             Cgridlat = gridlat
             Cgridlon = gridlon
         thin = barb_thin
-        m.barbs(Cgridlon[::thin, ::thin], Cgridlat[::thin, ::thin], H_u['value'][::thin, ::thin], H_v['value'][::thin, ::thin],
-                zorder=200, length=6, color='navy',
-                barb_increments={'half':2.5, 'full':5,'flag':25},
-                latlon=True)
-        #plt.ylabel(r'Barbs: half=2.5, full=5, flag=25 (ms$\mathregular{^{-1}}$)')
+        if '500Wind_Barb' in plotcode:
+            m.barbs(Cgridlon[::thin, ::thin], Cgridlat[::thin, ::thin], H_u['value'][::thin, ::thin], H_v['value'][::thin, ::thin],
+                    zorder=200, length=6, color='navy',
+                    barb_increments={'half':2.5, 'full':5,'flag':25},
+                    latlon=True)
+            #plt.ylabel(r'Barbs: half=2.5, full=5, flag=25 (ms$\mathregular{^{-1}}$)')
+        if '500Wind_Quiver' in plotcode:
+            Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         zorder=350,
+                         color='navy',
+                         latlon=True)
+    
+            qk = plt.quiverkey(Q, .92, 0.07, 30, r'30 m s$\mathregular{^{-1}}$',
+                            labelpos='S',
+                            coordinates='axes',
+                            color='darkgreen')
+            qk.text.set_backgroundcolor('w')
 
 if 'MSLP_Contour' in plotcode or 'MSLP_Fill' in plotcode:
     H = get_hrrr_variable(DATE, 'MSLMA:mean sea level',

@@ -193,37 +193,56 @@
     <div class="input-group" data-toggle="tooltip" title="Hold ctrl to select multiple layers">
             <span class="input-group-addon"><i class="fa fa-map-signs fa-fw"></i></span>
             <select multiple class="form-control" id="plotcode" size=8>
-                <option selected value='10mWind_Fill'>10 m Wind: Fill</option>
-                <option value='10mWind_Shade'>10 m Wind: High Winds</option>
-                <option value='10mWind_Barb'>10 m Wind: Barbs</option>
-                <option value='80mWind_Fill'>80 m Wind: Fill</option>
-                <option value='80mWind_Shade'>80 m Wind: High Winds</option>
-                <option value='80mWind_Barb'>80 m Wind: Barbs</option>
-                <option value='Gust_Hatch'>Surface Gust: Hatch</option>
-                <option value='dBZ_Fill'>Radar Simulated: Fill</option>
-                <option value='dBZ_Contour'>Radar Simulated: Contour</option>
-                <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
-                <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
-                <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
-                <option value='CAPE_Fill'>CAPE Surface: Fill</option>
-                <option value='CIN_Fill'>CIN Surface: Fill</option>
-                <option value='700Temp_Fill'>700 mb Temperature: Fill</option>
-                <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
-                <option value='500HGT_Contour'>500 mb Height: Contour</option>
-                <option value='500Vort_Fill'>500 mb Vorticity: Fill</option>
-                <option value='500Conv_Fill'>500 mb Convergence: Fill</option>
-                <option value='500Wind_Fill'>500 mb Wind: Fill</option>
-                <option value='500Wind_Barb'>500 mb Wind: Barb</option>
-                <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
-                <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
-                <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
-                <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
-                <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
-                <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
-                <option value='SnowCover_Fill'>Snow Cover: Fill</option>
-                <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
-                <option value='RedFlag_Contour'>Red Flag Criteria: Contour</option>
-                <option value='RedFlagPot_Fill'>Red Flag Potential: Fill</option>
+                <optgroup label="Near Surface Winds">
+                    <option selected value='10mWind_Fill'>10 m Wind: Fill</option>
+                    <option value='10mWind_Shade'>10 m Wind: High Winds</option>
+                    <option value='10mWind_Barb'>10 m Wind: Barbs</option>
+                    <option value='10mWind_Quiver'>10 m Wind: Quiver</option>
+                    <option value='80mWind_Fill'>80 m Wind: Fill</option>
+                    <option value='80mWind_Shade'>80 m Wind: High Winds</option>
+                    <option value='80mWind_Barb'>80 m Wind: Barbs</option>
+                    <option value='80mWind_Quiver'>80 m Wind: Quiver</option>
+                    <option value='Gust_Hatch'>Surface Gust: Hatch</option>
+                </optgroup>
+                <optgroup label="Reflectivity">
+                    <option value='dBZ_Fill'>Radar Simulated: Fill</option>
+                    <option value='dBZ_Contour'>Radar Simulated: Contour</option>
+                </optgroup>
+                <optgroup label='Surface Level'>
+                    <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
+                    <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
+                    <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
+                    <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
+                    <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
+                    <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
+                    <option value='SnowCover_Fill'>Snow Cover: Fill</option>
+                </optgroup>
+                <optgroup label='Stability'>
+                    <option value='CAPE_Fill'>CAPE Surface: Fill</option>
+                    <option value='CIN_Fill'>CIN Surface: Fill</option>
+                </optgroup>
+                <optgroup label='700 mb'>
+                    <option value='700Temp_Fill'>700 mb Temperature: Fill</option>
+                    <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
+                </optgroup>
+                <optgroup label='500 mb'>
+                    <option value='500HGT_Contour'>500 mb Height: Contour</option>
+                    <option value='500Vort_Fill'>500 mb Vorticity: Fill</option>
+                    <option value='500Conv_Fill'>500 mb Convergence: Fill</option>
+                    <option value='500Wind_Fill'>500 mb Wind: Fill</option>
+                    <option value='500Wind_Barb'>500 mb Wind: Barb</option>
+                    <option value='500Wind_Quiver'>500 mb Wind: Quiver</option>
+                </optgroup>
+                <optgroup label='Seal Level'>
+                    <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
+                    <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
+                    <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                </optgroup>
+                <optgroup label='Red Flag'>
+                    <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
+                    <option value='RedFlag_Contour'>Red Flag Criteria: Contour</option>
+                    <option value='RedFlagPot_Fill'>Red Flag Potential: Fill</option>
+                </optgroup>
             </select>
     </div>
    
@@ -324,11 +343,12 @@
     </a>
     <br>
     <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
-    <p><a data-toggle="modal" data-target="#myModal">Landuse Legend</a>
+    <p><a data-toggle="modal" data-target="#LUmodal">Landuse Legend</a>
+    <p><a data-toggle="modal" data-target="#RFmodal">Red Flag Legend</a>
 
     <p><a href="#" id='dwnldGRIB2' class="btn btn-default" role="button"><i class="fa fa-download"></i> GRIB2</a>
 
-    <!-- Accordian Advanced Options-->
+    <!-- Accordion Advanced Options-->
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -362,8 +382,8 @@
 </center>
 <br>
 
-<!-- Landuse Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<!-- Landuse Legend Modal -->
+<div class="modal fade" id="LUmodal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -378,7 +398,28 @@
       
     </div>
   </div>
-<!-- end landuse Modal -->
+<!-- end landuse legend Modal -->
+
+<!-- Red Flag Legend Modal -->
+<div class="modal fade" id="RFmodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <center>
+              <img src="./images/red_flag_criteria.png">
+              <img src="./images/red_flag_potential.png">
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end Red Flag legend Modal -->
 
 <script>
 $(document).ready(function(){
