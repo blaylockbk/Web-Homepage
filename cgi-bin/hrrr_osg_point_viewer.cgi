@@ -83,7 +83,7 @@ AFXX = '00';
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/h'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -95,7 +95,7 @@ function change_pic_h(HXX){
 function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/2018-02-18_'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/OSG/area_current_HRRR/'''+stn+'/'+variable+'''/h'+hour+'_f'+fxx+'.png';
 		document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -194,9 +194,8 @@ flist = os.listdir(PATH)
 flist = np.array(flist)
 flist = np.sort(flist)
 
-hours = np.array([int(f.split('_')[1][1:]) for f in flist])
-fxxs = np.array([int(f.split('_')[2][1:3]) for f in flist])
-valid = np.unique(np.array([f[0:14] for f in flist]))
+hours = np.array([int(f.split('_')[0][1:]) for f in flist])
+fxxs = np.array([int(f.split('_')[1][1:3]) for f in flist])
 
 
 # Text on the download button
