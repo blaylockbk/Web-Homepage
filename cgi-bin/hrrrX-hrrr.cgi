@@ -129,12 +129,7 @@ comparison between the HRRR and HRRR-X.
 Note: If the requested date was not plotted, there was an error getting
 it's data from the archive. There may not be model data for that time.
 </div>
-<div class='alert alert-info'>
-Because of timeout issues, I can't show the CONUS, west, or east domains
-on this page. You can look at those domains. Just right click the 
-image and copy URL, paste URL in a new browser window, 
-and change the 'domain' argument
-to 'CONUS', 'west', or 'east' i.e. domain=west.
+
 </div>
 
 
@@ -326,12 +321,11 @@ to 'CONUS', 'west', or 'east' i.e. domain=west.
     <br>
     
     <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
-    <p><a data-toggle="modal" data-target="#LUmodal">Landuse Legend</a> | <a data-toggle="modal" data-target="#RFmodal">Red Flag Legend</a>
-
-
-    <p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Page</a>
-    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Image</a>
-
+     | <a data-toggle="modal" data-target="#LUmodal">Landuse Legend</a> 
+     | <a data-toggle="modal" data-target="#RFmodal">Red Flag Legend</a>
+     | <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Page</a>
+     | <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Plot</a>
+     | 
 
 </div><div class="col-sm-1"></div>
 </div>
