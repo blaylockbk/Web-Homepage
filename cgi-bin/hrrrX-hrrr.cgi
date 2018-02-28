@@ -52,7 +52,48 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
-<title>HRRRX versus HRRR</title>
+<title>HRRRx vs HRRR</title>
+
+<script>
+
+    function GetUserLocation(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            alert('geolocation not working for some reason. Sorry :(');
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById('location').value = position.coords.latitude.toFixed(2) + ',' + position.coords.longitude.toFixed(2);
+    }
+
+
+    function ChangeImage(){
+        /*Create HTML string for changing picture*/
+        var $loadingmsg = document.getElementById('app-loading')
+        $loadingmsg.classList.remove('hidden')
+
+        var URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr.cgi'
+        + '?valid=' + document.getElementById('validdate').value + document.getElementById('validhour').value
+        + '&location=' + document.getElementById('location').value
+        + '&plotcode=' + $('#plotcode').val()
+        + '&dsize=' + document.querySelector('input[name="dsize"]:checked').value
+
+
+        /*Set image as the new picture*/
+        document.getElementById('MapLink').href = URL;
+        var hrrrimg = document.getElementById('MapImage')
+        hrrrimg.src = URL;
+
+        /* We need to find when the image is returned (Thank you Adam Abernathy for this snippet)*/
+        var $appLoading = document.getElementById('app-loading');
+        $appLoading.classList.remove('hidden');          
+        hrrrimg.onload = function () { (this.height && this.width) ? ($appLoading.classList.add('hidden')) : (console.warn('Image load error')) }
+    }
+
+</script>
+
 </head>'''
 
 
@@ -66,308 +107,309 @@ print'''
 
 <br>
 
-      <h1 align="center"><i class="fa fa-map"></i> HRRR Map
-      <!-- Large modal (the intrusctions help button)-->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
+<h1 align="center"><i class="fa fa-map"></i> HRRRx vs HRRR Maps
+<!-- Large modal (the intrusctions help button)-->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
-      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content" style="padding:25px">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 style="font-size:22px;">Utah Experimental and Operational HRRR comparison</h4><hr>
-            <h5 align="left" style="font-size:18px;">
-            Input the date and hour (UTC) for the model run you wish to see the
-            comparison between the HRRR and HRRR-X.
-            <hr>Reasons the images couldn't be plotted
-            <ol style="paddin-left:30px">
-            <li>HRRR data isn't available. More likely that the HRRRx isn't available. Try another hour or day.
-            <li>Browser timed out
-            </ol>
-            <br><br>
-            <div class='alert alert-warning'>
-            Note: If the requested date was not plotted, there was an error getting
-            it's data from the archive. There may not be model data for that time.
-            </div>
-            <div class='alert alert-info'>
-            Because of timeout issues, I can't show the CONUS, west, or east domains
-            on this page. You can look at those domains. Just right click the 
-            image and copy URL, paste URL in a new browser window, 
-            and change the 'domain' argument
-            to 'CONUS', 'west', or 'east' i.e. domain=west.
-            </div>
-            
-
-      </div>
-      </div>
-      </div>
-      </h1>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content" style="padding:25px">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 style="font-size:22px;">Utah Experimental and Operational HRRR comparison</h4><hr>
+<h5 align="left" style="font-size:18px;">
+Input the date and hour (UTC) for the model run you wish to see the
+comparison between the HRRR and HRRR-X.
+<hr>Reasons the images couldn't be plotted
+<ol style="paddin-left:30px">
+<li>HRRR data isn't available. More likely that the HRRRx isn't available. Try another hour or day.
+<li>Browser timed out
+</ol>
+<br><br>
+<div class='alert alert-warning'>
+Note: If the requested date was not plotted, there was an error getting
+it's data from the archive. There may not be model data for that time.
+</div>
+<div class='alert alert-info'>
+Because of timeout issues, I can't show the CONUS, west, or east domains
+on this page. You can look at those domains. Just right click the 
+image and copy URL, paste URL in a new browser window, 
+and change the 'domain' argument
+to 'CONUS', 'west', or 'east' i.e. domain=west.
+</div>
 
 
-      <center>
-      <div class="row" id="content">
-      <div class=" col-md-1">
-      </div>
-      <div class=" col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker"></i> Point Forecast</a>      
-      </div>
-      <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
-      </div>
-      <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
-      </div>
-      <div class="col-md-2">
-      <a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
-      </div>
-      <div class="col-md-2">
-      <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
-      </div>
-      </div>
-      </center>
+</div>
+</div>
+</div>
+</h1>
+
+
+<center>
+<div class="row" id="content">
+<div class=" col-md-1">
+</div>
+<div class=" col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker"></i> Point Forecast</a>      
+</div>
+<div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
+</div>
+<div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
+</div>
+<div class="col-md-2">
+<a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
+</div>
+<div class="col-md-2">
+<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
+</div>
+</div>
+</center>
+
 <br>
 
-<div style="background-color:#f5f5f5; width:85%; max-width:1000px; margin-left:auto; margin-right:auto;">	
-		
-	
-       
-<div>
-<div>
-   <br>
+<div class="container">
+<div class="col-sm-offset-4 col-sm-4">
 
-<div class="contentText form-group">
+<form class="form-horizontal">
+    <div class="form-group">    
 
-<form class="form-inline" method="GET" action="cgi-bin/hrrrX-hrrr.cgi">
-	  
-<table class="center table table-responsive">
-      
-<!---Date ----------------------->	  
-      <tr>
-            <td><a title="YYYY-MM-DD">
-		      Date:</a>
-            </td>
-            <td>
-                  <input class="form-control" placeholder="YYYY-MM-DD" type="date" name="date" value="'''+date+'''">
-            </td>
-      </tr>
-<!---(date) ----------------------->	  
-
-<!---HOUR ----------------------->	  
-      <tr>
-            <td><a title="YYYY-MM-DD">
-		      Hour:</a>
-            </td>
-            <td>
-                  <select class="form-control" name="hour">'''
-# display is the variable name as it will display on the webpage
-# value is the value used in the MesoWest API call
-display = range(0,25)
-value = ['%02d' % (i) for i in display]
-
-for i in range(0,len(value)):
-   if hour == value[i]:
-      print'''<option selected="selected" value="'''+value[i]+'''">'''+str(display[i])+'''</option>'''
-   else:
-      print'''<option value="'''+value[i]+'''">'''+str(display[i])+'''</option>'''
-print''' </select>
-            </td>
-      </tr>
-<!---(Hour) ----------------------->
-
-<!---Domain ----------------------->	  
-      <tr>
-            <td><a title="YYYY-MM-DD">
-		      Domain:</a>
-            </td>
-            <td>
-                  <select class="form-control" name="domain">'''
-# display is the variable name as it will display on the webpage
-# value is the value used in the MesoWest API call
-display = ['Utah', 'Great Salt Lake', 'Utah Lake', 'Uintah Basin','West US (this will timeout)', 'CONUS (this will timeout)']
-value = ['Utah','GSL', 'UtahLake', 'Uintah', 'west', 'CONUS']
-
-for i in range(0,len(value)):
-   if domain == value[i]:
-      print'''<option selected="selected" value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-   else:
-      print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-print''' </select>
-            </td>
-      </tr>
-<!---(Domain) ----------------------->
-
-<!---SUBMIT BUTTON ----------------------->
-      <tr>
-            <td colspan=5 align="center" style="padding:10px">
-                  <input type="submit" value="Submit" class="btn btn-primary">
-            </td>
-      </tr>
-<!---(submit button) ----------------------->   
-
-</table>
-</form>
+    <div class="input-group" data-toggle="tooltip" title="Valid Date">
+        <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+        <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2016-07-15">
+    </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="Run Hour">
+            <span class="input-group-addon"><i class="far fa-clock fa-fw"></i></span>
+            <select class="form-control" id="validhour">
+                    <option value='_0000' selected >00:00 UTC</option>
+                    <option value='_0100'>01:00 UTC</option>
+                    <option value='_0200'>02:00 UTC</option>
+                    <option value='_0300'>03:00 UTC</option>
+                    <option value='_0400'>04:00 UTC</option>
+                    <option value='_0500'>05:00 UTC</option>
+                    <option value='_0600'>06:00 UTC</option>
+                    <option value='_0700'>07:00 UTC</option>
+                    <option value='_0800'>08:00 UTC</option>
+                    <option value='_0900'>09:00 UTC</option>
+                    <option value='_1000'>10:00 UTC</option>
+                    <option value='_1100'>11:00 UTC</option>
+                    <option value='_1200'>12:00 UTC</option>
+                    <option value='_1300'>13:00 UTC</option>
+                    <option value='_1400'>14:00 UTC</option>
+                    <option value='_1500'>15:00 UTC</option>
+                    <option value='_1600'>16:00 UTC</option>
+                    <option value='_1700'>17:00 UTC</option>
+                    <option value='_1800'>18:00 UTC</option>
+                    <option value='_1900'>19:00 UTC</option>
+                    <option value='_2000'>20:00 UTC</option>
+                    <option value='_2100'>21:00 UTC</option>
+                    <option value='_2200'>22:00 UTC</option>
+                    <option value='_2300'>23:00 UTC</option>
+            </select>
+    </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip" title="A MesoWest Station ID or comma separated lat,lon">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+            <div class="col-sm-8">
+                <input type="text" required class="form-control" id="location" placeholder="ex: KSLC or 40.8,-111.9">
+            </div>
+            <div class="col-sm-4">
+                <button  data-toggle="tooltip" title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
+            </div>
+    </div>
+    <br>
+    <div class="input-group" data-toggle="tooltip">
+            <span class="input-group-addon"><i class="fa fa-map-signs fa-fw"></i></span>
+            <select multiple class="form-control" id="plotcode" size=5>
+                <optgroup label='Land and Terrain'>
+                    <option selected value='LandUse'>Land Use</option>
+                    <option value='TerrainWater'>Terrain and Water</option>
+                </optgroup>
+                <optgroup label="Near Surface Winds">
+                    <option value='10mWind_Fill'>10 m Wind: Fill</option>
+                    <option value='10mWind_Shade'>10 m Wind: High Winds</option>
+                    <option value='10mWind_Barb'>10 m Wind: Barbs</option>
+                    <option value='10mWind_Quiver'>10 m Wind: Quiver</option>
+                    <option value='80mWind_Fill'>80 m Wind: Fill</option>
+                    <option value='80mWind_Shade'>80 m Wind: High Winds</option>
+                    <option value='80mWind_Barb'>80 m Wind: Barbs</option>
+                    <option value='80mWind_Quiver'>80 m Wind: Quiver</option>
+                    <option value='Gust_Hatch'>Surface Gust: Hatch</option>
+                </optgroup>
+                <optgroup label='Surface Level'>
+                    <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
+                    <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
+                    <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
+                    <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
+                    <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                <optgroup label='Reflectivity and Precipitation'>
+                    <option value='dBZ_Fill'>Radar Simulated: Fill</option>
+                    <option value='dBZ_Contour'>Radar Simulated: Contour</option>
+                </optgroup>
+                </optgroup>
+                <optgroup label='Stability'>
+                    <option value='CAPE_Fill'>CAPE Surface: Fill</option>
+                    <option value='CIN_Fill'>CIN Surface: Fill</option>
+                </optgroup>
+                <optgroup label='Seal Level'>
+                    <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
+                    <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
+                </optgroup>
+                <optgroup label='Red Flag'>
+                    <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
+                    <option value='RedFlag_Contour'>Red Flag Criteria: Contour</option>
+                    <option value='RedFlagPot_Fill'>Red Flag Potential: Fill</option>
+                </optgroup>
+            </select>
+    </div>
+   
+    <label class="control-label">Domain Size</label>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default" >
+                <input type="radio" name="dsize" value='small' > <i class="fa fa-stop fa-xs" data-toggle="tooltip" title="50 km"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='medium'> <i class="fa fa-stop fa-sm" data-toggle="tooltip" title="125km"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='large'> <i class="fa fa-stop" data-toggle="tooltip" title="500 km"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='xlarge'> <i class="fa fa-stop" data-toggle="tooltip" title="1,000 km"></i>
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="dsize" value='xxlarge'> <i class="fa fa-stop fa-lg" data-toggle="tooltip" title="2,000 km"></i>
+            </label>    
+            <label class="btn btn-default">
+                    <input type="radio" name="dsize" value='xxxlarge'> <i class="fa fa-stop fa-2x" data-toggle="tooltip" title="3,000 km"></i>
+            </label>    
+            <label class="btn btn-default active">
+                    <input type="radio" name="dsize" value='conus' checked> <i class="fa fa-globe fa-2x" data-toggle="tooltip" title="CONUS"></i>
+            </label>
+        </div>
+      </div>
+    </div>
+    
 </div>
+
+
+    <div class="form-group">        
+        <div class="col-sm-offset-3 col-sm-6">
+            <button type="button" onclick="ChangeImage();" class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
+    </div>
+  </form>
+
 </div>
-</div>
 
-<h3 align="center">'''
-
-
-# Check if the HRRR and HRRRx files exist. If not, then say so.
-
-
-print '''</h3>
-
-  <!-- Tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#tab1">Skin Temp</a></li>
-    <li><a data-toggle="tab" href="#tab2">2-m Temp</a></li>
-    <li><a data-toggle="tab" href="#tab3">2-m DWPT</a></li>
-    <li><a data-toggle="tab" href="#tab4">10-m Wind Speed</a></li>
-    <li><a data-toggle="tab" href="#tab5">Terrain and Water</a></li>
-    <li><a data-toggle="tab" href="#tab6">Vegetation</a></li>
-    <li><a data-toggle="tab" href="#tab7">Other</a></li>
-  </ul>
-
-    <div class="tab-content">
-        <div id="tab1" class="tab-pane fade in active">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_skin.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%">
-        </div>
-        
-
-        <div id="tab2" class="tab-pane fade">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_2mTemp.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%"> 
-        </div>
-
-        <div id="tab3" class="tab-pane fade">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_2mDwpt.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%">      
-        </div>
-
-        <div id="tab4" class="tab-pane fade">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_WSPD.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%">
-                        
-        </div>
-
-        <div id="tab5" class="tab-pane fade">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_Terrain.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%">             
-        </div>
-
-        <div id="tab6" class="tab-pane fade">
-            <img alt="Error: Whoops. Something is wrong."
-                        class="style1"
-                        src="cgi-bin/plot_hrrrX-hrrr_LandUse.cgi?date='''+date \
-                              +'''&hour='''+hour \
-                              +'''&domain='''+domain \
-                              +'''" width="95%">       
-        </div>
-
-        <div id="tab7" class="tab-pane fade">
-            <h3>Other variable names shared by HRRR and HRRRx file</h3>
-            <ul style="padding-left:60px">
-            '''
-var_list = ['Vertically-integrated liquid',
-'Vertically-integrated liquid',
-'Visibility',
-'Wind speed (gust)',
-'Surface pressure',
-'Total snowfall',
-'Plant canopy surface water',
-'Water equivalent of accumulated snow depth',
-'Snow cover',
-'Snow depth',
-'Potential temperature',
-'Specific humidity',
-'Relative humidity',
-'Percent frozen precipitation',
-'Precipitation rate',
-'Water equivalent of accumulated snow depth',
-'Storm surface runoff',
-'Baseflow-groundwater runoff',
-'Water equivalent of accumulated snow depth',
-'Categorical snow',
-'Categorical ice pellets',
-'Categorical freezing rain',
-'Categorical rain',
-'Surface roughness',
-'Frictional velocity',
-'Sensible heat net flux',
-'Latent heat net flux',
-'Ground heat flux',
-'Surface lifted index',
-'Precipitable water',
-'Pressure',
-'Geopotential Height',
-'Geopotential Height',
-'Pressure',
-'Geopotential Height',
-'Upward long-wave radiation flux',
-'Downward short-wave radiation flux',
-'Downward long-wave radiation flux',
-'Upward short-wave radiation flux',
-'Upward long-wave radiation flux',
-'Storm relative helicity',
-'Storm relative helicity',
-'U-component storm motion',
-'V-component storm motion',
-'Geopotential Height',
-'Relative humidity',
-'Pressure',
-'Geopotential Height',
-'Relative humidity',
-'Pressure',
-'Geopotential Height',
-'Geopotential Height',
-'Planetary boundary layer height',
-'Geopotential Height',
-'Geopotential Height',
-'Land-sea mask',
-'Sea-ice cover']
-for i in var_list:
-      print '''<li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr_other.cgi?date='''+date+'''&hour='''+hour+'''&domain='''+domain+'''&other='''+i+'''" target="_blank">'''+i+'''</a>'''
-print '''      
-            </ul>
-        </div>
-
+<div class="col-sm-12">
+    
+    <div class="row hidden" id="app-loading">
+            <div class="col-sm-12">
+                <div id="page-is-loading">
+                    <div id="loading-progress" class="progress">
+                        <div id="progress-bar" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuemin="0"
+                            aria-valuemax="100" style="width:100%">
+                            <p style="font-size:20px">Generating New Image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
+    <a id='MapLink' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
+        <img class='style1' id='MapImage' style="width:100%" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
+    </a>
+    <br>
+    
+    <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
+    <p><a data-toggle="modal" data-target="#LUmodal">Landuse Legend</a> | <a data-toggle="modal" data-target="#RFmodal">Red Flag Legend</a>
 
 
+    <p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Page</a>
+    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr.cgi" target="_blank"><i class="fab fa-github"></i> Image</a>
 
-<div class="github_link" align='right' style="padding-top:10px;padding-right:20px;">
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrrX-hrrr.cgi" target="_blank">
-                        <i class="fab fa-github fa-fw"></i>Page</a>
-                  <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_hrrrX-hrrr_WSPD.cgi" target="_blank">
-                        <i class="fab fa-github fa-fw"></i>Plot</a>
+
+</div><div class="col-sm-1"></div>
 </div>
+
+</center>
+<br>
+
+<!-- Landuse Legend Modal -->
+<div class="modal fade" id="LUmodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <center><img src="./images/landuse_legend.png"></center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end landuse legend Modal -->
+
+<!-- Red Flag Legend Modal -->
+<div class="modal fade" id="RFmodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <center>
+              <img src="./images/red_flag_criteria.png">
+              <img src="./images/red_flag_potential.png">
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end Red Flag legend Modal -->
+
 </div>
+
+
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <br>
 </div>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script>
+    var today = new Date();
+    var tomorrow
+    var dd = today.getDate();
+    var dd1 = today.getDate()+1;
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        }
+    today = yyyy+'-'+mm+'-'+dd;
+    tomorrow = yyyy+'-'+mm+'-'+dd1;
+    document.getElementById("validdate").setAttribute("max", tomorrow);
+    document.getElementById("validdate").setAttribute("value", today);
+</script>
 
 <script src="js/site/siteclose.js"></script>
 </body>

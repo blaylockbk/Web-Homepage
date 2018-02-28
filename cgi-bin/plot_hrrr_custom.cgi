@@ -45,6 +45,7 @@ from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap
 from BB_downloads.HRRR_S3 import get_hrrr_variable
 from BB_MesoWest.MesoWest_STNinfo import get_station_info
 from BB_wx_calcs.wind import wind_uv_to_spd
+from BB_wx_calcs.humidity import Tempdwpt_to_RH
 from BB_data.grid_manager import pluck_point_new
 
 import cgi
@@ -134,7 +135,7 @@ except:
 DATE = DATE - timedelta(hours=fxx)
 
 # Preload the latitude and longitude grid
-latlonpath = '/uufs/chpc.utah.edu/common/home/horel-group/archive/HRRR/oper_HRRR_latlon.h5'
+latlonpath = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/HRRR_latlon.h5'
 latlonh5 = h5py.File(latlonpath, 'r')
 gridlat = latlonh5['latitude'][:]
 gridlon = latlonh5['longitude'][:]
@@ -393,17 +394,6 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                             color='darkgreen')
             qk.text.set_backgroundcolor('w')
 
-    
-
-    if 'Fill80mWind' in plotcode:
-        m.pcolormesh(gridlon, gridlat, spd,
-                     latlon=True,
-                     cmap='plasma_r',
-                     vmin=0,
-                     alpha=alpha)
-        cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cb.set_label(r'80 m Wind Speed (m s$\mathregular{^{-1}}$)')
-
 
 if 'Gust_Hatch' in plotcode:
     H_gust = get_hrrr_variable(DATE, 'GUST:surface',
@@ -484,7 +474,7 @@ if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode:
                        alpha=alpha,
                        zorder=3, latlon=True)
         cbT = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
-        cbT.set_label('2m Temperature (C)')
+        cbT.set_label('2 m Temperature (C)')
     # Add freezing contour to plot
     if '2mTemp_Freeze' in plotcode:
         m.contour(gridlon, gridlat, TMP,
@@ -501,14 +491,24 @@ if '2mRH_Fill' in plotcode:
                                  model=model, fxx=fxx,
                                  outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
                                  verbose=False, value_only=True)
-
+        ''' RH Calculated
+        H_DPT = get_hrrr_variable(DATE, 'DPT:2 m',
+                                    model=model, fxx=fxx,
+                                    outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                                    verbose=False, value_only=True)
+        H_TMP = get_hrrr_variable(DATE, 'TMP:2 m',
+                                model=model, fxx=fxx,
+                                outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                                verbose=False, value_only=True)
+        H_rh = Tempdwpt_to_RH(H_TMP['value']-273.15, H_DPT['value']-273.15)
+        '''
         # Add fill to plot
         m.pcolormesh(gridlon, gridlat, H_RH['value'], cmap="BrBG",
                      vmin=0, vmax=100,
                      zorder=3,
                      latlon=True)
         cbT = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cbT.set_label('2m Relative Humidity (%)')
+        cbT.set_label('2 m Relative Humidity (%)')
 
     except:
         print "!! Some errors getting the RH value."
@@ -539,6 +539,26 @@ if '700Temp_Fill' in plotcode or '700Temp_-12c' in plotcode:
                   levels=[-12],
                   latlon=True,
                   zorder=400)
+
+if '700RH_Fill' in plotcode:
+    # Get Data and calculate RH from temperature and dew point
+    H_DPT = get_hrrr_variable(DATE, 'DPT:700 mb',
+                              model=model, fxx=fxx,
+                              outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                              verbose=False, value_only=True)
+    H_TMP = get_hrrr_variable(DATE, 'TMP:700 mb',
+                              model=model, fxx=fxx,
+                              outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                              verbose=False, value_only=True)
+    H_rh = Tempdwpt_to_RH(H_TMP['value']-273.15, H_DPT['value']-273.15)
+    
+    # Add fill to plot
+    m.pcolormesh(gridlon, gridlat, H_rh, cmap="BrBG",
+                 vmin=0, vmax=100,
+                 zorder=3,
+                 latlon=True)
+    cbT = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+    cbT.set_label('700 mb Relative Humidity (%)')
 
 
 if '500HGT_Contour' in plotcode:

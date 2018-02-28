@@ -53,7 +53,7 @@ print "Content-Type: image/png\n"
 form = cgi.FieldStorage()	# CGI function takes in web arguments
 
 # The subset indecies for the HRRR domain.
-# Oder is xmin, xmax, ymin, ymax
+# Order is xmin, xmax, ymin, ymax
 subset = {'Utah':[470,725,391,603],
           'GSL':[630,697,453,511],
           'UtahLake':[611,635,486,505],

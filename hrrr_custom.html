@@ -122,7 +122,7 @@
 
     <div class="input-group" data-toggle="tooltip" title="Valid Date">
             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
-            <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2015-04-18">
+            <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2016-07-15">
     </div>
     <br>
     <div class="input-group" data-toggle="tooltip" title="Valid Hour">
@@ -204,18 +204,19 @@
                     <option value='80mWind_Quiver'>80 m Wind: Quiver</option>
                     <option value='Gust_Hatch'>Surface Gust: Hatch</option>
                 </optgroup>
-                <optgroup label="Reflectivity">
-                    <option value='dBZ_Fill'>Radar Simulated: Fill</option>
-                    <option value='dBZ_Contour'>Radar Simulated: Contour</option>
-                </optgroup>
                 <optgroup label='Surface Level'>
                     <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
                     <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
                     <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
                     <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
+                    <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                <optgroup label='Reflectivity and Precipitation'>
+                    <option value='dBZ_Fill'>Radar Simulated: Fill</option>
+                    <option value='dBZ_Contour'>Radar Simulated: Contour</option>
                     <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
                     <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
                     <option value='SnowCover_Fill'>Snow Cover: Fill</option>
+                </optgroup>
                 </optgroup>
                 <optgroup label='Stability'>
                     <option value='CAPE_Fill'>CAPE Surface: Fill</option>
@@ -224,6 +225,7 @@
                 <optgroup label='700 mb'>
                     <option value='700Temp_Fill'>700 mb Temperature: Fill</option>
                     <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
+                    <option value='700RH_Fill'>700 mb RH: Fill</option>
                 </optgroup>
                 <optgroup label='500 mb'>
                     <option value='500HGT_Contour'>500 mb Height: Contour</option>
@@ -236,7 +238,6 @@
                 <optgroup label='Seal Level'>
                     <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
                     <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
-                    <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
                 </optgroup>
                 <optgroup label='Red Flag'>
                     <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
