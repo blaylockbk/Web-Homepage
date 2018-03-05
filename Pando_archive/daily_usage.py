@@ -44,7 +44,7 @@ mpl.rcParams['savefig.dpi'] = 100
 allocation = 60 * 1e3
 
 # Today's Date
-DATE = date.today()
+DATE = datetime.utcnow()
 #------------------------------------------------------------------------------
 
 rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone'
@@ -55,20 +55,23 @@ buckets = ['GOES16', 'hrrr', 'hrrrX', 'hrrrak']
 names = ['GOES16', 'hrrr', 'hrrrX', 'hrrrAK']
 for b in buckets:
     outSize = subprocess.check_output(rclone+' size horelS3:%s/' % b, shell=True)
+    print '-------'
+    print b
     print outSize
     sSIZE = outSize.index('(')+1
     eSIZE = outSize.index(' Bytes)')
     Bytes = outSize[sSIZE:eSIZE]
     GB = int(Bytes) * 1e-9
-    print b, GB
+    print '%s: %s GB' % (b, GB)
+    print '-------'
     sizes[b]=GB
 
 # Create a new line for the Pando_Space.csv file
 new_line = '%s,%.2f,%.2f,%.2f,%.2f\n' % (DATE.strftime('%Y-%m-%d'),
-                                                   sizes['GOES16'],
-                                                   sizes['hrrr'],
-                                                   sizes['hrrrX'],
-                                                   sizes['hrrrak'])
+                                         sizes['GOES16'],
+                                         sizes['hrrr'],
+                                         sizes['hrrrX'],
+                                         sizes['hrrrak'])
 
 # Append to file
 with open("Pando_Space.csv", "a") as myfile:
@@ -103,7 +106,7 @@ total_today   = data['GOES16'][-1] + data['hrrr'][-1] + data['hrrrX'][-1] + data
 total_yesterday = data['GOES16'][-2] + data['hrrr'][-2] + data['hrrrX'][-2] + data['hrrrAK'][-2]
 
 one_day_usage = total_today-total_yesterday
-days_till_full = int(allocation/one_day_usage)
+days_till_full = int((allocation-total_today)/one_day_usage)
 
 date_full = DATE+timedelta(days=days_till_full)
 
@@ -114,11 +117,22 @@ day_sizes = {}
 for m in models:
   day_sizes[m] = {}
   for f in fields:
+      Bytes = 0
+      GB = 0
+      print '\n------'
+      print m, f
       outSize = subprocess.check_output(rclone+' size horelS3:%s/%s/%s/' % (m, f, DATE.strftime('%Y%m%d')), shell=True)
-      sSIZE = outSize.index('(')+1
+      sSIZE = outSize.index(' (')+2
       eSIZE = outSize.index(' Bytes)')
-      size = outSize[sSIZE:eSIZE]
-      day_sizes[m][f] = int(size) * 1e-9
+      Bytes = outSize[sSIZE:eSIZE]
+      GB = int(Bytes) * 1e-9
+      day_sizes[m][f] = GB
+      print outSize
+      print 'Bytes', Bytes
+      print 'GB', GB
+      print '------'
+
+
 
 ## --- Create HTML Page -------------------------------------------------------
 html = '''
