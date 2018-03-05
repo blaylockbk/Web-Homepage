@@ -47,15 +47,17 @@ allocation = 60 * 1e3
 DATE = date.today()
 #------------------------------------------------------------------------------
 
+rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone'
+
 ## --- Get size of each bucket (in GB) ----------------------------------------
 sizes = {}
 buckets = ['GOES16', 'hrrr', 'hrrrX', 'hrrrak']
 names = ['GOES16', 'hrrr', 'hrrrX', 'hrrrAK']
 for b in buckets:
-    outSize = subprocess.check_output('rclone size horelS3:%s/' % b, shell=True)
+    outSize = subprocess.check_output(rclone+' size horelS3:%s/' % b, shell=True)
     print outSize
     sSIZE = outSize.index('(')+1
-    eSIZE = outSize.index(' bytes)')
+    eSIZE = outSize.index(' Bytes)')
     Bytes = outSize[sSIZE:eSIZE]
     GB = int(Bytes) * 1e-9
     print b, GB
@@ -112,9 +114,9 @@ day_sizes = {}
 for m in models:
   day_sizes[m] = {}
   for f in fields:
-      outSize = subprocess.check_output('rclone size horelS3:%s/%s/%s/' % (m, f, DATE.strftime('%Y%m%d')), shell=True)
+      outSize = subprocess.check_output(rclone+' size horelS3:%s/%s/%s/' % (m, f, DATE.strftime('%Y%m%d')), shell=True)
       sSIZE = outSize.index('(')+1
-      eSIZE = outSize.index(' bytes)')
+      eSIZE = outSize.index(' Bytes)')
       size = outSize[sSIZE:eSIZE]
       day_sizes[m][f] = int(size) * 1e-9
 
