@@ -241,6 +241,10 @@ it's data from the archive. There may not be model data for that time.
                 <optgroup label='Reflectivity and Precipitation'>
                     <option value='dBZ_Fill'>Radar Simulated: Fill</option>
                     <option value='dBZ_Contour'>Radar Simulated: Contour</option>
+                    <option value='dBZ20_Contour'>Radar Simulated: Contour 20 dBZ</option>
+                    <option value='dBZ30_Contour'>Radar Simulated: Contour 30 dBZ</option>
+                    <option value='dBZ40_Contour'>Radar Simulated: Contour 40 dBZ</option>
+                    <option value='SnowCover_Fill'>Snow Cover: Fill</option>
                 </optgroup>
                 </optgroup>
                 <optgroup label='Stability'>

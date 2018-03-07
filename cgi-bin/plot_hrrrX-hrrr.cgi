@@ -440,7 +440,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                      vmax=vmax, vmin=vmin,
                      alpha=alpha)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cb.set_label(r'10 m Wind Speed (m s$\mathregular{^{-1}}$)')
+        cb.set_label(r'80 m Wind Speed (m s$\mathregular{^{-1}}$)')
         plt.sca(ax2)
         m.pcolormesh(gridlon, gridlat, xspd,
                      latlon=True,
@@ -448,7 +448,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                      vmax=vmax, vmin=vmin,
                      alpha=alpha)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cb.set_label(r'10 m Wind Speed (m s$\mathregular{^{-1}}$)')
+        cb.set_label(r'80 m Wind Speed (m s$\mathregular{^{-1}}$)')
         plt.sca(ax3)
         m.pcolormesh(gridlon, gridlat, xspd-spd,
                      latlon=True,
@@ -456,7 +456,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                      vmax=10, vmin=-10,
                      alpha=alpha)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-        cb.set_label(r'10 m Wind Speed (m s$\mathregular{^{-1}}$)')
+        cb.set_label(r'80 m Wind Speed (m s$\mathregular{^{-1}}$)')
 
     if '80mWind_Shade' in plotcode:
         plt.sca(ax1)
@@ -468,7 +468,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                     zorder=10,
                     latlon=True)
         cb = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
-        cb.set_label(r'10 m Wind Speed (ms$\mathregular{^{-1}}$)')
+        cb.set_label(r'80 m Wind Speed (ms$\mathregular{^{-1}}$)')
         plt.sca(ax2)
         m.contourf(gridlon, gridlat, xspd,
                     levels=[10, 15, 20, 25],
@@ -478,7 +478,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
                     zorder=10,
                     latlon=True)
         cb = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
-        cb.set_label(r'10 m Wind Speed (ms$\mathregular{^{-1}}$)')
+        cb.set_label(r'80 m Wind Speed (ms$\mathregular{^{-1}}$)')
     
     if '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # For small domain plots, trimming the edges significantly reduces barb plotting time
@@ -592,7 +592,7 @@ if 'Gust_Hatch' in plotcode:
     cb.set_label(r'$\Delta$ Surface Wind Gust (ms$\mathregular{^{-1}}$)')
 
 
-if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode:
+if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode or 'dBZ20_Contour' in plotcode or 'dBZ30_Contour' in plotcode or 'dBZ40_Contour' in plotcode:
     from BB_cmap.reflectivity_colormap import reflect_ncdc
     # Get Data
     REFC = 'REFC:entire'
@@ -630,8 +630,96 @@ if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode:
                          latlon=True,
                          zorder=50)
         plt.clabel(cREF, cREF.levels[::2], fmt='%2.0f', colors='k', fontsize=9)
-        #cb2 = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
-        #cb2.set_label('Simulated Composite Reflectivity (dBZ)')
+
+    if 'dBZ20_Contour' in plotcode:
+        plt.sca(ax1)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[20],
+                        colors='green',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('20 dBZ')
+
+        plt.sca(ax2)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[20],
+                        colors='yellowgreen',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('20 dBZ')
+
+        plt.sca(ax3)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[20],
+                        colors='green',
+                        latlon=True,
+                        zorder=50)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[20],
+                        colors='darkgreen',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('20 dBZ')
+    
+    if 'dBZ30_Contour' in plotcode:
+        plt.sca(ax1)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[30],
+                        colors='yellowgreen',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('30 dBZ')
+
+        plt.sca(ax2)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[30],
+                        colors='forestgreen',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('30 dBZ')
+
+        plt.sca(ax3)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[30],
+                        colors='yellowgreen',
+                        latlon=True,
+                        zorder=50)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[30],
+                        colors='forestgreen',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('30 dBZ')
+
+    if 'dBZ40_Contour' in plotcode:
+        plt.sca(ax1)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[40],
+                        colors='darkorange',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('40 dBZ')
+
+        plt.sca(ax2)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[40],
+                        colors='maroon',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('40 dBZ')
+
+        plt.sca(ax3)
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                        levels=[40],
+                        colors='darkorange',
+                        latlon=True,
+                        zorder=50)
+        cREF = m.contour(gridlon, gridlat, xdBZ,
+                        levels=[40],
+                        colors='maroon',
+                        latlon=True,
+                        zorder=50)
+        plt.xlabel('40 dBZ')
 
     # Add fill to plot
     if 'dBZ_Fill' in plotcode:
@@ -1084,19 +1172,19 @@ if 'RedFlag_Fill' in plotcode:
 try:
     # Must be a variable from a line in the .idx file
     hrrrVAR = form['extraVAR'].value
-    
+
     extraHRRR = get_hrrr_variable(DATE, hrrrVAR,
-                          model='hrrr', fxx=fxx,
-                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                          verbose=False, value_only=True)
+                            model='hrrr', fxx=fxx,
+                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                            verbose=False, value_only=True)
     xextraHRRR = get_hrrr_variable(DATE, hrrrVAR,
-                          model='hrrrX', fxx=fxx,
-                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                          verbose=False, value_only=True)
-    
+                            model='hrrrX', fxx=fxx,
+                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                            verbose=False, value_only=True)
+
     vmax = np.max(extraHRRR['value'])
     vmin = np.min(extraHRRR['value'])
-    
+
     plt.sca(ax1)
     m.pcolormesh(gridlon, gridlat, extraHRRR['value'],
                     cmap='viridis',
@@ -1114,7 +1202,7 @@ try:
                     zorder=3, latlon=True)
     cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
     cbS.set_label(hrrrVAR+' (units)')
-    
+
     plt.sca(ax3)
     m.pcolormesh(gridlon, gridlat, xextraHRRR['value']-extraHRRR['value'],
                     cmap='bwr',

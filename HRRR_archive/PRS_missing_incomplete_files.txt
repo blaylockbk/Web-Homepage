@@ -1,0 +1,32 @@
+Created: March 7, 2018
+Lines | File Path (prs)
+
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t01z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t02z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t03z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t04z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t05z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t06z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t07z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t08z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t09z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t10z.wrfprsf00.grib2
+Lines: 659/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20160823/hrrr.t11z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161008/hrrr.t19z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161008/hrrr.t20z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161008/hrrr.t21z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161008/hrrr.t22z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161008/hrrr.t23z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t00z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t01z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t02z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t03z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t06z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t12z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161009/hrrr.t13z.wrfprsf00.grib2
+Lines: 14/684, /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20161026/hrrr.t03z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20170228/hrrr.t16z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20170228/hrrr.t17z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20170228/hrrr.t18z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20170228/hrrr.t19z.wrfprsf00.grib2
+DOES NOT EXIST,  /uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/prs/20170829/hrrr.t01z.wrfprsf00.grib2

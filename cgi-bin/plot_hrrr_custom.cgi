@@ -419,7 +419,7 @@ if 'Gust_Hatch' in plotcode:
                 latlon=True)
 
 
-if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode:
+if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode or 'dBZ20_Contour' in plotcode or 'dBZ30_Contour' in plotcode or 'dBZ40_Contour' in plotcode:
     from BB_cmap.reflectivity_colormap import reflect_ncdc
     # Get Data
     if model == 'hrrr':
@@ -444,8 +444,25 @@ if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode:
                          latlon=True,
                          zorder=50)
         plt.clabel(cREF, cREF.levels[::2], fmt='%2.0f', colors='k', fontsize=9)
-        #cb2 = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
-        #cb2.set_label('Simulated Composite Reflectivity (dBZ)')
+
+    if 'dBZ20_Contour' in plotcode:
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                         levels=[20],
+                         colors='green',
+                         latlon=True,
+                         zorder=50)
+    if 'dBZ30_Contour' in plotcode:
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                         levels=[30],
+                         colors='yellowgreen',
+                         latlon=True,
+                         zorder=50)    
+    if 'dBZ40_Contour' in plotcode:
+        cREF = m.contour(gridlon, gridlat, dBZ,
+                         levels=[40],
+                         colors='darkorange',
+                         latlon=True,
+                         zorder=50)
 
     # Add fill to plot
     if 'dBZ_Fill' in plotcode:
