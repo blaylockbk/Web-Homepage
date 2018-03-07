@@ -26,6 +26,10 @@ try:
 except:
     variable = 'THOMAS_FIRE_2017-12-08'
 
+## Get the event date from the file name
+PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/Events_Day/%s/' % variable
+eventDate = os.listdir(PATH)[0].split('_')[0]
+
 
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
@@ -72,11 +76,32 @@ print'''<!DOCTYPE html>
 
 print '''
 <script>
-function change_picture(img_name){
+hour = '00';
+fxx = '00';
+AHXX = '00';
+AFXX = '00';
+function change_pic_h(HXX){
         /*onhover or onclick*/
-		document.getElementById("sounding_img").src = img_name;
-		document.getElementById("sounding_img").style.width= '100%';
-        document.getElementById("sounding_img").style.maxWidth= '700px';
+        hour = HXX;
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/Events_Day/'''+variable+'/'+eventDate+'''_h'+hour+'_f'+fxx+'.png';
+        document.getElementById("disp_img").src = img;
+		document.getElementById("disp_img").style.maxWidth= '100%';
+        document.getElementById("disp_img").style.maxHeight= '600px';
+        document.getElementById('H'+AHXX).classList.remove('active');
+        document.getElementById('H'+HXX).classList.add('active');
+        AHXX = HXX;
+	}
+
+function change_pic_f(FXX){
+        /*onhover or onclick*/
+        fxx = FXX;
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/Events_Day/'''+variable+'/'+eventDate+'''_h'+hour+'_f'+fxx+'.png';
+		document.getElementById("disp_img").src = img;
+		document.getElementById("disp_img").style.maxWidth= '100%';
+        document.getElementById("disp_img").style.maxHeight= '600px';
+        document.getElementById('F'+AFXX).classList.remove('active');
+        document.getElementById('F'+FXX).classList.add('active');
+        AFXX = FXX;
 	}
 </script>
 '''
@@ -149,75 +174,59 @@ flist = np.sort(flist)
 
 hours = np.array([int(f.split('_')[1][1:]) for f in flist])
 fxxs = np.array([int(f.split('_')[2][1:3]) for f in flist])
-valid = np.unique(np.array([f[0:14] for f in flist]))
+
 
 # Text on the download button
 button_display = np.array(['f%02d' % f for f in fxxs])
 
 # Expected buttons:
 expected_buttons = np.array(['f%02d' % f for f in range(0,19)])
-
+ 
 print '''
-<div class='container' style='width:95%'>
-<div class="row">
-  <div class="col-md-5">
-    <p>Black Date/Time is the valid time. Blue number is the forecast lead time.
-    '''
-
-# Loop over each hour of day
-for i in range(hours[-1]+1):
-    print '''<div class="form-group">'''
-    print '''<div class="mybtn-group">'''
-    print '''<button name="hour" type="button" class="mybtn hourbtn""><b>%s</b></button>''' % (valid[i])
-    # A list of images for the button displays
-    buttons = button_display[hours==i]
-    # A list of the file names for each button
-    imgfiles = flist[hours==i]
-    offset = 0
-    for j in range(len(expected_buttons)):
-        if expected_buttons[j] in buttons:
-            image_link = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/Events_Day/%s/%s' % (variable, imgfiles[j-offset])
-            download_link = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/Events_Day/%s/%s' % (variable, imgfiles[j-offset])
-            print '''<a href="%s" target="_blank"><button name="fxx" type="button" class="mybtn unselected" onmouseover=change_picture('%s')>%s</button></a>''' % (download_link, image_link, buttons[j-offset])
-        else:
-            print '''<button name="fxx" type="button" class="mybtn disabled">%s</button>''' % (expected_buttons[j])
-            offset += 1
-
-    print '''
-    </div></div>'''
-print '''
-  </div>
-
-  <div class="col-md-7">
-  <center><img id='sounding_img' src='./images/empty.jpg' style="width:90%"></center>
-  <hr>
-  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_events_viewer.cgi">
-        <i class="fab fa-github" aria-hidden="true"></i> Page</a>
-  <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/plot_HRRR_custom_maps_EVENT.py">
-        <i class="fab fa-github" aria-hidden="true"></i> Plot</a>
-  </div>
-  </div>
-
-</div> <!--End "row"-->
-</div> <!--End "container"-->
+<div class='container'>
 '''
 
-
+## Hour Buttons
 print '''
-<script>
-        $(document).ready(function () {
-            $('.unselected').click(function () {
-                $(this).toggleClass("selected unselected");
-            });
-            $('.selected').click(function () {
-                $(this).toggleClass("selected unselected");
-            });
-            
-            $('.btn').click(function() {
-            ;
-        });
-        });
-</script>
+<h4>Valid Hours</h4>
+
+<div class="btn-group btn-group-justified">'''
+for h in range(24):
+    print '''
+<a onmouseover=change_pic_h('%02d') id='H%02d' class="btn btn-primary">h%02d</a>''' % (h,h,h)
+print '''
+</div>
+<br>
+'''
+## Forecast Buttons
+print '''
+<h4>Forecast Lead Time</h4>
+<div class="btn-group btn-group-justified">'''
+for f in range(19):
+    print '''
+<a onmouseover=change_pic_f('%02d') id='F%02d' class="btn btn-warning">f%02d</a>''' % (f,f,f)
+print '''
+</div>
+'''
+
+print '<br>'
+print '''
+
+  <center>
+    <img id='disp_img' src='./images/empty.jpg'>
+    
+  </center>
+  <hr>
+  <div align=right>
+    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_events_viewer.cgi">
+    <i class="fab fa-github" aria-hidden="true"></i> Page</a> | 
+    <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/plot_HRRR_custom_maps_EVENT.py">
+    <i class="fab fa-github" aria-hidden="true"></i> Plot</a>
+  </div>
+  
+
+
+</div> <!--End "container"-->
 '''
 
 print '''

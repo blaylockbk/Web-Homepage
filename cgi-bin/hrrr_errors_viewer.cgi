@@ -33,53 +33,39 @@ print'''<!DOCTYPE html>
 <head>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Errors</title>
-<style>
-      .mybtn {
-          border: 1px solid #23415c;
-          color: white;
-          padding: 5px 7px;
-          margin-left: -3px;
-          margin-right: -3px;
-          margin-bottom:-10px;
-          margin-top:-10px;
-          outline: none;
-      }
-      
-      .selected {
-          background-color: #09437F;
-      }
-      
-      .unselected {
-          background-color: #2D71B7;
-      }
-      .unselected:hover{
-          background-color: #2765a3;
-      }
-      
-      .disabled {
-          background-color: #c0d5eb  ;
-          cursor: not-allowed;
-      }
-      .hourbtn {
-          background-color: #292929  ;
-          color: white;
-          cursor: not-allowed;
-      }
-  </style>
+
+<script>
+hour = '00';
+fxx = '01';
+AHXX = '00';
+AFXX = '00';
+function change_pic_h(HXX){
+        /*onhover or onclick*/
+        hour = HXX;
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h'+hour+'_f'+fxx+'.png';
+        document.getElementById("disp_img").src = img;
+		document.getElementById("disp_img").style.width= '100%';
+        document.getElementById("disp_img").style.maxWidth= '1300px';
+        document.getElementById('H'+AHXX).classList.remove('active');
+        document.getElementById('H'+HXX).classList.add('active');
+        AHXX = HXX;
+	}
+
+function change_pic_f(FXX){
+        /*onhover or onclick*/
+        fxx = FXX;
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h'+hour+'_f'+fxx+'.png';
+		document.getElementById("disp_img").src = img;
+		document.getElementById("disp_img").style.width= '100%';
+        document.getElementById("disp_img").style.maxWidth= '1300px';
+        document.getElementById('F'+AFXX).classList.remove('active');
+        document.getElementById('F'+FXX).classList.add('active');
+        AFXX = FXX;
+	}
+</script>
   
 </head>'''
 
-
-print '''
-<script>
-function change_picture(img_name){
-        /*onhover or onclick*/
-		document.getElementById("sounding_img").src = img_name;
-		document.getElementById("sounding_img").style.width= '100%';
-		document.getElementById("sounding_img").style.maxHeight= '80vh';
-	}
-</script>
-'''
 
 print '''
 <body>
@@ -137,7 +123,7 @@ print''' </select>
 PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/RMSE_mean/%s/' % variable
 
 print '<div class="container">'
-print '<h4><i class="far fa-hand-point-right"></i> Hover to view image sample. Click to go to image source. <b>'+PATH+'</b></h4>'
+print '<h4><i class="far fa-hand-point-right" aria-hidden="true"></i> Hover to view image sample. Click to go to image source. <b>'+PATH+'</b></h4>'
 print '</div>'
 
 
@@ -147,7 +133,7 @@ flist = os.listdir(PATH)
 flist = np.array(flist)
 flist = np.sort(flist)
 
-hours = np.array([int(f.split('_')[2][1:]) for f in flist])
+hours = np.array([int(f.split('_')[2][1:3]) for f in flist])
 fxxs = np.array([int(f.split('_')[3][1:3]) for f in flist])
 
 
@@ -155,67 +141,55 @@ fxxs = np.array([int(f.split('_')[3][1:3]) for f in flist])
 button_display = np.array(['f%02d' % f for f in fxxs])
 
 # Expected buttons:
-expected_buttons = np.array(['f%02d' % f for f in range(1,19)])
-
+expected_buttons = np.array(['f%02d' % f for f in range(0,19)])
+ 
 print '''
-<div class='container' style='width:95%'>
-<div class="row">
-  <div class="col-md-5">
-    <p>Black hour is hour of day. Blue number represents the forecast lead time.
-    '''
-
-# Loop over each hour of day
-for i in range(24):
-    print '''<div class="form-group">'''
-    print '''<div class="mybtn-group">'''
-    print '''<button name="hour" type="button" class="mybtn hourbtn""><b>Hour %02d</b></button>''' % (i)
-    # A list of images for the button displays
-    buttons = button_display[hours==i]
-    # A list of the file names for each button
-    imgfiles = flist[hours==i]
-    offset = 0
-    for j in range(len(expected_buttons)):
-        if expected_buttons[j] in buttons:
-            image_link = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/%s/%s' % (variable, imgfiles[j-offset])
-            download_link = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/%s/%s' % (variable, imgfiles[j-offset])
-            print '''<a href="%s" target="_blank"><button name="fxx" type="button" class="mybtn unselected" onmouseover=change_picture('%s')>%s</button></a>''' % (download_link, image_link, buttons[j-offset])
-        else:
-            print '''<button name="fxx" type="button" class="mybtn disabled">%s</button>''' % (expected_buttons[j])
-            offset += 1
-
-    print '''
-    </div></div>'''
-print '''
-  </div>
-
-  <div class="col-md-7">
-  <center><img id='sounding_img' src='./images/empty.jpg' width=90%></center>
-  <hr>
-  <div align=right><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_errors_viewer.cgi"><i class="fab fa-github"></i> Page</a>
-  <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py"><i class="fab fa-github"></i> Plot</a>
-  </div>
-  </div>
-
-</div> <!--End "row"-->
-</div> <!--End "container"-->
+<div class='container'>
 '''
 
+## Hour Buttons
+print '''
+<h4>Valid Hours</h4>
+
+<div class="btn-group btn-group-justified">'''
+for h in range(24):
+    print '''
+<a onmouseover=change_pic_h('%02d') id='H%02d' class="btn btn-primary">h%02d</a>''' % (h,h,h)
+print '''
+</div>
+<br>
+'''
+## Forecast Buttons
+print '''
+<h4>Forecast Lead Time</h4>
+<div class="btn-group btn-group-justified">'''
+for f in range(1,19):
+    print '''
+<a onmouseover=change_pic_f('%02d') id='F%02d' class="btn btn-warning">f%02d</a>''' % (f,f,f)
+print '''
+</div>
+'''
+
+print '<br>'
+
 
 print '''
-<script>
-        $(document).ready(function () {
-            $('.unselected').click(function () {
-                $(this).toggleClass("selected unselected");
-            });
-            $('.selected').click(function () {
-                $(this).toggleClass("selected unselected");
-            });
-            
-            $('.btn').click(function() {
-            ;
-        });
-        });
-</script>
+
+  <center>
+    <img id='disp_img' src='http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h00_f01.png' style="width:75%">
+    
+  </center>
+  <hr>
+  <div align=right>
+    <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_errors_viewer.cgi">
+    <i class="fab fa-github" aria-hidden="true"></i> Page</a> | 
+    <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/HRRR_average_error_over_period.py">
+    <i class="fab fa-github" aria-hidden="true"></i> Plot</a>
+  </div>
+  
+
+
+</div> <!--End "container"-->
 '''
 
 print '''

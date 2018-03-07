@@ -242,7 +242,7 @@ print '''
   <hr>
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_osg_point_viewer.cgi">
-    <i class="fab fa-github" aria-hidden="true"></i> Page</a>
+    <i class="fab fa-github" aria-hidden="true"></i> Page</a> | 
     <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/point_area_OSG_vs_current_HRRR_run">
     <i class="fab fa-github" aria-hidden="true"></i> Plot</a>
   </div>
