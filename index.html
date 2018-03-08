@@ -21,12 +21,6 @@
         
         <script src='./js/pando_status.js'></script>
         
-        <div class="alert alert-warning">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <small>If you are looking for today's HRRR output you should download directly from
-            <a class="alert-link" href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
-            </small>
-        </div>
             
         <div class="row" id="content">
             <div class=" col-md-3">
@@ -83,8 +77,8 @@
                We began archiving HRRR data in April 2015 to support
                research efforts at the University of Utah. The archive system 
                <a href"http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/Pando_Failure.html">failed</a>
-               and we lost all the data. We rebuilt the archive and began
-               storing data starting with 15 July 2016.
+               and we lost all the data. We rebuilt the archive with data beginning
+               15 July 2016.
                 
                <script src='./js/climate_acknowledgement.js'></script>
                
@@ -93,18 +87,19 @@
                this data is valuable to many others and have made the
                archive publicly accessible for research purposes. We currently 
                have 60 terabytes of storage space at our disposal. 
+
             <div class='alert alert-sm alert-info'>
                 <p><i class="fa fa-fw fa-book"></i> 
-                   Additional details about the archive have been published in
+                   Additional details about this archive are published in
                    <a class="alert-link" href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
                    Computers and Geosciences</a>
-            </div>
-            <div class='alert alert-sm alert-info'>
+            
                 <p><i class="fa fa-fw fa-database"></i>
-                   The HRRR archive has an official doi: 
+                   This HRRR archive has an official doi: 
                    <a class="alert-link" href="https://doi.org/10.7278/S5JQ0Z5B">
                    10.7278/S5JQ0Z5B</a>
             </div>
+
             <hr>
             <h3>What files are contained in the HRRR archive?</h3>
             <p>Output files, in GRIB2 format, contained in the archive include:
@@ -237,9 +232,10 @@
                from grabbing real-time forecasts because this HRRR
                archive is not meant to be used for real-time or operational
                products. 
-               <p><i>If you are looking for real-time HRRR data or from the last
-               two days, please download the files directly from
-               <a href="http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a></i>.
+               <div class="alert alert-warning">
+                    <p style="text-align:center"> If you are looking for today's HRRR output, then download directly from
+                    <a class="alert-link" href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.        
+                </div>
 
             <hr>
             <img align=right \
