@@ -259,26 +259,27 @@
                NOAA is interested in pushing the HRRR output to its 
                <a href='http://www.noaa.gov/data-community-resources'>Big Data</a> 
                partners.
-            <p>There are many opportunities with cloud computing were we "bring the
+            <p>There are many opportunities with cloud computing where we "bring the
                data to the computing." An archive on the cloud can be
                kept in one place and researchers can use cloud resources to 
                process the data, perform analyses, and initialize WRF simulations
                without downloading the model output on their own computers.
+               The benefits and complications of
+               cloud computing were discussed at the
+               <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
+               2017 Modeling Research in the Cloud</a>  Workshop.
                It would especially be beneficial if it were possible to efficiently mine the large
                dataset for a specific variable at a point or subgrid
                for a range of dates or times. Perhaps this model data needs to be stored in
                HDF5 format rather than grib2. It would be nice if there was fewer
                redundant data fields between the files. For instance, some fields 
                are available in the prs and sfc and nat files.
-               The benefits and complications of
-               cloud computing were discussed at the
-               <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
-               2017 Modeling Research in the Cloud</a>  Workshop.
-            <p>Until those challenges are overcome, I would like to make this
+               
+            <p>Until data storage challenges are overcome, I would like to make this
                HRRR archive easily available to everyone to demonstrate the
                interest and need for having such an archive.
                This archive has already proven beneficial to many researchers
-               and has served many applications.
+               and has served in many applications.
             <p>In the future, it is possible to have server-side data processing
                that generate time series or wind roses for point locations 
                in the HRRR model. My current methods for doing this are extremely 
@@ -290,11 +291,15 @@
             rapid data assimilation cycle and run the model every 15 minutes
             out to a 48 hour forecast. This would ultimately create 7 times as
             much data while providing a 96 members for time-lagged ensembles.
+            Maybe different physics parameters could be used in each 15 minute
+            model run to produce more model spread.
             My dream for a future weather prediction system is a model that is
-            <i>continuously updating</i>.
-            <p>The main concept of this archive is to create a HRRR archive in one place so
-            researchers don't have to redundantly store local archives, with the
-            purpose to provide the data you need, when you need it.
+            <i>continuously updating</i> rather than rapidly updating.
+            <hr>
+            <p>The main concept of this archive is to create a HRRR archive in
+               one place that is easily accessible so researchers don't have
+               to redundantly store local archives, with the purpose to provide
+               the data you need, when you need it.
         </div>
 
         <div id="tab2" class="tab-pane fade">
