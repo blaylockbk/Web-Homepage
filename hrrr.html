@@ -33,29 +33,21 @@
         <div id="tab1" class="tab-pane fade in active">
                 <h3>About the HRRR</h3>
                 <center><img width="350px" style="padding:5px 15px 5px 5px" src="https://rapidrefresh.noaa.gov/hrrr/hrrrcrefimage"></center>
-                <p>The High Resolution Rapid Refresh model, or HRRR, is a WRF based forecast model nested in the RUC model
-                with a resolution of 3 km and outputs every hour. More info and current forecasts can
-                be found on the <a href="http://ruc.noaa.gov/hrrr/"> homepage </a>
+                <p>The High Resolution Rapid Refresh model, or HRRR, is a WRF based forecast modeling system nested in the Rapid Refresh model
+                with a resolution of 3 km and output every hour. More info and current forecasts can
+                be found on the <a href="https://rapidrefresh.noaa.gov/hrrr/"> HRRR homepage </a>
                 and <a href="http://nomads.ncep.noaa.gov/txt_descriptions/HRRR_doc.shtml">NWS documentation</a>.
-                The MesoWest group at the University of Utah has been archiving
-                HRRR model output since April 2015 for various research purposes.
-                To access the archive, click the folling link:
+                The MesoWest group at the University of Utah archives raw
+                HRRR model output beginning with July 2016 for various research purposes.
+                To learn more about the HRRR archive and access past HRRR data, push the red button:
                 <br>
                 <center><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html' class='btn btn-lg btn-danger'>
-                HRRR Archvie at the University of Utah</a></center>
+                HRRR Archive at the University of Utah</a></center>
                 <br>
-                <p>If you are trying to initalize WRF with HRRR model output, keep reading.
-                <p>You can get the HRRR static fields, including HRRR's 
-                raw geo_em data, 
-                <a href="http://rapidrefresh.noaa.gov/HRRR/static/">here</a>.
-                <p>More info about RUC and HRRR 
-                <a href="http://ruc.noaa.gov/pdf/RAPv2-NWSwebinar-18feb2014-FINAL.pdf">here</a>
-                and <a href="http://ruc.noaa.gov/pdf/HRRRv2-RAPv3-2015.png">here</a> 
-                and <a href="http://ruc.noaa.gov/pdf/HRRR_status_July_2015.pdf">here</a>
-                and <a href="http://ruc.noaa.gov/pdf/RAPHRRR_WCOSS_2016Q1_Final.pdf">here</a>.
-
                 <img align='right' style="padding-left:15px;" src="./images/HRRR_ad.png" width="350px">
-                <p>The sequence of tabs above describes how 
+                <p>If you are trying to initialize your WRF simulation with HRRR model output, keep reading.
+                As far as we know, <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">this work</a> was the first time HRRR analyses were used to initalize WRF boundary conditions.
+                The sequence of tabs above describes how 
                 <i>"even you can initialize WRF simulations with HRRR boundary conditions"</i>
                 (said in your favorite infomercial voice).
                 
@@ -67,51 +59,40 @@
                 <p>It would be to your benefit to review ESRL's static fields 
                         (namelists, Vtable, METGRID.TBL, geo_em.do1.nc, etc.)
                         for the different versions of the HRRR and RAP models below.
-                        <center><form action="https://rapidrefresh.noaa.gov/HRRR/static/">
-                                <input style="width:100px;" class="btn btn-primary" type="submit" value="HRRR Static" />
-                                </form>   
-                                <br>      
-                                <form action="https://rapidrefresh.noaa.gov/RAP/static/">
-                                <input style="width:100px;"  class="btn btn-primary" type="submit" value="RAP Static" />
-                                </form>
-                        </center>
+                        <p style="text-align:center">
+                                <a class="btn btn-primary" href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/">HRRR Static</a>
+                                <a class="btn btn-primary" href="https://rapidrefresh.noaa.gov/RAP/static/">RAP Static</a>
+                                
                 <hr>
                 <p>External Links:
                 <ul style="padding: 10px; margin-left:30px;">
-                        <li><a href="http://ruc.noaa.gov/hrrr/">HRRR Homepage (ESRL)</a>
-                        <li><a href="http://rapidrefresh.noaa.gov/HRRR/static/"> HRRR Static Fields (i.e. Vtable, namelist.wps, METGRID.TBL, etc.)</a>
-                        <li><a href="http://ruc.noaa.gov/hrrr/namelist.wps.txt"> HRRR namelist.wps   (WPS)</a>
-                        <li><a href="http://ruc.noaa.gov/hrrr/wrf.nl.txt">       HRRR namelist.input (WRF)</a>
-                        <li><a href="http://rapidrefresh.noaa.gov/HRRRsmoke/"> HRRR Smoke</a>
-                        <li><a href="http://ruc.noaa.gov/pdf/RAPHRRR_WCOSS_2016Q1_Final.pdf">HRRR v2 Description PDF</a>
+                        <li><a href="https://rapidrefresh.noaa.gov/hrrr/">HRRR Homepage (ESRL)</a>
+                        <li><a href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/"> HRRR Static Fields (i.e. Vtable, namelist.wps, METGRID.TBL, etc.)</a>
+                        <li><a href="https://rapidrefresh.noaa.gov/internal/pdfs/HRRRv2-RAPv3-2015.png">HRRR v2 Description PDF</a>
                 </ul>
         </div>
 
         <div id="tab2" class="tab-pane fade">
                 <h3>Download HRRR data for WRF Boundary Conditions</h3>
                 <p>Step 1: Get HRRR analyses.
-                <p>You must get the full pressure field file. 
+                <p>You must get the full pressure field (prs) file. 
                 You can get the current HRRR data from <a href="http://nomads.ncep.noaa.gov/">
                 NOMADS</a>. 
-                <p>Unfortunatly, historical HRRR data isn't archived by NCEP.
-                At the University of Utah we started archiving HRRR data in April 2015.
-                Parts of this archive are avialable publically, but only for 
-                the few most current months. Please refer to the FAQ page for
+                <p>Unfortunately, historical HRRR data isn't archived by NCEP.
+                At the University of Utah we have an archive beginning July 15, 2016.
+                <p>Please refer to the FAQ page for
                 more information and for a link to download from the HRRR archive.
-
-                <center><form action="./hrrr_FAQ.html">
-                        <input class="btn btn-primary" type="submit" value="HRRR Archive FAQ" />
-                </form></center>
+                <p style="text-align:center">
+                <a class="btn btn-primary btn-lg" href="./hrrr_FAQ.html"><i class="fas fa-info-circle"></i> HRRR Archive FAQ</a>
                                 
                 <hr>
                 <p>Raw HRRR data is in GRIB2 format. You will use WRF's WPS
                 to prepare the HRRR analyses for WRF with the ungrib function.
-                <p>There are several ways read and view GRIB2 files.
+                <p>There are several ways you can read and view GRIB2 files.
                 You can print out the variable contents of the grib2 file by typing:
                 <div class="well well-sm">wgrib2 -v <i>filename.grib2</i></div>
                 <p>You can plot the grib2 data using the pygrib module. 
-                Look at an example on github <a href="https://github.com/blaylockbk/Ute_other/blob/master/pygrib_HRRR_example.py">here</a>
-                and <a href="https://github.com/blaylockbk/Ute_other/blob/master/plot_HRRR_analysis_gph_wind.py">here</a>.
+                Look at an example on github <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/demos/demo_pygrib_explore_HRRR_file.ipynb">here</a>.
                 <p>You can also view the data with ncview if you convert the GRIB2 to NetCDF
                 using <a href="http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/">wgrib2</a>.
                 <div class="well well-sm">wgrib2 filename.grib2 -netcdf filename.nc<br>ncview filename.nc</div>
@@ -121,14 +102,15 @@
                 <h3>Vtable.hrrr</h3>
                 <p>The Vtable in WPS tells ungrib how to index and extract 
                 data from the grib2 file. I created a Vtable for the HRRR data
-                you can copy and link in WPS. <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/Vtable.HRRR.bkb">Vtable.hrrr.bkb <i class="fa fa-github-square" aria-hidden="true"></i></a>.
+                you can copy and link in WPS. 
+                <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/Vtable.HRRR.bkb"><i class="fab fa-github"></i> Vtable.hrrr.bkb</a>
                 
                 <p>I created this custom Vtable following the instructions in the <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap3.htm#_Creating_and_Editing">
                 WRF User Guide</a>. I used the WPS utility <i>util/g2print.exe [name-of-grib2-file] > out.txt</i> to print out the contents and 
                 create the custom Vtable based on the output. This version is different than 
-                <a href="http://rapidrefresh.noaa.gov/HRRR/static/Vtable.HRRR.ESRL">ESRL's' verion</a>.
+                <a href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/HRRRv1/Vtable.HRRR.ESRL">ESRL's' version</a>.
                 <p>At any rate, my Vtable worked, but if you find errors or additions
-                please forward those to me <i class="fa fa-smile-o" aria-hidden="true"></i>.
+                please forward those to me <i class="fa fa-smile"></i>.
         </div>
 
         <div id="tab4" class="tab-pane fade">
@@ -139,7 +121,7 @@
                 <span style="color:green">"Found Jasper environment variables
                 for GRIB2 support..."</span>. Then configure WPS with a 
                 "grib2 friendly" option. In WRFv3.7 I use option 
-                <span style="color:red">7. Linux x86_64, PGI comiler (dmpar)</style>
+                <span style="color:red">7. Linux x86_64, PGI compiler (dmpar)</style>
                 
                 <p>If you are on the University of Utah's CHPC computers,
                 set these environments:
@@ -165,8 +147,8 @@
                 <h3>METGRID.TBL</h3>
                 <p>The METGRID Table tells METGRID how to interpolate the 
                 meteorological fields from the UNGRIBed files on the WRF friendly grid.
-                <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/METGRID.TBL.HRRR.bkb">METGRID.TBL.hrrr.bkb <i class="fa fa-github-square" aria-hidden="true"></i></a>
-                <p>If you find errors or have any suggestions please share <i class="fa fa-smile-o" aria-hidden="true"></i>.
+                <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/METGRID.TBL.HRRR.bkb"><i class="fab fa-github"></i> METGRID.TBL.hrrr.bkb</a>
+                <p>If you find errors or have any suggestions please share <i class="fa fa-smile"></i>.
         </div>
 
         <div id="tab6" class="tab-pane fade">
@@ -175,19 +157,20 @@
                 <p>Above shows the HRRR terrain height with water area colored blue. 
                 Domain 1 (d01) has a grid spacing of 3km, same as the HRRR. 
                 Domain 2 (d02) has a grid spacing of 1km.
-                <p>Download: <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.wps.bkb.txt">namelist.wps.bkb</a>
+                
+                <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/namelist.wps.bkb.txt"><i class="fab fa-github"></i> namelist.wps.bkb</a>
         </div>
 
         <div id="tab7" class="tab-pane fade">
                 <h3>namelist.input</h3>
                 <p>This is my namelist.input file used to run real.exe and wrf.exe
-                <p>Download: <a href="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/namelist.input.bkb">namelist.input.bkb</a>
+                <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/namelist.input.bkb.txt"><i class="fab fa-github"></i> namelist.input.bkb</a>
         </div>
 
         <div id="tab8" class="tab-pane fade">
                 <img align=right height="200" style="min-width:150px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/subdomain_salt-lake-valley.png">
                 <h3>Comparing HRRR 3km with WRF 1km</h3>
-                <p> My <a href="./MS.html">master's thesis</a> used thed described method
+                <p> My <a href="./MS.html">master's thesis</a> used the described method
                 to initialize WRF with the HRRR to study a lake breeze event.
                 While that project didn't explore the benefits of using HRRR
                 as boundary conditions instead of the NAM or GFS, here is one 
@@ -212,9 +195,9 @@
 
 	<br>
 	<div class="well">
-		<i class="fa fa-book fa-fw" aria-hidden="true"></i> 
+		<i class="fa fa-book fa-fw"></i> 
 		This work was used in 
-		<a style="color:#990000;font-weight:700;" href=http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1 target="_blank">Blaylock et al. 2017</a>
+		<a style="color:#990000;font-weight:700;" href='http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1' target="_blank">Blaylock et al. 2017</a>
 	</div>
 </div>
 <script src="./js/site/siteclose.js"></script>
