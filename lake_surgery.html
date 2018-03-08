@@ -75,11 +75,10 @@
 
         <div id="tab2" class="tab-pane fade">
                 <h3>shrink_GSL.py</h3>
-                <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/shrink_GSL.py">
-                <img align=right style="width:100px" src="./images/githubcode.png"></a>
                 The python script <b>shrink_GSL.py</b> trims the area around the 
                 Great Salt Lake using the lake boundary drawn by Python's Basemap.
                 We trim the area using Basemap's <b>maskoceans()</b> function. 
+                <p style="text-align:center"><a class='btn btn-default btn-lg' href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/shrink_GSL.py"><i class="fab fa-github"></i> shrink_GSL.py</a>
                 <p>Modifies the following 2D variables
                 <ul style="padding-left:60px;">
                         <li> LANDMASK
@@ -101,7 +100,7 @@
                 <p>Below shows changes made to the Land Use Index where the points that are no longer lake are changed to barren land.
                 The black lake outline is the python basemap Great Salt Lake boarder.
                 <p><img class='style1' width="98%" src="./images/LU_changes.png">
-                <p align=right>(Colormap available on GitHub)<a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/landuse_colormap.py"><img align=right width='70px' src="./images/githubcode.png"></a>
+                <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/landuse_colormap.py"><i class="fab fa-github"></i> Landuse Colormap</a>
         </div>
 
         <div id="tab3" class="tab-pane fade">
@@ -567,11 +566,10 @@ END DO
 
         <div id="tab6" class="tab-pane fade">
                 <h3>Edit WRF fields in Photoshop</h3>
-                <p><a href="https://github.com/blaylockbk/Ute_WRF/tree/master/edit_netcdf_in_photoshop"><img align=right src='./images/githubcode.png'></a>
                 I always thought it would be nice if I could load a netCDF file into photoshop and make changes
-                to fields with the paint brush and pencil tool.
-                <p>Well, now you can!, with this three step process using Python (this only works with binary arrays or categorical data sets so far).
-                <p>This is a work in progress and will get more attention upon need for doing this kind of work again.
+                to fields with the paint brush and pencil tool. Well, now you can!, with this three step process using Python (this only works with binary arrays or categorical data sets so far).
+                This is a work in progress and will get more attention upon need for doing this kind of work again.
+                <p style='text-align:center'><a class='btn btn-default btn-lg' href="https://github.com/blaylockbk/Ute_WRF/tree/master/edit_netcdf_in_photoshop"><i class="fab fa-github"></i> edit_netcdf_in_photoshop</a>
                 <ol style="padding-left:60px;">
                 <li>Convert a netCDF array into a bitmap image <a href='https://github.com/blaylockbk/Ute_WRF/blob/master/edit_netcdf_in_photoshop/netcdf_to_bitmap.py'>netcdf_to_bitmap.py</a>.
                 <li>Open image in PhotoShop and use the pencil tool to change colors (i.e. land use categories). Save image as bitmap.

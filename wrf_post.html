@@ -40,19 +40,19 @@
             and the pool function to split the code up among the working processors.
             Check out the YouTube video for a bit more description...
             <iframe width="560" height="315" src="https://www.youtube.com/embed/X2mO1O5Nuwg?rel=0" frameborder="0" allowfullscreen></iframe>
-            <p><a href="https://github.com/blaylockbk/Ute_other/blob/master/plot_TDWR_multiprocessor.py"><img align=right src="./images/githubcode.png"></a>
             As an example, check out the below (incomplete) script for an example of the parts and pieces.
             On 32 processors available on CHPC machines, I was able to make 475 plots in less than a minute
             rather than the hour it took to run in serial (one processor).
+            <p style="text-align:center"><a class='btn btn-default btn-lg' href="https://github.com/blaylockbk/Ute_other/blob/master/plot_TDWR_multiprocessor.py"><i class="fab fa-github"></i> plot_TDWR_multiprocessor.py</a>
         </div>
         
         <div id="tab3" class="tab-pane fade">
             <h3>Converting Staggered Grid Variables to Mass Points (by averaging)</h3>
-            <p><a href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/stagger_to_mass.py"><img align=right src="./images/githubcode.png"></a>
             WRF uses the <a href="http://www.openwfm.org/wiki/How_to_interpret_WRF_variables#Grid" target="_blank">Arakawa C Grid</a>.
             Mass point variables like temperature, humidity, etc. are calculated for the inside of the gird box.
             Advection variables like U and V winds are calculated on a staggered grid
             for the box edges to represent flow into and out of the box.
+            <p style="text-align:center"><a class='btn btn-default btn-lg' href="https://github.com/blaylockbk/Ute_WRF/blob/master/functions/stagger_to_mass.py"><i class="fab fa-github"></i> stagger_to_mass.py</a>
             <p> If you're dealing with WRF output data on certain model levels rather than surface variables
             you it's likely you'll need to convert the staggered grid variables to the mass points. One reason 
             you'd want to do this is if you want to make wind barbs.

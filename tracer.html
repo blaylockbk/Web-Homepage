@@ -116,7 +116,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p><b style="color:green">WRFV3/dyn_em/module_initialize_real.F</b> contains information on how to initialize WRF in the real.exe executable.
 			Making these changes will initialize our tracer plume in WRF
 			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/module_initialize_real.F">module_initialize_real.F</a> file.
-			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/module_initialize_real.F.bkb.tracer"><i class="fa fa-github" aria-hidden="true"></i> Github.</a>
+			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/module_initialize_real.F.bkb.tracer"><i class="fab fa-github"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 3372 are shown below...
 			<textarea disabled>
 ! Creates an 8x8 size grid box plume in the center of the domain
@@ -196,7 +196,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p><b style="color:green">WRFV3/dyn_em/solve_em.F</b> contains information on how to create a continuous plume.
 			Making these changes will continue the plume each timestep in WRF.
 			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/solve_em.F">solve_em.F</a> file.
-			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/solve_em.F.bkb.tracer"><i class="fa fa-github" aria-hidden="true"></i> Github.</a>
+			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/solve_em.F.bkb.tracer"><i class="fab fa-github"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 265 are shown below...
 			<p>This is very similar to the modifications made in module_initialize_real.F, but notice the KEY change from <b>its</b> to <b><i>ips</i></b> in the IF statement...
 			I think this is becuase of a change in how WRF separates the code in real and wrf    
@@ -329,7 +329,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 		<div id="tab7" class="tab-pane fade">
 			<h3>Example</h3>
 			<p>View code for creating images like the ones shown below
-				on <a href="https://github.com/blaylockbk/pyPlots_v2/tree/master/WRF-Tracers"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>.
+				on <a href="https://github.com/blaylockbk/pyPlots_v2/tree/master/WRF-Tracers"><i class="fab fa-github"></i> GitHub</a>.
 			<br><br>
 			<video id="videoclip"  style="height:50vh;" autoplay controls loop title="Time Lapse">
 			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/planeview_tracercomposite/urban_trees/NorthSouthTracers.mp4" type="video/mp4"  />
