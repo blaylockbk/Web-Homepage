@@ -60,7 +60,9 @@ var no_banner_image = ['home.html',
                        'hrrr_custom.html',
                        'ts_multistations.cgi',
                        'roses.cgi',
-                       'Pando_Failure.html'
+                       'Pando_Failure.html',
+                       'photo_viewer_fire.cgi',
+                       'photo_viewer_golf.cgi',
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {

@@ -1,3 +1,25 @@
+#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
+
+#if this doesn't work try /usr/local/bin/python
+
+
+# Brian Blaylock
+# March 9, 2018
+
+"""
+New Photo Viewer built with Python instead of PHP
+"""
+
+import os
+import cgi, cgitb
+from datetime import date, datetime, timedelta
+cgitb.enable()
+
+form = cgi.FieldStorage()
+
+
+print "Content-Type: text/html\n"
+print '''
 <!DOCTYPE html>
 <!-- 
 Photo Viewer:
@@ -17,7 +39,7 @@ http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 -->
 
 <head>
-<title>Image Viewer - Hover</title>
+<title>HRRR Fires</title>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
@@ -68,39 +90,19 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 <body>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/sitemenu.js"></script>	
 <h2 align="center"><i class="far fa-image"></i> Image Viewer
+'''
 
-<!-- PHP for getting file names in the current working directory-->
-	<?php
-        $dir =  getcwd();
+PATH = os.getcwd()
 
-        // open this directory 
-        $myDirectory = opendir($dir);
+imgs = os.listdir(PATH)
+imgs = filter(lambda x: x[-4:]=='.png' or x[-4:]=='.jpg', imgs)
+imgs.sort()
 
-        // get each entry, but only if it contains the Station Identifier
-        while($entryName = readdir($myDirectory)) {
-            if (strpos($entryName,".png") !== false or strpos($entryName,".jpg") !== false or strpos($entryName,".gif") !== false or strpos($entryName,".GIF") !== false or strpos($entryName,".PNG") !== false or strpos($entryName,".JPG") !== false){
-                $dirArray[] = $entryName;
-            }
-        }
-    
-        // close directory
-        closedir($myDirectory);
-        
-        //sort directory array by alphabetical order
-        sort($dirArray);					
-        
-        //	count elements in array
-        $indexCount	= count($dirArray);
-        //echo $dir;
-        // The server path to public_html directory
-        //echo substr($dir,0,53);
-        // The path after public_html. Will use this for creating the URL path to the image
-        echo "<small>", substr($dir,53);
-        $img_URL_dir = substr($dir,53);
-	?>
+short_path = PATH[PATH.find('public_html')+12:]
 
-</small>
+print "<small>%s</small>" % short_path
 
+print '''
 <!-- Large modal (the instructions help button)-->
 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 <br>
@@ -149,7 +151,9 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
       
 </h2>	
 
+'''
 
+'''
 <div class="container-fluid" style="width:1500px;max-width:90%">		
 
 <!-- Tabs -->
@@ -266,8 +270,10 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 <br>
 <p>Processing scripts run hourly. View code on <a href="https://github.com/blaylockbk/oper/tree/master/HRRR_fires"> <i class="fab fa-github"></i> GitHub</a>
 </div> <!--(container))-->
+'''
 
-
+print '''
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteclose.js"></script>
 </body>
 </html>
+'''

@@ -132,8 +132,8 @@ print '''
          <select class="form-control" id="station" name="station">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['WBB - William Browning Building', 'HWKC1 - Hawkeye CA', 'DBSU1 - Brian Head Burn Scar']
-value = ['WBB', 'HWKC1', 'DBSU1']
+display = ['WBB - William Browning Building', 'HWKC1 - Hawkeye CA', 'DBSU1 - Brian Head Burn Scar', 'FAKA-UNION, Florida']
+value = ['WBB', 'HWKC1', 'DBSU1', '26.022,-81.512']
 
 for i in range(0,len(value)):
    if stn == value[i]:
@@ -236,7 +236,7 @@ print '<br>'
 print '''
 
   <center>
-    <img id='disp_img' src='./images/empty.jpg' style="width:75%">
+    <img id='disp_img' src='./images/empty.jpg' style="width:75%" onclick='window.open(this.src)'>
     
   </center>
   <hr>
