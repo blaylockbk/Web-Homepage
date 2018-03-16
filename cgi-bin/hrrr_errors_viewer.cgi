@@ -42,7 +42,7 @@ AFXX = '00';
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -54,7 +54,7 @@ function change_pic_h(HXX){
 function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h'+hour+'_f'+fxx+'.png';
+        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
 		document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -133,8 +133,8 @@ flist = os.listdir(PATH)
 flist = np.array(flist)
 flist = np.sort(flist)
 
-hours = np.array([int(f.split('_')[2][1:3]) for f in flist])
-fxxs = np.array([int(f.split('_')[3][1:3]) for f in flist])
+hours = np.array([int(f.split('_')[1][1:3]) for f in flist])
+fxxs = np.array([int(f.split('_')[2][1:3]) for f in flist])
 
 
 # Text on the download button
@@ -176,7 +176,7 @@ print '<br>'
 print '''
 
   <center>
-    <img id='disp_img' src='http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_20170901-20171201_h00_f01.png' style="width:75%">
+    <img id='disp_img' onclick='window.open(this.src)' src='http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h00_f01.png' style="width:75%">
     
   </center>
   <hr>

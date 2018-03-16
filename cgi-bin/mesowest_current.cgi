@@ -183,6 +183,7 @@ print '''
 <center>
 <a class='btn btn-default' href="http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=%s">MesoWest Table</a>
 <a class='btn btn-default' href="%s">Raw Data</a>
+<p><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/mesowest_current.cgi" target="_blank"><i class="fab fa-github"></i> Page HTML code</a>
 </center>
 ''' % (STN, a['URL'])
 
