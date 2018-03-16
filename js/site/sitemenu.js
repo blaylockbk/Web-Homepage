@@ -127,6 +127,7 @@ document.write('\
                             <li><a href="./cgi-bin/hrrr_events_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Events</a></li>\
                             <li><a href="./hrrr_sounding_viewer.php "><i class="fab fa-fly"></i> HRRR Soundings</a></li>\
                             <li class="dropdown-header">MesoWest Web Tools</li>\
+                            <li><a href="./cgi-bin/mesowest_current.cgi "><i class="fas fa-clock fa-fw" ></i> MesoWest Current Conditions</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fas fa-chart-line fa-fw" ></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fas fa-chart-pie fa-fw" ></i> Rose Plots</a></li>\
                             <li><a href="./cgi-bin/stn_climo.cgi "><i class="fas fa-sun fa-fw"></i> Station Climatology</a></li>\
