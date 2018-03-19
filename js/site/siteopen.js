@@ -6,8 +6,6 @@ document.write('\
 <link href="images/wxicon.png" rel="shortcut icon" type="image/png">\
 <link href="images/wxicon.png" rel="icon"/>\
 \
-<link rel="stylesheet" href="css/brian_style.css" />\
-\
 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>\
 \
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>\
@@ -18,4 +16,7 @@ document.write('\
 \
 <script src="js/site/sorttable.js"></script>\
 <script src="js/site/mesowest_api.js"></script>\
+\
+<link rel="stylesheet" href="css/brian_style.css" />\
+\
 ');

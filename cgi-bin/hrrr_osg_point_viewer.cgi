@@ -37,40 +37,7 @@ print'''<!DOCTYPE html>
 <head>
 <script src="../js/site/siteopen.js"></script>
 <title>HRRR Percentiles</title>
-<style>
-      .mybtn {
-          border: 1px solid #23415c;
-          color: white;
-          padding: 5px 7px;
-          margin-left: -3px;
-          margin-right: -3px;
-          margin-bottom:-10px;
-          margin-top:-10px;
-          outline: none;
-      }
-      
-      .selected {
-          background-color: #09437F;
-      }
-      
-      .unselected {
-          background-color: #2D71B7;
-      }
-      .unselected:hover{
-          background-color: #2765a3;
-      }
-      
-      .disabled {
-          background-color: #c0d5eb  ;
-          cursor: not-allowed;
-      }
-      .hourbtn {
-          background-color: #292929  ;
-          color: white;
-          cursor: not-allowed;
-      }
-  </style>
-  
+ 
 </head>'''
 
 
@@ -115,7 +82,9 @@ print'''
 <div class="container">
     <h1 align="center">
         <i class="fas fa-chart-area" aria-hidden="true"></i> HRRR Percentiles
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i> Info</button>
+        <a class="btn btn-info" href="http://dev2.mesowest.net/cgalli/percentiles/radial.html?PSOURCE=PERCENTILES_HRRR"><i class="fa fa-chart-pie"></i> HRRR Percentile Roses</a>
+        <a class="btn btn-info" href="http://dev2.mesowest.net/cgalli/percentiles/radial.html?PSOURCE=PERCENTILES2"><i class="fa fa-chart-pie"></i> MesoWest Percentile Roses</a>
     </h1>
     <hr>
 </div>
