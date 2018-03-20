@@ -120,14 +120,15 @@
 
     </div>
 
-    <div class="input-group" data-toggle="tooltip" title="Valid Date">
+    <div class="input-group" title="Valid Date">
             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
             <input name="date" type="date" required style="width:100%" class="form-control btn btn-default" id="validdate" min="2016-07-15">
     </div>
     <br>
-    <div class="input-group" data-toggle="tooltip" title="Valid Hour">
+    <div class="input-group" title="Valid Hour">
             <span class="input-group-addon"><i class="far fa-clock fa-fw"></i></span>
             <select class="form-control" id="validhour">
+                <optgroup label="Valid Time">
                     <option value='_0000' selected >00:00 UTC</option>
                     <option value='_0100'>01:00 UTC</option>
                     <option value='_0200'>02:00 UTC</option>
@@ -152,12 +153,14 @@
                     <option value='_2100'>21:00 UTC</option>
                     <option value='_2200'>22:00 UTC</option>
                     <option value='_2300'>23:00 UTC</option>
+                </optgroup>    
             </select>
     </div>
     <br>
-    <div class="input-group" data-toggle="tooltip" title="Forecast Hour">
+    <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-forward fa-fw"></i></span>
             <select class="form-control" id="fxx">
+                <optgroup label="Forecast Lead Time">    
                     <option selected value='0'>f00</option>
                     <option value='1'>f01</option>
                     <option value='2'>f02</option>
@@ -177,20 +180,21 @@
                     <option value='16'>f16</option>
                     <option value='17'>f17</option>
                     <option value='18'>f18</option>
+                </optgroup>
             </select>
     </div>
     <br>
-    <div class="input-group" data-toggle="tooltip" title="A MesoWest Station ID or comma separated lat,lon">
+    <div class="input-group" title="A MesoWest Station ID or comma separated lat,lon">
             <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
             <div class="col-sm-8">
                 <input type="text" required class="form-control" id="location" placeholder="ex: KSLC or 40.8,-111.9">
             </div>
             <div class="col-sm-4">
-                <button  data-toggle="tooltip" title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
+                <button  title='Must be in CONUS' type="button" onclick="GetUserLocation();" class="btn btn-sm btn-default">My Location</button>
             </div>
     </div>
     <br>
-    <div class="input-group" data-toggle="tooltip" title="Hold ctrl to select multiple layers">
+    <div class="input-group" title="Hold ctrl to select multiple layers">
             <span class="input-group-addon"><i class="fa fa-map-signs fa-fw"></i></span>
             <select multiple class="form-control" id="plotcode" size=8>
                 <optgroup label="Near Surface Winds">
@@ -256,25 +260,25 @@
       <div class="col-sm-12">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default" >
-                <input type="radio" name="dsize" value='small' > <i class="fa fa-stop fa-xs" data-toggle="tooltip" title="50 km"></i>
+                <input type="radio" name="dsize" value='small' > <i class="fa fa-stop fa-xs" title="50 km"></i>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='medium'> <i class="fa fa-stop fa-sm" data-toggle="tooltip" title="125km"></i>
+                <input type="radio" name="dsize" value='medium'> <i class="fa fa-stop fa-sm" title="125km"></i>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='large'> <i class="fa fa-stop" data-toggle="tooltip" title="500 km"></i>
+                <input type="radio" name="dsize" value='large'> <i class="fa fa-stop" title="500 km"></i>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='xlarge'> <i class="fa fa-stop" data-toggle="tooltip" title="1,000 km"></i>
+                <input type="radio" name="dsize" value='xlarge'> <i class="fa fa-stop" title="1,000 km"></i>
             </label>
             <label class="btn btn-default">
-                <input type="radio" name="dsize" value='xxlarge'> <i class="fa fa-stop fa-lg" data-toggle="tooltip" title="2,000 km"></i>
+                <input type="radio" name="dsize" value='xxlarge'> <i class="fa fa-stop fa-lg" title="2,000 km"></i>
             </label>    
             <label class="btn btn-default">
-                    <input type="radio" name="dsize" value='xxxlarge'> <i class="fa fa-stop fa-2x" data-toggle="tooltip" title="3,000 km"></i>
+                    <input type="radio" name="dsize" value='xxxlarge'> <i class="fa fa-stop fa-2x" title="3,000 km"></i>
             </label>    
             <label class="btn btn-default active">
-                    <input type="radio" name="dsize" value='conus' checked> <i class="fa fa-globe fa-2x" data-toggle="tooltip" title="CONUS"></i>
+                    <input type="radio" name="dsize" value='conus' checked> <i class="fa fa-globe fa-2x" title="CONUS"></i>
             </label>
         </div>
       </div>
@@ -287,27 +291,27 @@
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default active">
                 <input type="radio" name="background" value='arcgis' checked>
-                <i class="fa fa-globe" data-toggle="tooltip" title="ArcGIS Shaded Relief (not for CONUS)"></i>
+                <i class="fa fa-globe" title="ArcGIS Shaded Relief (not for CONUS)"></i>
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="background" value='arcgisRoad'>
-                <i class="fa fa-road" data-toggle="tooltip" title="ArcGIS Roads (not for CONUS)"></i>
+                <i class="fa fa-road" title="ArcGIS Roads (not for CONUS)"></i>
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="background" value='arcgisSat'>
-                <img src='./images/icon_satellite.svg' width='20px' data-toggle="tooltip" title="ArcGIS Imagery (not for CONUS)">
+                <img src='./images/icon_satellite.svg' width='20px' title="ArcGIS Imagery (not for CONUS)">
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="background" value='terrain'>
-                <i class="fa fa-wifi fa-rotate-180" data-toggle="tooltip" title="Model Terrain (200m Contours)"></i>
+                <i class="fa fa-wifi fa-rotate-180" title="Model Terrain (200m Contours)"></i>
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="background" value='landuse'>
-                <i class="fa fa-tree" data-toggle="tooltip" title="Model Landuse"></i>
+                <i class="fa fa-tree" title="Model Landuse"></i>
             </label>
             <label class="btn btn-default">
                 <input type="radio" name="background" value='none'>
-                <i class="far fa-square"  data-toggle="tooltip" title='I despise background images'></i>
+                <i class="far fa-square"  title='I despise background images'></i>
             </label>
         </div>
       </div>
@@ -424,12 +428,6 @@
     </div>
   </div>
 <!-- end Red Flag legend Modal -->
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
 
 <script>
     var today = new Date();

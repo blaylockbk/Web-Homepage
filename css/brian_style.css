@@ -34,9 +34,12 @@ Brian Blaylock's extra styling
 
 html {}
 
+/*
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   }
+*/
+body {}
 
 #content {
     padding: 10 5px 1.3em;
