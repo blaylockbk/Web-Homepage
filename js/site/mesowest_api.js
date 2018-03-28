@@ -117,15 +117,15 @@ $.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
 	  
 //set up variable it will return to the HTML 
   
-  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=ukbkb&unit=0&timetype=LOCAL'>"+airTemp_6 + "&deg</a>");
-  $('#ret-tempWBB').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=wbb&unit=0&timetype=LOCAL'>"+airTemp_0 + "&deg</a>");
-  $('#ret-tempKCHO').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kpvu&unit=0&timetype=LOCAL'>"+airTemp_1 + "&deg</a>");
-  $('#ret-tempEPMU1').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=klgu&unit=0&timetype=LOCAL'>"+airTemp_2 + "&deg</a>");
-  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=cmp21&unit=0&timetype=LOCAL'>"+airTemp_8 + "&deg</a>");
-  $('#ret-tempKPVU').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=epmu1&unit=0&timetype=LOCAL'>"+airTemp_5 + "&deg</a>");
-  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kmwh&unit=0&timetype=LOCAL'>"+airTemp_7 + "&deg</a>");  
-  $('#ret-tempKMWH').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=klax&unit=0&timetype=LOCAL'>"+airTemp_3 + "&deg</a>");
-  $('#ret-tempSTG').html("<a target='new' style='color:white;text-decoration:none;' href='http://mesowest.utah.edu/cgi-bin/droman/meso_base_dyn.cgi?stn=kcho&unit=0&timetype=LOCAL'>"+airTemp_4 + "&deg</a>");
+  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UKBKB'>"+airTemp_6 + "&deg</a>");
+  $('#ret-tempWBB').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=WBB'>"+airTemp_0 + "&deg</a>");
+  $('#ret-tempKCHO').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KPVU'>"+airTemp_1 + "&deg</a>");
+  $('#ret-tempEPMU1').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KLGU'>"+airTemp_2 + "&deg</a>");
+  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=E4023'>"+airTemp_8 + "&deg</a>");
+  $('#ret-tempKPVU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=EPMU1'>"+airTemp_5 + "&deg</a>");
+  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UTORM'>"+airTemp_7 + "&deg</a>");  
+  $('#ret-tempKMWH').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KMWH'>"+airTemp_3 + "&deg</a>");
+  $('#ret-tempSTG').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=as694'>"+airTemp_4 + "&deg</a>");
                                                                                                                                     
 }); 
   setTimeout(poll, r_time); 
