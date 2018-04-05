@@ -805,6 +805,21 @@ if 'SnowCover_Fill' in plotcode:
     cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
     cbS.set_label('Snow Cover (%)')
 
+if 'PWAT_Fill' in plotcode:
+    # Get Data
+    H = get_hrrr_variable(DATE, 'PWAT:entire',
+                          model=model, fxx=fxx,
+                          outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                          verbose=False, value_only=True)
+
+    m.pcolormesh(gridlon, gridlat, H['value'],
+                    cmap="RdYlGn",
+                    alpha=alpha,
+                    vmin=0,
+                    zorder=3, latlon=True)
+    cbS = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
+    cbS.set_label(r'Vertically Integrated Liquid Water (kg m$\mathregular{^{-2}}$)')
+
 if 'CAPE_Fill' in plotcode:
     # Get Data
     H = get_hrrr_variable(DATE, 'CAPE:surface',
