@@ -38,13 +38,14 @@ print'''<!DOCTYPE html>
 hour = '00';
 fxx = '01';
 AHXX = '00';
-AFXX = '00';
+AFXX = '01';
+
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
         var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
-		document.getElementById("disp_img").style.width= '100%';
+		    document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
         document.getElementById('H'+AHXX).classList.remove('active');
         document.getElementById('H'+HXX).classList.add('active');
@@ -55,8 +56,8 @@ function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
         var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
-		document.getElementById("disp_img").src = img;
-		document.getElementById("disp_img").style.width= '100%';
+		    document.getElementById("disp_img").src = img;
+		    document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
         document.getElementById('F'+AFXX).classList.remove('active');
         document.getElementById('F'+FXX).classList.add('active');
