@@ -1,11 +1,12 @@
 /*Pando Rebuilt*/
+/*
 document.write(' \
 <div class="alert alert-info"> \
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> \
     <p>The HRRR archive on Pando was backfilled. We now have data beginning 15 July 2016. \
 </div> \
 ');
-
+*/
 
 /* Pando Failure*/
 /*

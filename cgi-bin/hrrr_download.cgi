@@ -93,7 +93,7 @@ print'''
 
 <div class="alert alert-warning">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <small><p>Please <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a> as a user before downloading data and 
+    <small><p>If you have not already, please <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a> as a user before downloading data and 
            reference this <a class='alert-link' href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
            <b>paper</b> <i class="fa fa-book" ></i></a> and this
            <a class='alert-link' href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
