@@ -80,6 +80,9 @@ hour = '00';
 fxx = '00';
 AHXX = '00';
 AFXX = '00';
+
+active_row = 'hour';
+
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
@@ -90,6 +93,7 @@ function change_pic_h(HXX){
         document.getElementById('H'+AHXX).classList.remove('active');
         document.getElementById('H'+HXX).classList.add('active');
         AHXX = HXX;
+        active_row = 'hour';
 	}
 
 function change_pic_f(FXX){
@@ -102,8 +106,13 @@ function change_pic_f(FXX){
         document.getElementById('F'+AFXX).classList.remove('active');
         document.getElementById('F'+FXX).classList.add('active');
         AFXX = FXX;
+        active_row = 'forecast';
 	}
+    
 </script>
+
+
+
 '''
 
 print '''
@@ -132,8 +141,14 @@ print '''
          <select class="form-control" id="variable" name="variable">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Thomas Fire 2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
-value = ['THOMAS_FIRE_2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
+
+event_dirs = os.listdir('/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/Events_Day/')
+
+#display = ['Thomas Fire 2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
+#value = ['THOMAS_FIRE_2017-12-08', 'EAST_cyclone_SNOWC_2018-01-04', 'EAST_cyclone_MSLP-WIND_2018-01-04', 'EAST_cyclone_REFC_2018-01-04', 'EAST_cyclone_1hPCP_2018-01-04']
+
+display = event_dirs
+value = event_dirs
 
 for i in range(0,len(value)):
    if variable == value[i]:
@@ -213,7 +228,7 @@ print '<br>'
 print '''
 
   <center>
-    <img id='disp_img' src='./images/empty.jpg'>
+    <img id='disp_img' src='./images/empty.jpg'  onclick='window.open(this.src)'>
     
   </center>
   <hr>

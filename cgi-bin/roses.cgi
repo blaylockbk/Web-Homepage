@@ -139,8 +139,8 @@ print'''
             <select class="form-control" name="rose_type">'''
 # display is the variable name as it will display on the webpage
 # value is the value used in the MesoWest API call
-display = ['Wind Speed', 'Wind Clock', 'Ozone', 'Ozone Clock', 'PM 2.5', 'PM Clock']
-value = ['wind','wind_clock', 'ozone', 'ozone_clock', 'pm_25', 'pm_clock']
+display = ['Wind Speed', 'Wind Clock', 'Gust', 'Ozone', 'Ozone Clock', 'PM 2.5', 'PM Clock']
+value = ['wind','wind_clock', 'gust', 'ozone', 'ozone_clock', 'pm_25', 'pm_clock']
 
 for i in range(0,len(value)):
    if rose_type == value[i]:

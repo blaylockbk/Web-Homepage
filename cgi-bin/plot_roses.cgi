@@ -57,6 +57,8 @@ DATE_END = datetime.strptime(end, '%Y-%m-%d %H:%M')
 # Make MesoWest query
 if 'wind' in rose_type:
     variable = 'wind_direction,wind_speed'
+if 'gust' in rose_type:
+    variable = 'wind_direction,wind_gust'
 elif 'ozone' in rose_type:
     variable = 'wind_direction,ozone_concentration'
 elif 'pm' in rose_type:
@@ -68,7 +70,7 @@ if tz != '0':
 	minus_this = int(tz) #strip off the negative
 	a['DATETIME'] = np.array([i-timedelta(hours=minus_this) for i in a['DATETIME']])
 
-if rose_type=='wind' or rose_type=='wind_clock':
+if rose_type=='wind' or rose_type=='wind_clock' or rose_type=='gust':
 	if units == 'metric':
 		unit = 'm/s'
 	elif units == 'english':
@@ -161,6 +163,41 @@ if rose_type =="wind":
 		bins = [0,4,8,12,16,20]
 	else:
 		bins = [0,2,4,6,8,10]
+
+	fig, (ax1) = plt.subplots(1,1)
+	ax = new_axes()
+	ax.bar(wd, ws, nsector = 16, normed=True, \
+				   bins = bins,
+				   opening=.95, edgecolor='w')
+
+	leg = plt.legend(loc='bottom left', bbox_to_anchor=(1.6, 0.5),prop={'size':15})
+	leg.draw_frame(False)
+
+	plt.grid(True)
+	plt.yticks(np.arange(0,105,5))
+	ax.set_yticklabels(['','','10%','', '20%','','30%','','40%','','50%'], fontsize = 15)
+	
+	if plot_max=='auto':
+		table = ax._info['table']
+		wd_freq = np.sum(table, axis=0)
+		ax.set_rmax(np.floor(max(wd_freq)/5)*5+5) #set rmax to upper number divisible by 5
+	else:
+		ax.set_rmax(plot_max)
+
+	plt.figtext(1,.8,all_text+str(len(ws)),fontname='monospace',va='top',backgroundcolor='white',fontsize=12)
+	
+	plt.savefig(sys.stdout, dpi=100, bbox_inches='tight')	# Plot standard output.
+
+if rose_type =="gust":
+	ws = a['wind_gust']
+	wd = a['wind_direction']
+
+	if units == 'english':
+		# Convert m/s to mph
+		ws = ws*2.2369
+		bins = np.arange(0,45,5)
+	else:
+		bins = np.arange(0,21,2.5)
 
 	fig, (ax1) = plt.subplots(1,1)
 	ax = new_axes()

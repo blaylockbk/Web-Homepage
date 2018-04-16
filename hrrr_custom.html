@@ -48,7 +48,7 @@
 
         /*Set image as the new picture*/
         document.getElementById('dwnldGRIB2').href = dwnldURL;
-        document.getElementById('MapLink').href = URL;
+        /*document.getElementById('MapLink').href = URL;*/
         var hrrrimg = document.getElementById('MapImage')
         hrrrimg.src = URL;
 
@@ -207,6 +207,7 @@
                     <option value='80mWind_Barb'>80 m Wind: Barbs</option>
                     <option value='80mWind_Quiver'>80 m Wind: Quiver</option>
                     <option value='Gust_Hatch'>Surface Gust: Hatch</option>
+                    <option value='10mWind_p95_fill'>10 m Wind Exceeding 95th Percentile: Fill</option>
                 </optgroup>
                 <optgroup label='Surface Level'>
                     <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
@@ -214,6 +215,8 @@
                     <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
                     <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
                     <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                    <option value='2mTemp_p95_fill'>2 m Temperature greater than 95th Percentile: Fill</option>
+                    <option value='2mTemp_p05_fill'>2 m Temperature less than 5th Percentile: Fill</option>
                 <optgroup label='Reflectivity and Precipitation'>
                     <option value='dBZ_Fill'>Radar Simulated: Fill</option>
                     <option value='dBZ_Contour'>Radar Simulated: Contour</option>
@@ -347,9 +350,10 @@
             </div>
     </div>
 
-    <a id='MapLink' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
-        <img class='style1' id='MapImage' style="width:100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
-    </a>
+
+    <img class='style1' id='MapImage' style="width:100%;max-width:700px" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' onclick='window.open(this.src)'>
+
+
     <br>
     <p>Wind Barbs (if present): half=2.5, full=5, flag=25 m s<sup>-1</sup>
     <p><a data-toggle="modal" data-target="#LUmodal">Landuse Legend</a>

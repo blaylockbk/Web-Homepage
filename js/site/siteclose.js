@@ -1,7 +1,7 @@
 document.write('\
 <br>\
 <div id="footer">\
-<p style="text-align:center; font-family:Segoe UI">\
+<p style="text-align:center">\
 This page is maintained by Brian Blaylock &copy 2018, \
  <a href="http://www.atmos.utah.edu/" style="color:#990000; text-decoration:none">Department of Atmospheric Science, University of Utah</a>. \
  <a href="https://twitter.com/blaylockbk" style="color:#990000; text-decoration:none"><big><i class="fab fa-twitter fa-fw"></i></big> </a>\

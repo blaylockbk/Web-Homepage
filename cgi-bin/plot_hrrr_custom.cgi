@@ -109,6 +109,7 @@ if dsize != 'conus':
             lon = float(lon)
         else:
             # User requested a MesoWest station
+            location = location.upper()
             stninfo = get_station_info([location])
             lat = stninfo['LAT']
             lon = stninfo['LON']
@@ -131,6 +132,7 @@ except:
 
 
 # === Some housekeeping variables =============================================
+VALIDDATE = DATE
 # Convert Valid Date to Run Date, adjusted by the forecast
 DATE = DATE - timedelta(hours=fxx)
 
@@ -166,7 +168,7 @@ else:
     elif dsize == 'medium':
         plus_minus_latlon = .75
         barb_thin = 2
-        arcgis_res = 800
+        arcgis_res = 2500
         bfr = 35
         alpha = .75
     elif dsize == 'large':
@@ -267,7 +269,7 @@ plt.title('Valid: %s' % (DATE+timedelta(hours=fxx)).strftime('%Y-%m-%d %H:%M UTC
 # =============================================================================
 
 
-if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode:
+if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode or '10mWind_p95_fill' in plotcode:
     # Get data
     H_u = get_hrrr_variable(DATE, 'UGRD:10 m',
                             model=model, fxx=fxx,
@@ -322,13 +324,32 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
             Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
                          H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
                          zorder=350,
+                         units='inches',
+                         scale=40,
                          latlon=True)
     
             qk = plt.quiverkey(Q, .92, 0.07, 10, r'10 m s$^{-1}$',
                             labelpos='S',
                             coordinates='axes',
-                            color='darkgreen')
+                            color='magenta')
             qk.text.set_backgroundcolor('w')
+    
+    if '10mWind_p95_fill' in plotcode:
+        DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/UVGRD_10_m/'
+        FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('UVGRD_10_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
+        with h5py.File(DIR+FILE, 'r') as f:
+            spd_p95 = f["p95"][:]
+        masked = spd-spd_p95
+        masked = np.ma.array(masked)
+        masked[masked < 0] = np.ma.masked
+        
+        m.pcolormesh(gridlon, gridlat, masked,
+             vmax=10, vmin=0,
+             latlon=True,
+             cmap='magma',
+             alpha=alpha)
+        cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+        cb.set_label(r'10 m Wind Speed exceeding 95th Percentile (m s$\mathregular{^{-1}}$)')
 
 if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # Get data
@@ -475,7 +496,7 @@ if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode or 'dBZ20_Contour' in plo
         cb2.set_label('Simulated Composite Reflectivity (dBZ)')
 
 
-if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode:
+if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
     # Get Data
     H_temp = get_hrrr_variable(DATE, 'TMP:2 m',
                                model=model, fxx=fxx,
@@ -499,6 +520,40 @@ if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode:
                   levels=[0],
                   zorder=400,
                   latlon=True)
+    
+    if '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
+        DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/TMP_2_m/'
+        FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('TMP_2_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
+
+        if '2mTemp_p95_fill' in plotcode:
+            with h5py.File(DIR+FILE, 'r') as f:
+                tmp_p95 = f["p95"][:]
+            masked = H_temp['value']-tmp_p95
+            masked = np.ma.array(masked)
+            masked[masked < 0] = np.ma.masked
+            
+            m.pcolormesh(gridlon, gridlat, masked,
+                vmax=10, vmin=0,
+                latlon=True,
+                cmap='afmhot_r',
+                alpha=alpha)
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'2 m Temperature greater than 95th Percentile (C)')
+        
+        if '2mTemp_p05_fill' in plotcode:
+            with h5py.File(DIR+FILE, 'r') as f:
+                tmp_p05 = f["p05"][:]
+            masked = H_temp['value']-tmp_p05
+            masked = np.ma.array(masked)
+            masked[masked > 0] = np.ma.masked
+            
+            m.pcolormesh(gridlon, gridlat, masked,
+                vmax=0, vmin=-10,
+                latlon=True,
+                cmap='cool_r',
+                alpha=alpha)
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'2 m Temperature less than 5th Percentile (C)')
 
 
 if '2mRH_Fill' in plotcode:
@@ -941,6 +996,7 @@ if 'RedFlag_Fill' in plotcode or 'RedFlag_Contour' in plotcode or 'RedFlagPot_Fi
         
     
     plt.xlabel(r'Red Flag Criteria: Winds > 6.7 m s$\mathregular{^{-1}}$ and RH < 25%')
+
 
 # =============================================================================
 # Hack! Plot an extra HRRR variable not listed on the webpage hrrr_custom.html
