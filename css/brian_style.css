@@ -224,9 +224,9 @@ textarea {
 .homeImageLink span {
     color: white;
     font-weight: 100;
+    font-variant: small-caps;
     font-size: 5vmin;
     font-style: italic;
-    text-transform: uppercase;
     letter-spacing: 8px;
     padding: 0 30px;
     line-height: 150%;

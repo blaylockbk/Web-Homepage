@@ -117,9 +117,14 @@ for s in stations:
     a = get_mesowest_ts(s, DATE_START, DATE_END, variables=variable, verbose=False)
     if a != 'ERROR':
         data[s] = a
+        
     #debug MesoWest API
     # print a['URL']
-
+    
+    # Replace 999 values in air temperature
+    #if variable == 'air_temp':
+    #    a['air_temp'][a['air_temp']==999] = np.nan
+    
 ## Create the figure
 
 fig, ax1 = plt.subplots(1, 1, figsize=[16,9])

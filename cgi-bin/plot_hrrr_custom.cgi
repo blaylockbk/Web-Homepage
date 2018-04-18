@@ -346,7 +346,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         m.pcolormesh(gridlon, gridlat, masked,
              vmax=10, vmin=0,
              latlon=True,
-             cmap='magma',
+             cmap='RdPu',
              alpha=alpha)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
         cb.set_label(r'10 m Wind Speed exceeding 95th Percentile (m s$\mathregular{^{-1}}$)')
@@ -495,6 +495,50 @@ if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode or 'dBZ20_Contour' in plo
         cb2 = plt.colorbar(orientation='horizontal', shrink=shrink, pad=pad)
         cb2.set_label('Simulated Composite Reflectivity (dBZ)')
 
+
+if '2mDPT_p05_fill' in plotcode or '2mDPT_p95_fill' in plotcode:
+    H_dpt = get_hrrr_variable(DATE, 'DPT:2 m',
+                            model=model, fxx=fxx,
+                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                            verbose=False, value_only=True)
+
+    DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/DPT_2_m/'
+    FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('DPT_2_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
+    dpt_cb = False
+
+    if '2mDPT_p95_fill' in plotcode:
+        with h5py.File(DIR+FILE, 'r') as f:
+            dpt_p95 = f["p95"][:]
+        masked = H_dpt['value']-dpt_p95
+        masked = np.ma.array(masked)
+        masked[masked < 0] = np.ma.masked
+        
+        m.pcolormesh(gridlon, gridlat, masked,
+            vmax=10, vmin=-10,
+            latlon=True,
+            cmap='BrBG',
+            alpha=alpha)
+        if dpt_cb == False:
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'2 m Dew Point greater/less than 95th/5th Percentile (C)')
+            dpt_cb = True
+    
+    if '2mDPT_p05_fill' in plotcode:
+        with h5py.File(DIR+FILE, 'r') as f:
+            dpt_p05 = f["p05"][:]
+        masked = H_dpt['value']-dpt_p05
+        masked = np.ma.array(masked)
+        masked[masked > 0] = np.ma.masked
+        
+        m.pcolormesh(gridlon, gridlat, masked,
+            vmax=10, vmin=-10,
+            latlon=True,
+            cmap='BrBG',
+            alpha=alpha)
+        if dpt_cb == False:
+            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+            cb.set_label(r'2 m Dew Point greater/less than 95th/5th Percentile (C)')
+            dpt_cb = True
 
 if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
     # Get Data

@@ -18,6 +18,11 @@ import sys
 import cgi, cgitb
 import time
 from datetime import datetime, timedelta
+
+import sys
+sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v2')
+from BB_MesoWest.MesoWest_timeseries import get_mesowest_ts
+
 cgitb.enable()
 
 form = cgi.FieldStorage()
@@ -54,7 +59,7 @@ try:
 except:
       units = 'metric'
 
-# The issue here is if all the form isn't filled, it defaluts to the peter sinks exception
+# The issue here is if all the form isn't filled, it defaults to the peter sinks exception
 
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
@@ -360,15 +365,24 @@ print '''
       </ul>
     </div>
   </div>
+'''
 
-
+a = get_mesowest_ts(stn1, datetime.strptime(start, '%Y-%m-%d %H:%M'), datetime.strptime(end, '%Y-%m-%d %H:%M'), verbose=False)
+URL = a['URL']
+import re
+result = re.search('&token=(.*)&stid=', URL)
+URL = URL.replace(result.group(1), 'demotoken')
+print '''
 <br>
       <div align='right'  style="width:90%;max-width:900px">
             <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/ts_multistations.cgi" target="_blank">
                   <i class="fab fa-github fa-fw"></i>Page
-            </a>
+            </a> | 
             <a style="color:black;" href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/plot_ts_multistations.cgi" target="_blank">
                   <i class="fab fa-github fa-fw"></i>Plot
+            </a> | 
+            <a style="color:black;" href="'''+URL+'''" target="_blank">
+                  <i class="fa fa-download fa-fw"></i>Raw Data
             </a>
       </div>
 
@@ -377,7 +391,6 @@ print '''
 <a href="https://mesowest.org/" target="_blank">
       <img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px">
 </a>
-
 
 </div>
 <script src="js/site/siteclose.js"></script>
