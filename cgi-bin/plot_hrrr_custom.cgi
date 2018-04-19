@@ -346,7 +346,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         m.pcolormesh(gridlon, gridlat, masked,
              vmax=10, vmin=0,
              latlon=True,
-             cmap='RdPu',
+             cmap='viridis',
              alpha=alpha)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
         cb.set_label(r'10 m Wind Speed exceeding 95th Percentile (m s$\mathregular{^{-1}}$)')
@@ -504,41 +504,30 @@ if '2mDPT_p05_fill' in plotcode or '2mDPT_p95_fill' in plotcode:
 
     DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/DPT_2_m/'
     FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('DPT_2_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
-    dpt_cb = False
 
-    if '2mDPT_p95_fill' in plotcode:
-        with h5py.File(DIR+FILE, 'r') as f:
-            dpt_p95 = f["p95"][:]
-        masked = H_dpt['value']-dpt_p95
-        masked = np.ma.array(masked)
-        masked[masked < 0] = np.ma.masked
-        
-        m.pcolormesh(gridlon, gridlat, masked,
-            vmax=10, vmin=-10,
-            latlon=True,
-            cmap='BrBG',
-            alpha=alpha)
-        if dpt_cb == False:
-            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-            cb.set_label(r'2 m Dew Point greater/less than 95th/5th Percentile (C)')
-            dpt_cb = True
+    ### Plot Dew Point Depression
+    with h5py.File(DIR+FILE, 'r') as f:
+        dpt_p05 = f["p05"][:]
+    masked = H_dpt['value']-dpt_p05 # both these datasets are in Kelvin, but when we take the difference it is in Celsius
+    masked = np.ma.array(masked)
+    masked[masked > 0] = np.ma.masked
     
-    if '2mDPT_p05_fill' in plotcode:
-        with h5py.File(DIR+FILE, 'r') as f:
-            dpt_p05 = f["p05"][:]
-        masked = H_dpt['value']-dpt_p05
-        masked = np.ma.array(masked)
-        masked[masked > 0] = np.ma.masked
-        
-        m.pcolormesh(gridlon, gridlat, masked,
-            vmax=10, vmin=-10,
-            latlon=True,
-            cmap='BrBG',
-            alpha=alpha)
-        if dpt_cb == False:
-            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-            cb.set_label(r'2 m Dew Point greater/less than 95th/5th Percentile (C)')
-            dpt_cb = True
+    mesh_depression = m.pcolormesh(gridlon, gridlat, masked,
+                                   vmax=10, vmin=-10,
+                                   latlon=True,
+                                   cmap='BrBG')
+    
+    ### Plot Dew Point Exceedance
+    with h5py.File(DIR+FILE, 'r') as f:
+        dpt_p95 = f["p95"][:]
+    masked = H_dpt['value']-dpt_p95 # both these datasets are in Kelvin, but when we take the difference it is in Celsius
+    masked = np.ma.array(masked)
+    masked[masked < 0] = np.ma.masked
+
+    mesh_exceedance = m.pcolormesh(gridlon, gridlat, masked,
+                                   vmax=10, vmin=-10,
+                                   latlon=True,
+                                   cmap='BrBG')
 
 if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
     # Get Data
@@ -569,35 +558,31 @@ if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill'
         DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/TMP_2_m/'
         FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('TMP_2_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
 
-        if '2mTemp_p95_fill' in plotcode:
-            with h5py.File(DIR+FILE, 'r') as f:
-                tmp_p95 = f["p95"][:]
-            masked = H_temp['value']-tmp_p95
-            masked = np.ma.array(masked)
-            masked[masked < 0] = np.ma.masked
-            
-            m.pcolormesh(gridlon, gridlat, masked,
-                vmax=10, vmin=0,
-                latlon=True,
-                cmap='afmhot_r',
-                alpha=alpha)
-            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-            cb.set_label(r'2 m Temperature greater than 95th Percentile (C)')
+        ### Plot Temperature Depression
+        with h5py.File(DIR+FILE, 'r') as f:
+            tmp_p05 = f["p05"][:]
+        masked = H_temp['value']-tmp_p05 # both these datasets are in Kelvin, but when we take the difference it is in Celsius
+        masked = np.ma.array(masked)
+        masked[masked > 0] = np.ma.masked
         
-        if '2mTemp_p05_fill' in plotcode:
-            with h5py.File(DIR+FILE, 'r') as f:
-                tmp_p05 = f["p05"][:]
-            masked = H_temp['value']-tmp_p05
-            masked = np.ma.array(masked)
-            masked[masked > 0] = np.ma.masked
-            
-            m.pcolormesh(gridlon, gridlat, masked,
-                vmax=0, vmin=-10,
-                latlon=True,
-                cmap='cool_r',
-                alpha=alpha)
-            cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
-            cb.set_label(r'2 m Temperature less than 5th Percentile (C)')
+        mesh_depression = m.pcolormesh(gridlon, gridlat, masked,
+                                    vmax=10, vmin=-10,
+                                    latlon=True,
+                                    cmap='bwr')
+        
+        ### Plot Temperature Exceedance
+        with h5py.File(DIR+FILE, 'r') as f:
+            tmp_p95 = f["p95"][:]
+        masked = H_temp['value']-tmp_p95 # both these datasets are in Kelvin, but when we take the difference it is in Celsius
+        masked = np.ma.array(masked)
+        masked[masked < 0] = np.ma.masked
+
+        mesh_exceedance = m.pcolormesh(gridlon, gridlat, masked,
+                                    vmax=10, vmin=-10,
+                                    latlon=True,
+                                    cmap='bwr')
+        cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
+        cb.set_label(r'5$\mathregular{^{th}}$/95$\mathregular{^{th}}$ percentile 2 m Temperature Depression/Exceedance (C)')
 
 
 if '2mRH_Fill' in plotcode:
