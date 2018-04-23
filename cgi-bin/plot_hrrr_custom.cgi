@@ -496,7 +496,7 @@ if 'dBZ_Fill' in plotcode or 'dBZ_Contour' in plotcode or 'dBZ20_Contour' in plo
         cb2.set_label('Simulated Composite Reflectivity (dBZ)')
 
 
-if '2mDPT_p05_fill' in plotcode or '2mDPT_p95_fill' in plotcode:
+if '2mDPT_p95p05_fill' in plotcode:
     H_dpt = get_hrrr_variable(DATE, 'DPT:2 m',
                             model=model, fxx=fxx,
                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
@@ -529,7 +529,7 @@ if '2mDPT_p05_fill' in plotcode or '2mDPT_p95_fill' in plotcode:
                                    latlon=True,
                                    cmap='BrBG')
 
-if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
+if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95p05_fill' in plotcode:
     # Get Data
     H_temp = get_hrrr_variable(DATE, 'TMP:2 m',
                                model=model, fxx=fxx,
@@ -554,7 +554,7 @@ if '2mTemp_Fill' in plotcode or '2mTemp_Freeze' in plotcode or '2mTemp_p95_fill'
                   zorder=400,
                   latlon=True)
     
-    if '2mTemp_p95_fill' in plotcode or '2mTemp_p05_fill' in plotcode:
+    if '2mTemp_p95p05_fill' in plotcode:
         DIR = '/uufs/chpc.utah.edu/common/home/horel-group2/blaylock/HRRR_OSG/hourly30/TMP_2_m/'
         FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('TMP_2_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
 
