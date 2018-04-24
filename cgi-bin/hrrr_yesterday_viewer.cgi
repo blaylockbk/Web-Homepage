@@ -75,11 +75,15 @@ print'''<!DOCTYPE html>
   
 </head>'''
 
+if variable == 'Precip_1hr':
+    start_fxx = '01'
+else:
+    start_fxx = '00'
 
 print '''
 <script>
 hour = '00';
-fxx = '00';
+fxx = "'''+start_fxx+'''";
 AHXX = '00';
 AFXX = '00';
 
@@ -172,8 +176,8 @@ print''' </select>
 # display is the variable name as it will display on the webpage
 # value is the value used
 
-display = ['CONUS', 'Utah']
-value = ['CONUS', 'UTAH']
+display = ['CONUS']
+value = ['CONUS' ]
 
 for i in range(0,len(value)):
    if DOMAIN == value[i]:
@@ -242,7 +246,11 @@ print '''
 print '''
 <h4>Forecast Lead Time</h4>
 <div class="btn-group btn-group-justified">'''
-for f in range(19):
+if variable == 'Precip_1hr':
+    f_buttons = range(1,19)
+else:
+    f_buttons = range(19)
+for f in f_buttons:
     print '''
 <a onmouseover=change_pic_f('%02d') id='F%02d' class="btn btn-warning">f%02d</a>''' % (f,f,f)
 print '''
