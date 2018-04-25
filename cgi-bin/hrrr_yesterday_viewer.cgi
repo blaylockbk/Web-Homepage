@@ -7,6 +7,7 @@ Brian Blaylock
 April 23, 2018                          NBA Playoffs: Utah JAZZ Game Three!
 
 Display thumbnail image of HRRR yesterday map.
+http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_yesterday_viewer.cgi
 
 """
 
@@ -268,7 +269,7 @@ print '''
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/hrrr_yesterday_viewer.cgi">
     <i class="fab fa-github" aria-hidden="true"></i> Page</a> | 
-    <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_HRRR/plot_HRRR_custom_maps_YESTERDAY.py">
+    <a href="https://github.com/blaylockbk/oper/blob/master/HRRR_yesterday/plot_yesterday.py">
     <i class="fab fa-github" aria-hidden="true"></i> Plot</a>
   </div>
   

@@ -38,10 +38,10 @@ shrink = 0.7
 map_res = 'l'
 
 
-import sys
+import sys, os
 sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v2')
 sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/site-packages/')
-from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap
+from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap, draw_ALASKA_cyl_map
 from BB_downloads.HRRR_S3 import get_hrrr_variable
 from BB_MesoWest.MesoWest_STNinfo import get_station_info
 from BB_wx_calcs.wind import wind_uv_to_spd
@@ -67,11 +67,6 @@ try:
     model = form['model'].value
 except:
     model = 'hrrr'
-
-if model == 'hrrrAK':
-    plt.figure(1)
-    plt.title('Alaska Graphics don''t work yet')
-    plt.savefig(sys.stdout)	# Plot standard output.
 
 try:
     date = form['valid'].value
@@ -139,13 +134,17 @@ DATE = DATE - timedelta(hours=fxx)
 # Preload the latitude and longitude grid
 latlonpath = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando/hrrr/HRRR_latlon.h5'
 latlonh5 = h5py.File(latlonpath, 'r')
-gridlat = latlonh5['latitude'][:]
-gridlon = latlonh5['longitude'][:]
 
+if model == 'hrrr' or model == 'hrrrX':
+    gridlat = latlonh5['latitude'][:]
+    gridlon = latlonh5['longitude'][:]
+elif model == 'hrrrak':
+    AK = get_hrrr_variable(datetime(2018, 2, 24, 15), 'TMP:2 m', fxx=0, model='hrrrak', verbose=False)
+    gridlat = AK['lat']
+    gridlon = AK['lon']
 
 # === Create map of the domain ================================================
-
-if dsize == 'conus' and model != 'hrrrAK':
+if dsize == 'conus' and model != 'hrrrak':
     barb_thin = 70
     alpha = 1
     t1= datetime.now()
@@ -157,6 +156,15 @@ if dsize == 'conus' and model != 'hrrrAK':
     m.fillcontinents(color='tan',lake_color='lightblue', zorder=0)
     m.drawmapboundary(fill_color='lightblue')
     t2 = datetime.now()
+elif dsize == 'conus' and model == 'hrrrak':
+    barb_thin = 75
+    alpha = 1
+    m = draw_ALASKA_cyl_map(res=map_res)
+    m.drawcountries(zorder=500)
+    m.drawstates(zorder=500)
+    m.drawcoastlines(zorder=500)
+    m.fillcontinents(color='tan',lake_color='lightblue', zorder=0)
+    m.drawmapboundary(fill_color='lightblue')
 else:
     # configure some setting based on the requested domain size
     if dsize == 'small':
@@ -271,18 +279,22 @@ plt.title('Valid: %s' % (DATE+timedelta(hours=fxx)).strftime('%Y-%m-%d %H:%M UTC
 
 if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode or '10mWind_p95_fill' in plotcode:
     # Get data
-    H_u = get_hrrr_variable(DATE, 'UGRD:10 m',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
-    H_v = get_hrrr_variable(DATE, 'VGRD:10 m',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
-    spd = wind_uv_to_spd(H_u['value'], H_v['value'])
+    #H_u = get_hrrr_variable(DATE, 'UGRD:10 m',
+    #                        model=model, fxx=fxx,
+    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+    #                        verbose=False, value_only=True)
+    #H_v = get_hrrr_variable(DATE, 'VGRD:10 m',
+    #                        model=model, fxx=fxx,
+    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+    #                        verbose=False, value_only=True)
+    #spd = wind_uv_to_spd(H_u['value'], H_v['value'])
+    H_UV = get_hrrr_variable(DATE, 'UVGRD:10 m',
+                             model=model, fxx=fxx,
+                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                             verbose=False, value_only=True)
     
     if '10mWind_Fill' in plotcode:
-        m.pcolormesh(gridlon, gridlat, spd,
+        m.pcolormesh(gridlon, gridlat, H_UV['SPEED'],
                      latlon=True,
                      cmap='magma_r',
                      vmin=0, alpha=alpha)
@@ -290,7 +302,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         cb.set_label(r'10 m Wind Speed (m s$\mathregular{^{-1}}$)')
 
     if '10mWind_Shade' in plotcode:
-        m.contourf(gridlon, gridlat, spd,
+        m.contourf(gridlon, gridlat, H_UV['SPEED'],
                     levels=[10, 15, 20, 25],
                     colors=('yellow', 'orange', 'red'),
                     alpha=alpha,
@@ -306,8 +318,8 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
             Cgridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
             Cgridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_u['value'] = H_u['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_v['value'] = H_v['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['UGRD'] = H_UV['UGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['VGRD'] = H_UV['VGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
         else:
             Cgridlat = gridlat
             Cgridlon = gridlon
@@ -316,13 +328,13 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         # Add to plot
         if '10mWind_Barb' in plotcode:
             m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                    H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                    H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                     zorder=200, length=5.5,
                     barb_increments={'half':2.5, 'full':5,'flag':25},
                     latlon=True)
         if '10mWind_Quiver' in plotcode:
             Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                          zorder=350,
                          units='inches',
                          scale=40,
@@ -339,7 +351,7 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
         FILE = 'OSG_HRRR_%s_m%02d_d%02d_h%02d_f00.h5' % (('UVGRD_10_m', VALIDDATE.month, VALIDDATE.day, VALIDDATE.hour))
         with h5py.File(DIR+FILE, 'r') as f:
             spd_p95 = f["p95"][:]
-        masked = spd-spd_p95
+        masked = H_UV['SPEED']-spd_p95
         masked = np.ma.array(masked)
         masked[masked < 0] = np.ma.masked
         
@@ -353,18 +365,22 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
 
 if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # Get data
-    H_u = get_hrrr_variable(DATE, 'UGRD:80 m',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
-    H_v = get_hrrr_variable(DATE, 'VGRD:80 m',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
-    spd = wind_uv_to_spd(H_u['value'], H_v['value'])
-    
+    #H_u = get_hrrr_variable(DATE, 'UGRD:80 m',
+    #                        model=model, fxx=fxx,
+    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+    #                        verbose=False, value_only=True)
+    #H_v = get_hrrr_variable(DATE, 'VGRD:80 m',
+    #                        model=model, fxx=fxx,
+    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+    #                        verbose=False, value_only=True)
+    #spd = wind_uv_to_spd(H_u['value'], H_v['value'])
+    H_UV = get_hrrr_variable(DATE, 'UVGRD:80 m',
+                             model=model, fxx=fxx,
+                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                             verbose=False, value_only=True)
+
     if '80mWind_Fill' in plotcode:
-        m.pcolormesh(gridlon, gridlat, spd,
+        m.pcolormesh(gridlon, gridlat, H_UV['SPEED'],
                      latlon=True,
                      cmap='magma_r',
                      vmin=0, alpha=alpha)
@@ -372,7 +388,7 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
         cb.set_label(r'10 m Wind Speed (m s$\mathregular{^{-1}}$)')
 
     if '80mWind_Shade' in plotcode:
-        m.contourf(gridlon, gridlat, spd,
+        m.contourf(gridlon, gridlat, H_UV['SPEED'],
                     levels=[10, 15, 20, 25],
                     colors=('yellow', 'orange', 'red'),
                     alpha=alpha,
@@ -388,8 +404,8 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
             Cgridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
             Cgridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_u['value'] = H_u['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_v['value'] = H_v['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['UGRD'] = H_UV['UGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['VGRD'] = H_UV['VGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
         else:
             Cgridlat = gridlat
             Cgridlon = gridlon
@@ -398,13 +414,13 @@ if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' i
         thin = barb_thin
         if '80mWind_Barb' in plotcode:
             m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                    H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                    H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                     zorder=200, length=5.5, color='darkred',
                     barb_increments={'half':2.5, 'full':5,'flag':25},
                     latlon=True)
         if '80mWind_Quiver' in plotcode:
             Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                          zorder=350,
                          color='darkred',
                          latlon=True)
