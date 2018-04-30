@@ -279,15 +279,6 @@ plt.title('Valid: %s' % (DATE+timedelta(hours=fxx)).strftime('%Y-%m-%d %H:%M UTC
 
 if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' in plotcode or '10mWind_Quiver' in plotcode or '10mWind_p95_fill' in plotcode:
     # Get data
-    #H_u = get_hrrr_variable(DATE, 'UGRD:10 m',
-    #                        model=model, fxx=fxx,
-    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-    #                        verbose=False, value_only=True)
-    #H_v = get_hrrr_variable(DATE, 'VGRD:10 m',
-    #                        model=model, fxx=fxx,
-    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-    #                        verbose=False, value_only=True)
-    #spd = wind_uv_to_spd(H_u['value'], H_v['value'])
     H_UV = get_hrrr_variable(DATE, 'UVGRD:10 m',
                              model=model, fxx=fxx,
                              outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
@@ -365,15 +356,6 @@ if '10mWind_Fill' in plotcode or '10mWind_Shade' in plotcode or '10mWind_Barb' i
 
 if '80mWind_Fill' in plotcode or '80mWind_Shade' in plotcode or '80mWind_Barb' in plotcode or '80mWind_Quiver' in plotcode:
         # Get data
-    #H_u = get_hrrr_variable(DATE, 'UGRD:80 m',
-    #                        model=model, fxx=fxx,
-    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-    #                        verbose=False, value_only=True)
-    #H_v = get_hrrr_variable(DATE, 'VGRD:80 m',
-    #                        model=model, fxx=fxx,
-    #                        outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-    #                        verbose=False, value_only=True)
-    #spd = wind_uv_to_spd(H_u['value'], H_v['value'])
     H_UV = get_hrrr_variable(DATE, 'UVGRD:80 m',
                              model=model, fxx=fxx,
                              outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
@@ -694,26 +676,20 @@ if '500HGT_Contour' in plotcode:
 
 
 if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in plotcode or '500Conv_Fill' in plotcode or '500Wind_Quiver' in plotcode:
-    H_u = get_hrrr_variable(DATE, 'UGRD:500 mb',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
-    H_v = get_hrrr_variable(DATE, 'VGRD:500 mb',
-                            model=model, fxx=fxx,
-                            outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
-                            verbose=False, value_only=True)
+    H_UV = get_hrrr_variable(DATE, 'UVGRD:500 mb',
+                             model=model, fxx=fxx,
+                             outDIR='/uufs/chpc.utah.edu/common/home/u0553130/temp/',
+                             verbose=False, value_only=True)
 
     if '500Wind_Fill' in plotcode:
-        spd = wind_uv_to_spd(H_u['value'], H_v['value'])
-
-        m.pcolormesh(gridlon, gridlat, spd,
+        m.pcolormesh(gridlon, gridlat, H_UV['SPEED'],
                     latlon=True, cmap='BuPu', vmin=0)
         cb = plt.colorbar(orientation='horizontal', pad=pad, shrink=shrink)
         cb.set_label(r'500 mb Wind Speed (m s$\mathregular{^{-1}}$)')
 
     if '500Conv_Fill' in plotcode or '500Vort_Fill' in plotcode:
-        dudx, dudy = np.gradient(H_u['value'], 3, 3)
-        dvdx, dvdy = np.gradient(H_v['value'], 3, 3)
+        dudx, dudy = np.gradient(H_UV['UGRD'], 3, 3)
+        dvdx, dvdy = np.gradient(H_UV['VGRD'], 3, 3)
         if '500Vort_Fill' in plotcode:    
             vorticity = dvdx - dudy
             # Mask values
@@ -747,21 +723,22 @@ if '500Wind_Fill' in plotcode or '500Wind_Barb' in plotcode or '500Vort_Fill' in
             cut_v, cut_h = pluck_point_new(lat, lon, gridlat, gridlon)
             Cgridlat = gridlat[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
             Cgridlon = gridlon[cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_u['value'] = H_u['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
-            H_v['value'] = H_v['value'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['UGRD'] = H_UV['UGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
+            H_UV['VGRD'] = H_UV['VGRD'][cut_v-bfr:cut_v+bfr, cut_h-bfr:cut_h+bfr]
         else:
             Cgridlat = gridlat
             Cgridlon = gridlon
         thin = barb_thin
         if '500Wind_Barb' in plotcode:
-            m.barbs(Cgridlon[::thin, ::thin], Cgridlat[::thin, ::thin], H_u['value'][::thin, ::thin], H_v['value'][::thin, ::thin],
+            m.barbs(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
+                    H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                     zorder=200, length=6, color='navy',
                     barb_increments={'half':2.5, 'full':5,'flag':25},
                     latlon=True)
             #plt.ylabel(r'Barbs: half=2.5, full=5, flag=25 (ms$\mathregular{^{-1}}$)')
         if '500Wind_Quiver' in plotcode:
             Q = m.quiver(Cgridlon[::thin,::thin], Cgridlat[::thin,::thin],
-                         H_u['value'][::thin,::thin], H_v['value'][::thin,::thin],
+                         H_UV['UGRD'][::thin,::thin], H_UV['VGRD'][::thin,::thin],
                          zorder=350,
                          color='navy',
                          latlon=True)
