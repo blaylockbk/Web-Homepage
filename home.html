@@ -37,11 +37,12 @@
 -->
 
 <div class="img-container">
-    <script>
+    <!--<script>
       var idx = getRandomInt(0, brian_pics.length - 1)
       document.write('<img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src="' + brian_pics[idx] + '" onclick="change_home_pic();" width="100%">');
     </script>
-	
+    -->
+    <img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src='./images/home2.png' onclick="change_home_pic();" width="100%"> 
     <h2 class="homeImageLink">
     <span>Brian K. Blaylock</span>
     </h2>
@@ -92,15 +93,93 @@ in November 2012.
       <div class="panel-heading">
         <h4 class="panel-title">
           <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-          <i class="fa fa-caret-down" aria-hidden="true"></i> Skills/Experience</a>
+          <i class="fa fa-caret-down" aria-hidden="true"></i> Skills</a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
-            <p>My talents includes Python, WRF modeling, teaching,
-               meteorological data analysis, environmental instrumentation,
-               web development, and effective communication (written, presentation, documentation).
-            <p>I have experience participating in field campaigns.
+
+          <div style="padding-left:40px">
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/python.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Python</b><br>
+                  <h4>numpy, matplotlib, Basemap, scipy, Jupyter Notebooks, GitHub,
+                      publication quality figures</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/Linux.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Linux</b><br>
+                  <h4>High Performance Computing, modules, shell scripting, cron, slurm</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/WRF.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Weather Research and Forecast Model</b><br>
+                  <h4>Initialize with HRRR, lake breeze, tracers,
+                      land surface modification, UofU WRF User Group,
+                      Basic WRF Tutorial</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/data.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Big Data</b><br>
+                  <h4>Data management and analysis, NetCDF, HDF, GRIB2,
+                      Open Science Grid, Amazon Web Services, rclone,
+                      numerical weather model output, satellite observation (MODIS, GOES16) </h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/wind.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Environmental Instrumentation</b><br>
+                  <h4>Campbell Scientific, Davis Instruments, air quality, field work, data collection</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/mesowest.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>MesoWest</b><br>
+                  <h4>Synoptic Labs API</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/HTML5.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Web Development</b><br>
+                  <h4>HTML, JavaScript, Bootstrap, PHP, Python CGI, Photoshop, Illustrator</h4>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                  <img src="./images/skills/microsoft.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <b>Microsoft</b><br>
+                  <h4>Windows, Office 365</h4>
+                </div>
+            </div>
+          </div>
+            <br>
+            <p style="text-align: center"><b>Excellent Communicator: Teaching. Writing. Speaking.</b>
         </div>
       </div>
     </div>
@@ -108,7 +187,7 @@ in November 2012.
       <div class="panel-heading">
         <h4 class="panel-title">
           <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-          <i class="fa fa-caret-down" aria-hidden="true"></i> Career Goals/Objective</a>
+          <i class="fa fa-caret-down" aria-hidden="true"></i> Career Goals</a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
