@@ -50,10 +50,10 @@
 </div>
 
 
-<div id="container">
+<div id="container" class='home'>
 <br>
 <div style='max-width: 900px;margin:auto;'>
-<p id="home">
+<p class="home">
 I'm from Spanish Fork, Utah and currently pursuing a PhD in atmospheric science at the University of Utah.
 My advisor is 
 <a href="http://home.chpc.utah.edu/~u0035056/home/">John Horel</a>. 
@@ -64,162 +64,180 @@ and
 in November 2012.
 
 
-<div id="home" class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-          <i class="fa fa-caret-down" aria-hidden="true"></i> Current Research</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse">
-        <div class="panel-body">
-            <p>I have developed an unofficial HRRR archive for various research
-               purposes in the MesoWest group and have made it available to the public.
-               There are over 200 registered users.
-            <p>My current research is investigating convective outflow predictability
-               by the HRRR model, a project funded through the Joint Fire Science Program.
-               My other interests involve evaluating high resolution weather models
-               for various applications including wild fire management, mesoscale
-               weather, and air quality. I have initialized WRF simulations with
-               the HRRR model and modified surface parameters to improve model
-               performance.
-            <p>You will find more details on my research by exploring the 
-               pages on this website.
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-          <i class="fa fa-caret-down" aria-hidden="true"></i> Skills</a>
-        </h4>
-      </div>
-      <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">
-
-          <div style="padding-left:40px">
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/python.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Python</b><br>
-                  <h4>numpy, matplotlib, Basemap, scipy, Jupyter Notebooks, GitHub,
-                      publication quality figures</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/Linux.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Linux</b><br>
-                  <h4>High Performance Computing, modules, shell scripting, cron, slurm</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/WRF.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Weather Research and Forecast Model</b><br>
-                  <h4>Initialize with HRRR, lake breeze, tracers,
-                      land surface modification, UofU WRF User Group,
-                      Basic WRF Tutorial</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/data.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Big Data</b><br>
-                  <h4>Data management and analysis, NetCDF, HDF, GRIB2,
-                      Open Science Grid, Amazon Web Services, rclone,
-                      numerical weather model output, satellite observation (MODIS, GOES16) </h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/wind.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Environmental Instrumentation</b><br>
-                  <h4>Campbell Scientific, Davis Instruments, air quality, field work, data collection</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/mesowest.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>MesoWest</b><br>
-                  <h4>Synoptic Labs API</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/HTML5.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Web Development</b><br>
-                  <h4>HTML, JavaScript, Bootstrap, PHP, Python CGI, Photoshop, Illustrator</h4>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                  <img src="./images/skills/microsoft.png" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <b>Microsoft</b><br>
-                  <h4>Windows, Office 365</h4>
-                </div>
-            </div>
+<div id="accordion-tri" class="panel-group">
+  
+  <div class="panel panel-default">
+		<div class="panel-heading" data-target="#collapse1-tri" data-toggle="collapse" data-parent="#accordion-tri">
+			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Skills</h4> 
+		</div>
+		<div id="collapse1-tri" class="panel-collapse collapse">
+			<div class="panel-body">
+				<div style="padding-left:40px">
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/python.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Python</b><br>
+                <h4>numpy, matplotlib, Basemap, scipy, datetime,
+                    publication-quality figures,
+                    Jupyter Notebooks, Anaconda, pySpark,
+                    <a href='https://github.com/blaylockbk'>GitHub</a></h4>
+                    
+              </div>
           </div>
-            <br>
-            <p style="text-align: center"><b>Excellent Communicator: Teaching. Writing. Speaking.</b>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/Linux.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Linux</b><br>
+                <h4>High Performance Computing, modules, shell scripting, cron, slurm</h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/data.png" class="media-object img-circle" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Big Data</b><br>
+                <h4>
+                    <a href='http://hrrr.chpc.utah.edu/'>Data management</a>,
+                    NetCDF, HDF5, GRIB2,
+                    data analysis,                    
+                    <a href='https://github.com/blaylockbk/pyBKB_v2/tree/master/OpenScienceGrid'>Open Science Grid</a>,
+                    Amazon Web Services,
+                    rclone,
+                    numerical weather models,
+                    <a href='http://hrrr.chpc.utah.edu/'>HRRR</a>,
+                    weather satellites,
+                    MODIS, 
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES16</a> </h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/WRF.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Weather Research and Forecast Model</b><br>
+                <h4>
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html">Initialize with HRRR</a>,
+                    lake breeze,
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/tracer.html">tracers</a>,
+                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html">land surface modifications</a>,
+                    <a href="http://home.chpc.utah.edu/~u0553130/Ute_WRF/">UofU WRF User Group</a>,
+                    Basic WRF Tutorial certificate</h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/wind.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Environmental Instrumentation</b><br>
+                <h4>Campbell Scientific, Davis Instruments, air quality, field work, data collection</h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/mesowest.png" class="media-object img-rounded" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>MesoWest</b><br>
+                <h4><a href='https://synopticlabs.org/api/'>Synoptic Labs API</a></h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/HTML5.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Web Development</b><br>
+                <h4>HTML, JavaScript, Bootstrap, PHP, Python CGI, Font Awesome, Photoshop, Illustrator</h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/microsoft.png" class="media-object" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Microsoft</b><br>
+                <h4>Windows, Office 365</h4>
+              </div>
+          </div>
+          <div class="media">
+              <div class="media-left">
+                <img src="./images/skills/speak.png" class="media-object img-rounded" style="width:60px">
+              </div>
+              <div class="media-body">
+                <b>Communication</b><br>
+                <h4>Speaking, writing, teaching, documentation</h4>
+              </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a id="home" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-          <i class="fa fa-caret-down" aria-hidden="true"></i> Career Goals</a>
-        </h4>
-      </div>
-      <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">
-            <p>I believe weather data can be used for many applications, and I 
-               hope to serve people in various fields with improved numerical 
-               weather prediction. I am especially interested in 0-3 day 
-               forecasts. My dream of numerical weather models is to one day 
-               have a <i>continuously updating</i> weather prediction system. 
-            <p>While there seems to be deficiencies in the United States' 
-               current numerical weather prediction capabilities, I want to be 
-               a part of the solution by using new and forthcoming technology
-               effectively and efficiently. 
-               I hope to become more involved in big data storage and
-               analytics, community numerical weather prediction model development
-               (especially rapid refresh forecast system with FV3),
-               and using new observational products as model initial conditions (like GOES-R series).
-            <p>I am a problem solving leader, eager to learn and develop new skills.
-               I have a teamwork mentality and want to contribute to the community.
-               Education is important to me, and I am interested in gaining teaching experience.
-        </div>
-      </div>
-    </div>
-  </div> 
+    
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading" data-target="#collapse2-tri" data-toggle="collapse" data-parent="#accordion-tri">
+			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Current Research</h4> 
+		</div>
+		<div id="collapse2-tri" class="panel-collapse collapse">
+			<div class="panel-body">
+				<p>I have developed an unofficial HRRR archive for various research
+          purposes in the MesoWest group and have made it available to the public.
+          There are over 200 registered users.
+       <p>My current research is investigating convective outflow predictability
+          by the HRRR model, a project funded through the Joint Fire Science Program.
+          My other interests involve evaluating high resolution weather models
+          for various applications including wild fire management, mesoscale
+          weather, and air quality. I have initialized WRF simulations with
+          the HRRR model and modified surface parameters to improve model
+          performance.
+       <p>You will find more details on my research by exploring the 
+          pages on this website.
+			</div>
+		</div>
+  </div>
+
+  <div class="panel panel-default">
+		<div class="panel-heading" data-target="#collapse3-tri" data-toggle="collapse" data-parent="#accordion-tri">
+			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Career Goals</h4> 
+		</div>
+		<div id="collapse3-tri" class="panel-collapse collapse">
+			<div class="panel-body">
+	   <p>I believe weather data can be used for many applications, and I 
+          hope to serve people in various fields with improved numerical 
+          weather prediction. I am especially interested in 0-3 day 
+          forecasts. My dream of numerical weather models is to one day 
+          have a <i>continuously updating</i> weather prediction system. 
+       <p>While there seems to be deficiencies in the United States' 
+          current numerical weather prediction capabilities, I want to be 
+          a part of the solution by using new and forthcoming technology
+          effectively and efficiently. 
+       <p>I hope to become more involved in big data storage and
+          analytics, community numerical weather prediction model development
+          especially rapid refresh forecast system with FV3,
+          and using new observational products for model initial conditions (like GOES-R series).
+       <p>I am a problem solving leader, eager to learn and develop new skills.
+          I have a teamwork mentality and want to contribute to the community.
+          Education is important to me, and I am interested in gaining teaching experience.
+			</div>
+		</div>
+  </div>
+  
+</div>
 
 <br>
 
 <div align=center>
-<a href='mailto:brian.blaylock@utah.edu'>
-<p id='home'><big><b><i class="fa fa-envelope" aria-hidden="true"></i> brian.blaylock@utah.edu
-</a></b></big>
-
+<a href='mailto:brian.blaylock@utah.edu'><big><b>
+  <i class="fa fa-envelope"></i> brian.blaylock@utah.edu
+</b></big></a>
+<br><br>
 <div style='padding: 5px'>
 <a href="https://www.linkedin.com/pub/brian-blaylock/36/301/727">
     <img align=center src="http://icons.iconarchive.com/icons/danleech/simple/72/linkedin-icon.png" width="55px" height="55px" title='LinkedIN'></a>
@@ -259,6 +277,15 @@ in November 2012.
     <img src="http://stackoverflow.com/users/flair/2383070.png?theme=dark" width="208" height="58" alt="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
     </a>-->
     </div>
+
+<script>
+  $('#accordion-tri').on('show.bs.collapse', function (e) {
+      $(e.target).prev('.panel-heading').find("span").html("<em class='fa fa-caret-down fa-fw'>&nbsp;</em>");
+  }).on('hide.bs.collapse', function (e) {
+      $(e.target).prev('.panel-heading').find("span").html("<em class='fa fa-caret-right fa-fw'>&nbsp;</em>");
+  });
+  $("#accordion-tri .panel-heading").hover().css("cursor", "pointer");
+</script>
 
 <script src="./js/site/siteclose.js"></script>
 </div>

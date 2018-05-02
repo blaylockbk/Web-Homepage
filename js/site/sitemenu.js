@@ -155,11 +155,16 @@ document.write('\
                         <ul class="dropdown-menu">\
                             <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v2</li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">BB_downloads/HRRR_S3</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
                             <li class="dropdown-header"><i class="fa fa-code fa-fw" ></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
+                            <li><a href="https://github.com/blaylockbk/HorelS3-Archive">HRRR Daily Download</a></li>\
+                            <li><a href="https://github.com/blaylockbk/UofU_Camera_Display">Camera Display</a></li>\
                             <li><a href="https://github.com/blaylockbk/Web-Homepage/tree/master/image_viewers">Image Viewer</a></li>\
+                            <li><a href="https://github.com/blaylockbk/oper">Operational Scripts</a></li>\
+                            <li><a href="https://github.com/blaylockbk/Web-Homepage">Webpage</a></li>\
                         </ul>\
                     </li>\
 \

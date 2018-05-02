@@ -193,18 +193,18 @@ textarea {
     width: 220px;
 }
 
-#home {
-    font-size: 24px;
+.home {
+    font-size: 22px;
     padding: 5px;
 }
 
-#home a:link {
+.home a:link {
     color: #990000;
     text-decoration: none;
     font-weight: 600;
 }
 
-#home a:visited {
+.home a:visited {
     color: #990000;
     font-weight: 600;
 }
