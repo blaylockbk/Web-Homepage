@@ -1,0 +1,361 @@
+#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
+
+# Brian Blaylock
+# June 8, 2017     # I accidentally made beef jerky in the crock pot last night
+
+
+"""
+Plots a sample image of HRRR near the fire.
+
+Note: For CGI, cannot print anything to screen when outputting a .png file
+"""
+
+import numpy as np
+from datetime import datetime, timedelta
+
+
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
+## Reset the defaults (see more here: http://matplotlib.org/users/customizing.html)
+mpl.rcParams['figure.figsize'] = [12, 10]
+mpl.rcParams['savefig.bbox'] = 'tight'
+mpl.rcParams['savefig.dpi'] = 100     # For web
+mpl.rcParams['figure.titleweight'] = 'bold'
+mpl.rcParams['xtick.labelsize'] = 10
+mpl.rcParams['ytick.labelsize'] = 10
+mpl.rcParams['axes.labelsize'] = 8
+mpl.rcParams['axes.titlesize'] = 12
+mpl.rcParams['figure.subplot.hspace'] = 0.01
+
+
+import sys, os
+sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v2')
+sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/site-packages/')
+from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap, draw_ALASKA_cyl_map
+from BB_MesoWest.MesoWest_STNinfo import get_station_info
+from BB_HRRR.plot_HRRR_custom_NEW import *
+
+import cgi
+import cgitb
+cgitb.enable()	# Spits out error to browser in coherent format.
+
+
+#print "Content-Type: text/html\n"
+print "Content-Type: image/png\n"
+
+#print sys.modules.keys()
+#print 'matplitlib version', mpl.__version__,'<br><br>'
+
+
+# === Load Form Input =========================================================
+form = cgi.FieldStorage()	# CGI function takes in web arguments
+
+try:
+    model = form['model'].value
+except:
+    model = 'hrrr'
+
+try:
+    date = form['valid'].value
+    DATE = datetime.strptime(date,'%Y-%m-%d_%H%M') # convert to datetime
+except:
+    plt.figure(1)
+    plt.title('Something wrong with date')
+    plt.savefig(sys.stdout)	# Plot standard output.
+
+try:
+    fxx = int(form['fxx'].value)
+except:
+    fxx = 0
+
+try:
+    dsize = form['dsize'].value
+except:
+    plt.figure(1)
+    plt.title('Something wrong with the domain size\noptions: small, medium, large, xlarge, xxlarge, xxxlarge, conus')
+    plt.savefig(sys.stdout)	# Plot standard output.
+
+
+if dsize != 'full':
+    try:
+        location = form['location'].value
+    except:
+        plt.figure(1)
+        plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor input a lat/lon (ex: 40.5,-111.5)')
+        plt.savefig(sys.stdout)	# Plot standard output.
+    # configure the latitude/longitude based on the location requested
+    try:
+        if ',' in location:
+            # User put inputted a lat/lon point request
+            lat, lon = location.split(',')
+            lat = float(lat)
+            lon = float(lon)
+        else:
+            # User requested a MesoWest station
+            location = location.upper()
+            stninfo = get_station_info([location])
+            lat = stninfo['LAT']
+            lon = stninfo['LON']
+    except:
+        plt.figure(1)
+        plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor iput a lat/lon (ex: 40.5,-111.5')
+        plt.savefig(sys.stdout)	# Plot standard output.
+else:
+    lon=None
+    lat=None
+    location=None
+
+try:
+    plotcode = form['plotcode'].value
+except:
+    plotcode = 'none,here'
+
+try:
+    background = form['background'].value
+except:
+    plt.figure(1)
+    plt.title('Something wrong with the background, options: arcgis, arcgisRoad, arcgisSat, terrain, landuse, none')
+    plt.savefig(sys.stdout)	# Plot standard output.
+
+
+
+
+VALIDDATE = DATE
+RUNDATE = VALIDDATE - timedelta(hours=fxx)
+
+
+lats, lons = load_lats_lons(model)
+
+# Draw map base elements
+m, alpha, half_box, barb_thin = draw_map_base(model, dsize, background,
+                                              location, lat, lon,
+                                              RUNDATE, VALIDDATE, fxx)
+
+# Draw Winds:
+if '10mWind' in plotcode:
+    Fill=False
+    Shade=False
+    Barbs=False
+    Quiver=False
+    p95=False
+    Convergence=False
+    Vorticity=False
+
+    if '10mWind_Fill' in plotcode:
+        Fill=True
+    if '10mWind_Shade' in plotcode:
+        Shade=True
+    if '10mWind_Barb' in plotcode:
+        Barbs=True
+    if '10mWind_Quiver' in plotcode:
+        Quiver=True
+    if '10mWind_p95' in plotcode:
+        p95=True
+    
+    draw_wind(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin,
+              level='10 m',
+              Fill=Fill,
+              Shade=Shade,
+              Barbs=Barbs,
+              Quiver=Quiver,
+              p95=p95,
+              Convergence=Convergence,
+              Vorticity=Vorticity)
+
+if '80mWind' in plotcode:
+    Fill=False
+    Shade=False
+    Barbs=False
+    Quiver=False
+    p95=False
+    Convergence=False
+    Vorticity=False
+
+    if '80mWind_Fill' in plotcode:
+        Fill=True
+    if '80mWind_Shade' in plotcode:
+        Shade=True
+    if '80mWind_Barb' in plotcode:
+        Barbs=True
+    if '80mWind_Quiver' in plotcode:
+        Quiver=True
+    if '80mWind_p95' in plotcode:
+        p95=True
+    
+    draw_wind(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin,
+              level='80 m',
+              Fill=Fill,
+              Shade=Shade,
+              Barbs=Barbs,
+              Quiver=Quiver,
+              p95=p95,
+              Convergence=Convergence,
+              Vorticity=Vorticity)
+
+if '500mbWind' in plotcode:
+    Fill=False
+    Shade=False
+    Barbs=False
+    Quiver=False
+    p95=False
+    Convergence=False
+    Vorticity=False
+
+    if '500mbWind_Fill' in plotcode:
+        Fill=True
+    if '500mbWind_Shade' in plotcode:
+        Shade=True
+    if '500mbWind_Barb' in plotcode:
+        Barbs=True
+    if '500mbWind_Quiver' in plotcode:
+        Quiver=True
+    
+    draw_wind(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin,
+              level='500 mb',
+              Fill=Fill,
+              Shade=Shade,
+              Barbs=Barbs,
+              Quiver=Quiver,
+              p95=p95,
+              Convergence=Convergence,
+              Vorticity=Vorticity)
+
+if '250mbWind' in plotcode:
+    Fill=False
+    Shade=False
+    Barbs=False
+    Quiver=False
+    p95=False
+    Convergence=False
+    Vorticity=False
+
+    if '250mbWind_Fill' in plotcode:
+        Fill=True
+    if '250mbWind_Shade' in plotcode:
+        Shade=True
+    if '250mbWind_Barb' in plotcode:
+        Barbs=True
+    if '250mbWind_Quiver' in plotcode:
+        Quiver=True
+    
+    draw_wind(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin,
+              level='250 mb',
+              Fill=Fill,
+              Shade=Shade,
+              Barbs=Barbs,
+              Quiver=Quiver,
+              p95=p95,
+              Convergence=Convergence,
+              Vorticity=Vorticity)
+
+if 'Wind_gust' in plotcode:
+    draw_gust(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin)
+
+if 'dBZ' in plotcode:
+    Fill=False
+    Contour=False
+    if 'dBZ_Fill' in plotcode:
+        Fill=True
+    if 'dBZ_Contour' in plotcode:
+        Contour=True
+    
+    draw_refc(m, lons, lats,
+              model, dsize, background,
+              location, lat, lon,
+              RUNDATE, VALIDDATE, fxx,
+              alpha, half_box, barb_thin,
+              Fill=Fill,
+              Contour=Contour, contours = range(10, 81, 10))
+
+if '2mTMP' in plotcode:
+    VAR = 'TMP:2 m'
+    Fill = False
+    Contour = False
+    p05p95 = False
+    if '2mTMP_Fill' in plotcode:
+        Fill = True
+    if '2mTMP_Contour' in plotcode:
+        Contour=True  
+    if '2mTMP_p05p95' in plotcode:
+        p05p95=True  
+    
+    draw_tmp_dpt(m, lons, lats,
+                 model, dsize, background,
+                 location, lat, lon,
+                 RUNDATE, VALIDDATE, fxx,
+                 alpha, half_box, barb_thin,
+                 variable=VAR,
+                 Fill=Fill,
+                 Contour=Contour, contours = [0],
+                 p05p95=p05p95)
+if '2mDPT' in plotcode:
+    VAR = 'DPT:2 m'
+    Fill = False
+    Contour = False
+    p05p95 = False
+    if '2mDPT_Fill' in plotcode:
+        Fill = True
+    if '2mDPT_Contour' in plotcode:
+        Contour=True  
+    if '2mDPT_p05p95' in plotcode:
+        p05p95=True  
+    
+    draw_tmp_dpt(m, lons, lats,
+                 model, dsize, background,
+                 location, lat, lon,
+                 RUNDATE, VALIDDATE, fxx,
+                 alpha, half_box, barb_thin,
+                 variable=VAR,
+                 Fill=Fill,
+                 Contour=Contour, contours = [0],
+                 p05p95=p05p95)
+
+if '2mRH' in plotcode:
+    draw_rh(m, lons, lats,
+            model, dsize, background,
+            location, lat, lon,
+            RUNDATE, VALIDDATE, fxx,
+            alpha, half_box, barb_thin,
+            level='2 m')
+
+if '500mbHGT' in plotcode:
+    draw_hgt(m, lons, lats,
+            model, dsize, background,
+            location, lat, lon,
+            RUNDATE, VALIDDATE, fxx,
+            alpha, half_box, barb_thin,
+            level='500 mb')
+
+if '700mbHGT' in plotcode:
+    draw_hgt(m, lons, lats,
+            model, dsize, background,
+            location, lat, lon,
+            RUNDATE, VALIDDATE, fxx,
+            alpha, half_box, barb_thin,
+            level='700 mb')
+
+plt.savefig(sys.stdout)	# Plot standard output.
+
+
+# http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrrak&valid=2018-05-01_0000&fxx=0&plotcode=dBZ_Fill&dsize=conus&background=none
