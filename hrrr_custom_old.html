@@ -197,85 +197,63 @@
     <div class="input-group" title="Hold ctrl to select multiple layers">
             <span class="input-group-addon"><i class="fa fa-map-signs fa-fw"></i></span>
             <select multiple class="form-control" id="plotcode" size=8>
-                <optgroup label="10-m Winds">
-                    <option selected value='Wind_10-m_Fill'>10 m Wind: Fill</option>
-                    <option value='Wind_10-m_Shade'>10 m Wind: High Winds</option>
-                    <option value='Wind_10-m_Barbs'>10 m Wind: Barbs</option>
-                    <option value='Wind_10-m_Quiver'>10 m Wind: Quiver</option>
-                    <option value='Gust_surface_Hatch'>Surface Gust: Hatch</option>
-                    <option value='Wind_10-m_p95'>10 m Wind Exceeding 95th Percentile</option>
+                <optgroup label="Near Surface Winds">
+                    <option selected value='10mWind_Fill'>10 m Wind: Fill</option>
+                    <option value='10mWind_Shade'>10 m Wind: High Winds</option>
+                    <option value='10mWind_Barb'>10 m Wind: Barbs</option>
+                    <option value='10mWind_Quiver'>10 m Wind: Quiver</option>
+                    <option value='80mWind_Fill'>80 m Wind: Fill</option>
+                    <option value='80mWind_Shade'>80 m Wind: High Winds</option>
+                    <option value='80mWind_Barb'>80 m Wind: Barbs</option>
+                    <option value='80mWind_Quiver'>80 m Wind: Quiver</option>
+                    <option value='Gust_Hatch'>Surface Gust: Hatch</option>
+                    <option value='10mWind_p95_fill'>10 m Wind Exceeding 95th Percentile: Fill</option>
                 </optgroup>
-                <optgroup label="80-m Winds">
-                        <option value='Wind_80-m_Fill'>80 m Wind: Fill</option>
-                        <option value='Wind_80-m_Shade'>80 m Wind: High Winds</option>
-                        <option value='Wind_80-m_Barbs'>80 m Wind: Barbs</option>
-                        <option value='Wind_80-m_Quiver'>80 m Wind: Quiver</option>
-                        <option value='Wind_80-m_p95'>80 m Wind Exceeding 95th Percentile</option>
-                    </optgroup>
-                <optgroup label='Near Surface Temperature'>
-                    <option value='TMP_2-m_Fill'>2 m Temperature: Fill</option>
-                    <option value='TMP_2-m_Contour_0'>2 m Temperature: 0&degC Line</option>
-                    <option value='TMP_surface_Fill'>Skin Temperature: Fill</option>
-                    <option value='POT_2-m_Fill'>2 m Potential Temperature: Fill</option>
-                    <option value='TMP_2-m_p05p95'>2 m Temp > 95th and < 5th Percentile</option>
-                <optgroup label='Near Surface Humidity'>
-                        <option value='DPT_2-m_Fill'>2 m Dew Point: Fill</option>
-                        <option value='DPT_2-m_Contour_0'>2 m Temperature: 0&degC Line</option>
-                        <option value='RH_2-m_Fill'>2 m Relative Humidity: Fill</option>
-                        <option value='DPT_2-m_p05p95'>2 m Dew Point > 95th and < 5th Percentile</option></5th>
+                <optgroup label='Surface Level'>
+                    <option value='2mTemp_Fill'>2 m Temperature: Fill</option>
+                    <option value='2mTemp_Freeze'>2 m Temperature: 0&degC Line</option>
+                    <option value='2mRH_Fill'>2 m Relative Humidity: Fill</option>
+                    <option value='SkinTemp_Fill'>Skin Temperature: Fill</option>
+                    <option value='2mPOT_Fill'>2 m Potential Temperature: Fill</option>
+                    <option value='2mTemp_p95p05_fill'>2 m Temp > 95th and < 5th Percentile: Fill</option>
+                    <option value='2mDPT_p95p05_fill'>2 m Dew Point > 95th and < 5th Percentile: Fill</option></5th>
                 <optgroup label='Reflectivity and Precipitation'>
-                    <option value='dBZ_entire_Fill'>Radar Simulated: Fill</option>
-                    <option value='dBZ_entire_Contour'>Radar Simulated: Contour</option>
-                    <option value='dBZ_entire_Contour_20'>Radar Simulated: Contour 20 dBZ</option>
-                    <option value='dBZ_entire_Contour_30'>Radar Simulated: Contour 30 dBZ</option>
-                    <option value='dBZ_entire_Contour_40'>Radar Simulated: Contour 40 dBZ</option>
-                    <option value='APCP_surface:0_Fill'>Precipitation, Accumulated: Fill</option>
-                    <option value='APCP_surface_Fill'>Precipitation, 1 Hour: Fill</option>
-                    <option value='SNOWC_surface_Fill'>Snow Cover: Fill</option>
-                    <option value='PWAT_surface_Fill'>Precipitable Water: Fill</option>
+                    <option value='dBZ_Fill'>Radar Simulated: Fill</option>
+                    <option value='dBZ_Contour'>Radar Simulated: Contour</option>
+                    <option value='dBZ20_Contour'>Radar Simulated: Contour 20 dBZ</option>
+                    <option value='dBZ30_Contour'>Radar Simulated: Contour 30 dBZ</option>
+                    <option value='dBZ40_Contour'>Radar Simulated: Contour 40 dBZ</option>
+                    <option value='AccumPrecip_Fill'>Precipitation, Accumulated: Fill</option>
+                    <option value='1hrPrecip_Fill'>Precipitation, 1 Hour: Fill</option>
+                    <option value='SnowCover_Fill'>Snow Cover: Fill</option>
+                    <option value='PWAT_Fill'>Precipitable Water: Fill</option>
                 </optgroup>
                 </optgroup>
                 <optgroup label='Stability'>
-                    <option value='CAPE_surface_Fill'>CAPE Surface: Fill</option>
-                    <option value='CIN_surface_Fill'>CIN Surface: Fill</option>
+                    <option value='CAPE_Fill'>CAPE Surface: Fill</option>
+                    <option value='CIN_Fill'>CIN Surface: Fill</option>
                 </optgroup>
                 <optgroup label='700 mb'>
-                    <option value='TMP_700-mb_Fill'>700 mb Temperature: Fill</option>
-                    <option value='TMP_700-mb_Contour_-12c0'>700 mb Temperature: -12&degC and 0&degC Line</option>
-                    <option value='RH_700-mb_Fill'>700 mb RH: Fill</option>
-                    <option value='HGT_700-mb_Contour'>700 mb Height: Contour</option>
-                    <option value='Wind_700-mb_Fill'>700 mb Wind: Fill</option>
-                    <option value='Wind_700-mb_Barbs'>700 mb Wind: Barbs</option>
-                    <option value='Wind_700-mb_Quiver'>700 mb Wind: Quiver</option>
-                    <option value='Wind_700-mb_Vorticity'>700 mb Vorticity: Fill</option>
-                    <option value='Wind_700-mb_Convergence'>700 mb Convergence: Fill</option>
+                    <option value='700Temp_Fill'>700 mb Temperature: Fill</option>
+                    <option value='700Temp_-12c'>700 mb Temperature: -12&degC Line</option>
+                    <option value='700RH_Fill'>700 mb RH: Fill</option>
                 </optgroup>
                 <optgroup label='500 mb'>
-                    <option value='TMP_500-mb_Fill'>500 mb Temperature: Fill</option>
-                    <option value='TMP_500-mb_Contour_-12c0'>500 mb Temperature: -12&degC and 0&degC Line</option>
-                    <option value='RH_500-mb_Fill'>500 mb RH: Fill</option>
-                    <option value='HGT_500-mb_Contour'>500 mb Height: Contour</option>
-                    <option value='Wind_500-mb_Fill'>500 mb Wind: Fill</option>
-                    <option value='Wind_500-mb_Barbs'>500 mb Wind: Barbs</option>
-                    <option value='Wind_500-mb_Quiver'>500 mb Wind: Quiver</option>
-                    <option value='Wind_500-mb_Vorticity'>500 mb Vorticity: Fill</option>
-                    <option value='Wind_500-mb_Convergence'>500 mb Convergence: Fill</option>
-                </optgroup>
-                <optgroup label='250 mb'>
-                        <option value='Wind_250-mb_Fill'>250 mb Wind: Fill</option>
-                        <option value='Wind_250-mb_Barbs'>250 mb Wind: Barbs</option>
-                        <option value='Wind_250-mb_Quiver'>250 mb Wind: Quiver</option>
-                        <option value='Wind_250-mb_Vorticity'>250 mb Vorticity: Fill</option>
-                        <option value='Wind_250-mb_Convergence'>250 mb Convergence: Fill</option>
+                    <option value='500HGT_Contour'>500 mb Height: Contour</option>
+                    <option value='500Vort_Fill'>500 mb Vorticity: Fill</option>
+                    <option value='500Conv_Fill'>500 mb Convergence: Fill</option>
+                    <option value='500Wind_Fill'>500 mb Wind: Fill</option>
+                    <option value='500Wind_Barb'>500 mb Wind: Barb</option>
+                    <option value='500Wind_Quiver'>500 mb Wind: Quiver</option>
                 </optgroup>
                 <optgroup label='Sea Level'>
-                    <option value='MSLP_sealevel_Contour'>Mean Sea Level: Contour</option>
-                    <option value='MSLP_sealevel_Fill'>Mean Sea Level: Fill</option>
+                    <option value='MSLP_Contour'>Mean Sea Level: Contour</option>
+                    <option value='MSLP_Fill'>Mean Sea Level: Fill</option>
                 </optgroup>
                 <optgroup label='Red Flag'>
-                    <option value='REDFLAG_surface_Fill'>Red Flag Criteria: Fill</option>
-                    <option value='REDFLAG_surface_Contour'>Red Flag Criteria: Contour</option>
-                    <option value='REDFLAG_surface_Fill-Potential'>Red Flag Potential: Fill</option>
+                    <option value='RedFlag_Fill'>Red Flag Criteria: Fill</option>
+                    <option value='RedFlag_Contour'>Red Flag Criteria: Contour</option>
+                    <option value='RedFlagPot_Fill'>Red Flag Potential: Fill</option>
                 </optgroup>
             </select>
     </div>
@@ -304,7 +282,7 @@
                     <input type="radio" name="dsize" value='xxxlarge'> <i class="fa fa-stop fa-2x" title="3,000 km"></i>
             </label>    
             <label class="btn btn-default active">
-                    <input type="radio" name="dsize" value='full' checked> <i class="fa fa-globe fa-2x" title="full"></i>
+                    <input type="radio" name="dsize" value='conus' checked> <i class="fa fa-globe fa-2x" title="CONUS"></i>
             </label>
         </div>
       </div>
