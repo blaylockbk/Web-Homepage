@@ -68,7 +68,9 @@
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
-<h1 align="center"><i class="far fa-map"></i> HRRR Custom Surface Maps</h1>
+<h1 align="center"><i class="far fa-map"></i> HRRR Custom Surface Maps
+     <a class='btn btn-primary' data-toggle="modal" data-target="#INSTRUCTIONSmodal">Instructions</a>
+    </h1>
 
 
 <center>
@@ -416,6 +418,124 @@
 
 </center>
 <br>
+
+<!-- Instrucctions Modal -->
+<div class="modal fade" id="INSTRUCTIONSmodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">HRRR Custom Map Maker</div>
+        <div class="modal-body">
+          <h4>model</h4>
+          <ul>
+              <li>hrrr</li>
+              <li>hrrrX</li>
+              <li>hrrrak</li>
+          </ul>
+          <h4>valid</h4>
+          <p>The model valid time: YYYY-mm-dd_HHMM
+          <h4>fxx</h4>
+          <p>The forecast lead time: 0-18 for hrrr and hrrrX. 0-36 for hrrrak</p>
+          <h4>location</h4>
+          <ul>
+                <li>Mesowest ID: WBB</li>
+                <li>latitude,longitude: 40,-110</li>
+          </ul>
+          <h4>dsize</h4>
+          <ul>
+                <li>full: the full model domain</li>
+                <li>small</li>
+                <li>medium</li>
+                <li>large</li>
+                <li>xlarge</li>
+                <li>xxlarge</li>
+                <li>xxxlarge</li>
+          </ul>
+          <h4>background</h4>
+          <ul>
+                <li>arcgis: basic terrain/shaded relief</li>
+                <li>arcgisSatl: satellite image</li>
+                <li>arcgisRoad: roads</li>
+                <li>terrain: model terrain</li>
+                <li>landuse: model land surface classifications</li>
+                <li>none: plain white background</li>
+          </ul>
+          <p>If dsize=full, then the background will be a plain tan for land and light blue for water</p>
+          <h4>plotcode</h4>
+          <p>In general, requires 3-4 parts per code, separated by an underscore. Plots can be stacked by including many plotcodes, each separted by a comma.</p>
+          <p>[variable]_[level]_[plot type]_[contour interval (optional)]</p>
+          <ul>
+              <li>TMP or DPT
+                  <ul>
+                      <li>2-m</li>
+                      <li>500-mb</li>
+                      <li>700-mb</li>
+                      <li>surface</li>
+                        <ul>
+                            <li>Fill</li>
+                            <li>Contour</li>
+                                <ul>
+                                    <li>contour interval is [0] by default</li>
+                                    <li>custom contour intervals is numbers separated by a c. Example: '0c10c20c'</li>
+                                </ul>
+                            <li>p05p95: 5th and 95th percentile depression/exceedance. (only for level=2-m)</li>
+                                
+                        </ul>
+                  </ul>
+                <li>Wind
+                    <ul>
+                        <li>10-m</li>
+                        <li>80-m</li>
+                        <li>250-mb</li>
+                        <li>500-mb</li>
+                        <li>700-mb</li>
+                            <ul>
+                                <li>Fill</li>
+                                <li>p95: 95th percentile exceedance. (only for level=10-m or 80-m)</li>
+                                <li>Shade: Shade areas with high winds</li>
+                                <li>Barbs</li>    
+                                <li>Quiver</li>    
+                                <li>Vorticity</li>
+                                <li>Convergence</li>
+                            </ul>
+                    </ul>
+                <li>RH
+                    <ul>
+                        <li>2-m</li>
+                        <li>500-mb: computed from TMP and DPT</li>
+                        <li>700-mb: computed from TMP and DPT</li>
+                            <ul>
+                                <li>Fill</li>
+                            </ul>
+
+                    </ul>
+                <li>dBZ: simulated composite reflectivity
+                    <ul>
+                        <li>entire</li>
+                            <ul>
+                                <li>Fill</li>
+                                <li>Contour</li>
+                                    <ul>
+                                        <li>contour interval is [10,20,30,40,50] by default</li>
+                                        <li>custom contour intervals is numbers separated by a c. Example: '0c10c20c'</li>
+                                    </ul>
+                                
+                            </ul>
+                    </ul>
+                </ul>
+          </ul>
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end Red Flag legend Modal -->
 
 <!-- Landuse Legend Modal -->
 <div class="modal fade" id="LUmodal" role="dialog">

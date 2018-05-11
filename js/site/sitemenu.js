@@ -242,6 +242,8 @@ document.write('\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
+                        <li><a href="https://www.weather.gov/fire/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  weather.gov/fire</a></li>\
+                        <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                     </ul>\
                     </li>\
 \
