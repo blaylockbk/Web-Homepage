@@ -300,8 +300,8 @@ print''' </select>
         <select class="form-control" id="product" name="product">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format']
-value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP']
+display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper']
+value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP', 'GLM-L2-LCFA']
 
 for i in range(0,len(value)):
    if product == value[i]:
@@ -409,14 +409,18 @@ if domain == 'M2':
 # Convert to numpy array
 flist = np.array(flist)
 
-if product == 'ABI-L2-MCMIP':
-    # The multi-band format doesn't have files separated by band type
+if product == 'ABI-L2-MCMIP' or product == 'GLM-L2-LCFA':
+    # The multi-band format and GLM doesn't have files separated by band type
     scan_end = np.array([f.split('_')[4][:] for f in flist])
     button_display = np.array(['%s' % (d[10:12]) for d in scan_end])
     print '''<div class="form-group">'''
     print '''<div class="col-md-12">'''
     print '''<div class="mybtn-group">'''
-    print '''<button name="hour" type="button" class="mybtn hourbtn"">Multi-band Format:</button>'''
+    if product == 'ABI-L2-MCMIP':
+        print '''<button name="hour" type="button" class="mybtn hourbtn"">Multi-band Format:</button>'''
+    elif product == 'GLM-L2-LCFA':
+        print '''<button name="hour" type="button" class="mybtn hourbtn"">Geostationary Lightning Mapper:</button>'''
+    
     for i in range(len(flist)):
         download_this = '%s%s%s' % (sourceURL, PATH, flist[i])
         print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">%s</button></a>''' % (button_display[i])

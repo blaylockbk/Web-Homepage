@@ -235,6 +235,7 @@
                     <option value='APCP_surface_Fill'>Precipitation, 1 Hour: Fill</option>
                     <option value='SNOWC_surface_Fill'>Snow Cover: Fill</option>
                     <option value='PWAT_surface_Fill'>Precipitable Water: Fill</option>
+                    <option value='TCDC_entire_Fill'>Total Cloud Cover: Fill</option>
                 </optgroup>
                 </optgroup>
                 <optgroup label='Stability'>
@@ -503,8 +504,8 @@
                 <li>RH
                     <ul>
                         <li>2-m</li>
-                        <li>500-mb: computed from TMP and DPT</li>
-                        <li>700-mb: computed from TMP and DPT</li>
+                        <li>500-mb (computed from TMP and DPT)</li>
+                        <li>700-mb (computed from TMP and DPT)</li>
                             <ul>
                                 <li>Fill</li>
                             </ul>
@@ -523,6 +524,25 @@
                                 
                             </ul>
                     </ul>
+                <li>APCP: Accumulated Precipitation
+                    <ul>
+                        <li>surface:0 (accumulation since f00)</li>
+                        <li>surface (accumulation for previous hour only)</li>
+                            <ul>
+                                <li>Fill</li>
+                                <li>masked</li>                                
+                            </ul>
+                    </ul>
+                <li>[any HRRR variable abbreviation]
+                    <ul>
+                        <li>[any level available for that variable]</li>
+                            <ul>
+                                <li>Fill</li>
+                                <li>masked</li>                                
+                            </ul>
+                    </ul>
+                
+                
                 </ul>
           </ul>
           

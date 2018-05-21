@@ -337,13 +337,11 @@ for h in model_hours:
             if link2 == 'grib2':
                 download_this = baseURL+pathURL+fileURL
             elif link2 == 'metadata':
-                #download_this = 'https://api.mesowest.utah.edu/archive/HRRR/'+pathURL+fileURL+'.idx'
                 download_this = baseURL+pathURL+fileURL+'.idx'
             elif link2 == 'sample':
-                #download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_sample.cgi?model=%s&date=%s&hour=%s&fxx=%s' % (file_model, Date, h, f)
                 RUN = datetime(DATE.year, DATE.month, DATE.day, h)
                 VALID = RUN+timedelta(hours=f)
-                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=%s&valid=%s&fxx=%s&location=40.74,-111.83&plotcode=dBZ_Fill&dsize=conus&background=none' % (file_model, VALID.strftime('%Y-%m-%d_%H00'), f)
+                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=%s&valid=%s&fxx=%s&location=&plotcode=dBZ_entire_Fill,HGT_500-mb_Contour&dsize=full&background=arcgis' % (file_model, VALID.strftime('%Y-%m-%d_%H00'), f)
             print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">f%02d</button></a>''' % (f)
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">f%02d</button>''' % (f)
