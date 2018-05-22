@@ -33,8 +33,8 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 # Set the directory
-DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/oper/HRRR_fires/'
-URL = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/'
+DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/oper/HRRR_fires_NEW/'
+URL = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires_NEW/'
 
 # List of the dates in the directory
 list_dates = filter(lambda x: os.path.isdir(DIR+x), os.listdir(DIR))
@@ -129,7 +129,7 @@ print'''
 '''
 
 print '''
-<form class="form-horizontal" method="GET" action="cgi-bin/photo_viewer_fire.cgi">
+<form class="form-horizontal" method="GET" action="cgi-bin/photo_viewer_fire_NEW.cgi">
 
 <div class="form-group">
 <!--- Select Fire -------------------------->
@@ -207,13 +207,13 @@ print "<h3 align='center'><small>%s</small></h3>" % short_path
 print "<div  class='btn-group btn-group-justified' role='group'>"
 for i in ['Landuse', 'GOES']:
     print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
-print "</div><br>"
+print "</div>"
 
 # Hovemollers
 print "<div  class='btn-group btn-group-justified' role='group'>"
 for i in ['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF']:
     print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
-print "</div><br>"
+print "</div>"
 
 # F00-F18
 print "<div  class='btn-group btn-group-justified' role='group'>"
