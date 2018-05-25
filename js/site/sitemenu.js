@@ -172,7 +172,7 @@ document.write('\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Published<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
                             <li><a href="./publications.html "><i class="fas fa-file-alt fa-fw" ></i> Publications</a></li>\
-                            <li><a href="./presentations.html "><i class="fab fa-slideshare fa-fw" ></i> Presentations</a></li>\
+                            <li><a href="./presentations.html "><i class="fab fa-slideshare fa-fw"></i> Presentations</a></li>\
                         </ul>\
                     </li>\
 \

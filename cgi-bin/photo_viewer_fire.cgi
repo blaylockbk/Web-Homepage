@@ -56,9 +56,9 @@ list_hours.sort()
 try:
     HOUR = form['HOUR'].value
     if HOUR not in list_hours:
-        HOUR = list_hours[-1]
+        HOUR = list_hours[-2]
 except:
-    HOUR = list_hours[-1]
+    HOUR = list_hours[-2]
 
 # List the fires in the directory
 list_fires = filter(lambda x: os.path.isdir(DIR+DATE+'/'+HOUR+'/'+x), os.listdir(DIR+DATE+'/'+HOUR+'/'))
@@ -205,13 +205,13 @@ print "<h3 align='center'><small>%s</small></h3>" % short_path
 
 # Land use and GOES-16 image
 print "<div  class='btn-group btn-group-justified' role='group'>"
-for i in ['Landuse', 'GOES']:
+for i in ['G%02d' % i for i in range(2,60,5)]:
     print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
 print "</div><br>"
 
 # Hovemollers
 print "<div  class='btn-group btn-group-justified' role='group'>"
-for i in ['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF']:
+for i in ['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF', 'Landuse']:
     print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
 print "</div><br>"
 
