@@ -300,7 +300,7 @@ print''' </select>
         <select class="form-control" id="product" name="product">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper']
+display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper (Full Disk Only)']
 value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP', 'GLM-L2-LCFA']
 
 for i in range(0,len(value)):
@@ -380,7 +380,10 @@ band = ['0.47 &microm: Visible "Blue Band"',\
 
 # Create list of files available for the requested hour
 DATE = datetime.strptime(Date, "%Y-%m-%d")
-PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
+if product=='GLM-L2-LCFA':
+    PATH = '/%s/%s/%02d/' % (product, DATE.strftime('%Y/%j'), int(hour))
+else:    
+    PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
 
 print '<h4>Tap to download from noaa-goes16 S3 bucket: <b>'+sourceURL+PATH+'</b></h4>'
 print "<p>Number represents the scan's start minute for the requested hour"

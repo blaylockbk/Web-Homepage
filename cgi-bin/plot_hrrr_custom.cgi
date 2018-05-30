@@ -140,12 +140,12 @@ for U in unique_vars:
     PLOTCODES[U]={}
     var_codes = [i for i in a if i.split('_')[0]==U]
     unique_levels = np.unique([i.split('_')[1] for i in var_codes])
-    
+    #
     for L in unique_levels:
         PLOTCODES[U][L] = {}
         plot_codes = [i for i in a if i.split('_')[1]==L]
         unique_plot = np.unique([i.split('_')[2] for i in plot_codes])
-    
+        #
         PLOTCODES[U][L]['Fill']=False
         PLOTCODES[U][L]['Contour']=False
         PLOTCODES[U][L]['Shade']=False
@@ -157,6 +157,7 @@ for U in unique_vars:
         PLOTCODES[U][L]['Vorticity']=False
         PLOTCODES[U][L]['Fill-Potential']=False
         PLOTCODES[U][L]['masked']=False
+        PLOTCODES[U][L]['Crossover']=False
         for P in unique_plot:
             if P == 'Contour':
                 try:
@@ -272,6 +273,21 @@ if 'RH' in PLOTCODES:
                 RUNDATE, VALIDDATE, fxx,
                 alpha, half_box, barb_thin,
                 level=level)
+
+if 'VPD' in PLOTCODES:
+    for L in PLOTCODES['VPD']:
+        Fill=PLOTCODES['VPD'][L]['Fill']
+        Crossover=PLOTCODES['VPD'][L]['Crossover']
+        level = L.replace('-', ' ')
+        draw_vpd(m, lons, lats,
+                model, dsize, background,
+                location, lat, lon,
+                RUNDATE, VALIDDATE, fxx,
+                alpha, half_box, barb_thin,
+                level=level,
+                Fill=Fill,
+                Crossover=Crossover)
+
 if 'HGT' in PLOTCODES:
     for L in PLOTCODES['HGT']:
         level = L.replace('-', ' ')
@@ -310,7 +326,7 @@ if 'REDFLAG' in PLOTCODES:
                      Fill_Potential=Fill_Potential)
 
 # All other variables
-OTHER = [i for i in PLOTCODES.keys() if i not in ['TMP', 'DPT', 'Wind', 'Gust', 'dBZ', 'RH', 'HGT', 'MSLP','REDFLAG']]
+OTHER = [i for i in PLOTCODES.keys() if i not in ['TMP', 'DPT', 'Wind', 'Gust', 'dBZ', 'RH', 'HGT', 'MSLP','REDFLAG', 'VPD']]
 
 for i in OTHER:
     for L in PLOTCODES[i]:
