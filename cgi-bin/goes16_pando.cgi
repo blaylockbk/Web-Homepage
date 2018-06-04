@@ -254,7 +254,7 @@ print '''
   </div>
 
   <div class="col-md-8">
-  <center><img id='sounding_img' src='./images/empty.jpg' width=60%></center>
+  <center><img id='sounding_img' src='./images/empty.jpg' width=60% onclick='window.open(this.src)'></center>
   <hr>
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/cgi-bin/goes16_pando.cgi"><i class="fab fa-github"></i> Page</a>
