@@ -22,7 +22,7 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    variable = form['variable'].value
+    variable = cgi.escape(form['variable'].value)
 except:
     variable = 'TMP2m'
 

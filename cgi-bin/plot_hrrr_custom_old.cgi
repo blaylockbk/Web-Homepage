@@ -64,12 +64,12 @@ print "Content-Type: image/png\n"
 form = cgi.FieldStorage()	# CGI function takes in web arguments
 
 try:
-    model = form['model'].value
+    model = cgi.escape(form['model'].value)
 except:
     model = 'hrrr'
 
 try:
-    date = form['valid'].value
+    date = cgi.escape(form['valid'].value)
     DATE = datetime.strptime(date,'%Y-%m-%d_%H%M') # convert to datetime
 except:
     plt.figure(1)
@@ -77,12 +77,12 @@ except:
     plt.savefig(sys.stdout)	# Plot standard output.
 
 try:
-    fxx = int(form['fxx'].value)
+    fxx = int(cgi.escape(form['fxx'].value))
 except:
     fxx = 0
 
 try:
-    dsize = form['dsize'].value
+    dsize = cgi.escape(form['dsize'].value)
 except:
     plt.figure(1)
     plt.title('Something wrong with the domain size\noptions: small, medium, large, xlarge, xxlarge, xxxlarge, conus')
@@ -90,7 +90,7 @@ except:
 
 if dsize != 'conus':
     try:
-        location = form['location'].value
+        location = cgi.escape(form['location'].value)
     except:
         plt.figure(1)
         plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor input a lat/lon (ex: 40.5,-111.5)')
@@ -114,12 +114,12 @@ if dsize != 'conus':
         plt.savefig(sys.stdout)	# Plot standard output.
 
 try:
-    plotcode = (form['plotcode'].value).split(',')
+    plotcode = (cgi.escape(form['plotcode'].value)).split(',')
 except:
     plotcode = ['none', 'here']
 
 try:
-    background = form['background'].value
+    background = cgi.escape(form['background'].value)
 except:
     plt.figure(1)
     plt.title('Something wrong with the background, options: arcgis, arcgisRoad, arcgisSat, terrain, landuse, none')

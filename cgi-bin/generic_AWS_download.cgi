@@ -4,7 +4,7 @@
 
 """
 Brian Blaylock
-Decebmer 14, 2017
+December 14, 2017
 
 GOES16 File Explorer for AWS
 
@@ -29,12 +29,12 @@ form = cgi.FieldStorage()
 
 ## Get Bucket name from the form, or set default
 try:
-    dataset = form['DATASET'].value
+    dataset = cgi.escape(form['DATASET'].value)
 except:
     # Demo, default bucket
     dataset = 'noaa-goes16'
 try:
-    bucket = form['BUCKET'].value
+    bucket = cgi.escape(form['BUCKET'].value)
 except:
     # Demo, default bucket
     bucket = ''

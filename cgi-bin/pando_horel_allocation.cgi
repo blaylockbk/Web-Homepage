@@ -17,7 +17,7 @@ form = cgi.FieldStorage()
 
 ## Get Bucket name from the form, or set default
 try:
-    bucket = form['BUCKET'].value
+    bucket = cgi.escape(form['BUCKET'].value)
 except:
     # Demo, default bucket
     bucket = 'HRRR/oper/prs/20170101/'
@@ -59,7 +59,7 @@ print '<hr>'
 ## Create list of directories and files in the bucket with rclone
 # 1) The location of the rclone command
 #rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
-rclone = '/uufs/chpc.utah.edu/common/home/horel-group/archive_s3/rclone-beta/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
+rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone'
 
 # 2) The rclone comand to list files in this bucket
 #    'horelS3' is the bucket named I configured rclone to access the Pando.

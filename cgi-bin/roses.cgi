@@ -25,39 +25,39 @@ current = datetime.now()
 onedayago = datetime.now()-timedelta(days=1)
 
 try:
-      stn = form['stn'].value
+      stn = cgi.escape(form['stn'].value)
 except:
       stn = 'WBB'
 try:
-      start = form['start'].value
+      start = cgi.escape(form['start'].value)
 except:
       start = onedayago.strftime('%Y-%m-%d %H:%M')
 try:
-      end = form['end'].value
+      end = cgi.escape(form['end'].value)
 except:
       end = (current+timedelta(hours=7)).strftime('%Y-%m-%d %H:%M')
 try:
-      rose_type = form['rose_type'].value
+      rose_type = cgi.escape(form['rose_type'].value)
 except:
       rose_type = 'wind'
 try:
-      tz = form['tz'].value   # Time Zone
+      tz = cgi.escape(form['tz'].value)   # Time Zone
 except:
       tz = '0'
 try:
-      HI = form['HI'].value   # Hour interval
+      HI = cgi.escape(form['HI'].value)   # Hour interval
 except:
       HI = 'All Day'
 try:
-      units = form['units'].value   # Units, english or metric
+      units = cgi.escape(form['units'].value)   # Units, english or metric
 except:
       units = 'metric'
 try:
-      threshold = form['threshold'].value
+      threshold = cgi.escape(form['threshold'].value)
 except:
       threshold = '00'
 try:
-      plot_max = form['plot_max'].value
+      plot_max = cgi.escape(form['plot_max'].value)
 except:
       plot_max = 'auto'
 

@@ -52,7 +52,7 @@ print "Content-Type: image/png\n"
 #print sys.modules.keys()
 #print 'matplitlib version', mpl.__version__,'<br><br>'
 
-form = cgi.FieldStorage()	# CGI function takes in web arguments
+form = cgi.escape(cgi.FieldStorage())	# CGI function takes in web arguments
 
 
 try:

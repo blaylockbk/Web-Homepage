@@ -29,23 +29,23 @@ today = date.today()
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
-    source = form['source'].value
+    source = cgi.escape(form['source'].value)
 except:
     source = 'aws'    # 'aws' for Amazon or 'occ' for Open Commons Consortium 
 try:
-    domain = form['domain'].value
+    domain = cgi.escape(form['domain'].value)
 except:
     domain = 'C'    # C for CONUS, F for Full Disk, M for Mesoscale
 try:
-    product = form['product'].value
+    product = cgi.escape(form['product'].value)
 except:
     product = 'ABI-L2-CMIP' # ABI-L1b-Rad or ABI-L2-CMIP or ABI-L2-MCMIP
 try:
-    hour = form['hour'].value
+    hour = cgi.escape(form['hour'].value)
 except:
     hour = '0'
 try:
-    Date = form['date'].value
+    Date = cgi.escape(form['date'].value)
 except:
     Date = today.strftime('%Y-%m-%d')
 
@@ -300,7 +300,7 @@ print''' </select>
         <select class="form-control" id="product" name="product">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper (Full Disk Only)']
+display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper']
 value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP', 'GLM-L2-LCFA']
 
 for i in range(0,len(value)):

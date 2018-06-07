@@ -32,7 +32,7 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    LOC = form['LOC'].value
+    LOC = cgi.escape(form['LOC'].value)
 except:
     LOC = 'UKBKB'
 

@@ -42,7 +42,7 @@ list_dates.sort()
 
 # Get requested date, or get today if the requested date is invalid
 try:
-    DATE = form['DATE'].value
+    DATE = cgi.escape(form['DATE'].value)
     if DATE not in list_dates:
         DATE = list_dates[-1]
 except:
@@ -54,7 +54,7 @@ list_hours.sort()
 
 # Get requested hour, or get latest hour if invalid
 try:
-    HOUR = form['HOUR'].value
+    HOUR = cgi.escape(form['HOUR'].value)
     if HOUR not in list_hours:
         HOUR = list_hours[-1]
 except:
@@ -65,7 +65,7 @@ list_fires = filter(lambda x: os.path.isdir(DIR+DATE+'/'+HOUR+'/'+x), os.listdir
 list_fires.sort()
 
 try:
-    FIRE = form['FIRE'].value
+    FIRE = cgi.escape(form['FIRE'].value)
     if FIRE not in list_fires:
         FIRE = list_fires[0]
 except:

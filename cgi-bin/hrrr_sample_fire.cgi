@@ -50,33 +50,33 @@ print "Content-Type: image/png\n"
 form = cgi.FieldStorage()	# CGI function takes in web arguments
 
 try:
-    model = form['model'].value
+    model = cgi.escape(form['model'].value)
 except:
     model = 'hrrr'
 try:
-    name = form['name'].value
+    name = cgi.escape(form['name'].value)
 except:
     name = '(no name)'
 try:
-    date = form['validdate'].value
+    date = cgi.escape(form['validdate'].value)
     DATE = datetime.strptime(date,'%Y-%m-%d_%H%M') # convert to datetime
 except:
     plt.figure(1)
     plt.title('Something wrong with date')
     plt.savefig(sys.stdout)	# Plot standard output.
 try:
-    fxx = int(form['fxx'].value)
+    fxx = int(cgi.escape(form['fxx'].value))
 except:
     fxx = 0
 try:
-    lat = float(form['lat'].value)
+    lat = float(cgi.escape(form['lat'].value))
 except:
     plt.figure(1)
     plt.title('Something wrong with latitude')
     plt.savefig(sys.stdout)	# Plot standard output.
 
 try:
-    lon = float(form['lon'].value)
+    lon = float(cgi.escape(form['lon'].value))
 except:
     plt.figure(1)
     plt.title('Something wrong with longitude')

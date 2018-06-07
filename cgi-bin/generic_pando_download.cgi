@@ -22,10 +22,10 @@ form = cgi.FieldStorage()
 
 ## Get Bucket name from the form, or set default
 try:
-    bucket = form['BUCKET'].value
+    bucket = cgi.escape(form['BUCKET'].value)
 except:
     # Demo, default bucket
-    bucket = 'hrrr/prs/20180101/'
+    bucket = cgi.escape('hrrr/prs/20180101/')
 
 
 ## You must have a / at the end of the bucket name

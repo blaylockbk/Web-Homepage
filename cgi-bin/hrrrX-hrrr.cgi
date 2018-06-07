@@ -33,17 +33,17 @@ onedayago = datetime.now()-timedelta(days=1)
 yesterday = onedayago.strftime('%Y-%m-%d')
 
 try:
-      date = form['date'].value
+      date = cgi.escape(form['date'].value)
 except:
       date = yesterday
 
 try:
-      hour = form['hour'].value
+      hour = cgi.escape(form['hour'].value)
 except:
       hour = '03'
 
 try:
-      domain = form['domain'].value
+      domain = cgi.escape(form['domain'].value)
 except:
       domain = 'GSL'
 

@@ -19,15 +19,15 @@ form = cgi.FieldStorage()
 print "Content-Type: text/html\n"
 
 try:
-    STN = form['STN'].value
+    STN = cgi.escape(form['STN'].value)
 except:
     STN = 'UKBKB'
 try:
-    UNITS = form['UNITS'].value
+    UNITS = cgi.escape(form['UNITS'].value)
 except:
     UNITS = 'English'
 try:
-    TZ = form['TZ'].value
+    TZ = cgi.escape(form['TZ'].value)
 except:
     TZ = 'Local'
 

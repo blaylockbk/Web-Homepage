@@ -31,31 +31,31 @@ current = datetime.now()
 onedayago = datetime.now()-timedelta(days=1)
 
 try:
-      stn1 = form['stn1'].value
+      stn1 = cgi.escape(form['stn1'].value)
 except:
       stn1 = 'PSRIM'
 try:
-      stn2 = form['stn2'].value
+      stn2 = cgi.escape(form['stn2'].value)
 except:
       stn2 = 'PSINK'
 try:
-      stn3 = form['stn3'].value
+      stn3 = cgi.escape(form['stn3'].value)
 except:
       stn3 = ''
 try:
-      stn4 = form['stn4'].value
+      stn4 = cgi.escape(form['stn4'].value)
 except:
       stn4 = ''
 try:
-      start = form['start'].value
+      start = cgi.escape(form['start'].value)
 except:
       start = onedayago.strftime('%Y-%m-%d %H:%M')
 try:
-      end = form['end'].value
+      end = cgi.escape(form['end'].value)
 except:
       end = (current+timedelta(hours=7)).strftime('%Y-%m-%d %H:%M')
 try:
-      units = form['units'].value # metric or english
+      units = cgi.escape(form['units'].value) # metric or english
 except:
       units = 'metric'
 

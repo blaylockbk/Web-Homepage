@@ -32,11 +32,11 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    FIRE = form['FIRE'].value
+    FIRE = cgi.escape(form['FIRE'].value)
 except:
     FIRE = 'NORA'
 try:
-    DATE = form['DATE'].value+'_'+form['HOUR'].value
+    DATE = cgi.escape(form['DATE'].value)+'_'+form['HOUR'].value
     DATE = datetime.strptime(DATE, '%Y-%m-%d_%H%M')
 except:
     DATE = datetime.now()

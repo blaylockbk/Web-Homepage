@@ -22,11 +22,11 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    stn = (form['station'].value).upper()
+    stn = (cgi.escape(form['station'].value)).upper()
 except:
     stn = 'WBB'
 try:
-    variable = form['variable'].value
+    variable = cgi.escape(form['variable'].value)
 except:
     variable = 'TMP_2_m'
 

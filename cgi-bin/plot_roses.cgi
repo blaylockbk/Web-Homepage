@@ -41,15 +41,15 @@ print "Content-Type: image/png\n"
 
 form = cgi.FieldStorage()	# CGI function takes in web arguments
 
-stn  = form['stn'].value
-rose_type = form['rose_type'].value
-start = form['start'].value
-end = form['end'].value
-tz = form['tz'].value
-HI = form['HI'].value
-units = form['units'].value
-threshold = form['threshold'].value
-plot_max = form['plot_max'].value
+stn  = cgi.escape(form['stn'].value)
+rose_type = cgi.escape(form['rose_type'].value)
+start = cgi.escape(form['start'].value)
+end = cgi.escape(form['end'].value)
+tz = cgi.escape(form['tz'].value)
+HI = cgi.escape(form['HI'].value)
+units = cgi.escape(form['units'].value)
+threshold = cgi.escape(form['threshold'].value)
+plot_max = cgi.escape(form['plot_max'].value)
 
 DATE_START = datetime.strptime(start, '%Y-%m-%d %H:%M')
 DATE_END = datetime.strptime(end, '%Y-%m-%d %H:%M')

@@ -28,11 +28,11 @@ yesterday = date.today() - timedelta(days=1)
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
-    domain = form['domain'].value
+    domain = cgi.escape(form['domain'].value)
 except:
     domain = 'CONUS'    # CONUS or UTAH
 try:
-    Date = form['date'].value
+    Date = cgi.escape(form['date'].value)
 except:
     Date = date.today().strftime('%Y-%m-%d')
 

@@ -21,19 +21,19 @@ yesterday = date.today()
 max_date = date.today().strftime('%Y-%m-%d')
 
 try:
-    model = form['model'].value
+    model = cgi.escape(form['model'].value)
 except:
     model = 'hrrr'
 try:
-    field = form['field'].value
+    field = cgi.escape(form['field'].value)
 except:
     field = 'sfc'
 try:
-    Date = form['date'].value
+    Date = cgi.escape(form['date'].value)
 except:
     Date = yesterday.strftime('%Y-%m-%d')
 try:
-    link2 = form['link2'].value
+    link2 = cgi.escape(form['link2'].value)
 except:
     link2 = 'grib2'
 

@@ -14,9 +14,10 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    fire = form['fire'].value
+    fire = cgi.escape(form['fire'].value)
 except:
     fire = 'BRIANHEAD'
+
 
 alert_file = '/uufs/chpc.utah.edu/common/home/u0553130/oper/HRRR_fires/HRRR_fires_alerts.csv'
 

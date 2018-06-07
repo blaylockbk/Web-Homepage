@@ -23,11 +23,11 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 try:
-    variable = form['variable'].value
+    variable = cgi.escape(form['variable'].value)
 except:
     variable = 'Simulated_Radar'
 try:
-    DOMAIN = form['domain'].value
+    DOMAIN =cgi.escape(form['domain'].value)
 except:
     DOMAIN = 'CONUS'
 
