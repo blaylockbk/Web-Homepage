@@ -5,7 +5,7 @@
 
 
 """
-Plots a sample image of HRRR near the fire.
+Generates a custom figure of desired HRRR variables
 
 Note: For CGI, cannot print anything to screen when outputting a .png file
 """

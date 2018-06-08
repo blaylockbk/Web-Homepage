@@ -5,7 +5,7 @@
 
 
 """
-Plots a sample image of HRRR near the fire.
+Generates a custom map image of HRRRx, HRRR, and difference between the two
 
 Note: For CGI, cannot print anything to screen when outputting a .png file
 """

@@ -1,26 +1,19 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 March 9, 2018
 
-New Photo Viewer built with Python instead of PHP
+Custom Photo Viewer for HRRR fire point forecast images
+    /public_html/oper/HRRR_fires
 
 Photo Viewer:
 View all images in a directory by hovering, clicking, or selecting buttons.
-Simply dump this script into any public_html directory with images.
 This browser-friendly image viewer allows you to stay on the same page while
 flipping through images rather than clicking the back button every time you 
 want to see a different image in the directory.
 
 WARNING: Image names in the directory can NOT have any spaces!!
-
-Created by Brian Blaylock
-Date: November 30, 2015
-Updated with bootstrap style: February 13, 2017
-Updated with new date selector: May 21, 2017
 
 http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 """

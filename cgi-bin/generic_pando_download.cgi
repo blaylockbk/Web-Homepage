@@ -1,16 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
-Decebmer 5, 2017
+December 5, 2017
 
-Updates/To Do:
-    [X] Bootstrap style: Dec 13, 2017
-    [X] Differentiate between directories and files for navigation Dec 13, 2017
-    [X] Added a back button. Dec 13, 2017
-    [ ]
+Webpage displays directories and files on Pando
 """
 
 import subprocess

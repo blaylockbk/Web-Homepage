@@ -1,17 +1,11 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 January 17, 2017
 
-To Do List:
-[X] Add Bootstrap Modals for page instructions. (Jan 17, 2017)
-[ ] Add aditional API query that finds the shared variables between the
-    requested stations and creates a variable dropdown for the available data.
-[ ] Add advanced options to modify the plot size, label fonts, dpi, etc. to 
-    easily customize plots for publications.
+Webpage to create timeseries for multiple statin locations from MesoWest API
+using /plot_ts_multistation.cgi
 """
 
 import sys

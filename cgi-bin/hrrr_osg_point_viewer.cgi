@@ -6,8 +6,8 @@
 Brian Blaylock
 February 16, 2018                                  Going to Logan after work :)
 
-Display thumbnail image of OSG Statistics and HRRR model run for a point area.
-
+Display thumbnail image of OSG Empirical Cumulative Distribution statistics for
+an individual HRRR run at a point: /public_html/PhD/HRRR/OSG/area_current_HRRR
 """
 
 import sys

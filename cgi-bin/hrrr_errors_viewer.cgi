@@ -1,13 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 October 12, 2017
 
-Display thumbnail image of HRRR Error statistics from CONUS.
-
+Display image of HRRR Error statistics from /public_html/PhD/HRRR/RMSE_mean
 """
 
 import sys

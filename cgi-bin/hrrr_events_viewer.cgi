@@ -1,12 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 October 12, 2017
 
-Display thumbnail image of HRRR Error statistics from CONUS.
+Display image of HRRR Events in the directory /public_html/PhD/HRRR/Events_Day
 
 """
 

@@ -1,13 +1,11 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 April 23, 2018                          NBA Playoffs: Utah JAZZ Game Three!
 
-Display thumbnail image of HRRR yesterday map.
-http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_yesterday_viewer.cgi
+Display images for yesterday's HRRR forecasts and analyses:
+    /public_html/oper/HRRR_yesterday
 
 """
 

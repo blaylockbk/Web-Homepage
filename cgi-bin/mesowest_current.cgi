@@ -1,12 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 March 16, 2018
 
-Display current MesoWest Observations
+Display table of current MesoWest observations for any station
 """
 
 import os

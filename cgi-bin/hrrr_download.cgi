@@ -1,10 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 March 6, 2017
+
+Webpage to Download HRRR file from Pando archive. Also display .idx file and sample image.
 """
 
 import sys

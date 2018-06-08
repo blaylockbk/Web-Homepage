@@ -1,20 +1,11 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 January 30, 2017
 
-HRRR-X versus HRRR (difference)
-
-To Do List:
-[X] Add Bootstrap Modals for page instructions. (Jan 17, 2017)
-[ ] Add aditional API query that finds the shared variables between the
-    requested stations and creates a variable dropdown for the available data.
-[ ] Add advanced options to modify the plot size, label fonts, dpi, etc. to 
-    easily customize plots for publications.
-[ ] Add MesoWest QC checks
+Webpage displays image showing difference between the Experimental HRRR
+and Operational HRRR. Image is generated dynamically by plot_hrrrX-hrrr.cgi.
 """
 
 import sys

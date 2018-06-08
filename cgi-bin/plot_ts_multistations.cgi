@@ -1,11 +1,12 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-# Brian Blaylock
-# January 1, 2017                                 It's cold outside
-
-
 """
-This script plots multiple stations on one plot
+Brian Blaylock
+January 1, 2017                                 It's cold outside
+
+Generates a custom timeseries figure with data from MesoWest API
+
+Note: For CGI, cannot print anything to screen when outputting a .png file
 """
 
 import matplotlib as mpl

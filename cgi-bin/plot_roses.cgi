@@ -1,14 +1,15 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-# June 26, 2015
-# Brian Blaylock
-# Updates: 
-#		August 20, 2015: added ability to filter based on a threshold
-#
-#
+"""
+June 26, 2015
+Brian Blaylock
+Updates: 
 
-# This program will grab ozone and wind data from the MesoWest API and 
-# Plot a wind rose
+Generates a custom windrose figure with data from MesoWest API. Requires the
+module `windrose.py`
+
+Note: For CGI, cannot print anything to screen when outputting a .png file
+"""
 
 import sys
 import math as m

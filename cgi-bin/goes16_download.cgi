@@ -1,7 +1,5 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 October 1, 2017
@@ -26,7 +24,7 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 today = date.today()
-max_date = date.today().strftime('%Y-%m-%d')
+max_date = datetime.utcnow().strftime('%Y-%m-%d')
 
 try:
     source = cgi.escape(form['source'].value)

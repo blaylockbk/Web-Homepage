@@ -1,12 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 December 14, 2017
 
-GOES16 File Explorer for AWS
+GOES16 and NEXRAD File Explorer for AWS
 
 Interactive web interface for viewing GOES-16 files available on the Amazon
 noaa-goes16 public bucket. Click button to download files.

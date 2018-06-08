@@ -1,16 +1,10 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 January 17, 2017
 
-To Do List:
-[ ] Put "advanced options" in a dropdown bootstrap accordian menu
-[ ] Add back in minimum ozone threshold.
-[ ] Add advanced plot options to modify the plot size, label fonts, dpi, etc. to 
-    easily customize plots for publications.
+Webpage to create windrose from MesoWest API using /plot_roses.cgi
 """
 
 import sys

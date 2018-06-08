@@ -1,10 +1,12 @@
 #!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
 
-#if this doesn't work try /usr/local/bin/python
-
 """
 Brian Blaylock
 June 23, 2017
+
+A webpage displaying the contents of the fires high wind alerts file, sortable by fire:
+/uufs/chpc.utah.edu/common/home/u0553130/oper/HRRR_fires/HRRR_fires_alerts.csv
+Display a link for the HRRR file download and a link to generate an image.
 """
 import numpy as np
 import cgi, cgitb
@@ -24,6 +26,7 @@ alert_file = '/uufs/chpc.utah.edu/common/home/u0553130/oper/HRRR_fires/HRRR_fire
 alerts = np.genfromtxt(alert_file, names=True, dtype=None, delimiter=',')
 fires = np.unique(alerts['Fire'])
 
+
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
@@ -32,7 +35,7 @@ print'''<!DOCTYPE html>
 <link rel="stylesheet" href="./css/brian_style.css" />
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 </head>
-<!--This page is created dynamically in the scirpt /oper/HRRR_fires/HRRR_fires_alerts.py-->
+<!--This page is created dynamically in the script /oper/HRRR_fires/HRRR_fires_alerts.py-->
 <body>
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
@@ -64,7 +67,7 @@ print'''<!DOCTYPE html>
     <div id="container" style="max-width:900px">
     <br>
     <div class="well well-sm">
-    <p>Criteria: Maximum HRRR 10m wind for 90x90 km<sup>2</sup> box at fire initalization point is greater than 15 ms<sup>-1</sup>
+    <p>Criteria: Maximum HRRR 10m wind for 90x90 km<sup>2</sup> box at fire initialization point is greater than 15 ms<sup>-1</sup>
     <p>The maximum wind gust for the same 90x90 km<sup>2</sup> box and the maximum composite reflectivity for a 150x150 km<sup>2</sup> box is also given.
     </div>
 '''
@@ -108,7 +111,7 @@ for a in alerts:
         line += "<td>%.1f</td>" % a[4]
         line += "<td>%.1f</td>" % a[5]
         line += "<td>%.1f</td>" % a[6]
-        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=10mWind_Barb,10mWind_Shade,dBZ_Contour&dsize=medium&background=arcgis' target='_blank'><i class='far fa-image' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
+        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=Wind_10-m_Barbs,Wind_10-m_Shade,dBZ_entire_Contour&dsize=medium&background=arcgis' target='_blank'><i class='far fa-image' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
         line += "<td><a class='btn btn-default' role='button' href='https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/%s' target='_blank'><i class='fa fa-download' aria-hidden='true'></i> GRIB2</a></td></tr>" % a[7]
 print line
 print '''
