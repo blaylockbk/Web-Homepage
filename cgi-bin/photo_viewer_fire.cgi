@@ -78,7 +78,7 @@ function change_picture(img_name){
     /*On Hover*/
     var URL = "'''+URL+'''"+img_name;
     document.getElementById("sounding_img").src = URL;
-    document.getElementById("sounding_img").style.width= '100%';
+    /*document.getElementById("sounding_img").style.width= '100%';*/
     document.getElementById("sounding_img").style.maxWidth= '1300px';
     document.getElementById("sounding_img").style.maxHeight= '600px';
 }
@@ -214,7 +214,7 @@ for i in ['f%02d' % i for i in range(19)]:
     print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
 print "</div>"
 
-print "<img class='styleT2' id='sounding_img' style='width:30%;' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
+print "<img class='styleT2' id='sounding_img' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
 
 print '''
 </div>

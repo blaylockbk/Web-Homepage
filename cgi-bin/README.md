@@ -53,6 +53,8 @@ If your script uses `matplotlib` to generate the image, then you must set the ba
     import matplotlib as mpl
     mpl.use('Agg')
 
+> Note: You also need to use `mpl.use('Agg')` if you have a CRON job that makes `matplotlib` plots.
+
 When you are ready to serve the image to the browser, send it to standard output.
 
     plt.savefig(sys.stdout)
