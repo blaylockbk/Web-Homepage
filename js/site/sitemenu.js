@@ -201,10 +201,10 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">UUNET<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153">Current Map</a></li>\
-                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153">24hr Precip Map</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153&latcen=40.4&loncen=-111.87">Current Map</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153&latcen=40.4&loncen=-111.87">24hr Precip Map</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/uunet_charts.cgi">Battery Voltage</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi">Nearby Weather</a></li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi?asos=0&latcen=40.7626&loncen=-111.84755">Nearby Weather</a></li>\
                             <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html">Sodar Viewer</a></li>\
                             <li><a href="http://mesowest.utah.edu/cgi-bin/droman/uunet_stn_monitor.cgi">UUNET Quick Look Table</a></li>\
                             <li><a href="http://meso2.chpc.utah.edu/aq/">TRAX/KSL/Mobile Air Quality</a></li>\

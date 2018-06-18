@@ -10,7 +10,7 @@ document.write("\
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://mesowest.utah.edu/cgi-bin/droman/mesomap.cgi?profile_id=MZSN1gu0519JGa1v'> <span id='ret-tempKLAX'>...</span> </a>\
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://mesowest.utah.edu/cgi-bin/droman/mesomap.cgi?profile_id=yThT1f81761JUSv9'> <span id='ret-tempKMWH'>...</span> </a>\
 | <a target='new' style='color:white;text-decoration:none;font-family:Segoe UI;' href = 'http://mesowest.utah.edu/cgi-bin/droman/mesomap.cgi?profile_id=yThT1f81761JUSv9'> <span id='ret-tempSTG'>...</span> </a>\
-| <a target='new' style='color:white;font-family:Segoe UI;' href='https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi'>Your Weather</a>\
+| <a target='new' style='color:white;font-family:Segoe UI;' href='http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi?asos=0&latcen=40.7626&loncen=-111.84755'>Your Weather</a>\
 |\
 </div>\
 ");
