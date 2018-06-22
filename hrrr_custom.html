@@ -72,7 +72,9 @@
      <a class='btn btn-primary' data-toggle="modal" data-target="#INSTRUCTIONSmodal">Instructions</a>
 </h1>
 
+<div id="content">
 <script src='./js/HRRR_status.js'></script>
+</div>
 
 <center>
 <div class="row" id="content">
@@ -318,7 +320,6 @@
 
     <label class="control-label">Background</label>
     <div class="form-group">
-
       <div class="col-sm-12">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default active">
@@ -344,6 +345,26 @@
             <label class="btn btn-default">
                 <input type="radio" name="background" value='none'>
                 <i class="far fa-square"  title='I despise background images'></i>
+            </label>
+        </div>
+      </div>
+    </div>
+
+    <label class="control-label">GOES16 (future layer, doesn't work yet)</label>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default">
+                <input type="checkbox" name="GOES_TC" value='1'>
+                TrueColor
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="GOES_FT" value='1'>
+                Fire Temperature
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="GOES_GLM" value='1'>
+                <i class="fas fa-bolt"></i> GLM
             </label>
         </div>
       </div>
@@ -423,7 +444,7 @@
 </center>
 <br>
 
-<!-- Instrucctions Modal -->
+<!-- Instructions Modal -->
 <div class="modal fade" id="INSTRUCTIONSmodal" role="dialog">
     <div class="modal-dialog">
     

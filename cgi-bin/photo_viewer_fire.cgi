@@ -79,7 +79,7 @@ function change_picture(img_name){
     var URL = "'''+URL+'''"+img_name;
     document.getElementById("sounding_img").src = URL;
     /*document.getElementById("sounding_img").style.width= '100%';*/
-    document.getElementById("sounding_img").style.maxWidth= '1300px';
+    document.getElementById("sounding_img").style.maxWidth= '100%';
     document.getElementById("sounding_img").style.maxHeight= '600px';
 }
 
@@ -118,6 +118,7 @@ print'''
 <div class='container'>
 <h2 align="center"><i class="fa fa-fire-extinguisher"></i> Fires Viewer
 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" class='btn btn-danger'> Fires Dashboard</a>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i> Info</button>
 </h2>	
 '''
 
@@ -129,7 +130,7 @@ print '''
 <div class="col-md-3">
     <div class="input-group" title="Select Fire">
     <span class="input-group-addon"><i class="fa fa-fire fa-fw"></i></span>          
-    <select class="form-control" id="FIRE" name="FIRE">
+    <select class="form-control" id="FIRE" name="FIRE" onchange="this.form.submit()">
     '''
 display = list_fires
 value = list_fires
@@ -148,7 +149,7 @@ print'''
 <div class="col-md-3">
     <div class="input-group" title="Select Date">
     <span class="input-group-addon"><i class="far fa-calendar-alt fa-fw"></i></span>
-    <select class="form-control" id="DATE" name="DATE">
+    <select class="form-control" id="DATE" name="DATE" onchange="this.form.submit()">
     '''
 display = list_dates
 value = list_dates
@@ -167,7 +168,7 @@ print'''
 <div class="col-md-3">
     <div class="input-group" title="HRRR Initialization Hour">
     <span class="input-group-addon"><i class="far fa-clock fa-fw"></i></span>
-    <select class="form-control" id="HOUR" name="HOUR">
+    <select class="form-control" id="HOUR" name="HOUR" onchange="this.form.submit()">
     '''
 display = ['%02d:00' % i for i in range(24)]
 value = ['%02d00' % i for i in range(24)]
@@ -196,25 +197,101 @@ print'''
 '''
 print "<h3 align='center'><small>%s</small></h3>" % short_path
 
-# Land use and GOES-16 image
-print "<div  class='btn-group btn-group-justified' role='group'>"
-for i in ['G%02d' % i for i in range(2,60,5)]:
-    print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
-print "</div><br>"
+def add_buttons(these_buttons):
+    print "<div  class='btn-group btn-group-justified' role='group'>"
+    for i in these_buttons:
+        img = DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png'
+        if os.path.isfile(DIR+img):
+            print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (img, i)
+        else:
+            print "<a class='btn btn-default disabled'>%s</a>" % (i)
+    print "</div><br>"
+
+# GOES-16 images
+add_buttons(['G%02d' % i for i in range(2,60,5)])
+
+# GLM Histograms
+add_buttons(['GLM_map', 'GLM_histogram', 'GLM_proximity', 'GLM_rose30', 'GLM_rose60', 'GLM_rose90'])
+    
+# F00-F18
+add_buttons(['f%02d' % i for i in range(19)])
 
 # Hovemollers
-print "<div  class='btn-group btn-group-justified' role='group'>"
-for i in ['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF', 'Landuse']:
-    print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
-print "</div><br>"
-
-# F00-F18
-print "<div  class='btn-group btn-group-justified' role='group'>"
-for i in ['f%02d' % i for i in range(19)]:
-    print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png', i)
-print "</div>"
+add_buttons(['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF', 'Landuse'])
 
 print "<img class='styleT2' id='sounding_img' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
+
+
+print '''
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Information</h4>
+        </div>
+        <div class="modal-body">
+          <p> The figures are generated every hour. The inputs row lets you 
+              change images for each fire, date, and hour. You change the
+              images by hovering your mouse over the buttons.
+          <p style="font-weight:bold">Hover Button Rows  
+            <ol>
+            <li>Images from GOES-16 for the hour selected. There are images 
+                every 5 minutes. The image is a blended "TrueColor" and 
+                "FireTemperature" product, with GLM lightning data showing 
+                flashes indicated by small yellow crosshairs. Be aware of 
+                <a href="http://cimss.ssec.wisc.edu/goes/blog/archives/217" target='_blank'>"parallax"</a>
+                which makes tall clouds appear larger and lightning point data
+                to appear skewed. The GLM data is parallax corrected with an
+                assumed cloud height.
+            <li>Lightning data from the Geostationary Lightning Mapper: note, 
+                the lightning mapper "measures" total lightning 
+                (intracloud+cloud-to-ground) simply by identifying "bright" 
+                regions in the near IR channel and interprets those flashes as 
+                lightning. You will notice some parallax in the GOES-16 images 
+                (flash are shifted slightly south of the cloud's convective 
+                center) which I haven't solved yet. The idea with these plots 
+                is to show where the lightning has been observed and how it has
+                moved in the last 90 minutes. 
+                <a href="https://www.goes-r.gov/products/ATBDs/baseline/Lightning_v2.0_no_color.pdf" target='_blank'>GLM Documentation</a>.
+                <ul>
+                    <li>GLM_map - map centered on fire start location, a 300 
+                        mile radius is shown in red, and the accumulated 
+                        flashes for the previous 0-30 minutes (black), 
+                        30-60 minutes (grey), and 60-90 minutes (white). 
+                        The HRRR 500 mb wind barbs are plotted using HRRR data 
+                        from that hour. 
+                    <li>GLM_histogram - a histogram describing the distance of 
+                        the flashes relative to the fire.
+                    <li>GLM_proximity - a scatter plot showing flashes by 
+                        distance and direction from the fire.
+                    <li>GLM_rose30 - a "lightning rose" showing how many 
+                        flashes are in each direction and how close they are 
+                        relative to the fire for the previous 0-30 minutes. The
+                        length of a rose petal is the count of lighting 
+                        flashes in that direction. The color represents the 
+                        relative distance from the fire where yellow is closer 
+                        to the fire than purple.
+                    <li>GLM_rose60 - same as GLM_rose30, except showing 
+                        lightning for previous 30-60 minutes.
+                    <li>GLM_rose90 - same, but for previous 60-90 minutes.
+                </ul>
+            <li>HRRR point-forecast initialized at the hour. Forecast image for each 18 forecast hours.
+            <li>HRRR forecast hovmoller to show how HRRR forecasts have changed.
+            </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+'''
+
 
 print '''
 </div>

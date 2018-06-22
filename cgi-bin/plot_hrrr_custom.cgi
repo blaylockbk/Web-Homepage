@@ -35,6 +35,8 @@ sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/si
 from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap, draw_ALASKA_cyl_map
 from BB_MesoWest.MesoWest_STNinfo import get_station_info
 from BB_HRRR.plot_HRRR_custom_NEW import *
+from BB_GOES16.get_ABI import get_GOES16_truecolor, get_GOES16_firetemperature, file_nearest
+from BB_GOES16.get_GLM import get_GLM_files_for_ABI, accumulate_GLM
 
 import cgi
 import cgitb
@@ -118,7 +120,18 @@ except:
     plt.title('Something wrong with the background, options: arcgis, arcgisRoad, arcgisSat, terrain, landuse, none')
     plt.savefig(sys.stdout)	# Plot standard output.
 
-
+try:
+    GOES_TC = cgi.escape(form['goes_tc'].value)
+except:
+    GOES_TC = False
+try:
+    GOES_FT = cgi.escape(form['goes_ft'].value)
+except:
+    GOES_FT = False
+try:
+    GOES_GLM = cgi.escape(form['goes_glm'].value)
+except:
+    GOES_GLM = False
 
 
 VALIDDATE = DATE
@@ -324,6 +337,12 @@ if 'REDFLAG' in PLOTCODES:
                      Fill=Fill,
                      Contour=Contour,
                      Fill_Potential=Fill_Potential)
+
+if 'GOES_ABI' in PLOTCODES:
+    print 'future'
+
+if 'GOES_GLM' in PLOTCODES:
+    print 'future'
 
 # All other variables
 OTHER = [i for i in PLOTCODES.keys() if i not in ['TMP', 'DPT', 'Wind', 'Gust', 'dBZ', 'RH', 'HGT', 'MSLP','REDFLAG', 'VPD']]

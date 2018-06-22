@@ -35,7 +35,7 @@ mpl.rcParams['figure.subplot.wspace'] = 0.05
 mpl.rcParams['figure.subplot.hspace'] = 0.01
 mpl.rcParams['legend.fontsize'] = 8
 mpl.rcParams['legend.framealpha'] = .75
-mpl.rcParams['legend.loc'] = 'best'
+mpl.rcParams['legend.loc'] = 'upper left'
 mpl.rcParams['savefig.bbox'] = 'tight'
 mpl.rcParams['savefig.dpi'] = 100
 
