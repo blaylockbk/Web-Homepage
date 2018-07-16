@@ -293,7 +293,8 @@ print '''
 
 # Create list of files available
 DATE = datetime.strptime(Date, "%Y-%m-%d")
-rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+#rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
 if field not in ['prs', 'sfc', 'nat']:
     ls = ' ls horelS3:%s/%s/%04d%02d%02d | cut -c 11-' \
         % (model, 'nat', DATE.year, DATE.month, DATE.day)

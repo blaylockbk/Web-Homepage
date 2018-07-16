@@ -187,7 +187,8 @@ PATH = '/ABI-L2-MCMIPC/%s/' % (DATE.strftime('%Y%m%d'))
 print '<div class="container">'
 print '<h4><i class="far fa-hand-point-right"></i> Hover to view image sample. Click to download CONUS .nc file. <b>'+DATE.strftime('%Y %B %d')+'</b></h4>'
 print '</div>'
-rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+#rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
 
 ls = ' ls horelS3:GOES16%s | cut -c 11-' \
         % (PATH)

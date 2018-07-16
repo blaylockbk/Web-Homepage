@@ -220,6 +220,7 @@ document.write('\
                         <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
                         <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA)</a></li>\
                         <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
+                        <li><a href="http://wx.erau.edu/erau_sat/" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (Embry Riddle)</a></li>\
                         <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
                         <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
                         <li><a href="http://weather.uwyo.edu/upperair/sounding.html" target="tools"><i class="fab fa-fly fa-fw" ></i>  Wyoming Sounding Page</a></li>\
@@ -242,6 +243,8 @@ document.write('\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
                         <li><a href="https://www.weather.gov/fire/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  weather.gov/fire</a></li>\
+                        <li><a href="http://raqms.ssec.wisc.edu/forecast/calendar/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  Real-time Air Quality Modeling System</a></li>\
+                        <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                     </ul>\
                     </li>\

@@ -95,6 +95,8 @@ print '<hr>'
 #rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
 #rclone = '/uufs/chpc.utah.edu/common/home/horel-group/archive_s3/rclone-beta/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
 rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
+#rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone'
+#rclone = 'rclone'
 
 # 2) The rclone comand to list files in this bucket
 #    'horelS3' is the bucket named I configured rclone to access the Pando.
@@ -103,6 +105,14 @@ lsd = ' lsd horelS3:%s' % bucket
 
 # 3) Execute the rclone lsd command to list directories
 ## Check if there are directories in the requestd bucket
+print 'Debug:<br><br>'+rclone+lsd+'<br><br>'
+import socket, sys
+print '<br>Host Name :', socket.gethostname()
+print '<br><br>Python verion : ', sys.version
+print '<br><br>subprocess pwd : ', subprocess.check_output("pwd", shell=True)
+print '<br><br>rclone comand : ', rclone + ' lsd horelS3:'
+print '<br><br>subprocess rclone : ', subprocess.check_output(rclone + ' lsd horelS3:', shell=True)
+
 rclone_lsd = subprocess.check_output(rclone + lsd, shell=True)
 
 # 4) Split the directory names to a list

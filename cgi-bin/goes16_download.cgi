@@ -387,7 +387,8 @@ print '<h4>Tap to download from noaa-goes16 S3 bucket: <b>'+sourceURL+PATH+'</b>
 print "<p>Number represents the scan's start minute for the requested hour"
 
 
-rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+#rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
+rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
 
 ls = ' ls goes16:noaa-goes16%s | cut -c 11-' \
         % (PATH)
