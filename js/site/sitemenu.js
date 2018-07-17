@@ -246,6 +246,7 @@ document.write('\
                         <li><a href="http://raqms.ssec.wisc.edu/forecast/calendar/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  Real-time Air Quality Modeling System</a></li>\
                         <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
+                        <li><a href="http://cimss.ssec.wisc.edu/hrrrval/" target="tools"><i class="fa fa-globe fa-fw" ></i>  HRRR Satellite Validation (CIMSS)</a></li>\
                     </ul>\
                     </li>\
 \
