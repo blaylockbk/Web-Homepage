@@ -74,19 +74,19 @@ print'''<!DOCTYPE html>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
-function change_picture(img_name){
+function change_picture(img_name, img_id){
     /*On Hover*/
     var URL = "'''+URL+'''"+img_name;
-    document.getElementById("sounding_img").src = URL;
-    /*document.getElementById("sounding_img").style.width= '100%';*/
-    document.getElementById("sounding_img").style.maxWidth= '100%';
-    document.getElementById("sounding_img").style.maxHeight= '600px';
+    document.getElementById(img_id).src = URL;
+    /*document.getElementById(img_id).style.width= '100%';*/
+    document.getElementById(img_id).style.maxWidth= '100%';
+    document.getElementById(img_id).style.maxHeight= '600px';
 }
 
 function empty_picture(img_name){
     /*the empty picture on load*/
-    document.getElementById("sounding_img").src = img_name;
-    document.getElementById("sounding_img").style.width= '30%';
+    document.getElementById(img_id).src = img_name;
+    document.getElementById(img_id).style.width= '30%';
 }
 
 /* For the button group on resize 
@@ -112,7 +112,7 @@ print '''
 <body>
 
 <script src="js/site/sitemenu.js"></script>
-</div>'''
+'''
 
 print'''
 <div class='container'>
@@ -126,7 +126,7 @@ print '''
 <form class="form-horizontal" method="GET" action="cgi-bin/photo_viewer_fire.cgi">
 
 <div class="form-group">
-<!--- Select Fire -------------------------->
+<!-- Select Fire -->
 <div class="col-md-3">
     <div class="input-group" title="Select Fire">
     <span class="input-group-addon"><i class="fa fa-fire fa-fw"></i></span>          
@@ -143,9 +143,9 @@ print'''
     </select>
     </div>
 </div>
-<!---(Select Fire) ----------------------->
+<!--(Select Fire) -->
 
-<!--- Select Date -------------------------->
+<!-- Select Date -->
 <div class="col-md-3">
     <div class="input-group" title="Select Date">
     <span class="input-group-addon"><i class="far fa-calendar-alt fa-fw"></i></span>
@@ -162,9 +162,9 @@ print'''
     </select>
     </div>
 </div>
-<!---(Select Date) ----------------------->
+<!--(Select Date) -->
 
-<!--- Select Hour -------------------------->
+<!-- Select Hour -->
 <div class="col-md-3">
     <div class="input-group" title="HRRR Initialization Hour">
     <span class="input-group-addon"><i class="far fa-clock fa-fw"></i></span>
@@ -183,43 +183,71 @@ print'''
     </select>
     </div>
 </div>
-<!---(Select Hour) ----------------------->
+<!--(Select Hour) -->
 
-<!--- Submit Button ---------------------->
+<!-- Submit Button -->
 <div class="form-group">        
     <div class="col-md-3">
         <button style="width:100%" type="submit" class="btn btn-success">Submit</button>
     </div>
 </div>
-<!--- (Submit Button)--------------------->
+<!-- (Submit Button) -->
 </div>
 </form>
 '''
 print "<h3 align='center'><small>%s</small></h3>" % short_path
 
-def add_buttons(these_buttons):
-    print "<div  class='btn-group btn-group-justified' role='group'>"
+def add_buttons(these_buttons, action='onclick', img_id='hrrr_img'):
+    if action == 'onclick':
+        txt_action = 'Click '
+    elif action == 'onmouseover':
+        txt_action = 'Hover: '
+    print txt_action + "<div  class='btn-group btn-group-justified' role='group'>"
     for i in these_buttons:
         img = DATE+'/'+HOUR+'/'+FIRE+'/'+i+'.png'
         if os.path.isfile(DIR+img):
-            print "<a class='btn btn-default' onmouseover=change_picture('%s')>%s</a>" % (img, i)
+            print """<a class='btn btn-default' %s="change_picture('%s', '%s')">%s</a>""" % (action, img, img_id, i)
         else:
             print "<a class='btn btn-default disabled'>%s</a>" % (i)
     print "</div><br>"
 
+print """
+<ul class="nav nav-tabs">
+    <li class="active btn-lg"><a data-toggle="tab" href="#pill_1">HRRR</a></li>
+    <li class="btn-lg"><a data-toggle="tab" href="#pill_2">GOES</a></li>
+</ul>
+"""
+
+print """
+<div class="tab-content">
+    <div id="pill_1" class="tab-pane fade in active">
+"""
+# F00-F18
+add_buttons(['f%02d' % i for i in range(19)], action='onmouseover', img_id='hrrr_img')
+    
+# Hovemollers
+add_buttons(['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF', 'Landuse'], action='onclick', img_id='hrrr_img')
+
+print "<img class='styleT2' id='hrrr_img' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
+
+print """
+    </div>
+    <div id="pill_2" class="tab-pane fade">
+"""
 # GOES-16 images
-add_buttons(['G%02d' % i for i in range(2,60,5)])
+add_buttons(['G%02d' % i for i in range(2,60,5)], action='onmouseover', img_id='goes_img')
 
 # GLM Histograms
-add_buttons(['GLM_map', 'GLM_histogram', 'GLM_proximity', 'GLM_rose30', 'GLM_rose60', 'GLM_rose90'])
-    
-# F00-F18
-add_buttons(['f%02d' % i for i in range(19)])
+add_buttons(['GLM_map', 'GLM_histogram', 'GLM_proximity', 'GLM_rose30', 'GLM_rose60', 'GLM_rose90'], action='onclick', img_id='goes_img')
 
-# Hovemollers
-add_buttons(['TMP', 'DPT', 'RH', 'WIND', 'RedFlag', 'REF', 'Landuse'])
+print "<img class='styleT2' id='goes_img' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
 
-print "<img class='styleT2' id='sounding_img' src='./images/empty.jpg' alt='empty' onclick='window.open(this.src)'>"
+print """
+    </div>
+</div>
+"""
+
+
 
 
 print '''
