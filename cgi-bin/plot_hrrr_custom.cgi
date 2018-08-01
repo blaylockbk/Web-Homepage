@@ -304,12 +304,16 @@ if 'VPD' in PLOTCODES:
 if 'HGT' in PLOTCODES:
     for L in PLOTCODES['HGT']:
         level = L.replace('-', ' ')
+        Contour=PLOTCODES['HGT'][L]['Contour']
+        p05p95=PLOTCODES['HGT'][L]['p05p95']
         draw_hgt(m, lons, lats,
             model, dsize, background,
             location, lat, lon,
             RUNDATE, VALIDDATE, fxx,
             alpha, half_box, barb_thin,
-            level=level)
+            level=level,
+            Contour=Contour,
+            p05p95=p05p95)
 
 if 'MSLP' in PLOTCODES:
     for L in PLOTCODES['MSLP']:
