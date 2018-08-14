@@ -345,6 +345,38 @@ print '''
             <p><a href="http://www.goes-r.gov/resources/docs.html" target="_blank">Additional GOES-16 Documents</a>
             <p><a href="http://rammb-slider.cira.colostate.edu/" target="_blank">CIRA GOES-16 Viewer</a>
             <p><a href="http://www.sciencedirect.com/science/article/pii/S0098300417305083?via%3Dihub" target="_blank">Details on Pando Archive</a>
+
+            <hr>
+            Other products can be ordered from <a href='https://www.bou.class.noaa.gov/saa/products/search?datatype_family=GRABIPRD'>NOAA CLASS</a>. Striked items didn't show up in my quick search.
+            <ul>
+                <li>RAD: ABI L1b Radiances
+                <li>CMIP: Cloud and Moisture Imagery
+                <li>ACHA: Cloud Top Height
+                <li>ACM: Clear Sky Masks
+                <li>ACTP: Cloud Top Phase
+                <li>ADP: Aerosol Detection
+                <li>AOD: Aerosol Optical Depth
+                <li>COD: Cloud Optical Depth
+                <li>COS: Cloud Particle Size Distribution
+                <li>CTP: Cloud Top Pressure
+                <li>DMW: Derived Motion from cloud tops
+                <li>DMWV: Derived Motion Winds from water vapor
+                <li>DSI: Derived Stability Indices
+                <li>DSR: Downward Shortwave Radiation (Surface)
+                <li>FDC: Fire/HotSpot Characterization
+                <li>FSC: Snow Cover
+                <li>LST: Land Surface Temperature (skin)
+                <li>LVMP: Legacy Vertical Moisture Profile
+                <li>MCMIP: Cloud and Moisture Imagery (multi-band format)
+                <li>RRQPE: Rainfall Rate / QPE (Full Disk only)
+                <li>RSR: Reflected Shortwave Radiation
+                <li>SST: Sea Surface Temperature (Skin) (Full Disk only)
+                <li>TPW: Total Precipitable Water
+                <li>VAA: Volcanic Ask (Detection and Height) (Full Disk only)
+            </ul>
+            <p>*Followed by a [C] for Conus, [F] for Full Disk, or [M1]/[M2] for mesoscale
+            <p>See <a href="https://www.ncdc.noaa.gov/data-access/satellite-data/goes-r-series-satellites/glossary">GLOSSARY</a> for more details.
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
