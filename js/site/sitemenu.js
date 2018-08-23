@@ -218,6 +218,7 @@ document.write('\
                     <ul class="dropdown-menu">\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
                         <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
+                        <li><a href="https://www.wrh.noaa.gov/map/" target="tools"><i class="fa fa-globe fa-fw" ></i> Weather and Hazards Data Viewer</a></li>\
                         <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA)</a></li>\
                         <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
                         <li><a href="http://wx.erau.edu/erau_sat/" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (Embry Riddle)</a></li>\
@@ -247,6 +248,7 @@ document.write('\
                         <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/hrrrval/" target="tools"><i class="fa fa-globe fa-fw" ></i>  HRRR Satellite Validation (CIMSS)</a></li>\
+                        <li><a href="https://wildlandfiresmoke.net" target="tools"><i class="fa fa-globe fa-fw" ></i>  Wildland Fire Air Quality </a></li>\
                     </ul>\
                     </li>\
 \
