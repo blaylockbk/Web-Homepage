@@ -41,7 +41,7 @@ mpl.rcParams['savefig.dpi'] = 100
 
 #------------------------------------------------------------------------------
 # Allocation (in GB)
-allocation = 60 * 1e3
+allocation = (60+70) * 1e3
 
 # Today's Date
 DATE = datetime.utcnow()
@@ -174,7 +174,7 @@ html = '''
         </div>
   <br>
   <script src='./js/pando_status.js'></script>
-    <center><font size=12> %.1f TB out of 60 TB</font>
+    <center><font size=12> %.1f TB out of 130 TB</font>
     <div class="progress" style="max-width:700px;height:35px">
             <div class="progress-bar progress-bar-danger" role="progressbar" style="width:%.f%%">
               <font size=4></font>
