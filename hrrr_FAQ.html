@@ -5,6 +5,43 @@
     <title>HRRR Archive FAQ</title>
     
     <script src="./js/site/siteopen.js"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context":"http://schema.org/",
+        "@type":"Dataset",
+        "name":"High Resolution Rapid Refresh Model",
+        "description":"The High Resolution Rapid Refresh Model archive at the University of Utah",
+        "url":"http://hrrr.chpc.utah.edu/",
+        "creator":{
+            "@type":"Organization",
+            "url": "http://www.emc.ncep.noaa.gov/",
+            "name":"NOAA/NCEP/EMC > Environmental Modeling Center, National Centers For Environmental Prediction, NOAA, U.S. Department of Commerce",
+            "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "brian.blaylock@utah.edu",
+            "url": "http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html",
+            "contactType": "Customer Service"
+            }
+        },
+        "distribution":[
+            {
+            "@type":"DataDownload",
+            "encodingFormat":"GRIB2",
+            "contentUrl":"http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html"
+            }
+        ],
+        "temporalCoverage":"2016-07-15/Present",
+        "spatialCoverage":{
+            "@type":"Place",
+            "geo":{
+            "@type":"GeoShape",
+            "box":"21.14 -134.10 52.62 -60.72"
+            }
+        }
+        
+    }
+    </script>
 </head>
 
 
@@ -14,7 +51,7 @@
 
     <br>
 
-    <div id="content">      
+    <div id="content" itemscope itemtype="http://schema.org/Dataset">      
 
         <h1 align="center">HRRR Archive at the University of Utah</h1>
         <h2 align="center"><i class="fa fa-info-circle fa-fw"></i>Frequently Asked Questions</h2>
@@ -244,7 +281,7 @@
             <img align=right \
              width='350px' \
              class='style11' \
-             style="margin-left:15px;margin-bottom:15px"\
+             style="margin-left:15px; margin-bottom:15px" \
              src='./images/mouse.jpg' \
              title="We give people a little, and they start asking for a lot.">
             <h3>Vision for the Future</h3>
@@ -450,7 +487,7 @@
                 </strike>
                 <li>2017-12-27: <b>Pando Failed</b> All prior data was lost.</li>
                 <li>2017-12-28: <b>Pando Rebuilt</b>
-                <li>2017-02-26: <b>Backfilled to 2016-07-15</b> HRRRv2 data from The Climate Corporation.</b>
+                <li>2017-02-26: <b>Backfilled to 2016-07-15</b> HRRRv2 data from The Climate Corporation.
             </ul>
 
             <a class='btn btn-default btn-lg' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/PRS_missing_incomplete_files.txt'>
@@ -541,15 +578,13 @@
                 <div class='row'>
                     <div class='col-md-6'>
                         <p style="text-align:center;">
-                        <img src="./images/HRRR_gallery/HRRR_wind_95percentile.png" width="95%" class='style11'>
-                        <figcaption style="text-align:center;"></figcaption>
-                        </p>
+                            <img src="./images/HRRR_gallery/HRRR_wind_95percentile.png" width="95%" class='style11'>
+                            <figcaption style="text-align:center;"></figcaption>
                     </div>
                     <div class='col-md-6'>
                         <p style="text-align:center;">
-                        <img src="./images/HRRR_gallery/HRRR_freezing_percentiles.png" width="95%" class='style11'>
-                        <figcaption style="text-align:center;"></figcaption>
-                        </p>
+                            <img src="./images/HRRR_gallery/HRRR_freezing_percentiles.png" width="95%" class='style11'>
+                            <figcaption style="text-align:center;"></figcaption>
                     </div>
                 </div>
             <p>The HRRR analyses mean winds are comparable with the results of
@@ -757,6 +792,7 @@
 <script src='./js/pando_citation.js'></script>
 
 <script src="./js/site/siteclose.js"></script>
+
 </div><!---->
 </body>
 
