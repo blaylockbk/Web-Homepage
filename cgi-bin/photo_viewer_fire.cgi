@@ -26,8 +26,11 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 # Set the directory
-DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/oper/HRRR_fires/'
-URL = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_fires/'
+PATH = 'oper/HRRR_fires/'
+
+DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/' + PATH
+URL = 'http://home.chpc.utah.edu/~u0553130/' + PATH
+
 
 # List of the dates in the directory
 list_dates = filter(lambda x: os.path.isdir(DIR+x), os.listdir(DIR))
