@@ -200,6 +200,18 @@ print '''
 <h3>Pressure</h3>
 <img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=PRES&level=">
 
+<h3>24-hr Precipitation</h3>
+<img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=P24I&level=">
+
+<h3>5-min Precipitation</h3>
+<img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=P05I&level=">
+
+<h3>1-min Precipitation</h3>
+<img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=P1MI&level=">
+
+<h3>Accumulated Precipitation</h3>
+<img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=PREC&level=">
+
 <h3> Radar</h3>
 <img class="img-rounded" width="100%" onclick='window.open(this.src)' src="https://radar.weather.gov/Conus/RadarImg/latest.gif">
 '''
