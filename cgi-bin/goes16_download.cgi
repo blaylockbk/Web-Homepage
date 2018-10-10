@@ -220,11 +220,11 @@ print'''
     </div>
   </div> 
 </div>
-   
-    <div class='alert alert-warning'>
-    GOES-16 will not be available between November 30 and December 20, 2017
-    when it will be moved to it's operational location at 75.2 degrees west.
-    <a href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>
+
+    <div class='alert alert-info'>
+    This page uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
+    If you wish to perform bulk downloads of GOES data, consider using rclone or AWS CLI to aquire the files. 
+    This short document describes how you can use rclone to access these files: <a class='alert-link' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>How to use rclone to access AWS public buckets</a>.
     </div>
 
     <div class='alert alert-warning'>
