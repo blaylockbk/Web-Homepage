@@ -223,8 +223,8 @@ print'''
 
     <div class='alert alert-info'>
     This page uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
-    If you wish to perform bulk downloads of GOES data, consider using rclone or AWS CLI to aquire the files. 
-    This short document describes how you can use rclone to access these files: <a class='alert-link' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>How to use rclone to access AWS public buckets</a>.
+    If you wish to perform bulk downloads of GOES data, consider using rclone or AWS CLI to aquire the files.
+    <a class='btn btn-primary' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>Rclone Tutorial</a>
     </div>
 
     <div class='alert alert-warning'>
