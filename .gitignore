@@ -9,3 +9,4 @@ get_token.py
 *.grib2
 *.h5
 *.npy
+*.nfs*
