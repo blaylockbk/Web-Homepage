@@ -251,6 +251,7 @@ document.write('\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/hrrrval/" target="tools"><i class="fa fa-globe fa-fw" ></i>  HRRR Satellite Validation (CIMSS)</a></li>\
                         <li><a href="https://wildlandfiresmoke.net" target="tools"><i class="fa fa-globe fa-fw" ></i>  Wildland Fire Air Quality </a></li>\
+                        <li><a href="http://cimss.ssec.wisc.edu/goes/goesdata.html" target="tools"><i class="fa fa-globe fa-fw" ></i>  GOES ABI Data Resources (Tim Schmit) </a></li>\
                     </ul>\
                     </li>\
 \
