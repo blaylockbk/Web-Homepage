@@ -65,6 +65,7 @@ var no_banner_image = ['home.html',
                        'Pando_Failure.html',
                        'photo_viewer_fire.cgi',
                        'photo_viewer_golf.cgi',
+                       'photo_viewer_HRRR-Spread.cgi',
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {
@@ -124,6 +125,7 @@ document.write('\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker-alt fa-fw" ></i> HRRR Point Forecast</a></li>\
                             <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" ></i> HRRR Fires Forecast</a></li>\
                             <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" ></i> HRRRx vs. HRRR Maps</a></li>\
+                            <li><a href="./cgi-bin/hrrr_spread_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Spread</a></li>\
                             <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Error Maps</a></li>\
                             <li><a href="./cgi-bin/hrrr_osg_point_viewer.cgi"><i class="fas fa-chart-area"></i>  HRRR Percentile Demo</a></li>\
                             <li><a href="./cgi-bin/hrrr_yesterday_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Yesterday</a></li>\

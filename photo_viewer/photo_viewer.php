@@ -24,8 +24,9 @@ http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 function change_picture(img_name){
         /*On Hover*/
 		document.getElementById("sounding_img").src = img_name;
-		document.getElementById("sounding_img").style.width= '100%';
-		document.getElementById("sounding_img").style.maxHeight= '80vh';
+        
+        document.getElementById("sounding_img").style.maxHeight= '80vh';
+        document.getElementById("sounding_img").style.width='auto';
 	}
 function change_picture2(img_name){
         /*On Click*/
@@ -100,7 +101,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 
 </small>
 
-<!-- Large modal (the intrusctions help button)-->
+<!-- Large modal (the instructions help button)-->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
