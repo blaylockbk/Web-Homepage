@@ -82,7 +82,7 @@ print '''
 <script src="js/site/sitemenu.js"></script>
 </div>'''
 
-print'''
+print '''
 <div id="content" class="container">
     <h1 align="center">
     <i class="fa fa-cloud-download-alt" ></i> HRRR Download Page
@@ -94,11 +94,9 @@ print'''
 
 <div class="alert alert-warning">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <small><p>If you have not already, please <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a> as a user before downloading data and 
-           reference this <a class='alert-link' href="https://doi.org/10.1016/j.cageo.2017.08.005" target="_blank">
-           <b>paper</b> <i class="fa fa-book" ></i></a> and this
-           <a class='alert-link' href="https://doi.org/10.7278/S5JQ0Z5B" target="_blank">
-           <b>data</b> <i class="fa fa-database" ></i></a>.
+    <small><p>If you have not already, please 
+              <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
+              as a user before downloading data. Citation details can be found at the bottom of this page.
     </small>
 </div> 
 
@@ -128,22 +126,19 @@ print'''
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <big><b><i class="fa fa-info-circle"  ></i> Web Download Instructions</b></big>
+          <big><b><i class="fa fa-info-circle"></i> Web Download Instructions</b></big>
         </a>
       </h4>
     </div>
             
-
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <p> This page is tested in
-        <i class="fab fa-edge" ></i> and <i class="fab fa-chrome" ></i> 
-        (Why only these two? Because my advisor uses Chrome, and I use Edge.)
-        <p>You may do three things here: 
+        <p>The interactive HRRR web download interface displays HRRR files available in the archvie and provides a button to download those files.
+        <p>The blue buttons can perform three different actions:
         <ol style="padding-left:60px">
-            <li>Download grib2 files
-            <li>View metadata files
-            <li>View a sample image of simulated reflectivity for the file. Also check out the page: <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html">Custom HRRR Map</a>.
+            <li>Download the GRIB2 file directly to your computer.
+            <li>View the metadata (.idx) for the file.
+            <li>Produce a sample image of simulated reflectivity and 500 hPa contours for the file.
         </ol>
         <p>Select the model type, variable field, and date of interest. Toggle the
         buttons for what you want to do.
@@ -157,14 +152,19 @@ print'''
         <b><span style="color:red">hrrr</span>.<span style="color:blue">t05z</span>.wrf<span style="color:green">sfc</span><span style="color:darkorange">f12</span>.grib2</b><br>
         <b><span style="color:red">[model type]</span>.<span style="color:blue">t[run hour]z</span>.wrf<span style="color:green">[variable field]</span><span style="color:darkorange">f[forecast hour]</span>.grib2
         </b>
-        <hr>
         <p>While each file contains additional date information, 
            the <i>file name</i> only contains information about the
            run and forecast hour. Beware of overwriting files if you
            download from multiple days into the same directory.
         <p>Click "Scripting Tips" above for some help scripting the download process.
         <p>Read the HRRR FAQ for a description of what file and dates are available.
-        </div>
+      </div>
+      <hr>
+        <p> Also, check out the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html">Custom HRRR Map</a> generator.
+      <div class="panel-footer">
+        <p> This page is tested in
+        <i class="fab fa-edge" ></i> and <i class="fab fa-chrome" ></i>. Why only these two? Because my advisor uses Chrome, and I use Edge.
+      </div>
     </div>
   </div>
 
@@ -173,6 +173,7 @@ print'''
     
   <hr> 
 <div class="container">
+
   <form class="form-horizontal" method="GET" action="cgi-bin/hrrr_download.cgi">
 
 <!---Model Type -----------------------> 
@@ -182,7 +183,7 @@ print'''
          <select class="form-control" id="model" name="model">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['HRRR (operational)', 'HRRR-X (experimental)', 'Alaska (Operational after May, ?? 2018)']
+display = ['HRRR (operational)', 'HRRR-X (experimental)', 'HRRR Alaska (operational after 12 July 2018)']
 value = ['hrrr', 'hrrrX','hrrrak']
 
 for i in range(0,len(value)):
@@ -199,13 +200,13 @@ print''' </select>
 
 <!---Field type-------------------------->
     <div class="form-group">
-      <label class="control-label col-md-2" for="field">Variables Field:</label>
+      <label class="control-label col-md-2" for="field">Variable Fields:</label>
       <div class="col-md-4">          
         <select class="form-control" id="field" name="field">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)', 'Native (nat)', 'Subhourly (subh)']
-value = ['sfc', 'prs', 'nat', 'subh']
+display = ['Surface (sfc, 2D fields)', 'Pressure (prs, 3D fields)']
+value = ['sfc', 'prs']
 
 for i in range(0,len(value)):
    if field == value[i]:
@@ -371,13 +372,20 @@ print '''
 
 
 print '''
-<br>
-<p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
-<br>
 
-<script src='./js/climate_acknowledgement.js'></script>
+<div class='container'>
 <script src='./js/pando_citation.js'></script>
+</div>
+
+<div class='row'>
+    <div class='col-md-3  col-md-offset-3'>
+        <script src='./js/climate_acknowledgement.js'></script>
+    </div>
+    <div class='col-md-3'>
+        <script src='./js/powered_by_mesowest.js'></script>
+    </div>
+    
+</div>
 
 <script src="js/site/siteclose.js"></script>
 </body>

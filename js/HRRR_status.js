@@ -1,5 +1,6 @@
 /*HRRRv3 Upgrade*/
 
+/*
 document.write(' \
 <div class="alert alert-info"> \
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> \
@@ -7,3 +8,4 @@ document.write(' \
     <a href="https://www.weather.gov/media/notification/pdfs/scn18-58rap_hrrr.pdf" class="alert-link">More Details</a>.\
 </div> \
 ');
+*/

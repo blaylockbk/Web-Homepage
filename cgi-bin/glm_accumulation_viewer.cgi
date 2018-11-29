@@ -25,7 +25,7 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 # Set the directory
-PATH = 'PhD/HRRR_Spread/'
+PATH = 'PhD/GOES16_GLM/'
 
 DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/' + PATH
 URL = 'http://home.chpc.utah.edu/~u0553130/' + PATH
@@ -39,30 +39,18 @@ list_dates.sort()
 try:
     DATE = cgi.escape(form['DATE'].value)
     if DATE not in list_dates:
-        DATE = list_dates[0]
+        DATE = list_dates[-1]
 except:
-    DATE = list_dates[0]
+    DATE = list_dates[-1]
 
-# List the variables in the directory
-list_vars = filter(lambda x: os.path.isdir(DIR+'/'+DATE+'/'+x), os.listdir(DIR+'/'+DATE))
-list_vars.sort()
-
-try:
-    VAR = cgi.escape(form['VAR'].value)
-    if VAR not in list_vars:
-        VAR = list_vars[-1]
-except:
-    VAR = list_vars[-1]
-
-
-short_path = DIR[DIR.find('public_html')+12:]+DATE+'/'+VAR
+short_path = DIR[DIR.find('public_html')+12:]+DATE
 
 
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<title>HRRR Spread</title>
+<title>GLM Accumulation</title>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
@@ -111,7 +99,7 @@ print'''
 
 
 print '''
-<form class="form-horizontal" method="GET" action="cgi-bin/hrrr_spread_viewer.cgi">
+<form class="form-horizontal" method="GET" action="cgi-bin/glm_accumulation_viewer.cgi">
 
 <div class="form-group">
 
@@ -135,26 +123,6 @@ print'''
 <!--(Select Date) -->
 
 
-<!-- Select Variable -->
-<div class="col-md-3">
-    <div class="input-group" title="Select Fire">
-    <span class="input-group-addon"><i class="far fa-calendar-alt fa-fw"></i></span>          
-    <select class="form-control" id="VAR" name="VAR" onchange="this.form.submit()">
-    '''
-display = list_vars
-value = list_vars
-for i in range(0,len(value)):
-   if VAR == value[i]:
-      print'''<option selected="selected" value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-   else:
-      print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
-print'''
-    </select>
-    </div>
-</div>
-<!--(Select Variable) -->
-
-
 <!-- Submit Button -->
 <div class="form-group">        
     <div class="col-md-3">
@@ -175,8 +143,8 @@ def add_buttons(these_buttons, action='onclick', img_id='hrrr_img'):
         txt_action = 'Hover: '
     print "<div  class='btn-group btn-group-justified' role='group'>"
     for i, name in enumerate(these_buttons):
-        img = "%s%s/%s/%s" % (URL, DATE, VAR, name)
-        if os.path.isfile("%s/%s/%s/%s" % (DIR, DATE, VAR, name)):
+        img = "%s%s/%s" % (URL, DATE, name)
+        if os.path.isfile("%s/%s/%s" % (DIR, DATE, name)):
             if name.split('.')[-1]=='gif':
                 print """<a class='btn btn-default' %s="change_picture('%s', '%s')">%s</a>""" % (action, img, img_id, 'LOOP')
             else:
@@ -186,22 +154,19 @@ def add_buttons(these_buttons, action='onclick', img_id='hrrr_img'):
     print "</div>"
 
 
-path = DIR+'/'+DATE+'/'+VAR+'/'
+path = DIR+'/'+DATE+'/'
 CONUS = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'CONUS'))
 CONUS = ['CONUS/'+i for i in CONUS]
 WEST = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'WEST'))
 WEST = ['WEST/'+i for i in WEST]
 UTAH = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'UTAH'))
 UTAH = ['UTAH/'+i for i in UTAH]
-GLM = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'HRRR_and_GLM'))
-GLM = ['HRRR_and_GLM/'+i for i in GLM]
 
 print '''
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#CONUS">CONUS</a></li>
   <li><a data-toggle="tab" href="#WEST">West</a></li>
   <li><a data-toggle="tab" href="#UTAH">Utah</a></li>
-  <li><a data-toggle="tab" href="#GLM">HRRR+GLM</a></li>
 </ul>
 
 <div class="tab-content">
@@ -223,11 +188,6 @@ print '''
 add_buttons(UTAH, action='onmouseover', img_id='hrrr_img')
 print '''
   </div>
-  <div id="GLM" class="tab-pane fade">
-    <h3>HRRR+GLM</h3>
-'''
-add_buttons(GLM, action='onmouseover', img_id='hrrr_img')
-print '''
 </div>
 ''' 
 

@@ -65,7 +65,13 @@ var no_banner_image = ['home.html',
                        'Pando_Failure.html',
                        'photo_viewer_fire.cgi',
                        'photo_viewer_golf.cgi',
-                       'photo_viewer_HRRR-Spread.cgi',
+                       'hrrr_spread_viewer.cgi',
+                       'glm_accumulation_viewer.cgi',
+                       'hrrr_download.cgi',
+                       'hrrr_FAQ.html',
+                       'hrrr_download_register.html',
+                       'hrrr_download_register.html',
+                       'hrrr_script_tips.html',
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {
@@ -136,6 +142,7 @@ document.write('\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fas fa-chart-pie fa-fw" ></i> Rose Plots</a></li>\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" ></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">Other</li>\
+                            <li><a href="./cgi-bin/glm_accumulation_viewer.cgi "><i class="fa fa-globe fa-fw" ></i> GOES-16 GLM</a></li>\
                             <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" ></i> KSL Flights</a></li>\
                         </ul>\
                     </li>\
