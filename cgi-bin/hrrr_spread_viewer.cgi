@@ -193,8 +193,11 @@ WEST = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'WEST')
 WEST = ['WEST/'+i for i in WEST]
 UTAH = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'UTAH'))
 UTAH = ['UTAH/'+i for i in UTAH]
-GLM = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'HRRR_and_GLM'))
-GLM = ['HRRR_and_GLM/'+i for i in GLM]
+try:
+    GLM = filter(lambda x: x[-3:] in ['png', 'gif', 'jpg'], os.listdir(path+'HRRR_and_GLM'))
+    GLM = ['HRRR_and_GLM/'+i for i in GLM]
+except:
+    pass
 
 print '''
 <ul class="nav nav-tabs">
@@ -226,7 +229,10 @@ print '''
   <div id="GLM" class="tab-pane fade">
     <h3>HRRR+GLM</h3>
 '''
-add_buttons(GLM, action='onmouseover', img_id='hrrr_img')
+try:
+    add_buttons(GLM, action='onmouseover', img_id='hrrr_img')
+except:
+    pass
 print '''
 </div>
 ''' 
