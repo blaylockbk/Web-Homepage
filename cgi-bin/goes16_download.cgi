@@ -31,6 +31,10 @@ try:
 except:
     source = 'aws'    # 'aws' for Amazon or 'occ' for Open Commons Consortium 
 try:
+    satellite = cgi.escape(form['satellite'].value)
+except:
+    satellite = 'noaa-goes16'
+try:
     domain = cgi.escape(form['domain'].value)
 except:
     domain = 'C'    # C for CONUS, F for Full Disk, M for Mesoscale
@@ -48,9 +52,9 @@ except:
     Date = today.strftime('%Y-%m-%d')
 
 if source == 'aws':
-    sourceURL = 'https://noaa-goes16.s3.amazonaws.com'
+    sourceURL = 'https://%s.s3.amazonaws.com' % satellite
 elif source == 'occ':
-    sourceURL = 'https://osdc.rcc.uchicago.edu/noaa-goes16'
+    sourceURL = 'https://osdc.rcc.uchicago.edu/%s' % satellite
 
 print "Content-Type: text/html\n"
 
@@ -131,6 +135,13 @@ print'''
             <p> This page is tested in
             <i class="fab fa-edge"></i> and <i class="fab fa-chrome"></i> 
             (Why only these two? Because my advisor uses Chrome, and I use Edge.)
+            
+            <hr>
+            <a style='font-size:20px' class='btn btn-success' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16'>
+            Alternative Download Page
+            </a>
+            <hr>
+
             <ol style="padding-left:15px">
             <li>Select the desired domain, product, date, and hour for which you want to download.
             <li>Click the submit button.
@@ -168,7 +179,7 @@ print'''
         <div class="panel-body">
         <p>Data from the Advanced Baseline Imager (ABI) is downloaded from  <a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success">
             <i class="fab fa-aws"></i> Amazon S3</a>
-        <p>The base download URL is https://noaa-goes16.s3.amazonaws.com
+        <p>The base download URL is https://'''+satellite+'''.s3.amazonaws.com
         <p>The file path is: <span style='font-family:monospace'>/product/year/day_of_year/hour/file_name</span>
         <p> Usefull Links:                
         <ul style="padding-left:60px">
@@ -233,7 +244,7 @@ print'''
     Consortium and has GOES files from the last 7-8 months. If you get an XML
     error when downloading from the Amazon source, try switching to OCC.
     Check the URL in bold below to confirm the source.
-    </div>
+    </div>   
     
   <hr> 
 <div class="container">
@@ -267,7 +278,37 @@ print '''
         </div>
     </div>
 </div>
-<!--- (link type)----------------------------->
+<!--- (source type)----------------------------->
+
+<!--- Satellite ----------------------------->
+<div class="form-group">
+    <label class="control-label col-md-2" for="satellite">Satellite:</label>
+    <div class="col-md-4">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+'''
+if satellite == 'noaa-goes16':
+    print '''
+        <label class="btn btn-default active">
+            <input type="radio" name="satellite" id="satellite" autocomplete="off" value='noaa-goes16' checked> GOES-16/East
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="satellite" id="satellite" autocomplete="off" value='noaa-goes17'> GOES-17/West
+        </label>
+    '''
+elif satellite == 'noaa-goes17':
+    print '''
+        <label class="btn btn-default">
+            <input type="radio" name="satellite" id="satellite" autocomplete="off" value='noaa-goes16'> GOES-16/East
+        </label>
+        <label class="btn btn-default active">
+            <input type="radio" name="satellite" id="satellite" autocomplete="off" value='noaa-goes17' checked> GOES-17/West
+        </label>
+    '''
+print '''
+        </div>
+    </div>
+</div>
+<!--- (satellite)----------------------------->
 
 <!---domain Type -----------------------> 
     <div class="form-group">
@@ -383,15 +424,15 @@ if product=='GLM-L2-LCFA':
 else:    
     PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
 
-print '<h4>Tap to download from noaa-goes16 S3 bucket: <b>'+sourceURL+PATH+'</b></h4>'
+print '<h4>Tap to download from %s S3 bucket: <b>' % satellite, sourceURL+PATH+'</b></h4>'
 print "<p>Number represents the scan's start minute for the requested hour"
 
 
 #rclone = '/uufs/chpc.utah.edu/sys/installdir/rclone/1.29/bin/rclone'
 rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
 
-ls = ' ls goes16:noaa-goes16%s | cut -c 11-' \
-        % (PATH)
+ls = ' ls AWS:%s%s | cut -c 11-' \
+        % (satellite, PATH)
 
 rclone_out = subprocess.check_output(rclone + ls, shell=True)
 flist = rclone_out.split('\n')

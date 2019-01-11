@@ -72,6 +72,7 @@ var no_banner_image = ['home.html',
                        'hrrr_download_register.html',
                        'hrrr_download_register.html',
                        'hrrr_script_tips.html',
+                       'generic_AWS_download.cgi',
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {

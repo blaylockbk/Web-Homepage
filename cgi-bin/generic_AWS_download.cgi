@@ -20,10 +20,36 @@ Updates/To Do:
 
 import subprocess
 import cgi, cgitb
+from collections import OrderedDict
 cgitb.enable()
 
 form = cgi.FieldStorage()
 
+
+sets = OrderedDict()
+sets['noaa-goes16'] = {'name': 'GOES-16 (East)',
+                      'docs': 'https://registry.opendata.aws/noaa-goes/'}
+sets['noaa-goes17'] = {'name': 'GOES-17 (West)',
+                       'docs': 'https://registry.opendata.aws/noaa-goes/'}
+sets['noaa-nexrad-level2'] = {'name': 'NEXRAD Level2',
+                               'docs': 'https://registry.opendata.aws/noaa-nexrad/'}
+sets['noaa-gfs-pds'] = {'name': 'Global Forecast System (GFS)',
+                        'docs': 'https://registry.opendata.aws/noaa-gfs-pds/'}
+sets['noaa-hrrr-pds'] = {'name': 'High-Resolution Rapid Refresh (HRRR)',
+                         'docs': 'https://registry.opendata.aws/noaa-hrrr-pds/'}
+sets['noaa-gefs-pds'] = {'name': 'Global Ensemble Forecast System',
+                         'docs': 'https://registry.opendata.aws/noaa-gefs/'}                       
+sets['noaa-nwm-pds']= {'name': 'National Water Model Short-Range Forecasts',
+                       'docs': 'https://registry.opendata.aws/noaa-nwm-pds/'}
+sets['nwm-archive'] = {'name': 'National Water Model Archive',
+                       'docs': 'https://registry.opendata.aws/nwm-archive/'}
+sets['era5-pds'] = {'name': 'ECMWF ERA5 Reanalysis',
+                    'docs': 'https://registry.opendata.aws/exmwf-ara5/'}
+
+
+HRRR_pando_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">HRRR on Pando Archive</a>'
+GOES_pando_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES on Pando Archive</a>'
+GOES_alt_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi">Alternative GOES Download</a>'
 
 ## Get Bucket name from the form, or set default
 try:
@@ -46,54 +72,73 @@ if len(bucket) > 1 and bucket[-1] != '/':
 ## Pando URL
 baseURL = 'https://%s.s3.amazonaws.com/' % (dataset)
 
-nexrad_active = ''
-goes_active = ''
-aws_details = ''
-if dataset == 'noaa-nexrad-level2':
-    nexrad_active = 'active'
-    aws_details = 'https://aws.amazon.com/public-datasets/nexrad/'
-elif dataset == 'noaa-goes16':
-    goes_active = 'active'
-    aws_details = 'https://aws.amazon.com/public-datasets/goes/'
-
 ## Begin the HTML document
 print "Content-Type: text/html\n"
 
-print'''<!DOCTYPE html>
+print'''<!DOCTYPE html>'''
+print'''
 <html>
 <head>
-<title>Download from AWS</title>
+'''
+print '<title>Download %s from AWS</title>' % dataset
+print '''
 <script src="../js/site/siteopen.js"></script>
 </head>
 
 <body>
+<script src="js/site/sitemenu.js"></script>
 <div class='container'>
-<h1>Download from Amazon <i class="fab fa-aws"></i>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-nexrad-level2"><i class="fab fa-aws"></i> NEXRAD on Amazon</a>
-    <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fas fa-table"></i></a>
-    </div>
-    <div class='btn-group'>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES on Pando</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
-    </div>
+<h1 align=center><i class="fab fa-aws"></i> Download from Amazon</h1>
+<h1 align=center>
+
 </h1>
-''' % (nexrad_active, goes_active)
+'''
+
 
 print '''
-<form>
-<span style="visibility:hidden">
-<input type=text size=50 name=DATASET value=%s>
-</span>''' % (dataset)
+<hr>
+<form class="form-horizontal"  style='font-size:20px'>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Dataset:</label>
+    <div class="col-sm-4">
+      <select class="form-control" id="DATASET" name="DATASET" style='display:inline;font-size:17px' onchange="this.form.submit()">'''
+# display is the variable name as it will display on the webpage
+# value is the value used
+display = [sets[i]['name'] for i in sets.keys()]
+value = sets.keys()
 
-print '''
-<p style="font-size:20px"><b>Bucket URL: </b>%s<input type=text size=50 name=BUCKET value=%s>''' % (baseURL, bucket)
-print '''
-<button type="submit" class="btn btn-success">Submit</button>
-</form>'''
+for i in range(0,len(value)):
+   if dataset == value[i]:
+      print'''<option selected="selected" value="'''+value[i]+'''">'''+display[i]+'''</option>'''
+   else:
+      print'''<option value="'''+value[i]+'''">'''+display[i]+'''</option>'''
+print''' </select>
+    </div>
+  </div>
 
-print '''<p> <a href='%s' target="_blank">Dataset details on AWS</a>''' % aws_details
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">URL:</label>
+    <div class="col-sm-10"> 
+      https://%s.s3.amazonaws.com/%s''' % (dataset, bucket)
+print '''
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Resources:</label>
+    <div class="col-sm-10"> 
+      <a class='btn btn-default' href='%s' target=_blank>Documentation</a>''' % (sets[dataset]['docs'])
+if dataset == 'noaa-hrrr-pds':
+    print HRRR_pando_btn
+if dataset in ['noaa-goes16', 'noaa-goes17']:
+    print GOES_alt_btn
+    print GOES_pando_btn
+print '''
+    </div>
+  </div>
+</form>
+'''
+
 print '<hr>'
 
 
@@ -125,19 +170,18 @@ dlist.sort()
 
 ## === Back Button ============================================================
 dirs = bucket.split('/')
-if len(dirs) > 2:
+if len(dirs) > 1:
     back_bucket = '/'.join(bucket.split('/')[:-2])
     URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, back_bucket)
     print '''<a href="%s"><i class="fas fa-step-backward"></i> Back</a>''' % (URL)
     print "<br><br>"
 
-
 ## === Directory Buttons ======================================================
 ## Create button for each directory
-print '''<h4><i class="fa fa-archive"></i> Directories</h4>'''
+print '''<h3><i class="fa fa-archive"></i> Directories</h3>'''
 if len(dlist) > 0:
     print '''
-    <div class="btn-group-vertical">
+    <div class="btn-group-vertical" style='margin-left:30px'>
     '''
     for d in dlist:
         DIR = d.split(' ')[-1]
@@ -150,7 +194,7 @@ else:
 print "<hr>"
 ## === File download buttons ==================================================
 # If we are in the deepest directory, then make download buttons for each file.
-print '''<h4><i class="fa fa-file"></i> Files</h4>'''
+print '''<h3><i class="fa fa-file"></i> Files</h3>'''
 # 1) List files in the requested bucket
 rclone_ls = subprocess.check_output(rclone + ls, shell=True)
 

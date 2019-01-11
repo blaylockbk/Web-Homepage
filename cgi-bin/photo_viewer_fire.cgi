@@ -54,7 +54,10 @@ try:
     if HOUR not in list_hours:
         HOUR = list_hours[-2]
 except:
-    HOUR = list_hours[-2]
+    try:
+        HOUR = list_hours[-2]
+    except:
+        HOUR = list_hours[-1]
 
 # List the fires in the directory
 list_fires = filter(lambda x: os.path.isdir(DIR+DATE+'/'+HOUR+'/'+x), os.listdir(DIR+DATE+'/'+HOUR+'/'))
