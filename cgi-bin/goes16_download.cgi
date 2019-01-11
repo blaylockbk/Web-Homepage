@@ -4,10 +4,10 @@
 Brian Blaylock
 October 1, 2017
 
-Interactive web interface for viewing GOES-16 files available on the Amazon
+Interactive web interface for viewing GOES-16/17 files available on the Amazon
 noaa-goes16 public bucket. Click button to download files.
 
-Details of GOES-16 data
+Details of GOES-16/17 data
 http://www.goes-r.gov/products/images/productFileSize8ColorPng8-1600px.png
 
 """
@@ -62,7 +62,7 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
-<title>GOES-16 on Amazon Download Page</title>
+<title>GOES-16/17 on Amazon Download Page</title>
 <style>
       .mybtn {
           border: 2px solid #23415c;
@@ -105,7 +105,7 @@ print '''
 print'''
 <div id="content" class="container">
     <h1 align="center">
-    <i class="fa fa-cloud-download-alt"></i> GOES-16 on Amazon Download Page
+    <i class="fa fa-cloud-download-alt"></i> GOES-16/17 on Amazon Download Page
     </h1>
     <center>
     <div class='btn-group'>
@@ -158,7 +158,7 @@ print'''
                 <li>OR - data is operational and in real-time
                 <li>ABI-L1b-RadM1 - is the product, with the mesoscale 1 domain. C is for CONUS, F is for full disk, and M2 is for Mesoscale 2.
                 <li>M3C01 - Mode is 3 and Channel is 01
-                <li>G16 - GOES-16
+                <li>G16 - GOES-16 (G17 for GOES-17)
                 <li>s20172511100550 - scan start time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
                 <li>e20172511101007 - scan end time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
                 <li>c20172511101048 - scan file creation time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
@@ -244,6 +244,8 @@ print'''
     Consortium and has GOES files from the last 7-8 months. If you get an XML
     error when downloading from the Amazon source, try switching to OCC.
     Check the URL in bold below to confirm the source.
+    <br>
+    Note: GOES-17 data is non-operational.
     </div>   
     
   <hr> 
