@@ -163,9 +163,15 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Code<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
+                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v3</li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">BB_HRRR/HRRR_Pando</a></li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/tree/master/BB_GOES">BB_GOES</a></li>\
+                                <ul>\
+                                    <li><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_GOES/mapping_GOES16_TrueColor.ipynb">GOES16 True Color RGB</a>\
+                                </ul>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v3">all others</a></li>\
                             <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v2</li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">BB_downloads/HRRR_S3</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
                             <li class="dropdown-header"><i class="fa fa-code fa-fw" ></i> Other</li>\
