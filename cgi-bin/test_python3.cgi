@@ -5,7 +5,7 @@ Brian Blaylock
 February 12, 2019
 
 Generate custom figure of time series for multiple station locations from
-MesoWest API for /ts_multistations.cgi
+MesoWest API for /test_python3.cgi
 
 (A rewrite for pyBKB_v3)
 """
@@ -290,13 +290,13 @@ print('''
 
             <p>Example quick plots: Last 31 hours
                   <ul style='padding-left:30px'>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
                   Salt Lake County 1-15 UDOT</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi'>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi'>
                   Peter Sinks, UT</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
                   University of Utah to Airport</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/ts_multistations.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
+                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
                   Salt Lake to Spanish Fork</a>
                   </ul>
             </h5>
@@ -309,7 +309,7 @@ print('''
 <div class='container'>
 <hr>
 <div class="contentText form-group">
-<form class="form-horizontal" method="GET" action="cgi-bin/ts_multistations.cgi">
+<form class="form-horizontal" method="GET" action="cgi-bin/test_python3.cgi">
       
 <!---STATION ----------------------->	  
 <div class="form-group">
@@ -350,8 +350,8 @@ print('''
         <select class="form-control" id="variable" name="variable">''')
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['Air Temperature', 'Relative Humidity', 'Wind Speed', 'Wind Gust', 'Wind Direction', 'Wind Barbs', 'Dew Point', 'Pressure', 'PM 2.5 Concentration', 'Ozone Concentration', 'Solar Radiation']
-value = ['air_temp', 'relative_humidity', 'wind_speed', 'wind_gust', 'wind_direction', 'wind_direction,wind_speed', 'dew_point_temperature', 'pressure', 'PM_25_concentration', 'ozone_concentration', 'solar_radiation']
+display = ['Air Temperature', 'Relative Humidity', 'Wind Speed', 'Wind Direction', 'Wind Barbs', 'Pressure', 'PM 2.5 Concentration', 'Ozone Concentration']
+value = ['air_temp', 'relative_humidity', 'wind_speed', 'wind_direction', 'wind_direction,wind_speed', 'pressure', 'PM_25_concentration', 'ozone_concentration']
 
 for i in range(0,len(value)):
    if variable == value[i]:
@@ -411,7 +411,7 @@ URL =  'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/temp/'
 print('<img onclick="window.open(this.src)" src = "%s.png"/>' % (URL+NAME)) # Display saved figure
 # =============================================================================
 
-demoURL = data[plotted_stations[0]]['URL']
+demoURL = a['URL']
 import re
 result = re.search('&token=(.*)&stid=', demoURL)
 demoURL = demoURL.replace(result.group(1), 'demotoken')
