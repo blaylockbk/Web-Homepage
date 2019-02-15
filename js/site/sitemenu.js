@@ -234,40 +234,55 @@ document.write('\
                     <li class="dropdown">\
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">External Links<span class="caret"></span></a>\
                     <ul class="dropdown-menu">\
+                        <li class="dropdown-header">MesoWest</li>\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
-                        <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
-                        <li><a href="https://www.wrh.noaa.gov/map/" target="tools"><i class="fa fa-globe fa-fw" ></i> Weather and Hazards Data Viewer</a></li>\
-                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA)</a></li>\
-                        <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
-                        <li><a href="http://wx.erau.edu/erau_sat/" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (Embry Riddle)</a></li>\
-                        <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
-                        <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
-                        <li><a href="http://weather.uwyo.edu/upperair/sounding.html" target="tools"><i class="fab fa-fly fa-fw" ></i>  Wyoming Sounding Page</a></li>\
-                        <li><a href="http://www.spc.noaa.gov/exper/soundingclimo/" target="tools"><i class="fab fa-fly fa-fw" ></i>  Sounding Climo</a></li>\
-                        <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
-                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
-                        <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
-                        <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\
-                        <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fas fa-tv fa-fw" ></i>  NAA School</a></li>\
-                        <li><a href="http://dev2.mesowest.net/cgalli/percentiles/radial.html" target="tools"><i class="fa fa-user fa-fw" ></i>  MesoWest Station Percentiles</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
-                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?net=153" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_precip_total.cgi?back=24.0&latcen=40.78885994449482&loncen=-111.895751953125&net=0&zoom=8&limit=None" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
+                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?latcen=40.78262115769851&loncen=-111.90673828125&net=0&zoom=9&limit=None" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
                         <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
                         <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" ></i>  Sodar</a></li>\
                         <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  UU Air Quality</a></li>\
-                        <li><a href="http://www.airquality.utah.gov/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  DAQ Air Quality</a></li>\
-                        <li><a href="https://www.ksl.com/?nid=1314" target="tools"><i class="fa fa-cloud fa-fw" ></i>  KSL Air Quality</a></li>\
-                        <li><a href="http://dev2.mesowest.net/demos/station-history/?stid=WBB/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station History</a></li>\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\
+                        \
+                        <li class="dropdown-header">Satellite</li>\
+                        <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA-SLIDER)</a></li>\
+                        <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
+                        <li><a href="http://wx.erau.edu/erau_sat/" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (Embry Riddle)</a></li>\
+                        <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
+                        <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
+                        <li><a href="http://cimss.ssec.wisc.edu/goes/goesdata.html" target="tools"><i class="fa fa-globe fa-fw" ></i>  GOES ABI Data Resources (Tim Schmit) </a></li>\
+                        \
+                        <li class="dropdown-header">Numerical Models</li>\
+                        <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
+                        <li><a href="https://www.wrh.noaa.gov/map/" target="tools"><i class="fa fa-globe fa-fw" ></i> Weather and Hazards Data Viewer</a></li>\
+                        <li><a href="https://www.xcskies.com/map " target="tools" ><img src="./images/hawk.png" height="14px"> XC Skies Forecasts</a></li>\
+                        <li class="dropdown-header">Upper Air Sounding</li>\
+                        <li><a href="http://weather.uwyo.edu/upperair/sounding.html" target="tools"><i class="fab fa-fly fa-fw" ></i>  Wyoming Sounding Page</a></li>\
+                        <li><a href="http://www.spc.noaa.gov/exper/soundingclimo/" target="tools"><i class="fab fa-fly fa-fw" ></i>  Sounding Climo</a></li>\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
-                        <li><a href="https://www.weather.gov/fire/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  weather.gov/fire</a></li>\
-                        <li><a href="http://raqms.ssec.wisc.edu/forecast/calendar/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  Real-time Air Quality Modeling System</a></li>\
-                        <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
-                        <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/hrrrval/" target="tools"><i class="fa fa-globe fa-fw" ></i>  HRRR Satellite Validation (CIMSS)</a></li>\
+                        \
+                        <li class="dropdown-header">Precipitation/Radar</li>\
+                        <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
+                        <li><a href="http://weather.rap.ucar.edu/radar/" target="tools"><i class="fa fa-tint fa-fw" ></i>  Radar</a></li>\
+                        <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
+                        <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
+                        \
+                        <li class="dropdown-header">Education</li>\
+                        <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\
+                        <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fas fa-tv fa-fw" ></i>  NAA School</a></li>\
+                        \
+                        <li class="dropdown-header">Air Quality</li>\
+                        <li><a href="http://www.airquality.utah.gov/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  DAQ Air Quality</a></li>\
+                        <li><a href="https://www.ksl.com/?nid=1314" target="tools"><i class="fa fa-cloud fa-fw" ></i>  KSL Air Quality</a></li>\
+                        <li><a href="http://raqms.ssec.wisc.edu/forecast/calendar/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  Real-time Air Quality Modeling System</a></li>\
+                        \
+                        <li class="dropdown-header">Fire</li>\
+                        <li><a href="https://www.weather.gov/fire/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  weather.gov/fire</a></li>\
                         <li><a href="https://wildlandfiresmoke.net" target="tools"><i class="fa fa-globe fa-fw" ></i>  Wildland Fire Air Quality </a></li>\
-                        <li><a href="http://cimss.ssec.wisc.edu/goes/goesdata.html" target="tools"><i class="fa fa-globe fa-fw" ></i>  GOES ABI Data Resources (Tim Schmit) </a></li>\
+                        \
+                        <li class="dropdown-header">Other</li>\
+                        <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                     </ul>\
                     </li>\
 \
