@@ -323,6 +323,7 @@ html += '''
     </table>
 
   </center>
+  
   <hr>
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/Pando_archive/index.html"><i class="fab fa-github"></i> Page</a>
@@ -330,6 +331,7 @@ html += '''
     <br>
     Last Updated: %s
   </div>
+
 </div>
 <script src="./js/site/siteclose.js"></script>
 </body>
@@ -337,8 +339,7 @@ html += '''
               day_sizes['hrrr']['prs'], day_sizes['hrrrX']['prs'], day_sizes['hrrrak']['prs'],
               day_sizes['hrrr']['nat'], day_sizes['hrrrX']['nat'], day_sizes['hrrrak']['nat'],
               HRRR_total, HRRRX_total, HRRRAK_total,
-              datetime.utcnow().strftime('%d %b %Y %H:%M UTC')
-              )
+              datetime.utcnow().strftime('%d %b %Y %H:%M UTC'))
 
 with open('index.html', 'w') as f:
     f.write(html)
