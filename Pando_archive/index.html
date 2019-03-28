@@ -14,41 +14,50 @@
 <a name="TOP"></a>
 <script src="./js/site/sitemenu.js"></script>	
 
+<br>
+<div class="row" id="content">
+    <div class="col-md-offset-3 col-md-3">
+        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+        <i class="fa fa-info-circle"></i> HRRR Archive FAQ</a>
+    </div>
+    <div class=" col-md-3">
+        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16" class="btn btn-primary btn-block">
+        <i class="fa fa-cloud-download-alt"></i> Pando Web Download</a>
+    </div>
+</div>
+
 <h1 align="center"><i class="fa fa-database"></i> Horel Group Pando Allocation</h1>
 
+<!--
 <div class='container'>
 <div class="row" id="content">
-            <div class=" col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-                    <i class="fa fa-user-plus"></i> Have you Registered?</a>        
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-                    <i class="far fa-handshake"></i> Best Practices</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-                    <i class="fa fa-info-circle"></i> HRRR FAQ</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
-                    <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
-            </div>
-        </div>
-  <br>
+    <div class=" col-md-3">
+    </div>
+    <div class="col-md-3">
+            
+    </div>
+    <div class="col-md-3">
+            
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+-->
+
+<br>
   <script src='./js/pando_status.js'></script>
-    <center><font size=12> 79.1 TB out of 130 TB</font>
+    <center><font size=12> 82.3 TB out of 130 TB</font>
     <div class="progress" style="max-width:700px;height:35px">
             <div class="progress-bar progress-bar-danger" role="progressbar" style="width:8%">
               <font size=4></font>
             </div>
-            <div class="progress-bar progress-bar-primary" role="progressbar" style="width:48%">
+            <div class="progress-bar progress-bar-primary" role="progressbar" style="width:49%">
               <font size=4></font>
             </div>
             <div class="progress-bar progress-bar-success" role="progressbar" style="width:1%">
               <font size=4></font>
             </div>
-            <div class="progress-bar progress-bar-warning" role="progressbar" style="width:4%">
+            <div class="progress-bar progress-bar-warning" role="progressbar" style="width:5%">
               <font size=4></font>
             </div>
           </div>
@@ -64,46 +73,65 @@
         <th style='text-align:center'>Estimated Full Date</th>
       </tr>
       <tr>
-        <td>103.62 GB</td>
-        <td>491</td>
-        <td>09 July 2020</td>
+        <td>118.34 GB</td>
+        <td>403</td>
+        <td>04 May 2020</td>
       </tr>
     </table>
     <table class="table table-bordered" style='text-align:center;max-width:700px'>
       <tr>
         <th style='text-align:center'></th>
-        <th style='text-align:center' class="danger">GOES16</th>
+        <th style='text-align:center' class="danger">GOES-16 (East)</th>
+        <th style='text-align:center' class="danger">GOES-17 (West)</th>
+      </tr>
+      <tr>
+        <th style='text-align:right'>ABI-L2-MCMIPC</th>
+        <td>15.88</td>
+        <td>15.59</td>
+      </tr>
+      <tr>
+        <th style='text-align:right'>GLM-L2-LCFA</th>
+        <td>1.26</td>
+        <td>0.75</td>
+      </tr>
+      <tr>
+        <th style='text-align:right'>Total</th>
+        <th style='text-align:center'>17.14 GB</th>
+        <th style='text-align:center'>16.34 GB</th>
+      </tr>
+    </table>
+
+
+    <table class="table table-bordered" style='text-align:center;max-width:700px'>
+      <tr>
+        <th style='text-align:center'></th>
         <th style='text-align:center' class="info">HRRR</th>
         <th style='text-align:center' class="success">HRRR-X</th>
         <th style='text-align:center' class="warning">HRRR-Alaska</th>
       </tr>
       <tr>
-        <th>sfc</th>
-        <td>--</td>
-        <td>24.38</td>
-        <td>1.17</td>
-        <td>9.04</td>
+        <th style='text-align:right'>sfc</th>
+        <td>58.10</td>
+        <td>0.28</td>
+        <td>17.86</td>
       </tr>
       <tr>
-        <th>prs</th>
-        <td>--</td>
-        <td>3.59</td>
+        <th style='text-align:right'>prs</th>
+        <td>8.62</td>
         <td>0.00</td>
         <td>0.00</td>
       </tr>
       <tr>
-        <th>nat</th>
-        <td>--</td>
+        <th style='text-align:right'>nat</th>
         <td>0.00</td>
         <td>0.00</td>
         <td>0.00</td>
       </tr>
       <tr>
-        <th>Total</th>
-        <th>17.0 GB</th>
-        <th>27.97 GB</th>
-        <th>1.17 GB</th>
-        <th>9.04 GB</th>
+        <th style='text-align:right'>Total</th>
+        <th style='text-align:center'>66.72 GB</th>
+        <th style='text-align:center'>0.28 GB</th>
+        <th style='text-align:center'>17.86 GB</th>
       </tr>
     </table>
 
@@ -112,6 +140,8 @@
   <div align=right>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/Pando_archive/index.html"><i class="fab fa-github"></i> Page</a>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/Pando_archive/daily_usage.py"><i class="fab fa-github"></i> Plot</a>
+    <br>
+    Last Updated: 28 Mar 2019 16:47 UTC
   </div>
 </div>
 <script src="./js/site/siteclose.js"></script>

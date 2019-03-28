@@ -73,6 +73,7 @@ var no_banner_image = ['home.html',
                        'hrrr_download_register.html',
                        'hrrr_script_tips.html',
                        'generic_AWS_download.cgi',
+                       '', /*No banner if the page is index.html*/
                       ];
 
 if (no_banner_image.indexOf(filename)<0) {
@@ -282,6 +283,7 @@ document.write('\
                         <li><a href="https://wildlandfiresmoke.net" target="tools"><i class="fa fa-globe fa-fw" ></i>  Wildland Fire Air Quality </a></li>\
                         \
                         <li class="dropdown-header">Other</li>\
+                        <li><a href="https://fluid.nccs.nasa.gov/reanalysis/classic_merra2/" target="tools"><i class="fa fa-clock fa-fw" ></i>  Historical Weather (MERRA2)</a></li>\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\
                     </ul>\
                     </li>\

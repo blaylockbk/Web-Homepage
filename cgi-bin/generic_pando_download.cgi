@@ -29,13 +29,16 @@ if bucket[-1] != '/':
 ## Pando URL
 baseURL = 'https://pando-rgw01.chpc.utah.edu/'
 outer_bucket = bucket.split('/')[0]
-goes_active = ''
+goes16_active = ''
+goes17_active = ''
 hrrr_active = ''
 hrrrX_active = ''
 hrrrak_active = ''
 horel_active = ''
 if outer_bucket == 'GOES16':
-    goes_active = 'active'
+    goes16_active = 'active'
+elif outer_bucket == 'GOES17':
+    goes17_active = 'active'
 elif outer_bucket == 'hrrr':
     hrrr_active = 'active'
 elif outer_bucket == 'hrrrX':
@@ -67,11 +70,14 @@ print'''<!DOCTYPE html>
     <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
     </div>
     <div class='btn-group'>
+    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES17"><i class="fa fa-database"></i> GOES-17</a>
+    </div>
+    <div class='btn-group'>
     <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr"><i class="fa fa-database"></i> HRRR</a>
     <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"><i class="fas fa-table"></i></a>
     </div>
     <a class='btn btn-danger %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
-</h1>''' % (goes_active, hrrr_active, horel_active)
+</h1>''' % (goes16_active, goes17_active, hrrr_active, horel_active)
 
 print '''<script src='./js/pando_status.js'></script>'''
 
@@ -105,13 +111,14 @@ lsd = ' lsd horelS3:%s' % bucket
 
 # 3) Execute the rclone lsd command to list directories
 ## Check if there are directories in the requestd bucket
-print 'Debug:<br><br>'+rclone+lsd+'<br><br>'
 import socket, sys
-print '<br>Host Name :', socket.gethostname()
-print '<br><br>Python verion : ', sys.version
-print '<br><br>subprocess pwd : ', subprocess.check_output("pwd", shell=True)
-print '<br><br>rclone comand : ', rclone + ' lsd horelS3:'
-print '<br><br>subprocess rclone : ', subprocess.check_output(rclone + ' lsd horelS3:', shell=True)
+
+#print 'Debug:<br><br>'+rclone+lsd+'<br><br>'
+#print '<br>Host Name :', socket.gethostname()
+#print '<br><br>Python verion : ', sys.version
+#print '<br><br>subprocess pwd : ', subprocess.check_output("pwd", shell=True)
+#print '<br><br>rclone comand : ', rclone + ' lsd horelS3:'
+#print '<br><br>subprocess rclone : ', subprocess.check_output(rclone + ' lsd horelS3:', shell=True)
 
 rclone_lsd = subprocess.check_output(rclone + lsd, shell=True)
 
