@@ -217,8 +217,6 @@ scan_start = np.array(map(lambda x: datetime.strptime(x.split('_')[3][:], 's%Y%j
 scan_start_hours = np.array(map(lambda x: x.hour, scan_start))
 scan_start_mins = np.array(map(lambda x: x.minute, scan_start))
 
-# Expected buttons:
-expected_buttons = np.arange(2, 58, 5)
 
 print '''
 <div class='container' style='width:90%'>
@@ -238,6 +236,23 @@ for i in range(24):
     bfiles = figlist[scan_start_hours==i]
     dfiles = dwnldlist[scan_start_hours==i]
     offset = 0
+
+    # Expected buttons: These changed when the GOES16 changed from Mode 3 to 
+    # Mode 6 on 2 April 2019.
+    try:
+        # Get the mode of the first file in our list
+        mode = dfiles[0].split('_')[1].split('-')[-1]
+    except:
+        # Assume Mode 3 if there are no files.
+        mode = 'M3'
+
+    if mode == 'M3':
+        expected_buttons = np.arange(2, 58, 5)
+    elif mode == 'M6':
+        expected_buttons = np.arange(1,60,5)
+    else:
+        expected_buttons = np.array(60)
+
     for j in range(len(expected_buttons)):
         if expected_buttons[j] in buttons:
             image_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), bfiles[j-offset])
