@@ -325,7 +325,7 @@ html += '''
   </center>
   
   <hr>
-  <div align=right>
+  <div align=right class='container'>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/Pando_archive/index.html"><i class="fab fa-github"></i> Page</a>
     <a href="https://github.com/blaylockbk/Web-Homepage/blob/master/Pando_archive/daily_usage.py"><i class="fab fa-github"></i> Plot</a>
     <br>
