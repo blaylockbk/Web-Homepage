@@ -145,7 +145,6 @@ document.write('\
                             <li><a href="./map.html "><i class="fa fa-map fa-fw" ></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">Other</li>\
                             <li><a href="./cgi-bin/glm_accumulation_viewer.cgi "><i class="fa fa-globe fa-fw" ></i> GOES-16 GLM</a></li>\
-                            <li><a href="./ksl_ozone_viewer.php "><i class="fa fa-cloud fa-fw" ></i> KSL Flights</a></li>\
                         </ul>\
                     </li>\
 \
@@ -268,6 +267,7 @@ document.write('\
                         <li><a href="http://weather.rap.ucar.edu/radar/" target="tools"><i class="fa fa-tint fa-fw" ></i>  Radar</a></li>\
                         <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
                         <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
+                        <li><a href="http://cimss.ssec.wisc.edu/severe_conv/probsev.html" target="tools"><i class="fa fa-bolt fa-fw" ></i>  ProbSevere</a></li>\
                         \
                         <li class="dropdown-header">Education</li>\
                         <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\

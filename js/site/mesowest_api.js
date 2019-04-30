@@ -4,7 +4,7 @@
 
 var r_time = 300000; // Refresh time 5 min
 var api_token = '2562b729557f45f5958516081f06c9eb';
-var stid = 'ukbkb,wbb,utorm,epmu1,klgu,kpvu,as694,kmwh,e4023';
+var stid = 'ukbkb,wbb,utorm,epmu1,klgu,kpvu,as694,kmwh,KMRY';
 setTimeout(poll, 500); // every 2 seconds
 
 function CtoF(tempC){
@@ -36,8 +36,8 @@ function short_name(data,stnidx){
         else if (data.STATION[stnidx].NAME=='Provo, Provo Municipal Airport'){
             s = 'Provo' 
         }
-        else if (data.STATION[stnidx].NAME=='EW4023 St George'){
-            s = 'St. George' 
+        else if (data.STATION[stnidx].NAME=='Monterey Regional Airport'){
+            s = 'Monterey, CA' 
         }
         else if (data.STATION[stnidx].NAME=='I-15 @ Orem'){
             s = 'Orem' 
@@ -64,9 +64,17 @@ $.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
   },
   function (data)
   {
-            
+      
 	  //alert(Object.keys(data.STATION)); //Use this to view what options are available
-	  //alert(data.STATION[0].NAME); //Used to find out which Station is in which index
+      //alert('0: '+data.STATION[0].NAME); //Used to find out which Station is in which index
+      //alert('1: '+data.STATION[1].NAME); //Used to find out which Station is in which index
+      //alert('2: '+data.STATION[2].NAME); //Used to find out which Station is in which index
+      //alert('3: '+data.STATION[3].NAME); //Used to find out which Station is in which index
+      //alert('4: '+data.STATION[4].NAME); //Used to find out which Station is in which index
+      //alert('5: '+data.STATION[5].NAME); //Used to find out which Station is in which index
+      //alert('6: '+data.STATION[6].NAME); //Used to find out which Station is in which index
+      //alert('7: '+data.STATION[7].NAME); //Used to find out which Station is in which index
+      //alert('8: '+data.STATION[8].NAME); //Used to find out which Station is in which index
 	  
       try{	
        airTemp_0 = short_name(data,0)+": " +CtoF(data.STATION[0].OBSERVATIONS.air_temp_value_1.value);}
@@ -117,15 +125,15 @@ $.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
 	  
 //set up variable it will return to the HTML 
   
-  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UKBKB'>"+airTemp_6 + "&deg</a>");
+  $('#ret-tempSF').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UKBKB'>"+airTemp_7 + "&deg</a>");
   $('#ret-tempWBB').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=WBB'>"+airTemp_0 + "&deg</a>");
   $('#ret-tempKCHO').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KPVU'>"+airTemp_1 + "&deg</a>");
   $('#ret-tempEPMU1').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KLGU'>"+airTemp_2 + "&deg</a>");
-  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=E4023'>"+airTemp_8 + "&deg</a>");
-  $('#ret-tempKPVU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=EPMU1'>"+airTemp_5 + "&deg</a>");
-  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UTORM'>"+airTemp_7 + "&deg</a>");  
-  $('#ret-tempKMWH').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KMWH'>"+airTemp_3 + "&deg</a>");
-  $('#ret-tempSTG').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=as694'>"+airTemp_4 + "&deg</a>");
+  $('#ret-tempKLGU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KMRY'>"+airTemp_3 + "&deg</a>");
+  $('#ret-tempKPVU').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=EPMU1'>"+airTemp_6 + "&deg</a>");
+  $('#ret-tempKLAX').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UTORM'>"+airTemp_8 + "&deg</a>");  
+  $('#ret-tempKMWH').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=KMWH'>"+airTemp_4+ "&deg</a>");
+  $('#ret-tempSTG').html("<a target='new' style='color:white;text-decoration:none;' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=as694'>"+airTemp_5 + "&deg</a>");
                                                                                                                                     
 }); 
   setTimeout(poll, r_time); 
