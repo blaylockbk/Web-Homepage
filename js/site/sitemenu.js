@@ -32,6 +32,9 @@ var pics = [
     "./images/Panorama/aspen_pan.png",
     "./images/Panorama/aspen2_pan.png",
     "./images/Panorama/glacier_pan.png",
+    "./images/Panorama/mesa_verde_pan.png",
+    "./images/Panorama/mesa_verde2_pan.png",
+    "./images/Panorama/landscape_pan.png",
 ];
 
 

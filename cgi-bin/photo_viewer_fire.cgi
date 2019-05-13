@@ -241,7 +241,12 @@ print """
     <div id="pill_2" class="tab-pane fade">
 """
 # GOES-16 images
-add_buttons(['G%02d' % i for i in range(2,60,5)], action='onmouseover', img_id='goes_img')
+# Mode 6 after 2 April 2019 changed the scan times.
+if datetime.strptime(DATE, "%Y-%m-%d") < datetime(2019, 4, 2):
+    abi_buttons = range(2,60,5)
+else:
+    abi_buttons = range(1,60,5)
+add_buttons(['G%02d' % i for i in abi_buttons], action='onmouseover', img_id='goes_img')
 
 # GLM Histograms
 add_buttons(['GLM_map', 'GLM_histogram', 'GLM_proximity', 'GLM_rose30', 'GLM_rose60', 'GLM_rose90'], action='onclick', img_id='goes_img')

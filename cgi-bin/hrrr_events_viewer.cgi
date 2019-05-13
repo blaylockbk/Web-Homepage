@@ -22,7 +22,7 @@ form = cgi.FieldStorage()
 try:
     variable = cgi.escape(form['variable'].value)
 except:
-    variable = 'THOMAS_FIRE_2017-12-08'
+    variable = 'CampFire_10mwind95th_2018-11-08'
 
 ## Get the event date from the file name
 PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/PhD/HRRR/Events_Day/%s/' % variable
