@@ -66,6 +66,7 @@
 			<h3>namelist.input</h3>
 			<p><b style="color:green">namelist.input</b> contains all 
 			the WRF user options. 
+			<p>Here's a copy of my complete <a href='https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/add_tracer_plumes/namelist.input.bkb.tracer'>namelist.input</a> file.
 			<p>In the <b>&dynamics</b> section, add <b>tracer_opt</b>. 
 			This is the flag that turns the tracer option on.
 			<p>The below example shows tracer_opt set to "2" for domain one 
@@ -85,7 +86,7 @@
 			<p><b style="color:green">Registry/Registry.EM</b> 
 			defines output variables in WRF.
 			<p>Here's a copy of my complete 
-			<a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/Registry.EM">Registry.EM</a> file.
+			<a href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/add_tracer_plumes/Registry.EM.bkb.tracer">Registry.EM</a> file.
 			<p>Below are the the changes I made to Registry.EM...
 				(Note: don't remove the tr17_* lines. I can't get WRF to 
 				compile when I remove those. But adding to the list is fine.)
@@ -115,7 +116,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<h3>module_initialize_real.F</h3>
 			<p><b style="color:green">WRFV3/dyn_em/module_initialize_real.F</b> contains information on how to initialize WRF in the real.exe executable.
 			Making these changes will initialize our tracer plume in WRF
-			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/module_initialize_real.F">module_initialize_real.F</a> file.
+			<p>Here's a copy of my complete <a href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/add_tracer_plumes/module_initialize_real.F.bkb.tracer">module_initialize_real.F</a> file.
 			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/module_initialize_real.F.bkb.tracer"><i class="fab fa-github"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 3372 are shown below...
 			<textarea disabled>
@@ -195,7 +196,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<h3>solve_em.F</h3>
 			<p><b style="color:green">WRFV3/dyn_em/solve_em.F</b> contains information on how to create a continuous plume.
 			Making these changes will continue the plume each timestep in WRF.
-			<p>Here's a copy of my complete <a href="http://home.chpc.utah.edu/~u0553130/WRF_mods/solve_em.F">solve_em.F</a> file.
+			<p>Here's a copy of my complete <a href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/add_tracer_plumes/solve_em.F.bkb.tracer">solve_em.F</a> file.
 			<p>Updates, if any here: <a href="https://github.com/blaylockbk/Ute_WRF/blob/master/modificaions/solve_em.F.bkb.tracer"><i class="fab fa-github"></i> Github.</a>
 			<p>The changes made to the original WRF code, starting on line 265 are shown below...
 			<p>This is very similar to the modifications made in module_initialize_real.F, but notice the KEY change from <b>its</b> to <b><i>ips</i></b> in the IF statement...
@@ -254,7 +255,7 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 			<p>This will continue the tracer plume every time step.
 			<p style="color:red">Note: I've realized that this method artificially removes tracers. Tracers transported back 
 			into the source location is automatically reset to 1. To fix this you'll have to add to the value already in the gird box,
-			so something like this: <i>tracer(225,1,198,P_S_SLV) = tracer(225,1,198,P_S_SLV) + 1.</i>
+			so something like this: <i>tracer(225,1,198,P_S_SLV) = tracer(225,1,198,P_S_SLV) + 1</i>. Or mor generally <i>tracer(i,1,j,P_S_SLV)= tracer(i,1,j,P_S_SLV)+1</i>.  
 			<hr>
 			<h3>Initlize Tracers after WRF begins</h3>
 			<p> It is possible to create a new "smoke puff" at specific intervals
@@ -332,11 +333,11 @@ package   tracer_test1  tracer_opt==2       -             tracer:tr17_1,tr17_2,t
 				on <a href="https://github.com/blaylockbk/pyPlots_v2/tree/master/WRF-Tracers"><i class="fab fa-github"></i> GitHub</a>.
 			<br><br>
 			<video id="videoclip"  style="height:50vh;" autoplay controls loop title="Time Lapse">
-			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/planeview_tracercomposite/urban_trees/NorthSouthTracers.mp4" type="video/mp4"  />
+			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/planeview_tracercomposite/NorthSouthTracers.mp4" type="video/mp4"/>
 			</video>
 			<br><br>
 			<video id="videoclip"  style="width:80%;" autoplay controls loop title="Time Lapse">
-			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/spinup/restart_plum_18Jun1700/plumes_crosssection.mp4" type="video/mp4"  />
+			<source id="mp4video" src="http://home.chpc.utah.edu/~u0553130/MS/crosssection/plumes_crosssection.mp4" type="video/mp4"  />
 			</video>
 		</div>
 
