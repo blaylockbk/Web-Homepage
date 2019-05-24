@@ -212,7 +212,53 @@ print '''
 <h3>Accumulated Precipitation</h3>
 <img class="img-rounded" width="100%" onclick='window.open(this.src)' src="http://mesowest.utah.edu/cgi-bin/droman/time_chart_dyn.cgi?stn='''+STN+'''&unit=0&hours=25&past=0&day1=0&month1=&year1=&hour1=00&time=LOCAL&var=PREC&level=">
 
-<h3> Radar</h3>
+
+<hr><br>
+<h2> Radar</h2>
+
+<script>
+    function swap_radar() {
+        document.getElementById('radar').src='http://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station='+document.getElementById('selectbox').value+'&num=40&delay=12&noclutter=1&showstorms=1&lightning=1&smooth=1'
+    }
+</script>
+
+<select class="form-control" id='selectbox' onchange=swap_radar()>
+    <optgroup label="Utah">
+        <option value='MTX'> Salt Lake City (MTX)
+        <option value='ICX'> Cedar City (ICX)
+    </optgroup>
+    <optgroup label="Idaho">
+        <option value='CBX'> Boise (CBX)
+        <option value='SFX'> Pocatello (SFX)
+    </optgroup>
+    <optgroup label="California/Nevada">
+        <option value='MUX'> San Francisco (MUX)
+        <option value='HNX'> San Joaquin Valley (HNX)
+        <option value='VBX'> Lompoc (VBX)
+        <option value='VTX'> Los Angeles (VTX)
+        <option value='NKX'> San Diego (NKX)
+        <option value='ESX'> Las Vegas (ESX)
+        <option value='RGX'> Reno (RGX)
+        <option value='LRX'> Elko (LRX)
+    </optgroup>
+    <optgroup label="Colorado/Wyoming">
+        <option value='GJX'> Grand Junction (GJX)
+        <option value='FTG'> Denver (FTG)
+    </optgroup>
+    <optgroup label="Washington/Oregon">
+        <option value='PDT'> Pendleton (PDT)
+        <option value='OTX'> Spokane (OTX)
+        <option value='ATX'> Seattle (ATX)
+    </optgroup>
+    <optgroup label="Arizona">
+        <option value='FSX'> Flagstaff (FSX)
+    </optgroup>
+</select>
+<br>
+<img class="img-rounded" width="100%" id='radar' onclick='window.open(this.src)' src="http://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=MTX&num=40&delay=12&noclutter=1&showstorms=1&lightning=1&smooth=1">
+<p> Courtesy by Weather Underground
+
+<br><br>
 <img class="img-rounded" width="100%" onclick='window.open(this.src)' src="https://radar.weather.gov/Conus/RadarImg/latest.gif">
 '''
 
