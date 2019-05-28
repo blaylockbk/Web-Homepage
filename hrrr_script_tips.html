@@ -199,8 +199,19 @@
 
             <div id="tab3" class="tab-pane fade">
                 <br>
-                <p> I use python/2.7.11. Describing my set-up would be long, so just use these as a template.
+                <p> I use Python version 3. Describing my set-up would be long, so just use these as a template.
                 
+                <p> There are two key packages that read GRIB2 files. Both can be downloaded via conda-forge.
+                    <ol>
+                        <li><b>pygrib</b>: This is what I started to learn and continue to use.
+                                           <i>Not</i> available on Windows machines.
+                                           (<a href='https://github.com/jswhit/pygrib'>source</a>)</li>
+                        <li><b>cfgrib</b>: Fairly new and works well with xarray.
+                                           Version 0.9.7 and greater can read HRRR files.
+                                           This does work on Windows machines.
+                                           (<a href='https://github.com/ecmwf/cfgrib'>source</a>)</li>
+                    </ol>
+
                 <br>
                 
                 <div class="panel panel-default">
@@ -307,15 +318,33 @@
                     </div>
                     <div class="panel-body">
                         If you are patient enough to read all that, and have scrolled
-                        down here, you're in luck! This is a link to the python functions
+                        down here, you are in luck! This is a link to the python functions
                         I use to download the HRRR data. My method is to <noscript>
-                        store any grib2 files on my local drive. I download the 
-                        grib2 file when I need it, and remove it after I've extrated
-                        the info I need.
+                        download a single variable from a GRIB2 file that I need and
+                        store it on my local drive. Then I retrieve the data I want
+                        and remove the file when I got what I needed.
                         </noscript>
-                        <big><a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/BB_downloads/HRRR_S3.py">
-                        <i class="fab fa-github"></i> Code for HRRR_S3 Functions</a></big>
+                        <big><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">
+                        <i class="fab fa-github"></i> Code for HRRR_Pando Functions</a></big>
                     </div>
+                </div>
+
+                <hr>
+
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Getting started with <b>cfgrib</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class='well'>
+                                <p><code>import cfgrib
+                                <p>a = cfgrib.open_datasets('hrrr.t00z.wrfsfcf08.grib2')</code>
+                            </div>    
+                            
+                            <p>The loaded data is a list of xarray dataset objects. Each item in
+                                the list is an xarray dataset for a different level. For example,
+                                entire atmosphere, height above ground, isobaric level, surface, etc.
+                        </div>
                 </div>
             </div>
 
