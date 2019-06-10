@@ -367,6 +367,26 @@
                         wgrib2 hrrr.t09z.wrfsfcf17.grib2 -t -var -lev -ftime > hrrr.t09z.wrfsfcf17.grib2.idx
                     </div>
                 </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">HRRR Projection Information</div>
+                    <div class="panel-body">
+                    Model projection is contained in the GRIB2 file, but it's kind of buried.
+                    It can also be found on the <a href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/HRRRv4-Experimental/">
+                        HRRR main webiste in the namelist.wps</a> file.
+                    Here are the important pieces:
+                    <div class="panel-body" style="font-family:monospace">
+                        <p>dx = 3000,
+                        <p>dy = 3000,
+                        <p>map_proj =  'lambert',
+                        <p>ref_lat   = 38.5,
+                        <p>ref_lon   = -97.5,
+                        <p>truelat1  = 38.5,
+                        <p>truelat2  = 38.5,
+                        <p>stand_lon = -97.5,
+                    </div>
+                    </div>
+                </div>
                 
                 <div class="panel panel-default">
                     <div class="panel-heading">How do I get the latitude/longitude grid?</div>
