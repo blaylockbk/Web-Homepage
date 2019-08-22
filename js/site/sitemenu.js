@@ -73,7 +73,7 @@ var no_banner_image = ['home.html',
                        'hrrr_download.cgi',
                        'hrrr_FAQ.html',
                        'hrrr_download_register.html',
-                       'hrrr_download_register.html',
+                       'hrrr_download_register.cgi',
                        'hrrr_script_tips.html',
                        'generic_AWS_download.cgi',
                        '', /*No banner if the page is index.html*/
