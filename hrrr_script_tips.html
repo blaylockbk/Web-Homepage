@@ -13,7 +13,14 @@
 <script src='./js/HRRR_status.js'></script>
 
 <div id="content">          
-        
+     
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p style='font-size:15px'>If you have not already, please 
+        <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
+        as a user before downloading data. Citation details can be found at the bottom of this page
+    </div>
+
     <div class="row" id="content">
         <div class=" col-md-3">
                 <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
@@ -34,13 +41,7 @@
     </div>
     <br>
     <script src='./js/pando_status.js'></script>
-    <div class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <small><p>If you have not already, please 
-                  <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
-                  as a user before downloading data. Citation details can be found at the bottom of this page.
-        </small>
-    </div>  
+    
 
     <br>        
         <!-- Tabs -->
@@ -199,21 +200,53 @@
 
             <div id="tab3" class="tab-pane fade">
                 <br>
-                <p> I use Python version 3. Describing my set-up would be long, so just use these as a template.
+                <p> I use Python version 3 with Anaconda. My environment can be found in my <a href='https://github.com/blaylockbk/pyBKB_v3'>pyBKB_v3</a> repository.
                 
-                <p> There are two key packages that read GRIB2 files. Both can be downloaded via conda-forge.
+                <br><br>
+                <h4> What to do when you have a GRIB2 file</h4>
+                <p> When you have a GRIB2 file, there are two key packages that read GRIB2 files. Both can be downloaded via `conda-forge`.
                     <ol>
                         <li><b>pygrib</b>: This is what I started to learn and continue to use.
-                                           <i>Not</i> available on Windows machines.
+                                           This package is <i>not</i> available on Windows machines.
                                            (<a href='https://github.com/jswhit/pygrib'>source</a>)</li>
                         <li><b>cfgrib</b>: Fairly new and works well with xarray.
                                            Version 0.9.7 and greater can read HRRR files.
-                                           This does work on Windows machines.
+                                           This package does work on Windows machines.
                                            (<a href='https://github.com/ecmwf/cfgrib'>source</a>)</li>
                     </ol>
 
                 <br>
+                <h4> How to retrieve HRRR files (or other objects) from the Pando archive.</h4>
+                <br>
                 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List and download Pando objects with <span style='font-family:monospace'>s3fs</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        You can access the Pando S3 "hrrr" buckets directly with <span style='font-family:monospace;'>s3fs</span>.
+                        <b><a href='https://s3fs.readthedocs.io/en/latest/'>Documentation</a></b>. 
+                        The secret sauce is to set the correct <span style='font-family:monospace;'>endpoint_url</span>.
+                        <div class='well' style='font-family:monospace;font-size:12px'>
+                            import s3fc<br>
+                            # Access Pando<br>
+                            fs = s3fs.S3FileSystem(anon=True,  client_kwargs={'endpoint_url':"https://pando-rgw01.chpc.utah.edu/"})<br>
+                            <br>
+                            # List objects in a path<br>
+                            fs.ls('hrrr/sfc/20190101/')<br>
+                            <br>
+                            # Download the first file and rename it the same name (without the directory structure)<br>
+                            files = fs.ls('hrrr/sfc/20190101/')<br>
+                            fs.get(files[0], files[0].split('/')[-1])
+                        </div>
+
+                        This is a good method to use if you don't know the file names on Pando (such as if you are looking at GOES files), 
+                        but the HRRR file names are very predictable. The following examples show how to download the files
+                        with the straightforward <span style='font-family:monospace;'>urllib.request</span> and how to download a subset of a files
+                        (single variable grid) by exploiting the byte range feature of cURL.
+                    </div>
+                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Download full grib2 files</h3>
@@ -319,11 +352,11 @@
                     <div class="panel-body">
                         If you are patient enough to read all that, and have scrolled
                         down here, you are in luck! This is a link to the python functions
-                        I use to download the HRRR data. My method is to <noscript>
+                        I use to download the HRRR data. My method is to 
                         download a single variable from a GRIB2 file that I need and
                         store it on my local drive. Then I retrieve the data I want
-                        and remove the file when I got what I needed.
-                        </noscript>
+                        with <i>pygrib</i> and remove the file when I got what I needed.
+                        
                         <big><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">
                         <i class="fab fa-github"></i> Code for HRRR_Pando Functions</a></big>
                     </div>

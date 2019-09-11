@@ -35,6 +35,17 @@ except:
     link2 = 'grib2'
 
 
+###############################################################################
+# Rados Gateway
+# Set to 1 or 2. This is an option if the certificate for the gateway URL 
+# expires as it happened on September 8th, 2019.
+# Rados Gateway 1 is the default and downloads from https://pando-rgw01.chpc.utah.edu
+# Rados Gateway 2 is the alternative and downloads from https://pando-rgw02.chpc.utah.edu
+
+rados_gateway = 2
+
+###############################################################################
+
 print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
@@ -268,7 +279,14 @@ print '''
 # Create list of files available on Pando for the requested date/model/field
 DATE = datetime.strptime(Date, "%Y-%m-%d")
 rclone = '/uufs/chpc.utah.edu/common/home/horel-group7/Pando_Scripts/rclone-v1.39-linux-386/rclone --config /uufs/chpc.utah.edu/common/home/u0553130/.rclone.conf'
-ls = ' ls horelS3:%s/%s/%04d%02d%02d | cut -c 11-' % (model, field, DATE.year, DATE.month, DATE.day)
+
+
+if rados_gateway == 1:
+    ls = ' ls horelS3:%s/%s/%04d%02d%02d | cut -c 11-' % (model, field, DATE.year, DATE.month, DATE.day)
+elif rados_gateway == 2:
+    ls = ' ls horelS3_rgw02:%s/%s/%04d%02d%02d | cut -c 11-' % (model, field, DATE.year, DATE.month, DATE.day)
+
+
 rclone_out = subprocess.check_output(rclone + ls, shell=True)
 flist = rclone_out.split('\n')
 
@@ -328,7 +346,10 @@ for hr, fxxs in hour_fxx_buttons.items():
     print '''<button name="hour" type="button" class="mybtn hourbtn">Hour %02d</button>''' % (hr)
     for f in fxxs:
         look_for_this_file = '%s.t%02dz.wrf%sf%02d.grib2' % (model, hr, field, f)
-        baseURL = 'https://pando-rgw01.chpc.utah.edu/'
+        if rados_gateway == 1:
+            baseURL = 'https://pando-rgw01.chpc.utah.edu/'
+        elif rados_gateway == 2:
+            baseURL = 'https://pando-rgw02.chpc.utah.edu/'
         pathURL = '%s/%s/%s/' % (model, field, DATE.strftime('%Y%m%d'))
         fileURL = look_for_this_file
         if look_for_this_file in flist:

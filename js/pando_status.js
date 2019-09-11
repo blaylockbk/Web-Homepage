@@ -1,4 +1,16 @@
 /*Pando Rebuilt*/
+
+
+document.write(' \
+<div class="alert alert-info"> \
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> \
+    <p> The Pando security certificate has expired and a new one will be obtained soon. \
+    In the meantime, you can redirect your download requests to <b>https://pando-rgw02.chpc.utah.edu</b>. \
+</div> \
+');
+
+
+
 /*
 document.write(' \
 <div class="alert alert-info"> \

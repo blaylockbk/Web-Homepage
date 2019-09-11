@@ -10,6 +10,9 @@ Details of GOES-16 data:
 http://www.goes-r.gov/products/images/productFileSize8ColorPng8-1600px.png
 
 """
+# Rados Gateway can be either 1 or 2, depending on the URL that is working
+rados_gateway = 2
+
 
 import sys
 import numpy as np
@@ -255,8 +258,8 @@ for i in range(24):
 
     for j in range(len(expected_buttons)):
         if expected_buttons[j] in buttons:
-            image_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), bfiles[j-offset])
-            download_link = 'https://pando-rgw01.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (DATE.strftime('%Y%m%d'), dfiles[j-offset])
+            image_link = 'https://pando-rgw%02d.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (rados_gateway, DATE.strftime('%Y%m%d'), bfiles[j-offset])
+            download_link = 'https://pando-rgw%02d.chpc.utah.edu/GOES16/ABI-L2-MCMIPC/%s/%s' % (rados_gateway, DATE.strftime('%Y%m%d'), dfiles[j-offset])
             print '''<a href="%s"><button name="fxx" type="button" class="mybtn unselected" onmouseover=change_picture('%s')>%02d</button></a>''' % (download_link, image_link, buttons[j-offset])
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">%02d</button>''' % (expected_buttons[j])

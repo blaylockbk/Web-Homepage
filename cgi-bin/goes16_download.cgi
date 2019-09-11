@@ -229,6 +229,24 @@ print'''
         </div>
       </div>
     </div>
+
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+          <big><b><i class="fa fa-info-circle" ></i> Download via Python</b></big>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+        You can view and download files from public AWS buckets with Python's `s3fs` library.
+        <script src="https://gist.github.com/blaylockbk/d60f4fce15a7f0475f975fc57da9104d.js"></script>
+        
+        </div>
+      </div>
+    </div>
+
   </div> 
 </div>
 
@@ -239,9 +257,8 @@ print'''
     </div>
 
     <div class='alert alert-warning'>
-    The source option below refers to where the data is downloaded from. AWS is Amazon's cloud
-    and has GOES files available from the last 60 days. OCC is the Open Commons
-    Consortium and has GOES files from the last 7-8 months. If you get an XML
+    The source option below refers to where the data is downloaded from. AWS is Amazon's cloud.
+    OCC is the Open Commons Consortium and has GOES files from the last 7-8 months. If you get an XML
     error when downloading from the Amazon source, try switching to OCC.
     Check the URL in bold below to confirm the source.
     <br>
