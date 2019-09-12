@@ -42,7 +42,7 @@ except:
 # Rados Gateway 1 is the default and downloads from https://pando-rgw01.chpc.utah.edu
 # Rados Gateway 2 is the alternative and downloads from https://pando-rgw02.chpc.utah.edu
 
-rados_gateway = 2
+rados_gateway = 1
 
 ###############################################################################
 

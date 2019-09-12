@@ -1,6 +1,6 @@
 /*Pando Rebuilt*/
 
-
+/*
 document.write(' \
 <div class="alert alert-info"> \
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> \
@@ -8,7 +8,7 @@ document.write(' \
     In the meantime, you can redirect your download requests to <b>https://pando-rgw02.chpc.utah.edu</b>. \
 </div> \
 ');
-
+*/
 
 
 /*

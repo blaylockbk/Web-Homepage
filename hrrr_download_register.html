@@ -12,89 +12,101 @@
 <script src="./js/site/sitemenu.js"></script>	
 
 
-  <h1 align="center"><i class="fa fa-user-plus" aria-hidden="true"></i> HRRR Archive Registration</h1>
-  <div id="content"> 
-<div class="row" id="content">
-            <div class=" col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block active">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-                    <i class="far fa-handshake" aria-hidden="true"></i> Best Practices</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
-                    <i class="fa fa-cloud-download-alt" aria-hidden="true"></i> Web Download Page</a>
-            </div>
+<h1 align="center"><i class="fa fa-user-plus" aria-hidden="true"></i> HRRR Archive Registration</h1>
+<div id="content"> 
+    <div class="row" id="content">
+        <div class=" col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block active">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
         </div>
-  
-  <hr>
-  <script src='./js/pando_status.js'></script>
+        <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+            <i class="far fa-handshake" aria-hidden="true"></i> Best Practices</a>
+        </div>
+        <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
+        </div>
+        <div class="col-md-3">
+            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+            <i class="fa fa-cloud-download-alt" aria-hidden="true"></i> Web Download Page</a>
+        </div>
+    </div>
+<hr>
+
+<script src='./js/pando_status.js'></script>
 
 <div class="container" style="max-width:650px">  
-  <h4><b>Please tell us a little about yourself and read the 
-      <a href="./hrrr_practices.html">
-      Best Practices</a></b></h4>
+  <h4><b>Please tell us a little about yourself and read the <a href="./hrrr_practices.html"> Best Practices</a></b></h4>
 
-  <form class="form-horizontal" action="https://formspree.io/brian.blaylock@utah.edu" method="POST">
-    
-    <div class="form-group">
-        <div class="input-group">                               
-        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-        <input required name="name" type="text" class="form-control" placeholder="First and last name">
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <div class="input-group">                               
-        <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-        <input required name="email" type="email" class="form-control" placeholder="Email">
-        </div>
-    </div>
+<!--
+The form is submitted via Formspree. 
+An email is sent with the form content to the email provided in the action.
+See more about the form at https://formspree.io/
+-->
 
-    <div class="form-group">
-        <div class="input-group">                               
-        <span class="input-group-addon"><i class="fa fa-globe fa-fw"></i></span>
-        <input required name="location" type="text" class="form-control" placeholder="Where are you from? State, University, Company, etc.">
+  <!--<form class="form-horizontal" action="https://formspree.io/brian.blaylock@utah.edu" method="POST">-->
+    <form class="form-horizontal" action="https://formspree.io/atmos-mesowest@lists.utah.edu " method="POST">
+        <div class="form-group">
+            <div class="input-group">                               
+            <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+            <input required name="name" type="text" class="form-control" placeholder="First and last name">
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-comment fa-fw"></i></span>           
-            <textarea required class="form-control" rows=4  type="text" name="description"  placeholder="How do you plan using HRRR data? Are you working on a graduate degree? Are you verifying surface temperatures? etc."></textarea>
+        
+        <div class="form-group">
+            <div class="input-group">                               
+            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+            <input required name="email" type="email" class="form-control" placeholder="Email">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">        
-      <div class="">
-        <div class="checkbox">
-          <label><input name="contact" type="checkbox" checked> Can we contact you? (updates, outages, surveys, etc.)</label>
+        <div class="form-group">
+            <div class="input-group">                               
+            <span class="input-group-addon"><i class="fa fa-globe fa-fw"></i></span>
+            <input required name="location" type="text" class="form-control" placeholder="Where are you from? State, University, Company, etc.">
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="form-group">        
-      <div class="">
-        <button type="submit" class="btn btn-success">Submit</button> <small>By clicking "Submit" you agree to the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank">Best Practices</a></small>
-      </div>
-    </div>
-    <input type="hidden" name="_next" value="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" />
-    <input type="hidden" name="_subject" value="New HRRR Download Request" />
+        <div class="form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-comment fa-fw"></i></span>           
+                <textarea required class="form-control" rows=4  type="text" name="description"  placeholder="How do you plan using HRRR data? Are you working on a graduate degree? Are you verifying surface temperatures? etc."></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">        
+        <div class="">
+            <div class="checkbox">
+            <label><input name="contact" type="checkbox" checked> Can we contact you? (updates, outages, surveys, etc.)</label>
+            </div>
+        </div>
+        </div>
+
+        <div class="form-group">        
+        <div class="">
+            <button type="submit" class="btn btn-success">Submit</button> <small>By clicking "Submit" you agree to the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank">Best Practices</a></small>
+        </div>
+        </div>
+        <input type="hidden" name="_next" value="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" />
+        <input type="hidden" name="_subject" value="New HRRR Download Request" />
   </form>
 </div>
+
+<!--
+    Filling out the form is not required to access the data, but we want to
+    collect this information to see how many people use the data.
+-->
+
 <div align="right" style="padding-right:10px">
-  <small><small><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">I already registered</a></small></small>
+  <small><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">I already registered</a></small>
 </div>
+
 <br>
 
 <script src='./js/climate_acknowledgement.js'></script>
 </div>
+
 <script src="./js/site/siteclose.js"></script>
 </body>
 </html>

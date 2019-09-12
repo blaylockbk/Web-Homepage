@@ -145,7 +145,6 @@ document.write('\
                             <li><a href="./cgi-bin/mesowest_current.cgi "><i class="fas fa-clock fa-fw" ></i> MesoWest Current Conditions</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fas fa-chart-line fa-fw" ></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fas fa-chart-pie fa-fw" ></i> Rose Plots</a></li>\
-                            <li><a href="./map.html "><i class="fa fa-map fa-fw" ></i>  Station Bing Map</a></li>\
                             <li class="dropdown-header">Other</li>\
                             <li><a href="./cgi-bin/glm_accumulation_viewer.cgi "><i class="fa fa-globe fa-fw" ></i> GOES-16 GLM</a></li>\
                         </ul>\
