@@ -136,7 +136,6 @@ document.write('\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker-alt fa-fw" ></i> HRRR Point Forecast</a></li>\
                             <li><a href="./hrrr_fires.html "><i class="fa fa-fire-extinguisher fa-fw" ></i> HRRR Fires Forecast</a></li>\
                             <li><a href="./cgi-bin/hrrrX-hrrr.cgi "><i class="fa fa-map fa-fw" ></i> HRRRx vs. HRRR Maps</a></li>\
-                            <li><a href="./cgi-bin/hrrr_spread_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Spread</a></li>\
                             <li><a href="./cgi-bin/hrrr_errors_viewer.cgi"><i class="fa fa-map fa-fw" ></i>  HRRR Error Maps</a></li>\
                             <li><a href="./cgi-bin/hrrr_osg_point_viewer.cgi"><i class="fas fa-chart-area"></i>  HRRR Percentile Demo</a></li>\
                             <li><a href="./cgi-bin/hrrr_yesterday_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Yesterday</a></li>\
@@ -180,7 +179,7 @@ document.write('\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                             <li><a href="https://github.com/blaylockbk/HorelS3-Archive">HRRR Daily Download</a></li>\
                             <li><a href="https://github.com/blaylockbk/UofU_Camera_Display">Camera Display</a></li>\
-                            <li><a href="https://github.com/blaylockbk/Web-Homepage/tree/master/image_viewers">Image Viewer</a></li>\
+                            <li><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/photo_viewer/photo_viewer.php">Image Viewer</a></li>\
                             <li><a href="https://github.com/blaylockbk/oper">Operational Scripts</a></li>\
                             <li><a href="https://github.com/blaylockbk/Web-Homepage">Webpage</a></li>\
                         </ul>\

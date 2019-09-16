@@ -1,4 +1,4 @@
-#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
+#!/uufs/chpc.utah.edu/common/home/u0553130/anaconda3/bin/python
 
 """
 Brian Blaylock
@@ -38,7 +38,7 @@ from collections import OrderedDict
 import numpy as np
 
 import sys
-sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v2')
+sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v3')
 from BB_MesoWest.MesoWest_timeseries import get_mesowest_ts
 from BB_wx_calcs.wind import wind_spddir_to_uv
 
@@ -47,8 +47,8 @@ import cgitb
 cgitb.enable()	# Spits out error to browser in coherent format.
 
 
-#print "Content-Type: text/html\n"
-print "Content-Type: image/png\n"
+#print("Content-Type: text/html\n")
+print("Content-Type: image/png\n")
 
 #print sys.modules.keys()
 #print 'matplitlib version', mpl.__version__,'<br><br>'
