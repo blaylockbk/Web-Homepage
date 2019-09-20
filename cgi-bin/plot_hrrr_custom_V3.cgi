@@ -1,4 +1,4 @@
-#!/uufs/chpc.utah.edu/sys/installdir/anaconda/4.2.0/bin/python
+#!/uufs/chpc.utah.edu/common/home/u0553130/anaconda3/envs/pyBKB_v3/bin/python
 
 # Brian Blaylock
 # June 8, 2017     # I accidentally made beef jerky in the crock pot last night
@@ -28,26 +28,49 @@ mpl.rcParams['axes.labelsize'] = 8
 mpl.rcParams['axes.titlesize'] = 12
 mpl.rcParams['figure.subplot.hspace'] = 0.01
 
-
 import sys, os
-sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v2')
-sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/site-packages/')
-from BB_basemap.draw_maps import draw_CONUS_HRRR_map, Basemap, draw_ALASKA_cyl_map
-from BB_MesoWest.MesoWest_STNinfo import get_station_info
-from BB_HRRR.plot_HRRR_custom_NEW import *
-from BB_GOES16.get_ABI import get_GOES16_truecolor, get_GOES16_firetemperature, file_nearest
-from BB_GOES16.get_GLM import get_GLM_files_for_ABI, accumulate_GLM
+sys.path.append('/uufs/chpc.utah.edu/common/home/u0553130/pyBKB_v3')
+sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/site-packages/mpl_toolkits')
+#sys.path.append('/uufs/chpc.utah.edu/sys/pkg/python/2.7.3_rhel6/lib/python2.7/site-packages/')
+from BB_MesoWest.get_MesoWest import get_mesowest_stninfo
+from BB_HRRR.plot_HRRR_custom import *
+#from BB_GOES16.get_ABI import get_GOES16_truecolor, get_GOES16_firetemperature, file_nearest
+#from BB_GOES16.get_GLM import get_GLM_files_for_ABI, accumulate_GLM
 
 import cgi
 import cgitb
 cgitb.enable()	# Spits out error to browser in coherent format.
 
 
-#print "Content-Type: text/html\n"
-print "Content-Type: image/png\n"
+# == Debugging ================================================================
+# =============================================================================
 
-#print sys.modules.keys()
-#print 'matplitlib version', mpl.__version__,'<br><br>'
+debug_mode = True
+
+if debug_mode:
+    # Prints text to screen with errors
+    print("Content-Type: text/html\n")
+    print('Current working directory', os.getcwd())
+    print('\nPath:')
+    for i in sys.path:
+        print(i)
+    #print sys.modules.keys()
+    print('')
+    print('matplitlib version', mpl.__version__)
+    import mpl_toolkits.basemap
+    print('mpl_toolkits:', dir(mpl_toolkits))
+    print('mpl_toolkits:', mpl_toolkits.__path__)
+else:
+    # Output is a png image
+    print("Content-Type: image/png\n")
+
+
+debug_plot_code = 'POT_2-m_Fill'
+
+# =============================================================================
+# =============================================================================
+
+'''
 
 
 # === Load Form Input =========================================================
@@ -62,9 +85,10 @@ try:
     date = cgi.escape(form['valid'].value)
     DATE = datetime.strptime(date,'%Y-%m-%d_%H%M') # convert to datetime
 except:
-    plt.figure(1)
-    plt.title('Something wrong with date')
-    plt.savefig(sys.stdout)	# Plot standard output.
+    DATE = datetime(2019, 1, 1)
+    #plt.figure(1)
+    #plt.title('Something wrong with date')
+    #plt.savefig(sys.stdout)	# Plot standard output.
 
 try:
     fxx = int(cgi.escape(form['fxx'].value))
@@ -74,18 +98,20 @@ except:
 try:
     dsize = cgi.escape(form['dsize'].value)
 except:
-    plt.figure(1)
-    plt.title('Something wrong with the domain size\noptions: small, medium, large, xlarge, xxlarge, xxxlarge, conus')
-    plt.savefig(sys.stdout)	# Plot standard output.
+    dsize = 'full'
+    #plt.figure(1)
+    #plt.title('Something wrong with the domain size\noptions: small, medium, large, xlarge, xxlarge, xxxlarge, conus')
+    #plt.savefig(sys.stdout)	# Plot standard output.
 
 
 if dsize != 'full':
     try:
         location = cgi.escape(form['location'].value)
     except:
-        plt.figure(1)
-        plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor input a lat/lon (ex: 40.5,-111.5)')
-        plt.savefig(sys.stdout)	# Plot standard output.
+        #plt.figure(1)
+        #plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor input a lat/lon (ex: 40.5,-111.5)')
+        #plt.savefig(sys.stdout)	# Plot standard output.
+        location = 'WBB'
     # configure the latitude/longitude based on the location requested
     try:
         if ',' in location:
@@ -96,9 +122,9 @@ if dsize != 'full':
         else:
             # User requested a MesoWest station
             location = location.upper()
-            stninfo = get_station_info([location])
-            lat = stninfo['LAT']
-            lon = stninfo['LON']
+            stninfo = get_mesowest_stninfo([location])
+            lat = stninfo[location]['latitude']
+            lon = stninfo[location]['longitude']
     except:
         plt.figure(1)
         plt.title('Something wrong with Location\nUse a valid MesoWest Station ID\nor iput a lat/lon (ex: 40.5,-111.5')
@@ -111,14 +137,18 @@ else:
 try:
     plotcode = cgi.escape(form['plotcode'].value)
 except:
-    plotcode = 'none,here'
+    if debug_mode:
+        plotcode = debug_plot_code
+    else:
+        plotcode = 'none,here'
 
 try:
     background = cgi.escape(form['background'].value)
 except:
-    plt.figure(1)
-    plt.title('Something wrong with the background, options: arcgis, arcgisRoad, arcgisSat, terrain, landuse, none')
-    plt.savefig(sys.stdout)	# Plot standard output.
+    #plt.figure(1)
+    #plt.title('Something wrong with the background, options: arcgis, arcgisRoad, arcgisSat, terrain, landuse, none')
+    #plt.savefig(sys.stdout)	# Plot standard output.
+    background = 'arcgis'
 
 try:
     GOES_TC = cgi.escape(form['goes_tc'].value)
@@ -132,6 +162,11 @@ try:
     GOES_GLM = cgi.escape(form['goes_glm'].value)
 except:
     GOES_GLM = False
+
+
+
+## ============================================================================
+## ============================================================================
 
 
 VALIDDATE = DATE
@@ -233,9 +268,9 @@ if 'dBZ' in PLOTCODES:
                   Fill=Fill,
                   Contour=Contour, contours = contours)
 
+# Temperature
 if 'TMP' in PLOTCODES:
     for L in PLOTCODES['TMP']:
-        
         VAR = 'TMP:%s' % L.replace('-', ' ')
         Fill=PLOTCODES['TMP'][L]['Fill']
         Contour=PLOTCODES['TMP'][L]['Contour']
@@ -255,6 +290,25 @@ if 'TMP' in PLOTCODES:
                     Contour=Contour, contours = [0],
                     p05p95=p05p95)
 
+# Potential Temperature
+if 'POT' in PLOTCODES:
+    for L in PLOTCODES['POT']:
+        VAR = 'POT:%s' % L.replace('-', ' ')
+        Fill=PLOTCODES['POT'][L]['Fill']
+        Contour=PLOTCODES['POT'][L]['Contour']
+        p05p95=PLOTCODES['POT'][L]['p05p95']
+        contours = [0]
+        if type(Contour) is list:
+            contours=Contour
+            Contour=True
+
+        draw_pot(m, lons, lats,
+                 model, dsize, background,
+                 location, lat, lon,
+                 RUNDATE, VALIDDATE, fxx,
+                 alpha, half_box, barb_thin)
+
+# Dew Point Temperature
 if 'DPT' in PLOTCODES:
     for L in PLOTCODES['DPT']:
         
@@ -268,25 +322,16 @@ if 'DPT' in PLOTCODES:
             Contour=True
 
         draw_tmp_dpt(m, lons, lats,
-                    model, dsize, background,
-                    location, lat, lon,
-                    RUNDATE, VALIDDATE, fxx,
-                    alpha, half_box, barb_thin,
-                    variable=VAR,
-                    Fill=Fill,
-                    Contour=Contour, contours = [0],
-                    p05p95=p05p95)
-
-if 'POT' in PLOTCODES:
-    for L in PLOTCODES['POT']:
-        level = L.replace('-', ' ')
-        draw_pot(m, lons, lats,
                  model, dsize, background,
                  location, lat, lon,
                  RUNDATE, VALIDDATE, fxx,
                  alpha, half_box, barb_thin,
-                 level=level)
+                 variable=VAR,
+                 Fill=Fill,
+                 Contour=Contour, contours = [0],
+                 p05p95=p05p95)
 
+# Relative Humidity
 if 'RH' in PLOTCODES:
     for L in PLOTCODES['RH']:
         level = L.replace('-', ' ')
@@ -297,6 +342,7 @@ if 'RH' in PLOTCODES:
                 alpha, half_box, barb_thin,
                 level=level)
 
+# Vapor Pressure Deficit
 if 'VPD' in PLOTCODES:
     for L in PLOTCODES['VPD']:
         Fill=PLOTCODES['VPD'][L]['Fill']
@@ -311,6 +357,7 @@ if 'VPD' in PLOTCODES:
                 Fill=Fill,
                 Crossover=Crossover)
 
+# Geopotential Height
 if 'HGT' in PLOTCODES:
     for L in PLOTCODES['HGT']:
         level = L.replace('-', ' ')
@@ -325,6 +372,7 @@ if 'HGT' in PLOTCODES:
             Contour=Contour,
             p05p95=p05p95)
 
+# Mean Sea Level Pressure
 if 'MSLP' in PLOTCODES:
     for L in PLOTCODES['MSLP']:
         Fill=PLOTCODES['MSLP'][L]['Fill']
@@ -337,6 +385,7 @@ if 'MSLP' in PLOTCODES:
                 Fill=Fill,
                 Contour=Contour)
 
+# Red Flag Conditions
 if 'REDFLAG' in PLOTCODES:
     for L in PLOTCODES['REDFLAG']:
         Fill=PLOTCODES['REDFLAG'][L]['Fill']
@@ -353,13 +402,13 @@ if 'REDFLAG' in PLOTCODES:
                      Fill_Potential=Fill_Potential)
 
 if 'GOES_ABI' in PLOTCODES:
-    print 'future'
+    print('future')
 
 if 'GOES_GLM' in PLOTCODES:
-    print 'future'
+    print('future')
 
 # All other variables
-OTHER = [i for i in PLOTCODES.keys() if i not in ['TMP', 'DPT', 'POT', 'Wind', 'Gust', 'dBZ', 'RH', 'HGT', 'MSLP','REDFLAG', 'VPD']]
+OTHER = [i for i in PLOTCODES.keys() if i not in ['TMP', 'DPT', 'Wind', 'Gust', 'dBZ', 'RH', 'HGT', 'MSLP','REDFLAG', 'VPD', 'POT']]
 
 for i in OTHER:
     for L in PLOTCODES[i]:
@@ -375,7 +424,11 @@ for i in OTHER:
                       variable=variable,
                       masked=masked)
 
-plt.savefig(sys.stdout)	# Plot standard output.
+if debug_mode:
+    print("looks like the plotting script made it to the end :)")
+else:
+    plt.savefig(sys.stdout)	# Plot standard output.
 
 
 # http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrrak&valid=2018-05-01_0000&fxx=0&plotcode=dBZ_Fill&dsize=conus&background=none
+'''

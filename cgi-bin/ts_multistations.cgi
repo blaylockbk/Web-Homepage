@@ -152,14 +152,24 @@ for n, s in enumerate(data.keys()):
     elif variable == 'wind_speed':
         if units == 'english':
             plot_this = data[s][variable]*2.2369
-            unit = 'MPH'
+            unit = 'mph'
         else:
             plot_this = data[s][variable]
             unit = r'ms$\mathregular{^{-1}}$'
         ax.plot(data[s]['DATETIME'], plot_this, label=s.upper())
-        ax.set_ylim(ymin=0)
         plt.title('Wind Speed')
         plt.ylabel('Wind Speed (%s)' % unit) 
+    
+    elif variable == 'wind_gust':
+        if units == 'english':
+            plot_this = data[s][variable]*2.2369
+            unit = 'mph'
+        else:
+            plot_this = data[s][variable]
+            unit = r'ms$\mathregular{^{-1}}$'
+        ax.plot(data[s]['DATETIME'], plot_this, label=s.upper())
+        plt.title('Wind Gust')
+        plt.ylabel('Wind Gust (%s)' % unit) 
 
     elif variable == 'wind_direction,wind_speed':
         if 'wind_speed' in data[s].keys() and 'wind_direction' in data[s].keys():

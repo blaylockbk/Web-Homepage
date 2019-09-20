@@ -175,7 +175,7 @@ for s in data.keys():
                      linewidth=2.5,
                      color=color[count])
             plt.title('MesoWest Wind Speed')
-            plt.ylabel('Wind Speed (MPH)') 
+            plt.ylabel('Wind Speed (mph)')
         
         elif variable == 'wind_speed':
             ax1.plot(data[s]['DATETIME'], data[s][variable],
@@ -222,6 +222,7 @@ if variable == 'wind_direction,wind_speed':
     plt.legend(ncol=4,loc='upper center')
 else:
     plt.legend()
+
 
 plt.xlabel('Date/Time (UTC)')
 plt.xlim([DATE_START,DATE_END])
