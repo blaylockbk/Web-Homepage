@@ -51,7 +51,7 @@ function change_title_pic() {
 
 document.write('<script src="js/site/CurrentTemp.js"></script>')
 
-/*Get the URL. We don't want to display the top picture on image viewers*/
+/*Get the URL. We don't want to display the top picture on some pages*/
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 
@@ -109,9 +109,9 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Research <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" ></i>  HRRR Archive</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" ></i> PhD</a></li>\
                             <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" ></i> MS</a></li>\
+                            <hr>\
                             <li class="dropdown-header">External Links</li>\
                             <li><a href="http://www.firescience.gov/" target="research "><i class="fab fa-gripfire fa-fw"></i> JFSP</a></li>\
                             <li><a href="http://meso2.chpc.utah.edu/aq/ " target="research "><i class="fa fa-cloud fa-fw" ></i> Air Quality</a></li>\
@@ -127,10 +127,15 @@ document.write('\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Web Tools <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
                             <li><a href="../Camera_Display "><i class="fa fa-video fa-fw" ></i>  Camera Display</a></li>\
-                            <li class="dropdown-header">Archived Data</li>\
+                            <hr>\
+                            <li class="dropdown-header">Archived S3 Data</li>\
+                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" ></i>  HRRR Archive FAQ</a></li>\
                             <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" ></i>  HRRR Archive Download</a></li>\
                             <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Pando</a></li>\
-                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fab fa-aws fa-fw" ></i>  GOES-16 on Amazon</a></li>\
+                            <li><a href="./cgi-bin/goes16_download.cgi"><i class="fab fa-aws fa-fw" ></i>  GOES on Amazon</a></li>\
+                            <li><a href="./cgi-bin/generic_AWS_download.cgi"><i class="fab fa-aws fa-fw" ></i>  Generic AWS Download GUI</a></li>\
+                            <li><a href="./cgi-bin/generic_pando_download.cgi"><i class="fa fa-database fa-fw" ></i>  Generic Pando Download GUI</a></li>\
+                            <hr>\
                             <li class="dropdown-header">HRRR Web Tools</li>\
                             <li><a href="./hrrr_custom.html "><i class="far fa-map fa-fw"></i> HRRR Custom Maps</a></li>\
                             <li><a href="./hrrr_golf.html "><i class="fa fa-map-marker-alt fa-fw" ></i> HRRR Point Forecast</a></li>\
@@ -140,12 +145,14 @@ document.write('\
                             <li><a href="./cgi-bin/hrrr_osg_point_viewer.cgi"><i class="fas fa-chart-area"></i>  HRRR Percentile Demo</a></li>\
                             <li><a href="./cgi-bin/hrrr_yesterday_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Yesterday</a></li>\
                             <li><a href="./cgi-bin/hrrr_events_viewer.cgi"><i class="fas fa-calendar-alt"></i>  HRRR Events</a></li>\
+                            <hr>\
                             <li class="dropdown-header">MesoWest Web Tools</li>\
                             <li><a href="./cgi-bin/mesowest_current.cgi "><i class="fas fa-clock fa-fw" ></i> MesoWest Current Conditions</a></li>\
                             <li><a href="./cgi-bin/ts_multistations.cgi "><i class="fas fa-chart-line fa-fw" ></i> Multi-station Time Series</a></li>\
                             <li><a href="./cgi-bin/roses.cgi "><i class="fas fa-chart-pie fa-fw" ></i> Rose Plots</a></li>\
+                            <hr>\
                             <li class="dropdown-header">Other</li>\
-                            <li><a href="./cgi-bin/glm_accumulation_viewer.cgi "><i class="fa fa-globe fa-fw" ></i> GOES-16 GLM</a></li>\
+                            <li><a href="./cgi-bin/glm_accumulation_viewer.cgi "><i class="fa fa-globe fa-fw" ></i> GOES-16 GLM Images</a></li>\
                         </ul>\
                     </li>\
 \
@@ -153,7 +160,7 @@ document.write('\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WRF<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
                             <li><a href="./wrf.html ">WRF Resources</a></li>\
-                            <li><a href="./hrrr.html ">Initalize with HRRR</a></li>\
+                            <li><a href="./hrrr.html ">Initialize with HRRR</a></li>\
                             <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
                             <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
@@ -172,9 +179,11 @@ document.write('\
                                     <li><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_GOES/mapping_GOES16_TrueColor.ipynb">GOES16 True Color RGB</a>\
                                 </ul>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v3">all others</a></li>\
+                            <hr>\
                             <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v2</li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
                             <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
+                            <hr>\
                             <li class="dropdown-header"><i class="fa fa-code fa-fw" ></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                             <li><a href="https://github.com/blaylockbk/HorelS3-Archive">HRRR Daily Download</a></li>\
@@ -201,6 +210,7 @@ document.write('\
                             <li><a href="http://wasatchweatherweenies.blogspot.com "><i class="far fa-snowflake fa-fw" ></i> Wasatch W. W.</a></li>\
                             <li><a href="https://blog.synopticlabs.org/ "><i class="fa fa-flask fa-fw" ></i> Synoptic Labs</a></li>\
                             <li><a href="http://cliffmass.blogspot.com"><i class="fa fa-tint fa-fw" ></i> Cliff Mass</a></li>\
+                            <hr>\
                             <li class="dropdown-header">Podcasts</li>\
                             <li><a href="https://talkpython.fm"><i class="fa fa-microphone fa-fw" ></i> Talk Python to Me</a></li>\
                             <li><a href="http://www.stuffyoushouldknow.com"><i class="fa fa-microphone fa-fw" ></i> Stuff You Should Know</a></li>\
@@ -243,7 +253,7 @@ document.write('\
                         <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" ></i>  Sodar</a></li>\
                         <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  UU Air Quality</a></li>\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Satellite</li>\
                         <li><a href="http://rammb-slider.cira.colostate.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (CIRA-SLIDER)</a></li>\
                         <li><a href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php" target="tools"><i class="fa fa-globe fa-fw" ></i> GOES-16 Viewer (NESDIS)</a></li>\
@@ -251,7 +261,7 @@ document.write('\
                         <li><a href="https://worldview.earthdata.nasa.gov/ " target="tools" ><i class="fa fa-globe fa-fw" ></i> NASA World View</a></li>\
                         <li><a href="https://www.star.nesdis.noaa.gov/smcd/spb/aq/AerosolWatch/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  NESDIS STAR GOES-16 Aerosol Watch</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/goes/goesdata.html" target="tools"><i class="fa fa-globe fa-fw" ></i>  GOES ABI Data Resources (Tim Schmit) </a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Numerical Models</li>\
                         <li><a href="http://weather.utah.edu/ " target="tools"><i class="fa fa-globe fa-fw" ></i> weather.utah.edu</a></li>\
                         <li><a href="https://www.wrh.noaa.gov/map/" target="tools"><i class="fa fa-globe fa-fw" ></i> Weather and Hazards Data Viewer</a></li>\
@@ -262,27 +272,27 @@ document.write('\
                         <li><a href="http://www.spc.noaa.gov/exper/href/" target="tools"><i class="far fa-image fa-fw" ></i>  SPC HREF Viewer</a></li>\
                         <li><a href="https://ensemble.ucar.edu/index.php" target="tools"><i class="far fa-image fa-fw" ></i>  NCAR Ensemble Viewer</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/hrrrval/" target="tools"><i class="fa fa-globe fa-fw" ></i>  HRRR Satellite Validation (CIMSS)</a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Precipitation/Radar</li>\
                         <li><a href="http://cocorahs.org/ " target="tools"><i class="fa fa-tint fa-fw" ></i>  CoCoRaHS</a></li>\
                         <li><a href="http://weather.rap.ucar.edu/radar/" target="tools"><i class="fa fa-tint fa-fw" ></i>  Radar</a></li>\
                         <li><a href="https://gis.ncdc.noaa.gov/maps/ncei/radar" target="tools"><i class="fa fa-tint fa-fw" ></i>  NEXRAD Radar Archive</a></li>\
                         <li><a href="http://www.lightningmaps.org/" target="tools"><i class="fa fa-bolt fa-fw" ></i>  Lightning Maps</a></li>\
                         <li><a href="http://cimss.ssec.wisc.edu/severe_conv/probsev.html" target="tools"><i class="fa fa-bolt fa-fw" ></i>  ProbSevere</a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Education</li>\
                         <li><a href="https://www.meted.ucar.edu/ " target="tools"><i class="fab fa-superpowers fa-fw" ></i>  Comet MetEd</a></li>\
                         <li><a href="http://meso1.chpc.utah.edu/NAA " target="tools"><i class="fas fa-tv fa-fw" ></i>  NAA School</a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Air Quality</li>\
                         <li><a href="http://www.airquality.utah.gov/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  DAQ Air Quality</a></li>\
                         <li><a href="https://www.ksl.com/?nid=1314" target="tools"><i class="fa fa-cloud fa-fw" ></i>  KSL Air Quality</a></li>\
                         <li><a href="http://raqms.ssec.wisc.edu/forecast/calendar/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  Real-time Air Quality Modeling System</a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Fire</li>\
                         <li><a href="https://www.weather.gov/fire/" target="tools"><i class="fab fa-gripfire fa-fw" ></i>  weather.gov/fire</a></li>\
                         <li><a href="https://wildlandfiresmoke.net" target="tools"><i class="fa fa-globe fa-fw" ></i>  Wildland Fire Air Quality </a></li>\
-                        \
+                        <hr>\
                         <li class="dropdown-header">Other</li>\
                         <li><a href="https://fluid.nccs.nasa.gov/reanalysis/classic_merra2/" target="tools"><i class="fa fa-clock fa-fw" ></i>  Historical Weather (MERRA2)</a></li>\
                         <li><a href="https://www.weather.gov/abr/etforecasts" target="tools"><i class="fa fa-tint fa-fw" ></i>  Evapotranspiration</a></li>\

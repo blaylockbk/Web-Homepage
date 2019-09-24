@@ -208,16 +208,18 @@
                 <div class="panel-body">
                     <p>Became operational after July 12, 2018.
                     <ul style="padding-left:40px">
-                        <li><b>sfc</b>: Surface fields for analyses <strike>and forecast hours</strike>
+                        <li><b>sfc</b>: Surface fields for analyses and forecast hours
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00,03,06,09,12,15,18,21]z.wrfsfcf[00-36].grib2</span>
                                 <li>File size: ~100 MB
                             </ul>
+                        <strike>
                         <li><b>prs</b>: Pressure fields for analyses
                             <ul style="padding-left:40px">
                                 <li>File format: <span style="font-family:monospace">hrrr.t[00,03,06,09,12,15,18,21]z.wrfprsf00.grib2</span>
                                 <li>File size: ~205 MB
                             </ul>
+                        </strike>
                     </ul>
                 <p>Note: Not all hours are available for the experimental runs.
                 </div>
@@ -276,7 +278,7 @@
             <hr>
             <h3>When do we download the HRRR data?</h3>
             <p><b>HRRR</b>, <b>HRRR-X</b>, and <b>HRRR-Alaska</b>
-               is downloaded from NOMADS and ESRL four times a day at
+               is downloaded from NOMADS and ESRL 8 times a day at
                00:30, 03:30, 06:30, 09:30, 12:30, 15:30, 18:30, and 21:30 UTC.
             <p>We only download HRRR data eight times a day to prevent anyone
                from grabbing real-time forecasts because this HRRR
@@ -336,6 +338,15 @@
                inefficient because they still require downloading a temporary file
                for a single variable of the entire grid (which contains about 1.9 
                grid points over the contiguous United States).
+            <p>One day, we hope this data will be archived elsewhere that is more
+               accessible to everyone. Perhaps soon it will be hosted by Amazon by
+               their Opendata initiative. I would advocate to keep it in the 
+               GRIB2 format (the original format it is output as), but it
+               would also be nice to store the data in a "cloud-friendly" 
+               format such as zarr. Some extensive experimentation is still 
+               needed to understand how best to chunk the data
+               in a way that will be useful for all users while preserving
+               the same compression of the data that is enjoyed by the GRIB2 format.
             <hr>
             <p> If I were in charge of the HRRR, I would like to see a more 
             rapid data assimilation cycle and run the model every 15 minutes
@@ -549,16 +560,17 @@
 
             <div class='well'>
                 <h3>Known published works that used this archive:</h3>
-                <p style='text-indent:-20px'>Blaylock, B.K., J.D. Horel, and E.T. Crosman, 2017: Impact of Lake Breezes on Summer Ozone Concentrations in the Salt Lake Valley. <i>J. Appl. Meteor. Climatol.</i>, 56, 353-370, <a href='https://doi.org/10.1175/JAMC-D-16-0216.1'>https://doi.org/10.1175/JAMC-D-16-0216.1</a>
-                <p style='text-indent:-20px'>Blaylock, B.K., J.D. Horel, and C. Galli, 2018: High-Resolution Rapid Refresh Model Data Analytics Derived on the Open Science Grid to Assist Wildland Fire Weather Assessment. <i>J. Atmos. Oceanic Technol.</i>, 35, 2213–2227, <a href='https://doi.org/10.1175/JTECH-D-18-0073.1'>https://doi.org/10.1175/JTECH-D-18-0073.1</a>.
+                <p style='text-indent:-20px'>Blaylock, B.K., J.D. Horel, and E.T. Crosman, 2017: Impact of Lake Breezes on Summer Ozone Concentrations in the Salt Lake Valley. <i>J. Appl. Meteor. Climatol.</i>, <b>56</b>, 353-370, <a href='https://doi.org/10.1175/JAMC-D-16-0216.1'>https://doi.org/10.1175/JAMC-D-16-0216.1</a>
+                <p style='text-indent:-20px'>Blaylock, B.K., J.D. Horel, and C. Galli, 2018: High-Resolution Rapid Refresh Model Data Analytics Derived on the Open Science Grid to Assist Wildland Fire Weather Assessment. <i>J. Atmos. Oceanic Technol.</i>, <b>35</b>, 2213–2227, <a href='https://doi.org/10.1175/JTECH-D-18-0073.1'>https://doi.org/10.1175/JTECH-D-18-0073.1</a>.
                 <p style='text-indent:-20px'>Jain, R., Luo, X., Sever, G., Hong, T., and Catlett, C., 2018: Representation and evolution of urban weather boundary conditions in downtown Chicago. <i>J. of Building Performance Simulation</i>, <a href='https://doi.org/10.1080/19401493.2018.1534275'>https://doi.org/10.1080/19401493.2018.1534275</a>.
-                <p style='text-indent:-20px'>McCorkle, T.A., J.D. Horel, A.A. Jacques, and T. Alcott, 2018: Evaluating the Experimental High-Resolution Rapid Refresh-Alaska Modeling System Using USArray Pressure Observations. <i>Wea. Forecasting</i>, 33, 933-953, <a href='https://doi.org/10.1175/WAF-D-17-0155.1'>https://doi.org/10.1175/WAF-D-17-0155.1</a>.
-                <p style="text-indent:-20px">McNicholas, C. and C.F. Mass, 2018: Impacts of Assimilating Smartphone Pressure Observations on Forecast Skill during Two Case Studies in the Pacific Northwest. <i>Wea. Forecasting</i>, 33, 1375-1396,  <a href='https://doi.org/10.1175/WAF-D-18-0085.1'>https://doi.org/10.1175/WAF-D-18-0085.1</a>.  
+                <p style='text-indent:-20px'>McCorkle, T.A., J.D. Horel, A.A. Jacques, and T. Alcott, 2018: Evaluating the Experimental High-Resolution Rapid Refresh-Alaska Modeling System Using USArray Pressure Observations. <i>Wea. Forecasting</i>, <b>33</b>, 933-953, <a href='https://doi.org/10.1175/WAF-D-17-0155.1'>https://doi.org/10.1175/WAF-D-17-0155.1</a>.
+                <p style="text-indent:-20px">McNicholas, C. and C.F. Mass, 2018: Impacts of Assimilating Smartphone Pressure Observations on Forecast Skill during Two Case Studies in the Pacific Northwest. <i>Wea. Forecasting</i>, <b>33</b>, 1375-1396,  <a href='https://doi.org/10.1175/WAF-D-18-0085.1'>https://doi.org/10.1175/WAF-D-18-0085.1</a>.  
                 <p style="text-indent:-20px">Poolla, C., and A. K. Ishihara, 2018: Localized solar power prediction based on weather data from local history and global forecasts. <i>45th IEEE Photovoltaic Specialists Conference</i>. <a href='https://arxiv.org/abs/1808.08657'>Link</a>.
-                <p style="text-indent:-20px">Rosenow, A.A., K. Howard, and J. Meitin, 2018: Gap-Filling Mobile Radar Observations of a Snow Squall in the San Luis Valley. <i>Mon. Wea. Rev.</i>, 146, 2469-2481, <a href='https://doi.org/10.1175/MWR-D-17-0323.1'>https://doi.org/10.1175/MWR-D-17-0323.1</a>.    
-                <p style="text-indent:-20px">Bowes, B., J. Sadler, M. Morsy, M. Behl, and J. Goodall, 2019: Forecasting Groundwater Table in a Flood Prone Coastal City with Long Short-term Memory and Recurrent Neural Networks. <i>Water</i>, 11, 1-38, <a href='https://doi.org/10.3390/w11051098'>https://doi.org/10.3390/w11051098</a>.
-                <p style="text-indent:-20px">Lee, T.R., M. Buban, D.D. Turner, T.P. Meyers, and C.B. Baker, 2019: Evaluation of the High-Resolution Rapid Refresh (HRRR) Model Using Near-Surface Meteorological and Flux Observations from Northern Alabama. <i>Wea.Forecasting</i>, 34, 635*663, <a href='https://doi.org/10.1175/WAF-D-18-0184.1 '>https://doi.org/10.1175/WAF-D-18-0184.1 </a>.
-                <p style="text-indent:-20px">Jackson, R., S. Collis, T. Lang, C. Potvin, T. Munson, 2019: PyDDA: A new Pythonic Wind Retrieval Package. <i>Proc. of the 18th Python in Science Conf.</i> <a href='https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20190027316.pdf '>https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20190027316.pdf </a>.
+                <p style="text-indent:-20px">Rosenow, A.A., K. Howard, and J. Meitin, 2018: Gap-Filling Mobile Radar Observations of a Snow Squall in the San Luis Valley. <i>Mon. Wea. Rev.</i>, <b>146</b>, 2469-2481, <a href='https://doi.org/10.1175/MWR-D-17-0323.1'>https://doi.org/10.1175/MWR-D-17-0323.1</a>.    
+                <p style="text-indent:-20px">Bowes, B., J. Sadler, M. Morsy, M. Behl, and J. Goodall, 2019: Forecasting Groundwater Table in a Flood Prone Coastal City with Long Short-term Memory and Recurrent Neural Networks. <i>Water</i>, <b>11</b>, 1-38, <a href='https://doi.org/10.3390/w11051098'>https://doi.org/10.3390/w11051098</a>.
+                <p style="text-indent:-20px">Lee, T.R., M. Buban, D.D. Turner, T.P. Meyers, and C.B. Baker, 2019: Evaluation of the High-Resolution Rapid Refresh (HRRR) Model Using Near-Surface Meteorological and Flux Observations from Northern Alabama. <i>Wea.Forecasting</i>, <b>34</b>, 635-663, <a href='https://doi.org/10.1175/WAF-D-18-0184.1 '>https://doi.org/10.1175/WAF-D-18-0184.1 </a>.
+                <p style="text-indent:-20px">Jackson, R., S. Collis, T. Lang, C. Potvin, T. Munson, 2019: PyDDA: A new Pythonic Wind Retrieval Package. <i>Proc. of the 18th Python in Science Conf.</i>, <a href='https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20190027316.pdf '>https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20190027316.pdf </a>.
+                <p style="text-indent:-20px">Radford, J.T., G.M. Lackmann, and M.A. Baxter, 2019: An evaluation of snowband predictability in the High-Resolution Rapid Refresh. <i>Wea. Forecasting</i>, <b>In Press</b> <a href='https://doi.org/10.1175/WAF-D-19-0089.1'>https://doi.org/10.1175/WAF-D-19-0089.1</a>.
             </div> 
             </div>
 

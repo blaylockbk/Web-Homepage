@@ -6,7 +6,7 @@ document.write('\
 <link href="images/wxicon.png" rel="shortcut icon" type="image/png">\
 <link href="images/wxicon.png" rel="icon"/>\
 \
-<script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>\
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"></script>\
 \
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>\
 \

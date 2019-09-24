@@ -82,6 +82,7 @@ print '''
 <body>
 
 <script src="js/site/sitemenu.js"></script>
+<script src="js/not_active.js"></script>
 </div>'''
 
 print'''
