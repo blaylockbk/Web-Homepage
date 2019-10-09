@@ -247,6 +247,7 @@ document.write('\
                     <ul class="dropdown-menu">\
                         <li class="dropdown-header">MesoWest</li>\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
+                        <li><a href="https://push.synopticdata.com/monitor_network " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> Synoptic Monitor</a></li>\
                         <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_precip_total.cgi?back=24.0&latcen=40.78885994449482&loncen=-111.895751953125&net=0&zoom=8&limit=None" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
                         <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?latcen=40.78262115769851&loncen=-111.90673828125&net=0&zoom=9&limit=None" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
                         <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
