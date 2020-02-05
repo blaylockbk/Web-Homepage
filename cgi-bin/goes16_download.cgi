@@ -182,6 +182,8 @@ print'''
         <div class="panel-body">
         <p>Data from the Advanced Baseline Imager (ABI) is downloaded from  <a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success">
             <i class="fab fa-aws"></i> Amazon S3</a>
+        <p> <a class='btn btn-info' href="https://docs.opendata.aws/noaa-goes16/cics-readme.html#accessing-goes-data-on-aws">
+            Read this description about the data</a>
         <p>The base download URL is https://'''+satellite+'''.s3.amazonaws.com
         <p>The file path is: <span style='font-family:monospace'>/product/year/day_of_year/hour/file_name</span>
         <p> Usefull Links:                
