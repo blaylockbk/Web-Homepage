@@ -19,6 +19,9 @@ import subprocess
 import cgi, cgitb
 import time
 from datetime import date, datetime, timedelta
+
+from collections import OrderedDict
+
 cgitb.enable()
 
 form = cgi.FieldStorage()
@@ -358,8 +361,45 @@ print''' </select>
         <select class="form-control" id="product" name="product">'''
 # display is the variable name as it will display on the webpage
 # value is the value used
-display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper']
-value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP', 'GLM-L2-LCFA']
+
+pairs = OrderedDict()
+pairs['ABI-L1b-Rad'] = 'ABI L1b Radiances'
+pairs['ABI-L2-CMIP'] = 'ABI L2 Cloud and Moisture Imagery'
+pairs['ABI-L2-MCMIP'] = 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format'
+pairs['GLM-L2-LCFA'] = 'Geostationary Lightning Mapper L2 Lightning Detection'
+pairs['ABI-L2-ACHA'] = 'ABI L2 Cloud Top Height'
+pairs['ABI-L2-ACHT'] = 'ABI L2 Cloud Top Temperature'
+pairs['ABI-L2-ACM'] = 'ABI L2 Clear Sky Mask'
+pairs['ABI-L2-ACTP'] = 'ABI L2 Cloud Top Phase'
+pairs['ABI-L2-ADP'] = 'ABI L2 Aerosol Detection'
+pairs['ABI-L2-AOD'] = 'ABI L2 Aerosol Optical Depth'
+pairs['ABI-L2-COD'] = 'ABI L2 Cloud Optical Depth'
+pairs['ABI-L2-CPS'] = 'ABI L2 Cloud Particle Size'
+pairs['ABI-L2-CTP'] = 'ABI L2 Cloud Top Pressure'
+pairs['ABI-L2-DMW'] = 'ABI L2 Derived Motion Winds'
+pairs['ABI-L2-DSI'] = 'ABI L2 Derived Stability Indices'
+pairs['ABI-L2-DSR'] = 'ABI L2 Downward Shortwave Radiation'
+pairs['ABI-L2-FDC'] = 'ABI L2 Fire (Hot Spot Characterization)'
+pairs['ABI-L2-LST'] = 'ABI L2 Land Surface Temperature'
+pairs['ABI-L2-LVMP'] = 'ABI L2 Legacy Vertical Moisture Profile'
+pairs['ABI-L2-LVTP'] = 'ABI L2 Legacy Vertical Temperature Profile'
+pairs['ABI-L2-RRQPEF'] = 'ABI L2 Rainfall Rate (Quantitative Precipitation Estimate) FULL DISK ONLY'
+pairs['ABI-L2-RSRC'] = 'ABI L2 Reflected Shortwave Radiation TOA'
+pairs['ABI-L2-SST'] = 'ABI L2 Seas Surface Temperature FULL DISK ONLY'
+pairs['ABI-L2-TPW'] = 'ABI L2 Total Precipitable Water'
+pairs['ABI-L2-VAA'] = 'ABI L2 Volcanic Ash: Detection and Hight FULL DISK ONLY'
+pairs['SUVI-L1b-Fe093'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe093'
+pairs['SUVI-L1b-Fe131'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe131'
+pairs['SUVI-L1b-Fe171'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe171'
+pairs['SUVI-L1b-Fe195'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe195'
+pairs['SUVI-L1b-Fe284'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe284'
+pairs['SUVI-L1b-He303'] = 'Solar Ultraviolet Imager L1b ExtremeUltraviolet He303'
+
+display = pairs.values()
+value = list(pairs)
+
+#display = ['ABI L1b Radiances', 'ABI L2 Cloud and Moisture Imagery', 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format', 'Geostationary Lightning Mapper']
+#value = ['ABI-L1b-Rad', 'ABI-L2-CMIP', 'ABI-L2-MCMIP', 'GLM-L2-LCFA']
 
 for i in range(0,len(value)):
    if product == value[i]:
@@ -438,7 +478,9 @@ band = ['0.47 &microm: Visible "Blue Band"',\
 
 # Create list of files available for the requested hour
 DATE = datetime.strptime(Date, "%Y-%m-%d")
-if product=='GLM-L2-LCFA':
+if product == 'GLM-L2-LCFA':
+    PATH = '/%s/%s/%02d/' % (product, DATE.strftime('%Y/%j'), int(hour))
+elif product[:3] == 'SUV':
     PATH = '/%s/%s/%02d/' % (product, DATE.strftime('%Y/%j'), int(hour))
 else:    
     PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
@@ -471,7 +513,8 @@ if domain == 'M2':
 # Convert to numpy array
 flist = np.array(flist)
 
-if product == 'ABI-L2-MCMIP' or product == 'GLM-L2-LCFA':
+if product != 'ABI-L1b-Rad' and product != 'ABI-L2-CMIP':
+#if product == 'ABI-L2-MCMIP' or product == 'GLM-L2-LCFA':
     # The multi-band format and GLM doesn't have files separated by band type
     scan_end = np.array([f.split('_')[4][:] for f in flist])
     button_display = np.array(['%s' % (d[10:12]) for d in scan_end])
