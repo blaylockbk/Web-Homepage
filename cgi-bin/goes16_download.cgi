@@ -135,38 +135,55 @@ print'''
       </div>
       <div id="collapse1" class="panel-collapse collapse">
         <div class="panel-body">
-            <p> This page is tested in
-            <i class="fab fa-edge"></i> and <i class="fab fa-chrome"></i> 
-            (Why only these two? Because my advisor uses Chrome, and I use Edge.)
-            
+            <p>This page makes it easy to explore the GOES dataset on Amazon Web Services (AWS) and download
+            files with the click of a mouse.
+            <ol style="padding-left:50px">
+                <li>Select the desired domain, product, date, and hour for which you want to download.
+                    <ul>
+                        <li>The "source" option refers to where the data is downloaded from. 
+                        AWS is Amazon's cloud.
+                        OCC is the 
+                        <a href="http://edc.occ-data.org/goes16/">Open Commons Consortium</a>
+                        and has GOES files from the last 7-8 months. If you get an XML
+                        error when downloading from the Amazon source, try switching to OCC.
+                        Check the URL in bold below to confirm the source.</li>
+                    </ul>
+                <li>Click the submit button.
+                <ul style="padding-left:25px">
+                    <li> A blue box appears for every file that is available. 
+                    <li> The L1b Radiances and L2 Cloud and Moisture Imagery have separate files for each of the 16 bands.
+                    <li> All other L2 products have a single file for each observation time.
+                    <li> <b>The number on the blue box represents the minute the scan started</b>.
+                    <li> Full disk scans are available every 15 minutes,
+                    CONUS scans are available every 5 minutes, 
+                    and mesoscale scans are available every minute.
+                    <li> Some L2 products are not available for all domains.
+                </ul>
+                <li> Click the desired file and the download will begin.
+            </ol>
             <hr>
-            <a style='font-size:20px' class='btn btn-success' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16'>
-            Alternative Download Page
+            <p>Also check out the <a class='btn btn-success' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16'>
+            Alternative Download Page</a>
+            <p> For bulk and scripted downloads, consider using 
+            <a href="https://rclone.org/">rclone</a>,
+            <a href="https://aws.amazon.com/cli/">AWS CLI</a>,
+            <a href="https://gist.github.com/blaylockbk/d60f4fce15a7f0475f975fc57da9104d#file-download_goes_aws-py"> Python's s3fs library</a>,
+            or <a href="https://www.avl.class.noaa.gov/">NOAA CLASS</a>.
             </a>
             <hr>
-
-            <ol style="padding-left:15px">
-            <li>Select the desired domain, product, date, and hour for which you want to download.
-            <li>Click the submit button.
-            <ul style="padding-left:20px">
-                <li>Data is available for 16 different channels or bands. A blue box appears for every file that is available.
-                The number on the box represents the minute the scan started. Full disk scans are available every 15 minutes,
-                CONUS scans are available every 5 minutes, and mesoscale scans are available every minute.
+            <p>Downloaded files are in NetCDF format. For example:
+            <p><kbd>OR_ABI-L1b-RadM1-M3C01_G16_s20172511100550_e20172511101007_c20172511101048.nc</kbd>
+            <ul style="padding-left:55px;">
+                <li><kbd>OR</kbd> - data is operational and in real-time
+                <li><kbd>ABI-L1b-RadM1-</kbd> - is the product, with the mesoscale 1 domain. C is for CONUS, F is for full disk, and M2 is for Mesoscale 2.
+                <li><kbd>M3C01</kbd> - Mode is 3 and Channel is 01
+                <li><kbd>G16</kbd> - GOES-16 (G17 for GOES-17)
+                <li><kbd>s20172511100550</kbd> - scan start time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
+                <li><kbd>e20172511101007</kbd> - scan end time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
+                <li><kbd>c20172511101048</kbd> - scan file creation time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
+                <li><kbd>.nc</kbd> - This is a NetCDF file.
             </ul>
-            <li> Click the desired file and the download will begin.
-            </ol>
-            <p>Files are downloaded in NetCDF format.
-            <p>An example file name:<br> <span style="font-family:monospace">OR_ABI-L1b-RadM1-M3C01_G16_s20172511100550_e20172511101007_c20172511101048.nc</span>
-            <ul style="padding-left:35px;">
-                <li>OR - data is operational and in real-time
-                <li>ABI-L1b-RadM1 - is the product, with the mesoscale 1 domain. C is for CONUS, F is for full disk, and M2 is for Mesoscale 2.
-                <li>M3C01 - Mode is 3 and Channel is 01
-                <li>G16 - GOES-16 (G17 for GOES-17)
-                <li>s20172511100550 - scan start time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
-                <li>e20172511101007 - scan end time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
-                <li>c20172511101048 - scan file creation time sYYYYJJJHHMMSSm: year, day of year, hour, minute, second, tenth second
-            </ul>
-            <p>More details can be found on <a href="https://aws.amazon.com/public-datasets/goes/">Amazon's page</a>.
+            <p>More details can be found on <a href="https://docs.opendata.aws/noaa-goes16/cics-readme.html">Amazon's page</a>.
         </div>
       </div>
     </div>
@@ -180,57 +197,56 @@ print'''
       </div>
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
-        <p>Data from the Advanced Baseline Imager (ABI) is downloaded from  <a href="https://aws.amazon.com/public-datasets/goes/" class="btn btn-success">
-            <i class="fab fa-aws"></i> Amazon S3</a>
-        <p> <a class='btn btn-info' href="https://docs.opendata.aws/noaa-goes16/cics-readme.html#accessing-goes-data-on-aws">
-            Read this description about the data</a>
-        <p>The base download URL is https://'''+satellite+'''.s3.amazonaws.com
-        <p>The file path is: <span style='font-family:monospace'>/product/year/day_of_year/hour/file_name</span>
+        <p>Data from the Advanced Baseline Imager (ABI) is downloaded from
+          <a href="https://aws.amazon.com/public-datasets/goes/">Amazon S3 <i class="fab fa-aws"></i></a>.
+          Read this <a href="https://docs.opendata.aws/noaa-goes16/cics-readme.html#accessing-goes-data-on-aws">
+          description about the data</a>.
+        <hr>
+        <p>The base download URL is <kbd>https://'''+satellite+'''.s3.amazonaws.com</kbd>
+        <p>The file path is: <kbd>/product/year/day_of_year/hour/file_name</kbd>
+        <hr>
         <p> Usefull Links:                
-        <ul style="padding-left:60px">
+        <ul style="padding-left:50px">
             <li><a href="http://www.goes-r.gov/" target="blank">GOES-R Homepage</a>
             <li><a href="http://www.goes-r.gov/products/images/productFileSize8ColorPng8-1600px.png" target="blank">Channels Approx. File Sizes</a>            
-            <li><a href="http://www.goes-r.gov/education/ABI-bands-quick-info.html" target="blank">ABI Bands Quick Information Guides</a>
+            <li><a href="http://cimss.ssec.wisc.edu/goes/GOESR_QuickGuides.html" target="blank">ABI Bands Quick Information Guides</a>
             <li><a href="http://www.goes-r.gov/products/docs/PUG-L2+-vol5.pdf" target="blank">GOES-16 User Guide</a>
-            <li><a href="http://www.goes-r.gov/products/ATBDs/baseline/Imagery_v2.0_no_color.pdf" target="blank">Another ABI Document</a>
-            <li><a href="https://www.weather.gov/media/crp/GOES_16_Guides_FINALBIS.pdf" target="blank">NOAA GOES Guide</a>
+            <li><a href="https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Imagery.pdf" target="blank">GOES-R ABI Algorithm Theoretical Basis Document</a>
+            <li><a href="https://www.weather.gov/media/crp/GOES_16_Guides_FINALBIS.pdf" target="blank">GOES Band Reference Guide</a>
             <li><a href="http://cimss.ssec.wisc.edu/goes/goesdata.html" target="blank">More GOES-16 Links</a>
             <li><a href="http://www.goes-r.gov/resources/docs.html" target="blank">All the GOES-R Docs</a>
         </ul>
-        
-        <center><small>
-        <div class='table-responsive'>
-        <table class='table sortable' style="max-width:650px;text-align:center">
-        <tr>
-            <th>Band Number</th>
-            <th>Resolution (km)</th>
-            <th>Wavelength</th>
-            <th>Spectrum</th>
-            <th>Name</th>
-        </tr>
-        <tr><td>01</td> <td>1</td> <td>0.47 &microm</td><td>Visible</td><td>Blue Band</td><td></tr>
-        <tr><td>02</td> <td>0.5</td> <td>0.64 &microm</td><td> Visible </td><td>Red Band</td><td></tr>
-        <tr><td>03</td> <td>1</td> <td>0.86 &microm</td><td> Near-IR </td><td>Veggie Band</td><td></tr>
-        <tr><td>04</td> <td>2</td> <td>1.37 &microm</td><td> Near-IR </td><td>Cirrus Band</td><td></tr>
-        <tr><td>05</td> <td>1</td> <td>1.60 &microm</td><td> Near-IR </td><td>Snow/Ice Band</td><td></tr>
-        <tr><td>06</td> <td>2</td> <td>2.24 &microm</td><td> Near-IR </td><td>Cloud Prticle Size Band</td><td></tr>
-        <tr><td>07</td> <td>2</td> <td>3.90 &microm</td><td> IR </td><td>Shortwave Window Band</td><td></tr>
-        <tr><td>08</td> <td>2</td> <td>6.20 &microm</td><td> IR </td><td>Upper-Troposphere WV Band</td><td></tr>
-        <tr><td>09</td> <td>2</td> <td>6.90 &microm</td><td> IR </td><td>Mid-Level Troposphere WV Band</td><td></tr>
-        <tr><td>10</td> <td>2</td> <td>7.30 &microm</td><td> IR </td><td>Low-Level Troposphere WV Band</td><td></tr>
-        <tr><td>11</td> <td>2</td> <td>8.40 &microm</td><td> IR </td><td>Cloud-Top Phase Band</td><td></tr>
-        <tr><td>12</td> <td>2</td> <td>9.60 &microm</td><td> IR </td><td>Ozone Band</td><td></tr>
-        <tr><td>13</td> <td>2</td> <td>10.3 &microm</td><td> IR </td><td>Clean IR Longwave Band</td><td></tr>
-        <tr><td>14</td> <td>2</td> <td>11.2 &microm</td><td> IR </td><td>IR Longwave Band</td><td></tr>
-        <tr><td>15</td> <td>2</td> <td>12.3 &microm</td><td> IR </td><td>Dirty IR Longwave Band</td><td></tr>
-        <tr><td>16</td> <td>2</td> <td>13.3 &microm</td><td> IR </td><td>CO2 Longwave IR Band</td><td></tr>
-        </table>
-        </div>
-        </center></small>
-        <p>Note: The resolution of the Multi-band files for all channels is 2 km.
-           This file is easiest to work with if you don't <i>need</i> the full
-           resolution of the 1 km channels for your images.
-        
+        <hr>
+            <center><small>
+            <div class='table-responsive'>
+            <table class='table sortable' style="max-width:650px;text-align:center">
+            <tr>
+                <th>Band Number</th>
+                <th>Resolution (km)</th>
+                <th>Wavelength</th>
+                <th>Spectrum</th>
+                <th>Name</th>
+            </tr>
+            <tr><td>01</td> <td>1</td> <td>0.47 &microm</td><td>Visible</td><td>Blue Band</td><td></tr>
+            <tr><td>02</td> <td>0.5</td> <td>0.64 &microm</td><td> Visible </td><td>Red Band</td><td></tr>
+            <tr><td>03</td> <td>1</td> <td>0.86 &microm</td><td> Near-IR </td><td>Veggie Band</td><td></tr>
+            <tr><td>04</td> <td>2</td> <td>1.37 &microm</td><td> Near-IR </td><td>Cirrus Band</td><td></tr>
+            <tr><td>05</td> <td>1</td> <td>1.60 &microm</td><td> Near-IR </td><td>Snow/Ice Band</td><td></tr>
+            <tr><td>06</td> <td>2</td> <td>2.24 &microm</td><td> Near-IR </td><td>Cloud Prticle Size Band</td><td></tr>
+            <tr><td>07</td> <td>2</td> <td>3.90 &microm</td><td> IR </td><td>Shortwave Window Band</td><td></tr>
+            <tr><td>08</td> <td>2</td> <td>6.20 &microm</td><td> IR </td><td>Upper-Troposphere WV Band</td><td></tr>
+            <tr><td>09</td> <td>2</td> <td>6.90 &microm</td><td> IR </td><td>Mid-Level Troposphere WV Band</td><td></tr>
+            <tr><td>10</td> <td>2</td> <td>7.30 &microm</td><td> IR </td><td>Low-Level Troposphere WV Band</td><td></tr>
+            <tr><td>11</td> <td>2</td> <td>8.40 &microm</td><td> IR </td><td>Cloud-Top Phase Band</td><td></tr>
+            <tr><td>12</td> <td>2</td> <td>9.60 &microm</td><td> IR </td><td>Ozone Band</td><td></tr>
+            <tr><td>13</td> <td>2</td> <td>10.3 &microm</td><td> IR </td><td>Clean IR Longwave Band</td><td></tr>
+            <tr><td>14</td> <td>2</td> <td>11.2 &microm</td><td> IR </td><td>IR Longwave Band</td><td></tr>
+            <tr><td>15</td> <td>2</td> <td>12.3 &microm</td><td> IR </td><td>Dirty IR Longwave Band</td><td></tr>
+            <tr><td>16</td> <td>2</td> <td>13.3 &microm</td><td> IR </td><td>CO2 Longwave IR Band</td><td></tr>
+            </table>
+            </div>
+            </center></small>
+        <p>Note: The resolution of the Multi-band files for all channels and other L2 products is 2 km.
         </div>
       </div>
     </div>
@@ -239,14 +255,29 @@ print'''
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-          <big><b><i class="fa fa-info-circle" ></i> Download via Python</b></big>
+          <big><b><i class="fa fa-info-circle" ></i> Other Ways to Download</b></big>
           </a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
-        You can view and download files from public AWS buckets with Python's `s3fs` library.
-        <script src="https://gist.github.com/blaylockbk/d60f4fce15a7f0475f975fc57da9104d.js"></script>
+        <h3>rclone</h3>
+            <a href="https://rclone.org/">rclone</a>
+            <p>This page uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
+            <a class='btn btn-primary' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>Brian's rclone Tutorial</a>
+        <hr>
+        <h3>AWS CLI</h3>
+            <a href="https://aws.amazon.com/cli/">AWS CLI</a>
+        
+        <hr>
+        <h3>Python</h3>
+            <a href="https://s3fs.readthedocs.io/en/latest/">s3fs</a>
+            <p> You can view and download files from public AWS buckets with Python's <code>s3fs</code> library.</p>
+            <script src="https://gist.github.com/blaylockbk/d60f4fce15a7f0475f975fc57da9104d.js"></script>
+        
+        <hr>    
+        <h3> NOAA CLASS</h3>
+            <a href="https://www.avl.class.noaa.gov/">NOAA CLASS</a>
         
         </div>
       </div>
@@ -255,19 +286,8 @@ print'''
   </div> 
 </div>
 
-    <div class='alert alert-info'>
-    This page uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
-    If you wish to perform bulk downloads of GOES data, consider using rclone or AWS CLI to aquire the files.
-    <a class='btn btn-primary' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>Rclone Tutorial</a>
-    </div>
-
     <div class='alert alert-warning'>
-    The source option below refers to where the data is downloaded from. AWS is Amazon's cloud.
-    OCC is the Open Commons Consortium and has GOES files from the last 7-8 months. If you get an XML
-    error when downloading from the Amazon source, try switching to OCC.
-    Check the URL in bold below to confirm the source.
-    <br>
-    Note: GOES-17 data is non-operational.
+        Derived (Level 2) products are now available.
     </div>   
     
   <hr> 
@@ -367,8 +387,8 @@ print''' </select>
 pairs = OrderedDict()
 pairs['ABI-L1b-Rad'] = 'ABI L1b Radiances'
 pairs['ABI-L2-CMIP'] = 'ABI L2 Cloud and Moisture Imagery'
-pairs['ABI-L2-MCMIP'] = 'ABI L2 Cloud and Moisture Imagery: Multi-Band Format'
-pairs['GLM-L2-LCFA'] = 'Geostationary Lightning Mapper L2 Lightning Detection'
+pairs['ABI-L2-MCMIP'] = 'ABI L2 Cloud and Moisture Imagery (Multi-Band Format)'
+pairs['GLM-L2-LCFA'] = 'GLM L2 Lightning Detection'
 pairs['ABI-L2-ACHA'] = 'ABI L2 Cloud Top Height'
 pairs['ABI-L2-ACHT'] = 'ABI L2 Cloud Top Temperature'
 pairs['ABI-L2-ACM'] = 'ABI L2 Clear Sky Mask'
@@ -385,11 +405,11 @@ pairs['ABI-L2-FDC'] = 'ABI L2 Fire (Hot Spot Characterization)'
 pairs['ABI-L2-LST'] = 'ABI L2 Land Surface Temperature'
 pairs['ABI-L2-LVMP'] = 'ABI L2 Legacy Vertical Moisture Profile'
 pairs['ABI-L2-LVTP'] = 'ABI L2 Legacy Vertical Temperature Profile'
-pairs['ABI-L2-RRQPEF'] = 'ABI L2 Rainfall Rate (Quantitative Precipitation Estimate) FULL DISK ONLY'
-pairs['ABI-L2-RSRC'] = 'ABI L2 Reflected Shortwave Radiation TOA'
-pairs['ABI-L2-SST'] = 'ABI L2 Seas Surface Temperature FULL DISK ONLY'
+pairs['ABI-L2-RRQPE'] = 'ABI L2 Rainfall Rate (Quantitative Precipitation Estimate)'
+pairs['ABI-L2-RSR'] = 'ABI L2 Reflected Shortwave Radiation TOA'
+pairs['ABI-L2-SST'] = 'ABI L2 Seas Surface Temperature'
 pairs['ABI-L2-TPW'] = 'ABI L2 Total Precipitable Water'
-pairs['ABI-L2-VAA'] = 'ABI L2 Volcanic Ash: Detection and Hight FULL DISK ONLY'
+pairs['ABI-L2-VAA'] = 'ABI L2 Volcanic Ash: Detection and Hight'
 pairs['SUVI-L1b-Fe093'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe093'
 pairs['SUVI-L1b-Fe131'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe131'
 pairs['SUVI-L1b-Fe171'] = 'Solar Ultraviolet Imager L1b Extreme Ultraviolet Fe171'
@@ -487,7 +507,7 @@ elif product[:3] == 'SUV':
 else:    
     PATH = '/%s%s/%s/%02d/' % (product, domain[0], DATE.strftime('%Y/%j'), int(hour))
 
-print '<h4>Tap to download from %s S3 bucket: <b>' % satellite, sourceURL+PATH+'</b></h4>'
+print '<h4>Click or tap to download from %s S3 bucket: <b>' % satellite, sourceURL+PATH+'</b></h4>'
 print "<p>Number represents the scan's start minute for the requested hour"
 
 
@@ -523,11 +543,14 @@ if product != 'ABI-L1b-Rad' and product != 'ABI-L2-CMIP':
     print '''<div class="form-group">'''
     print '''<div class="col-md-12">'''
     print '''<div class="mybtn-group">'''
-    if product == 'ABI-L2-MCMIP':
-        print '''<button name="hour" type="button" class="mybtn hourbtn"">Multi-band Format:</button>'''
-    elif product == 'GLM-L2-LCFA':
-        print '''<button name="hour" type="button" class="mybtn hourbtn"">Geostationary Lightning Mapper:</button>'''
-    
+    #if product == 'ABI-L2-MCMIP':
+    #    print '''<button name="hour" type="button" class="mybtn hourbtn"">Multi-band Format:</button>'''
+    #elif product == 'GLM-L2-LCFA':
+    #    print '''<button name="hour" type="button" class="mybtn hourbtn"">Geostationary Lightning Mapper:</button>'''
+    #else:
+    btn_text = pairs[product]
+    print '''<button name="hour" type="button" class="mybtn hourbtn"">{}:</button>'''.format(btn_text)
+
     for i in range(len(flist)):
         download_this = '%s%s%s' % (sourceURL, PATH, flist[i])
         print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">%s</button></a>''' % (button_display[i])
