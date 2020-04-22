@@ -538,8 +538,12 @@ flist = np.array(flist)
 if product != 'ABI-L1b-Rad' and product != 'ABI-L2-CMIP':
 #if product == 'ABI-L2-MCMIP' or product == 'GLM-L2-LCFA':
     # The multi-band format and GLM doesn't have files separated by band type
+    scan_start = np.array([f.split('_')[3][:] for f in flist])
     scan_end = np.array([f.split('_')[4][:] for f in flist])
-    button_display = np.array(['%s' % (d[10:12]) for d in scan_end])
+    scan_save = np.array([f.split('_')[5][:] for f in flist])
+    
+    # Display the download button start time MINUTE
+    button_display = np.array(['%s' % (d[10:12]) for d in scan_start])
     print '''<div class="form-group">'''
     print '''<div class="col-md-12">'''
     print '''<div class="mybtn-group">'''
