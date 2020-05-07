@@ -77,7 +77,12 @@
                 <p>Step 1: Get HRRR analyses.
                 <p>You must get the full pressure field (prs) file. 
                 You can get the current HRRR data from <a href="http://nomads.ncep.noaa.gov/">
-                NOMADS</a>. 
+                NOMADS</a>.
+                <div class="alert alert-info">
+                <b>Note:</b> The <code>sfc</code> files are a subset of the <code>prs</code> files, so you only
+                need to retrieve the <code>prs</code> files.
+                </div>
+                
                 <p>Unfortunately, historical HRRR data isn't archived by NCEP.
                 At the University of Utah we have an archive beginning July 15, 2016.
                 <p>Please refer to the FAQ page for
@@ -91,8 +96,12 @@
                 <p>There are several ways you can read and view GRIB2 files.
                 You can print out the variable contents of the grib2 file by typing:
                 <div class="well well-sm">wgrib2 -v <i>filename.grib2</i></div>
-                <p>You can plot the grib2 data using the pygrib module. 
-                Look at an example on github <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/demos/demo_pygrib_explore_HRRR_file.ipynb">here</a>.
+                <p>You can plot the grib2 data in Python using the pygrib module or 
+                <a href="http://xarray.pydata.org/en/stable/examples/ERA5-GRIB-example.html">
+                        xarray with cfgrib. 
+                </a>
+                <a href="https://github.com/blaylockbk/pyBKB_v2/blob/master/demos/demo_pygrib_HRRR.ipynb">
+                        <i class="fab fa-github"></i> Demo PyGrib on GitHub</a>.
                 <p>You can also view the data with ncview if you convert the GRIB2 to NetCDF
                 using <a href="http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/">wgrib2</a>.
                 <div class="well well-sm">wgrib2 filename.grib2 -netcdf filename.nc<br>ncview filename.nc</div>
@@ -101,16 +110,25 @@
         <div id="tab3" class="tab-pane fade">
                 <h3>Vtable.hrrr</h3>
                 <p>The Vtable in WPS tells ungrib how to index and extract 
-                data from the grib2 file. I created a Vtable for the HRRR data
-                you can copy and link in WPS. 
+                data from the grib2 file. I created a Vtable for the HRRR <code>prs</code> data
+                you can copy and link in WPS. (Note, I made a minor edit based on some user feedback without testing it myself. If you have trouble, try using a previous commit by clicking the "History" button on GitHub).
                 <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/Vtable.HRRR.bkb"><i class="fab fa-github"></i> Vtable.hrrr.bkb</a>
                 
                 <p>I created this custom Vtable following the instructions in the <a href="http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/users_guide_chap3.htm#_Creating_and_Editing">
                 WRF User Guide</a>. I used the WPS utility <i>util/g2print.exe [name-of-grib2-file] > out.txt</i> to print out the contents and 
                 create the custom Vtable based on the output. This version is different than 
-                <a href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/HRRRv1/Vtable.HRRR.ESRL">ESRL's' version</a>.
+                <a href="https://rapidrefresh.noaa.gov/hrrr/HRRR/static/">ESRL's' version</a> because the <code>prs</code> files in the HRRR archive are on pressure levels (GRIB2 level 100) and not hybrid levels (GRIB2 level 105). Also, some variables like <code>Ice Number Concentration</code> are not available in the HRRR <code>prs</code> file. On that note, if you are using the <code>nat</code> files from NOMADS, then you would need to modify this VTable accordingly with the correct GRIB2 Level code (i.e., use 105 instead of 100). <i>That's probably as clear as mud.</i>
                 <p>At any rate, my Vtable worked, but if you find errors or additions
-                please forward those to me <i class="fa fa-smile"></i>.
+                please forward those to me 😄.
+                
+                <div class="alert alert-success">
+                    For more info on GRIB2 categories and codes, refer to the following resources:
+                    <ul>
+                        <li><a href="https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_table4-5.shtml">NCEP GRIB2 Code Table 4.5</a></li>
+                        <li><a href="https://apps.ecmwf.int/codes/grib/param-db?filter=grib2">ECMWF GRIB2 Parameter Database</a></li>
+                    </ul>
+                </div>
+                
         </div>
 
         <div id="tab4" class="tab-pane fade">
@@ -146,9 +164,9 @@
         <div id="tab5" class="tab-pane fade">
                 <h3>METGRID.TBL</h3>
                 <p>The METGRID Table tells METGRID how to interpolate the 
-                meteorological fields from the UNGRIBed files on the WRF friendly grid.
+                meteorological fields from the UNGRIBed files on the WRF friendly grid. You may or may not need to use this custom METGRIB table (some users have said they didn't need it, but I needed it years ago).
                 <p style="text-align:center"><a class="btn btn-default btn-lg" href="https://github.com/blaylockbk/Ute-WRF-User-Group/blob/master/Blaylock/WPS_for_HRRR/METGRID.TBL.HRRR.bkb"><i class="fab fa-github"></i> METGRID.TBL.hrrr.bkb</a>
-                <p>If you find errors or have any suggestions please share <i class="fa fa-smile"></i>.
+                <p>If you find errors or have any suggestions please share 😄
         </div>
 
         <div id="tab6" class="tab-pane fade">
@@ -168,7 +186,6 @@
         </div>
 
         <div id="tab8" class="tab-pane fade">
-                <img align=right height="200" style="min-width:150px; padding:3px;" src="http://home.chpc.utah.edu/~u0553130/HRRR_WRF/subdomain_salt-lake-valley.png">
                 <h3>Comparing HRRR 3km with WRF 1km</h3>
                 <p> My <a href="./MS.html">master's thesis</a> used the described method
                 to initialize WRF with the HRRR to study a lake breeze event.
@@ -193,10 +210,12 @@
 
 
 
-	<br>
+        <br>
+        <br>
+        <hr>
 	<div class="well">
 		<i class="fa fa-book fa-fw"></i> 
-		This work was used in 
+		This work was first used in 
 		<a style="color:#990000;font-weight:700;" href='http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1' target="_blank">Blaylock et al. 2017</a>
 	</div>
 </div>
