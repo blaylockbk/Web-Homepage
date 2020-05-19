@@ -314,6 +314,7 @@ print '''<h3>Tap to download %s <b>%s</b> from %s:</h3>''' % (version, link2, Da
 # Make a button for each file that should be available
 # Define fxx buttons needed for each hour.
 #   HRRR    : runs every hour, 36 hr forecasts every 6 hours, 18 forecasts all others
+#                  every hour, 48 hr after May 26th 2020 (every 6 hours)
 #   HRRR-AK : runs every 3 hours, 36 hr forecasts every 6 hours, 18 forecasts all others
 #   HRRR-X  : runs every hour, 32 hr forecasts every hour
 
@@ -323,8 +324,11 @@ hour_fxx_buttons = {}
 
 if model == 'hrrr':
     for HOUR in range(24):
+        # After the HRRRv4 update, forecasts go out to 48 hours every 6 hours.
+        if HOUR in range(0,24,6) and DATE >= datetime(2020, 5, 26):
+            hour_fxx_buttons[HOUR] = range(49)
         # After the HRRRv3 update, forecasts go out to 36 hours every 6 hours.
-        if HOUR in range(0,24,6) and DATE >= datetime(2018, 7, 12):
+        elif HOUR in range(0,24,6) and DATE >= datetime(2018, 7, 12):
             hour_fxx_buttons[HOUR] = range(37)
         else:
             hour_fxx_buttons[HOUR] = range(19)
@@ -333,7 +337,11 @@ elif model == 'hrrrX':
         hour_fxx_buttons[HOUR] = range(33)
 elif model == 'hrrrak':
     for HOUR in range(0,24,3):
-        if HOUR in range(0,24,6):
+        # After the HRRRv4 update, forecasts go out to 48 hours every 6 hours.
+        if HOUR in range(0,24,6) and DATE >= datetime(2020, 5, 26):
+            hour_fxx_buttons[HOUR] = range(49)
+        # After the HRRRv3 update, forecasts go out to 36 hours every 6 hours.
+        elif HOUR in range(0,24,6) and DATE >= datetime(2018, 7, 12):
             hour_fxx_buttons[HOUR] = range(37)
         else:
             hour_fxx_buttons[HOUR] = range(19)
