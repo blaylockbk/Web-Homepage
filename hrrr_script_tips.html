@@ -142,42 +142,34 @@
             </div>
 
             <div id="tab2" class="tab-pane fade"> 
-                <br>            
-                <div class="panel panel-default">
+                <br>
+                <h4><b>cURL</b> download full file</h4>
+                <p><code>curl -O https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</code>
+                
+                    <hr>
+
+                <h4><b>cURL</b> download full file and rename</h4>
+                <p><code>curl -o hrrr20180101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</code>
+
+                <hr>
+
+                <h4><b>wget</b> download full file</h4>
+                <p><code>wget https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</code>
+
+                <hr>
+
+                <h4><b>cURL</b> download single variable</h4>
+                <p>If you know the byte range of the variable you want (found from the .idx file), you can retrieve that single variable. The .idx files share the same URL as the grib2, except with .idx appended to the end. For example, from the <a href="https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2.idx">.idx file for F00 valid at 0000 UTC 1 January 2018</a>, we see that the byte range for <kbd>TMP:2 m</kbd> starts at 34884036 and ends at 36136433.</p>
+                <p><code>curl -o 20180101_00zf00_2mTemp.grib2 --range 34884036-36136433 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</code>
+                <p>After inspecting the downloaded file, you will see cURL has returned a valid grib2 file with only the 2 meter temperature variable.</p>
+    
+                <br>
+                <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><b>cURL</b> download full file</h3>
-                    </div>
-                    <div class="panel-body" style="font-family:monospace">
-                        curl -O https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><b>cURL</b> download full file and rename</h3>
-                    </div>
-                    <div class="panel-body" style="font-family:monospace">
-                        curl -o hrrr20180101_00zf00.grib2 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><b>wget</b> download full file</h3>
-                    </div>
-                    <div class="panel-body" style="font-family:monospace">
-                        wget https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2
-                    </div>
-                </div>
-                <p>If you know the byte range of the variable you want (found from the .idx file), you can retrieve that single variable.
-                    The .idx files share the same URL as the grib2, except with .idx appended to the end.
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><b>cURL</b> download a single variable</h3>
+                        <h3 class="panel-title"><i class="fa fa-tint" aria-hidden="true"></i> Precipitation Variables</h3>
                     </div>
                     <div class="panel-body">
-                    <p>From the <a href="https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2.idx">.idx file</a>,
-                       we see that the byte range for TMP:2 m starts at 34884036 and ends at 36136433.</p>
-                    <p style="font-family:monospace">curl -o 20180101_00zf00_2mTemp.grib2 --range 34884036-36136433 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2
-                    <p>After inspecting the file, you will see cURL has returned a valid grib2 file with one variable.</p>
+                    Most precipitation fields for the model analyses (F00) are zero. This is because precipitation is not an instantaneous variable like temperature or humidity--precipitation rate and accumulation is a measure over a period. <b>When you download precipitation fields like PRATE or APCP, download F01 or greater because F00 is all zeros.</b>
                     </div>
                 </div>
                 <div class="panel panel-warning">

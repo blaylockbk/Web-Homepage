@@ -325,7 +325,7 @@ hour_fxx_buttons = {}
 if model == 'hrrr':
     for HOUR in range(24):
         # After the HRRRv4 update, forecasts go out to 48 hours every 6 hours.
-        if HOUR in range(0,24,6) and DATE >= datetime(2020, 5, 26):
+        if HOUR in range(0,24,6) and DATE >= datetime(2020, 7, 1):
             hour_fxx_buttons[HOUR] = range(49)
         # After the HRRRv3 update, forecasts go out to 36 hours every 6 hours.
         elif HOUR in range(0,24,6) and DATE >= datetime(2018, 7, 12):
@@ -338,11 +338,13 @@ elif model == 'hrrrX':
 elif model == 'hrrrak':
     for HOUR in range(0,24,3):
         # After the HRRRv4 update, forecasts go out to 48 hours every 6 hours.
-        if HOUR in range(0,24,6) and DATE >= datetime(2020, 5, 26):
+        ## When the upgrade takes place, change this date...for now, set to July 1
+        if HOUR in range(0,24,6) and DATE >= datetime(2020, 7, 1):
             hour_fxx_buttons[HOUR] = range(49)
         # After the HRRRv3 update, forecasts go out to 36 hours every 6 hours.
         elif HOUR in range(0,24,6) and DATE >= datetime(2018, 7, 12):
             hour_fxx_buttons[HOUR] = range(37)
+        # HRRRv1 and HRRRv2 only go out to F00-F18 for all hours.
         else:
             hour_fxx_buttons[HOUR] = range(19)
 
