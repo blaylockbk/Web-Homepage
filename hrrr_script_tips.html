@@ -106,9 +106,9 @@
                 <br><br>
                 <table style="max-width:800px" class="table table-hover" align='center'>
                     <tr><th>Model Name</th><th>Model Type</th><th>Model Cycle</th><th>Archived Forecasts</th></tr>
-                    <tr><td>Operational HRRR</td><td>hrrr</td><td>Hourly<br>range(0,23)</td><td>sfc: f00-f18<br>prs: f00</td></tr>
+                    <tr><td>Operational HRRR</td><td>hrrr</td><td>Hourly<br>range(0,23)</td><td>sfc: f00-f18 or f00-f36<br>prs: f00</td></tr>
                     <tr><td>Experimental HRRR</td><td>hrrrX</td><td>Hourly<br>range(0,23)</td><td>sfc: f00</td></tr>
-                    <tr><td>HRRR Alaska</td><td>hrrrak</td><td>Every 3 hours<br>range(0,23,3)</td><td>sfc: f00</td></tr>
+                    <tr><td>HRRR Alaska</td><td>hrrrak</td><td>Every 3 hours<br>range(0,23,3)</td><td>sfc: f00-18 or f00-f36</td></tr>
                 </table>
 
                 <div class="panel panel-default">
@@ -159,9 +159,15 @@
                 <hr>
 
                 <h4><b>cURL</b> download single variable</h4>
-                <p>If you know the byte range of the variable you want (found from the .idx file), you can retrieve that single variable. The .idx files share the same URL as the grib2, except with .idx appended to the end. For example, from the <a href="https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2.idx">.idx file for F00 valid at 0000 UTC 1 January 2018</a>, we see that the byte range for <kbd>TMP:2 m</kbd> starts at 34884036 and ends at 36136433.</p>
-                <p><code>curl -o 20180101_00zf00_2mTemp.grib2 --range 34884036-36136433 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</code>
-                <p>After inspecting the downloaded file, you will see cURL has returned a valid grib2 file with only the 2 meter temperature variable.</p>
+                <p>GRIB files are gridded binary. They are made of "messages" or "fields" stacked on top of each other. Each field contains the data for a variable at a specific level across the model domain. It is possible to download portions of the full GRIB2 file and what you get is a valid GRIB2 file.
+                
+                <p style="text-align: center;"><img src='images/GRIB2_file_cURL.png' width=50%>
+                
+                <p>If you know the byte range of the variable you want (found from the <code>.idx</code> file), you can retrieve that single variable. The <code>.idx</code>> files share the same URL as the grib2, except with <code>.idx</code>> appended to the end. For example, from the <a href="https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2.idx"><code>.idx</code> file for F00 valid at 0000 UTC 1 January 2018</a>, we see that the byte range for <kbd>TMP:2 m</kbd> starts at <code>34884036</code> and ends at <code>36136433</code>.</p>
+<pre>curl -o 20180101_00zf00_2mTemp.grib2 --range 34884036-36136433 https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20180101/hrrr.t00z.wrfsfcf00.grib2</pre>
+                <p>After inspecting the downloaded file, you will see cURL has downloaded a valid GRIB2 file with only the 2 meter temperature variable.</p>
+                <p>You could repeat the steps for different byte ranges to get different variables and append the output to a file</p>
+                <p><code>curl --range ######-###### <URL> >> outFile.grib2</code></p>
     
                 <br>
                 <div class="panel panel-success">
@@ -192,28 +198,66 @@
 
             <div id="tab3" class="tab-pane fade">
                 <br>
-                <p> I use Python version 3 with Anaconda. My environment can be found in my <a href='https://github.com/blaylockbk/pyBKB_v3'>pyBKB_v3</a> repository.
+                <p> I use Anaconda with Python version 3. My <a href='https://github.com/blaylockbk/pyBKB_v3/blob/master/environment.yml'><code>environment.yml</code></a> file can be found in my <a href='https://github.com/blaylockbk/pyBKB_v3'>pyBKB_v3</a> repository. If you are unfamiliar with conda environments, look at the <a href='https://github.com/blaylockbk/pyBKB_v3/blob/master/README.md'>README</a> for details on how to create my environment from the <code>environment.yml</code> file.
                 
                 <br><br>
-                <h4> What to do when you have a GRIB2 file</h4>
-                <p> When you have a GRIB2 file, there are two key packages that read GRIB2 files. Both can be downloaded via `conda-forge`.
-                    <ol>
-                        <li><b>pygrib</b>: This is what I started to learn and continue to use.
-                                           This package is <i>not</i> available on Windows machines.
-                                           (<a href='https://github.com/jswhit/pygrib'>source</a>)</li>
-                        <li><b>cfgrib</b>: Fairly new and works well with xarray.
-                                           Version 0.9.7 and greater can read HRRR files.
-                                           This package does work on Windows machines.
-                                           (<a href='https://github.com/ecmwf/cfgrib'>source</a>)</li>
-                    </ol>
 
-                <br>
-                <h4> How to retrieve HRRR files (or other objects) from the Pando archive.</h4>
-                <br>
-                
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">List and download Pando objects with <span style='font-family:monospace'>s3fs</span></h3>
+                        <h3 class="panel-title">How to download HRRR GRIB2 files</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>If you just want to download a few files, the easiest way is with the <a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi'> web download interface</a> which makes downloading files as easy as clicking a button. 
+                        
+                        <p>Most users, however, need to download a bunch of HRRR files. You will need to write a script for that. The most simple way to download a file from Pando is with <code>urllib.request</code>. Writing a script is as simple as changing the URL to get the files you want.
+<pre>
+import urllib.request
+download_this = 'https://pando-rgw01.chpc.utah.edu/hrrr/sfc/20200624/hrrr.t01z.wrfsfcf17.grib2'
+save_as = 'my_file.grib2'
+urllib.request.urlretrieve(download_this, save_as)</pre>
+                        
+                        <p>I made this Jupyter Notebook for you. It demonstrates how to use my <code>download_HRRR</code> function to download many files from the Pando (or NOMADS) HRRR archive. All you need to give the function is a list of datetimes and forecast hours.
+                        <br><br>
+                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/demo/demo_download_hrrr_archive.ipynb'><i class="fab fa-github"></i> Jupyter Notebook </a>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">How to download select variables from a HRRR GRIB2 file</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Full HRRR files are very large (~150 MB) and that adds up quick if you need a lot of days and forecasts. Often, you only need some of the data in the file. Remember that GRIB2 data is based on messages made up of binary concatenated together. It is possible to download only the parts of the file for specific variables or "fields" that you want. 
+
+                        <p style="text-align: center;"><img src='images/GRIB2_file_cURL.png' width=50%>
+                        
+                        <p>You will save a lot of disk space and improve download time if you download just the variables you need. The size of a single HRRR grid is about 1 MB.
+
+                        <p>The challenge to downloading parts of the full GRIB2 file finding the byte range for a variable you want. The beginning byte of each variable is given in the index, or <code>.idx</code>, file.
+                        
+                        <p>Partial downloads with cURL require a known byte range.
+                        The grbi2.idx (
+                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_SFC.pdf">
+                        sfc example</a>
+                        ,   
+                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_PRS.pdf">
+                        prs example</a>) files are metadata text files that contain the beginning byte of each field in the file. <b>Each grib2 file has a unique index file.</b> To find the byte range for a variable, the above function searches for the line that
+                        contains the specified variable abbreviation and level.
+                        <p style='text-align: center;'><img src='./images/HRRR_idx_description.png' width=75%  title="grib2.idx file example">
+
+                        <p> I created a Jupyter Notebook to show you how I do this and provide a function to download a set of variables from a HRRR GRIB2 file
+
+                        <br><br>
+                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/demo/demo_download_hrrr_archive_subset.ipynb'><i class="fab fa-github"></i> Jupyter Notebook </a>
+                      
+                    </div>
+                </div>
+<p>A quick note on multi-threading your downloads. It probably isn't worth it. The archive bandwidth is limited, and will cause a bottleneck if you try downloading too much (and that makes it slow for us to put new data on the archive). I tried using multiprocessing and multi-threading and found that the download speed saturates around 3 or more threads. 
+<p style='text-align: center;'><img src="./images/fast_download.png" width="450px">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List and download Pando objects with <code>s3fs</code></h3>
                     </div>
                     <div class="panel-body">
                         You can access the Pando S3 "hrrr" buckets directly with <span style='font-family:monospace;'>s3fs</span>.
@@ -232,94 +276,38 @@
                             fs.get(files[0], files[0].split('/')[-1])
                         </div>
 
-                        This is a good method to use if you don't know the file names on Pando (such as if you are looking at GOES files), 
-                        but the HRRR file names are very predictable. The following examples show how to download the files
-                        with the straightforward <span style='font-family:monospace;'>urllib.request</span> and how to download a subset of a files
+                        <p>This is a good method to use if you don't know the file names on Pando (such as if you are looking at GOES files), but the HRRR file names are very predictable. The following examples show how to download the files with the straightforward <span style='font-family:monospace;'>urllib.request</span> and how to download a subset of a files
                         (single variable grid) by exploiting the byte range feature of cURL.
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Download full grib2 files</h3>
-                    </div>
-                    <div class="panel-body">
-                        Download the full grib2 file from the Pando archive.
-                        'sfc' files are about 150 MB each, and 'prs' files are
-                        about 320 MB each.
-                        <script src="https://gist.github.com/blaylockbk/78d4dd9c159e8974f288b0a57f68c266.js"></script>
-                    </div>
-                </div>
+                <hr>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Download single HRRR variable from file</h3>
+                        <h3 class="panel-title">How to read GRIB2 data with Python</h3>
                     </div>
                     <div class="panel-body">
-                        It is more efficient if you only download the variables
-                        you are interested in. While a full sfc file is about
-                        150 MB, a single variable field is about 1 MB.
-                        You can perform partial downloads of the grib2 files to 
-                        extract the variables you want with cURL.
-                        <br><br>
-                        Main function: <b>download_HRRR_variable_from_pando()</b>
-                        <script src="https://gist.github.com/blaylockbk/39d2c5244b988706d9c51dd9fd514650.js"></script>
-                                       
-                        Partial downloads with cURL require a known byte range.
-                        The grbi2.idx (
-                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_SFC.pdf">
-                        sfc example</a>
-                        ,   
-                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_PRS.pdf">
-                        prs example</a>
-                        ) files are metadata text files that 
-                        contain the begining byte of each
-                        field in the file. <b>Each grib2 file has a unique
-                        metadata file.</b> To find the byte range for a
-                        variable, the above function searches for the line that
-                        contains the specified variable abbreviation and level.
-                        <center><img src='./images/HRRR_idx_description.png' width=75%  title="grib2.idx file example"></center>
-
-                        Example: Download single variable for single day
-                        <script src="https://gist.github.com/blaylockbk/57af6bae72b3f41199f2ad3583bd37a4.js"></script>
-
-                        Example: Download single variable for date range 
-                        <script src="https://gist.github.com/blaylockbk/d1978e7865490d362c9c96e1e3d4348e.js"></script>
-
-                        Example: Download multiple variables for date range, each variable in it's own file.
-                        <script src="https://gist.github.com/blaylockbk/8ff6174ec9b00c741f29f5fe76ba6a6b.js"></script>
-                      
-                        Example: Multithreading for fast downloads.
-                        <script src="https://gist.github.com/blaylockbk/4632bfec251a85dc10dd76826af4c662.js"></script>
-                        I tested the time it takes to download using 
-                        a sequential download (one at a time), multiprocessing,
-                        and multithreading. Multithreading is the correct way to 
-                        do this. The download time saturates after about 8 threads.
-                        <center><img src="./images/fast_download.png" width="450px"></center>
-
-                        <br>
-                        <p>Example: Downloading adjacent variables.
-                        <p>You may be interested in retrieving more than one variable
-                        at a time, and keep it all in one grib2 file.
-                        This can be done by requesting a byte range that spans
-                        more than one variable. This method works if the variables
-                        you are interested in downloading are adjacent to each
-                        other in the grib2 file. For example, if you want the 
-                        10 meter U and V wind components, you are in luck
-                        because they are adjacent variables. In the main function,
-                        set the more_vars argument to the number of additional 
-                        files to download, setting variable = to the first 
-                        field you want to download.
-                        <p>For example: If you want all the variables at 500 mb, 
-                        set <b>variable='HGT:500 mb'</b> and set <b>more_vars=4</b>,
-                        which will download
-                        'HGT:500 mb', 'TMP:500 mb', 'DPT:500 mb', 'UGRD:500 mb', and 'VGRD:500 mb'
-                        in the same grib2 file.
-                        <script src="https://gist.github.com/blaylockbk/9ef5f3da833ce6fbf5be9334c3cf6b3d.js"></script>
-
+                        <p> When you have a GRIB2 file, there are two key packages that read GRIB2 files. Both can be installed via conda-forge.
+                    <ol>
+                        <li><b>pygrib</b> is what I started to learn and still use sometimes.
+                            | <a href="https://youtu.be/yLoudFv3hAY"><i class="fab fa-youtube"></i> Video Demo</a>
+                            | <a href='https://jswhit.github.io/pygrib/docs/index.html'><i class="fas fa-book"></i> Documentation</a>.</li>
+                        <li><b>cfgrib</b> works well reading GRIB2 data as xarray datasets. Make sure you have the latest version (>0.9.8)
+                            | <a href='https://github.com/ecmwf/cfgrib'><i class="fas fa-book"></i> Documentation</a></li>
+                            <h4>Getting Started with <code>cfgrib</code></h4>
+                            <div class='well'>
+                                <p><code>import cfgrib
+                                <p>a = cfgrib.open_datasets('hrrr.t00z.wrfsfcf08.grib2')</code>
+                            </div>    
+                            
+                            <p>The loaded data is a list of xarray dataset objects. Each item in
+                                the list is an xarray dataset for a different level. For example,
+                                entire atmosphere, height above ground, isobaric level, surface, etc.
+                    </ol>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
@@ -344,33 +332,16 @@
                     <div class="panel-body">
                         If you are patient enough to read all that, and have scrolled
                         down here, you are in luck! This is a link to the python functions
-                        I use to download the HRRR data. My method is to 
-                        download a single variable from a GRIB2 file that I need and
-                        store it on my local drive. Then I retrieve the data I want
-                        with <i>pygrib</i> and remove the file when I got what I needed.
-                        
-                        <big><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">
-                        <i class="fab fa-github"></i> Code for HRRR_Pando Functions</a></big>
+                        I use to download the HRRR data. Albet, you could probably write something more effective for your work that than trying to hack my code. Still, it might give you some ideas...
+                        <br><br>
+                        <a class='btn btn-primary' href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">
+                        <i class="fab fa-github"></i> Brian's <code>HRRR_Pando</code> functions (circa 2018)</a>
                     </div>
                 </div>
 
                 <hr>
 
-                <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Getting started with <b>cfgrib</b></h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class='well'>
-                                <p><code>import cfgrib
-                                <p>a = cfgrib.open_datasets('hrrr.t00z.wrfsfcf08.grib2')</code>
-                            </div>    
-                            
-                            <p>The loaded data is a list of xarray dataset objects. Each item in
-                                the list is an xarray dataset for a different level. For example,
-                                entire atmosphere, height above ground, isobaric level, surface, etc.
-                        </div>
-                </div>
+                
             </div>
 
             <div id="tab4" class="tab-pane fade">
