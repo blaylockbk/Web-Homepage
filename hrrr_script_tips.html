@@ -200,7 +200,16 @@
                 <br>
                 <p> I use Anaconda with Python version 3. My <a href='https://github.com/blaylockbk/pyBKB_v3/blob/master/environment.yml'><code>environment.yml</code></a> file can be found in my <a href='https://github.com/blaylockbk/pyBKB_v3'>pyBKB_v3</a> repository. If you are unfamiliar with conda environments, look at the <a href='https://github.com/blaylockbk/pyBKB_v3/blob/master/README.md'>README</a> for details on how to create my environment from the <code>environment.yml</code> file.
                 
+                <p>Check out my HRRR archive Download repository for examples and functions I use to <b>download many files from the archive and specify the variables I want to download</b>. 
+                
                 <br><br>
+
+                <a class='btn btn-lg btn-primary' href='https://github.com/blaylockbk/HRRR_archive_download'><i class="fab fa-github"></i> Download Examples</a>
+
+                <br><br>
+
+                Below is a summary of the examples.
+                <hr>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -218,7 +227,7 @@ urllib.request.urlretrieve(download_this, save_as)</pre>
                         
                         <p>I made this Jupyter Notebook for you. It demonstrates how to use my <code>download_HRRR</code> function to download many files from the Pando (or NOMADS) HRRR archive. All you need to give the function is a list of datetimes and forecast hours.
                         <br><br>
-                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/demo/demo_download_hrrr_archive.ipynb'><i class="fab fa-github"></i> Jupyter Notebook </a>
+                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/HRRR_archive_download/blob/master/demo_download_hrrr_archive_part1.ipynb'><i class="fab fa-github"></i> Jupyter Notebook: Part 1</a>
                     </div>
                 </div>
 
@@ -245,43 +254,15 @@ urllib.request.urlretrieve(download_this, save_as)</pre>
                         contains the specified variable abbreviation and level.
                         <p style='text-align: center;'><img src='./images/HRRR_idx_description.png' width=75%  title="grib2.idx file example">
 
-                        <p> I created a Jupyter Notebook to show you how I do this and provide a function to download a set of variables from a HRRR GRIB2 file
+                        <p> My Jupyter Notebook Part 3 shows you how I do this and provide a function to download a set of variables from a HRRR GRIB2 file. Part 3 combines the functions for downloading many files and downloading subsets.
 
                         <br><br>
-                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/demo/demo_download_hrrr_archive_subset.ipynb'><i class="fab fa-github"></i> Jupyter Notebook </a>
+                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/HRRR_archive_download/blob/master/demo_download_hrrr_archive_part2.ipynb'><i class="fab fa-github"></i> Jupyter Notebook: Part 2</a>
+
+                        <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/HRRR_archive_download/blob/master/demo_download_hrrr_archive_part3.ipynb'><i class="fab fa-github"></i> Jupyter Notebook: Part 3</a>
                       
                     </div>
                 </div>
-<p>A quick note on multi-threading your downloads. It probably isn't worth it. The archive bandwidth is limited, and will cause a bottleneck if you try downloading too much (and that makes it slow for us to put new data on the archive). I tried using multiprocessing and multi-threading and found that the download speed saturates around 3 or more threads. 
-<p style='text-align: center;'><img src="./images/fast_download.png" width="450px">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List and download Pando objects with <code>s3fs</code></h3>
-                    </div>
-                    <div class="panel-body">
-                        You can access the Pando S3 "hrrr" buckets directly with <span style='font-family:monospace;'>s3fs</span>.
-                        <b><a href='https://s3fs.readthedocs.io/en/latest/'>Documentation</a></b>. 
-                        The secret sauce is to set the correct <span style='font-family:monospace;'>endpoint_url</span>.
-                        <div class='well' style='font-family:monospace;font-size:12px'>
-                            import s3fs<br>
-                            # Access Pando<br>
-                            fs = s3fs.S3FileSystem(anon=True,  client_kwargs={'endpoint_url':"https://pando-rgw01.chpc.utah.edu/"})<br>
-                            <br>
-                            # List objects in a path<br>
-                            fs.ls('hrrr/sfc/20190101/')<br>
-                            <br>
-                            # Download the first file and rename it the same name (without the directory structure)<br>
-                            files = fs.ls('hrrr/sfc/20190101/')<br>
-                            fs.get(files[0], files[0].split('/')[-1])
-                        </div>
-
-                        <p>This is a good method to use if you don't know the file names on Pando (such as if you are looking at GOES files), but the HRRR file names are very predictable. The following examples show how to download the files with the straightforward <span style='font-family:monospace;'>urllib.request</span> and how to download a subset of a files
-                        (single variable grid) by exploiting the byte range feature of cURL.
-                    </div>
-                </div>
-
-                <hr>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -305,41 +286,42 @@ urllib.request.urlretrieve(download_this, save_as)</pre>
                                 the list is an xarray dataset for a different level. For example,
                                 entire atmosphere, height above ground, isobaric level, surface, etc.
                     </ol>
+
+                    I go over this, and give you a useful function that download and reads a HRRR file in my Jupyter Notebook #4
+
+                    <br><br>
+                    <a class='btn btn-lg btn-success' href='https://github.com/blaylockbk/HRRR_archive_download/blob/master/demo_download_hrrr_archive_part4.ipynb'><i class="fab fa-github"></i> Jupyter Notebook: Part 4</a>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Plot a single variable with Python and pluck a single point using cURL</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>This example does two things:
-                        <p> 1) Gets a variable from the HRRR file (2-meter temperature),
-                        plots the values on a graph (you can do a basemap yourself).
-                        <p> 2) Plucks out a single value at KSLC (Salt Lake City) for a time range
-                        and creates a timeseries plot. Creating the time series utilizes 
-                        multiprocessing to speed up the download process.
-                        <script src="https://gist.github.com/blaylockbk/47357c471ceb95d7331a9a747d327b59.js"></script>
-                        <img src="https://cloud.githubusercontent.com/assets/6249613/23960742/6aa2f812-096e-11e7-9a78-2591c794f58c.png" width=45% align=center>
-                        <img src="https://cloud.githubusercontent.com/assets/6249613/23965054/5be4d738-097c-11e7-952f-eb34eb8fc26a.png" width=45% align=center>
-                    </div>
-                </div>
-                
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Useful HRRR S3 Download functions</h3>
-                    </div>
-                    <div class="panel-body">
-                        If you are patient enough to read all that, and have scrolled
-                        down here, you are in luck! This is a link to the python functions
-                        I use to download the HRRR data. Albet, you could probably write something more effective for your work that than trying to hack my code. Still, it might give you some ideas...
-                        <br><br>
-                        <a class='btn btn-primary' href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">
-                        <i class="fab fa-github"></i> Brian's <code>HRRR_Pando</code> functions (circa 2018)</a>
-                    </div>
-                </div>
+<p>A quick note on multi-threading your downloads. It probably isn't worth it. The archive bandwidth is limited, and will cause a bottleneck if you try downloading too much (and that makes it slow for us to put new data on the archive). I tried using multiprocessing and multi-threading and found that the download speed saturates around 3 or more threads. 
+<p style='text-align: center;'><img src="./images/fast_download.png" width="450px">
 
-                <hr>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List and download Pando objects with <code>s3fs</code></h3>
+                    </div>
+                    <div class="panel-body">
+                        It is possible to access the Pando S3 "hrrr" buckets directly with <span style='font-family:monospace;'>s3fs</span>.
+                        <b><a href='https://s3fs.readthedocs.io/en/latest/'>Documentation</a></b>. 
+                        The secret sauce is to set the correct <span style='font-family:monospace;'>endpoint_url</span>.
+                        <div class='well' style='font-family:monospace;font-size:12px'>
+                            import s3fs<br>
+                            # Access Pando<br>
+                            fs = s3fs.S3FileSystem(anon=True,  client_kwargs={'endpoint_url':"https://pando-rgw01.chpc.utah.edu/"})<br>
+                            <br>
+                            # List objects in a path<br>
+                            fs.ls('hrrr/sfc/20190101/')<br>
+                            <br>
+                            # Download the first file and rename it the same name (without the directory structure)<br>
+                            files = fs.ls('hrrr/sfc/20190101/')<br>
+                            fs.get(files[0], files[0].split('/')[-1])
+                        </div>
+
+                        <p>This is a good method to use if you don't know the file names on Pando (such as if you are looking at GOES files), but the HRRR file names are very predictable. The following examples show how to download the files with the straightforward <span style='font-family:monospace;'>urllib.request</span> and how to download a subset of a files
+                        (single variable grid) by exploiting the byte range feature of cURL.
+                    </div>
+                </div>
 
                 
             </div>
