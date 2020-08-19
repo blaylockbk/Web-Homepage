@@ -330,10 +330,20 @@ urllib.request.urlretrieve(download_this, save_as)</pre>
             <div id="tab4" class="tab-pane fade">
                 <br>
                 <p>You can use <a href='https://rclone.org/'>rclone</a> to copy files from Pando to your own disk.
-                <p>When you configure rclone, select 's3' as the type of storage
-                    and then set everything else blank except for endpoint, which 
-                    should be `https://pando-rgw01.chpc.utah.edu`.
-                    <br>
+                
+                <p>Configure rclone with the following settings (this should be in your <code>.rclone.conf</code> file)...
+<pre>
+[publicPando]
+type = s3
+endpoint = https://pando-rgw01.chpc.utah.edu
+</pre>
+                <p>Then you can list buckets and files with
+<pre>
+rclone lsd publicPando:hrrr/sfc           # list a directory
+rclone ls publicPando:hrrr/sfc/20190101/  # list all files in a directory
+</pre>             And rclone has ability to copy files from Pando to your home directory.
+
+
                     <br>
 
             </div>            
