@@ -292,19 +292,19 @@
                     microphysics, improved MYNN PBL scheme, updated land surface model with 15 second MODIS data,
                     refined roughness lengths for certain land use types, and additional improvements in assimilation
                     methods including lightning, radar radial velocity, and TAMDAR.
-                <p><b>HRRRv4</b> has a planned implementation for May 26, 2020.
+                <p><b>HRRRv4</b> has a planned implementation for Dec 2, 2020.
                     This version will make more use of ensemble
                     modeling methods and many improvements to model physics.
                     Check out the <a href="https://rapidrefresh.noaa.gov/hrrr/">Official HRRR Webpage</a>
                     for more information. Key upgrades include:
                 <ul>
-                    <li>Forecasts for the 00/06/12/18z are made out to F48, but we don't
-                        archive those (too much disk space).</li>
+                    <li>Forecasts for the 00/06/12/18z are made out to 48 hours</li>
                     <li>MYNN PBL update for better sub-grid clouds</li>
                     <li>Aerosols sources/sinks</li>
                     <li>Improved Land surface</li>
                     <li>Assimilate GOES-16 Radiances and Motion Vectors and VIIRS/MODIS fire radiative power</li>
                     <li>Ensemble 3km data assimilation</li>
+                    <li>Addition of smoke forecast variables (more information on these are available via <a href="https://rapidrefresh.noaa.gov/hrrr/HRRRsmoke/HRRR_Smoke_IMET_Fire_QuickGuide_Aug14.pdf" target="_blank">this guide</a>)</li>
                 </ul>
 
 
@@ -454,19 +454,21 @@
 
                 <h3>Where else can I find archived HRRR data?</h3>
                 <ul>
-                    <li><a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">
+                    <li><a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/", target='_blank'>
                             NOMADS</a>: Last two days (main source)
-                    <li><a href="https://console.cloud.google.com/storage/browser/high-resolution-rapid-refresh">
-                        <b><i class="fab fa-google"></i> Google Cloud Platform</b></a>: 2014-2015, 2018-Present. Wow! When did Google do this?
-                        They have all <code>sfc</code>, <code>prs</code>, <code>nat</code>, and <code>subh</code> fields
-                        for the Alaska and CONUS domains. Unfortunately, the .idx files are not available until
-                        recently, but hey, they have it all!</li>
-                    <li><a href="https://registry.opendata.aws/noaa-hrrr-pds/">
+                    <li><a href="https://console.cloud.google.com/marketplace/product/noaa-public/hrrr", target='_blank'>
+                        <b><i class="fab fa-google"></i> Google Cloud Platform</b></a>: 
+                        ✨ <b>MOST COMPLETE.</b> 2014-Present. Wow! When did NOAA start this HRRR archive on Google?
+                        They have all <code>sfc</code>, <code>prs</code>, <code>nat</code>, <code>subh</code> and other fields
+                        for the Alaska and CONUS domains that were available. 
+                        Unfortunately, the .idx files are not available for dates earlier than around Oct. 2018, 
+                        but hey, they have it all!</li>
+                    <li><a href="https://registry.opendata.aws/noaa-hrrr-pds/", target='_blank'>
                         <b><i class="fab fa-aws"></i> Amason AWS S3</b></a>: A rolling nine-day archive, each
                         variable and forecast hour separated into an object.</li>
-                    <li><a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/conus/wrftwo/catalog.html">
+                    <li><a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/conus/wrftwo/catalog.html", target='_blank'>
                         ESRL</a>: 2013-2017, only F01 for 80-m winds and downward solar radiation</li>
-                    <li><a href="https://www.ready.noaa.gov/data/archives/hrrr/README.TXT">
+                    <li><a href="https://www.ready.noaa.gov/data/archives/hrrr/README.TXT", target='_blank'>
                         NOAA ARL</a>: June 2015 to present, selected variables and levels in ARL format for f01</li>
                 </ul>
 

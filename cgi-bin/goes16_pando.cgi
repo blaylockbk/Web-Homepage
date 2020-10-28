@@ -118,9 +118,9 @@ print'''
 
     <script src='./js/pando_status.js'></script>
     
-    <div class='alert alert-warning'>
-    GOES-16 was moved to its east position on December 14, 2017.
-    <a class='alert-link' href="http://www.goes-r.gov/users/transitiontToOperations.html">More Info</a>.
+    <div class='alert alert-danger'>
+    <b>Notice:</b> Collection of GOES16 data for this resource was terminated on October 14, 2020.  Data should be available via the 
+    <a class='alert-link' href="https://registry.opendata.aws/noaa-goes/">AWS Open Data repository</a>.
     </div>
 
     <hr>
@@ -135,7 +135,7 @@ print '''
     <div class="form-group">
         <label class="control-label col-md-2" for="date">Date:</label>
         <div class="col-md-4">          
-            <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-07-11" max="'''+max_date+'''">
+            <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2018-07-01" max="'''+max_date+'''">
         </div>
     </div>
 <!--- (date)----------------------------->
