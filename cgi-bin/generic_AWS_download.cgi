@@ -35,8 +35,8 @@ sets['noaa-nexrad-level2'] = {'name': 'NEXRAD Level2',
                                'docs': 'https://registry.opendata.aws/noaa-nexrad/'}
 sets['noaa-gfs-pds'] = {'name': 'Global Forecast System (GFS)',
                         'docs': 'https://registry.opendata.aws/noaa-gfs-pds/'}
-sets['noaa-hrrr-pds'] = {'name': 'High-Resolution Rapid Refresh (HRRR)',
-                         'docs': 'https://registry.opendata.aws/noaa-hrrr-pds/'}
+sets['noaa-hrrr-bdp-pds'] = {'name': 'High-Resolution Rapid Refresh (HRRR)',
+                         'docs': 'https://registry.opendata.aws/noaa-hrrr-bdp-pds/'}
 sets['noaa-gefs-pds'] = {'name': 'Global Ensemble Forecast System',
                          'docs': 'https://registry.opendata.aws/noaa-gefs/'}                       
 sets['noaa-nwm-pds']= {'name': 'National Water Model Short-Range Forecasts',
@@ -128,7 +128,7 @@ print '''
     <label class="control-label col-sm-2" for="pwd">Resources:</label>
     <div class="col-sm-10"> 
       <a class='btn btn-default' href='%s' target=_blank>Documentation</a>''' % (sets[dataset]['docs'])
-if dataset == 'noaa-hrrr-pds':
+if dataset == 'noaa-hrrr-bdp-pds':
     print HRRR_pando_btn
 if dataset in ['noaa-goes16', 'noaa-goes17']:
     print GOES_alt_btn

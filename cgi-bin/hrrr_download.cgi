@@ -293,7 +293,9 @@ flist = rclone_out.split('\n')
 
 # Model version dates
 if model == 'hrrr':
-    if DATE >= datetime(2018,7,12):
+    if DATE >= datetime(2020,12,2):
+        version = 'HRRRv4'
+    elif DATE >= datetime(2018,7,12):
         version = 'HRRRv3'
     elif DATE >= datetime(2016,8,23):
         version = 'HRRRv2'
