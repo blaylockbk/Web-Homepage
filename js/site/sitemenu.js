@@ -171,26 +171,22 @@ document.write('\
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Code<span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v3</li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/tree/master/BB_MesoWest">BB_MesoWest</a></li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_HRRR/HRRR_Pando.py">BB_HRRR/HRRR_Pando</a></li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v3/tree/master/BB_GOES">BB_GOES</a></li>\
-                                <ul>\
-                                    <li><a href="https://github.com/blaylockbk/pyBKB_v3/blob/master/BB_GOES/mapping_GOES16_TrueColor.ipynb">GOES16 True Color RGB</a>\
-                                </ul>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v3">all others</a></li>\
+                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> Packages</li>\
+                            <li><a href="https://github.com/blaylockbk/HRRR_archive_download">HRRR-B: download HRRR data</a></li>\
+                            <li><a href="https://github.com/blaylockbk/goes2go">GOES-2-Go: download GOES data</a></li>\
+                            <li><a href="https://github.com/blaylockbk/SynopticPy">SynopticPy: access Synoptic API</a></li>\
+                            <li><a href="https://github.com/blaylockbk/Carpenter_Workshop">Workshop: some tools I use</a></li>\
                             <hr>\
-                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v2</li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v2/tree/master/BB_WRF">BB_WRF</a></li>\
-                            <li><a href="https://github.com/blaylockbk/pyBKB_v2">all others</a></li>\
+                            <li class="dropdown-header"><i class="fab fa-github fa-fw" ></i> PyBKB_v3</li>\
+                            <li><a href="https://github.com/blaylockbk/pyBKB_v3">Old stuff, but still useful</a></li>\
                             <hr>\
                             <li class="dropdown-header"><i class="fa fa-code fa-fw" ></i> Other</li>\
                             <li><a href="https://github.com/blaylockbk/CHPC-Settings">CHPC Settings</a></li>\
                             <li><a href="https://github.com/blaylockbk/HorelS3-Archive">HRRR Daily Download</a></li>\
                             <li><a href="https://github.com/blaylockbk/UofU_Camera_Display">Camera Display</a></li>\
                             <li><a href="https://github.com/blaylockbk/Web-Homepage/blob/master/photo_viewer/photo_viewer.php">Image Viewer</a></li>\
-                            <li><a href="https://github.com/blaylockbk/oper">Operational Scripts</a></li>\
-                            <li><a href="https://github.com/blaylockbk/Web-Homepage">Webpage</a></li>\
+                            <li><a href="https://github.com/blaylockbk/oper">Operational Scripts (defunct)</a></li>\
+                            <li><a href="https://github.com/blaylockbk/Web-Homepage">This Webpage</a></li>\
                         </ul>\
                     </li>\
 \
