@@ -119,7 +119,8 @@ print'''
     <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fa fa-database"></i> GOES on Pando</a>
     <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
     </div>
-    <a class='btn btn-warning' href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
+    <a class='btn btn-warning' target=_blank href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
+    <a class='btn btn-warning' target=_blank href="https://geosphere.ssec.wisc.edu/"><i class="fas fa-external-link-alt"></i> SSEC Geosphere</a>
     </center>
 <br>
 
