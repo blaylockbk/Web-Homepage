@@ -18,7 +18,7 @@ f = open('hrrr_sfc_table.html', 'w')
 f.write('''
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Download Page</title>
 </head>
 

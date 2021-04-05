@@ -41,7 +41,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Register</title>
 
 
@@ -107,15 +107,15 @@ print '''
 
     <div class="form-group">        
       <div class="">
-        <button type="submit" class="btn btn-success">Submit</button> <small>By clicking "Submit" you agree to the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank">Best Practices</a></small>
+        <button type="submit" class="btn btn-success">Submit</button> <small>By clicking "Submit" you agree to the <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" target="_blank">Best Practices</a></small>
       </div>
     </div>
-    <input type="hidden" name="_next" value="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" />
+    <input type="hidden" name="_next" value="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" />
     <input type="hidden" name="_subject" value="New HRRR Download Request" />
   </form>
 </div>
 <div align="right" style="padding-right:10px">
-  <small><small><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">I already registered</a></small></small>
+  <small><small><a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">I already registered</a></small></small>
 </div>
 <br>
 

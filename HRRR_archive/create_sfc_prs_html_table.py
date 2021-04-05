@@ -53,7 +53,7 @@ f = open('/uufs/chpc.utah.edu/common/home/u0553130/public_html/Brian_Blaylock/HR
 f.write('''
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR GRIB2 Tables</title>
 </head>
 
@@ -65,9 +65,9 @@ f.write('''
       <h1 align="center">HRRR Grib2 Tables</h1>
 <br>
 <center>
-<a class="btn btn-primary" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f00-f01.html">sfc f00-f01</a>
-<a class="btn btn-primary" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f02-f18.html">sfc f02-f18</a>
-<a class="btn btn-primary active" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_prs_table_f00-f01.html">prs f00-f01</a>
+<a class="btn btn-primary" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f00-f01.html">sfc f00-f01</a>
+<a class="btn btn-primary" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f02-f18.html">sfc f02-f18</a>
+<a class="btn btn-primary active" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_prs_table_f00-f01.html">prs f00-f01</a>
 </center>
 <br>
 <table class='table table-hover sortable'>

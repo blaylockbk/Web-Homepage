@@ -169,7 +169,7 @@ function test_input($data) {
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 style="font-size:22px;">KSL Chopper Plots</h4><hr>
             <h5>
-			<img align=right style="width:100px;" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/ksl_logo.png">
+			<img align=right style="width:100px;" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/ksl_logo.png">
             <b>Instructions:</b> Select the year, day, month, and image type for 
 			which you wish to display all the available images. Then click the "Get Images" button.
 			If no images appear then try a different date or image type.
@@ -275,23 +275,23 @@ echo "<br>";
             echo '<p>'.(count($dirDay)/3).' Flights on '.$datePHP->format('d M Y').'<br>';
             foreach (array_unique($dirDay) as $datei){
                 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_ozone.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_ozone.png" alt="no ozone map"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_ozone.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_ozone.png" alt="no ozone map"><br><br>';
 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_ozone-theta.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_ozone-theta.png" alt="no ozone scatter"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_ozone-theta.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_ozone-theta.png" alt="no ozone scatter"><br><br>';
                 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_ozone-elevation.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_ozone-elevation.png" alt="no ozone timeseries"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_ozone-elevation.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_ozone-elevation.png" alt="no ozone timeseries"><br><br>';
                 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_pm25.png" alt="no pm25 map"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_map_pm25.png" alt="no pm25 map"><br><br>';
 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_pm25-theta.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_pm25-theta.png" alt="no pm25 scatter"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_pm25-theta.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_scatter_pm25-theta.png" alt="no pm25 scatter"><br><br>';
                 
-                echo '<a target="_blank"href="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_pm25-elevation.png">'.$datei.'</a><br>';
-                echo '<br><img class="style1" width="60%" src="http://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_pm25-elevation.png" alt="no pm25 timeseries"><br><br>';
+                echo '<a target="_blank"href="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_pm25-elevation.png">'.$datei.'</a><br>';
+                echo '<br><img class="style1" width="60%" src="https://home.chpc.utah.edu/~u0553130/oper/KSL_daily/'.$datei.'_KSL5_timeseries_pm25-elevation.png" alt="no pm25 timeseries"><br><br>';
                 echo '<hr size=10 noshade><br>';
             }
                            

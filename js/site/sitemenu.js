@@ -97,20 +97,20 @@ document.write('\
                 <!--KBKB Logo-->\
                 <a href="./home.html">\
 \
-                    <img style="width:50px;height:50px;vertical-align:middle" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/WeatherBalloon.gif" align="left">\
+                    <img style="width:50px;height:50px;vertical-align:middle" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/WeatherBalloon.gif" align="left">\
 \
                 </a>\
 \
             </div>\
             <div class="collapse navbar-collapse" id="myNavbar">\
                 <ul class="nav navbar-nav">\
-                    <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html">Home</a></li>\
+                    <li><a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html">Home</a></li>\
 \
                     <li class="dropdown">\
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Research <span class="caret"></span></a>\
                         <ul class="dropdown-menu">\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" ></i> PhD</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" ></i> MS</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/PhD.html "><i class="fa fa-graduation-cap fa-fw" ></i> PhD</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/MS.html "><i class="fa fa-graduation-cap fa-fw" ></i> MS</a></li>\
                             <hr>\
                             <li class="dropdown-header">External Links</li>\
                             <li><a href="http://www.firescience.gov/" target="research "><i class="fab fa-gripfire fa-fw"></i> JFSP</a></li>\
@@ -119,7 +119,7 @@ document.write('\
                             <li><a href="http://esrl.noaa.gov/csd/projects/songnex/ " target="research "><i class="fa fa-cloud fa-fw" ></i> SONGNEX</a></li>\
                             <li><a href="http://www.inscc.utah.edu/~u0198116/uintahbasin.html " target="research "><i class="fa fa-cloud fa-fw" ></i> UBOS</a></li>\
                             <li><a href="http://www.nserc.und.edu/sarp/sarp-2009-2013/2013/sarp-2013-student-presentation-videos/la-air-quality-group/meteorological-influences-on-surface-ozone-in-the-los-angeles-basin " target="research "><i class="fa fa-plane fa-fw" ></i> SARP </a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" ></i> MATERHORN</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~hoch/MATERHORN_experiment.html " target="research "><i class="fa fa-cloud fa-fw" ></i> MATERHORN</a></li>\
                         </ul>\
                     </li>\
 \
@@ -129,7 +129,7 @@ document.write('\
                             <li><a href="../Camera_Display "><i class="fa fa-video fa-fw" ></i>  Camera Display</a></li>\
                             <hr>\
                             <li class="dropdown-header">Archived S3 Data</li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" ></i>  HRRR Archive FAQ</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html "><i class="fa fa-info-circle fa-fw" ></i>  HRRR Archive FAQ</a></li>\
                             <li><a href="./cgi-bin/hrrr_download.cgi"><i class="fa fa-database fa-fw" ></i>  HRRR Archive Download</a></li>\
                             <li><a href="./cgi-bin/goes16_pando.cgi"><i class="fa fa-database fa-fw" ></i>  GOES-16 on Pando</a></li>\
                             <li><a href="./cgi-bin/goes16_download.cgi"><i class="fab fa-aws fa-fw" ></i>  GOES on Amazon</a></li>\
@@ -164,7 +164,7 @@ document.write('\
                             <li><a href="./tracer.html ">Tracer Plumes</a></li>\
                             <li><a href="./lake_surgery.html ">Lake Surgery</a></li>\
                             <li><a href="./wrf_post.html ">Data Post Processing</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0553130/Ute_WRF/"><i class="fa fa-users fa-fw" ></i> Utah WRF Users Group</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0553130/Ute_WRF/"><i class="fa fa-users fa-fw" ></i> Utah WRF Users Group</a></li>\
                         </ul>\
                     </li>\
 \
@@ -228,8 +228,8 @@ document.write('\
                         <ul class="dropdown-menu">\
                             <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153&latcen=40.4&loncen=-111.87">Current Map</a></li>\
                             <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_precip_api.cgi?net=153&latcen=40.4&loncen=-111.87">24hr Precip Map</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/uunet_charts.cgi">Battery Voltage</a></li>\
-                            <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi?asos=0&latcen=40.7626&loncen=-111.84755">Nearby Weather</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/uunet_charts.cgi">Battery Voltage</a></li>\
+                            <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/current_home.cgi?asos=0&latcen=40.7626&loncen=-111.84755">Nearby Weather</a></li>\
                             <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html">Sodar Viewer</a></li>\
                             <li><a href="http://mesowest.utah.edu/cgi-bin/droman/uunet_stn_monitor.cgi">UUNET Quick Look Table</a></li>\
                             <li><a href="http://meso2.chpc.utah.edu/aq/">TRAX/KSL/Mobile Air Quality</a></li>\
@@ -244,9 +244,9 @@ document.write('\
                         <li class="dropdown-header">MesoWest</li>\
                         <li><a href="http://mesowest.utah.edu/ " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> MesoWest</a></li>\
                         <li><a href="https://push.synopticdata.com/monitor_network " target="tools"><img src="./images/mesowest_icon.svg" height="14px"> Synoptic Monitor</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_precip_total.cgi?back=24.0&latcen=40.78885994449482&loncen=-111.895751953125&net=0&zoom=8&limit=None" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?latcen=40.78262115769851&loncen=-111.90673828125&net=0&zoom=9&limit=None" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
-                        <li><a href="http://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_precip_total.cgi?back=24.0&latcen=40.78885994449482&loncen=-111.895751953125&net=0&zoom=8&limit=None" target="tools"><i class="fa fa-tint fa-fw" ></i>  Past 24-hr Precipitation Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap_24h_peak_wind.cgi?latcen=40.78262115769851&loncen=-111.90673828125&net=0&zoom=9&limit=None" target="tools"><i class="fa fa-angle-double-right fa-fw" ></i>  Past 24-hr Peak Wind Map</a></li>\
+                        <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/cgi-bin/wxmap.cgi?net=153" target="tools"><i class="fas fa-sun fa-fw" ></i>  Current Weather Map</a></li>\
                         <li><a href="https://home.chpc.utah.edu/~u0790486/wxinfo/uusodar2_time_series.html" target="tools"><i class="fa fa-volume-up fa-fw" ></i>  Sodar</a></li>\
                         <li><a href="http://meso2.chpc.utah.edu/aq/" target="tools"><i class="fa fa-cloud fa-fw" ></i>  UU Air Quality</a></li>\
                         <li><a href="https://synopticlabs.org/demos/elevation/" target="tools"><i class="fa fa-map-marker fa-fw" ></i>  Station Elevation</a></li>\

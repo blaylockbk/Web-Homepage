@@ -47,9 +47,9 @@ sets['era5-pds'] = {'name': 'ECMWF ERA5 Reanalysis',
                     'docs': 'https://registry.opendata.aws/exmwf-ara5/'}
 
 
-HRRR_pando_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">HRRR on Pando Archive</a>'
-GOES_pando_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES on Pando Archive</a>'
-GOES_alt_btn = '<a class="btn btn-warning" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi">Alternative GOES Download</a>'
+HRRR_pando_btn = '<a class="btn btn-warning" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">HRRR on Pando Archive</a>'
+GOES_pando_btn = '<a class="btn btn-warning" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES on Pando Archive</a>'
+GOES_alt_btn = '<a class="btn btn-warning" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi">Alternative GOES Download</a>'
 
 ## Get Bucket name from the form, or set default
 try:
@@ -172,7 +172,7 @@ dlist.sort()
 dirs = bucket.split('/')
 if len(dirs) > 1:
     back_bucket = '/'.join(bucket.split('/')[:-2])
-    URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, back_bucket)
+    URL = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, back_bucket)
     print '''<a href="%s"><i class="fas fa-step-backward"></i> Back</a>''' % (URL)
     print "<br><br>"
 
@@ -185,7 +185,7 @@ if len(dlist) > 0:
     '''
     for d in dlist:
         DIR = d.split(' ')[-1]
-        URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, bucket+DIR)
+        URL = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=%s&BUCKET=%s' % (dataset, bucket+DIR)
         print '''<a class='btn btn-success' href="%s">%s</a>''' % (URL, DIR)
     print '''</div>'''
 else:

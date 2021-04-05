@@ -42,7 +42,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>GOES-16 on Pando</title>
 <style>
       .mybtn {
@@ -104,12 +104,12 @@ print'''
     </h1>
     <center>
     <div class='btn-group'>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fab fa-aws"></i> GOES on Amazon</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fas fa-list"></i></a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fab fa-aws"></i> GOES on Amazon</a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fas fa-list"></i></a>
     </div>
     <div class='btn-group'>
-    <a class='btn btn-primary active' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fa fa-database"></i> GOES on Pando</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
+    <a class='btn btn-primary active' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fa fa-database"></i> GOES on Pando</a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fas fa-list"></i></a>
     </div>
     <a class='btn btn-warning' href="http://rammb-slider.cira.colostate.edu/"><i class="fas fa-external-link-alt"></i> CIRA SLIDER</a>
     <a class='btn btn-warning' href="https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php"><i class="fas fa-external-link-alt"></i> STAR Viewer</a>
@@ -350,7 +350,7 @@ print '''
             
             <h5><b>Other details that may answer your questions.</b></h5>
             <p>I created a companion webpage,
-               <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi" target="_blank">
+               <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi" target="_blank">
                GOES-16 on Amazon</a>, to help you
                explore the additional files available on the Amazon AWS archive.
             <p>Presently, this page is the only way to explore the files in the Pando archive.
@@ -407,7 +407,7 @@ print '''
 
 print '''
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

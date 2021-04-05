@@ -62,30 +62,30 @@ print'''<!DOCTYPE html>
 <div class='container'>
 <h1>Download from Pando
     <div class='btn-group'>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fas fa-table"></i></a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_AWS_download.cgi?DATASET=noaa-goes16"><i class="fab fa-aws"></i> GOES on Amazon</a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_download.cgi"><i class="fas fa-table"></i></a>
     </div>
     <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES-16</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES16"><i class="fa fa-database"></i> GOES-16</a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi"><i class="fas fa-table"></i></a>
     </div>
     <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES17"><i class="fa fa-database"></i> GOES-17</a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=GOES17"><i class="fa fa-database"></i> GOES-17</a>
     </div>
     <div class='btn-group'>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr"><i class="fa fa-database"></i> HRRR</a>
-    <a class='btn btn-primary' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"><i class="fas fa-table"></i></a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr"><i class="fa fa-database"></i> HRRR</a>
+    <a class='btn btn-primary' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"><i class="fas fa-table"></i></a>
     </div>
-    <a class='btn btn-danger %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
+    <a class='btn btn-danger %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=horel-archive">Horel Archive</a>
 </h1>''' % (goes16_active, goes17_active, hrrr_active, horel_active)
 
 print '''<script src='./js/pando_status.js'></script>'''
 
 if outer_bucket in ['hrrr', 'hrrrak', 'hrrrX']:
     print """
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr">HRRR</a>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrX">HRRR-X</a>
-    <a class='btn btn-primary %s' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrak">HRRR-AK</a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr">HRRR</a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrX">HRRR-X</a>
+    <a class='btn btn-primary %s' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrrak">HRRR-AK</a>
     """ % (hrrr_active, hrrrX_active, hrrrak_active)
 
 print '''
@@ -136,7 +136,7 @@ dlist.sort()
 dirs = bucket.split('/')
 if len(dirs) > 2:
     back_bucket = '/'.join(bucket.split('/')[:-2])
-    URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (back_bucket)
+    URL = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (back_bucket)
     print '''<a href="%s"><i class="fas fa-step-backward"></i> Back</a>''' % (URL)
     print "<br><br>"
 
@@ -150,7 +150,7 @@ if len(dlist) > 0:
     '''
     for d in dlist:
         DIR = d.split(' ')[-1]
-        URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (bucket+DIR)
+        URL = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=%s' % (bucket+DIR)
         print '''<a class='btn btn-success' href="%s">%s</a>''' % (URL, DIR)
     print '''</div>'''
 else:

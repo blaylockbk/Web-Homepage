@@ -15,7 +15,7 @@ want to see a different image in the directory.
 
 WARNING: Image names in the directory can NOT have any spaces!!
 
-http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
+https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 """
 
 import os
@@ -32,7 +32,7 @@ except:
 
 # Get Contents of the current diretory 
 PATH = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/oper/HRRR_golf/%s/' % LOC
-URL = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/%s/' % LOC
+URL = 'https://home.chpc.utah.edu/~u0553130/oper/HRRR_golf/%s/' % LOC
 imgs = os.listdir(PATH)
 imgs = filter(lambda x: x[-4:]=='.png' or x[-4:]=='.jpg', imgs)
 imgs.sort()
@@ -43,7 +43,7 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <title>HRRR Golf</title>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
 function change_picture(img_name){
@@ -90,15 +90,15 @@ print'''
 <h2 align="center"><i class="far fa-image"></i> Image Viewer <small>%s</small>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Instructions</button>
 <br>
-<a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" class='btn btn-danger'><i class="fa fa-map-marker-alt"></i> More Locations</a>
+<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" class='btn btn-danger'><i class="fa fa-map-marker-alt"></i> More Locations</a>
 ''' % short_path
 if LOC not in ['Oaks', 'SND', 'Orderville', 'UtahLake']:
     print '''
-    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_anlys/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f00</a>
-    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f06/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f06</a>
-    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f12/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f12</a>
-    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_f18/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f18</a>
-    <a href="http://home.chpc.utah.edu/~u0553130/oper/HRRR_hovmoller/%s/photo_viewer.php" class='btn btn-primary'><i class="far fa-clock"></i> Hovm&oumlller</a>
+    <a href="https://home.chpc.utah.edu/~u0553130/oper/HRRR_anlys/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f00</a>
+    <a href="https://home.chpc.utah.edu/~u0553130/oper/HRRR_f06/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f06</a>
+    <a href="https://home.chpc.utah.edu/~u0553130/oper/HRRR_f12/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f12</a>
+    <a href="https://home.chpc.utah.edu/~u0553130/oper/HRRR_f18/%s/photo_viewer2.php" class='btn btn-primary'><i class="far fa-clock"></i> f18</a>
+    <a href="https://home.chpc.utah.edu/~u0553130/oper/HRRR_hovmoller/%s/photo_viewer.php" class='btn btn-primary'><i class="far fa-clock"></i> Hovm&oumlller</a>
     ''' % (LOC, LOC, LOC, LOC, LOC)
 print "</h2>"
 

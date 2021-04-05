@@ -2,7 +2,7 @@ document.write('\
 <meta charset="utf-8">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
 \
-<base href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/">\
+<base href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/">\
 <link href="images/wxicon.png" rel="shortcut icon" type="image/png">\
 <link href="images/wxicon.png" rel="icon"/>\
 \

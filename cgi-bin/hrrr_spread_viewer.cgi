@@ -14,7 +14,7 @@ want to see a different image in the directory.
 
 WARNING: Image names in the directory can NOT have any spaces!!
 
-http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
+https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 """
 
 import os
@@ -28,7 +28,7 @@ form = cgi.FieldStorage()
 PATH = 'PhD/HRRR_Spread/'
 
 DIR = '/uufs/chpc.utah.edu/common/home/u0553130/public_html/' + PATH
-URL = 'http://home.chpc.utah.edu/~u0553130/' + PATH
+URL = 'https://home.chpc.utah.edu/~u0553130/' + PATH
 
 
 # List of the dates in the directory
@@ -63,7 +63,7 @@ print'''<!DOCTYPE html>
 <html>
 <head>
 <title>HRRR Spread</title>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
 function change_picture(img_name, img_id){

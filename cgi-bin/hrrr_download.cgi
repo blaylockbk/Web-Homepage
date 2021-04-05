@@ -50,7 +50,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Download Page</title>
 <style>
       .mybtn {
@@ -92,7 +92,7 @@ print '''
 <div id="content" class="container">
     <h1 align="center">
     <i class="fa fa-cloud-download-alt" ></i> HRRR Download Page
-    <a class='btn btn-default' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" title="Alternative HRRR Download Page"><i class="fas fa-list"></i></a>
+    <a class='btn btn-default' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" title="Alternative HRRR Download Page"><i class="fas fa-list"></i></a>
     </h1>
 
     <script src='./js/pando_status.js'></script>
@@ -101,25 +101,25 @@ print '''
     <div class="alert alert-warning">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <p style='font-size:15px'>If you have not already, please 
-        <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
+        <a class='alert-link' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
         as a user before downloading data. Citation details can be found at the bottom of this page
     </div>
 
     <div class="row">
         <div class=" col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
             <i class="fa fa-user-plus" ></i> Have you Registered?</a>        
         </div>
         <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
             <i class="far fa-handshake" ></i> Best Practices</a>
         </div>
         <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
             <i class="fa fa-info-circle" ></i> HRRR FAQ</a>
         </div>
         <div class="col-md-3">
-            <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html" class="btn btn-primary btn-block">
+            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html" class="btn btn-primary btn-block">
             <i class="fa fa-code" ></i> Scripting Tips</a>
         </div>
     </div>
@@ -164,7 +164,7 @@ print '''
                     </div>
                 <p>Click "Scripting Tips" above for some help scripting the download process.
                 <p>Read the HRRR FAQ for a description of what file and dates are available.
-                <p> Check out the <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html">Custom HRRR Map</a> generator.
+                <p> Check out the <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html">Custom HRRR Map</a> generator.
             </div>            
             <div class="panel-footer">
                 <p> This page is tested in
@@ -372,7 +372,7 @@ for hr, fxxs in hour_fxx_buttons.items():
             elif link2 == 'sample':
                 RUN = datetime(DATE.year, DATE.month, DATE.day, hr)
                 VALID = RUN+timedelta(hours=f)
-                download_this = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=%s&valid=%s&fxx=%s&location=&plotcode=dBZ_entire_Fill,HGT_500-mb_Contour&dsize=full&background=arcgis' % (model, VALID.strftime('%Y-%m-%d_%H00'), f)
+                download_this = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=%s&valid=%s&fxx=%s&location=&plotcode=dBZ_entire_Fill,HGT_500-mb_Contour&dsize=full&background=arcgis' % (model, VALID.strftime('%Y-%m-%d_%H00'), f)
             print '''<a href="'''+download_this+'''" target='_blank'><button name="fxx" type="button" class="mybtn unselected">F%02d</button></a>''' % (f)
         else:
             print '''<button name="fxx" type="button" class="mybtn disabled">F%02d</button>''' % (f)

@@ -430,5 +430,5 @@ else:
     plt.savefig(sys.stdout)	# Plot standard output.
 
 
-# http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrrak&valid=2018-05-01_0000&fxx=0&plotcode=dBZ_Fill&dsize=conus&background=none
+# https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrrak&valid=2018-05-01_0000&fxx=0&plotcode=dBZ_Fill&dsize=conus&background=none
 '''

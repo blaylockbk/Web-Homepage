@@ -28,7 +28,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Errors</title>
 
 <script>
@@ -40,7 +40,7 @@ AFXX = '01';
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
+        var img = 'https://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
 		    document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -52,7 +52,7 @@ function change_pic_h(HXX){
 function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
+        var img = 'https://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h'+hour+'_f'+fxx+'.png';
 		    document.getElementById("disp_img").src = img;
 		    document.getElementById("disp_img").style.width= '100%';
         document.getElementById("disp_img").style.maxWidth= '1300px';
@@ -176,7 +176,7 @@ print '<br>'
 print '''
 
   <center>
-    <img id='disp_img' onclick='window.open(this.src)' src='http://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h00_f01.png' style="width:75%">
+    <img id='disp_img' onclick='window.open(this.src)' src='https://home.chpc.utah.edu/~u0553130/PhD/HRRR/RMSE_mean/'''+variable+'''/'''+variable+'''_h00_f01.png' style="width:75%">
     
   </center>
   <hr>
@@ -223,7 +223,7 @@ print '''
 
 print '''
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

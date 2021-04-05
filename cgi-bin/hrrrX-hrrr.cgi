@@ -42,7 +42,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRRx vs HRRR</title>
 
 <script>
@@ -65,7 +65,7 @@ print'''<!DOCTYPE html>
         var $loadingmsg = document.getElementById('app-loading')
         $loadingmsg.classList.remove('hidden')
 
-        var URL = 'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr.cgi'
+        var URL = 'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrrX-hrrr.cgi'
         + '?valid=' + document.getElementById('validdate').value + document.getElementById('validhour').value
         + '&location=' + document.getElementById('location').value
         + '&plotcode=' + $('#plotcode').val()
@@ -135,19 +135,19 @@ it's data from the archive. There may not be model data for that time.
 <div class=" col-md-1">
 </div>
 <div class=" col-md-2">
-<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker"></i> Point Forecast</a>      
+<a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker"></i> Point Forecast</a>      
 </div>
 <div class="col-md-2">
-<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
+<a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
 </div>
 <div class="col-md-2">
-<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
+<a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
 </div>
 <div class="col-md-2">
-<a class='btn btn-danger active' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
+<a class='btn btn-danger active' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
 </div>
 <div class="col-md-2">
-<a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
+<a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
 </div>
 </div>
 </center>
@@ -310,8 +310,8 @@ it's data from the archive. There may not be model data for that time.
             </div>
     </div>
 
-    <a id='MapLink' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
-        <img class='style1' id='MapImage' style="width:100%" src='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
+    <a id='MapLink' href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg' target='_blank'>
+        <img class='style1' id='MapImage' style="width:100%" src='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/empty.jpg'>
     </a>
     <br>
     
@@ -371,7 +371,7 @@ it's data from the archive. There may not be model data for that time.
 
 
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <br>
 </div>
 

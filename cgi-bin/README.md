@@ -1,6 +1,6 @@
 Brian Blaylock  
 June 8, 2018  
-[Homepage](http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html) | 
+[Homepage](https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html) | 
 [Email](mailto:brian.blaylock@utah.edu)
 
 # Python Common Gateway Interface (CGI)
@@ -62,7 +62,7 @@ When you are ready to serve the image to the browser, send it to standard output
 ## Loading data from a form
 URLs can carry form data, and you can load form data from a URL into your cgi script. Form data is separated from the main URL a `?`. Individual form items are separated by an `&`. The variable name is given first followed by the value, separated by and `=`. For example:
 
-    http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2018-06-08_0000&fxx=0&location=&plotcode=Wind_10-m_Fill&dsize=full&background=arcgis
+    https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=2018-06-08_0000&fxx=0&location=&plotcode=Wind_10-m_Fill&dsize=full&background=arcgis
 
 You load the data like this:
     

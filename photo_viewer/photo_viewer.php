@@ -13,12 +13,12 @@ Created by Brian Blaylock
 Date: November 30, 2015
 Updated with bootstrap style: February 13, 2017
 
-http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
+https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html
 -->
 
 <head>
 <title>Image Viewer - Hover</title>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 
 <script>
 function change_picture(img_name){
@@ -66,7 +66,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 
 
 <body>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/sitemenu.js"></script>	
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/sitemenu.js"></script>	
 <h2 align="center"><i class="far fa-image"></i> Image Viewer
 
 <!-- PHP for getting file names in the current working directory-->
@@ -174,7 +174,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
                         if ($extension == 'jpg' or $extension == 'gif' or $extension == 'png'){ // list only jpg, gif, and png images
 
                         //if sounding exists, then make green button
-                        $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
+                        $new_image = 'https://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
                         $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
                         $anan_hour = (int)$anan_hour;
                         echo '<button type="button" class="btn btn-default" onmouseover=change_picture("'.$new_image.'")>'.$dirArray[$index].'</button>';					
@@ -209,7 +209,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
         if ($extension == 'jpg' or $extension == 'gif' or $extension == 'png'){ // list only jpg, gif, and png images
 
         //if sounding exists, then make green button
-        $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
+        $new_image = 'https://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
         $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
         $anan_hour = (int)$anan_hour;
         echo '<button type="button" class="btn btn-default" onclick=change_picture2("'.$new_image.'")>'.$dirArray[$index].'</button>';				
@@ -240,7 +240,7 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
             if ($extension == 'jpg' or $extension == 'gif' or $extension == 'png'){ // list only jpg, gif, and png images
 
             //if sounding exists, then make green button
-            $new_image = 'http://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
+            $new_image = 'https://home.chpc.utah.edu/~u0553130/'.$img_URL_dir.'/'.$dirArray[$index].'';
             $anan_hour = substr($dirArray[$index],0,2);//get the analysis hour
             $anan_hour = (int)$anan_hour;
             echo 
@@ -263,6 +263,6 @@ window.addEventListener('resize',toggleBtnGroup); // change on resize
 </div> <!--(container))-->
 
 
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteclose.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteclose.js"></script>
 </body>
 </html>

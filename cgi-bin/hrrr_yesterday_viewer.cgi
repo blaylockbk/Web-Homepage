@@ -36,7 +36,7 @@ print "Content-Type: text/html\n"
 print'''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>HRRR Yesterday</title>
 <style>
       .mybtn {
@@ -91,7 +91,7 @@ active_row = 'hour';
 function change_pic_h(HXX){
         /*onhover or onclick*/
         hour = HXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_yesterday/'''+variable+'/'+DOMAIN+'''/h'+hour+'_f'+fxx+'.png';
+        var img = 'https://home.chpc.utah.edu/~u0553130/oper/HRRR_yesterday/'''+variable+'/'+DOMAIN+'''/h'+hour+'_f'+fxx+'.png';
         document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.maxWidth= '100%';
         document.getElementById("disp_img").style.maxHeight= '600px';
@@ -104,7 +104,7 @@ function change_pic_h(HXX){
 function change_pic_f(FXX){
         /*onhover or onclick*/
         fxx = FXX;
-        var img = 'http://home.chpc.utah.edu/~u0553130/oper/HRRR_yesterday/'''+variable+'/'+DOMAIN+'''/h'+hour+'_f'+fxx+'.png';
+        var img = 'https://home.chpc.utah.edu/~u0553130/oper/HRRR_yesterday/'''+variable+'/'+DOMAIN+'''/h'+hour+'_f'+fxx+'.png';
 		document.getElementById("disp_img").src = img;
 		document.getElementById("disp_img").style.maxWidth= '100%';
         document.getElementById("disp_img").style.maxHeight= '600px';
@@ -303,7 +303,7 @@ print '''
 
 print '''
 <p align=center>Powered By:<br>
-<a href="https://mesowest.org/" target="_blank"><img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
+<a href="https://mesowest.org/" target="_blank"><img class="style1" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px"></a>
 <script src="js/site/siteclose.js"></script>
 </body>
 </html>

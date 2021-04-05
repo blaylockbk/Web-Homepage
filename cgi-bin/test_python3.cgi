@@ -243,7 +243,7 @@ plt.savefig(DIR+NAME)	# Save with a figure name
 print('''<!DOCTYPE html>
 <html>
 <head>
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 <title>Multi-station Time Series</title>
 </head>''')
 
@@ -290,13 +290,13 @@ print('''
 
             <p>Example quick plots: Last 31 hours
                   <ul style='padding-left:30px'>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
+                  <li><a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=UT20&stn2=UT23&stn3=UT12&stn4=UT11'>
                   Salt Lake County 1-15 UDOT</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi'>
+                  <li><a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi'>
                   Peter Sinks, UT</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
+                  <li><a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=MTMET&stn2=WBB&stn3=KSLTC&stn4=KSLC'>
                   University of Utah to Airport</a>
-                  <li><a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
+                  <li><a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/test_python3.cgi?stn1=KSLC&stn2=FPS&stn3=KPVU&stn4=UKBKB'>
                   Salt Lake to Spanish Fork</a>
                   </ul>
             </h5>
@@ -407,7 +407,7 @@ print('''
 # =============================================================================
 #  Image
 # =============================================================================
-URL =  'http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/temp/'
+URL =  'https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/temp/'
 print('<img onclick="window.open(this.src)" src = "%s.png"/>' % (URL+NAME)) # Display saved figure
 # =============================================================================
 
@@ -430,7 +430,7 @@ print('''
 
 <p align=center>Powered By:<br>
 <a href="https://mesowest.org/" target="_blank">
-      <img class="style1" src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px">
+      <img class="style1" src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/MesoWest/MesoWest_1997-2017_largeyears.png" style="background-color:#990000; height:50px">
 </a>
 
 </div>

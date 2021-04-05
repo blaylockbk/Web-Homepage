@@ -60,7 +60,7 @@ var wxvar = e.options[e.selectedIndex].value;
 var radius = latitude+","+longitude+","+"50"
 var CenterLoc = new Microsoft.Maps.Location(latitude,longitude);
 //alert(CenterLoc)
-$.getJSON('http://api.mesowest.net/v2/stations/metadata?callback=?',
+$.getJSON('https://api.synopticdata.com/v2/stations/metadata?callback=?',
 		  {
 		  // specify the request parameters here
 		  //network:'1,2,65,153', //NWS, RAWS, CWOP, UUNET
@@ -86,7 +86,7 @@ $.getJSON('http://api.mesowest.net/v2/stations/metadata?callback=?',
          
 		 //Get MesoWest Data
 		//alert(api_path);
-		$.getJSON('http://api.mesowest.net/v2/stations/nearesttime?callback=?',
+		$.getJSON('https://api.synopticdata.com/v2/stations/nearesttime?callback=?',
 		  {
 		  // specify the request parameters here
 		  stid:stationIDs,

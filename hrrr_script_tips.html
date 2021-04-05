@@ -17,25 +17,25 @@
     <div class="alert alert-warning">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <p style='font-size:15px'>If you have not already, please 
-        <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
+        <a class='alert-link' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
         as a user before downloading data. Citation details can be found at the bottom of this page
     </div>
 
     <div class="row" id="content">
         <div class=" col-md-3">
-                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
+                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
                 <i class="fa fa-user-plus"></i> Have you Registered?</a>        
         </div>
         <div class="col-md-3">
-                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
+                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
                 <i class="far fa-handshake"></i> Best Practices</a>
         </div>
         <div class="col-md-3">
-                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
+                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
                 <i class="fa fa-info-circle"></i> HRRR FAQ</a>
         </div>
         <div class="col-md-3">
-                <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
+                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
                 <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
         </div>
     </div>
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="alert alert-info">
-                        <i class="fas fa-info-circle fa-fw"></i> The <a class='alert-link' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" data-toggle="tooltip" title="Alternative HRRR Download Page"> alternative download page</a>
+                        <i class="fas fa-info-circle fa-fw"></i> The <a class='alert-link' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi?BUCKET=hrrr" data-toggle="tooltip" title="Alternative HRRR Download Page"> alternative download page</a>
                         may help you better understand the URL structure    
                 </div>
 
@@ -217,7 +217,7 @@
                         <h3 class="panel-title">How to download HRRR GRIB2 files</h3>
                     </div>
                     <div class="panel-body">
-                        <p>If you just want to download a few files, the easiest way is with the <a href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi'> web download interface</a> which makes downloading files as easy as clicking a button. 
+                        <p>If you just want to download a few files, the easiest way is with the <a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi'> web download interface</a> which makes downloading files as easy as clicking a button. 
                         
                         <p>Most users, however, need to download a bunch of HRRR files. You will need to write a script for that. The most simple way to download a file from Pando is with <code>urllib.request</code>. Writing a script is as simple as changing the URL to get the files you want.
 <pre>
@@ -247,10 +247,10 @@ urllib.request.urlretrieve(download_this, save_as)</pre>
                         
                         <p>Partial downloads with cURL require a known byte range.
                         The grbi2.idx (
-                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_SFC.pdf">
+                        <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_SFC.pdf">
                         sfc example</a>
                         ,   
-                        <a href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_PRS.pdf">
+                        <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/HRRR_v3_variables_PRS.pdf">
                         prs example</a>) files are metadata text files that contain the beginning byte of each field in the file. <b>Each grib2 file has a unique index file.</b> To find the byte range for a variable, the above function searches for the line that
                         contains the specified variable abbreviation and level.
                         <p style='text-align: center;'><img src='./images/HRRR_idx_description.png' width=75%  title="grib2.idx file example">
@@ -400,10 +400,10 @@ rclone ls publicPando:hrrr/sfc/20190101/  # list all files in a directory
                 <div class="panel panel-default">
                     <div class="panel-heading">List of missing and incomplete files</div>
                     <div class="panel-body">
-                        <a class='btn btn-default btn-lg' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/PRS_missing_incomplete_files.txt'>
+                        <a class='btn btn-default btn-lg' href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/PRS_missing_incomplete_files.txt'>
                                 <i class="fab fa-firstdraft"></i>
                             List of Missing PRS Files</a>
-                        <a class='btn btn-default btn-lg' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/SFC_missing_incomplete_files.txt'>
+                        <a class='btn btn-default btn-lg' href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/SFC_missing_incomplete_files.txt'>
                                 <i class="fab fa-firstdraft"></i>
                             List of Missing SFC Files</a>
                     </div>

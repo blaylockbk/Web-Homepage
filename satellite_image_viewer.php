@@ -150,7 +150,7 @@ function defult_to_current_date(){
 	External Satellite Websites<br>
 	<a href="http://lance-modis.eosdis.nasa.gov/imagery/subsets/?subset=GreatSaltLakeBasin">MODIS Archive: GreatSaltLakeBasin Subsets</a><br>
 	<a href="http://landsatlook.usgs.gov/">Landsat Viewer</a><br>
-	<a href="http://home.chpc.utah.edu/~u0198116/AVHRR/gsltemp.html">GSL temperature from satellite </a><br>
+	<a href="https://home.chpc.utah.edu/~u0198116/AVHRR/gsltemp.html">GSL temperature from satellite </a><br>
 	<a href="https://earthdata.nasa.gov/labs/worldview/">NASA World View</a><br>
 	</div>
 

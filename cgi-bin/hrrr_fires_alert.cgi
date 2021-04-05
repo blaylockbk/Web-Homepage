@@ -33,7 +33,7 @@ print'''<!DOCTYPE html>
 <head>
 <title>HRRR Fire Wind Events</title>
 <link rel="stylesheet" href="./css/brian_style.css" />
-<script src="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
+<script src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/js/site/siteopen.js"></script>
 </head>
 <!--This page is created dynamically in the script /oper/HRRR_fires/HRRR_fires_alerts.py-->
 <body>
@@ -46,19 +46,19 @@ print'''<!DOCTYPE html>
         <div class=" col-md-1">
         </div>
         <div class=" col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker-alt"></i> Point Forecast</a>      
+    <a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_golf.html" style="width:100%"> <i class="fa fa-map-marker-alt"></i> Point Forecast</a>      
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
+    <a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_fires.html" style="width:100%"><i class="fa fa-fire-extinguisher"></i> Fires Forecast</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
+    <a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_custom.html" style="width:100%"> <i class="far fa-map"></i> Custom Maps</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
+    <a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrrX-hrrr.cgi" style="width:100%"> <i class="fa fa-map"></i> Compare Maps</a>
         </div>
         <div class="col-md-2">
-    <a class='btn btn-danger' role='button' href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
+    <a class='btn btn-danger' role='button' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" style="width:100%"> <i class="fa fa-database"></i> HRRR Archive</a>
         </div>
     </div>
 </center>
@@ -111,7 +111,7 @@ for a in alerts:
         line += "<td>%.1f</td>" % a[4]
         line += "<td>%.1f</td>" % a[5]
         line += "<td>%.1f</td>" % a[6]
-        line += "<td><a class='btn btn-default' role='button' href='http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=Wind_10-m_Barbs,Wind_10-m_Shade,dBZ_entire_Contour&dsize=medium&background=arcgis' target='_blank'><i class='far fa-image' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
+        line += "<td><a class='btn btn-default' role='button' href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/plot_hrrr_custom.cgi?model=hrrr&valid=%s&fxx=%s&location=%s,%s&plotcode=Wind_10-m_Barbs,Wind_10-m_Shade,dBZ_entire_Contour&dsize=medium&background=arcgis' target='_blank'><i class='far fa-image' aria-hidden='true'></i> Sample</a></td>" % (a[0], a[7][26:28], a[8], a[9])
         line += "<td><a class='btn btn-default' role='button' href='https://pando-rgw01.chpc.utah.edu/HRRR/oper/sfc/%s' target='_blank'><i class='fa fa-download' aria-hidden='true'></i> GRIB2</a></td></tr>" % a[7]
 print line
 print '''
@@ -126,7 +126,7 @@ print '''
 <script>
 function changeFire() {
     var x = document.getElementById("fire").value;
-    window.location.href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi?fire="+x;
+    window.location.href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_fires_alert.cgi?fire="+x;
 }
 </script>
 </body>
