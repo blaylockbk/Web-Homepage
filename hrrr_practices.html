@@ -13,42 +13,36 @@
 <script src='./js/HRRR_status.js'></script>
 
 <div class="container" id="content">
-        <div class="row">
-            <div class=" col-md-3">
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i> Have you Registered?</a>        
-            </div>
-            <div class="col-md-3">
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block active">
-                    <i class="far fa-handshake" aria-hidden="true"></i> Best Practices</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> HRRR FAQ</a>
-            </div>
-            <div class="col-md-3">
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi" class="btn btn-primary btn-block">
-                    <i class="fa fa-cloud-download-alt" aria-hidden="true"></i> Web Download Page</a>
-            </div>
-        </div>
+	<div class="row" id="content">
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html"
+				class="btn btn-success btn-block active">
+				<i class="fa fa-info-circle"></i> HRRR FAQ</a>
+		</div>
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html"
+				class="btn btn-warning btn-block">
+				<i class="far fa-handshake"></i> Best Practices</a>
+		</div>
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"
+				class="btn btn-primary btn-block">
+				<i class="fa fa-cloud-download-alt"></i>Pando Web Download Page</a>
+		</div>
+		<div class=" col-md-3">
+			<a href="https://registry.opendata.aws/noaa-hrrr-pds/"
+				class="btn btn-danger btn-block" target="_blank">
+				<i class="fa fa-cloud-download-alt"></i> AWS HRRR Archive</a>
+		</div>
+	</div>
 <h3><i class="far fa-handshake" aria-hidden="true"></i> HRRR Archive: Best Practices</h3>
 <hr>
 <script src='./js/pando_status.js'></script>
-<p><i>Updated August 9, 2017</i>
-<p>The HRRR archive is made possible by the resources at Utah's 
-  <a href="https://chpc.utah.edu/">Center For High Performance Computing</a>.
-<p>HRRR data is originally downloaded from NOMADS via HTTP and NOAA ESRL via FTP.
-These original files are quite large (prs files are >380 MB and sfc files are >100 MB each hour!)
-That means if you download prs analyses for one day that's over 9 GB! Please be conscious of what you download.
-<p>This is an unofficial HRRR archive.
-<p>We do not guarantee HRRR data will be 
-available for every day or every forecast hour.
-<p>We do not provide this HRRR 
-data operationally or in real-time. If you are looking for real-time, 
-operational HRRR data please use
-<a href="http://nomads.ncep.noaa.gov/">NOMADS</a>. 
-<p>This archive is provided as a friendly service. By using the archive, you
-agree to the following:
+<p><i>Updated April 13, 2021</i>
+<p>This HRRR archive has been made possible by the resources at Utah's <a href="https://chpc.utah.edu/">Center For High Performance Computing</a>.
+<p>HRRR data is originally downloaded from NOAA via HTTP and NOAA ESRL via FTP. These original files are quite large (prs files are >380 MB and sfc files are >100 MB each hour!) That means if you download prs analyses for one day that's over 9 GB! Please be conscious of what you download.
+<p>This was an unofficial HRRR archive that is now being slowly reduced.  We do not guarantee HRRR data will be available for every day or every forecast hour.  We do not provide this HRRR data operationally or in real-time.  If you are looking for real-time, operational HRRR data please use <a href="http://nomads.ncep.noaa.gov/">NOMADS</a> or the expanded HRRR grib2 archive now being supported by <a href="https://registry.opendata.aws/noaa-hrrr-pds/" target="_blank">NOAA and the Registry of Open Data on AWS</a>.
+<p>If you still wish to use what is available in this archive, by using the archive, you agree to the following:
 <ul style="padding-left:60px">
   <li> You will cite the NCEP/ESRL HRRR model and University of Utah MesoWest
        HRRR archive in works published where this data was used.
@@ -58,22 +52,7 @@ agree to the following:
        nodes. Instead, download each file sequentially.
   <li> You will call your mother on Mother's Day.
 </ul>
-<p>Submitting the registration form directs you to the download URL, which you
-   can bookmark. The information we collect in the registration form is only
-   used internally to keep a count of users and get an idea of what the archive
-   is being used for. We may share the total count and general usage with the
-   folks at NOAA's Earth System Research Lab.
-<p>Full disclosure: This archive system has failed in the past. In January 2018,
-   The Pando archive crashed and all the data was unrecoverable. We were 
-   able to backfill the data to 15 July 2016. After the failure, we set up an
-   additional backup to prevent total loss in the future.
-   <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/Pando_Failure.html">More info</a>
-
 <p><small><small><small><small>Nothing to worry about in the fine print</small></small></small></small>
-
-<hr>
-Questions? Contact <a href="mailto:brian.blaylock@utah.edu">Brian Blaylock</a>
-</div>
 
 </body>
 </html>

@@ -63,16 +63,23 @@
     <div id="content" itemscope itemtype="http://schema.org/Dataset">
 
         <h1 align="center">HRRR Archive at the University of Utah</h1>
+		
+		<br>
+		<div class="alert alert-warning">
+			<p style='font-size:15px'>Thank you for visiting this resource.  With the expanded availability of archived HRRR grib2-formatted data now courtesy of <a href="https://registry.opendata.aws/noaa-hrrr-pds/" target="_blank">NOAA and the Registry of Open Data on AWS</a>, this archive hosted at the University of Utah is now being reduced.  Users interested in the grib2 format are encouraged to switch to using the AWS archive, or a similar archive operated within the <a href="https://console.cloud.google.com/marketplace/product/noaa-public/hrrr?project=python-232920&pli=1" target="_blank">Google Cloud</a>.<br><br>For users interested in subsets of HRRR data, our research group is now supporting a parallel archive in <a href="https://mesowest.utah.edu/html/hrrr/" target="_blank">Zarr format</a>.  This new Zarr archive is also hosted by the <a href="https://hrrrzarr.s3.amazonaws.com/index.html" target="_blank">Registry of Open Data on AWS</a>.
+		</div>
+		<br>
+				
         <h2 align="center"><i class="fa fa-info-circle fa-fw"></i>Frequently Asked Questions</h2>
 
         <script src='./js/pando_status.js'></script>
         <script src='./js/HRRR_status.js'></script>
 
         <div class="row" id="content">
-            <div class=" col-md-3">
-                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html"
-                    class="btn btn-danger btn-block">
-                    <i class="fa fa-user-plus"></i> Have you Registered?</a>
+            <div class="col-md-3">
+                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html"
+                    class="btn btn-success btn-block active">
+                    <i class="fa fa-info-circle"></i> HRRR FAQ</a>
             </div>
             <div class="col-md-3">
                 <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html"
@@ -80,14 +87,14 @@
                     <i class="far fa-handshake"></i> Best Practices</a>
             </div>
             <div class="col-md-3">
-                <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html"
-                    class="btn btn-success btn-block active">
-                    <i class="fa fa-info-circle"></i> HRRR FAQ</a>
-            </div>
-            <div class="col-md-3">
                 <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"
                     class="btn btn-primary btn-block">
-                    <i class="fa fa-cloud-download-alt"></i> Web Download Page</a>
+                    <i class="fa fa-cloud-download-alt"></i>Pando Web Download Page</a>
+            </div>
+            <div class=" col-md-3">
+                <a href="https://registry.opendata.aws/noaa-hrrr-pds/"
+                    class="btn btn-danger btn-block" target="_blank">
+                    <i class="fa fa-cloud-download-alt"></i> AWS HRRR Archive</a>
             </div>
         </div>
 
@@ -99,35 +106,22 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab1"><i class="fa fa-globe"></i> About the HRRR archive</a>
             </li>
-            <li><a data-toggle="tab" href="#tab2"><i class="fa fa-user"></i> Who archives HRRR?</a></li>
+            <li><a data-toggle="tab" href="#tab2"><i class="fa fa-user"></i> Archive Project History</a></li>
             <li><a data-toggle="tab" href="#tab3"><i class="fa fa-database"></i> Where is the archive?</a></li>
-            <li><a data-toggle="tab" href="#tab4"><i class="fa fa-calendar-alt"></i> What days are available?</a></li>
-            <li><a data-toggle="tab" href="#tab5"><i class="fa fa-users"></i> Who uses the HRRR archive?</a></li>
-            <li><a data-toggle="tab" href="#tab6"><i class="fa fa-paint-brush"></i> Gallery</a></li>
-            <li><a data-toggle="tab" href="#tab7"><i class="fa fa-desktop"></i> Tips for CHPC users</a></li>
+            <li><a data-toggle="tab" href="#tab4"><i class="fa fa-paint-brush"></i> Gallery</a></li>
         </ul>
 
         <div class="tab-content">
             <div id="tab1" class="tab-pane fade in active">
                 <!--<img align=right width="450px" style="padding:5px 15px 5px 5px" src="https://rapidrefresh.noaa.gov/hrrr/hrrrcrefimage">-->
-                <iframe align=right width="460" height="322" src="https://www.youtube.com/embed/R8d10nMWY1I?rel=0"
+                <iframe align=right width="430" height="300" src="https://www.youtube.com/embed/R8d10nMWY1I?rel=0"
                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-
-                <h3>Just tell me how to get the data...</h3>
-                <a class='btn btn-primary'
-                    href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">Web Download
-                    Interface</a>
-                <a class='btn btn-primary'
-                    href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html">Scripting Tips</a>
-                <br>
 
                 <h2><i class="fa fa-globe"></i> About the HRRR archive</h2>
                 <h3>What is this HRRR archive?</h3>
                 <p>This HRRR archive is a collection of output from NCEP's High Resolution Rapid Refresh model. This
                     is a model developed by <a href="https://rapidrefresh.noaa.gov/hrrr/" target='_blank'>NOAA ESRL</a>
                     and is run operationally every hour at NCEP's Environmental Modeling Center.
-                    It continues to be developed by ESRL.
                 <p>The operational HRRR generates hourly forecasts gridded at 3 km
                     for 18 hours over the contiguous United States making it the
                     highest spatial and temporal resolution forecast system run by NCEP.
@@ -138,30 +132,13 @@
                     <a class="btn btn-info" href="https://rapidrefresh.noaa.gov/RAP_var_diagnosis.html">
                         RAP/HRRR Diagnostic Details
                     </a>
-                <p>HRRR analyses and forecasts are exceptionally valuable to the research community. However, an
-                    official HRRR archive does not exist. We began archiving HRRR data in April 2015 to support research
-                    efforts at the University of Utah. The archive system <a
-                        href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/Pando_Failure.html">failed</a>
-                    and we lost all the data. We rebuilt the archive with data beginning 15 July 2016.
+					<p>HRRR analyses and forecasts are exceptionally valuable to the research community.  For our research efforts, we maintained an archive of grib2-formatted HRRR files, which we also made accessible through this resource.  With NOAA now having accessible archives of HRRR as well, our research group has now migrated to developing and supporting an archive of HRRR model data in Zarr format for research and other initiatives. This archive is supported by the Registry of Open Data on AWS, and more information on this new Zarr-formatted HRRR archive can be now be found via <a href="https://mesowest.utah.edu/html/hrrr/zarr_documentation/" target="_blank">this resource here</a>.
+					<br><br>
+					We expect to maintain some of this original grib2 archive for a period of time, but we do encourage users who are interested in the grib2 format to migrate to the cloud resources now supported by NOAA.</p>
+ 
+				<hr>
 
-                    <script src='./js/climate_acknowledgement.js'></script>
-
-                <p>Instead of storing all available HRRR files, we only download the files most useful to accomplish our
-                    research efforts. We realize this data is valuable to many others and have made the archive publicly
-                    accessible for research purposes. We currently have 60 terabytes of storage space at our disposal.
-
-                <div class='alert alert-sm alert-info'>
-                    <p><i class="fa fa-fw fa-book"></i> Additional details about this archive are published in <a
-                            class="alert-link" href="https://doi.org/10.1016/j.cageo.2017.08.005"
-                            target="_blank">Computers and Geosciences</a>
-
-                    <p><i class="fa fa-fw fa-database"></i> This HRRR archive has an official doi: <a class="alert-link"
-                            href="https://doi.org/10.7278/S5JQ0Z5B"> 10.7278/S5JQ0Z5B</a>
-                </div>
-
-                <hr>
-
-                <h3>What files are contained in the HRRR archive?</h3>
+                <h3>What files are contained in the remaining HRRR archive at the University of Utah?</h3>
                 <p>Output files, in GRIB2 format, contained in the archive include:
 
                 <div class="panel-group" id="accordion" style="max-width:700px; margin:auto">
@@ -278,7 +255,7 @@
                         href="http://nomads.ncep.noaa.gov/">NOMADS server</a>.
                 <p>Experimental HRRR (hrrrX) is downloaded via FTP from NOAA ESRL (credentials required).
                     <hr>
-                <h3>What version of HRRR is in this archive?</h3>
+                <h3>HRRR Version Information</h3>
                 <p><b>HRRRv1</b> was the operational model prior to August 23, 2016.
                 <p><b>HRRRv2</b> was implemented at NCEP on August 23, 2016 beginning
                     with the 12z run. We download the operational version from <a
@@ -305,104 +282,14 @@
                     <li>Ensemble 3km data assimilation</li>
                     <li>Addition of smoke forecast variables (more information on these are available via <a href="https://rapidrefresh.noaa.gov/hrrr/HRRRsmoke/HRRR_Smoke_IMET_Fire_QuickGuide_Aug14.pdf" target="_blank">this guide</a>)</li>
                 </ul>
-
-                <p>What's next for the HRRR? The HRRR model is the foundation for the upcoming Rapid Refresh Forecast System anticipated in 2022. Check out this article of <a href="https://research.noaa.gov/article/ArtMID/587/ArticleID/2702/The-amazing-research-resume-of-High-Resolution-Rapid-Refresh-Model">HRRR's great achievements</a>.
-
-                <hr>
-                <h3>When do we download the HRRR data?</h3>
-                <p><b>HRRR</b>, <b>HRRR-X</b>, and <b>HRRR-Alaska</b>
-                    is downloaded from NOMADS and ESRL 8 times a day at
-                    00:30, 03:30, 06:30, 09:30, 12:30, 15:30, 18:30, and 21:30 UTC.
-                <p>We only download HRRR data eight times a day to prevent anyone
-                    from grabbing real-time forecasts because this HRRR
-                    archive is not meant to be used for real-time or operational
-                    products.
-                <div class="alert alert-warning">
-                    <p style="text-align:center"> If you are looking for today's HRRR output, then download directly
-                        from
-                        <a class="alert-link"
-                            href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/">NOMADS</a>.
-                </div>
-
-                <hr>
-                <img align=right \ width='350px' \ class='style11' \ style="margin-left:15px; margin-bottom:15px" \
-                    src='./images/mouse.jpg' \ title="We give people a little, and they start asking for a lot.">
-                <h3>Vision for the Future</h3>
-                <p>This project is turning into a classic
-                    case of one of my favorite children's books <i>If You Give A Mouse A
-                        Cookie</i> where starting one thing has grown and continues to grow
-                    into something bigger.
-                <p>At the 2017 Annual AMS meeting I talked with a guy on the the
-                    AMS Board on Data Stewardship. He said the lack of
-                    a HRRR archive was one concern brought up at their board meeting.
-                <p>Archiving high resolution model data is an expensive task.
-                    This is a growing issue in the atmospheric science community
-                    as we move to higher resolution models that generate terabytes of
-                    data annually. At the 2018 Annual AMS meeting, it sounds like
-                    NOAA is interested in pushing the HRRR output to its
-                    <a href='http://www.noaa.gov/data-community-resources'>Big Data</a>
-                    partners.
-                <p>There are many opportunities with cloud computing where we "bring the
-                    data to the computing." An archive on the cloud can be
-                    kept in one place and researchers can use cloud resources to
-                    process the data, perform analyses, and initialize WRF simulations
-                    without downloading the model output on their own computers.
-                    The benefits and complications of
-                    cloud computing were discussed at the
-                    <a href="http://www.unidata.ucar.edu/events/2017CloudModelingWorkshop/#schedule">
-                        2017 Modeling Research in the Cloud</a> Workshop.
-                    It would especially be beneficial if it were possible to efficiently mine the large
-                    dataset for a specific variable at a point or subgrid
-                    for a range of dates or times. Perhaps this model data needs to be stored in
-                    HDF5 format rather than grib2. It would be nice if there was fewer
-                    redundant data fields between the files. For instance, some fields
-                    are available in the prs and sfc and nat files.
-
-                <p>Until data storage challenges are overcome, I would like to make this
-                    HRRR archive easily available to everyone to demonstrate the
-                    interest and need for having such an archive.
-                    This archive has already proven beneficial to many researchers
-                    and has served in many applications.
-                <p>In the future, it is possible to have server-side data processing
-                    that generate time series or wind roses for point locations
-                    in the HRRR model. My current methods for doing this are extremely
-                    inefficient because they still require downloading a temporary file
-                    for a single variable of the entire grid (which contains about 1.9
-                    grid points over the contiguous United States).
-                <p>One day, we hope this data will be archived elsewhere that is more
-                    accessible to everyone. Perhaps soon it will be hosted by Amazon by
-                    their Opendata initiative. I would advocate to keep it in the
-                    GRIB2 format (the original format it is output as), but it
-                    would also be nice to store the data in a "cloud-friendly"
-                    format such as zarr. Some extensive experimentation is still
-                    needed to understand how best to chunk the data
-                    in a way that will be useful for all users while preserving
-                    the same compression of the data that is enjoyed by the GRIB2 format.
-                    <hr>
-                <p> If I were in charge of the HRRR, I would like to see a more
-                    rapid data assimilation cycle and run the model every 15 minutes
-                    out to a 48 hour forecast. This would ultimately create 7 times as
-                    much data while providing a 96 members for time-lagged ensembles.
-                    Maybe different physics parameters could be used in each 15 minute
-                    model run to produce more model spread.
-                    My dream for a future weather prediction system is a model that is
-                    <i>continuously updating</i> rather than rapidly updating.
-                    <hr>
-                <p>The main concept of this archive is to create a HRRR archive in
-                    one place that is easily accessible so researchers don't have
-                    to redundantly store local archives, with the purpose to provide
-                    the data you need, when you need it.
             </div>
 
             <div id="tab2" class="tab-pane fade">
-                <h3><i class="fa fa-user"></i> Who archives the HRRR data?</h3>
-                <p>The HRRR archive at the University of Utah is managed by Brian Blaylock and the
+                <h3><i class="fa fa-user"></i> HRRR Archive Project History</h3>
+                <p>This HRRR archive at the University of Utah was managed by Brian Blaylock and the
                     <a href="http://meso1.chpc.utah.edu/mesowest_overview/" target="_blank">MesoWest group</a>
                     on resources at Utah's <a href="https://www.chpc.utah.edu/" target="_blank">Center for High
                         Performance Computing</a>.
-                    It can also be found in the University of Utah Hive.
-                    Please contact <a href="mailto:brian.blaylock@utah.edu">Brian</a> with questions regarding the
-                    archive.
                 <div align="center">
                     <a href="https://www.atmos.utah.edu/"><img align="center" src="./images/UU_logo.png"></a>
                     <a href="https://mesowest.org/"><img align="center" src="./images/MesoWest/MesoWest_20th_black.png"
@@ -413,16 +300,11 @@
                             style="height:100px;padding-left:15px"></a>
                 </div>
                 <hr>
-                <h3>Why do we archive the HRRR?</h3>
+                <h3>Why did we archive the HRRR?</h3>
                 <img align=right class='style11' width=400 style="margin-left:20px" src="./images/June2017_NCAR.PNG">
-                <p>While you can find current HRRR output at <a href="http://www.nomads.ncep.noaa.gov/">NOMADS</a>,
-                    there is no official HRRR
-                    archive that is publicly and easily available, to our knowledge.
-                    This "gap" in the NOAA data archives will hopefully be filled in
-                    the future, seeing that their vision is that all NOAA environmental
-                    data shall be <i>Discoverable, Accessible, Useable, and Preserved</i>.
-                    We hope to be part of the solution to that goal.
-                <p>This HRRR archive has been created to support various research
+                <p>When this project began, there was no official HRRR
+                    archive that was publicly and easily available, to our knowledge.
+                <p>This HRRR archive had been created to support various research
                     endeavors in the
                     Department of Atmospheric Sciences at the University of Utah.
                     Things we do include:
@@ -435,78 +317,22 @@
                     <li>Basic statistics of variables (max, min, mean, percentiles).
                     <li>Potential work with machine learning applications.
                 </ol>
-                <p> This archive allows us to perform analysis of the HRRR model performance, independent of the ESRL
-                    folks, for our own research purposes and goals.
-                <p>Archive methods are becoming more important with increasing requirements by funding agencies to
-                    maintain archives of the data used in research grants. The University of Utah is setting up a
-                    framework for handling such requirements through what they call <a
-                        href="https://hive.utah.edu/concern/generic_works/j9602061v">The Hive</a>. This HRRR archive was
-                    used as a test case for how that framework can be used for very large data sets.</p>
-                <p>We hope this archive will increase the volume of research and model validation using the HRRR model
-                    that otherwise could not be done. In the future, the HRRR may be archived as part of NOAA's Big Data
-                    Project. This will lead to additional uses of model forecasts and analyses in cloud computing
-                    environments and research done with rapidly updating forecast systems.
-                    <br>
-                <p> You are welcome to use the archive for your own research, but as a courtesy, please register and
-                    read the "Best Practices" document before downloading from the archive.
-
-                    <hr>
-
-                <h3>Where else can I find archived HRRR data?</h3>
-                <ul>
-                    <li><a href="http://www.nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/", target='_blank'>
-                            NOMADS</a>: Last two days (main source)
-                    <li><a href="https://console.cloud.google.com/marketplace/product/noaa-public/hrrr", target='_blank'>
-                        <b><i class="fab fa-google"></i> Google Cloud Platform</b></a>: 
-                        <b>MOST COMPLETE.</b> 2014-Present. Wow! When did NOAA start this HRRR archive on Google?
-                        They have all <code>sfc</code>, <code>prs</code>, <code>nat</code>, <code>subh</code> and other fields
-                        for the Alaska and CONUS domains that were available. 
-                        Unfortunately, the .idx files are not available for dates earlier than around Oct. 2018, 
-                        but hey, they have it all!</li>
-                    <li><a href="https://registry.opendata.aws/noaa-hrrr-pds/", target='_blank'>
-                        <b><i class="fab fa-aws"></i> Amazon AWS S3</b></a>: NOAA Big Data Program HRRR archive back to 2014 (missing .idx before January 14th??) (Zarr format coming soon)</li>
-                    <li><a href="https://esrl.noaa.gov/gsd/thredds/catalog/data/retro/hrrr/conus/wrftwo/catalog.html", target='_blank'>
-                        ESRL</a>: 2013-2017, only F01 for 80-m winds and downward solar radiation</li>
-                    <li><a href="https://www.ready.noaa.gov/data/archives/hrrr/README.TXT", target='_blank'>
-                        NOAA ARL</a>: June 2015 to present, selected variables and levels in ARL format for f01</li>
-                </ul>
-
             </div>
 
             <div id="tab3" class="tab-pane fade">
                 <img src="./images/HRRR_pando.jpg" align="right" width="250px" class="style11" style="margin-left:20px">
-                <h3><i class="fa fa-database"></i> Where is the HRRR archive?</h3>
-                <p>The archive is physically located at the University of Utah
+                <h3><i class="fa fa-database"></i> Where is the remaining HRRR archive at the University of Utah?</h3>
+                <p>The remaining archive is physically located at the University of Utah
                     Downtown Data Center in Salt Lake City, Utah. It is hosted on
                     Utah's Center for High Performance Computing Pando archive storage
                     system.
-                <p>This object storage system is similar to Amazon's S3 storage,
-                    but this is less expensive. We currently have a 60 TB allocation
-                    with a storage rate of ~50 GB/day.
+                <p>This object storage system is similar to Amazon's S3 storage
                     <a class="btn btn-danger" href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/">
                         Pando Archive Usage
                     </a>
-                <p>But you probably aren't interested in it's physical location.
-                    You want to know how to download from the archive. Lucky for you,
-                    the data is publicly available to those outside the University of Utah.
-                    We only ask that you fill out the registration form before downloading.
-                    The registration form helps us keep track of the number of people
-                    who find this data useful, which helps us justify making the archive
-                    available to you.
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html"
-                        class="btn btn-danger">
-                        <i class="fa fa-user-plus"></i> Archive Registration</a>
-                <p>After registering, you will be redirected to the interactive
-                    download page. Click the "Scripting Tips" button for how-to instructions
-                    to download from Pando with wget or cURL. These tips also show how
-                    you can target specific variables you are interested without downloading
-                    the entire file. This will save you space an download time.
-
                     <hr>
-                <h3><img class="style11" style="margin-left:20px" src="./images/FallPando.jpg" align="right"
-                        width="550px">
+                <h3>
                     <i class="fa fa-server"></i> What is the Pando archive?</h3>
-
                 <p><b>Pando</b> is a colony of quaking aspen trees in southern Utah,
                     thought to be the oldest and largest living organism in the world,
                     linked together by the same root system.
@@ -537,243 +363,6 @@
             </div>
 
             <div id="tab4" class="tab-pane fade">
-                <h3><i class="fa fa-calendar-alt"></i> What days are available to download?</h3>
-                <p>The HRRR archive begins on 15 July 2016. Browse the interactive
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi">web download
-                        page</a>
-                    for a visual sense of what data files are available each day.
-                <p>We store all the operational analyses and forecast for the surface
-                    fields. Unfortunately, we decided the pressure field files
-                    (~315 MB) are too large for us to save the forecast hours. We
-                    store analyses of the experimental HRRR and HRRR Alaska models.
-                <p> Timeline:
-                <ul style="padding-left: 60px;">
-                    <strike>
-                        <li>2015-04-18: The HRRR archive is born! Only HRRR analysis hours (f00) were stored for sfc and
-                            prs files.
-                        <li>2016-07-27: Began storing HRRR 15 hour sfc forecasts.
-                        <li>2016-08-24: Began storing HRRR 18 hour sfc forecasts (HRRRv2 became operational).
-                        <li>2016-12-01: Began storing experimental HRRR-Alaska. prs analyses and select sfc variables
-                            for analyses and forecasts.
-                        <li>2016-12-01: Began storing available experimental HRRR surface analyses.
-                        <li>2017-03-01: Moved HRRR archive from local file system to Pando storage.
-                        <li>2017-06-08: Began storing all available HRRR-Alaska sfc variables.
-                    </strike>
-                    <li>2017-12-27: <b>Pando Failed</b> All prior data was lost.</li>
-                    <li>2017-12-28: <b>Pando Rebuilt</b>
-                    <li>2017-02-26: <b>Backfilled to 2016-07-15</b> HRRRv2 data from The Climate Corporation.
-                    <li>2018-07-12: <b>HRRRv3 Upgrade</b> and HRRR-Alaska becomes operational.
-                    <li>2020-12-02: <b>HRRRv4 Upgrade</b>.
-                </ul>
-
-                <a class='btn btn-default btn-lg'
-                    href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/PRS_missing_incomplete_files.txt'>
-                    <i class="fab fa-firstdraft"></i>
-                    List of Missing PRS Files</a>
-                <a class='btn btn-default btn-lg'
-                    href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/SFC_missing_incomplete_files.txt'>
-                    <i class="fab fa-firstdraft"></i>
-                    List of Missing SFC Files</a>
-            </div>
-
-            <div id="tab5" class="tab-pane fade">
-                <h3><i class="fa fa-users"></i> Who uses the HRRR archive?</h3>
-                <img align=right class='style11' style="margin-left:15px;margin-bottom:15px"
-                    src='./images/hrrr_users.png' width='550px'>
-                <p>Many people are interested in the HRRR archive, including yourself
-                    (obviously, or else you wouldn't have Googled <i>HRRR archive</i>).
-                <p>The initial purpose of this HRRR archive was to serve atmospheric science research at the University
-                    of Utah, particularly my own research for my Master and PhD degrees.
-                    For example, I used HRRR analyses to
-                    <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAMC-D-16-0216.1">initialize WRF
-                        simulations</a>.
-
-                <p>The archive is searched for quite often by people like you.
-                    Since this archive has been published online I have received
-                    inquiries and download requests from
-                    National Weather Service employees,
-                    NASA scientists,
-                    researchers at the National Institute of Standards and Technology,
-                    a United State Air Force Captain,
-                    employees at NVIDIA, Lockheed Martin,
-                    commercial wind power companies,
-                    university professors,
-                    graduate students,
-                    airline forecasters,
-                    post docs,
-                    the USDA Agriculture Research Services,
-                    dozens of students working on capstone project,
-                    and many others.
-                <p>The HRRR archive allows researchers to
-                    use past weather data at high temporal and spatial resolution
-                    without the need to run their own WRF simulations. This is a
-                    huge time saver.
-                <p>How is the HRRR archive useful to you? Send me an email and let me know.
-                <div class="alert alert-success">
-                    If this archive is useful to you, please contact the most
-                    important person you know at NCEP and request they develop an
-                    official HRRR archive. Thank you <i class="far fa-smile"></i>
-                    <p><b>Update:</b> NOAA now has an archive on 
-                    <a href="https://console.cloud.google.com/marketplace/product/noaa-public/hrrr" target='_blank'>
-                    Google Cloud Platform</a>.
-                </div>
-
-
-                <div class='well'>
-                    <h3>Known published works that used this HRRR archive:</h3>
-                    <p style='text-indent:-20px'>
-                        Abatzoglou, A.T., C.M. Smith, D.L. Swain, T. Ptak, and C.A. Kolden, 2020:
-                        Population exposure to pre-emptive de-energization aimed at averting wildfires in Northern
-                        California.
-                        <i>Environ. Res. Lett.</i>,
-                        <b>15</b>, 1-8,
-                        <a href='https://doi.org/10.1088/1748-9326/aba135'>https://doi.org/10.1088/1748-9326/aba135</a>
-                    <p style='text-indent:-20px'>
-                        Blaylock, B.K., J.D. Horel, and E.T. Crosman, 2017:
-                        Impact of Lake Breezes on Summer Ozone Concentrations in the Salt Lake Valley.
-                        <i>J. Appl. Meteor. Climatol.</i>,
-                        <b>56</b>, 353-370,
-                        <a href='https://doi.org/10.1175/JAMC-D-16-0216.1'>https://doi.org/10.1175/JAMC-D-16-0216.1</a>
-                    <p style='text-indent:-20px'>
-                        Blaylock, B.K., J.D. Horel, and C. Galli, 2018:
-                        High-Resolution Rapid Refresh Model Data Analytics Derived on the Open Science Grid to Assist
-                        Wildland Fire Weather Assessment.
-                        <i>J. Atmos. Oceanic Technol.</i>,
-                        <b>35</b>, 2213–2227,
-                        <a
-                            href='https://doi.org/10.1175/JTECH-D-18-0073.1'>https://doi.org/10.1175/JTECH-D-18-0073.1</a>.
-                    <p style='text-indent:-20px'>
-                        Blaylock, B.K. and J.D. Horel, 2020:
-                        Comparison of Lightning Forecasts from the High-Resolution Rapid Refresh Model to Geostationary
-                        Lightning Mapper Observations.
-                        <i>Wea. Forecasting</i>,
-                        <b>35</b> , 401-416,
-                        <a href='https://doi.org/10.1175/WAF-D-19-0141.1'>https://doi.org/10.1175/WAF-D-19-0141.1</a>.
-                    <p style="text-indent:-20px">
-                        Bowes, B., J. Sadler, M. Morsy, M. Behl, and J. Goodall, 2019:
-                        Forecasting Groundwater Table in a Flood Prone Coastal City with Long Short-term Memory and
-                        Recurrent Neural Networks.
-                        <i>Water</i>,
-                        <b>11</b>, 1-38,
-                        <a href='https://doi.org/10.3390/w11051098'>https://doi.org/10.3390/w11051098</a>.
-                    <p style="text-indent:-20px">
-                        Cann, M.D. and K. Friedrich, 2020: The Role of Moisture Pathways on Snowfall Amount and
-                        Distribution in the Payette Mountains of Idaho.
-                        <i>Mon. Wea. Rev.</i>,
-                        <b>148</b> 2033–2048,
-                        <a href='https://doi.org/10.1175/MWR-D-19-0350.1'>https://doi.org/10.1175/MWR-D-19-0350.1</a>.
-                    <p style="text-indent:-20px">
-                        Cao, Y., and A.P. Barros, 2020: Weather-Dependent Nonlinear Microwave Behavior 
-                        of Seasonal High-Elevation Snowpacks.
-                        <i>Remote Sens.</i>,
-                        <b>12, 3422</b> 1-35,
-                        <a href='http://dx.doi.org/10.3390/rs12203422'>http://dx.doi.org/10.3390/rs12203422</a>.
-                    <p style="text-indent:-20px">
-                        Ditchek, S.D., K.L. Corbosiero, R.G. Fovell, and J. Molinari, 2020:
-                        Electrically Active Diurnal Pulses in Hurricane Harvey (2017).
-                        <i>Mon. Wea. Rev.</i>,
-                        <b>148</b> 2283-2305,
-                        <a href='https://doi.org/10.1175/MWR-D-20-0022.1'>https://doi.org/10.1175/MWR-D-20-0022.1</a>.
-                    <p style="text-indent:-20px">
-                        Handler, S. L., H. D. Reeves, and A. McGovern, 2020:
-                        Development of a Probabilistic Subfreezing Road Temperature Nowcast and Forecast Using Machine Learning.
-                        <i>Wea. Forecasting</i>,
-                        <b>35</b>, 1845-1863,
-                        <a href="https://doi.org/10.1175/WAF-D-19-0159.1">https://doi.org/10.1175/WAF-D-19-0159.1</a>.
-                    <p style="text-indent:-20px">
-                        Harkema, S., 2019:
-                        Improving Situational Awareness of Heavy-Snowfall Using the Geostationary Lightning Mapper. The
-                        University of Alabama in Huntsville, ProQuest Dissertations Publishing, 2019. 22592216.
-                        <a href="http://search.proquest.com/openview/599d54316495fd26d98d8e8e58bfcf72/1?pq-origsite=gscholar&cbl=18750&diss=y">
-                        ProQuest link</a>
-                    <p style="text-indent:-20px">
-                        Harkema, S.S., E.B. Berndt, and C.J. Schultz, 2020:
-                        Characterization of Snowfall Rates, Totals, and Snow-to-Liquid Ratios in Electrified Snowfall
-                        Events Identified by the Geostationary Lightning Mapper.
-                        <i>Wea. Forecasting</i>,
-                        <b>35</b>, 673-689,
-                        <a href='https://doi.org/10.1175/WAF-D-19-0126.1'> https://doi.org/10.1175/WAF-D-19-0126.1</a>
-                    </p>
-                    <p style="text-indent:-20px">
-                        Jackson, R., S. Collis, T. Lang, C. Potvin, and T. Munson, 2020:
-                        PyDDA: A Pythonic Direct Data Assimilation Framework for Wind Retrievals.
-                        <i>Journal of Open Research Software</i>,
-                        <b>8(1)</b>, 20.
-                        <a href='http://doi.org/10.5334/jors.264'>http://doi.org/10.5334/jors.264</a>.
-                    <p style='text-indent:-20px'>
-                        Jain, R., Luo, X., Sever, G., Hong, T., and Catlett, C., 2018:
-                        Representation and evolution of urban weather boundary conditions in downtown Chicago.
-                        <i>J. of Building Performance Simulation</i>,
-                        <a
-                            href='https://doi.org/10.1080/19401493.2018.1534275'>https://doi.org/10.1080/19401493.2018.1534275</a>.
-                    <p style="text-indent:-20px">
-                        Lee, T.R., M. Buban, D.D. Turner, T.P. Meyers, and C.B. Baker, 2019:
-                        Evaluation of the High-Resolution Rapid Refresh (HRRR) Model Using Near-Surface Meteorological
-                        and Flux Observations from Northern Alabama.
-                        <i>Wea.Forecasting</i>,
-                        <b>34</b>, 635-663,
-                        <a href='https://doi.org/10.1175/WAF-D-18-0184.1 '>https://doi.org/10.1175/WAF-D-18-0184.1 </a>.
-                    <p style='text-indent:-20px'>
-                        McCorkle, T.A., J.D. Horel, A.A. Jacques, and T. Alcott, 2018:
-                        Evaluating the Experimental High-Resolution Rapid Refresh-Alaska Modeling System Using USArray
-                        Pressure Observations.
-                        <i>Wea. Forecasting</i>,
-                        <b>33</b>, 933-953,
-                        <a href='https://doi.org/10.1175/WAF-D-17-0155.1'>https://doi.org/10.1175/WAF-D-17-0155.1</a>.
-                    <p style="text-indent:-20px">
-                        McNicholas, C. and C.F. Mass, 2018: Impacts of Assimilating Smartphone Pressure Observations on
-                        Forecast Skill during Two Case Studies in the Pacific Northwest.
-                        <i>Wea. Forecasting</i>,
-                        <b>33</b>, 1375-1396,
-                        <a href='https://doi.org/10.1175/WAF-D-18-0085.1'>https://doi.org/10.1175/WAF-D-18-0085.1</a>.
-                    <p style="text-indent:-20px">
-                        Moore, B.J., A.B. White, D.J. Gottas, and P.J. Neiman, 2020:
-                        Extreme precipitation events in northern California during winter 2016-2017: Multiscale analysis
-                        and climatological perspective.
-                        <i>Wea. Forecasting</i>,
-                        <b>148</b>, 1049-1074,
-                        <a href='https://doi.org/10.1175/MWR-D-19-0242.1'>https://doi.org/10.1175/MWR-D-19-0242.1</a>.
-                    <p style="text-indent:-20px">
-                        Poolla, C., and A. K. Ishihara, 2018:
-                        Localized solar power prediction based on weather data from local history and global forecasts.
-                        <i>45th IEEE Photovoltaic Specialists Conference</i>.
-                        <a href='https://arxiv.org/abs/1808.08657'>Link</a>.
-                    <p style="text-indent:-20px">
-                        Radford, J.T., G.M. Lackmann, and M.A. Baxter, 2019:
-                        An evaluation of snowband predictability in the High-Resolution Rapid Refresh.
-                        <i>Wea. Forecasting</i>,
-                        <b>34</b>, 1477-1494,
-                        <a href='https://doi.org/10.1175/WAF-D-19-0089.1'>https://doi.org/10.1175/WAF-D-19-0089.1</a>.
-                    <p style="text-indent:-20px">
-                        Radhakrishnan, C. and V. Chandrasekar, 2020:
-                        CASA Prediction System over Dallas Fort Worth Urban network: Blending of nowcasting and
-                        high-resolution Numerical Weather Prediction model.
-                        <i>J. Atmos. Technol.</i>,
-                        <b>37</b>, 211-228,
-                        <a href='https://doi.org/10.1175/JTECH-D-18-0192.1'>https://doi.org/10.1175/JTECH-D-18-0192.1</a>.
-                    <p style="text-indent:-20px">
-                        Reynolds, D., J. M. Pflug, J. D. Lundquist, 2020:
-                        Evaluating Wind Fields for Use in Basin-Scale Distributed Snow Models.
-                        <i>Water Resources Research</i>,
-                        <b>In Press</b>
-                        <a href='https://doi.org/10.1029/2020WR028536'>https://doi.org/10.1029/2020WR028536</a>.
-                    <p style="text-indent:-20px">
-                        Rosenow, A.A., K. Howard, and J. Meitin, 2018:
-                        Gap-Filling Mobile Radar Observations of a Snow Squall in the San Luis Valley.
-                        <i>Mon. Wea. Rev.</i>,
-                        <b>146</b>, 2469-2481,
-                        <a href='https://doi.org/10.1175/MWR-D-17-0323.1'>https://doi.org/10.1175/MWR-D-17-0323.1</a>.
-                    <p style="text-indent:-20px">
-                        Zick, S. E., 2020:
-                        Quantifying Extreme Precipitation Forecasting Skill in High-Resolution Models Using Spatial
-                        Patterns: A Case Study of the 2016 and 2018 Ellicott City Floods
-                        <i>Atmosphere</i>,
-                        <b>11</b>, 1-25,
-                        <a href='https://doi.org/10.3390/atmos11020136'>https://doi.org/10.3390/atmos11020136</a>.
-                </div>
-            </div>
-
-            <div id="tab6" class="tab-pane fade">
 
                 <h3><i class="fa fa-paint-brush"></i> Gallery</h3>
                 <h3>Online Tools</h3>
@@ -928,95 +517,6 @@
                 </ul>
             </div>
 
-            <div id="tab7" class="tab-pane fade">
-                <h3><i class="fa fa-desktop"></i> Tips for CHPC Users</h3>
-                <p>Do you work/study at the University of Utah, too? Cool! Go Utes!!
-                    Here are a few helpful tips that will make your life easier. That is,
-                    if your life involves using HRRR data from our handy archive.
-                    Please share with me cool stuff you learn!
-
-                    <hr>
-                <h3>I have stuff in my own Pando buckets. How can I view those files in a browser?</h3>
-                <p>The HRRR download page is a custom-built interface for accessing files in the HRRR buckets,
-                    but what if you have your own buckets in Pando? You're in luck,
-                    because I created this more generic web interface for viewing and downloading
-                    file objects in your Pando buckets that look more like the Apache file explorer.
-                <p>
-                    <center><a
-                            href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/generic_pando_download.cgi'
-                            class='btn btn-success'>
-                            <i class="fas fa-list-ul"></i> Pando Content Viewer
-                        </a></center>
-                    <hr>
-                <h3>How full is our Pando allocation?</h3>
-                <p> View the amount of space used on our Pando. <a class='btn btn-primary'
-                        href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/Pando_archive/">Pando Allocation</a>
-                </p>
-
-                <hr>
-                <h3>Is the archive on the local file system?</h3>
-                <p>Yes, we keep a backup of the HRRR archive on horel-group7.
-                <div class="well well-sm"><span
-                        style="font-family:monospace">/uufs/chpc.utah.edu/common/home/horel-group7/Pando/</span></div>
-                <p>Then navigate to the HRRR directory you are interested:
-                <ul style="padding-left: 60;">
-                    <li>hrrr
-                    <li>hrrrX
-                    <li>hrrrak
-                    <li>GOES16
-                </ul>
-
-                <hr>
-                <h3>Want a behind-the-scenes tour of the HRRR archive?</h3>
-                <p>The process we use to downloading HRRR and move HRRR to the
-                    Pando archive system is documented on GitHub.
-                    <a class='btn btn-primary' href="https://github.com/blaylockbk/HorelS3-Archive/">Horel-S3 <i
-                            class="fab fa-github fa-fw"></i></a>
-
-                    <hr>
-                <h3>How do I get the HRRR data if what I'm looking for is compressed?</h3>
-                <div class="alert alert-danger">
-                    There is still some HRRR data that is compressed on the local file system
-                    but it's much quicker to get it from PANDO. Still, this may be
-                    useful for getting other stuff out of the compressed archive, so I'll
-                    keep it here as a reference. (It took me many web searches before I
-                    figured out how to make this work, so I don't want to lose this
-                    token of knowledge.)
-                </div>
-
-                <p>If you find that what you're looking for is compressed, the
-                    following instructions will help get what you need:
-                <ol style="padding-left:60px">
-
-                    <li>
-                        <p>Copy the <b>models.tar.gz</b> file to your own space.
-                            Yes, this is large (~20 GB). It contains
-                            all the model data we archive (I warned you that this was
-                            inefficient).
-                    <li>
-                        <p>Before untarring the entire directory, you can check if
-                            it contains the files you need with something like this:
-                        <div class="well well-sm" style="font-family:'Courier';">less -p /hrrr/hrrr.t models.tar.gz
-                        </div>
-                    <li>
-                        <p>You can untar the entire file, but that would take a looonng
-                            time, and you don't need everything in that file anyways.
-                        <p>You can extract just the HRRR data with this one-liner...(still
-                            takes a bit of time)
-                        <div class="well well-sm" style="font-family:'Courier';">tar -xzvf models.tar.gz
-                            20160101/models/hrrr/</div>
-
-                        <p> Or you can get more creative and use the following
-                            to get just the pressure fields. (In this case
-                            it helps to know the contents of the tarred file).
-                            Starting in the directory you wish to copy the
-                            files into, type...
-                        <div class="well well-sm" style="font-family:'Courier';">
-                            tar -zxvf models.tar.gz --wildcards --no-anchored 'hrrr.t*z.wrfprsf00.grib2'
-                        </div>
-                </ol>
-
-            </div>
         </div>
         <!--tab-conent-->
     </div>

@@ -98,31 +98,36 @@ print '''
     <script src='./js/pando_status.js'></script>
     <script src='./js/HRRR_status.js'></script>
 
-    <div class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p style='font-size:15px'>If you have not already, please 
-        <a class='alert-link' href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html">register</a>
-        as a user before downloading data. Citation details can be found at the bottom of this page
-    </div>
+	<br>
+	<div id="content" class="container">
+	<div class="alert alert-warning">
+		<p style='font-size:15px'>Thank you for visiting this resource.  With the expanded availability of archived HRRR grib2-formatted data now courtesy of <a href="https://registry.opendata.aws/noaa-hrrr-pds/" target="_blank">NOAA and the Registry of Open Data on AWS</a>, this archive hosted at the University of Utah is now being reduced.  Users interested in the grib2 format are encouraged to switch to using the AWS archive, or a similar archive operated within the <a href="https://console.cloud.google.com/marketplace/product/noaa-public/hrrr?project=python-232920&pli=1" target="_blank">Google Cloud</a>.<br><br>For users interested in subsets of HRRR data, our research group is now supporting a parallel archive in <a href="https://mesowest.utah.edu/html/hrrr/" target="_blank">Zarr format</a>.  This new Zarr archive is also hosted by the <a href="https://hrrrzarr.s3.amazonaws.com/index.html" target="_blank">Registry of Open Data on AWS</a>.
+	</div>
+	</div>
+	<br>
 
-    <div class="row">
-        <div class=" col-md-3">
-            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_download_register.html" class="btn btn-danger btn-block">
-            <i class="fa fa-user-plus" ></i> Have you Registered?</a>        
-        </div>
-        <div class="col-md-3">
-            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html" class="btn btn-warning btn-block">
-            <i class="far fa-handshake" ></i> Best Practices</a>
-        </div>
-        <div class="col-md-3">
-            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html" class="btn btn-success btn-block">
-            <i class="fa fa-info-circle" ></i> HRRR FAQ</a>
-        </div>
-        <div class="col-md-3">
-            <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_script_tips.html" class="btn btn-primary btn-block">
-            <i class="fa fa-code" ></i> Scripting Tips</a>
-        </div>
-    </div>
+	<div class="row" id="content">
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_FAQ.html"
+				class="btn btn-success btn-block active">
+				<i class="fa fa-info-circle"></i> HRRR FAQ</a>
+		</div>
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr_practices.html"
+				class="btn btn-warning btn-block">
+				<i class="far fa-handshake"></i> Best Practices</a>
+		</div>
+		<div class="col-md-3">
+			<a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/hrrr_download.cgi"
+				class="btn btn-primary btn-block">
+				<i class="fa fa-cloud-download-alt"></i>Pando Web Download Page</a>
+		</div>
+		<div class=" col-md-3">
+			<a href="https://registry.opendata.aws/noaa-hrrr-pds/"
+				class="btn btn-danger btn-block" target="_blank">
+				<i class="fa fa-cloud-download-alt"></i> AWS HRRR Archive</a>
+		</div>
+	</div>
 
     <br>
     <div style="width:100%" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -225,7 +230,7 @@ print''' </select>
     <div class="form-group">
       <label class="control-label col-md-2" for="date">Date:</label>
       <div class="col-md-4">          
-        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2016-07-15" max="'''+datetime.now().strftime('%Y-%m-%d')+'''">
+        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-07-01" max="'''+datetime.now().strftime('%Y-%m-%d')+'''">
       </div>
     </div>
 <!--- (date)----------------------------->'''
