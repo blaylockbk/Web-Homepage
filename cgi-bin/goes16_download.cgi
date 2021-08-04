@@ -262,23 +262,38 @@ print'''
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
-        <h3>rclone</h3>
-            <a href="https://rclone.org/">rclone</a>
-            <p>This page uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
-            <a class='btn btn-primary' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>Brian's rclone Tutorial</a>
-        <hr>
-        <h3>AWS CLI</h3>
-            <a href="https://aws.amazon.com/cli/">AWS CLI</a>
         
-        <hr>
         <h3>Python</h3>
+            <p> Brian's <a href="https://github.com/blaylockbk/goes2go">GOES-2-go</a> package
+            <p>
+            <a href="https://github.com/blaylockbk/goes2go">
+            <img src="https://raw.githubusercontent.com/blaylockbk/goes2go/master/docs/_static/goes2go_logo_100dpi.png" width=50%>
+            </a>
+            
+            <p>
             <a href="https://s3fs.readthedocs.io/en/latest/">s3fs</a>
             <p> You can view and download files from public AWS buckets with Python's <code>s3fs</code> library.</p>
             <script src="https://gist.github.com/blaylockbk/d60f4fce15a7f0475f975fc57da9104d.js"></script>
         
+        <hr>
+        
+        <h3>rclone</h3>
+            <p><a href="https://rclone.org/">rclone</a>
+            <p>My tutorial uses <a class='alert-link' href='https://rclone.org/'>rclone</a> to access public GOES-16 files from Amazon Web Services. 
+            <a class='btn btn-primary' href='https://github.com/blaylockbk/pyBKB_v3/blob/master/rclone_howto.md'>Brian's rclone Tutorial</a>
+        <hr>
+        <h3>Amazon Web Services CLI</h3>
+            <p><a href="https://aws.amazon.com/cli/">AWS CLI</a>
+
+        <h3>Google Cloud Platform gsutil</h3>
+            <p> <a href="https://cloud.google.com/storage/docs/gsutil">GCP gsutil</a>
+            <p> Example:
+            <p><code>gsutil cp gs://gcp-public-data-goes-16/GLM-L2-LCFA/2019/100/00/OR_GLM-L2-LCFA_G16_s20191000059400_e20191000100000_c20191000100027.nc </code>
+                
         <hr>    
         <h3> NOAA CLASS</h3>
-            <a href="https://www.avl.class.noaa.gov/">NOAA CLASS</a>
+            <p><a href="https://www.avl.class.noaa.gov/">NOAA CLASS</a>
+            <p> This is a bit laborious.
         
         </div>
       </div>
