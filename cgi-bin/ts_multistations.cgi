@@ -185,7 +185,10 @@ for n, s in enumerate(data.keys()):
             plt.ylabel(r'Half=2.5, Full=5, Flag=25 (ms$\mathregular{^{-1}}$)')    
         
     else:
-        ax.plot(data[s]['DATETIME'], data[s][variable], label=s.upper())
+        thistimesetout = np.array(data[s]['DATETIME'])
+        thisdataout = np.array(data[s][variable])
+        thismask = np.isfinite(thisdataout)
+        ax.plot(thistimesetout[thismask], thisdataout[thismask], label=s.upper())
         plt.title(variable)
         plt.ylabel(variable)
     

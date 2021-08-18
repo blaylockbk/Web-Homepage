@@ -48,7 +48,7 @@ body {}
     margin: 0 auto;
     position: relative;
     /*min-height: 100%;*/
-    max-width: 1070px;    
+    max-width: 1070px;
     font-size: 18px;
 }
 
@@ -168,9 +168,9 @@ textarea {
 
 /* CSS for creating an easy "tooltip"
 	To display a tool tip when you hover over text or an image
-	wrap the text or image with an <a> tag with a title. 
+	wrap the text or image with an <a> tag with a title.
 	<a title="this is the text that will show in the tool tip" class="tooltip">Display Text</a>
-	If you want to make a special style for it, assign the class and use 
+	If you want to make a special style for it, assign the class and use
 	the following CSS...
 */
 
@@ -234,4 +234,5 @@ textarea {
     background: rgba(0, 0, 0, 0.5);
 }
 /* (^Home Page Top Image^)*/
+
 

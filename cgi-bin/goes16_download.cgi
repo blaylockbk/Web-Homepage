@@ -288,7 +288,7 @@ print'''
         <h3>Google Cloud Platform gsutil</h3>
             <p> <a href="https://cloud.google.com/storage/docs/gsutil">GCP gsutil</a>
             <p> Example:
-            <p><code>gsutil cp gs://gcp-public-data-goes-16/GLM-L2-LCFA/2019/100/00/OR_GLM-L2-LCFA_G16_s20191000059400_e20191000100000_c20191000100027.nc </code>
+            <p><code>gsutil cp gs://gcp-public-data-goes-16/GLM-L2-LCFA/2019/100/00/OR_GLM-L2-LCFA_G16_s20191000059400_e20191000100000_c20191000100027.nc .</code>
                 
         <hr>    
         <h3> NOAA CLASS</h3>

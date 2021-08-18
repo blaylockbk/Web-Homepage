@@ -7,30 +7,30 @@
   <title>Brian Blaylock, UofU</title>
 
   <script>
-  /* Array of image URLs to randomly set as the page top photo*/
-  var brian_pics = [
+    /* Array of image URLs to randomly set as the page top photo*/
+    var brian_pics = [
       "./images/home1.png",
       "./images/home2.png",
       "./images/home3.jpg",
-  ];
+    ];
 
 
-  function getRandomInt(min, max) {
+    function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+    }
 
-  function change_home_pic() {
+    function change_home_pic() {
       var idx = getRandomInt(0, brian_pics.length - 1);
       document.getElementById("home_pic").src = brian_pics[idx];
-  }
+    }
   </script>
 
 </head>
 
 <body>
 
-<script src="./js/site/sitemenu.js"></script>	
-<!--
+  <script src="./js/site/sitemenu.js"></script>
+  <!--
 <div class="parallax">
   <h2 class="homeImageLink">
 	  <span>B<small style="color:white">rian</small> K. B<small style="color:white">laylock</small></span>
@@ -38,286 +38,342 @@
 </div>
 -->
 
-<div class="img-container">
+  <div class="img-container">
     <!--<script>
       var idx = getRandomInt(0, brian_pics.length - 1)
       document.write('<img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src="' + brian_pics[idx] + '" onclick="change_home_pic();" width="100%">');
     </script>
     -->
-    <img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src='./images/home2.png' onclick="change_home_pic();" width="100%"> 
+    <img class="img-responsive" style="box-shadow: 0px 10px 35px grey" id="home_pic" src='./images/home2.png'
+      onclick="change_home_pic();" width="100%">
     <h2 class="homeImageLink">
-    <span>Brian K. Blaylock</span>
+      <span>Brian K. Blaylock</span>
     </h2>
-</div>
-
-
-<div id="container" class='home'>
-<br>
-<div style='max-width: 900px;margin:auto;'>
-<p class="home">
-I'm from Spanish Fork, Utah and recently finished a Ph.D. in atmospheric science
-at the University of Utah. My advisor was <a href="https://home.chpc.utah.edu/~u0035056/home/">Dr. John Horel</a>.
-
-I joined the <a href='https://home.chpc.utah.edu/~whiteman/mmg/' target="page">Mountain Meteorology Research Group</a>
-and <a href='http://meso1.chpc.utah.edu/mesowest_overview/' target='page'>MesoWest</a> team in November 2012.
-
-<hr>
-
-<p style='text-align: center;'><img src='./images/NRL.png' width=200>
-<p class='home'>
-    I was awarded a National Academies Research Associateship and began 
-    working at the <a href='https://www.nrlmry.navy.mil/'>Naval Research Laboratory Marine Meteorology Division</a>
-    in <b>Fall 2019</b>.
-
-<hr>
-
-<div id="accordion-tri" class="panel-group">
-  
-  <div class="panel panel-default">
-		<div class="panel-heading" data-target="#collapse1-tri" data-toggle="collapse" data-parent="#accordion-tri">
-			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Skills</h4> 
-		</div>
-		<div id="collapse1-tri" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div style="padding-left:40px">
-        <div class="media">
-            <div class="media-left">
-                <img src="./images/skills/teach.jpg" class="media-object img-rounded" style="width:60px">
-            </div>
-            <div class="media-body">
-                <b>Communication</b><br>
-                <h4>Speaking, writing, teaching, public outreach,
-                   documentation, Atlassian Confluence, GitHub, 
-                   Bitbucket, StackOverflow,
-                   Slack, type 80+ words per minute</h4>
-            </div>
-        </div>
-
-        <div class="media">
-            <div class="media-left">
-            <img src="./images/skills/python.png" class="media-object" style="width:60px">
-            </div>
-            <div class="media-body">
-            <b>Python</b><br>
-            <h4>Started a Python User Group for our department and taught the Environmental Programming course.
-                Skilled in Python 2.7 and Python 3,
-                numpy, matplotlib, Pandas, xarray, cartopy, Basemap, scipy,
-                datetime, multiprocessing, cylc, Dask, metpy,
-                pyproj, pygrib, Jupyter Lab, Anaconda, conda, 
-                publication-quality figures.
-                
-                View code on <a href='https://github.com/blaylockbk'>GitHub</a>.
-            </h4>
-                
-            </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/Linux.png" class="media-object" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Linux</b><br>
-                <h4>High Performance Computing, High Throughput Computing, 
-                    modules, shell scripting, cron, cylc, PBS, slurm,
-                    git, Docker</h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/data.png" class="media-object img-circle" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Big Data</b><br>
-                <h4>
-                    <a href='http://hrrr.chpc.utah.edu/'>Data management</a>, 
-                    data stewardship, data retrieval/acquisition, data analysis,
-                    NetCDF, HDF5, GRIB2,
-                    <a href="http://research.cs.wisc.edu/htcondor/">HTCondor</a>,
-                    <a href='https://github.com/blaylockbk/pyBKB_v2/tree/master/OpenScienceGrid'>Open Science Grid</a>,
-                    S3, Globus, Amazon Web Services, rclone, numerical weather models,
-                    <a href='http://hrrr.chpc.utah.edu/'>HRRR</a>,
-                    weather satellites,
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES16</a>,
-                    MODIS
-                 </h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/WRF.png" class="media-object" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Numerical Weather Prediction</b><br>
-                <h4>
-                    <b>Weather Research and Forecast (WRF) model</b>. Basic WRF Tutorial certificate,
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html">initialize WRF with HRRR boundary conditions</a>,
-                    lake breeze,
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/tracer.html">tracers</a>,
-                    <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html">land surface modifications</a>,
-                    <a href="https://home.chpc.utah.edu/~u0553130/Ute_WRF/">UofU WRF User Group</a></h4>
-                <h4><b>Coupled Ocean/Atmosphere Mesoscale Prediction System (COAMPS) model</b>.
-                    Observation impact experiments. Model Evaluation Tools. Data assimilation.</h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/wind.png" class="media-object" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Environmental Instrumentation</b><br>
-                <h4>Campbell Scientific, Davis Instruments, air quality, field work, data collection</h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/mesowest.png" class="media-object img-rounded" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>MesoWest</b><br>
-                <h4><a href='https://synopticlabs.org/api/'>Synoptic Labs API</a></h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/HTML5.png" class="media-object" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Web Development and Design</b><br>
-                <h4>HTML, CSS, JavaScript, Bootstrap, PHP, Python CGI, Font Awesome, Photoshop, Illustrator</h4>
-              </div>
-        </div>
-        <div class="media">
-              <div class="media-left">
-                <img src="./images/skills/microsoft.png" class="media-object" style="width:60px">
-              </div>
-              <div class="media-body">
-                <b>Microsoft</b><br>
-                <h4>Windows, Office 365, VSCode, Teams</h4>
-              </div>
-        </div>
-          
-        </div>
-    
-			</div>
-		</div>
-	</div>
-	
-	<div class="panel panel-default">
-		<div class="panel-heading" data-target="#collapse2-tri" data-toggle="collapse" data-parent="#accordion-tri">
-			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Current Research</h4> 
-		</div>
-		<div id="collapse2-tri" class="panel-collapse collapse">
-			<div class="panel-body">
-	    <p>I developed the HRRR model archive hosted at the University of Utah by the MesoWest group.
-         The archive is used by over 500 known users. At least eight 
-         published papers (not my own) reference the dataset. The archive is
-         stored on a cloud-based, object-storage system and is the largest 
-         publicly-available HRRR archive. 
-      <p>My Ph.D. research investigated the predictability of 
-         convective outflow by the HRRR model&#8212;a project funded through
-         the Joint Fire Science Program. I used data from the GOES-East 
-         Geostationary Lightning Mapper to evaluate the ability of the HRRR
-         model to correctly forecast the location of thunderstorms and found
-         that the HRRR does not provide high precision forecasts of the
-         location of storms useful for Incident Meteorologists assigned to
-         provide weather support at wildfires. Instead, it is recommended that
-         Incident Meteorologists use the HRRR forecasts to gauge the potential
-         for thunderstorms in the vicinity of the area of interest.
-      <p>For other research related to air quality, I initialized WRF
-         simulations with the HRRR model and modified surface parameters to
-         improve model performance.
-      <p>You will find more details on my research by exploring the 
-         pages on this website and several Jupyter Notebooks on Github.
-			</div>
-		</div>
   </div>
 
-  <div class="panel panel-default">
-		<div class="panel-heading" data-target="#collapse3-tri" data-toggle="collapse" data-parent="#accordion-tri">
-			<h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw" aria-hidden="true">&nbsp;</em></span>Career Goals</h4> 
-		</div>
-		<div id="collapse3-tri" class="panel-collapse collapse">
-			<div class="panel-body">
-	   <p>I believe weather data can be used for many applications, and I 
-          hope to serve people in various fields with improved numerical 
-          weather prediction. I am especially interested in 0-3 day 
-          forecasts. My dream of numerical weather models is to one day 
-          have a <i>continuously updating</i> weather prediction system. 
-       <p>While there seems to be deficiencies in the United States' 
-          current numerical weather prediction capabilities, I want to be 
-          a part of the solution by using new and forthcoming technology
-          effectively and efficiently. 
-       <p>I hope to become more involved in big data storage and
-          analytics, community numerical weather prediction model development
-          especially rapid refresh forecast system with FV3,
-          and using new observational products for model initial conditions (like GOES-R series).
-       <p>I am a problem solving leader, eager to learn and develop new skills.
-          I have a teamwork mentality and want to contribute to the community.
-          Education is important to me, and I am interested in gaining teaching experience.
-			</div>
-		</div>
-  </div>
-  
-</div>
 
-<br>
+  <div id="container" class='home'>
+    <br>
+    <div style='max-width: 900px;margin:auto;'>
+      <p class="home">
+        I'm from Spanish Fork, Utah and recently finished a Ph.D. in atmospheric science
+        at the University of Utah. My advisor was <a href="https://home.chpc.utah.edu/~u0035056/home/">Dr. John
+          Horel</a>.
 
-<div align=center>
-<a href='mailto:brian.blaylock@utah.edu'><big><b>
-  <i class="fa fa-envelope"></i> brian.blaylock@utah.edu
-</b></big></a>
-<br><br>
-<div style='padding: 5px'>
-<a href="https://www.linkedin.com/pub/brian-blaylock/36/301/727">
-    <img align=center src="http://icons.iconarchive.com/icons/danleech/simple/72/linkedin-icon.png" width="55px" height="55px" title='LinkedIN'></a>
-<a href="https://github.com/blaylockbk">
-    <img align=center src="./images/github.png" width="55px" height="55px" title='GitHub'></a>
-<a href="https://scholar.google.com/citations?user=Ko7RRJ8AAAAJ&hl=en">
-    <img align=center src="./images/scholar.png" height="55px" title='Google Scholar'></a>
-<a href="https://twitter.com/blaylockbk">
-    <img align=center src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/tweet.png" width="55px" height="55px" title="tweet"></a>
-<a href="https://www.youtube.com/channel/UCKiLx4IENkJ-UU0CuORgCGg">
-    <img align=center src="./images/youtube-icon.png" width="55px" height="55px" title='youtube'></a>
-<a href="http://www.atmos.utah.edu/">
-    <img align=center src="./images/UU_Square.png" width="55px" height="55px" title='University of Utah Atmospheric Sciences'></a>
-<a href="http://orcid.org/0000-0003-2133-9313">
-    <img align=center src="./images/orcid.png" width='55px' height="55px" title='OrchID'></a>
-<a href="https://www.researchgate.net/profile/Brian_Blaylock">
-    <img align=center src="./images/research_gate.png" height="55px" title='Research Gate'></a>
-</div>
-</div>
-</div>
+        I joined the <a href='https://home.chpc.utah.edu/~whiteman/mmg/' target="page">Mountain Meteorology Research
+          Group</a>
+        and <a href='http://meso1.chpc.utah.edu/mesowest_overview/' target='page'>MesoWest</a> team in November 2012.
 
-<br>
-    <div style='background-color:rgb(231, 231, 231);box-shadow: 0px 1px 25px grey'>
-      <div class='container'>  
-      <h4 style="padding:15 0 0 15"><i>Curriculum Vitae</i></h4>
-      <iframe src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21492260&authkey=AMePfD-qJkOP_A8&em=2" width="95%" height="550" frameborder="0" scrolling="no"></iframe>
+        <hr>
+
+      <p style='text-align: center;'><img src='./images/NRL.png' width=200>
+      <p class='home'>
+        I was awarded a National Academies Research Associateship and began
+        working at the <a href='https://www.nrlmry.navy.mil/'>Naval Research Laboratory Marine Meteorology Division</a>
+        in <b>Fall 2019</b>.
+
+        <hr>
+
+      <div id="accordion-tri" class="panel-group">
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-target="#collapse1-tri" data-toggle="collapse" data-parent="#accordion-tri">
+            <h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw"
+                  aria-hidden="true">&nbsp;</em></span>Skills</h4>
+          </div>
+          <div id="collapse1-tri" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div style="padding-left:40px">
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/teach.jpg" class="media-object img-rounded" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Communication</b><br>
+                    <h4>Speaking, writing, teaching, public outreach,
+                      documentation, Atlassian Confluence, GitHub,
+                      Bitbucket, StackOverflow,
+                      Slack, type 80+ words per minute</h4>
+                  </div>
+                </div>
+
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/python.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Python</b><br>
+                    <h4>Started a Python User Group for our department and taught the Environmental Programming course.
+                      Skilled in Python 2.7 and Python 3,
+                      numpy, matplotlib, Pandas, xarray, cartopy, Basemap, scipy,
+                      datetime, multiprocessing, cylc, Dask, metpy,
+                      pyproj, pygrib, Jupyter Lab, Anaconda, conda,
+                      publication-quality figures.
+
+                      View code on <a href='https://github.com/blaylockbk'>GitHub</a>.
+                    </h4>
+
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/Linux.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Linux</b><br>
+                    <h4>High Performance Computing, High Throughput Computing,
+                      modules, shell scripting, cron, cylc, PBS, slurm,
+                      git, Docker</h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/data.png" class="media-object img-circle" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Big Data</b><br>
+                    <h4>
+                      <a href='http://hrrr.chpc.utah.edu/'>Data management</a>,
+                      data stewardship, data retrieval/acquisition, data analysis,
+                      NetCDF, HDF5, GRIB2,
+                      <a href="http://research.cs.wisc.edu/htcondor/">HTCondor</a>,
+                      <a href='https://github.com/blaylockbk/pyBKB_v2/tree/master/OpenScienceGrid'>Open Science
+                        Grid</a>,
+                      S3, Globus, Amazon Web Services, rclone, numerical weather models,
+                      <a href='http://hrrr.chpc.utah.edu/'>HRRR</a>,
+                      weather satellites,
+                      <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/goes16_pando.cgi">GOES16</a>,
+                      MODIS
+                    </h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/WRF.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Numerical Weather Prediction</b><br>
+                    <h4>
+                      <b>Weather Research and Forecast (WRF) model</b>. Basic WRF Tutorial certificate,
+                      <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/hrrr.html">initialize WRF with HRRR
+                        boundary conditions</a>,
+                      lake breeze,
+                      <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/tracer.html">tracers</a>,
+                      <a href="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/lake_surgery.html">land surface
+                        modifications</a>,
+                      <a href="https://home.chpc.utah.edu/~u0553130/Ute_WRF/">UofU WRF User Group</a>
+                    </h4>
+                    <h4><b>Coupled Ocean/Atmosphere Mesoscale Prediction System (COAMPS) model</b>.
+                      Observation impact experiments. Model Evaluation Tools. Data assimilation.</h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/wind.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Environmental Instrumentation</b><br>
+                    <h4>Campbell Scientific, Davis Instruments, air quality, field work, data collection</h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/mesowest.png" class="media-object img-rounded" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>MesoWest</b><br>
+                    <h4><a href='https://synopticlabs.org/api/'>Synoptic Labs API</a></h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/HTML5.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Web Development and Design</b><br>
+                    <h4>HTML, CSS, JavaScript, Bootstrap, PHP, Python CGI, Font Awesome, Photoshop, Illustrator</h4>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <img src="./images/skills/microsoft.png" class="media-object" style="width:60px">
+                  </div>
+                  <div class="media-body">
+                    <b>Microsoft</b><br>
+                    <h4>Windows, Office 365, VSCode, Teams</h4>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-target="#collapse2-tri" data-toggle="collapse" data-parent="#accordion-tri">
+            <h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw"
+                  aria-hidden="true">&nbsp;</em></span>Current Research</h4>
+          </div>
+          <div id="collapse2-tri" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>I developed the HRRR model archive hosted at the University of Utah by the MesoWest group.
+                The archive is used by over 500 known users. At least eight
+                published papers (not my own) reference the dataset. The archive is
+                stored on a cloud-based, object-storage system and is the largest
+                publicly-available HRRR archive.
+              <p>My Ph.D. research investigated the predictability of
+                convective outflow by the HRRR model&#8212;a project funded through
+                the Joint Fire Science Program. I used data from the GOES-East
+                Geostationary Lightning Mapper to evaluate the ability of the HRRR
+                model to correctly forecast the location of thunderstorms and found
+                that the HRRR does not provide high precision forecasts of the
+                location of storms useful for Incident Meteorologists assigned to
+                provide weather support at wildfires. Instead, it is recommended that
+                Incident Meteorologists use the HRRR forecasts to gauge the potential
+                for thunderstorms in the vicinity of the area of interest.
+              <p>For other research related to air quality, I initialized WRF
+                simulations with the HRRR model and modified surface parameters to
+                improve model performance.
+              <p>You will find more details on my research by exploring the
+                pages on this website and several Jupyter Notebooks on Github.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-target="#collapse3-tri" data-toggle="collapse" data-parent="#accordion-tri">
+            <h4 class="panel-title"><span class="pull-left"><em class="fa fa-caret-right fa-fw"
+                  aria-hidden="true">&nbsp;</em></span>Career Goals</h4>
+          </div>
+          <div id="collapse3-tri" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>I believe weather data can be used for many applications, and I
+                hope to serve people in various fields with improved numerical
+                weather prediction. I am especially interested in 0-3 day
+                forecasts. My dream of numerical weather models is to one day
+                have a <i>continuously updating</i> weather prediction system.
+              <p>While there seems to be deficiencies in the United States'
+                current numerical weather prediction capabilities, I want to be
+                a part of the solution by using new and forthcoming technology
+                effectively and efficiently.
+              <p>I hope to become more involved in big data storage and
+                analytics, community numerical weather prediction model development
+                especially rapid refresh forecast system with FV3,
+                and using new observational products for model initial conditions (like GOES-R series).
+              <p>I am a problem solving leader, eager to learn and develop new skills.
+                I have a teamwork mentality and want to contribute to the community.
+                Education is important to me, and I am interested in gaining teaching experience.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <h3 style='text-align:center'>Python Projects on GitHub</h3>
+
+      <div class="row">
+        <div class="col-md-4">
+          <a href='https://github.com/blaylockbk/Herbie' target=_blank>
+            <div class="panel panel-default" align=center>
+              <img style='max-width:100%;text-align:center'
+                src='https://raw.githubusercontent.com/blaylockbk/Herbie/master/docs/_static/HerbieLogo2_tan_transparent.png'>
+              <br>
+              <p>Retrieve Model Output</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="https://github.com/blaylockbk/goes2go" target=_blank>
+            <div class="panel panel-default" align=center>
+              <img style='max-width:100%;text-align:center'
+                src='https://raw.githubusercontent.com/blaylockbk/goes2go/master/docs/_static/goes2go_logo_100dpi.png'>
+              <br>
+              <p>Retrieve GOES Data</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="https://github.com/blaylockbk/SynopticPy" target=_blank>
+            <div class="panel panel-default" align=center>
+              <img style='max-width:100%;text-align:center'
+                src='https://raw.githubusercontent.com/blaylockbk/SynopticPy/master/images/SynopticPy_logo.png'>
+              <br>
+              <p>Synoptic API Helper</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+      <hr>
+      <div align=center>
+        <a href='mailto:brian.blaylock@utah.edu'><big><b>
+              <i class="fa fa-envelope"></i> brian.blaylock@utah.edu
+            </b></big></a>
+        <br><br>
+        <div style='padding: 5px'>
+          <a href="https://www.linkedin.com/pub/brian-blaylock/36/301/727">
+            <img align=center src="http://icons.iconarchive.com/icons/danleech/simple/72/linkedin-icon.png" width="55px"
+              height="55px" title='LinkedIN'></a>
+          <a href="https://github.com/blaylockbk">
+            <img align=center src="./images/github.png" width="55px" height="55px" title='GitHub'></a>
+          <a href="https://scholar.google.com/citations?user=Ko7RRJ8AAAAJ&hl=en">
+            <img align=center src="./images/scholar.png" height="55px" title='Google Scholar'></a>
+          <a href="https://twitter.com/blaylockbk">
+            <img align=center src="https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/images/tweet.png" width="55px"
+              height="55px" title="tweet"></a>
+          <a href="https://www.youtube.com/channel/UCKiLx4IENkJ-UU0CuORgCGg">
+            <img align=center src="./images/youtube-icon.png" width="55px" height="55px" title='youtube'></a>
+          <a href="http://www.atmos.utah.edu/">
+            <img align=center src="./images/UU_Square.png" width="55px" height="55px"
+              title='University of Utah Atmospheric Sciences'></a>
+          <a href="http://orcid.org/0000-0003-2133-9313">
+            <img align=center src="./images/orcid.png" width='55px' height="55px" title='OrchID'></a>
+          <a href="https://www.researchgate.net/profile/Brian_Blaylock">
+            <img align=center src="./images/research_gate.png" height="55px" title='Research Gate'></a>
+        </div>
       </div>
     </div>
-<br>
-<div class="container">
-  <p id='home'> Favorite text editor: <a href='https://code.visualstudio.com/' target='_blank'>Visual Studio Code</a>
-  <p id='home'> Personal Weather Station: <a href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UKBKB&TZ=Local&UNITS=english' target='_blank'>UKBKB (a.k.a. EW2355)</a>
-  <p id='home'> Highest Bowling Score: <a href='https://1drv.ms/x/s!AtJL0JL_rT9jlac8rEasb1ePp-Uh8w' target='_blank'>228</a>
-  <p id='home'> Favorite comic: <a href='https://www.gocomics.com/peanuts' target='_blank'>Peanuts</a>
-</div>
-      <!--
+
+    <br>
+    <div style='background-color:rgb(231, 231, 231);box-shadow: 0px 1px 25px grey'>
+      <div class='container'>
+        <h4 style="padding:15 0 0 15"><i>Curriculum Vitae</i></h4>
+        <iframe
+          src="https://onedrive.live.com/embed?cid=633FADFF92D04BD2&resid=633FADFF92D04BD2%21492260&authkey=AMePfD-qJkOP_A8&em=2"
+          width="95%" height="550" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <p id='home'> Favorite text editor: <a href='https://code.visualstudio.com/' target='_blank'>Visual Studio
+          Code</a>
+      <p id='home'> Personal Weather Station: <a
+          href='https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/cgi-bin/mesowest_current.cgi?STN=UKBKB&TZ=Local&UNITS=english'
+          target='_blank'>UKBKB (a.k.a. EW2355)</a>
+      <p id='home'> Highest Bowling Score: <a href='https://1drv.ms/x/s!AtJL0JL_rT9jlac8rEasb1ePp-Uh8w'
+          target='_blank'>228</a>
+      <p id='home'> Favorite comic: <a href='https://www.gocomics.com/peanuts' target='_blank'>Peanuts</a>
+    </div>
+    <!--
     <p><a href="http://stackoverflow.com/users/2383070/blaylockbk">
     <img src="http://stackoverflow.com/users/flair/2383070.png?theme=dark" width="208" height="58" alt="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for blaylockbk at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
     </a>-->
-    </div>
+  </div>
 
-<script>
-  $('#accordion-tri').on('show.bs.collapse', function (e) {
+  <script>
+    $('#accordion-tri').on('show.bs.collapse', function (e) {
       $(e.target).prev('.panel-heading').find("span").html("<em class='fa fa-caret-down fa-fw'>&nbsp;</em>");
-  }).on('hide.bs.collapse', function (e) {
+    }).on('hide.bs.collapse', function (e) {
       $(e.target).prev('.panel-heading').find("span").html("<em class='fa fa-caret-right fa-fw'>&nbsp;</em>");
-  });
-  $("#accordion-tri .panel-heading").hover().css("cursor", "pointer");
-</script>
+    });
+    $("#accordion-tri .panel-heading").hover().css("cursor", "pointer");
+  </script>
 
-<script src="./js/site/siteclose.js"></script>
+  <script src="./js/site/siteclose.js"></script>
 
 </body>
+
 </html>

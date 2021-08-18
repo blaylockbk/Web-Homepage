@@ -230,7 +230,7 @@ print''' </select>
     <div class="form-group">
       <label class="control-label col-md-2" for="date">Date:</label>
       <div class="col-md-4">          
-        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2017-07-01" max="'''+datetime.now().strftime('%Y-%m-%d')+'''">
+        <input name="date" value="'''+Date+'''" type="date" style="width:100%" class="form-control btn btn-default" id="date" min="2018-07-13" max="'''+datetime.now().strftime('%Y-%m-%d')+'''">
       </div>
     </div>
 <!--- (date)----------------------------->'''
